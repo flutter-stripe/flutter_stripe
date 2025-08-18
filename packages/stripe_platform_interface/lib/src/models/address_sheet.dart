@@ -43,7 +43,8 @@ enum AddressSheetAnimationStyle {
 }
 
 @freezed
-class AddressSheetAdditionalFields with _$AddressSheetAdditionalFields {
+abstract class AddressSheetAdditionalFields
+    with _$AddressSheetAdditionalFields {
   const factory AddressSheetAdditionalFields({
     ///Determines whether the phone number is hidden, required, or optional. Defaults to hidden
     required AddressSheetPhoneNumberField phoneNumber,
@@ -69,7 +70,7 @@ enum AddressSheetPhoneNumberField {
 }
 
 @freezed
-class CollectAddressResult with _$CollectAddressResult {
+abstract class CollectAddressResult with _$CollectAddressResult {
   const factory CollectAddressResult({
     /// The customer's full name
     required String name,
@@ -85,13 +86,13 @@ class CollectAddressResult with _$CollectAddressResult {
       _$CollectAddressResultFromJson(json);
 }
 
-typedef OnAddressSheetSubmit = FutureOr<void> Function(
-    CollectAddressResult result);
+typedef OnAddressSheetSubmit =
+    FutureOr<void> Function(CollectAddressResult result);
 
 typedef OnAddressSheetError = FutureOr<void> Function(StripeException error);
 
 @freezed
-class AddressSheetParams with _$AddressSheetParams {
+abstract class AddressSheetParams with _$AddressSheetParams {
   @JsonSerializable(explicitToJson: true)
   const factory AddressSheetParams({
     /// Whether the address sheet is visible

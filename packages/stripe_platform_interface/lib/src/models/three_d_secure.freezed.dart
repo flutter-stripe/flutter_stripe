@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1636 +9,1632 @@ part of 'three_d_secure.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ThreeDSecureConfigurationParams _$ThreeDSecureConfigurationParamsFromJson(
-    Map<String, dynamic> json) {
-  return _ThreeDSecureConfigurationParams.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ThreeDSecureConfigurationParams {
-  /// Styling for the 3d secure navigation bar.
-  ThreeDSecureNavigationBarThemeData get navigationBar =>
-      throw _privateConstructorUsedError;
 
-  /// Desired timeout in milliseconds.
-  int? get timeout => throw _privateConstructorUsedError;
-
-  /// Styling for the 3d secure label.
-  ThreeDSecureLabelThemeData? get label => throw _privateConstructorUsedError;
-
-  /// Styling for the 3d secure textfield.
-  ThreeDSecureTextFieldThemeData? get textField =>
-      throw _privateConstructorUsedError;
-
-  /// Styling for the 3d secure confirmation button.
-  ThreeDSecureButtonThemeData? get submitButton =>
-      throw _privateConstructorUsedError;
-
-  /// Styling for the 3d secure cancel button.
-  ThreeDSecureButtonThemeData? get cancelButton =>
-      throw _privateConstructorUsedError;
-
-  /// Styling for the 3d secure next button.
-  ThreeDSecureButtonThemeData? get nextButton =>
-      throw _privateConstructorUsedError;
-
-  /// Styling for the 3d secure continue button.
-  ThreeDSecureButtonThemeData? get continueButton =>
-      throw _privateConstructorUsedError;
-
-  /// Styling for the 3d secure resend button.
-  ThreeDSecureButtonThemeData? get resendButton =>
-      throw _privateConstructorUsedError;
+/// Styling for the 3d secure navigation bar.
+ ThreeDSecureNavigationBarThemeData get navigationBar;/// Desired timeout in milliseconds.
+ int? get timeout;/// Styling for the 3d secure label.
+ ThreeDSecureLabelThemeData? get label;/// Styling for the 3d secure textfield.
+ ThreeDSecureTextFieldThemeData? get textField;/// Styling for the 3d secure confirmation button.
+ ThreeDSecureButtonThemeData? get submitButton;/// Styling for the 3d secure cancel button.
+ ThreeDSecureButtonThemeData? get cancelButton;/// Styling for the 3d secure next button.
+ ThreeDSecureButtonThemeData? get nextButton;/// Styling for the 3d secure continue button.
+ ThreeDSecureButtonThemeData? get continueButton;/// Styling for the 3d secure resend button.
+ ThreeDSecureButtonThemeData? get resendButton;
+/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ThreeDSecureConfigurationParamsCopyWith<ThreeDSecureConfigurationParams> get copyWith => _$ThreeDSecureConfigurationParamsCopyWithImpl<ThreeDSecureConfigurationParams>(this as ThreeDSecureConfigurationParams, _$identity);
 
   /// Serializes this ThreeDSecureConfigurationParams to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ThreeDSecureConfigurationParamsCopyWith<ThreeDSecureConfigurationParams>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureConfigurationParams&&(identical(other.navigationBar, navigationBar) || other.navigationBar == navigationBar)&&(identical(other.timeout, timeout) || other.timeout == timeout)&&(identical(other.label, label) || other.label == label)&&(identical(other.textField, textField) || other.textField == textField)&&(identical(other.submitButton, submitButton) || other.submitButton == submitButton)&&(identical(other.cancelButton, cancelButton) || other.cancelButton == cancelButton)&&(identical(other.nextButton, nextButton) || other.nextButton == nextButton)&&(identical(other.continueButton, continueButton) || other.continueButton == continueButton)&&(identical(other.resendButton, resendButton) || other.resendButton == resendButton));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,navigationBar,timeout,label,textField,submitButton,cancelButton,nextButton,continueButton,resendButton);
+
+@override
+String toString() {
+  return 'ThreeDSecureConfigurationParams(navigationBar: $navigationBar, timeout: $timeout, label: $label, textField: $textField, submitButton: $submitButton, cancelButton: $cancelButton, nextButton: $nextButton, continueButton: $continueButton, resendButton: $resendButton)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ThreeDSecureConfigurationParamsCopyWith<$Res> {
-  factory $ThreeDSecureConfigurationParamsCopyWith(
-          ThreeDSecureConfigurationParams value,
-          $Res Function(ThreeDSecureConfigurationParams) then) =
-      _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
-          ThreeDSecureConfigurationParams>;
-  @useResult
-  $Res call(
-      {ThreeDSecureNavigationBarThemeData navigationBar,
-      int? timeout,
-      ThreeDSecureLabelThemeData? label,
-      ThreeDSecureTextFieldThemeData? textField,
-      ThreeDSecureButtonThemeData? submitButton,
-      ThreeDSecureButtonThemeData? cancelButton,
-      ThreeDSecureButtonThemeData? nextButton,
-      ThreeDSecureButtonThemeData? continueButton,
-      ThreeDSecureButtonThemeData? resendButton});
+abstract mixin class $ThreeDSecureConfigurationParamsCopyWith<$Res>  {
+  factory $ThreeDSecureConfigurationParamsCopyWith(ThreeDSecureConfigurationParams value, $Res Function(ThreeDSecureConfigurationParams) _then) = _$ThreeDSecureConfigurationParamsCopyWithImpl;
+@useResult
+$Res call({
+ ThreeDSecureNavigationBarThemeData navigationBar, int? timeout, ThreeDSecureLabelThemeData? label, ThreeDSecureTextFieldThemeData? textField, ThreeDSecureButtonThemeData? submitButton, ThreeDSecureButtonThemeData? cancelButton, ThreeDSecureButtonThemeData? nextButton, ThreeDSecureButtonThemeData? continueButton, ThreeDSecureButtonThemeData? resendButton
+});
 
-  $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar;
-  $ThreeDSecureLabelThemeDataCopyWith<$Res>? get label;
-  $ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField;
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton;
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton;
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton;
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton;
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton;
+
+$ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar;$ThreeDSecureLabelThemeDataCopyWith<$Res>? get label;$ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField;$ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton;$ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton;$ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton;$ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton;$ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton;
+
 }
-
 /// @nodoc
-class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
-        $Val extends ThreeDSecureConfigurationParams>
+class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
     implements $ThreeDSecureConfigurationParamsCopyWith<$Res> {
-  _$ThreeDSecureConfigurationParamsCopyWithImpl(this._value, this._then);
+  _$ThreeDSecureConfigurationParamsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ThreeDSecureConfigurationParams _self;
+  final $Res Function(ThreeDSecureConfigurationParams) _then;
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? navigationBar = null,
-    Object? timeout = freezed,
-    Object? label = freezed,
-    Object? textField = freezed,
-    Object? submitButton = freezed,
-    Object? cancelButton = freezed,
-    Object? nextButton = freezed,
-    Object? continueButton = freezed,
-    Object? resendButton = freezed,
-  }) {
-    return _then(_value.copyWith(
-      navigationBar: null == navigationBar
-          ? _value.navigationBar
-          : navigationBar // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureNavigationBarThemeData,
-      timeout: freezed == timeout
-          ? _value.timeout
-          : timeout // ignore: cast_nullable_to_non_nullable
-              as int?,
-      label: freezed == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureLabelThemeData?,
-      textField: freezed == textField
-          ? _value.textField
-          : textField // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureTextFieldThemeData?,
-      submitButton: freezed == submitButton
-          ? _value.submitButton
-          : submitButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-      cancelButton: freezed == cancelButton
-          ? _value.cancelButton
-          : cancelButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-      nextButton: freezed == nextButton
-          ? _value.nextButton
-          : nextButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-      continueButton: freezed == continueButton
-          ? _value.continueButton
-          : continueButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-      resendButton: freezed == resendButton
-          ? _value.resendButton
-          : resendButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-    ) as $Val);
+/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? navigationBar = null,Object? timeout = freezed,Object? label = freezed,Object? textField = freezed,Object? submitButton = freezed,Object? cancelButton = freezed,Object? nextButton = freezed,Object? continueButton = freezed,Object? resendButton = freezed,}) {
+  return _then(_self.copyWith(
+navigationBar: null == navigationBar ? _self.navigationBar : navigationBar // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureNavigationBarThemeData,timeout: freezed == timeout ? _self.timeout : timeout // ignore: cast_nullable_to_non_nullable
+as int?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureLabelThemeData?,textField: freezed == textField ? _self.textField : textField // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureTextFieldThemeData?,submitButton: freezed == submitButton ? _self.submitButton : submitButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,cancelButton: freezed == cancelButton ? _self.cancelButton : cancelButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,nextButton: freezed == nextButton ? _self.nextButton : nextButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,continueButton: freezed == continueButton ? _self.continueButton : continueButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,resendButton: freezed == resendButton ? _self.resendButton : resendButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,
+  ));
+}
+/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar {
+  
+  return $ThreeDSecureNavigationBarThemeDataCopyWith<$Res>(_self.navigationBar, (value) {
+    return _then(_self.copyWith(navigationBar: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureLabelThemeDataCopyWith<$Res>? get label {
+    if (_self.label == null) {
+    return null;
   }
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar {
-    return $ThreeDSecureNavigationBarThemeDataCopyWith<$Res>(
-        _value.navigationBar, (value) {
-      return _then(_value.copyWith(navigationBar: value) as $Val);
-    });
+  return $ThreeDSecureLabelThemeDataCopyWith<$Res>(_self.label!, (value) {
+    return _then(_self.copyWith(label: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField {
+    if (_self.textField == null) {
+    return null;
   }
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ThreeDSecureLabelThemeDataCopyWith<$Res>? get label {
-    if (_value.label == null) {
-      return null;
-    }
-
-    return $ThreeDSecureLabelThemeDataCopyWith<$Res>(_value.label!, (value) {
-      return _then(_value.copyWith(label: value) as $Val);
-    });
+  return $ThreeDSecureTextFieldThemeDataCopyWith<$Res>(_self.textField!, (value) {
+    return _then(_self.copyWith(textField: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton {
+    if (_self.submitButton == null) {
+    return null;
   }
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField {
-    if (_value.textField == null) {
-      return null;
-    }
-
-    return $ThreeDSecureTextFieldThemeDataCopyWith<$Res>(_value.textField!,
-        (value) {
-      return _then(_value.copyWith(textField: value) as $Val);
-    });
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.submitButton!, (value) {
+    return _then(_self.copyWith(submitButton: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton {
+    if (_self.cancelButton == null) {
+    return null;
   }
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton {
-    if (_value.submitButton == null) {
-      return null;
-    }
-
-    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.submitButton!,
-        (value) {
-      return _then(_value.copyWith(submitButton: value) as $Val);
-    });
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.cancelButton!, (value) {
+    return _then(_self.copyWith(cancelButton: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton {
+    if (_self.nextButton == null) {
+    return null;
   }
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton {
-    if (_value.cancelButton == null) {
-      return null;
-    }
-
-    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.cancelButton!,
-        (value) {
-      return _then(_value.copyWith(cancelButton: value) as $Val);
-    });
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.nextButton!, (value) {
+    return _then(_self.copyWith(nextButton: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton {
+    if (_self.continueButton == null) {
+    return null;
   }
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton {
-    if (_value.nextButton == null) {
-      return null;
-    }
-
-    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.nextButton!,
-        (value) {
-      return _then(_value.copyWith(nextButton: value) as $Val);
-    });
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.continueButton!, (value) {
+    return _then(_self.copyWith(continueButton: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton {
+    if (_self.resendButton == null) {
+    return null;
   }
 
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton {
-    if (_value.continueButton == null) {
-      return null;
-    }
-
-    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.continueButton!,
-        (value) {
-      return _then(_value.copyWith(continueButton: value) as $Val);
-    });
-  }
-
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton {
-    if (_value.resendButton == null) {
-      return null;
-    }
-
-    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.resendButton!,
-        (value) {
-      return _then(_value.copyWith(resendButton: value) as $Val);
-    });
-  }
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.resendButton!, (value) {
+    return _then(_self.copyWith(resendButton: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$ThreeDSecureConfigurationParamsImplCopyWith<$Res>
-    implements $ThreeDSecureConfigurationParamsCopyWith<$Res> {
-  factory _$$ThreeDSecureConfigurationParamsImplCopyWith(
-          _$ThreeDSecureConfigurationParamsImpl value,
-          $Res Function(_$ThreeDSecureConfigurationParamsImpl) then) =
-      __$$ThreeDSecureConfigurationParamsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {ThreeDSecureNavigationBarThemeData navigationBar,
-      int? timeout,
-      ThreeDSecureLabelThemeData? label,
-      ThreeDSecureTextFieldThemeData? textField,
-      ThreeDSecureButtonThemeData? submitButton,
-      ThreeDSecureButtonThemeData? cancelButton,
-      ThreeDSecureButtonThemeData? nextButton,
-      ThreeDSecureButtonThemeData? continueButton,
-      ThreeDSecureButtonThemeData? resendButton});
 
-  @override
-  $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar;
-  @override
-  $ThreeDSecureLabelThemeDataCopyWith<$Res>? get label;
-  @override
-  $ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField;
-  @override
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton;
-  @override
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton;
-  @override
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton;
-  @override
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton;
-  @override
-  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton;
+/// Adds pattern-matching-related methods to [ThreeDSecureConfigurationParams].
+extension ThreeDSecureConfigurationParamsPatterns on ThreeDSecureConfigurationParams {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ThreeDSecureConfigurationParams value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureConfigurationParams() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ThreeDSecureConfigurationParams value)  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureConfigurationParams():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ThreeDSecureConfigurationParams value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureConfigurationParams() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ThreeDSecureNavigationBarThemeData navigationBar,  int? timeout,  ThreeDSecureLabelThemeData? label,  ThreeDSecureTextFieldThemeData? textField,  ThreeDSecureButtonThemeData? submitButton,  ThreeDSecureButtonThemeData? cancelButton,  ThreeDSecureButtonThemeData? nextButton,  ThreeDSecureButtonThemeData? continueButton,  ThreeDSecureButtonThemeData? resendButton)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ThreeDSecureConfigurationParams() when $default != null:
+return $default(_that.navigationBar,_that.timeout,_that.label,_that.textField,_that.submitButton,_that.cancelButton,_that.nextButton,_that.continueButton,_that.resendButton);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ThreeDSecureNavigationBarThemeData navigationBar,  int? timeout,  ThreeDSecureLabelThemeData? label,  ThreeDSecureTextFieldThemeData? textField,  ThreeDSecureButtonThemeData? submitButton,  ThreeDSecureButtonThemeData? cancelButton,  ThreeDSecureButtonThemeData? nextButton,  ThreeDSecureButtonThemeData? continueButton,  ThreeDSecureButtonThemeData? resendButton)  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureConfigurationParams():
+return $default(_that.navigationBar,_that.timeout,_that.label,_that.textField,_that.submitButton,_that.cancelButton,_that.nextButton,_that.continueButton,_that.resendButton);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ThreeDSecureNavigationBarThemeData navigationBar,  int? timeout,  ThreeDSecureLabelThemeData? label,  ThreeDSecureTextFieldThemeData? textField,  ThreeDSecureButtonThemeData? submitButton,  ThreeDSecureButtonThemeData? cancelButton,  ThreeDSecureButtonThemeData? nextButton,  ThreeDSecureButtonThemeData? continueButton,  ThreeDSecureButtonThemeData? resendButton)?  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureConfigurationParams() when $default != null:
+return $default(_that.navigationBar,_that.timeout,_that.label,_that.textField,_that.submitButton,_that.cancelButton,_that.nextButton,_that.continueButton,_that.resendButton);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$ThreeDSecureConfigurationParamsImplCopyWithImpl<$Res>
-    extends _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
-        _$ThreeDSecureConfigurationParamsImpl>
-    implements _$$ThreeDSecureConfigurationParamsImplCopyWith<$Res> {
-  __$$ThreeDSecureConfigurationParamsImplCopyWithImpl(
-      _$ThreeDSecureConfigurationParamsImpl _value,
-      $Res Function(_$ThreeDSecureConfigurationParamsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? navigationBar = null,
-    Object? timeout = freezed,
-    Object? label = freezed,
-    Object? textField = freezed,
-    Object? submitButton = freezed,
-    Object? cancelButton = freezed,
-    Object? nextButton = freezed,
-    Object? continueButton = freezed,
-    Object? resendButton = freezed,
-  }) {
-    return _then(_$ThreeDSecureConfigurationParamsImpl(
-      navigationBar: null == navigationBar
-          ? _value.navigationBar
-          : navigationBar // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureNavigationBarThemeData,
-      timeout: freezed == timeout
-          ? _value.timeout
-          : timeout // ignore: cast_nullable_to_non_nullable
-              as int?,
-      label: freezed == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureLabelThemeData?,
-      textField: freezed == textField
-          ? _value.textField
-          : textField // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureTextFieldThemeData?,
-      submitButton: freezed == submitButton
-          ? _value.submitButton
-          : submitButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-      cancelButton: freezed == cancelButton
-          ? _value.cancelButton
-          : cancelButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-      nextButton: freezed == nextButton
-          ? _value.nextButton
-          : nextButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-      continueButton: freezed == continueButton
-          ? _value.continueButton
-          : continueButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-      resendButton: freezed == resendButton
-          ? _value.resendButton
-          : resendButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureButtonThemeData?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ThreeDSecureConfigurationParamsImpl
-    implements _ThreeDSecureConfigurationParams {
-  const _$ThreeDSecureConfigurationParamsImpl(
-      {required this.navigationBar,
-      this.timeout,
-      this.label,
-      this.textField,
-      this.submitButton,
-      this.cancelButton,
-      this.nextButton,
-      this.continueButton,
-      this.resendButton});
+class _ThreeDSecureConfigurationParams implements ThreeDSecureConfigurationParams {
+  const _ThreeDSecureConfigurationParams({required this.navigationBar, this.timeout, this.label, this.textField, this.submitButton, this.cancelButton, this.nextButton, this.continueButton, this.resendButton});
+  factory _ThreeDSecureConfigurationParams.fromJson(Map<String, dynamic> json) => _$ThreeDSecureConfigurationParamsFromJson(json);
 
-  factory _$ThreeDSecureConfigurationParamsImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ThreeDSecureConfigurationParamsImplFromJson(json);
+/// Styling for the 3d secure navigation bar.
+@override final  ThreeDSecureNavigationBarThemeData navigationBar;
+/// Desired timeout in milliseconds.
+@override final  int? timeout;
+/// Styling for the 3d secure label.
+@override final  ThreeDSecureLabelThemeData? label;
+/// Styling for the 3d secure textfield.
+@override final  ThreeDSecureTextFieldThemeData? textField;
+/// Styling for the 3d secure confirmation button.
+@override final  ThreeDSecureButtonThemeData? submitButton;
+/// Styling for the 3d secure cancel button.
+@override final  ThreeDSecureButtonThemeData? cancelButton;
+/// Styling for the 3d secure next button.
+@override final  ThreeDSecureButtonThemeData? nextButton;
+/// Styling for the 3d secure continue button.
+@override final  ThreeDSecureButtonThemeData? continueButton;
+/// Styling for the 3d secure resend button.
+@override final  ThreeDSecureButtonThemeData? resendButton;
 
-  /// Styling for the 3d secure navigation bar.
-  @override
-  final ThreeDSecureNavigationBarThemeData navigationBar;
+/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ThreeDSecureConfigurationParamsCopyWith<_ThreeDSecureConfigurationParams> get copyWith => __$ThreeDSecureConfigurationParamsCopyWithImpl<_ThreeDSecureConfigurationParams>(this, _$identity);
 
-  /// Desired timeout in milliseconds.
-  @override
-  final int? timeout;
-
-  /// Styling for the 3d secure label.
-  @override
-  final ThreeDSecureLabelThemeData? label;
-
-  /// Styling for the 3d secure textfield.
-  @override
-  final ThreeDSecureTextFieldThemeData? textField;
-
-  /// Styling for the 3d secure confirmation button.
-  @override
-  final ThreeDSecureButtonThemeData? submitButton;
-
-  /// Styling for the 3d secure cancel button.
-  @override
-  final ThreeDSecureButtonThemeData? cancelButton;
-
-  /// Styling for the 3d secure next button.
-  @override
-  final ThreeDSecureButtonThemeData? nextButton;
-
-  /// Styling for the 3d secure continue button.
-  @override
-  final ThreeDSecureButtonThemeData? continueButton;
-
-  /// Styling for the 3d secure resend button.
-  @override
-  final ThreeDSecureButtonThemeData? resendButton;
-
-  @override
-  String toString() {
-    return 'ThreeDSecureConfigurationParams(navigationBar: $navigationBar, timeout: $timeout, label: $label, textField: $textField, submitButton: $submitButton, cancelButton: $cancelButton, nextButton: $nextButton, continueButton: $continueButton, resendButton: $resendButton)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ThreeDSecureConfigurationParamsImpl &&
-            (identical(other.navigationBar, navigationBar) ||
-                other.navigationBar == navigationBar) &&
-            (identical(other.timeout, timeout) || other.timeout == timeout) &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.textField, textField) ||
-                other.textField == textField) &&
-            (identical(other.submitButton, submitButton) ||
-                other.submitButton == submitButton) &&
-            (identical(other.cancelButton, cancelButton) ||
-                other.cancelButton == cancelButton) &&
-            (identical(other.nextButton, nextButton) ||
-                other.nextButton == nextButton) &&
-            (identical(other.continueButton, continueButton) ||
-                other.continueButton == continueButton) &&
-            (identical(other.resendButton, resendButton) ||
-                other.resendButton == resendButton));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      navigationBar,
-      timeout,
-      label,
-      textField,
-      submitButton,
-      cancelButton,
-      nextButton,
-      continueButton,
-      resendButton);
-
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ThreeDSecureConfigurationParamsImplCopyWith<
-          _$ThreeDSecureConfigurationParamsImpl>
-      get copyWith => __$$ThreeDSecureConfigurationParamsImplCopyWithImpl<
-          _$ThreeDSecureConfigurationParamsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ThreeDSecureConfigurationParamsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ThreeDSecureConfigurationParamsToJson(this, );
 }
 
-abstract class _ThreeDSecureConfigurationParams
-    implements ThreeDSecureConfigurationParams {
-  const factory _ThreeDSecureConfigurationParams(
-          {required final ThreeDSecureNavigationBarThemeData navigationBar,
-          final int? timeout,
-          final ThreeDSecureLabelThemeData? label,
-          final ThreeDSecureTextFieldThemeData? textField,
-          final ThreeDSecureButtonThemeData? submitButton,
-          final ThreeDSecureButtonThemeData? cancelButton,
-          final ThreeDSecureButtonThemeData? nextButton,
-          final ThreeDSecureButtonThemeData? continueButton,
-          final ThreeDSecureButtonThemeData? resendButton}) =
-      _$ThreeDSecureConfigurationParamsImpl;
-
-  factory _ThreeDSecureConfigurationParams.fromJson(Map<String, dynamic> json) =
-      _$ThreeDSecureConfigurationParamsImpl.fromJson;
-
-  /// Styling for the 3d secure navigation bar.
-  @override
-  ThreeDSecureNavigationBarThemeData get navigationBar;
-
-  /// Desired timeout in milliseconds.
-  @override
-  int? get timeout;
-
-  /// Styling for the 3d secure label.
-  @override
-  ThreeDSecureLabelThemeData? get label;
-
-  /// Styling for the 3d secure textfield.
-  @override
-  ThreeDSecureTextFieldThemeData? get textField;
-
-  /// Styling for the 3d secure confirmation button.
-  @override
-  ThreeDSecureButtonThemeData? get submitButton;
-
-  /// Styling for the 3d secure cancel button.
-  @override
-  ThreeDSecureButtonThemeData? get cancelButton;
-
-  /// Styling for the 3d secure next button.
-  @override
-  ThreeDSecureButtonThemeData? get nextButton;
-
-  /// Styling for the 3d secure continue button.
-  @override
-  ThreeDSecureButtonThemeData? get continueButton;
-
-  /// Styling for the 3d secure resend button.
-  @override
-  ThreeDSecureButtonThemeData? get resendButton;
-
-  /// Create a copy of ThreeDSecureConfigurationParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ThreeDSecureConfigurationParamsImplCopyWith<
-          _$ThreeDSecureConfigurationParamsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureConfigurationParams&&(identical(other.navigationBar, navigationBar) || other.navigationBar == navigationBar)&&(identical(other.timeout, timeout) || other.timeout == timeout)&&(identical(other.label, label) || other.label == label)&&(identical(other.textField, textField) || other.textField == textField)&&(identical(other.submitButton, submitButton) || other.submitButton == submitButton)&&(identical(other.cancelButton, cancelButton) || other.cancelButton == cancelButton)&&(identical(other.nextButton, nextButton) || other.nextButton == nextButton)&&(identical(other.continueButton, continueButton) || other.continueButton == continueButton)&&(identical(other.resendButton, resendButton) || other.resendButton == resendButton));
 }
 
-ThreeDSecureNavigationBarThemeData _$ThreeDSecureNavigationBarThemeDataFromJson(
-    Map<String, dynamic> json) {
-  return _ThreeDSecureNavigationBarThemeData.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,navigationBar,timeout,label,textField,submitButton,cancelButton,nextButton,continueButton,resendButton);
+
+@override
+String toString() {
+  return 'ThreeDSecureConfigurationParams(navigationBar: $navigationBar, timeout: $timeout, label: $label, textField: $textField, submitButton: $submitButton, cancelButton: $cancelButton, nextButton: $nextButton, continueButton: $continueButton, resendButton: $resendButton)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ThreeDSecureConfigurationParamsCopyWith<$Res> implements $ThreeDSecureConfigurationParamsCopyWith<$Res> {
+  factory _$ThreeDSecureConfigurationParamsCopyWith(_ThreeDSecureConfigurationParams value, $Res Function(_ThreeDSecureConfigurationParams) _then) = __$ThreeDSecureConfigurationParamsCopyWithImpl;
+@override @useResult
+$Res call({
+ ThreeDSecureNavigationBarThemeData navigationBar, int? timeout, ThreeDSecureLabelThemeData? label, ThreeDSecureTextFieldThemeData? textField, ThreeDSecureButtonThemeData? submitButton, ThreeDSecureButtonThemeData? cancelButton, ThreeDSecureButtonThemeData? nextButton, ThreeDSecureButtonThemeData? continueButton, ThreeDSecureButtonThemeData? resendButton
+});
+
+
+@override $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar;@override $ThreeDSecureLabelThemeDataCopyWith<$Res>? get label;@override $ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField;@override $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton;@override $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton;@override $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton;@override $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton;@override $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton;
+
+}
+/// @nodoc
+class __$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
+    implements _$ThreeDSecureConfigurationParamsCopyWith<$Res> {
+  __$ThreeDSecureConfigurationParamsCopyWithImpl(this._self, this._then);
+
+  final _ThreeDSecureConfigurationParams _self;
+  final $Res Function(_ThreeDSecureConfigurationParams) _then;
+
+/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? navigationBar = null,Object? timeout = freezed,Object? label = freezed,Object? textField = freezed,Object? submitButton = freezed,Object? cancelButton = freezed,Object? nextButton = freezed,Object? continueButton = freezed,Object? resendButton = freezed,}) {
+  return _then(_ThreeDSecureConfigurationParams(
+navigationBar: null == navigationBar ? _self.navigationBar : navigationBar // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureNavigationBarThemeData,timeout: freezed == timeout ? _self.timeout : timeout // ignore: cast_nullable_to_non_nullable
+as int?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureLabelThemeData?,textField: freezed == textField ? _self.textField : textField // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureTextFieldThemeData?,submitButton: freezed == submitButton ? _self.submitButton : submitButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,cancelButton: freezed == cancelButton ? _self.cancelButton : cancelButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,nextButton: freezed == nextButton ? _self.nextButton : nextButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,continueButton: freezed == continueButton ? _self.continueButton : continueButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,resendButton: freezed == resendButton ? _self.resendButton : resendButton // ignore: cast_nullable_to_non_nullable
+as ThreeDSecureButtonThemeData?,
+  ));
+}
+
+/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar {
+  
+  return $ThreeDSecureNavigationBarThemeDataCopyWith<$Res>(_self.navigationBar, (value) {
+    return _then(_self.copyWith(navigationBar: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureLabelThemeDataCopyWith<$Res>? get label {
+    if (_self.label == null) {
+    return null;
+  }
+
+  return $ThreeDSecureLabelThemeDataCopyWith<$Res>(_self.label!, (value) {
+    return _then(_self.copyWith(label: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField {
+    if (_self.textField == null) {
+    return null;
+  }
+
+  return $ThreeDSecureTextFieldThemeDataCopyWith<$Res>(_self.textField!, (value) {
+    return _then(_self.copyWith(textField: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton {
+    if (_self.submitButton == null) {
+    return null;
+  }
+
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.submitButton!, (value) {
+    return _then(_self.copyWith(submitButton: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton {
+    if (_self.cancelButton == null) {
+    return null;
+  }
+
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.cancelButton!, (value) {
+    return _then(_self.copyWith(cancelButton: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton {
+    if (_self.nextButton == null) {
+    return null;
+  }
+
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.nextButton!, (value) {
+    return _then(_self.copyWith(nextButton: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton {
+    if (_self.continueButton == null) {
+    return null;
+  }
+
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.continueButton!, (value) {
+    return _then(_self.copyWith(continueButton: value));
+  });
+}/// Create a copy of ThreeDSecureConfigurationParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton {
+    if (_self.resendButton == null) {
+    return null;
+  }
+
+  return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_self.resendButton!, (value) {
+    return _then(_self.copyWith(resendButton: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$ThreeDSecureNavigationBarThemeData {
-  /// Localised text of the header.
-  String? get headerText => throw _privateConstructorUsedError;
 
-  /// localised text of the button
-  String? get buttonText => throw _privateConstructorUsedError;
-
-  /// Color in hex to display navigation bar header text.
-  String? get textColor => throw _privateConstructorUsedError;
-
-  /// Color in hex for the status bar.
-  String? get statusBarColor => throw _privateConstructorUsedError;
-
-  /// Color in hex to display navigation bar background.
-  String? get backgroundColor => throw _privateConstructorUsedError;
-
-  /// Font size of header text.
-  double? get textFontSize => throw _privateConstructorUsedError;
+/// Localised text of the header.
+ String? get headerText;/// localised text of the button
+ String? get buttonText;/// Color in hex to display navigation bar header text.
+ String? get textColor;/// Color in hex for the status bar.
+ String? get statusBarColor;/// Color in hex to display navigation bar background.
+ String? get backgroundColor;/// Font size of header text.
+ double? get textFontSize;
+/// Create a copy of ThreeDSecureNavigationBarThemeData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ThreeDSecureNavigationBarThemeDataCopyWith<ThreeDSecureNavigationBarThemeData> get copyWith => _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<ThreeDSecureNavigationBarThemeData>(this as ThreeDSecureNavigationBarThemeData, _$identity);
 
   /// Serializes this ThreeDSecureNavigationBarThemeData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ThreeDSecureNavigationBarThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ThreeDSecureNavigationBarThemeDataCopyWith<
-          ThreeDSecureNavigationBarThemeData>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureNavigationBarThemeData&&(identical(other.headerText, headerText) || other.headerText == headerText)&&(identical(other.buttonText, buttonText) || other.buttonText == buttonText)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.statusBarColor, statusBarColor) || other.statusBarColor == statusBarColor)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,headerText,buttonText,textColor,statusBarColor,backgroundColor,textFontSize);
+
+@override
+String toString() {
+  return 'ThreeDSecureNavigationBarThemeData(headerText: $headerText, buttonText: $buttonText, textColor: $textColor, statusBarColor: $statusBarColor, backgroundColor: $backgroundColor, textFontSize: $textFontSize)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
-  factory $ThreeDSecureNavigationBarThemeDataCopyWith(
-          ThreeDSecureNavigationBarThemeData value,
-          $Res Function(ThreeDSecureNavigationBarThemeData) then) =
-      _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res,
-          ThreeDSecureNavigationBarThemeData>;
-  @useResult
-  $Res call(
-      {String? headerText,
-      String? buttonText,
-      String? textColor,
-      String? statusBarColor,
-      String? backgroundColor,
-      double? textFontSize});
-}
+abstract mixin class $ThreeDSecureNavigationBarThemeDataCopyWith<$Res>  {
+  factory $ThreeDSecureNavigationBarThemeDataCopyWith(ThreeDSecureNavigationBarThemeData value, $Res Function(ThreeDSecureNavigationBarThemeData) _then) = _$ThreeDSecureNavigationBarThemeDataCopyWithImpl;
+@useResult
+$Res call({
+ String? headerText, String? buttonText, String? textColor, String? statusBarColor, String? backgroundColor, double? textFontSize
+});
 
+
+
+
+}
 /// @nodoc
-class _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res,
-        $Val extends ThreeDSecureNavigationBarThemeData>
+class _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
     implements $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
-  _$ThreeDSecureNavigationBarThemeDataCopyWithImpl(this._value, this._then);
+  _$ThreeDSecureNavigationBarThemeDataCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ThreeDSecureNavigationBarThemeData _self;
+  final $Res Function(ThreeDSecureNavigationBarThemeData) _then;
 
-  /// Create a copy of ThreeDSecureNavigationBarThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? headerText = freezed,
-    Object? buttonText = freezed,
-    Object? textColor = freezed,
-    Object? statusBarColor = freezed,
-    Object? backgroundColor = freezed,
-    Object? textFontSize = freezed,
-  }) {
-    return _then(_value.copyWith(
-      headerText: freezed == headerText
-          ? _value.headerText
-          : headerText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      buttonText: freezed == buttonText
-          ? _value.buttonText
-          : buttonText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statusBarColor: freezed == statusBarColor
-          ? _value.statusBarColor
-          : statusBarColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backgroundColor: freezed == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textFontSize: freezed == textFontSize
-          ? _value.textFontSize
-          : textFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
-  }
+/// Create a copy of ThreeDSecureNavigationBarThemeData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? headerText = freezed,Object? buttonText = freezed,Object? textColor = freezed,Object? statusBarColor = freezed,Object? backgroundColor = freezed,Object? textFontSize = freezed,}) {
+  return _then(_self.copyWith(
+headerText: freezed == headerText ? _self.headerText : headerText // ignore: cast_nullable_to_non_nullable
+as String?,buttonText: freezed == buttonText ? _self.buttonText : buttonText // ignore: cast_nullable_to_non_nullable
+as String?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
+as String?,statusBarColor: freezed == statusBarColor ? _self.statusBarColor : statusBarColor // ignore: cast_nullable_to_non_nullable
+as String?,backgroundColor: freezed == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
+as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ThreeDSecureNavigationBarThemeDataImplCopyWith<$Res>
-    implements $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
-  factory _$$ThreeDSecureNavigationBarThemeDataImplCopyWith(
-          _$ThreeDSecureNavigationBarThemeDataImpl value,
-          $Res Function(_$ThreeDSecureNavigationBarThemeDataImpl) then) =
-      __$$ThreeDSecureNavigationBarThemeDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? headerText,
-      String? buttonText,
-      String? textColor,
-      String? statusBarColor,
-      String? backgroundColor,
-      double? textFontSize});
 }
 
-/// @nodoc
-class __$$ThreeDSecureNavigationBarThemeDataImplCopyWithImpl<$Res>
-    extends _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res,
-        _$ThreeDSecureNavigationBarThemeDataImpl>
-    implements _$$ThreeDSecureNavigationBarThemeDataImplCopyWith<$Res> {
-  __$$ThreeDSecureNavigationBarThemeDataImplCopyWithImpl(
-      _$ThreeDSecureNavigationBarThemeDataImpl _value,
-      $Res Function(_$ThreeDSecureNavigationBarThemeDataImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ThreeDSecureNavigationBarThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? headerText = freezed,
-    Object? buttonText = freezed,
-    Object? textColor = freezed,
-    Object? statusBarColor = freezed,
-    Object? backgroundColor = freezed,
-    Object? textFontSize = freezed,
-  }) {
-    return _then(_$ThreeDSecureNavigationBarThemeDataImpl(
-      headerText: freezed == headerText
-          ? _value.headerText
-          : headerText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      buttonText: freezed == buttonText
-          ? _value.buttonText
-          : buttonText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statusBarColor: freezed == statusBarColor
-          ? _value.statusBarColor
-          : statusBarColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backgroundColor: freezed == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textFontSize: freezed == textFontSize
-          ? _value.textFontSize
-          : textFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ThreeDSecureNavigationBarThemeData].
+extension ThreeDSecureNavigationBarThemeDataPatterns on ThreeDSecureNavigationBarThemeData {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ThreeDSecureNavigationBarThemeData value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureNavigationBarThemeData() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ThreeDSecureNavigationBarThemeData value)  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureNavigationBarThemeData():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ThreeDSecureNavigationBarThemeData value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureNavigationBarThemeData() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? headerText,  String? buttonText,  String? textColor,  String? statusBarColor,  String? backgroundColor,  double? textFontSize)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ThreeDSecureNavigationBarThemeData() when $default != null:
+return $default(_that.headerText,_that.buttonText,_that.textColor,_that.statusBarColor,_that.backgroundColor,_that.textFontSize);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? headerText,  String? buttonText,  String? textColor,  String? statusBarColor,  String? backgroundColor,  double? textFontSize)  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureNavigationBarThemeData():
+return $default(_that.headerText,_that.buttonText,_that.textColor,_that.statusBarColor,_that.backgroundColor,_that.textFontSize);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? headerText,  String? buttonText,  String? textColor,  String? statusBarColor,  String? backgroundColor,  double? textFontSize)?  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureNavigationBarThemeData() when $default != null:
+return $default(_that.headerText,_that.buttonText,_that.textColor,_that.statusBarColor,_that.backgroundColor,_that.textFontSize);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ThreeDSecureNavigationBarThemeDataImpl
-    implements _ThreeDSecureNavigationBarThemeData {
-  const _$ThreeDSecureNavigationBarThemeDataImpl(
-      {this.headerText,
-      this.buttonText,
-      this.textColor,
-      this.statusBarColor,
-      this.backgroundColor,
-      this.textFontSize});
+class _ThreeDSecureNavigationBarThemeData implements ThreeDSecureNavigationBarThemeData {
+  const _ThreeDSecureNavigationBarThemeData({this.headerText, this.buttonText, this.textColor, this.statusBarColor, this.backgroundColor, this.textFontSize});
+  factory _ThreeDSecureNavigationBarThemeData.fromJson(Map<String, dynamic> json) => _$ThreeDSecureNavigationBarThemeDataFromJson(json);
 
-  factory _$ThreeDSecureNavigationBarThemeDataImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ThreeDSecureNavigationBarThemeDataImplFromJson(json);
+/// Localised text of the header.
+@override final  String? headerText;
+/// localised text of the button
+@override final  String? buttonText;
+/// Color in hex to display navigation bar header text.
+@override final  String? textColor;
+/// Color in hex for the status bar.
+@override final  String? statusBarColor;
+/// Color in hex to display navigation bar background.
+@override final  String? backgroundColor;
+/// Font size of header text.
+@override final  double? textFontSize;
 
-  /// Localised text of the header.
-  @override
-  final String? headerText;
+/// Create a copy of ThreeDSecureNavigationBarThemeData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ThreeDSecureNavigationBarThemeDataCopyWith<_ThreeDSecureNavigationBarThemeData> get copyWith => __$ThreeDSecureNavigationBarThemeDataCopyWithImpl<_ThreeDSecureNavigationBarThemeData>(this, _$identity);
 
-  /// localised text of the button
-  @override
-  final String? buttonText;
-
-  /// Color in hex to display navigation bar header text.
-  @override
-  final String? textColor;
-
-  /// Color in hex for the status bar.
-  @override
-  final String? statusBarColor;
-
-  /// Color in hex to display navigation bar background.
-  @override
-  final String? backgroundColor;
-
-  /// Font size of header text.
-  @override
-  final double? textFontSize;
-
-  @override
-  String toString() {
-    return 'ThreeDSecureNavigationBarThemeData(headerText: $headerText, buttonText: $buttonText, textColor: $textColor, statusBarColor: $statusBarColor, backgroundColor: $backgroundColor, textFontSize: $textFontSize)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ThreeDSecureNavigationBarThemeDataImpl &&
-            (identical(other.headerText, headerText) ||
-                other.headerText == headerText) &&
-            (identical(other.buttonText, buttonText) ||
-                other.buttonText == buttonText) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.statusBarColor, statusBarColor) ||
-                other.statusBarColor == statusBarColor) &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor) &&
-            (identical(other.textFontSize, textFontSize) ||
-                other.textFontSize == textFontSize));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, headerText, buttonText,
-      textColor, statusBarColor, backgroundColor, textFontSize);
-
-  /// Create a copy of ThreeDSecureNavigationBarThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ThreeDSecureNavigationBarThemeDataImplCopyWith<
-          _$ThreeDSecureNavigationBarThemeDataImpl>
-      get copyWith => __$$ThreeDSecureNavigationBarThemeDataImplCopyWithImpl<
-          _$ThreeDSecureNavigationBarThemeDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ThreeDSecureNavigationBarThemeDataImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ThreeDSecureNavigationBarThemeDataToJson(this, );
 }
 
-abstract class _ThreeDSecureNavigationBarThemeData
-    implements ThreeDSecureNavigationBarThemeData {
-  const factory _ThreeDSecureNavigationBarThemeData(
-      {final String? headerText,
-      final String? buttonText,
-      final String? textColor,
-      final String? statusBarColor,
-      final String? backgroundColor,
-      final double? textFontSize}) = _$ThreeDSecureNavigationBarThemeDataImpl;
-
-  factory _ThreeDSecureNavigationBarThemeData.fromJson(
-          Map<String, dynamic> json) =
-      _$ThreeDSecureNavigationBarThemeDataImpl.fromJson;
-
-  /// Localised text of the header.
-  @override
-  String? get headerText;
-
-  /// localised text of the button
-  @override
-  String? get buttonText;
-
-  /// Color in hex to display navigation bar header text.
-  @override
-  String? get textColor;
-
-  /// Color in hex for the status bar.
-  @override
-  String? get statusBarColor;
-
-  /// Color in hex to display navigation bar background.
-  @override
-  String? get backgroundColor;
-
-  /// Font size of header text.
-  @override
-  double? get textFontSize;
-
-  /// Create a copy of ThreeDSecureNavigationBarThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ThreeDSecureNavigationBarThemeDataImplCopyWith<
-          _$ThreeDSecureNavigationBarThemeDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureNavigationBarThemeData&&(identical(other.headerText, headerText) || other.headerText == headerText)&&(identical(other.buttonText, buttonText) || other.buttonText == buttonText)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.statusBarColor, statusBarColor) || other.statusBarColor == statusBarColor)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
 }
 
-ThreeDSecureLabelThemeData _$ThreeDSecureLabelThemeDataFromJson(
-    Map<String, dynamic> json) {
-  return _ThreeDSecureLabelThemeData.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,headerText,buttonText,textColor,statusBarColor,backgroundColor,textFontSize);
+
+@override
+String toString() {
+  return 'ThreeDSecureNavigationBarThemeData(headerText: $headerText, buttonText: $buttonText, textColor: $textColor, statusBarColor: $statusBarColor, backgroundColor: $backgroundColor, textFontSize: $textFontSize)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ThreeDSecureNavigationBarThemeDataCopyWith<$Res> implements $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
+  factory _$ThreeDSecureNavigationBarThemeDataCopyWith(_ThreeDSecureNavigationBarThemeData value, $Res Function(_ThreeDSecureNavigationBarThemeData) _then) = __$ThreeDSecureNavigationBarThemeDataCopyWithImpl;
+@override @useResult
+$Res call({
+ String? headerText, String? buttonText, String? textColor, String? statusBarColor, String? backgroundColor, double? textFontSize
+});
+
+
+
+
+}
+/// @nodoc
+class __$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
+    implements _$ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
+  __$ThreeDSecureNavigationBarThemeDataCopyWithImpl(this._self, this._then);
+
+  final _ThreeDSecureNavigationBarThemeData _self;
+  final $Res Function(_ThreeDSecureNavigationBarThemeData) _then;
+
+/// Create a copy of ThreeDSecureNavigationBarThemeData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? headerText = freezed,Object? buttonText = freezed,Object? textColor = freezed,Object? statusBarColor = freezed,Object? backgroundColor = freezed,Object? textFontSize = freezed,}) {
+  return _then(_ThreeDSecureNavigationBarThemeData(
+headerText: freezed == headerText ? _self.headerText : headerText // ignore: cast_nullable_to_non_nullable
+as String?,buttonText: freezed == buttonText ? _self.buttonText : buttonText // ignore: cast_nullable_to_non_nullable
+as String?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
+as String?,statusBarColor: freezed == statusBarColor ? _self.statusBarColor : statusBarColor // ignore: cast_nullable_to_non_nullable
+as String?,backgroundColor: freezed == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
+as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ThreeDSecureLabelThemeData {
-  /// Color in hex for header text.
-  String? get headingTextColor => throw _privateConstructorUsedError;
 
-  /// Color in hex for label text.
-  String? get textColor => throw _privateConstructorUsedError;
-
-  /// Font size for label text.
-  double? get textFontSize =>
-      throw _privateConstructorUsedError; // Font size for header.
-  double? get headingFontSize => throw _privateConstructorUsedError;
+/// Color in hex for header text.
+ String? get headingTextColor;/// Color in hex for label text.
+ String? get textColor;/// Font size for label text.
+ double? get textFontSize;// Font size for header.
+ double? get headingFontSize;
+/// Create a copy of ThreeDSecureLabelThemeData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ThreeDSecureLabelThemeDataCopyWith<ThreeDSecureLabelThemeData> get copyWith => _$ThreeDSecureLabelThemeDataCopyWithImpl<ThreeDSecureLabelThemeData>(this as ThreeDSecureLabelThemeData, _$identity);
 
   /// Serializes this ThreeDSecureLabelThemeData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ThreeDSecureLabelThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ThreeDSecureLabelThemeDataCopyWith<ThreeDSecureLabelThemeData>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureLabelThemeData&&(identical(other.headingTextColor, headingTextColor) || other.headingTextColor == headingTextColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize)&&(identical(other.headingFontSize, headingFontSize) || other.headingFontSize == headingFontSize));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,headingTextColor,textColor,textFontSize,headingFontSize);
+
+@override
+String toString() {
+  return 'ThreeDSecureLabelThemeData(headingTextColor: $headingTextColor, textColor: $textColor, textFontSize: $textFontSize, headingFontSize: $headingFontSize)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ThreeDSecureLabelThemeDataCopyWith<$Res> {
-  factory $ThreeDSecureLabelThemeDataCopyWith(ThreeDSecureLabelThemeData value,
-          $Res Function(ThreeDSecureLabelThemeData) then) =
-      _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res,
-          ThreeDSecureLabelThemeData>;
-  @useResult
-  $Res call(
-      {String? headingTextColor,
-      String? textColor,
-      double? textFontSize,
-      double? headingFontSize});
-}
+abstract mixin class $ThreeDSecureLabelThemeDataCopyWith<$Res>  {
+  factory $ThreeDSecureLabelThemeDataCopyWith(ThreeDSecureLabelThemeData value, $Res Function(ThreeDSecureLabelThemeData) _then) = _$ThreeDSecureLabelThemeDataCopyWithImpl;
+@useResult
+$Res call({
+ String? headingTextColor, String? textColor, double? textFontSize, double? headingFontSize
+});
 
+
+
+
+}
 /// @nodoc
-class _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res,
-        $Val extends ThreeDSecureLabelThemeData>
+class _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
     implements $ThreeDSecureLabelThemeDataCopyWith<$Res> {
-  _$ThreeDSecureLabelThemeDataCopyWithImpl(this._value, this._then);
+  _$ThreeDSecureLabelThemeDataCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ThreeDSecureLabelThemeData _self;
+  final $Res Function(ThreeDSecureLabelThemeData) _then;
 
-  /// Create a copy of ThreeDSecureLabelThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? headingTextColor = freezed,
-    Object? textColor = freezed,
-    Object? textFontSize = freezed,
-    Object? headingFontSize = freezed,
-  }) {
-    return _then(_value.copyWith(
-      headingTextColor: freezed == headingTextColor
-          ? _value.headingTextColor
-          : headingTextColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textFontSize: freezed == textFontSize
-          ? _value.textFontSize
-          : textFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-      headingFontSize: freezed == headingFontSize
-          ? _value.headingFontSize
-          : headingFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
-  }
+/// Create a copy of ThreeDSecureLabelThemeData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? headingTextColor = freezed,Object? textColor = freezed,Object? textFontSize = freezed,Object? headingFontSize = freezed,}) {
+  return _then(_self.copyWith(
+headingTextColor: freezed == headingTextColor ? _self.headingTextColor : headingTextColor // ignore: cast_nullable_to_non_nullable
+as String?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
+as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
+as double?,headingFontSize: freezed == headingFontSize ? _self.headingFontSize : headingFontSize // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ThreeDSecureLabelThemeDataImplCopyWith<$Res>
-    implements $ThreeDSecureLabelThemeDataCopyWith<$Res> {
-  factory _$$ThreeDSecureLabelThemeDataImplCopyWith(
-          _$ThreeDSecureLabelThemeDataImpl value,
-          $Res Function(_$ThreeDSecureLabelThemeDataImpl) then) =
-      __$$ThreeDSecureLabelThemeDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? headingTextColor,
-      String? textColor,
-      double? textFontSize,
-      double? headingFontSize});
 }
 
-/// @nodoc
-class __$$ThreeDSecureLabelThemeDataImplCopyWithImpl<$Res>
-    extends _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res,
-        _$ThreeDSecureLabelThemeDataImpl>
-    implements _$$ThreeDSecureLabelThemeDataImplCopyWith<$Res> {
-  __$$ThreeDSecureLabelThemeDataImplCopyWithImpl(
-      _$ThreeDSecureLabelThemeDataImpl _value,
-      $Res Function(_$ThreeDSecureLabelThemeDataImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ThreeDSecureLabelThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? headingTextColor = freezed,
-    Object? textColor = freezed,
-    Object? textFontSize = freezed,
-    Object? headingFontSize = freezed,
-  }) {
-    return _then(_$ThreeDSecureLabelThemeDataImpl(
-      headingTextColor: freezed == headingTextColor
-          ? _value.headingTextColor
-          : headingTextColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textFontSize: freezed == textFontSize
-          ? _value.textFontSize
-          : textFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-      headingFontSize: freezed == headingFontSize
-          ? _value.headingFontSize
-          : headingFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ThreeDSecureLabelThemeData].
+extension ThreeDSecureLabelThemeDataPatterns on ThreeDSecureLabelThemeData {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ThreeDSecureLabelThemeData value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureLabelThemeData() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ThreeDSecureLabelThemeData value)  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureLabelThemeData():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ThreeDSecureLabelThemeData value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureLabelThemeData() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? headingTextColor,  String? textColor,  double? textFontSize,  double? headingFontSize)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ThreeDSecureLabelThemeData() when $default != null:
+return $default(_that.headingTextColor,_that.textColor,_that.textFontSize,_that.headingFontSize);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? headingTextColor,  String? textColor,  double? textFontSize,  double? headingFontSize)  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureLabelThemeData():
+return $default(_that.headingTextColor,_that.textColor,_that.textFontSize,_that.headingFontSize);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? headingTextColor,  String? textColor,  double? textFontSize,  double? headingFontSize)?  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureLabelThemeData() when $default != null:
+return $default(_that.headingTextColor,_that.textColor,_that.textFontSize,_that.headingFontSize);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ThreeDSecureLabelThemeDataImpl implements _ThreeDSecureLabelThemeData {
-  const _$ThreeDSecureLabelThemeDataImpl(
-      {this.headingTextColor,
-      this.textColor,
-      this.textFontSize,
-      this.headingFontSize});
+class _ThreeDSecureLabelThemeData implements ThreeDSecureLabelThemeData {
+  const _ThreeDSecureLabelThemeData({this.headingTextColor, this.textColor, this.textFontSize, this.headingFontSize});
+  factory _ThreeDSecureLabelThemeData.fromJson(Map<String, dynamic> json) => _$ThreeDSecureLabelThemeDataFromJson(json);
 
-  factory _$ThreeDSecureLabelThemeDataImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ThreeDSecureLabelThemeDataImplFromJson(json);
-
-  /// Color in hex for header text.
-  @override
-  final String? headingTextColor;
-
-  /// Color in hex for label text.
-  @override
-  final String? textColor;
-
-  /// Font size for label text.
-  @override
-  final double? textFontSize;
+/// Color in hex for header text.
+@override final  String? headingTextColor;
+/// Color in hex for label text.
+@override final  String? textColor;
+/// Font size for label text.
+@override final  double? textFontSize;
 // Font size for header.
-  @override
-  final double? headingFontSize;
+@override final  double? headingFontSize;
 
-  @override
-  String toString() {
-    return 'ThreeDSecureLabelThemeData(headingTextColor: $headingTextColor, textColor: $textColor, textFontSize: $textFontSize, headingFontSize: $headingFontSize)';
-  }
+/// Create a copy of ThreeDSecureLabelThemeData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ThreeDSecureLabelThemeDataCopyWith<_ThreeDSecureLabelThemeData> get copyWith => __$ThreeDSecureLabelThemeDataCopyWithImpl<_ThreeDSecureLabelThemeData>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ThreeDSecureLabelThemeDataImpl &&
-            (identical(other.headingTextColor, headingTextColor) ||
-                other.headingTextColor == headingTextColor) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.textFontSize, textFontSize) ||
-                other.textFontSize == textFontSize) &&
-            (identical(other.headingFontSize, headingFontSize) ||
-                other.headingFontSize == headingFontSize));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, headingTextColor, textColor, textFontSize, headingFontSize);
-
-  /// Create a copy of ThreeDSecureLabelThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ThreeDSecureLabelThemeDataImplCopyWith<_$ThreeDSecureLabelThemeDataImpl>
-      get copyWith => __$$ThreeDSecureLabelThemeDataImplCopyWithImpl<
-          _$ThreeDSecureLabelThemeDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ThreeDSecureLabelThemeDataImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ThreeDSecureLabelThemeDataToJson(this, );
 }
 
-abstract class _ThreeDSecureLabelThemeData
-    implements ThreeDSecureLabelThemeData {
-  const factory _ThreeDSecureLabelThemeData(
-      {final String? headingTextColor,
-      final String? textColor,
-      final double? textFontSize,
-      final double? headingFontSize}) = _$ThreeDSecureLabelThemeDataImpl;
-
-  factory _ThreeDSecureLabelThemeData.fromJson(Map<String, dynamic> json) =
-      _$ThreeDSecureLabelThemeDataImpl.fromJson;
-
-  /// Color in hex for header text.
-  @override
-  String? get headingTextColor;
-
-  /// Color in hex for label text.
-  @override
-  String? get textColor;
-
-  /// Font size for label text.
-  @override
-  double? get textFontSize; // Font size for header.
-  @override
-  double? get headingFontSize;
-
-  /// Create a copy of ThreeDSecureLabelThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ThreeDSecureLabelThemeDataImplCopyWith<_$ThreeDSecureLabelThemeDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureLabelThemeData&&(identical(other.headingTextColor, headingTextColor) || other.headingTextColor == headingTextColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize)&&(identical(other.headingFontSize, headingFontSize) || other.headingFontSize == headingFontSize));
 }
 
-ThreeDSecureTextFieldThemeData _$ThreeDSecureTextFieldThemeDataFromJson(
-    Map<String, dynamic> json) {
-  return _ThreeDSecureTextFieldThemeData.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,headingTextColor,textColor,textFontSize,headingFontSize);
+
+@override
+String toString() {
+  return 'ThreeDSecureLabelThemeData(headingTextColor: $headingTextColor, textColor: $textColor, textFontSize: $textFontSize, headingFontSize: $headingFontSize)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ThreeDSecureLabelThemeDataCopyWith<$Res> implements $ThreeDSecureLabelThemeDataCopyWith<$Res> {
+  factory _$ThreeDSecureLabelThemeDataCopyWith(_ThreeDSecureLabelThemeData value, $Res Function(_ThreeDSecureLabelThemeData) _then) = __$ThreeDSecureLabelThemeDataCopyWithImpl;
+@override @useResult
+$Res call({
+ String? headingTextColor, String? textColor, double? textFontSize, double? headingFontSize
+});
+
+
+
+
+}
+/// @nodoc
+class __$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
+    implements _$ThreeDSecureLabelThemeDataCopyWith<$Res> {
+  __$ThreeDSecureLabelThemeDataCopyWithImpl(this._self, this._then);
+
+  final _ThreeDSecureLabelThemeData _self;
+  final $Res Function(_ThreeDSecureLabelThemeData) _then;
+
+/// Create a copy of ThreeDSecureLabelThemeData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? headingTextColor = freezed,Object? textColor = freezed,Object? textFontSize = freezed,Object? headingFontSize = freezed,}) {
+  return _then(_ThreeDSecureLabelThemeData(
+headingTextColor: freezed == headingTextColor ? _self.headingTextColor : headingTextColor // ignore: cast_nullable_to_non_nullable
+as String?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
+as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
+as double?,headingFontSize: freezed == headingFontSize ? _self.headingFontSize : headingFontSize // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ThreeDSecureTextFieldThemeData {
-  /// Color in hex for the border
-  String? get borderColor => throw _privateConstructorUsedError;
 
-  /// Thickness of the textfield border.
-  double? get borderWidth => throw _privateConstructorUsedError;
-
-  /// Radius for the textfield corners.
-  double? get cornerRadius => throw _privateConstructorUsedError;
-
-  /// Color in hex for the textfield value.
-  String? get textColor => throw _privateConstructorUsedError;
-
-  /// Font size for the textfield text.
-  double? get textFontSize => throw _privateConstructorUsedError;
+/// Color in hex for the border
+ String? get borderColor;/// Thickness of the textfield border.
+ double? get borderWidth;/// Radius for the textfield corners.
+ double? get cornerRadius;/// Color in hex for the textfield value.
+ String? get textColor;/// Font size for the textfield text.
+ double? get textFontSize;
+/// Create a copy of ThreeDSecureTextFieldThemeData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ThreeDSecureTextFieldThemeDataCopyWith<ThreeDSecureTextFieldThemeData> get copyWith => _$ThreeDSecureTextFieldThemeDataCopyWithImpl<ThreeDSecureTextFieldThemeData>(this as ThreeDSecureTextFieldThemeData, _$identity);
 
   /// Serializes this ThreeDSecureTextFieldThemeData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ThreeDSecureTextFieldThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ThreeDSecureTextFieldThemeDataCopyWith<ThreeDSecureTextFieldThemeData>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureTextFieldThemeData&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,borderColor,borderWidth,cornerRadius,textColor,textFontSize);
+
+@override
+String toString() {
+  return 'ThreeDSecureTextFieldThemeData(borderColor: $borderColor, borderWidth: $borderWidth, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
-  factory $ThreeDSecureTextFieldThemeDataCopyWith(
-          ThreeDSecureTextFieldThemeData value,
-          $Res Function(ThreeDSecureTextFieldThemeData) then) =
-      _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res,
-          ThreeDSecureTextFieldThemeData>;
-  @useResult
-  $Res call(
-      {String? borderColor,
-      double? borderWidth,
-      double? cornerRadius,
-      String? textColor,
-      double? textFontSize});
-}
+abstract mixin class $ThreeDSecureTextFieldThemeDataCopyWith<$Res>  {
+  factory $ThreeDSecureTextFieldThemeDataCopyWith(ThreeDSecureTextFieldThemeData value, $Res Function(ThreeDSecureTextFieldThemeData) _then) = _$ThreeDSecureTextFieldThemeDataCopyWithImpl;
+@useResult
+$Res call({
+ String? borderColor, double? borderWidth, double? cornerRadius, String? textColor, double? textFontSize
+});
 
+
+
+
+}
 /// @nodoc
-class _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res,
-        $Val extends ThreeDSecureTextFieldThemeData>
+class _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
     implements $ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
-  _$ThreeDSecureTextFieldThemeDataCopyWithImpl(this._value, this._then);
+  _$ThreeDSecureTextFieldThemeDataCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ThreeDSecureTextFieldThemeData _self;
+  final $Res Function(ThreeDSecureTextFieldThemeData) _then;
 
-  /// Create a copy of ThreeDSecureTextFieldThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? borderColor = freezed,
-    Object? borderWidth = freezed,
-    Object? cornerRadius = freezed,
-    Object? textColor = freezed,
-    Object? textFontSize = freezed,
-  }) {
-    return _then(_value.copyWith(
-      borderColor: freezed == borderColor
-          ? _value.borderColor
-          : borderColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      borderWidth: freezed == borderWidth
-          ? _value.borderWidth
-          : borderWidth // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cornerRadius: freezed == cornerRadius
-          ? _value.cornerRadius
-          : cornerRadius // ignore: cast_nullable_to_non_nullable
-              as double?,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textFontSize: freezed == textFontSize
-          ? _value.textFontSize
-          : textFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
-  }
+/// Create a copy of ThreeDSecureTextFieldThemeData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? borderColor = freezed,Object? borderWidth = freezed,Object? cornerRadius = freezed,Object? textColor = freezed,Object? textFontSize = freezed,}) {
+  return _then(_self.copyWith(
+borderColor: freezed == borderColor ? _self.borderColor : borderColor // ignore: cast_nullable_to_non_nullable
+as String?,borderWidth: freezed == borderWidth ? _self.borderWidth : borderWidth // ignore: cast_nullable_to_non_nullable
+as double?,cornerRadius: freezed == cornerRadius ? _self.cornerRadius : cornerRadius // ignore: cast_nullable_to_non_nullable
+as double?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
+as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ThreeDSecureTextFieldThemeDataImplCopyWith<$Res>
-    implements $ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
-  factory _$$ThreeDSecureTextFieldThemeDataImplCopyWith(
-          _$ThreeDSecureTextFieldThemeDataImpl value,
-          $Res Function(_$ThreeDSecureTextFieldThemeDataImpl) then) =
-      __$$ThreeDSecureTextFieldThemeDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? borderColor,
-      double? borderWidth,
-      double? cornerRadius,
-      String? textColor,
-      double? textFontSize});
 }
 
-/// @nodoc
-class __$$ThreeDSecureTextFieldThemeDataImplCopyWithImpl<$Res>
-    extends _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res,
-        _$ThreeDSecureTextFieldThemeDataImpl>
-    implements _$$ThreeDSecureTextFieldThemeDataImplCopyWith<$Res> {
-  __$$ThreeDSecureTextFieldThemeDataImplCopyWithImpl(
-      _$ThreeDSecureTextFieldThemeDataImpl _value,
-      $Res Function(_$ThreeDSecureTextFieldThemeDataImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ThreeDSecureTextFieldThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? borderColor = freezed,
-    Object? borderWidth = freezed,
-    Object? cornerRadius = freezed,
-    Object? textColor = freezed,
-    Object? textFontSize = freezed,
-  }) {
-    return _then(_$ThreeDSecureTextFieldThemeDataImpl(
-      borderColor: freezed == borderColor
-          ? _value.borderColor
-          : borderColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      borderWidth: freezed == borderWidth
-          ? _value.borderWidth
-          : borderWidth // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cornerRadius: freezed == cornerRadius
-          ? _value.cornerRadius
-          : cornerRadius // ignore: cast_nullable_to_non_nullable
-              as double?,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textFontSize: freezed == textFontSize
-          ? _value.textFontSize
-          : textFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ThreeDSecureTextFieldThemeData].
+extension ThreeDSecureTextFieldThemeDataPatterns on ThreeDSecureTextFieldThemeData {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ThreeDSecureTextFieldThemeData value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureTextFieldThemeData() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ThreeDSecureTextFieldThemeData value)  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureTextFieldThemeData():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ThreeDSecureTextFieldThemeData value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureTextFieldThemeData() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? borderColor,  double? borderWidth,  double? cornerRadius,  String? textColor,  double? textFontSize)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ThreeDSecureTextFieldThemeData() when $default != null:
+return $default(_that.borderColor,_that.borderWidth,_that.cornerRadius,_that.textColor,_that.textFontSize);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? borderColor,  double? borderWidth,  double? cornerRadius,  String? textColor,  double? textFontSize)  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureTextFieldThemeData():
+return $default(_that.borderColor,_that.borderWidth,_that.cornerRadius,_that.textColor,_that.textFontSize);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? borderColor,  double? borderWidth,  double? cornerRadius,  String? textColor,  double? textFontSize)?  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureTextFieldThemeData() when $default != null:
+return $default(_that.borderColor,_that.borderWidth,_that.cornerRadius,_that.textColor,_that.textFontSize);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ThreeDSecureTextFieldThemeDataImpl
-    implements _ThreeDSecureTextFieldThemeData {
-  const _$ThreeDSecureTextFieldThemeDataImpl(
-      {this.borderColor,
-      this.borderWidth,
-      this.cornerRadius,
-      this.textColor,
-      this.textFontSize});
+class _ThreeDSecureTextFieldThemeData implements ThreeDSecureTextFieldThemeData {
+  const _ThreeDSecureTextFieldThemeData({this.borderColor, this.borderWidth, this.cornerRadius, this.textColor, this.textFontSize});
+  factory _ThreeDSecureTextFieldThemeData.fromJson(Map<String, dynamic> json) => _$ThreeDSecureTextFieldThemeDataFromJson(json);
 
-  factory _$ThreeDSecureTextFieldThemeDataImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ThreeDSecureTextFieldThemeDataImplFromJson(json);
+/// Color in hex for the border
+@override final  String? borderColor;
+/// Thickness of the textfield border.
+@override final  double? borderWidth;
+/// Radius for the textfield corners.
+@override final  double? cornerRadius;
+/// Color in hex for the textfield value.
+@override final  String? textColor;
+/// Font size for the textfield text.
+@override final  double? textFontSize;
 
-  /// Color in hex for the border
-  @override
-  final String? borderColor;
+/// Create a copy of ThreeDSecureTextFieldThemeData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ThreeDSecureTextFieldThemeDataCopyWith<_ThreeDSecureTextFieldThemeData> get copyWith => __$ThreeDSecureTextFieldThemeDataCopyWithImpl<_ThreeDSecureTextFieldThemeData>(this, _$identity);
 
-  /// Thickness of the textfield border.
-  @override
-  final double? borderWidth;
-
-  /// Radius for the textfield corners.
-  @override
-  final double? cornerRadius;
-
-  /// Color in hex for the textfield value.
-  @override
-  final String? textColor;
-
-  /// Font size for the textfield text.
-  @override
-  final double? textFontSize;
-
-  @override
-  String toString() {
-    return 'ThreeDSecureTextFieldThemeData(borderColor: $borderColor, borderWidth: $borderWidth, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ThreeDSecureTextFieldThemeDataImpl &&
-            (identical(other.borderColor, borderColor) ||
-                other.borderColor == borderColor) &&
-            (identical(other.borderWidth, borderWidth) ||
-                other.borderWidth == borderWidth) &&
-            (identical(other.cornerRadius, cornerRadius) ||
-                other.cornerRadius == cornerRadius) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.textFontSize, textFontSize) ||
-                other.textFontSize == textFontSize));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, borderColor, borderWidth,
-      cornerRadius, textColor, textFontSize);
-
-  /// Create a copy of ThreeDSecureTextFieldThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ThreeDSecureTextFieldThemeDataImplCopyWith<
-          _$ThreeDSecureTextFieldThemeDataImpl>
-      get copyWith => __$$ThreeDSecureTextFieldThemeDataImplCopyWithImpl<
-          _$ThreeDSecureTextFieldThemeDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ThreeDSecureTextFieldThemeDataImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ThreeDSecureTextFieldThemeDataToJson(this, );
 }
 
-abstract class _ThreeDSecureTextFieldThemeData
-    implements ThreeDSecureTextFieldThemeData {
-  const factory _ThreeDSecureTextFieldThemeData(
-      {final String? borderColor,
-      final double? borderWidth,
-      final double? cornerRadius,
-      final String? textColor,
-      final double? textFontSize}) = _$ThreeDSecureTextFieldThemeDataImpl;
-
-  factory _ThreeDSecureTextFieldThemeData.fromJson(Map<String, dynamic> json) =
-      _$ThreeDSecureTextFieldThemeDataImpl.fromJson;
-
-  /// Color in hex for the border
-  @override
-  String? get borderColor;
-
-  /// Thickness of the textfield border.
-  @override
-  double? get borderWidth;
-
-  /// Radius for the textfield corners.
-  @override
-  double? get cornerRadius;
-
-  /// Color in hex for the textfield value.
-  @override
-  String? get textColor;
-
-  /// Font size for the textfield text.
-  @override
-  double? get textFontSize;
-
-  /// Create a copy of ThreeDSecureTextFieldThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ThreeDSecureTextFieldThemeDataImplCopyWith<
-          _$ThreeDSecureTextFieldThemeDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureTextFieldThemeData&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
 }
 
-ThreeDSecureButtonThemeData _$ThreeDSecureButtonThemeDataFromJson(
-    Map<String, dynamic> json) {
-  return _ThreeDSecureButtonThemeData.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,borderColor,borderWidth,cornerRadius,textColor,textFontSize);
+
+@override
+String toString() {
+  return 'ThreeDSecureTextFieldThemeData(borderColor: $borderColor, borderWidth: $borderWidth, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ThreeDSecureTextFieldThemeDataCopyWith<$Res> implements $ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
+  factory _$ThreeDSecureTextFieldThemeDataCopyWith(_ThreeDSecureTextFieldThemeData value, $Res Function(_ThreeDSecureTextFieldThemeData) _then) = __$ThreeDSecureTextFieldThemeDataCopyWithImpl;
+@override @useResult
+$Res call({
+ String? borderColor, double? borderWidth, double? cornerRadius, String? textColor, double? textFontSize
+});
+
+
+
+
+}
+/// @nodoc
+class __$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
+    implements _$ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
+  __$ThreeDSecureTextFieldThemeDataCopyWithImpl(this._self, this._then);
+
+  final _ThreeDSecureTextFieldThemeData _self;
+  final $Res Function(_ThreeDSecureTextFieldThemeData) _then;
+
+/// Create a copy of ThreeDSecureTextFieldThemeData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? borderColor = freezed,Object? borderWidth = freezed,Object? cornerRadius = freezed,Object? textColor = freezed,Object? textFontSize = freezed,}) {
+  return _then(_ThreeDSecureTextFieldThemeData(
+borderColor: freezed == borderColor ? _self.borderColor : borderColor // ignore: cast_nullable_to_non_nullable
+as String?,borderWidth: freezed == borderWidth ? _self.borderWidth : borderWidth // ignore: cast_nullable_to_non_nullable
+as double?,cornerRadius: freezed == cornerRadius ? _self.cornerRadius : cornerRadius // ignore: cast_nullable_to_non_nullable
+as double?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
+as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ThreeDSecureButtonThemeData {
-  /// Color in hex for button background
-  String? get backgroundColor => throw _privateConstructorUsedError;
 
-  /// Button corner radius.
-  double? get cornerRadius => throw _privateConstructorUsedError;
-
-  /// Color in hex for button text.
-  String? get textColor => throw _privateConstructorUsedError;
-
-  /// Font size for the button text.
-  double? get textFontSize => throw _privateConstructorUsedError;
+/// Color in hex for button background
+ String? get backgroundColor;/// Button corner radius.
+ double? get cornerRadius;/// Color in hex for button text.
+ String? get textColor;/// Font size for the button text.
+ double? get textFontSize;
+/// Create a copy of ThreeDSecureButtonThemeData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ThreeDSecureButtonThemeDataCopyWith<ThreeDSecureButtonThemeData> get copyWith => _$ThreeDSecureButtonThemeDataCopyWithImpl<ThreeDSecureButtonThemeData>(this as ThreeDSecureButtonThemeData, _$identity);
 
   /// Serializes this ThreeDSecureButtonThemeData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ThreeDSecureButtonThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ThreeDSecureButtonThemeDataCopyWith<ThreeDSecureButtonThemeData>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureButtonThemeData&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,backgroundColor,cornerRadius,textColor,textFontSize);
+
+@override
+String toString() {
+  return 'ThreeDSecureButtonThemeData(backgroundColor: $backgroundColor, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ThreeDSecureButtonThemeDataCopyWith<$Res> {
-  factory $ThreeDSecureButtonThemeDataCopyWith(
-          ThreeDSecureButtonThemeData value,
-          $Res Function(ThreeDSecureButtonThemeData) then) =
-      _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res,
-          ThreeDSecureButtonThemeData>;
-  @useResult
-  $Res call(
-      {String? backgroundColor,
-      double? cornerRadius,
-      String? textColor,
-      double? textFontSize});
-}
+abstract mixin class $ThreeDSecureButtonThemeDataCopyWith<$Res>  {
+  factory $ThreeDSecureButtonThemeDataCopyWith(ThreeDSecureButtonThemeData value, $Res Function(ThreeDSecureButtonThemeData) _then) = _$ThreeDSecureButtonThemeDataCopyWithImpl;
+@useResult
+$Res call({
+ String? backgroundColor, double? cornerRadius, String? textColor, double? textFontSize
+});
 
+
+
+
+}
 /// @nodoc
-class _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res,
-        $Val extends ThreeDSecureButtonThemeData>
+class _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
     implements $ThreeDSecureButtonThemeDataCopyWith<$Res> {
-  _$ThreeDSecureButtonThemeDataCopyWithImpl(this._value, this._then);
+  _$ThreeDSecureButtonThemeDataCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ThreeDSecureButtonThemeData _self;
+  final $Res Function(ThreeDSecureButtonThemeData) _then;
 
-  /// Create a copy of ThreeDSecureButtonThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? backgroundColor = freezed,
-    Object? cornerRadius = freezed,
-    Object? textColor = freezed,
-    Object? textFontSize = freezed,
-  }) {
-    return _then(_value.copyWith(
-      backgroundColor: freezed == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cornerRadius: freezed == cornerRadius
-          ? _value.cornerRadius
-          : cornerRadius // ignore: cast_nullable_to_non_nullable
-              as double?,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textFontSize: freezed == textFontSize
-          ? _value.textFontSize
-          : textFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
-  }
+/// Create a copy of ThreeDSecureButtonThemeData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? backgroundColor = freezed,Object? cornerRadius = freezed,Object? textColor = freezed,Object? textFontSize = freezed,}) {
+  return _then(_self.copyWith(
+backgroundColor: freezed == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
+as String?,cornerRadius: freezed == cornerRadius ? _self.cornerRadius : cornerRadius // ignore: cast_nullable_to_non_nullable
+as double?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
+as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ThreeDSecureButtonThemeDataImplCopyWith<$Res>
-    implements $ThreeDSecureButtonThemeDataCopyWith<$Res> {
-  factory _$$ThreeDSecureButtonThemeDataImplCopyWith(
-          _$ThreeDSecureButtonThemeDataImpl value,
-          $Res Function(_$ThreeDSecureButtonThemeDataImpl) then) =
-      __$$ThreeDSecureButtonThemeDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? backgroundColor,
-      double? cornerRadius,
-      String? textColor,
-      double? textFontSize});
 }
 
-/// @nodoc
-class __$$ThreeDSecureButtonThemeDataImplCopyWithImpl<$Res>
-    extends _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res,
-        _$ThreeDSecureButtonThemeDataImpl>
-    implements _$$ThreeDSecureButtonThemeDataImplCopyWith<$Res> {
-  __$$ThreeDSecureButtonThemeDataImplCopyWithImpl(
-      _$ThreeDSecureButtonThemeDataImpl _value,
-      $Res Function(_$ThreeDSecureButtonThemeDataImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ThreeDSecureButtonThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? backgroundColor = freezed,
-    Object? cornerRadius = freezed,
-    Object? textColor = freezed,
-    Object? textFontSize = freezed,
-  }) {
-    return _then(_$ThreeDSecureButtonThemeDataImpl(
-      backgroundColor: freezed == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cornerRadius: freezed == cornerRadius
-          ? _value.cornerRadius
-          : cornerRadius // ignore: cast_nullable_to_non_nullable
-              as double?,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      textFontSize: freezed == textFontSize
-          ? _value.textFontSize
-          : textFontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ThreeDSecureButtonThemeData].
+extension ThreeDSecureButtonThemeDataPatterns on ThreeDSecureButtonThemeData {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ThreeDSecureButtonThemeData value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureButtonThemeData() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ThreeDSecureButtonThemeData value)  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureButtonThemeData():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ThreeDSecureButtonThemeData value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ThreeDSecureButtonThemeData() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? backgroundColor,  double? cornerRadius,  String? textColor,  double? textFontSize)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ThreeDSecureButtonThemeData() when $default != null:
+return $default(_that.backgroundColor,_that.cornerRadius,_that.textColor,_that.textFontSize);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? backgroundColor,  double? cornerRadius,  String? textColor,  double? textFontSize)  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureButtonThemeData():
+return $default(_that.backgroundColor,_that.cornerRadius,_that.textColor,_that.textFontSize);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? backgroundColor,  double? cornerRadius,  String? textColor,  double? textFontSize)?  $default,) {final _that = this;
+switch (_that) {
+case _ThreeDSecureButtonThemeData() when $default != null:
+return $default(_that.backgroundColor,_that.cornerRadius,_that.textColor,_that.textFontSize);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ThreeDSecureButtonThemeDataImpl
-    implements _ThreeDSecureButtonThemeData {
-  const _$ThreeDSecureButtonThemeDataImpl(
-      {this.backgroundColor,
-      this.cornerRadius,
-      this.textColor,
-      this.textFontSize});
+class _ThreeDSecureButtonThemeData implements ThreeDSecureButtonThemeData {
+  const _ThreeDSecureButtonThemeData({this.backgroundColor, this.cornerRadius, this.textColor, this.textFontSize});
+  factory _ThreeDSecureButtonThemeData.fromJson(Map<String, dynamic> json) => _$ThreeDSecureButtonThemeDataFromJson(json);
 
-  factory _$ThreeDSecureButtonThemeDataImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ThreeDSecureButtonThemeDataImplFromJson(json);
+/// Color in hex for button background
+@override final  String? backgroundColor;
+/// Button corner radius.
+@override final  double? cornerRadius;
+/// Color in hex for button text.
+@override final  String? textColor;
+/// Font size for the button text.
+@override final  double? textFontSize;
 
-  /// Color in hex for button background
-  @override
-  final String? backgroundColor;
+/// Create a copy of ThreeDSecureButtonThemeData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ThreeDSecureButtonThemeDataCopyWith<_ThreeDSecureButtonThemeData> get copyWith => __$ThreeDSecureButtonThemeDataCopyWithImpl<_ThreeDSecureButtonThemeData>(this, _$identity);
 
-  /// Button corner radius.
-  @override
-  final double? cornerRadius;
-
-  /// Color in hex for button text.
-  @override
-  final String? textColor;
-
-  /// Font size for the button text.
-  @override
-  final double? textFontSize;
-
-  @override
-  String toString() {
-    return 'ThreeDSecureButtonThemeData(backgroundColor: $backgroundColor, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ThreeDSecureButtonThemeDataImpl &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor) &&
-            (identical(other.cornerRadius, cornerRadius) ||
-                other.cornerRadius == cornerRadius) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.textFontSize, textFontSize) ||
-                other.textFontSize == textFontSize));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, backgroundColor, cornerRadius, textColor, textFontSize);
-
-  /// Create a copy of ThreeDSecureButtonThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ThreeDSecureButtonThemeDataImplCopyWith<_$ThreeDSecureButtonThemeDataImpl>
-      get copyWith => __$$ThreeDSecureButtonThemeDataImplCopyWithImpl<
-          _$ThreeDSecureButtonThemeDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ThreeDSecureButtonThemeDataImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ThreeDSecureButtonThemeDataToJson(this, );
 }
 
-abstract class _ThreeDSecureButtonThemeData
-    implements ThreeDSecureButtonThemeData {
-  const factory _ThreeDSecureButtonThemeData(
-      {final String? backgroundColor,
-      final double? cornerRadius,
-      final String? textColor,
-      final double? textFontSize}) = _$ThreeDSecureButtonThemeDataImpl;
-
-  factory _ThreeDSecureButtonThemeData.fromJson(Map<String, dynamic> json) =
-      _$ThreeDSecureButtonThemeDataImpl.fromJson;
-
-  /// Color in hex for button background
-  @override
-  String? get backgroundColor;
-
-  /// Button corner radius.
-  @override
-  double? get cornerRadius;
-
-  /// Color in hex for button text.
-  @override
-  String? get textColor;
-
-  /// Font size for the button text.
-  @override
-  double? get textFontSize;
-
-  /// Create a copy of ThreeDSecureButtonThemeData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ThreeDSecureButtonThemeDataImplCopyWith<_$ThreeDSecureButtonThemeDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureButtonThemeData&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,backgroundColor,cornerRadius,textColor,textFontSize);
+
+@override
+String toString() {
+  return 'ThreeDSecureButtonThemeData(backgroundColor: $backgroundColor, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ThreeDSecureButtonThemeDataCopyWith<$Res> implements $ThreeDSecureButtonThemeDataCopyWith<$Res> {
+  factory _$ThreeDSecureButtonThemeDataCopyWith(_ThreeDSecureButtonThemeData value, $Res Function(_ThreeDSecureButtonThemeData) _then) = __$ThreeDSecureButtonThemeDataCopyWithImpl;
+@override @useResult
+$Res call({
+ String? backgroundColor, double? cornerRadius, String? textColor, double? textFontSize
+});
+
+
+
+
+}
+/// @nodoc
+class __$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
+    implements _$ThreeDSecureButtonThemeDataCopyWith<$Res> {
+  __$ThreeDSecureButtonThemeDataCopyWithImpl(this._self, this._then);
+
+  final _ThreeDSecureButtonThemeData _self;
+  final $Res Function(_ThreeDSecureButtonThemeData) _then;
+
+/// Create a copy of ThreeDSecureButtonThemeData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? backgroundColor = freezed,Object? cornerRadius = freezed,Object? textColor = freezed,Object? textFontSize = freezed,}) {
+  return _then(_ThreeDSecureButtonThemeData(
+backgroundColor: freezed == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
+as String?,cornerRadius: freezed == cornerRadius ? _self.cornerRadius : cornerRadius // ignore: cast_nullable_to_non_nullable
+as double?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
+as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
+}
+
+
+}
+
+// dart format on

@@ -7,11 +7,10 @@ part 'create_token_data.g.dart';
 //ignore_for_file: constant_identifier_names
 
 @freezed
-
 /// parameters that are used to create a token.
 ///
 /// At this moment only card tokens are supported.
-class CreateTokenParams with _$CreateTokenParams {
+abstract class CreateTokenParams with _$CreateTokenParams {
   @JsonSerializable(explicitToJson: true)
   @Deprecated('Use [CreateTokenParams.card] instead')
   const factory CreateTokenParams({
@@ -26,9 +25,8 @@ class CreateTokenParams with _$CreateTokenParams {
   }) = _CreateTokenParamsLegacy;
 
   @JsonSerializable(explicitToJson: true)
-  const factory CreateTokenParams.card({
-    required CardTokenParams params,
-  }) = _CreateTokenParamsCard;
+  const factory CreateTokenParams.card({required CardTokenParams params}) =
+      _CreateTokenParamsCard;
 
   @JsonSerializable(explicitToJson: true)
   const factory CreateTokenParams.bankAccount({
@@ -39,18 +37,16 @@ class CreateTokenParams with _$CreateTokenParams {
   ///
   /// See https://stripe.com/docs/api/tokens/create_pii
   @JsonSerializable(explicitToJson: true)
-  const factory CreateTokenParams.pii({
-    required PIITokenParams params,
-  }) = _CreateTokenParamsPII;
+  const factory CreateTokenParams.pii({required PIITokenParams params}) =
+      _CreateTokenParamsPII;
 
   factory CreateTokenParams.fromJson(Map<String, dynamic> json) =>
       _$CreateTokenParamsFromJson(json);
 }
 
 @freezed
-
 /// parameters that are used to create a token for a card.
-class CardTokenParams with _$CardTokenParams {
+abstract class CardTokenParams with _$CardTokenParams {
   const factory CardTokenParams({
     /// Type of token.
     @Default(TokenType.Card) TokenType type,
@@ -70,9 +66,8 @@ class CardTokenParams with _$CardTokenParams {
 }
 
 @freezed
-
 /// Parameters that are used to create a token for a personally identifiable information (PII).
-class PIITokenParams with _$PIITokenParams {
+abstract class PIITokenParams with _$PIITokenParams {
   const factory PIITokenParams({
     /// Type of token.
     @Default(TokenType.Pii) TokenType type,
@@ -86,9 +81,8 @@ class PIITokenParams with _$PIITokenParams {
 }
 
 @freezed
-
 /// parameters needed to create a token for bank account
-class BankAccountTokenParams with _$BankAccountTokenParams {
+abstract class BankAccountTokenParams with _$BankAccountTokenParams {
   const factory BankAccountTokenParams({
     /// Type of token.
     @Default(TokenType.BankAccount) TokenType type,
@@ -117,9 +111,8 @@ class BankAccountTokenParams with _$BankAccountTokenParams {
 }
 
 @freezed
-
 /// Data that provides information about the token
-class TokenData with _$TokenData {
+abstract class TokenData with _$TokenData {
   const TokenData._();
   const factory TokenData({
     /// Unique identifier of the token
@@ -149,9 +142,8 @@ class TokenData with _$TokenData {
 }
 
 @freezed
-
 /// Card data associated with the token
-class CardData with _$CardData {
+abstract class CardData with _$CardData {
   @JsonSerializable(explicitToJson: true)
   const factory CardData({
     /// Unique identifier
@@ -190,9 +182,8 @@ class CardData with _$CardData {
 }
 
 @freezed
-
 /// Bank account data related to the token
-class BankAccount with _$BankAccount {
+abstract class BankAccount with _$BankAccount {
   const factory BankAccount({
     /// Unique id for this bank account
     required String id,
@@ -261,7 +252,7 @@ enum BankAccountStatus {
   Verified,
 
   /// Status cannot be determined
-  Unknown
+  Unknown,
 }
 
 /// Type of token

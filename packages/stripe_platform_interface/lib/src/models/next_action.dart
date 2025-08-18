@@ -4,13 +4,12 @@ part 'next_action.freezed.dart';
 part 'next_action.g.dart';
 
 @Freezed(unionKey: 'type')
-
 /// Description of the possible next action that must be handled to complete
 /// the [PaymentIntent].
 ///
 /// See: https://stripe.com/docs/api/payment_intents/object#payment_intent_object-next_action-type
 /// for more details.
-class NextAction with _$NextAction {
+abstract class NextAction with _$NextAction {
   /// Contains instructions for redirecting the customer to a certain url
   /// in order to authorise the payment.
   @JsonSerializable(explicitToJson: true)
