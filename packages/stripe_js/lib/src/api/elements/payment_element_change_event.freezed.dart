@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,435 +9,568 @@ part of 'payment_element_change_event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PaymentElementChangeEvent _$PaymentElementChangeEventFromJson(
-    Map<String, dynamic> json) {
-  return _PaymentElementChangeEvent.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PaymentElementChangeEvent {
-  String get elementType => throw _privateConstructorUsedError;
-  bool get empty => throw _privateConstructorUsedError;
-  bool get complete => throw _privateConstructorUsedError;
-  bool get collapsed => throw _privateConstructorUsedError;
-  PaymentElementChangeEventValue? get value =>
-      throw _privateConstructorUsedError;
+
+ String get elementType; bool get empty; bool get complete; bool get collapsed; PaymentElementChangeEventValue? get value;
+/// Create a copy of PaymentElementChangeEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaymentElementChangeEventCopyWith<PaymentElementChangeEvent> get copyWith => _$PaymentElementChangeEventCopyWithImpl<PaymentElementChangeEvent>(this as PaymentElementChangeEvent, _$identity);
 
   /// Serializes this PaymentElementChangeEvent to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PaymentElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaymentElementChangeEventCopyWith<PaymentElementChangeEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentElementChangeEvent&&(identical(other.elementType, elementType) || other.elementType == elementType)&&(identical(other.empty, empty) || other.empty == empty)&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.collapsed, collapsed) || other.collapsed == collapsed)&&(identical(other.value, value) || other.value == value));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,elementType,empty,complete,collapsed,value);
+
+@override
+String toString() {
+  return 'PaymentElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, collapsed: $collapsed, value: $value)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PaymentElementChangeEventCopyWith<$Res> {
-  factory $PaymentElementChangeEventCopyWith(PaymentElementChangeEvent value,
-          $Res Function(PaymentElementChangeEvent) then) =
-      _$PaymentElementChangeEventCopyWithImpl<$Res, PaymentElementChangeEvent>;
-  @useResult
-  $Res call(
-      {String elementType,
-      bool empty,
-      bool complete,
-      bool collapsed,
-      PaymentElementChangeEventValue? value});
+abstract mixin class $PaymentElementChangeEventCopyWith<$Res>  {
+  factory $PaymentElementChangeEventCopyWith(PaymentElementChangeEvent value, $Res Function(PaymentElementChangeEvent) _then) = _$PaymentElementChangeEventCopyWithImpl;
+@useResult
+$Res call({
+ String elementType, bool empty, bool complete, bool collapsed, PaymentElementChangeEventValue? value
+});
 
-  $PaymentElementChangeEventValueCopyWith<$Res>? get value;
+
+$PaymentElementChangeEventValueCopyWith<$Res>? get value;
+
 }
-
 /// @nodoc
-class _$PaymentElementChangeEventCopyWithImpl<$Res,
-        $Val extends PaymentElementChangeEvent>
+class _$PaymentElementChangeEventCopyWithImpl<$Res>
     implements $PaymentElementChangeEventCopyWith<$Res> {
-  _$PaymentElementChangeEventCopyWithImpl(this._value, this._then);
+  _$PaymentElementChangeEventCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PaymentElementChangeEvent _self;
+  final $Res Function(PaymentElementChangeEvent) _then;
 
-  /// Create a copy of PaymentElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? elementType = null,
-    Object? empty = null,
-    Object? complete = null,
-    Object? collapsed = null,
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      elementType: null == elementType
-          ? _value.elementType
-          : elementType // ignore: cast_nullable_to_non_nullable
-              as String,
-      empty: null == empty
-          ? _value.empty
-          : empty // ignore: cast_nullable_to_non_nullable
-              as bool,
-      complete: null == complete
-          ? _value.complete
-          : complete // ignore: cast_nullable_to_non_nullable
-              as bool,
-      collapsed: null == collapsed
-          ? _value.collapsed
-          : collapsed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as PaymentElementChangeEventValue?,
-    ) as $Val);
+/// Create a copy of PaymentElementChangeEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? elementType = null,Object? empty = null,Object? complete = null,Object? collapsed = null,Object? value = freezed,}) {
+  return _then(_self.copyWith(
+elementType: null == elementType ? _self.elementType : elementType // ignore: cast_nullable_to_non_nullable
+as String,empty: null == empty ? _self.empty : empty // ignore: cast_nullable_to_non_nullable
+as bool,complete: null == complete ? _self.complete : complete // ignore: cast_nullable_to_non_nullable
+as bool,collapsed: null == collapsed ? _self.collapsed : collapsed // ignore: cast_nullable_to_non_nullable
+as bool,value: freezed == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as PaymentElementChangeEventValue?,
+  ));
+}
+/// Create a copy of PaymentElementChangeEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaymentElementChangeEventValueCopyWith<$Res>? get value {
+    if (_self.value == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PaymentElementChangeEventValueCopyWith<$Res>? get value {
-    if (_value.value == null) {
-      return null;
-    }
-
-    return $PaymentElementChangeEventValueCopyWith<$Res>(_value.value!,
-        (value) {
-      return _then(_value.copyWith(value: value) as $Val);
-    });
-  }
+  return $PaymentElementChangeEventValueCopyWith<$Res>(_self.value!, (value) {
+    return _then(_self.copyWith(value: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$PaymentElementChangeEventImplCopyWith<$Res>
-    implements $PaymentElementChangeEventCopyWith<$Res> {
-  factory _$$PaymentElementChangeEventImplCopyWith(
-          _$PaymentElementChangeEventImpl value,
-          $Res Function(_$PaymentElementChangeEventImpl) then) =
-      __$$PaymentElementChangeEventImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String elementType,
-      bool empty,
-      bool complete,
-      bool collapsed,
-      PaymentElementChangeEventValue? value});
 
-  @override
-  $PaymentElementChangeEventValueCopyWith<$Res>? get value;
+/// Adds pattern-matching-related methods to [PaymentElementChangeEvent].
+extension PaymentElementChangeEventPatterns on PaymentElementChangeEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PaymentElementChangeEvent value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PaymentElementChangeEvent() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PaymentElementChangeEvent value)  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentElementChangeEvent():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PaymentElementChangeEvent value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentElementChangeEvent() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String elementType,  bool empty,  bool complete,  bool collapsed,  PaymentElementChangeEventValue? value)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PaymentElementChangeEvent() when $default != null:
+return $default(_that.elementType,_that.empty,_that.complete,_that.collapsed,_that.value);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String elementType,  bool empty,  bool complete,  bool collapsed,  PaymentElementChangeEventValue? value)  $default,) {final _that = this;
+switch (_that) {
+case _PaymentElementChangeEvent():
+return $default(_that.elementType,_that.empty,_that.complete,_that.collapsed,_that.value);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String elementType,  bool empty,  bool complete,  bool collapsed,  PaymentElementChangeEventValue? value)?  $default,) {final _that = this;
+switch (_that) {
+case _PaymentElementChangeEvent() when $default != null:
+return $default(_that.elementType,_that.empty,_that.complete,_that.collapsed,_that.value);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$PaymentElementChangeEventImplCopyWithImpl<$Res>
-    extends _$PaymentElementChangeEventCopyWithImpl<$Res,
-        _$PaymentElementChangeEventImpl>
-    implements _$$PaymentElementChangeEventImplCopyWith<$Res> {
-  __$$PaymentElementChangeEventImplCopyWithImpl(
-      _$PaymentElementChangeEventImpl _value,
-      $Res Function(_$PaymentElementChangeEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PaymentElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? elementType = null,
-    Object? empty = null,
-    Object? complete = null,
-    Object? collapsed = null,
-    Object? value = freezed,
-  }) {
-    return _then(_$PaymentElementChangeEventImpl(
-      elementType: null == elementType
-          ? _value.elementType
-          : elementType // ignore: cast_nullable_to_non_nullable
-              as String,
-      empty: null == empty
-          ? _value.empty
-          : empty // ignore: cast_nullable_to_non_nullable
-              as bool,
-      complete: null == complete
-          ? _value.complete
-          : complete // ignore: cast_nullable_to_non_nullable
-              as bool,
-      collapsed: null == collapsed
-          ? _value.collapsed
-          : collapsed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as PaymentElementChangeEventValue?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PaymentElementChangeEventImpl implements _PaymentElementChangeEvent {
-  const _$PaymentElementChangeEventImpl(
-      {required this.elementType,
-      required this.empty,
-      required this.complete,
-      required this.collapsed,
-      this.value});
 
-  factory _$PaymentElementChangeEventImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaymentElementChangeEventImplFromJson(json);
+class _PaymentElementChangeEvent implements PaymentElementChangeEvent {
+  const _PaymentElementChangeEvent({required this.elementType, required this.empty, required this.complete, required this.collapsed, this.value});
+  factory _PaymentElementChangeEvent.fromJson(Map<String, dynamic> json) => _$PaymentElementChangeEventFromJson(json);
 
-  @override
-  final String elementType;
-  @override
-  final bool empty;
-  @override
-  final bool complete;
-  @override
-  final bool collapsed;
-  @override
-  final PaymentElementChangeEventValue? value;
+@override final  String elementType;
+@override final  bool empty;
+@override final  bool complete;
+@override final  bool collapsed;
+@override final  PaymentElementChangeEventValue? value;
 
-  @override
-  String toString() {
-    return 'PaymentElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, collapsed: $collapsed, value: $value)';
-  }
+/// Create a copy of PaymentElementChangeEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaymentElementChangeEventCopyWith<_PaymentElementChangeEvent> get copyWith => __$PaymentElementChangeEventCopyWithImpl<_PaymentElementChangeEvent>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaymentElementChangeEventImpl &&
-            (identical(other.elementType, elementType) ||
-                other.elementType == elementType) &&
-            (identical(other.empty, empty) || other.empty == empty) &&
-            (identical(other.complete, complete) ||
-                other.complete == complete) &&
-            (identical(other.collapsed, collapsed) ||
-                other.collapsed == collapsed) &&
-            (identical(other.value, value) || other.value == value));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, elementType, empty, complete, collapsed, value);
-
-  /// Create a copy of PaymentElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaymentElementChangeEventImplCopyWith<_$PaymentElementChangeEventImpl>
-      get copyWith => __$$PaymentElementChangeEventImplCopyWithImpl<
-          _$PaymentElementChangeEventImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaymentElementChangeEventImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentElementChangeEventToJson(this, );
 }
 
-abstract class _PaymentElementChangeEvent implements PaymentElementChangeEvent {
-  const factory _PaymentElementChangeEvent(
-          {required final String elementType,
-          required final bool empty,
-          required final bool complete,
-          required final bool collapsed,
-          final PaymentElementChangeEventValue? value}) =
-      _$PaymentElementChangeEventImpl;
-
-  factory _PaymentElementChangeEvent.fromJson(Map<String, dynamic> json) =
-      _$PaymentElementChangeEventImpl.fromJson;
-
-  @override
-  String get elementType;
-  @override
-  bool get empty;
-  @override
-  bool get complete;
-  @override
-  bool get collapsed;
-  @override
-  PaymentElementChangeEventValue? get value;
-
-  /// Create a copy of PaymentElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaymentElementChangeEventImplCopyWith<_$PaymentElementChangeEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementChangeEvent&&(identical(other.elementType, elementType) || other.elementType == elementType)&&(identical(other.empty, empty) || other.empty == empty)&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.collapsed, collapsed) || other.collapsed == collapsed)&&(identical(other.value, value) || other.value == value));
 }
 
-PaymentElementChangeEventValue _$PaymentElementChangeEventValueFromJson(
-    Map<String, dynamic> json) {
-  return _PaymentElementChangeEventValue.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,elementType,empty,complete,collapsed,value);
+
+@override
+String toString() {
+  return 'PaymentElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, collapsed: $collapsed, value: $value)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PaymentElementChangeEventCopyWith<$Res> implements $PaymentElementChangeEventCopyWith<$Res> {
+  factory _$PaymentElementChangeEventCopyWith(_PaymentElementChangeEvent value, $Res Function(_PaymentElementChangeEvent) _then) = __$PaymentElementChangeEventCopyWithImpl;
+@override @useResult
+$Res call({
+ String elementType, bool empty, bool complete, bool collapsed, PaymentElementChangeEventValue? value
+});
+
+
+@override $PaymentElementChangeEventValueCopyWith<$Res>? get value;
+
+}
+/// @nodoc
+class __$PaymentElementChangeEventCopyWithImpl<$Res>
+    implements _$PaymentElementChangeEventCopyWith<$Res> {
+  __$PaymentElementChangeEventCopyWithImpl(this._self, this._then);
+
+  final _PaymentElementChangeEvent _self;
+  final $Res Function(_PaymentElementChangeEvent) _then;
+
+/// Create a copy of PaymentElementChangeEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? elementType = null,Object? empty = null,Object? complete = null,Object? collapsed = null,Object? value = freezed,}) {
+  return _then(_PaymentElementChangeEvent(
+elementType: null == elementType ? _self.elementType : elementType // ignore: cast_nullable_to_non_nullable
+as String,empty: null == empty ? _self.empty : empty // ignore: cast_nullable_to_non_nullable
+as bool,complete: null == complete ? _self.complete : complete // ignore: cast_nullable_to_non_nullable
+as bool,collapsed: null == collapsed ? _self.collapsed : collapsed // ignore: cast_nullable_to_non_nullable
+as bool,value: freezed == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as PaymentElementChangeEventValue?,
+  ));
+}
+
+/// Create a copy of PaymentElementChangeEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaymentElementChangeEventValueCopyWith<$Res>? get value {
+    if (_self.value == null) {
+    return null;
+  }
+
+  return $PaymentElementChangeEventValueCopyWith<$Res>(_self.value!, (value) {
+    return _then(_self.copyWith(value: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$PaymentElementChangeEventValue {
-  String? get type => throw _privateConstructorUsedError;
+
+ String? get type;
+/// Create a copy of PaymentElementChangeEventValue
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaymentElementChangeEventValueCopyWith<PaymentElementChangeEventValue> get copyWith => _$PaymentElementChangeEventValueCopyWithImpl<PaymentElementChangeEventValue>(this as PaymentElementChangeEventValue, _$identity);
 
   /// Serializes this PaymentElementChangeEventValue to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PaymentElementChangeEventValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaymentElementChangeEventValueCopyWith<PaymentElementChangeEventValue>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentElementChangeEventValue&&(identical(other.type, type) || other.type == type));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,type);
+
+@override
+String toString() {
+  return 'PaymentElementChangeEventValue(type: $type)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PaymentElementChangeEventValueCopyWith<$Res> {
-  factory $PaymentElementChangeEventValueCopyWith(
-          PaymentElementChangeEventValue value,
-          $Res Function(PaymentElementChangeEventValue) then) =
-      _$PaymentElementChangeEventValueCopyWithImpl<$Res,
-          PaymentElementChangeEventValue>;
-  @useResult
-  $Res call({String? type});
-}
+abstract mixin class $PaymentElementChangeEventValueCopyWith<$Res>  {
+  factory $PaymentElementChangeEventValueCopyWith(PaymentElementChangeEventValue value, $Res Function(PaymentElementChangeEventValue) _then) = _$PaymentElementChangeEventValueCopyWithImpl;
+@useResult
+$Res call({
+ String? type
+});
 
+
+
+
+}
 /// @nodoc
-class _$PaymentElementChangeEventValueCopyWithImpl<$Res,
-        $Val extends PaymentElementChangeEventValue>
+class _$PaymentElementChangeEventValueCopyWithImpl<$Res>
     implements $PaymentElementChangeEventValueCopyWith<$Res> {
-  _$PaymentElementChangeEventValueCopyWithImpl(this._value, this._then);
+  _$PaymentElementChangeEventValueCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PaymentElementChangeEventValue _self;
+  final $Res Function(PaymentElementChangeEventValue) _then;
 
-  /// Create a copy of PaymentElementChangeEventValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = freezed,
-  }) {
-    return _then(_value.copyWith(
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of PaymentElementChangeEventValue
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? type = freezed,}) {
+  return _then(_self.copyWith(
+type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PaymentElementChangeEventValueImplCopyWith<$Res>
-    implements $PaymentElementChangeEventValueCopyWith<$Res> {
-  factory _$$PaymentElementChangeEventValueImplCopyWith(
-          _$PaymentElementChangeEventValueImpl value,
-          $Res Function(_$PaymentElementChangeEventValueImpl) then) =
-      __$$PaymentElementChangeEventValueImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? type});
 }
 
-/// @nodoc
-class __$$PaymentElementChangeEventValueImplCopyWithImpl<$Res>
-    extends _$PaymentElementChangeEventValueCopyWithImpl<$Res,
-        _$PaymentElementChangeEventValueImpl>
-    implements _$$PaymentElementChangeEventValueImplCopyWith<$Res> {
-  __$$PaymentElementChangeEventValueImplCopyWithImpl(
-      _$PaymentElementChangeEventValueImpl _value,
-      $Res Function(_$PaymentElementChangeEventValueImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of PaymentElementChangeEventValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = freezed,
-  }) {
-    return _then(_$PaymentElementChangeEventValueImpl(
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [PaymentElementChangeEventValue].
+extension PaymentElementChangeEventValuePatterns on PaymentElementChangeEventValue {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PaymentElementChangeEventValue value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PaymentElementChangeEventValue() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PaymentElementChangeEventValue value)  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentElementChangeEventValue():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PaymentElementChangeEventValue value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentElementChangeEventValue() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? type)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PaymentElementChangeEventValue() when $default != null:
+return $default(_that.type);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? type)  $default,) {final _that = this;
+switch (_that) {
+case _PaymentElementChangeEventValue():
+return $default(_that.type);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? type)?  $default,) {final _that = this;
+switch (_that) {
+case _PaymentElementChangeEventValue() when $default != null:
+return $default(_that.type);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PaymentElementChangeEventValueImpl
-    implements _PaymentElementChangeEventValue {
-  const _$PaymentElementChangeEventValueImpl({required this.type});
 
-  factory _$PaymentElementChangeEventValueImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PaymentElementChangeEventValueImplFromJson(json);
+class _PaymentElementChangeEventValue implements PaymentElementChangeEventValue {
+  const _PaymentElementChangeEventValue({required this.type});
+  factory _PaymentElementChangeEventValue.fromJson(Map<String, dynamic> json) => _$PaymentElementChangeEventValueFromJson(json);
 
-  @override
-  final String? type;
+@override final  String? type;
 
-  @override
-  String toString() {
-    return 'PaymentElementChangeEventValue(type: $type)';
-  }
+/// Create a copy of PaymentElementChangeEventValue
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaymentElementChangeEventValueCopyWith<_PaymentElementChangeEventValue> get copyWith => __$PaymentElementChangeEventValueCopyWithImpl<_PaymentElementChangeEventValue>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaymentElementChangeEventValueImpl &&
-            (identical(other.type, type) || other.type == type));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, type);
-
-  /// Create a copy of PaymentElementChangeEventValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaymentElementChangeEventValueImplCopyWith<
-          _$PaymentElementChangeEventValueImpl>
-      get copyWith => __$$PaymentElementChangeEventValueImplCopyWithImpl<
-          _$PaymentElementChangeEventValueImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaymentElementChangeEventValueImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentElementChangeEventValueToJson(this, );
 }
 
-abstract class _PaymentElementChangeEventValue
-    implements PaymentElementChangeEventValue {
-  const factory _PaymentElementChangeEventValue({required final String? type}) =
-      _$PaymentElementChangeEventValueImpl;
-
-  factory _PaymentElementChangeEventValue.fromJson(Map<String, dynamic> json) =
-      _$PaymentElementChangeEventValueImpl.fromJson;
-
-  @override
-  String? get type;
-
-  /// Create a copy of PaymentElementChangeEventValue
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaymentElementChangeEventValueImplCopyWith<
-          _$PaymentElementChangeEventValueImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementChangeEventValue&&(identical(other.type, type) || other.type == type));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,type);
+
+@override
+String toString() {
+  return 'PaymentElementChangeEventValue(type: $type)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PaymentElementChangeEventValueCopyWith<$Res> implements $PaymentElementChangeEventValueCopyWith<$Res> {
+  factory _$PaymentElementChangeEventValueCopyWith(_PaymentElementChangeEventValue value, $Res Function(_PaymentElementChangeEventValue) _then) = __$PaymentElementChangeEventValueCopyWithImpl;
+@override @useResult
+$Res call({
+ String? type
+});
+
+
+
+
+}
+/// @nodoc
+class __$PaymentElementChangeEventValueCopyWithImpl<$Res>
+    implements _$PaymentElementChangeEventValueCopyWith<$Res> {
+  __$PaymentElementChangeEventValueCopyWithImpl(this._self, this._then);
+
+  final _PaymentElementChangeEventValue _self;
+  final $Res Function(_PaymentElementChangeEventValue) _then;
+
+/// Create a copy of PaymentElementChangeEventValue
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? type = freezed,}) {
+  return _then(_PaymentElementChangeEventValue(
+type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

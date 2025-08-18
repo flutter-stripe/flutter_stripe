@@ -6,47 +6,47 @@ part of 'shipping_details.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaymentElementChangeEventImpl _$$PaymentElementChangeEventImplFromJson(
-        Map json) =>
-    _$PaymentElementChangeEventImpl(
+_PaymentElementChangeEvent _$PaymentElementChangeEventFromJson(Map json) =>
+    _PaymentElementChangeEvent(
       address: json['address'] == null
           ? const ShippingDetailsAddress()
           : ShippingDetailsAddress.fromJson(
-              Map<String, dynamic>.from(json['address'] as Map)),
+              Map<String, dynamic>.from(json['address'] as Map),
+            ),
       carrier: json['carrier'] as String?,
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       trackingNumber: json['tracking_number'] as String?,
     );
 
-Map<String, dynamic> _$$PaymentElementChangeEventImplToJson(
-        _$PaymentElementChangeEventImpl instance) =>
-    <String, dynamic>{
-      'address': instance.address.toJson(),
-      if (instance.carrier case final value?) 'carrier': value,
-      if (instance.name case final value?) 'name': value,
-      if (instance.phone case final value?) 'phone': value,
-      if (instance.trackingNumber case final value?) 'tracking_number': value,
-    };
+Map<String, dynamic> _$PaymentElementChangeEventToJson(
+  _PaymentElementChangeEvent instance,
+) => <String, dynamic>{
+  'address': instance.address.toJson(),
+  'carrier': ?instance.carrier,
+  'name': ?instance.name,
+  'phone': ?instance.phone,
+  'tracking_number': ?instance.trackingNumber,
+};
 
-_$PaymentElementBillingDetailsAddressImpl
-    _$$PaymentElementBillingDetailsAddressImplFromJson(Map json) =>
-        _$PaymentElementBillingDetailsAddressImpl(
-          line1: json['line1'] as String?,
-          line2: json['line2'] as String?,
-          city: json['city'] as String?,
-          state: json['state'] as String?,
-          country: json['country'] as String?,
-          postalCode: json['postal_code'] as String?,
-        );
+_PaymentElementBillingDetailsAddress
+_$PaymentElementBillingDetailsAddressFromJson(Map json) =>
+    _PaymentElementBillingDetailsAddress(
+      line1: json['line1'] as String?,
+      line2: json['line2'] as String?,
+      city: json['city'] as String?,
+      state: json['state'] as String?,
+      country: json['country'] as String?,
+      postalCode: json['postal_code'] as String?,
+    );
 
-Map<String, dynamic> _$$PaymentElementBillingDetailsAddressImplToJson(
-        _$PaymentElementBillingDetailsAddressImpl instance) =>
-    <String, dynamic>{
-      if (instance.line1 case final value?) 'line1': value,
-      if (instance.line2 case final value?) 'line2': value,
-      if (instance.city case final value?) 'city': value,
-      if (instance.state case final value?) 'state': value,
-      if (instance.country case final value?) 'country': value,
-      if (instance.postalCode case final value?) 'postal_code': value,
-    };
+Map<String, dynamic> _$PaymentElementBillingDetailsAddressToJson(
+  _PaymentElementBillingDetailsAddress instance,
+) => <String, dynamic>{
+  'line1': ?instance.line1,
+  'line2': ?instance.line2,
+  'city': ?instance.city,
+  'state': ?instance.state,
+  'country': ?instance.country,
+  'postal_code': ?instance.postalCode,
+};

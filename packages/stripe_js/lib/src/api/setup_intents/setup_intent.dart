@@ -66,7 +66,7 @@ enum SetupIntentFlowDirections {
 ///
 /// https://stripe.com/docs/api/setup_intents
 @freezed
-class SetupIntent with _$SetupIntent {
+abstract class SetupIntent with _$SetupIntent {
   const factory SetupIntent({
     /// Unique identifier for the object.
     required String id,

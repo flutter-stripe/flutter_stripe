@@ -4,7 +4,7 @@ part 'confirm_acss_debit_payment_data.freezed.dart';
 part 'confirm_acss_debit_payment_data.g.dart';
 
 @freezed
-class ConfirmAcssDebitPaymentData with _$ConfirmAcssDebitPaymentData {
+abstract class ConfirmAcssDebitPaymentData with _$ConfirmAcssDebitPaymentData {
   const factory ConfirmAcssDebitPaymentData({
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.

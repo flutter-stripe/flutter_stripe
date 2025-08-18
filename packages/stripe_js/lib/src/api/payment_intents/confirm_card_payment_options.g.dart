@@ -6,14 +6,11 @@ part of 'confirm_card_payment_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmCardPaymentOptionsImpl _$$ConfirmCardPaymentOptionsImplFromJson(
-        Map json) =>
-    _$ConfirmCardPaymentOptionsImpl(
+_ConfirmCardPaymentOptions _$ConfirmCardPaymentOptionsFromJson(Map json) =>
+    _ConfirmCardPaymentOptions(
       handleActions: json['handleActions'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$ConfirmCardPaymentOptionsImplToJson(
-        _$ConfirmCardPaymentOptionsImpl instance) =>
-    <String, dynamic>{
-      if (instance.handleActions case final value?) 'handleActions': value,
-    };
+Map<String, dynamic> _$ConfirmCardPaymentOptionsToJson(
+  _ConfirmCardPaymentOptions instance,
+) => <String, dynamic>{'handleActions': ?instance.handleActions};

@@ -4,7 +4,7 @@ part 'shipping_details.freezed.dart';
 part 'shipping_details.g.dart';
 
 @freezed
-class ShippingDetails with _$ShippingDetails {
+abstract class ShippingDetails with _$ShippingDetails {
   const factory ShippingDetails({
     /// Shipping address.
     @Default(ShippingDetailsAddress()) ShippingDetailsAddress address,
@@ -32,7 +32,7 @@ class ShippingDetails with _$ShippingDetails {
 }
 
 @freezed
-class ShippingDetailsAddress with _$ShippingDetailsAddress {
+abstract class ShippingDetailsAddress with _$ShippingDetailsAddress {
   const factory ShippingDetailsAddress({
     /// Address line 1 (e.g., street, PO Box, or company name).
     String? line1,

@@ -4,7 +4,7 @@ part 'confirm_alipay_payment_options.freezed.dart';
 part 'confirm_alipay_payment_options.g.dart';
 
 @freezed
-class ConfirmAlipayPaymentOptions with _$ConfirmAlipayPaymentOptions {
+abstract class ConfirmAlipayPaymentOptions with _$ConfirmAlipayPaymentOptions {
   const factory ConfirmAlipayPaymentOptions({
     /// Set this to false if you want to manually handle
     /// the authorization redirect. Default is true.

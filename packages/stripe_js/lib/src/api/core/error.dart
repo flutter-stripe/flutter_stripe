@@ -6,7 +6,7 @@ part 'error.freezed.dart';
 part 'error.g.dart';
 
 @freezed
-class StripeError with _$StripeError {
+abstract class StripeError with _$StripeError {
   const factory StripeError({
     /// The type of error returned. One of api_error, card_error,
     /// idempotency_error, or invalid_request_error

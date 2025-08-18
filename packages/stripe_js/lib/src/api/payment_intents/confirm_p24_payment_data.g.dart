@@ -6,28 +6,30 @@ part of 'confirm_p24_payment_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmP24PaymentDataImpl _$$ConfirmP24PaymentDataImplFromJson(Map json) =>
-    _$ConfirmP24PaymentDataImpl(
+_ConfirmP24PaymentData _$ConfirmP24PaymentDataFromJson(Map json) =>
+    _ConfirmP24PaymentData(
       paymentMethod: json['payment_method'] == null
           ? null
           : P24PaymentMethodDetails.fromJson(
-              Map<String, dynamic>.from(json['payment_method'] as Map)),
+              Map<String, dynamic>.from(json['payment_method'] as Map),
+            ),
       returnUrl: json['return_url'] as String?,
       setupFutureUsage: $enumDecodeNullable(
-          _$PaymentIntentSetupFutureUsageEnumMap, json['setup_future_usage']),
+        _$PaymentIntentSetupFutureUsageEnumMap,
+        json['setup_future_usage'],
+      ),
     );
 
-Map<String, dynamic> _$$ConfirmP24PaymentDataImplToJson(
-        _$ConfirmP24PaymentDataImpl instance) =>
-    <String, dynamic>{
-      if (PaymentMethodDetails.toJsonConverter(instance.paymentMethod)
-          case final value?)
-        'payment_method': value,
-      if (instance.returnUrl case final value?) 'return_url': value,
-      if (_$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]
-          case final value?)
-        'setup_future_usage': value,
-    };
+Map<String, dynamic> _$ConfirmP24PaymentDataToJson(
+  _ConfirmP24PaymentData instance,
+) => <String, dynamic>{
+  'payment_method': ?PaymentMethodDetails.toJsonConverter(
+    instance.paymentMethod,
+  ),
+  'return_url': ?instance.returnUrl,
+  'setup_future_usage':
+      ?_$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage],
+};
 
 const _$PaymentIntentSetupFutureUsageEnumMap = {
   PaymentIntentSetupFutureUsage.onSession: 'on_session',

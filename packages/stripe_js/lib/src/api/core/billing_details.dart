@@ -5,7 +5,7 @@ part 'billing_details.g.dart';
 
 /// Billing information associated with the payment method.
 @freezed
-class BillingDetails with _$BillingDetails {
+abstract class BillingDetails with _$BillingDetails {
   const factory BillingDetails({
     /// Email address.
     String? email,
@@ -25,7 +25,7 @@ class BillingDetails with _$BillingDetails {
 }
 
 @freezed
-class BillingAddress with _$BillingAddress {
+abstract class BillingAddress with _$BillingAddress {
   const factory BillingAddress({
     /// Address line 1 (e.g., street, PO Box, or company name).
     String? line1,

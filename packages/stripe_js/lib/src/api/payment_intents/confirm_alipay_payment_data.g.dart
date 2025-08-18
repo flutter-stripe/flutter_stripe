@@ -6,16 +6,15 @@ part of 'confirm_alipay_payment_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmAlipayPaymentDataImpl _$$ConfirmAlipayPaymentDataImplFromJson(
-        Map json) =>
-    _$ConfirmAlipayPaymentDataImpl(
+_ConfirmAlipayPaymentData _$ConfirmAlipayPaymentDataFromJson(Map json) =>
+    _ConfirmAlipayPaymentData(
       paymentMethod: json['payment_method'] as String?,
       returnUrl: json['return_url'] as String?,
     );
 
-Map<String, dynamic> _$$ConfirmAlipayPaymentDataImplToJson(
-        _$ConfirmAlipayPaymentDataImpl instance) =>
-    <String, dynamic>{
-      if (instance.paymentMethod case final value?) 'payment_method': value,
-      if (instance.returnUrl case final value?) 'return_url': value,
-    };
+Map<String, dynamic> _$ConfirmAlipayPaymentDataToJson(
+  _ConfirmAlipayPaymentData instance,
+) => <String, dynamic>{
+  'payment_method': ?instance.paymentMethod,
+  'return_url': ?instance.returnUrl,
+};

@@ -29,7 +29,7 @@ part 'token.g.dart';
 ///
 /// https://stripe.com/docs/api/tokens
 @freezed
-class Token with _$Token {
+abstract class Token with _$Token {
   const factory Token({
     /// Unique identifier for the object.
     required String id,
@@ -67,7 +67,7 @@ class Token with _$Token {
 }
 
 @freezed
-class BankAccountToken with _$BankAccountToken {
+abstract class BankAccountToken with _$BankAccountToken {
   const factory BankAccountToken({
     /// Unique identifier for the object.
     required String id,
@@ -139,7 +139,7 @@ class BankAccountToken with _$BankAccountToken {
 }
 
 @freezed
-class CardToken with _$CardToken {
+abstract class CardToken with _$CardToken {
   const factory CardToken({
     /// Unique identifier for the object.
     required String id,

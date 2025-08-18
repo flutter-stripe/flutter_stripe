@@ -4,7 +4,7 @@ part 'payment_element_change_event.freezed.dart';
 part 'payment_element_change_event.g.dart';
 
 @freezed
-class PaymentElementChangeEvent with _$PaymentElementChangeEvent {
+abstract class PaymentElementChangeEvent with _$PaymentElementChangeEvent {
   const factory PaymentElementChangeEvent({
     required String elementType,
     required bool empty,
@@ -18,7 +18,7 @@ class PaymentElementChangeEvent with _$PaymentElementChangeEvent {
 }
 
 @freezed
-class PaymentElementChangeEventValue with _$PaymentElementChangeEventValue {
+abstract class PaymentElementChangeEventValue with _$PaymentElementChangeEventValue {
   const factory PaymentElementChangeEventValue({
     required String? type,
   }) = _PaymentElementChangeEventValue;

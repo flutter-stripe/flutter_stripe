@@ -6,7 +6,7 @@ part 'payment_element_options.g.dart';
 enum PaymentElementLayoutType { accordion, tabs }
 
 @freezed
-class PaymentElementOptions with _$PaymentElementOptions {
+abstract class PaymentElementOptions with _$PaymentElementOptions {
   const factory PaymentElementOptions({
     PaymentElementLayout? layout,
 
@@ -56,7 +56,7 @@ class PaymentElementOptions with _$PaymentElementOptions {
 /// An PaymentElementLayout can also be passed to specify the layout
 /// with additional configuration.
 @freezed
-class PaymentElementLayout with _$PaymentElementLayout {
+abstract class PaymentElementLayout with _$PaymentElementLayout {
   const factory PaymentElementLayout({
     /// Defines the layout to render the Payment Element.
     required PaymentElementLayoutType type,
@@ -95,7 +95,7 @@ class PaymentElementLayout with _$PaymentElementLayout {
 }
 
 @freezed
-class PaymentElementDefaultValues with _$PaymentElementDefaultValues {
+abstract class PaymentElementDefaultValues with _$PaymentElementDefaultValues {
   const factory PaymentElementDefaultValues({
     /// Specify customer's billing details, which lets you pre-fill a
     /// customer’s name, email, phone number and address if required by
@@ -114,7 +114,7 @@ class PaymentElementDefaultValues with _$PaymentElementDefaultValues {
 }
 
 @freezed
-class PaymentElementPaymentMethodDefaults
+abstract class PaymentElementPaymentMethodDefaults
     with _$PaymentElementPaymentMethodDefaults {
   const factory PaymentElementPaymentMethodDefaults({
     /// Defaults for ideal
@@ -135,7 +135,7 @@ class PaymentElementPaymentMethodDefaults
 /// However, wallets like Apple Pay and Google Pay are not payment methods per the Payment Intent API. They will show when the Payment Intent has the card payment method and the customer is using a supported platform and have an active card in their account.
 /// This is the auto behavior, and it is the default for choice for all wallets.
 /// If you do not want to show a given wallet as a payment option, you can set its property in wallets to never.
-class PaymentElementWalletOptions with _$PaymentElementWalletOptions {
+abstract class PaymentElementWalletOptions with _$PaymentElementWalletOptions {
   const factory PaymentElementWalletOptions({
     /// Apple pay required options
     PaymentElementFieldRequired? applePay,
@@ -149,7 +149,7 @@ class PaymentElementWalletOptions with _$PaymentElementWalletOptions {
 }
 
 @freezed
-class PaymentElementIdealDefaults with _$PaymentElementIdealDefaults {
+abstract class PaymentElementIdealDefaults with _$PaymentElementIdealDefaults {
   const factory PaymentElementIdealDefaults({
     /// The customer’s bank name.
     ///
@@ -163,7 +163,7 @@ class PaymentElementIdealDefaults with _$PaymentElementIdealDefaults {
 }
 
 @freezed
-class PaymentElementCardDefaults with _$PaymentElementCardDefaults {
+abstract class PaymentElementCardDefaults with _$PaymentElementCardDefaults {
   const factory PaymentElementCardDefaults({
     /// The specified network prferences for card brand choice. The first network in the array
     /// that matches a network on the enetered cobranded card will be selected by default
@@ -176,7 +176,7 @@ class PaymentElementCardDefaults with _$PaymentElementCardDefaults {
 }
 
 @freezed
-class PaymentElementBillingDetails with _$PaymentElementBillingDetails {
+abstract class PaymentElementBillingDetails with _$PaymentElementBillingDetails {
   const factory PaymentElementBillingDetails({
     String? name,
     String? email,
@@ -189,7 +189,7 @@ class PaymentElementBillingDetails with _$PaymentElementBillingDetails {
 }
 
 @freezed
-class PaymentElementBillingDetailsAddress
+abstract class PaymentElementBillingDetailsAddress
     with _$PaymentElementBillingDetailsAddress {
   const factory PaymentElementBillingDetailsAddress({
     /// Address line 1 (e.g., street, PO Box, or company name).
@@ -217,7 +217,7 @@ class PaymentElementBillingDetailsAddress
 }
 
 @freezed
-class PaymentElementBusiness with _$PaymentElementBusiness {
+abstract class PaymentElementBusiness with _$PaymentElementBusiness {
   const factory PaymentElementBusiness({
     String? name,
   }) = _PaymentElementBusiness;
@@ -231,7 +231,7 @@ enum PaymentElementFieldRequired { never, auto }
 enum PaymentElementShowTerms { never, auto, always }
 
 @freezed
-class PaymentElementFields with _$PaymentElementFields {
+abstract class PaymentElementFields with _$PaymentElementFields {
   const factory PaymentElementFields({
     /// Specify never to avoid collecting all billing details in the
     /// Payment Element.
@@ -247,7 +247,7 @@ class PaymentElementFields with _$PaymentElementFields {
 }
 
 @freezed
-class BillingDetailsFields with _$BillingDetailsFields {
+abstract class BillingDetailsFields with _$BillingDetailsFields {
   const factory BillingDetailsFields({
     @Default(PaymentElementFieldRequired.auto) PaymentElementFieldRequired name,
     @Default(PaymentElementFieldRequired.auto)
@@ -265,7 +265,7 @@ class BillingDetailsFields with _$BillingDetailsFields {
 }
 
 @freezed
-class PaymentElementAddressFields with _$PaymentElementAddressFields {
+abstract class PaymentElementAddressFields with _$PaymentElementAddressFields {
   const factory PaymentElementAddressFields({
     @Default(PaymentElementFieldRequired.auto)
     PaymentElementFieldRequired line1,
@@ -290,7 +290,7 @@ class PaymentElementAddressFields with _$PaymentElementAddressFields {
 
 ///Control how mandates or other legal agreements are displayed in the Payment Element.
 /// The default setting is auto, which causes legal agreements to only be shown when necessary.
-class PaymentElementOptionsTerms with _$PaymentElementOptionsTerms {
+abstract class PaymentElementOptionsTerms with _$PaymentElementOptionsTerms {
   const factory PaymentElementOptionsTerms({
     /// Terms for apple pay
     PaymentElementShowTerms? applePay,
@@ -331,7 +331,7 @@ class PaymentElementOptionsTerms with _$PaymentElementOptionsTerms {
 }
 
 @freezed
-class PaymentElementApplePayOptions with _$PaymentElementApplePayOptions {
+abstract class PaymentElementApplePayOptions with _$PaymentElementApplePayOptions {
   const factory PaymentElementApplePayOptions({
     /// Information about a recurring payment with ApplePay
     PaymentElementAppleRecurringRequest? recurringPaymentRequest,
@@ -349,7 +349,7 @@ class PaymentElementApplePayOptions with _$PaymentElementApplePayOptions {
 }
 
 @freezed
-class PaymentElementAppleRecurringRequest
+abstract class PaymentElementAppleRecurringRequest
     with _$PaymentElementAppleRecurringRequest {
   const factory PaymentElementAppleRecurringRequest({
     /// The description of the payment
@@ -371,7 +371,7 @@ class PaymentElementAppleRecurringRequest
 }
 
 @freezed
-class PaymentElementRecurringPaymentProperties
+abstract class PaymentElementRecurringPaymentProperties
     with _$PaymentElementRecurringPaymentProperties {
   const factory PaymentElementRecurringPaymentProperties({
     /// The amount of the payment
@@ -399,7 +399,7 @@ class PaymentElementRecurringPaymentProperties
 }
 
 @freezed
-class PaymentElementApplePayDeferredPaymentRequest
+abstract class PaymentElementApplePayDeferredPaymentRequest
     with _$PaymentElementApplePayDeferredPaymentRequest {
   const factory PaymentElementApplePayDeferredPaymentRequest({
     /// The description of the payment
@@ -427,7 +427,7 @@ class PaymentElementApplePayDeferredPaymentRequest
 }
 
 @freezed
-class PaymentElementApplePayDeferredPaymentProperties
+abstract class PaymentElementApplePayDeferredPaymentProperties
     with _$PaymentElementApplePayDeferredPaymentProperties {
   const factory PaymentElementApplePayDeferredPaymentProperties({
     /// The amount of the payment
@@ -446,7 +446,7 @@ class PaymentElementApplePayDeferredPaymentProperties
 }
 
 @freezed
-class PaymentElementApplePayAutoReloadPaymentRequest
+abstract class PaymentElementApplePayAutoReloadPaymentRequest
     with _$PaymentElementApplePayAutoReloadPaymentRequest {
   const factory PaymentElementApplePayAutoReloadPaymentRequest({
     /// The description of the payment
@@ -466,7 +466,7 @@ class PaymentElementApplePayAutoReloadPaymentRequest
 }
 
 @freezed
-class PaymentElementApplePayReloadPaymentProperties
+abstract class PaymentElementApplePayReloadPaymentProperties
     with _$PaymentElementApplePayReloadPaymentProperties {
   const factory PaymentElementApplePayReloadPaymentProperties({
     /// The amount of the payment

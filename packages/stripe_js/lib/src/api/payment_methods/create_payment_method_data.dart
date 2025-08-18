@@ -6,7 +6,7 @@ part 'create_payment_method_data.freezed.dart';
 part 'create_payment_method_data.g.dart';
 
 @freezed
-class CreatePaymentMethodData with _$CreatePaymentMethodData {
+abstract class CreatePaymentMethodData with _$CreatePaymentMethodData {
   const factory CreatePaymentMethodData({
     /// Unique identifier for the object.
     required String type,

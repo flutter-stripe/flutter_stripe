@@ -5,7 +5,7 @@ part 'confirm_p24_payment_data.freezed.dart';
 part 'confirm_p24_payment_data.g.dart';
 
 @freezed
-class ConfirmP24PaymentData with _$ConfirmP24PaymentData {
+abstract class ConfirmP24PaymentData with _$ConfirmP24PaymentData {
   const factory ConfirmP24PaymentData({
     /// Either the ID of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.

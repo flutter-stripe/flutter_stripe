@@ -13,7 +13,7 @@ enum ElementAppearanceLabels { above, floating }
 
 /// Appareance options for the Payment Element and other elements.
 /// https://stripe.com/docs/elements/appearance-api
-class ElementAppearance with _$ElementAppearance {
+abstract class ElementAppearance with _$ElementAppearance {
   const factory ElementAppearance({
     @Default(ElementTheme.stripe) ElementTheme theme,
     Map<String, String>? variables,

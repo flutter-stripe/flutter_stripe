@@ -10,7 +10,7 @@ enum CardElementIconStyle {
 }
 
 @freezed
-class CardElementOptions with _$CardElementOptions {
+abstract class CardElementOptions with _$CardElementOptions {
   const factory CardElementOptions({
     /// Set custom class names on the container DOM element when the
     /// Stripe element is in a particular state.
@@ -53,7 +53,7 @@ class CardElementOptions with _$CardElementOptions {
 //}
 
 @freezed
-class CardElementClasses with _$CardElementClasses {
+abstract class CardElementClasses with _$CardElementClasses {
   const factory CardElementClasses({
     /// The base class applied to the container. Defaults to StripeElement.
     String? base,
