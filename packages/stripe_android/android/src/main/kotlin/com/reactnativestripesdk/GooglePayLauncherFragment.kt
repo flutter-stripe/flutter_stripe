@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.WritableMap
+import com.stripe.react.bridge.ReactApplicationContext
+import com.stripe.react.bridge.ReadableMap
+import com.stripe.react.bridge.WritableMap
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.GooglePayErrorType
 import com.reactnativestripesdk.utils.createError

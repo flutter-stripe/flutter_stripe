@@ -7,9 +7,9 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.NonNull
-import com.facebook.react.bridge.ReadableArray
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.ThemedReactContext
+import com.stripe.react.bridge.ReadableArray
+import com.stripe.react.bridge.ReadableMap
+import com.stripe.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.*
 import com.reactnativestripesdk.utils.getIntOrNull
 import com.reactnativestripesdk.utils.getValOr

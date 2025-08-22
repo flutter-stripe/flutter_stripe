@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.FrameLayout
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.bridge.WritableNativeMap
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerHelper
+import com.stripe.react.bridge.ReadableMap
+import com.stripe.react.bridge.WritableMap
+import com.stripe.react.bridge.WritableNativeMap
+import com.stripe.react.uimanager.ThemedReactContext
+import com.stripe.react.uimanager.UIManagerHelper
 import com.reactnativestripesdk.buildPaymentSheetAppearance
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.PaymentSheetAppearanceException

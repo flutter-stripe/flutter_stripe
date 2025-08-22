@@ -2,9 +2,9 @@ package com.flutter.stripe
 
 import android.content.Context
 import android.view.View
-import com.facebook.react.bridge.ReadableArray
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.ThemedReactContext
+import com.stripe.react.bridge.ReadableArray
+import com.stripe.react.bridge.ReadableMap
+import com.stripe.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.StripeSdkModule
 import com.reactnativestripesdk.addresssheet.AddressSheetView
 import com.reactnativestripesdk.addresssheet.AddressSheetViewManager

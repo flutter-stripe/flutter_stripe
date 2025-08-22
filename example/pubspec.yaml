@@ -10,7 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stripe: ^10.2.0
+  flutter_stripe:
+    git:
+      url: https://github.com/flutter-stripe/flutter_stripe.git
+      ref: 25a5830b26bf4e1de59257d64f188cd992716488 # commit hash
   flutter_stripe_web: ^5.1.0
   pay: ^2.0.0
   http: ^1.1.0

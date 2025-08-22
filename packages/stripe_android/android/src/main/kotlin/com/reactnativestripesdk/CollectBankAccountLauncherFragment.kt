@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
+import com.stripe.react.bridge.Promise
+import com.stripe.react.bridge.ReactApplicationContext
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.createError
 import com.reactnativestripesdk.utils.createResult

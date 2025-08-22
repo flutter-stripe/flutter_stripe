@@ -1,8 +1,8 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.events.Event
+import com.stripe.react.bridge.Arguments
+import com.stripe.react.bridge.WritableMap
+import com.stripe.react.uimanager.events.Event
 
 internal class CardChangedEvent(
   surfaceId: Int,

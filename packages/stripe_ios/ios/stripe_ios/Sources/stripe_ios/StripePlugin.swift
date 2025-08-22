@@ -352,7 +352,7 @@ extension  StripePlugin {
     
     func collectBankAccount(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
-        let isPaymentIntent = arguments["intentType"] as? Bool,
+        let isPaymentIntent = arguments["isPaymentIntent"] as? Bool,
         let clientSecret = arguments["clientSecret"] as? NSString,
         let params = arguments["params"] as? NSDictionary else {
             result(FlutterError.invalidParams)

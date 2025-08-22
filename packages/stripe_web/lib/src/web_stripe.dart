@@ -1,7 +1,6 @@
 //@dart=2.12
 import 'dart:async';
 import 'dart:developer' as dev;
-import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
@@ -170,7 +169,7 @@ class WebStripe extends StripePlatform {
           paymentIntentClientSecret,
           data: stripe_js.ConfirmIdealPaymentData(
             paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
-              ideal: stripe_js.IdealBankData(bank: paymentData.bankName),
+              ideal: stripe_js.IdealBankData(bank: paymentData.bankName ?? ""),
             ),
             returnUrl: urlScheme,
             // recommended
@@ -213,7 +212,7 @@ class WebStripe extends StripePlatform {
       paymentIntentClientSecret,
       data: stripe_js.ConfirmIdealPaymentData(
         paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
-          ideal: stripe_js.IdealBankData(bank: paymentData.bankName),
+          ideal: stripe_js.IdealBankData(),
         ),
         returnUrl: returnUrl ?? urlScheme,
       ),
@@ -300,6 +299,7 @@ class WebStripe extends StripePlatform {
             addressState: params.address?.state,
             addressCountry: params.address?.country,
             addressZip: params.address?.postalCode,
+            currency: params.currency,
           ),
         );
       },
@@ -471,7 +471,7 @@ class WebStripe extends StripePlatform {
   @override
   Widget buildPaymentRequestButton({
     Key? key,
-    required ui.VoidCallback onPressed,
+    required void Function() onPressed,
     required PlatformPayWebPaymentRequestCreateOptions
         paymentRequestCreateOptions,
     BoxConstraints? constraints,

@@ -1,4 +1,4 @@
-import com.facebook.react.bridge.ReadableMap
+import com.stripe.react.bridge.ReadableMap
 import org.junit.Test
 
 class BridgeTest {

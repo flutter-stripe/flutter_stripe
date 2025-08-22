@@ -1,3 +1,12 @@
+## 6.5.1
+
+**Fixes**
+ - Make web compile for flutter 3.32.0
+
+## 6.5.0
+- Bug fixes
+ - Alignment with latest platform interface
+
 ## 6.4.0
 
 **Features**

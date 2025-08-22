@@ -31,7 +31,7 @@ The Stripe Flutter SDK allows you to build delightful payment experiences in you
 
 #### Recommended usage
 
-If you're selling digital products or services within your app, (e.g. subscriptions, in-game currencies, game levels, access to premium content, or unlocking a full version), you must use the app store's in-app purchase APIs. See [Apple's](https://developer.apple.com/app-store/review/guidelines/#payments) and [Google's](https://support.google.com/googleplay/android-developer/answer/9858738?hl=en&ref_topic=9857752) guidelines for more information. For all other scenarios you can use this SDK to process payments via Stripe.
+If you're selling digital products or services within your app, (e.g. subscriptions, in-game currencies, game levels, access to premium content, or unlocking a full version), you must use the app store's in-app purchase APIs. This does not apply to app developers in the USA as they are excluded by new court ruling in 2025. See [Apple's](https://developer.apple.com/app-store/review/guidelines/#payments) and [Google's](https://support.google.com/googleplay/android-developer/answer/9858738?hl=en&ref_topic=9857752) guidelines for more information. For all other scenarios you can use this SDK to process payments via Stripe.
 
 ## Installation
 
@@ -59,14 +59,11 @@ This plugin requires several changes to be able to work on Android devices. Plea
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Error
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
+# Keep Stripe classes
+-keep class com.stripe.** { *; }
 ```
-8. Add the following line to your `gradle.properties` file: [example](https://github.com/flutter-stripe/flutter_stripe/blob/master/example/android/gradle.properties)
-```properties
-android.enableR8.fullMode=false
-```
-This will prevent crashes with the Stripe SDK on Android (see [issue](https://github.com/flutter-stripe/flutter_stripe/issues/1909)).
 
-9. Rebuild the app, as the above changes don't update with hot reload
+8. Rebuild the app, as the above changes don't update with hot reload
 
 These changes are needed because the Android Stripe SDK requires the use of the AppCompat theme for their UI components and the Support Fragment Manager for the Payment Sheets
 

@@ -2,11 +2,11 @@ package com.flutter.stripe
 
 import android.annotation.SuppressLint
 import androidx.annotation.NonNull
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.DisplayMetricsHolder
-import com.facebook.react.uimanager.ThemedReactContext
+import com.stripe.react.bridge.Promise
+import com.stripe.react.bridge.ReactApplicationContext
+import com.stripe.react.bridge.ReadableMap
+import com.stripe.react.uimanager.DisplayMetricsHolder
+import com.stripe.react.uimanager.ThemedReactContext
 import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
 import com.reactnativestripesdk.addresssheet.AddressSheetViewManager

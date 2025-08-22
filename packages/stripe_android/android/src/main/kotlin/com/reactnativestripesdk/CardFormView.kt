@@ -9,11 +9,11 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.widget.FrameLayout
 import androidx.core.view.setMargins
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.PixelUtil
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerHelper
-import com.facebook.react.views.text.ReactTypefaceUtils
+import com.stripe.react.bridge.ReadableMap
+import com.stripe.react.uimanager.PixelUtil
+import com.stripe.react.uimanager.ThemedReactContext
+import com.stripe.react.uimanager.UIManagerHelper
+import com.stripe.react.views.text.ReactTypefaceUtils
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel

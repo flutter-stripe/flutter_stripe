@@ -71,6 +71,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.Upi: 'Upi',
   PaymentMethodType.USBankAccount: 'USBankAccount',
   PaymentMethodType.RevolutPay: 'RevolutPay',
+  PaymentMethodType.Klarna: 'Klarna',
   PaymentMethodType.Unknown: 'Unknown',
 };
 

@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
-import com.facebook.react.uimanager.PixelUtil
-import com.facebook.react.uimanager.ThemedReactContext
+import com.stripe.react.uimanager.PixelUtil
+import com.stripe.react.uimanager.ThemedReactContext
 import com.google.android.gms.wallet.button.ButtonConstants.ButtonTheme
 import com.google.android.gms.wallet.button.ButtonConstants.ButtonType
 import com.google.android.gms.wallet.button.ButtonOptions

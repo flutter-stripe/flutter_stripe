@@ -1,6 +1,6 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.ReadableMap
+import com.stripe.react.bridge.ReadableMap
 import com.reactnativestripesdk.utils.getBooleanOrFalse
 import com.reactnativestripesdk.utils.getMapOrNull
 import com.reactnativestripesdk.utils.getValOr

@@ -1,7 +1,7 @@
 package com.reactnativestripesdk.utils
 
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.bridge.WritableNativeMap
+import com.stripe.react.bridge.WritableMap
+import com.stripe.react.bridge.WritableNativeMap
 import com.stripe.android.core.exception.APIException
 import com.stripe.android.core.exception.AuthenticationException
 import com.stripe.android.core.exception.InvalidRequestException

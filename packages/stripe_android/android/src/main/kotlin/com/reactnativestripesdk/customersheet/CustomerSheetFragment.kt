@@ -12,11 +12,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.bridge.WritableNativeMap
+import com.stripe.react.bridge.Arguments
+import com.stripe.react.bridge.Promise
+import com.stripe.react.bridge.ReactApplicationContext
+import com.stripe.react.bridge.WritableMap
+import com.stripe.react.bridge.WritableNativeMap
 import com.reactnativestripesdk.customersheet.ReactNativeCustomerAdapter
 import com.reactnativestripesdk.utils.CreateTokenErrorType
 import com.reactnativestripesdk.utils.ErrorType

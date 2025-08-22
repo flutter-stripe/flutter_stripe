@@ -77,6 +77,26 @@ void main() {
       );
     });
 
+    test('with bank omitted completely (no bank parameter)', () {
+      expect(
+        ConfirmIdealPaymentData(
+          paymentMethod: IdealPaymentMethodDetails.withBank(
+            ideal: IdealBankData(),
+            billingDetails: BillingDetails(name: 'Jenny Rosen'),
+          ),
+        ).toJson(),
+        {
+          "payment_method": {
+            "ideal": {},
+            "type": "ideal",
+            "billing_details": {
+              "name": "Jenny Rosen",
+            },
+          }
+        },
+      );
+    });
+
     test('extra params parse correctly', () {
       expect(
         ConfirmIdealPaymentData(
