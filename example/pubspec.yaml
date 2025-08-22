@@ -13,7 +13,7 @@ dependencies:
   flutter_stripe:
     git:
       url: https://github.com/flutter-stripe/flutter_stripe.git
-      ref: 25a5830b26bf4e1de59257d64f188cd992716488 # commit hash
+      ref: cc9061cf1f25cd59925719474d1b6a1a1f8eaa16 # commit hash
   flutter_stripe_web: ^5.1.0
   pay: ^2.0.0
   http: ^1.1.0
