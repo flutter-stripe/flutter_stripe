@@ -1,4 +1,4 @@
-name: stripe_workspace
+name: flutter_stripe
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
