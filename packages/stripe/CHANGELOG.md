@@ -1,3 +1,6 @@
+## 12.0.2
+- fix compilation issue with the stripe_ios package when using SPM
+
 ## 12.0.1
 - fix compilation issue with the stripe_android package
 

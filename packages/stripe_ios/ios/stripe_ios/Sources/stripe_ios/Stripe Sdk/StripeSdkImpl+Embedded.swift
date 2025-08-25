@@ -7,6 +7,7 @@
 
 import Foundation
 @_spi(EmbeddedPaymentElementPrivateBeta) @_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(STP) @_spi(CustomPaymentMethodsBeta) import StripePaymentSheet
+import UIKit
 
 @objc(StripeSdkImpl)
 extension StripeSdkImpl {
