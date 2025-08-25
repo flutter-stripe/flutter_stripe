@@ -1,5 +1,0 @@
-local.properties
-.idea
-
-# Ignore all files in build directory except ReactBuildConfig.java
-!src/main/kotlin/com/facebook/react/common/build/ReactBuildConfig.java
