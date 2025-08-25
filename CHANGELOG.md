@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v12.0.0`](#flutter_stripe---v1200)
+
+---
+
+#### `flutter_stripe` - `v12.0.0`
+
+ - **FIX**: add missing param to method channel (#2181).
+
+
+## 2025-08-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v7.0.0`](#flutter_stripe_web---v700)
 
 ---

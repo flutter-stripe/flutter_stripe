@@ -1,3 +1,7 @@
+## 12.0.0
+
+ - **FIX**: add missing param to method channel (#2181).
+
 ## 11.5.1
 - retain compatibility with older Flutter versions #2132
 
