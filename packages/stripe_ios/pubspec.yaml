@@ -1,6 +1,6 @@
 name: stripe_ios
 description: Stripe platform implementation for iOS
-version: 11.5.0
+version: 12.0.0
 repository: https://github.com/flutter-stripe/flutter_stripe
 homepage: https://pub.dev/packages/flutter_stripe
 

@@ -1,3 +1,21 @@
+## 12.0.0
+
+**Breaking changes**
+- This package now supports and requires Freezed v3
+- Breaking change due to sync with Stripe React Native's (v0.50.1) new architecture.
+- Remove Sofort payment method as Stripe does not support it anymore
+
+**Features**
+- Paymentsheet now supports link display parameters
+- Paymentsheet can now be configured with a map of paymentmethods for future usage
+
+**Fixes**
+ - #2173 add billing address config to google pay
+ - #2185 blank screen paypal payment on iOS
+ - #2176 support Klarna on the web
+ - #2005 card details not supported on android
+ - #2180 collect bank account token failing due to missing parameter
+
 ## 11.5.0
 Align with Stripe React Native [0.43.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.43.0):
 
