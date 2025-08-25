@@ -4,7 +4,7 @@ part 'confirm_ideal_payment_options.freezed.dart';
 part 'confirm_ideal_payment_options.g.dart';
 
 @freezed
-class ConfirmIdealPaymentOptions with _$ConfirmIdealPaymentOptions {
+abstract class ConfirmIdealPaymentOptions with _$ConfirmIdealPaymentOptions {
   const factory ConfirmIdealPaymentOptions({
     /// Set this to false if you want to manually handle
     /// the authorization redirect. Default is true.

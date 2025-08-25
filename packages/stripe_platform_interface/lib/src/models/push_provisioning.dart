@@ -6,9 +6,8 @@ part 'push_provisioning.freezed.dart';
 part 'push_provisioning.g.dart';
 
 @freezed
-
 /// Tokenized token for Google Pay.
-class GooglePayCardToken with _$GooglePayCardToken {
+abstract class GooglePayCardToken with _$GooglePayCardToken {
   @JsonSerializable(explicitToJson: true)
   const factory GooglePayCardToken({
     /// The token reference ID.,
@@ -41,9 +40,8 @@ class GooglePayCardToken with _$GooglePayCardToken {
 }
 
 @freezed
-
 /// The result of checking if a card is in the wallet.
-class IsCardInWalletResult with _$IsCardInWalletResult {
+abstract class IsCardInWalletResult with _$IsCardInWalletResult {
   @JsonSerializable(explicitToJson: true)
   const factory IsCardInWalletResult({
     required bool isInWallet,
@@ -55,9 +53,8 @@ class IsCardInWalletResult with _$IsCardInWalletResult {
 }
 
 @freezed
-
 /// The result of checking if a card can be added to the wallet.
-class CanAddCardToWalletResult with _$CanAddCardToWalletResult {
+abstract class CanAddCardToWalletResult with _$CanAddCardToWalletResult {
   @JsonSerializable(explicitToJson: true)
   const factory CanAddCardToWalletResult({
     required bool canAddCard,
@@ -69,9 +66,8 @@ class CanAddCardToWalletResult with _$CanAddCardToWalletResult {
 }
 
 @freezed
-
 /// The details if card can be added.
-class CanAddCardToDetails with _$CanAddCardToDetails {
+abstract class CanAddCardToDetails with _$CanAddCardToDetails {
   @JsonSerializable(explicitToJson: true)
   const factory CanAddCardToDetails({
     GooglePayCardToken? token,
@@ -83,9 +79,8 @@ class CanAddCardToDetails with _$CanAddCardToDetails {
 }
 
 @freezed
-
 /// The params for checking if a card is in the wallet.
-class CanAddCardToWalletParams with _$CanAddCardToWalletParams {
+abstract class CanAddCardToWalletParams with _$CanAddCardToWalletParams {
   @JsonSerializable(explicitToJson: true)
   const factory CanAddCardToWalletParams({
     ///The `primary_account_identifier` value from the issued card. Can be an empty string.

@@ -6,9 +6,8 @@ part of 'aubecs_form.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AubecsFormStyleImpl _$$AubecsFormStyleImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AubecsFormStyleImpl(
+_AubecsFormStyle _$AubecsFormStyleFromJson(Map<String, dynamic> json) =>
+    _AubecsFormStyle(
       textColor: ColorKey.fromJson(json['textColor']),
       textErrorColor: ColorKey.fromJson(json['textErrorColor']),
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
@@ -19,8 +18,7 @@ _$AubecsFormStyleImpl _$$AubecsFormStyleImplFromJson(
       borderRadius: (json['borderRadius'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$AubecsFormStyleImplToJson(
-        _$AubecsFormStyleImpl instance) =>
+Map<String, dynamic> _$AubecsFormStyleToJson(_AubecsFormStyle instance) =>
     <String, dynamic>{
       'textColor': ColorKey.toJson(instance.textColor),
       'textErrorColor': ColorKey.toJson(instance.textErrorColor),
@@ -32,20 +30,20 @@ Map<String, dynamic> _$$AubecsFormStyleImplToJson(
       'borderRadius': instance.borderRadius,
     };
 
-_$AubecsFormInputDetailsImpl _$$AubecsFormInputDetailsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AubecsFormInputDetailsImpl(
-      bsbNumber: json['bsbNumber'] as String?,
-      name: json['name'] as String?,
-      accountNumber: json['accountNumber'] as String?,
-      email: json['email'] as String?,
-    );
+_AubecsFormInputDetails _$AubecsFormInputDetailsFromJson(
+  Map<String, dynamic> json,
+) => _AubecsFormInputDetails(
+  bsbNumber: json['bsbNumber'] as String?,
+  name: json['name'] as String?,
+  accountNumber: json['accountNumber'] as String?,
+  email: json['email'] as String?,
+);
 
-Map<String, dynamic> _$$AubecsFormInputDetailsImplToJson(
-        _$AubecsFormInputDetailsImpl instance) =>
-    <String, dynamic>{
-      'bsbNumber': instance.bsbNumber,
-      'name': instance.name,
-      'accountNumber': instance.accountNumber,
-      'email': instance.email,
-    };
+Map<String, dynamic> _$AubecsFormInputDetailsToJson(
+  _AubecsFormInputDetails instance,
+) => <String, dynamic>{
+  'bsbNumber': instance.bsbNumber,
+  'name': instance.name,
+  'accountNumber': instance.accountNumber,
+  'email': instance.email,
+};

@@ -2,7 +2,6 @@
 
 @TestOn('browser')
 @Tags(["browser"])
-
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import 'package:test/test.dart';
@@ -48,7 +47,7 @@ void main() {
         equals({
           'type': 'validation_error',
           'code': 'incomplete_number',
-          'message': 'Your card number is incomplete.'
+          'message': 'Your card number is incomplete.',
         }),
       );
     });

@@ -22,9 +22,9 @@ extension ExtensionHandleCardAction on Stripe {
   /// Ensure that your form is accessible by ensuring that success or
   /// error messages are clearly read out.
   Future<PaymentIntentResponse> handleCardAction(String clientSecret) {
-    return _handleCardAction(clientSecret)
-        .toDart
-        .then((response) => response.toDart);
+    return _handleCardAction(
+      clientSecret,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('handleCardAction')

@@ -6,14 +6,16 @@ import 'package:stripe_js/stripe_js.dart';
 extension ExpressCheckoutPaymentExtension on StripeElements {
   /// This method creates an instance of the Payment Element.
   /// [options] : Options for creating the Payment Element.
-  ExpressCheckoutElement createExpressCheckout(
-      [ExpressCheckoutOptions? options]) {
+  ExpressCheckoutElement createExpressCheckout([
+    ExpressCheckoutOptions? options,
+  ]) {
     return create('expressCheckout', (options?.toJson() ?? {}).jsify())
         as ExpressCheckoutElement;
   }
 
-  ExpressCheckoutElement? getExpressCheckout(
-      [ExpressCheckoutOptions? options]) {
+  ExpressCheckoutElement? getExpressCheckout([
+    ExpressCheckoutOptions? options,
+  ]) {
     return getElement('expressCheckout') as ExpressCheckoutElement;
   }
 }

@@ -6,9 +6,8 @@ part 'google_pay.freezed.dart';
 part 'google_pay.g.dart';
 
 @freezed
-
 /// Parameters needed for presenting Google Pay.
-class PresentGooglePayParams with _$PresentGooglePayParams {
+abstract class PresentGooglePayParams with _$PresentGooglePayParams {
   @JsonSerializable(explicitToJson: true)
   const factory PresentGooglePayParams({
     /// The client is secret is used for handling the payment from the Client side.
@@ -29,9 +28,8 @@ class PresentGooglePayParams with _$PresentGooglePayParams {
 }
 
 @freezed
-
 /// Config parameters used to intialize google pay.
-class GooglePayInitParams with _$GooglePayInitParams {
+abstract class GooglePayInitParams with _$GooglePayInitParams {
   @JsonSerializable(explicitToJson: true)
   const factory GooglePayInitParams({
     /// Merchant name
@@ -65,9 +63,8 @@ class GooglePayInitParams with _$GooglePayInitParams {
 }
 
 @freezed
-
 /// Billing address collection config for Google Pay.
-class BillingAddressConfig with _$BillingAddressConfig {
+abstract class BillingAddressConfig with _$BillingAddressConfig {
   @JsonSerializable(explicitToJson: true)
   const factory BillingAddressConfig({
     /// If `true` Google pay requires a Billing address in order to process the
@@ -79,7 +76,6 @@ class BillingAddressConfig with _$BillingAddressConfig {
 
     /// If `true` customer needs to provide a phonenummer in order to process
     /// the transaction.
-
     bool? isPhoneNumberRequired,
   }) = _BillingAddressConfig;
 
@@ -88,9 +84,9 @@ class BillingAddressConfig with _$BillingAddressConfig {
 }
 
 @freezed
-
 /// Parameters to create a google pay payment.
-class CreateGooglePayPaymentParams with _$CreateGooglePayPaymentParams {
+abstract class CreateGooglePayPaymentParams
+    with _$CreateGooglePayPaymentParams {
   @JsonSerializable(explicitToJson: true)
   const factory CreateGooglePayPaymentParams({
     /// ISO 4217 alphabetic currency code.
@@ -110,7 +106,7 @@ class CreateGooglePayPaymentParams with _$CreateGooglePayPaymentParams {
 }
 
 @freezed
-class IsGooglePaySupportedParams with _$IsGooglePaySupportedParams {
+abstract class IsGooglePaySupportedParams with _$IsGooglePaySupportedParams {
   @JsonSerializable(explicitToJson: true)
   const factory IsGooglePaySupportedParams({
     /// Flag to use test environment or live environment.
@@ -139,5 +135,5 @@ enum BillingAddressFormat {
   FULL,
 
   /// Collect name, country code, and postal code (default).
-  MIN
+  MIN,
 }

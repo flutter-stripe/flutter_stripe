@@ -9,7 +9,7 @@ part 'confirm_setup_options.freezed.dart';
 part 'confirm_setup_options.g.dart';
 
 @freezed
-class ConfirmSetupOptions with _$ConfirmSetupOptions {
+abstract class ConfirmSetupOptions with _$ConfirmSetupOptions {
   const factory ConfirmSetupOptions({
     /// Required if you collect payment details before creating an Intent. It's always required if you don't provide a clientSecret.
     @ElementsConverter() required Elements elements,
@@ -39,7 +39,7 @@ class ConfirmSetupOptions with _$ConfirmSetupOptions {
 }
 
 @freezed
-class ConfirmSetupParams with _$ConfirmSetupParams {
+abstract class ConfirmSetupParams with _$ConfirmSetupParams {
   const factory ConfirmSetupParams({
     /// The url your customer will be directed to after they complete authentication.
     required String return_url,

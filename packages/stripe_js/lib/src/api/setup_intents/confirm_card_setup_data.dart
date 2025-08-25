@@ -5,7 +5,7 @@ part 'confirm_card_setup_data.freezed.dart';
 part 'confirm_card_setup_data.g.dart';
 
 @freezed
-class ConfirmCardSetupData with _$ConfirmCardSetupData {
+abstract class ConfirmCardSetupData with _$ConfirmCardSetupData {
   const factory ConfirmCardSetupData({
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.

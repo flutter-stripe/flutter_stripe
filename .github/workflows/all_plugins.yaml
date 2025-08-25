@@ -76,7 +76,7 @@ jobs:
     name: integration test (iOS)
     needs: [analyze, test]
     timeout-minutes: 60
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2
@@ -85,6 +85,11 @@ jobs:
         node-version: 16
         cache: 'yarn'
         cache-dependency-path: example/server/yarn.lock
+
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
     - name: "Install Tools"
       run: |
         ./.github/workflows/scripts/install-tools.sh
@@ -111,7 +116,7 @@ jobs:
 
     - name: "Start iOS Simulator"
       run: |
-        xcrun simctl boot "iPhone 15" 
+        xcrun simctl boot "iPhone 16" 
 
     - name: "Run Flutter Driver tests on iOS"
       working-directory: example
@@ -121,7 +126,7 @@ jobs:
     name: integration test (Android)
     needs: [analyze, test]
     timeout-minutes: 60
-    runs-on: macos-13
+    runs-on: macos-15
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2
@@ -167,6 +172,7 @@ jobs:
       with:
         api-level: 34
         arch: x86_64
+        emulator-boot-timeout: 1400
         working-directory: example
         script: | 
           sleep 15;

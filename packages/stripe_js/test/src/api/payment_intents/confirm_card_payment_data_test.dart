@@ -20,10 +20,8 @@ void main() {
           "payment_method": {
             "card": fakeElement,
             "type": "card",
-            "billing_details": {
-              "name": "Jenny Rosen",
-            },
-          }
+            "billing_details": {"name": "Jenny Rosen"},
+          },
         },
       );
     });
@@ -49,10 +47,8 @@ void main() {
           "payment_method": {
             "card": {"token": "tokenValue"},
             "type": "card",
-            "billing_details": {
-              "name": "Jenny Rosen",
-            },
-          }
+            "billing_details": {"name": "Jenny Rosen"},
+          },
         },
       );
     });

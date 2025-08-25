@@ -7,7 +7,7 @@ part 'confirm_setup_options.freezed.dart';
 part 'confirm_setup_options.g.dart';
 
 @freezed
-class ConfirmSetupElementOptions with _$ConfirmSetupElementOptions {
+abstract class ConfirmSetupElementOptions with _$ConfirmSetupElementOptions {
   const factory ConfirmSetupElementOptions({
     /// Parameters that will be passed on to the Stripe API.
     /// Refer to the Payment Intents API for a full list of parameters.

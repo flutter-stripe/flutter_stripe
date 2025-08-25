@@ -11,7 +11,8 @@ Future<void> _injectSrcScript(String src, String windowVar) async {
   HTMLScriptElement script = HTMLScriptElement();
   script.type = 'text/javascript';
   script.crossOrigin = 'anonymous';
-  script.text = '''
+  script.text =
+      '''
       window.ff_trigger_$windowVar = async (callback) => {
         callback(await import("$src"));
       };
@@ -42,8 +43,5 @@ Future<void> loadStripe() async {
     return;
   }
 
-  return _injectSrcScript(
-    'https://js.stripe.com/v3/',
-    'stripe_$_version',
-  );
+  return _injectSrcScript('https://js.stripe.com/v3/', 'stripe_$_version');
 }

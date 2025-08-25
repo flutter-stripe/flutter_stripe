@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,2393 +9,1973 @@ part of 'apple_pay.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ApplePayShippingMethod _$ApplePayShippingMethodFromJson(
-    Map<String, dynamic> json) {
-  return _ApplePayShippingMethod.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ApplePayShippingMethod {
-  ///  A short, localized description.
-  String get label => throw _privateConstructorUsedError;
 
-  /// The cost associated with this shipping option.
-  String get amount => throw _privateConstructorUsedError;
-
-  /// A unique identifier for the shipping method.
-  String get identifier => throw _privateConstructorUsedError;
-
-  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
-  ///
-  /// Defaults to false.
-  bool? get isPending => throw _privateConstructorUsedError;
-
-  ///  A user-readable description of the shipping method.
-  ///
-  /// For example “Ships in 24 hours.” Don't repeat content
-  String? get detail => throw _privateConstructorUsedError;
-
-  ///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
-  ///
-  /// Measured in seconds
-  int? get startDate => throw _privateConstructorUsedError;
-
-  ///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
-  ///
-  /// Measured in seconds.
-  int? get endDate => throw _privateConstructorUsedError;
+///  A short, localized description.
+ String get label;/// The cost associated with this shipping option.
+ String get amount;/// A unique identifier for the shipping method.
+ String get identifier;/// When creating items for estimates or charges whose final value is not yet known, set this to true.
+///
+/// Defaults to false.
+ bool? get isPending;///  A user-readable description of the shipping method.
+///
+/// For example “Ships in 24 hours.” Don't repeat content
+ String? get detail;///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+///
+/// Measured in seconds
+ int? get startDate;///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+///
+/// Measured in seconds.
+ int? get endDate;
+/// Create a copy of ApplePayShippingMethod
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ApplePayShippingMethodCopyWith<ApplePayShippingMethod> get copyWith => _$ApplePayShippingMethodCopyWithImpl<ApplePayShippingMethod>(this as ApplePayShippingMethod, _$identity);
 
   /// Serializes this ApplePayShippingMethod to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ApplePayShippingMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ApplePayShippingMethodCopyWith<ApplePayShippingMethod> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplePayShippingMethod&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.identifier, identifier) || other.identifier == identifier)&&(identical(other.isPending, isPending) || other.isPending == isPending)&&(identical(other.detail, detail) || other.detail == detail)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.endDate, endDate) || other.endDate == endDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,label,amount,identifier,isPending,detail,startDate,endDate);
+
+@override
+String toString() {
+  return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, isPending: $isPending, detail: $detail, startDate: $startDate, endDate: $endDate)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ApplePayShippingMethodCopyWith<$Res> {
-  factory $ApplePayShippingMethodCopyWith(ApplePayShippingMethod value,
-          $Res Function(ApplePayShippingMethod) then) =
-      _$ApplePayShippingMethodCopyWithImpl<$Res, ApplePayShippingMethod>;
-  @useResult
-  $Res call(
-      {String label,
-      String amount,
-      String identifier,
-      bool? isPending,
-      String? detail,
-      int? startDate,
-      int? endDate});
-}
+abstract mixin class $ApplePayShippingMethodCopyWith<$Res>  {
+  factory $ApplePayShippingMethodCopyWith(ApplePayShippingMethod value, $Res Function(ApplePayShippingMethod) _then) = _$ApplePayShippingMethodCopyWithImpl;
+@useResult
+$Res call({
+ String label, String amount, String identifier, bool? isPending, String? detail, int? startDate, int? endDate
+});
 
+
+
+
+}
 /// @nodoc
-class _$ApplePayShippingMethodCopyWithImpl<$Res,
-        $Val extends ApplePayShippingMethod>
+class _$ApplePayShippingMethodCopyWithImpl<$Res>
     implements $ApplePayShippingMethodCopyWith<$Res> {
-  _$ApplePayShippingMethodCopyWithImpl(this._value, this._then);
+  _$ApplePayShippingMethodCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ApplePayShippingMethod _self;
+  final $Res Function(ApplePayShippingMethod) _then;
 
-  /// Create a copy of ApplePayShippingMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? label = null,
-    Object? amount = null,
-    Object? identifier = null,
-    Object? isPending = freezed,
-    Object? detail = freezed,
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-  }) {
-    return _then(_value.copyWith(
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as String,
-      identifier: null == identifier
-          ? _value.identifier
-          : identifier // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPending: freezed == isPending
-          ? _value.isPending
-          : isPending // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      detail: freezed == detail
-          ? _value.detail
-          : detail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      startDate: freezed == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      endDate: freezed == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
+/// Create a copy of ApplePayShippingMethod
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? label = null,Object? amount = null,Object? identifier = null,Object? isPending = freezed,Object? detail = freezed,Object? startDate = freezed,Object? endDate = freezed,}) {
+  return _then(_self.copyWith(
+label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,identifier: null == identifier ? _self.identifier : identifier // ignore: cast_nullable_to_non_nullable
+as String,isPending: freezed == isPending ? _self.isPending : isPending // ignore: cast_nullable_to_non_nullable
+as bool?,detail: freezed == detail ? _self.detail : detail // ignore: cast_nullable_to_non_nullable
+as String?,startDate: freezed == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable
+as int?,endDate: freezed == endDate ? _self.endDate : endDate // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ApplePayShippingMethodImplCopyWith<$Res>
-    implements $ApplePayShippingMethodCopyWith<$Res> {
-  factory _$$ApplePayShippingMethodImplCopyWith(
-          _$ApplePayShippingMethodImpl value,
-          $Res Function(_$ApplePayShippingMethodImpl) then) =
-      __$$ApplePayShippingMethodImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String label,
-      String amount,
-      String identifier,
-      bool? isPending,
-      String? detail,
-      int? startDate,
-      int? endDate});
 }
 
-/// @nodoc
-class __$$ApplePayShippingMethodImplCopyWithImpl<$Res>
-    extends _$ApplePayShippingMethodCopyWithImpl<$Res,
-        _$ApplePayShippingMethodImpl>
-    implements _$$ApplePayShippingMethodImplCopyWith<$Res> {
-  __$$ApplePayShippingMethodImplCopyWithImpl(
-      _$ApplePayShippingMethodImpl _value,
-      $Res Function(_$ApplePayShippingMethodImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ApplePayShippingMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? label = null,
-    Object? amount = null,
-    Object? identifier = null,
-    Object? isPending = freezed,
-    Object? detail = freezed,
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-  }) {
-    return _then(_$ApplePayShippingMethodImpl(
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as String,
-      identifier: null == identifier
-          ? _value.identifier
-          : identifier // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPending: freezed == isPending
-          ? _value.isPending
-          : isPending // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      detail: freezed == detail
-          ? _value.detail
-          : detail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      startDate: freezed == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      endDate: freezed == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ApplePayShippingMethod].
+extension ApplePayShippingMethodPatterns on ApplePayShippingMethod {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ApplePayShippingMethod value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ApplePayShippingMethod() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ApplePayShippingMethod value)  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayShippingMethod():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ApplePayShippingMethod value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayShippingMethod() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String label,  String amount,  String identifier,  bool? isPending,  String? detail,  int? startDate,  int? endDate)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ApplePayShippingMethod() when $default != null:
+return $default(_that.label,_that.amount,_that.identifier,_that.isPending,_that.detail,_that.startDate,_that.endDate);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String label,  String amount,  String identifier,  bool? isPending,  String? detail,  int? startDate,  int? endDate)  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayShippingMethod():
+return $default(_that.label,_that.amount,_that.identifier,_that.isPending,_that.detail,_that.startDate,_that.endDate);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String label,  String amount,  String identifier,  bool? isPending,  String? detail,  int? startDate,  int? endDate)?  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayShippingMethod() when $default != null:
+return $default(_that.label,_that.amount,_that.identifier,_that.isPending,_that.detail,_that.startDate,_that.endDate);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ApplePayShippingMethodImpl implements _ApplePayShippingMethod {
-  const _$ApplePayShippingMethodImpl(
-      {required this.label,
-      required this.amount,
-      required this.identifier,
-      this.isPending,
-      this.detail,
-      this.startDate,
-      this.endDate});
+class _ApplePayShippingMethod implements ApplePayShippingMethod {
+  const _ApplePayShippingMethod({required this.label, required this.amount, required this.identifier, this.isPending, this.detail, this.startDate, this.endDate});
+  factory _ApplePayShippingMethod.fromJson(Map<String, dynamic> json) => _$ApplePayShippingMethodFromJson(json);
 
-  factory _$ApplePayShippingMethodImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ApplePayShippingMethodImplFromJson(json);
+///  A short, localized description.
+@override final  String label;
+/// The cost associated with this shipping option.
+@override final  String amount;
+/// A unique identifier for the shipping method.
+@override final  String identifier;
+/// When creating items for estimates or charges whose final value is not yet known, set this to true.
+///
+/// Defaults to false.
+@override final  bool? isPending;
+///  A user-readable description of the shipping method.
+///
+/// For example “Ships in 24 hours.” Don't repeat content
+@override final  String? detail;
+///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+///
+/// Measured in seconds
+@override final  int? startDate;
+///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+///
+/// Measured in seconds.
+@override final  int? endDate;
 
-  ///  A short, localized description.
-  @override
-  final String label;
+/// Create a copy of ApplePayShippingMethod
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ApplePayShippingMethodCopyWith<_ApplePayShippingMethod> get copyWith => __$ApplePayShippingMethodCopyWithImpl<_ApplePayShippingMethod>(this, _$identity);
 
-  /// The cost associated with this shipping option.
-  @override
-  final String amount;
-
-  /// A unique identifier for the shipping method.
-  @override
-  final String identifier;
-
-  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
-  ///
-  /// Defaults to false.
-  @override
-  final bool? isPending;
-
-  ///  A user-readable description of the shipping method.
-  ///
-  /// For example “Ships in 24 hours.” Don't repeat content
-  @override
-  final String? detail;
-
-  ///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
-  ///
-  /// Measured in seconds
-  @override
-  final int? startDate;
-
-  ///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
-  ///
-  /// Measured in seconds.
-  @override
-  final int? endDate;
-
-  @override
-  String toString() {
-    return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, isPending: $isPending, detail: $detail, startDate: $startDate, endDate: $endDate)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApplePayShippingMethodImpl &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.identifier, identifier) ||
-                other.identifier == identifier) &&
-            (identical(other.isPending, isPending) ||
-                other.isPending == isPending) &&
-            (identical(other.detail, detail) || other.detail == detail) &&
-            (identical(other.startDate, startDate) ||
-                other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, label, amount, identifier,
-      isPending, detail, startDate, endDate);
-
-  /// Create a copy of ApplePayShippingMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplePayShippingMethodImplCopyWith<_$ApplePayShippingMethodImpl>
-      get copyWith => __$$ApplePayShippingMethodImplCopyWithImpl<
-          _$ApplePayShippingMethodImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ApplePayShippingMethodImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ApplePayShippingMethodToJson(this, );
 }
 
-abstract class _ApplePayShippingMethod implements ApplePayShippingMethod {
-  const factory _ApplePayShippingMethod(
-      {required final String label,
-      required final String amount,
-      required final String identifier,
-      final bool? isPending,
-      final String? detail,
-      final int? startDate,
-      final int? endDate}) = _$ApplePayShippingMethodImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplePayShippingMethod&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.identifier, identifier) || other.identifier == identifier)&&(identical(other.isPending, isPending) || other.isPending == isPending)&&(identical(other.detail, detail) || other.detail == detail)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.endDate, endDate) || other.endDate == endDate));
+}
 
-  factory _ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =
-      _$ApplePayShippingMethodImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,label,amount,identifier,isPending,detail,startDate,endDate);
 
-  ///  A short, localized description.
-  @override
-  String get label;
+@override
+String toString() {
+  return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, isPending: $isPending, detail: $detail, startDate: $startDate, endDate: $endDate)';
+}
 
-  /// The cost associated with this shipping option.
-  @override
-  String get amount;
 
-  /// A unique identifier for the shipping method.
-  @override
-  String get identifier;
+}
 
-  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
-  ///
-  /// Defaults to false.
-  @override
-  bool? get isPending;
+/// @nodoc
+abstract mixin class _$ApplePayShippingMethodCopyWith<$Res> implements $ApplePayShippingMethodCopyWith<$Res> {
+  factory _$ApplePayShippingMethodCopyWith(_ApplePayShippingMethod value, $Res Function(_ApplePayShippingMethod) _then) = __$ApplePayShippingMethodCopyWithImpl;
+@override @useResult
+$Res call({
+ String label, String amount, String identifier, bool? isPending, String? detail, int? startDate, int? endDate
+});
 
-  ///  A user-readable description of the shipping method.
-  ///
-  /// For example “Ships in 24 hours.” Don't repeat content
-  @override
-  String? get detail;
 
-  ///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
-  ///
-  /// Measured in seconds
-  @override
-  int? get startDate;
 
-  ///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
-  ///
-  /// Measured in seconds.
-  @override
-  int? get endDate;
 
-  /// Create a copy of ApplePayShippingMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ApplePayShippingMethodImplCopyWith<_$ApplePayShippingMethodImpl>
-      get copyWith => throw _privateConstructorUsedError;
+}
+/// @nodoc
+class __$ApplePayShippingMethodCopyWithImpl<$Res>
+    implements _$ApplePayShippingMethodCopyWith<$Res> {
+  __$ApplePayShippingMethodCopyWithImpl(this._self, this._then);
+
+  final _ApplePayShippingMethod _self;
+  final $Res Function(_ApplePayShippingMethod) _then;
+
+/// Create a copy of ApplePayShippingMethod
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? label = null,Object? amount = null,Object? identifier = null,Object? isPending = freezed,Object? detail = freezed,Object? startDate = freezed,Object? endDate = freezed,}) {
+  return _then(_ApplePayShippingMethod(
+label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,identifier: null == identifier ? _self.identifier : identifier // ignore: cast_nullable_to_non_nullable
+as String,isPending: freezed == isPending ? _self.isPending : isPending // ignore: cast_nullable_to_non_nullable
+as bool?,detail: freezed == detail ? _self.detail : detail // ignore: cast_nullable_to_non_nullable
+as String?,startDate: freezed == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable
+as int?,endDate: freezed == endDate ? _self.endDate : endDate // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
 }
 
 ApplePayCartSummaryItem _$ApplePayCartSummaryItemFromJson(
-    Map<String, dynamic> json) {
-  switch (json['paymentType']) {
-    case 'Immediate':
-      return ImmediateCartSummaryItem.fromJson(json);
-    case 'Deferred':
-      return DeferredSummaryItem.fromJson(json);
-    case 'Recurring':
-      return RecurringCartSummaryItem.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(
-          json,
-          'paymentType',
-          'ApplePayCartSummaryItem',
-          'Invalid union type "${json['paymentType']}"!');
-  }
+  Map<String, dynamic> json
+) {
+        switch (json['paymentType']) {
+                  case 'Immediate':
+          return ImmediateCartSummaryItem.fromJson(
+            json
+          );
+                case 'Deferred':
+          return DeferredSummaryItem.fromJson(
+            json
+          );
+                case 'Recurring':
+          return RecurringCartSummaryItem.fromJson(
+            json
+          );
+        
+          default:
+            throw CheckedFromJsonException(
+  json,
+  'paymentType',
+  'ApplePayCartSummaryItem',
+  'Invalid union type "${json['paymentType']}"!'
+);
+        }
+      
 }
 
 /// @nodoc
 mixin _$ApplePayCartSummaryItem {
-  /// Short localized description of the item.
-  String get label => throw _privateConstructorUsedError;
 
-  /// The monetary amount.
-  String get amount => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String label, String amount, bool? isPending)
-        immediate,
-    required TResult Function(String label, String amount, int deferredDate)
-        deferred,
-    required TResult Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)
-        recurring,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String label, String amount, bool? isPending)? immediate,
-    TResult? Function(String label, String amount, int deferredDate)? deferred,
-    TResult? Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)?
-        recurring,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String label, String amount, bool? isPending)? immediate,
-    TResult Function(String label, String amount, int deferredDate)? deferred,
-    TResult Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)?
-        recurring,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ImmediateCartSummaryItem value) immediate,
-    required TResult Function(DeferredSummaryItem value) deferred,
-    required TResult Function(RecurringCartSummaryItem value) recurring,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ImmediateCartSummaryItem value)? immediate,
-    TResult? Function(DeferredSummaryItem value)? deferred,
-    TResult? Function(RecurringCartSummaryItem value)? recurring,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ImmediateCartSummaryItem value)? immediate,
-    TResult Function(DeferredSummaryItem value)? deferred,
-    TResult Function(RecurringCartSummaryItem value)? recurring,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+/// Short localized description of the item.
+ String get label;/// The monetary amount.
+ String get amount;
+/// Create a copy of ApplePayCartSummaryItem
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ApplePayCartSummaryItemCopyWith<ApplePayCartSummaryItem> get copyWith => _$ApplePayCartSummaryItemCopyWithImpl<ApplePayCartSummaryItem>(this as ApplePayCartSummaryItem, _$identity);
 
   /// Serializes this ApplePayCartSummaryItem to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ApplePayCartSummaryItemCopyWith<ApplePayCartSummaryItem> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplePayCartSummaryItem&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,label,amount);
+
+@override
+String toString() {
+  return 'ApplePayCartSummaryItem(label: $label, amount: $amount)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ApplePayCartSummaryItemCopyWith<$Res> {
-  factory $ApplePayCartSummaryItemCopyWith(ApplePayCartSummaryItem value,
-          $Res Function(ApplePayCartSummaryItem) then) =
-      _$ApplePayCartSummaryItemCopyWithImpl<$Res, ApplePayCartSummaryItem>;
-  @useResult
-  $Res call({String label, String amount});
-}
+abstract mixin class $ApplePayCartSummaryItemCopyWith<$Res>  {
+  factory $ApplePayCartSummaryItemCopyWith(ApplePayCartSummaryItem value, $Res Function(ApplePayCartSummaryItem) _then) = _$ApplePayCartSummaryItemCopyWithImpl;
+@useResult
+$Res call({
+ String label, String amount
+});
 
+
+
+
+}
 /// @nodoc
-class _$ApplePayCartSummaryItemCopyWithImpl<$Res,
-        $Val extends ApplePayCartSummaryItem>
+class _$ApplePayCartSummaryItemCopyWithImpl<$Res>
     implements $ApplePayCartSummaryItemCopyWith<$Res> {
-  _$ApplePayCartSummaryItemCopyWithImpl(this._value, this._then);
+  _$ApplePayCartSummaryItemCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ApplePayCartSummaryItem _self;
+  final $Res Function(ApplePayCartSummaryItem) _then;
 
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? label = null,
-    Object? amount = null,
-  }) {
-    return _then(_value.copyWith(
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of ApplePayCartSummaryItem
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? label = null,Object? amount = null,}) {
+  return _then(_self.copyWith(
+label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ImmediateCartSummaryItemImplCopyWith<$Res>
-    implements $ApplePayCartSummaryItemCopyWith<$Res> {
-  factory _$$ImmediateCartSummaryItemImplCopyWith(
-          _$ImmediateCartSummaryItemImpl value,
-          $Res Function(_$ImmediateCartSummaryItemImpl) then) =
-      __$$ImmediateCartSummaryItemImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String label, String amount, bool? isPending});
 }
 
-/// @nodoc
-class __$$ImmediateCartSummaryItemImplCopyWithImpl<$Res>
-    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res,
-        _$ImmediateCartSummaryItemImpl>
-    implements _$$ImmediateCartSummaryItemImplCopyWith<$Res> {
-  __$$ImmediateCartSummaryItemImplCopyWithImpl(
-      _$ImmediateCartSummaryItemImpl _value,
-      $Res Function(_$ImmediateCartSummaryItemImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? label = null,
-    Object? amount = null,
-    Object? isPending = freezed,
-  }) {
-    return _then(_$ImmediateCartSummaryItemImpl(
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPending: freezed == isPending
-          ? _value.isPending
-          : isPending // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ApplePayCartSummaryItem].
+extension ApplePayCartSummaryItemPatterns on ApplePayCartSummaryItem {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ImmediateCartSummaryItem value)?  immediate,TResult Function( DeferredSummaryItem value)?  deferred,TResult Function( RecurringCartSummaryItem value)?  recurring,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ImmediateCartSummaryItem() when immediate != null:
+return immediate(_that);case DeferredSummaryItem() when deferred != null:
+return deferred(_that);case RecurringCartSummaryItem() when recurring != null:
+return recurring(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ImmediateCartSummaryItem value)  immediate,required TResult Function( DeferredSummaryItem value)  deferred,required TResult Function( RecurringCartSummaryItem value)  recurring,}){
+final _that = this;
+switch (_that) {
+case ImmediateCartSummaryItem():
+return immediate(_that);case DeferredSummaryItem():
+return deferred(_that);case RecurringCartSummaryItem():
+return recurring(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ImmediateCartSummaryItem value)?  immediate,TResult? Function( DeferredSummaryItem value)?  deferred,TResult? Function( RecurringCartSummaryItem value)?  recurring,}){
+final _that = this;
+switch (_that) {
+case ImmediateCartSummaryItem() when immediate != null:
+return immediate(_that);case DeferredSummaryItem() when deferred != null:
+return deferred(_that);case RecurringCartSummaryItem() when recurring != null:
+return recurring(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String label,  String amount,  bool? isPending)?  immediate,TResult Function( String label,  String amount,  int deferredDate)?  deferred,TResult Function( String label,  String amount,  ApplePayIntervalUnit intervalUnit,  int intervalCount,  int? startDate,  int? endDate)?  recurring,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ImmediateCartSummaryItem() when immediate != null:
+return immediate(_that.label,_that.amount,_that.isPending);case DeferredSummaryItem() when deferred != null:
+return deferred(_that.label,_that.amount,_that.deferredDate);case RecurringCartSummaryItem() when recurring != null:
+return recurring(_that.label,_that.amount,_that.intervalUnit,_that.intervalCount,_that.startDate,_that.endDate);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String label,  String amount,  bool? isPending)  immediate,required TResult Function( String label,  String amount,  int deferredDate)  deferred,required TResult Function( String label,  String amount,  ApplePayIntervalUnit intervalUnit,  int intervalCount,  int? startDate,  int? endDate)  recurring,}) {final _that = this;
+switch (_that) {
+case ImmediateCartSummaryItem():
+return immediate(_that.label,_that.amount,_that.isPending);case DeferredSummaryItem():
+return deferred(_that.label,_that.amount,_that.deferredDate);case RecurringCartSummaryItem():
+return recurring(_that.label,_that.amount,_that.intervalUnit,_that.intervalCount,_that.startDate,_that.endDate);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String label,  String amount,  bool? isPending)?  immediate,TResult? Function( String label,  String amount,  int deferredDate)?  deferred,TResult? Function( String label,  String amount,  ApplePayIntervalUnit intervalUnit,  int intervalCount,  int? startDate,  int? endDate)?  recurring,}) {final _that = this;
+switch (_that) {
+case ImmediateCartSummaryItem() when immediate != null:
+return immediate(_that.label,_that.amount,_that.isPending);case DeferredSummaryItem() when deferred != null:
+return deferred(_that.label,_that.amount,_that.deferredDate);case RecurringCartSummaryItem() when recurring != null:
+return recurring(_that.label,_that.amount,_that.intervalUnit,_that.intervalCount,_that.startDate,_that.endDate);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ImmediateCartSummaryItemImpl implements ImmediateCartSummaryItem {
-  const _$ImmediateCartSummaryItemImpl(
-      {required this.label,
-      required this.amount,
-      this.isPending,
-      final String? $type})
-      : $type = $type ?? 'Immediate';
+class ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
+  const ImmediateCartSummaryItem({required this.label, required this.amount, this.isPending, final  String? $type}): $type = $type ?? 'Immediate';
+  factory ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) => _$ImmediateCartSummaryItemFromJson(json);
 
-  factory _$ImmediateCartSummaryItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ImmediateCartSummaryItemImplFromJson(json);
+/// Short localized description of the item.
+@override final  String label;
+/// The monetary amount.
+@override final  String amount;
+/// When creating items for estimates or charges whose final value is not yet known, set this to true.
+ final  bool? isPending;
 
-  /// Short localized description of the item.
-  @override
-  final String label;
+@JsonKey(name: 'paymentType')
+final String $type;
 
-  /// The monetary amount.
-  @override
-  final String amount;
 
-  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
-  @override
-  final bool? isPending;
+/// Create a copy of ApplePayCartSummaryItem
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ImmediateCartSummaryItemCopyWith<ImmediateCartSummaryItem> get copyWith => _$ImmediateCartSummaryItemCopyWithImpl<ImmediateCartSummaryItem>(this, _$identity);
 
-  @JsonKey(name: 'paymentType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ApplePayCartSummaryItem.immediate(label: $label, amount: $amount, isPending: $isPending)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ImmediateCartSummaryItemImpl &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.isPending, isPending) ||
-                other.isPending == isPending));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, label, amount, isPending);
-
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ImmediateCartSummaryItemImplCopyWith<_$ImmediateCartSummaryItemImpl>
-      get copyWith => __$$ImmediateCartSummaryItemImplCopyWithImpl<
-          _$ImmediateCartSummaryItemImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String label, String amount, bool? isPending)
-        immediate,
-    required TResult Function(String label, String amount, int deferredDate)
-        deferred,
-    required TResult Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)
-        recurring,
-  }) {
-    return immediate(label, amount, isPending);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String label, String amount, bool? isPending)? immediate,
-    TResult? Function(String label, String amount, int deferredDate)? deferred,
-    TResult? Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)?
-        recurring,
-  }) {
-    return immediate?.call(label, amount, isPending);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String label, String amount, bool? isPending)? immediate,
-    TResult Function(String label, String amount, int deferredDate)? deferred,
-    TResult Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)?
-        recurring,
-    required TResult orElse(),
-  }) {
-    if (immediate != null) {
-      return immediate(label, amount, isPending);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ImmediateCartSummaryItem value) immediate,
-    required TResult Function(DeferredSummaryItem value) deferred,
-    required TResult Function(RecurringCartSummaryItem value) recurring,
-  }) {
-    return immediate(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ImmediateCartSummaryItem value)? immediate,
-    TResult? Function(DeferredSummaryItem value)? deferred,
-    TResult? Function(RecurringCartSummaryItem value)? recurring,
-  }) {
-    return immediate?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ImmediateCartSummaryItem value)? immediate,
-    TResult Function(DeferredSummaryItem value)? deferred,
-    TResult Function(RecurringCartSummaryItem value)? recurring,
-    required TResult orElse(),
-  }) {
-    if (immediate != null) {
-      return immediate(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ImmediateCartSummaryItemImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ImmediateCartSummaryItemToJson(this, );
 }
 
-abstract class ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
-  const factory ImmediateCartSummaryItem(
-      {required final String label,
-      required final String amount,
-      final bool? isPending}) = _$ImmediateCartSummaryItemImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImmediateCartSummaryItem&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isPending, isPending) || other.isPending == isPending));
+}
 
-  factory ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) =
-      _$ImmediateCartSummaryItemImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,label,amount,isPending);
 
-  /// Short localized description of the item.
-  @override
-  String get label;
+@override
+String toString() {
+  return 'ApplePayCartSummaryItem.immediate(label: $label, amount: $amount, isPending: $isPending)';
+}
 
-  /// The monetary amount.
-  @override
-  String get amount;
 
-  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
-  bool? get isPending;
-
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ImmediateCartSummaryItemImplCopyWith<_$ImmediateCartSummaryItemImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeferredSummaryItemImplCopyWith<$Res>
-    implements $ApplePayCartSummaryItemCopyWith<$Res> {
-  factory _$$DeferredSummaryItemImplCopyWith(_$DeferredSummaryItemImpl value,
-          $Res Function(_$DeferredSummaryItemImpl) then) =
-      __$$DeferredSummaryItemImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String label, String amount, int deferredDate});
+abstract mixin class $ImmediateCartSummaryItemCopyWith<$Res> implements $ApplePayCartSummaryItemCopyWith<$Res> {
+  factory $ImmediateCartSummaryItemCopyWith(ImmediateCartSummaryItem value, $Res Function(ImmediateCartSummaryItem) _then) = _$ImmediateCartSummaryItemCopyWithImpl;
+@override @useResult
+$Res call({
+ String label, String amount, bool? isPending
+});
+
+
+
+
+}
+/// @nodoc
+class _$ImmediateCartSummaryItemCopyWithImpl<$Res>
+    implements $ImmediateCartSummaryItemCopyWith<$Res> {
+  _$ImmediateCartSummaryItemCopyWithImpl(this._self, this._then);
+
+  final ImmediateCartSummaryItem _self;
+  final $Res Function(ImmediateCartSummaryItem) _then;
+
+/// Create a copy of ApplePayCartSummaryItem
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? label = null,Object? amount = null,Object? isPending = freezed,}) {
+  return _then(ImmediateCartSummaryItem(
+label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,isPending: freezed == isPending ? _self.isPending : isPending // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
 }
 
-/// @nodoc
-class __$$DeferredSummaryItemImplCopyWithImpl<$Res>
-    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res,
-        _$DeferredSummaryItemImpl>
-    implements _$$DeferredSummaryItemImplCopyWith<$Res> {
-  __$$DeferredSummaryItemImplCopyWithImpl(_$DeferredSummaryItemImpl _value,
-      $Res Function(_$DeferredSummaryItemImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? label = null,
-    Object? amount = null,
-    Object? deferredDate = null,
-  }) {
-    return _then(_$DeferredSummaryItemImpl(
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as String,
-      deferredDate: null == deferredDate
-          ? _value.deferredDate
-          : deferredDate // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$DeferredSummaryItemImpl implements DeferredSummaryItem {
-  const _$DeferredSummaryItemImpl(
-      {required this.label,
-      required this.amount,
-      required this.deferredDate,
-      final String? $type})
-      : $type = $type ?? 'Deferred';
+class DeferredSummaryItem implements ApplePayCartSummaryItem {
+  const DeferredSummaryItem({required this.label, required this.amount, required this.deferredDate, final  String? $type}): $type = $type ?? 'Deferred';
+  factory DeferredSummaryItem.fromJson(Map<String, dynamic> json) => _$DeferredSummaryItemFromJson(json);
 
-  factory _$DeferredSummaryItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DeferredSummaryItemImplFromJson(json);
+/// Short localized description of the item.
+@override final  String label;
+/// The monetary amount.
+@override final  String amount;
+/// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
+ final  int deferredDate;
 
-  /// Short localized description of the item.
-  @override
-  final String label;
+@JsonKey(name: 'paymentType')
+final String $type;
 
-  /// The monetary amount.
-  @override
-  final String amount;
 
-  /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
-  @override
-  final int deferredDate;
+/// Create a copy of ApplePayCartSummaryItem
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DeferredSummaryItemCopyWith<DeferredSummaryItem> get copyWith => _$DeferredSummaryItemCopyWithImpl<DeferredSummaryItem>(this, _$identity);
 
-  @JsonKey(name: 'paymentType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ApplePayCartSummaryItem.deferred(label: $label, amount: $amount, deferredDate: $deferredDate)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeferredSummaryItemImpl &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.deferredDate, deferredDate) ||
-                other.deferredDate == deferredDate));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, label, amount, deferredDate);
-
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeferredSummaryItemImplCopyWith<_$DeferredSummaryItemImpl> get copyWith =>
-      __$$DeferredSummaryItemImplCopyWithImpl<_$DeferredSummaryItemImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String label, String amount, bool? isPending)
-        immediate,
-    required TResult Function(String label, String amount, int deferredDate)
-        deferred,
-    required TResult Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)
-        recurring,
-  }) {
-    return deferred(label, amount, deferredDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String label, String amount, bool? isPending)? immediate,
-    TResult? Function(String label, String amount, int deferredDate)? deferred,
-    TResult? Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)?
-        recurring,
-  }) {
-    return deferred?.call(label, amount, deferredDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String label, String amount, bool? isPending)? immediate,
-    TResult Function(String label, String amount, int deferredDate)? deferred,
-    TResult Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)?
-        recurring,
-    required TResult orElse(),
-  }) {
-    if (deferred != null) {
-      return deferred(label, amount, deferredDate);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ImmediateCartSummaryItem value) immediate,
-    required TResult Function(DeferredSummaryItem value) deferred,
-    required TResult Function(RecurringCartSummaryItem value) recurring,
-  }) {
-    return deferred(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ImmediateCartSummaryItem value)? immediate,
-    TResult? Function(DeferredSummaryItem value)? deferred,
-    TResult? Function(RecurringCartSummaryItem value)? recurring,
-  }) {
-    return deferred?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ImmediateCartSummaryItem value)? immediate,
-    TResult Function(DeferredSummaryItem value)? deferred,
-    TResult Function(RecurringCartSummaryItem value)? recurring,
-    required TResult orElse(),
-  }) {
-    if (deferred != null) {
-      return deferred(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeferredSummaryItemImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$DeferredSummaryItemToJson(this, );
 }
 
-abstract class DeferredSummaryItem implements ApplePayCartSummaryItem {
-  const factory DeferredSummaryItem(
-      {required final String label,
-      required final String amount,
-      required final int deferredDate}) = _$DeferredSummaryItemImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DeferredSummaryItem&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.deferredDate, deferredDate) || other.deferredDate == deferredDate));
+}
 
-  factory DeferredSummaryItem.fromJson(Map<String, dynamic> json) =
-      _$DeferredSummaryItemImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,label,amount,deferredDate);
 
-  /// Short localized description of the item.
-  @override
-  String get label;
+@override
+String toString() {
+  return 'ApplePayCartSummaryItem.deferred(label: $label, amount: $amount, deferredDate: $deferredDate)';
+}
 
-  /// The monetary amount.
-  @override
-  String get amount;
 
-  /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
-  int get deferredDate;
-
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeferredSummaryItemImplCopyWith<_$DeferredSummaryItemImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RecurringCartSummaryItemImplCopyWith<$Res>
-    implements $ApplePayCartSummaryItemCopyWith<$Res> {
-  factory _$$RecurringCartSummaryItemImplCopyWith(
-          _$RecurringCartSummaryItemImpl value,
-          $Res Function(_$RecurringCartSummaryItemImpl) then) =
-      __$$RecurringCartSummaryItemImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String label,
-      String amount,
-      ApplePayIntervalUnit intervalUnit,
-      int intervalCount,
-      int? startDate,
-      int? endDate});
+abstract mixin class $DeferredSummaryItemCopyWith<$Res> implements $ApplePayCartSummaryItemCopyWith<$Res> {
+  factory $DeferredSummaryItemCopyWith(DeferredSummaryItem value, $Res Function(DeferredSummaryItem) _then) = _$DeferredSummaryItemCopyWithImpl;
+@override @useResult
+$Res call({
+ String label, String amount, int deferredDate
+});
+
+
+
+
+}
+/// @nodoc
+class _$DeferredSummaryItemCopyWithImpl<$Res>
+    implements $DeferredSummaryItemCopyWith<$Res> {
+  _$DeferredSummaryItemCopyWithImpl(this._self, this._then);
+
+  final DeferredSummaryItem _self;
+  final $Res Function(DeferredSummaryItem) _then;
+
+/// Create a copy of ApplePayCartSummaryItem
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? label = null,Object? amount = null,Object? deferredDate = null,}) {
+  return _then(DeferredSummaryItem(
+label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,deferredDate: null == deferredDate ? _self.deferredDate : deferredDate // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-class __$$RecurringCartSummaryItemImplCopyWithImpl<$Res>
-    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res,
-        _$RecurringCartSummaryItemImpl>
-    implements _$$RecurringCartSummaryItemImplCopyWith<$Res> {
-  __$$RecurringCartSummaryItemImplCopyWithImpl(
-      _$RecurringCartSummaryItemImpl _value,
-      $Res Function(_$RecurringCartSummaryItemImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? label = null,
-    Object? amount = null,
-    Object? intervalUnit = null,
-    Object? intervalCount = null,
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-  }) {
-    return _then(_$RecurringCartSummaryItemImpl(
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as String,
-      intervalUnit: null == intervalUnit
-          ? _value.intervalUnit
-          : intervalUnit // ignore: cast_nullable_to_non_nullable
-              as ApplePayIntervalUnit,
-      intervalCount: null == intervalCount
-          ? _value.intervalCount
-          : intervalCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      startDate: freezed == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      endDate: freezed == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
-  const _$RecurringCartSummaryItemImpl(
-      {required this.label,
-      required this.amount,
-      required this.intervalUnit,
-      required this.intervalCount,
-      this.startDate,
-      this.endDate,
-      final String? $type})
-      : $type = $type ?? 'Recurring';
+class RecurringCartSummaryItem implements ApplePayCartSummaryItem {
+  const RecurringCartSummaryItem({required this.label, required this.amount, required this.intervalUnit, required this.intervalCount, this.startDate, this.endDate, final  String? $type}): $type = $type ?? 'Recurring';
+  factory RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) => _$RecurringCartSummaryItemFromJson(json);
 
-  factory _$RecurringCartSummaryItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RecurringCartSummaryItemImplFromJson(json);
-
-  /// Short localized description of the item.
-  @override
-  final String label;
-
-  /// The monetary amount.
-  @override
-  final String amount;
-
-  /// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
-  @override
-  final ApplePayIntervalUnit intervalUnit;
-
-  /// The number of interval units that make up the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
-  @override
-  final int intervalCount;
-
-  /// The unix timestamp of the start date. Measured in seconds.
-  @override
-  final int? startDate;
+/// Short localized description of the item.
+@override final  String label;
+/// The monetary amount.
+@override final  String amount;
+/// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
+ final  ApplePayIntervalUnit intervalUnit;
+/// The number of interval units that make up the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
+ final  int intervalCount;
+/// The unix timestamp of the start date. Measured in seconds.
+ final  int? startDate;
 ////The unix timestamp of the end date. Measured in seconds. */
-  @override
-  final int? endDate;
+ final  int? endDate;
 
-  @JsonKey(name: 'paymentType')
-  final String $type;
+@JsonKey(name: 'paymentType')
+final String $type;
 
-  @override
-  String toString() {
-    return 'ApplePayCartSummaryItem.recurring(label: $label, amount: $amount, intervalUnit: $intervalUnit, intervalCount: $intervalCount, startDate: $startDate, endDate: $endDate)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RecurringCartSummaryItemImpl &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.intervalUnit, intervalUnit) ||
-                other.intervalUnit == intervalUnit) &&
-            (identical(other.intervalCount, intervalCount) ||
-                other.intervalCount == intervalCount) &&
-            (identical(other.startDate, startDate) ||
-                other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate));
-  }
+/// Create a copy of ApplePayCartSummaryItem
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RecurringCartSummaryItemCopyWith<RecurringCartSummaryItem> get copyWith => _$RecurringCartSummaryItemCopyWithImpl<RecurringCartSummaryItem>(this, _$identity);
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, label, amount, intervalUnit,
-      intervalCount, startDate, endDate);
-
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RecurringCartSummaryItemImplCopyWith<_$RecurringCartSummaryItemImpl>
-      get copyWith => __$$RecurringCartSummaryItemImplCopyWithImpl<
-          _$RecurringCartSummaryItemImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String label, String amount, bool? isPending)
-        immediate,
-    required TResult Function(String label, String amount, int deferredDate)
-        deferred,
-    required TResult Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)
-        recurring,
-  }) {
-    return recurring(
-        label, amount, intervalUnit, intervalCount, startDate, endDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String label, String amount, bool? isPending)? immediate,
-    TResult? Function(String label, String amount, int deferredDate)? deferred,
-    TResult? Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)?
-        recurring,
-  }) {
-    return recurring?.call(
-        label, amount, intervalUnit, intervalCount, startDate, endDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String label, String amount, bool? isPending)? immediate,
-    TResult Function(String label, String amount, int deferredDate)? deferred,
-    TResult Function(
-            String label,
-            String amount,
-            ApplePayIntervalUnit intervalUnit,
-            int intervalCount,
-            int? startDate,
-            int? endDate)?
-        recurring,
-    required TResult orElse(),
-  }) {
-    if (recurring != null) {
-      return recurring(
-          label, amount, intervalUnit, intervalCount, startDate, endDate);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ImmediateCartSummaryItem value) immediate,
-    required TResult Function(DeferredSummaryItem value) deferred,
-    required TResult Function(RecurringCartSummaryItem value) recurring,
-  }) {
-    return recurring(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ImmediateCartSummaryItem value)? immediate,
-    TResult? Function(DeferredSummaryItem value)? deferred,
-    TResult? Function(RecurringCartSummaryItem value)? recurring,
-  }) {
-    return recurring?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ImmediateCartSummaryItem value)? immediate,
-    TResult Function(DeferredSummaryItem value)? deferred,
-    TResult Function(RecurringCartSummaryItem value)? recurring,
-    required TResult orElse(),
-  }) {
-    if (recurring != null) {
-      return recurring(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RecurringCartSummaryItemImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$RecurringCartSummaryItemToJson(this, );
 }
 
-abstract class RecurringCartSummaryItem implements ApplePayCartSummaryItem {
-  const factory RecurringCartSummaryItem(
-      {required final String label,
-      required final String amount,
-      required final ApplePayIntervalUnit intervalUnit,
-      required final int intervalCount,
-      final int? startDate,
-      final int? endDate}) = _$RecurringCartSummaryItemImpl;
-
-  factory RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =
-      _$RecurringCartSummaryItemImpl.fromJson;
-
-  /// Short localized description of the item.
-  @override
-  String get label;
-
-  /// The monetary amount.
-  @override
-  String get amount;
-
-  /// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
-  ApplePayIntervalUnit get intervalUnit;
-
-  /// The number of interval units that make up the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
-  int get intervalCount;
-
-  /// The unix timestamp of the start date. Measured in seconds.
-  int?
-      get startDate; ////The unix timestamp of the end date. Measured in seconds. */
-  int? get endDate;
-
-  /// Create a copy of ApplePayCartSummaryItem
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RecurringCartSummaryItemImplCopyWith<_$RecurringCartSummaryItemImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RecurringCartSummaryItem&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.intervalUnit, intervalUnit) || other.intervalUnit == intervalUnit)&&(identical(other.intervalCount, intervalCount) || other.intervalCount == intervalCount)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.endDate, endDate) || other.endDate == endDate));
 }
 
-ApplePayPresentParams _$ApplePayPresentParamsFromJson(
-    Map<String, dynamic> json) {
-  return _ApplePayPresentParams.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,label,amount,intervalUnit,intervalCount,startDate,endDate);
+
+@override
+String toString() {
+  return 'ApplePayCartSummaryItem.recurring(label: $label, amount: $amount, intervalUnit: $intervalUnit, intervalCount: $intervalCount, startDate: $startDate, endDate: $endDate)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class $RecurringCartSummaryItemCopyWith<$Res> implements $ApplePayCartSummaryItemCopyWith<$Res> {
+  factory $RecurringCartSummaryItemCopyWith(RecurringCartSummaryItem value, $Res Function(RecurringCartSummaryItem) _then) = _$RecurringCartSummaryItemCopyWithImpl;
+@override @useResult
+$Res call({
+ String label, String amount, ApplePayIntervalUnit intervalUnit, int intervalCount, int? startDate, int? endDate
+});
+
+
+
+
+}
+/// @nodoc
+class _$RecurringCartSummaryItemCopyWithImpl<$Res>
+    implements $RecurringCartSummaryItemCopyWith<$Res> {
+  _$RecurringCartSummaryItemCopyWithImpl(this._self, this._then);
+
+  final RecurringCartSummaryItem _self;
+  final $Res Function(RecurringCartSummaryItem) _then;
+
+/// Create a copy of ApplePayCartSummaryItem
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? label = null,Object? amount = null,Object? intervalUnit = null,Object? intervalCount = null,Object? startDate = freezed,Object? endDate = freezed,}) {
+  return _then(RecurringCartSummaryItem(
+label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,intervalUnit: null == intervalUnit ? _self.intervalUnit : intervalUnit // ignore: cast_nullable_to_non_nullable
+as ApplePayIntervalUnit,intervalCount: null == intervalCount ? _self.intervalCount : intervalCount // ignore: cast_nullable_to_non_nullable
+as int,startDate: freezed == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable
+as int?,endDate: freezed == endDate ? _self.endDate : endDate // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ApplePayPresentParams {
-  /// Line Items of the payment request.
-  List<ApplePayCartSummaryItem> get cartItems =>
-      throw _privateConstructorUsedError;
 
-  /// The two letter ISO 3166 country code representing the merchant.
-  String get country => throw _privateConstructorUsedError;
-
-  /// The three letter ISO 4217 code for the currency.
-  String get currency => throw _privateConstructorUsedError;
-
-  /// Fields that will be shown on the required shipping address section. If
-  /// empty no fields will be displayed.
-  List<ApplePayContactFieldsType>? get requiredShippingAddressFields =>
-      throw _privateConstructorUsedError;
-
-  /// Fields that will be shown on the required billing address section. If
-  /// empty no fields will be displayed.
-  List<ApplePayContactFieldsType>? get requiredBillingContactFields =>
-      throw _privateConstructorUsedError;
-
-  /// List of available shipping methods for goods.
-  List<ApplePayShippingMethod>? get shippingMethods =>
-      throw _privateConstructorUsedError;
-
-  /// Add support for jcb as additional payment method.
-  bool get jcbEnabled => throw _privateConstructorUsedError;
+/// Line Items of the payment request.
+ List<ApplePayCartSummaryItem> get cartItems;/// The two letter ISO 3166 country code representing the merchant.
+ String get country;/// The three letter ISO 4217 code for the currency.
+ String get currency;/// Fields that will be shown on the required shipping address section. If
+/// empty no fields will be displayed.
+ List<ApplePayContactFieldsType>? get requiredShippingAddressFields;/// Fields that will be shown on the required billing address section. If
+/// empty no fields will be displayed.
+ List<ApplePayContactFieldsType>? get requiredBillingContactFields;/// List of available shipping methods for goods.
+ List<ApplePayShippingMethod>? get shippingMethods;/// Add support for jcb as additional payment method.
+ bool get jcbEnabled;
+/// Create a copy of ApplePayPresentParams
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ApplePayPresentParamsCopyWith<ApplePayPresentParams> get copyWith => _$ApplePayPresentParamsCopyWithImpl<ApplePayPresentParams>(this as ApplePayPresentParams, _$identity);
 
   /// Serializes this ApplePayPresentParams to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ApplePayPresentParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ApplePayPresentParamsCopyWith<ApplePayPresentParams> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplePayPresentParams&&const DeepCollectionEquality().equals(other.cartItems, cartItems)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&const DeepCollectionEquality().equals(other.requiredShippingAddressFields, requiredShippingAddressFields)&&const DeepCollectionEquality().equals(other.requiredBillingContactFields, requiredBillingContactFields)&&const DeepCollectionEquality().equals(other.shippingMethods, shippingMethods)&&(identical(other.jcbEnabled, jcbEnabled) || other.jcbEnabled == jcbEnabled));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(cartItems),country,currency,const DeepCollectionEquality().hash(requiredShippingAddressFields),const DeepCollectionEquality().hash(requiredBillingContactFields),const DeepCollectionEquality().hash(shippingMethods),jcbEnabled);
+
+@override
+String toString() {
+  return 'ApplePayPresentParams(cartItems: $cartItems, country: $country, currency: $currency, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, jcbEnabled: $jcbEnabled)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ApplePayPresentParamsCopyWith<$Res> {
-  factory $ApplePayPresentParamsCopyWith(ApplePayPresentParams value,
-          $Res Function(ApplePayPresentParams) then) =
-      _$ApplePayPresentParamsCopyWithImpl<$Res, ApplePayPresentParams>;
-  @useResult
-  $Res call(
-      {List<ApplePayCartSummaryItem> cartItems,
-      String country,
-      String currency,
-      List<ApplePayContactFieldsType>? requiredShippingAddressFields,
-      List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      List<ApplePayShippingMethod>? shippingMethods,
-      bool jcbEnabled});
-}
+abstract mixin class $ApplePayPresentParamsCopyWith<$Res>  {
+  factory $ApplePayPresentParamsCopyWith(ApplePayPresentParams value, $Res Function(ApplePayPresentParams) _then) = _$ApplePayPresentParamsCopyWithImpl;
+@useResult
+$Res call({
+ List<ApplePayCartSummaryItem> cartItems, String country, String currency, List<ApplePayContactFieldsType>? requiredShippingAddressFields, List<ApplePayContactFieldsType>? requiredBillingContactFields, List<ApplePayShippingMethod>? shippingMethods, bool jcbEnabled
+});
 
+
+
+
+}
 /// @nodoc
-class _$ApplePayPresentParamsCopyWithImpl<$Res,
-        $Val extends ApplePayPresentParams>
+class _$ApplePayPresentParamsCopyWithImpl<$Res>
     implements $ApplePayPresentParamsCopyWith<$Res> {
-  _$ApplePayPresentParamsCopyWithImpl(this._value, this._then);
+  _$ApplePayPresentParamsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ApplePayPresentParams _self;
+  final $Res Function(ApplePayPresentParams) _then;
 
-  /// Create a copy of ApplePayPresentParams
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? cartItems = null,
-    Object? country = null,
-    Object? currency = null,
-    Object? requiredShippingAddressFields = freezed,
-    Object? requiredBillingContactFields = freezed,
-    Object? shippingMethods = freezed,
-    Object? jcbEnabled = null,
-  }) {
-    return _then(_value.copyWith(
-      cartItems: null == cartItems
-          ? _value.cartItems
-          : cartItems // ignore: cast_nullable_to_non_nullable
-              as List<ApplePayCartSummaryItem>,
-      country: null == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
-              as String,
-      requiredShippingAddressFields: freezed == requiredShippingAddressFields
-          ? _value.requiredShippingAddressFields
-          : requiredShippingAddressFields // ignore: cast_nullable_to_non_nullable
-              as List<ApplePayContactFieldsType>?,
-      requiredBillingContactFields: freezed == requiredBillingContactFields
-          ? _value.requiredBillingContactFields
-          : requiredBillingContactFields // ignore: cast_nullable_to_non_nullable
-              as List<ApplePayContactFieldsType>?,
-      shippingMethods: freezed == shippingMethods
-          ? _value.shippingMethods
-          : shippingMethods // ignore: cast_nullable_to_non_nullable
-              as List<ApplePayShippingMethod>?,
-      jcbEnabled: null == jcbEnabled
-          ? _value.jcbEnabled
-          : jcbEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
+/// Create a copy of ApplePayPresentParams
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? cartItems = null,Object? country = null,Object? currency = null,Object? requiredShippingAddressFields = freezed,Object? requiredBillingContactFields = freezed,Object? shippingMethods = freezed,Object? jcbEnabled = null,}) {
+  return _then(_self.copyWith(
+cartItems: null == cartItems ? _self.cartItems : cartItems // ignore: cast_nullable_to_non_nullable
+as List<ApplePayCartSummaryItem>,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String,currency: null == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
+as String,requiredShippingAddressFields: freezed == requiredShippingAddressFields ? _self.requiredShippingAddressFields : requiredShippingAddressFields // ignore: cast_nullable_to_non_nullable
+as List<ApplePayContactFieldsType>?,requiredBillingContactFields: freezed == requiredBillingContactFields ? _self.requiredBillingContactFields : requiredBillingContactFields // ignore: cast_nullable_to_non_nullable
+as List<ApplePayContactFieldsType>?,shippingMethods: freezed == shippingMethods ? _self.shippingMethods : shippingMethods // ignore: cast_nullable_to_non_nullable
+as List<ApplePayShippingMethod>?,jcbEnabled: null == jcbEnabled ? _self.jcbEnabled : jcbEnabled // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ApplePayPresentParamsImplCopyWith<$Res>
-    implements $ApplePayPresentParamsCopyWith<$Res> {
-  factory _$$ApplePayPresentParamsImplCopyWith(
-          _$ApplePayPresentParamsImpl value,
-          $Res Function(_$ApplePayPresentParamsImpl) then) =
-      __$$ApplePayPresentParamsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<ApplePayCartSummaryItem> cartItems,
-      String country,
-      String currency,
-      List<ApplePayContactFieldsType>? requiredShippingAddressFields,
-      List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      List<ApplePayShippingMethod>? shippingMethods,
-      bool jcbEnabled});
 }
 
-/// @nodoc
-class __$$ApplePayPresentParamsImplCopyWithImpl<$Res>
-    extends _$ApplePayPresentParamsCopyWithImpl<$Res,
-        _$ApplePayPresentParamsImpl>
-    implements _$$ApplePayPresentParamsImplCopyWith<$Res> {
-  __$$ApplePayPresentParamsImplCopyWithImpl(_$ApplePayPresentParamsImpl _value,
-      $Res Function(_$ApplePayPresentParamsImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ApplePayPresentParams
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? cartItems = null,
-    Object? country = null,
-    Object? currency = null,
-    Object? requiredShippingAddressFields = freezed,
-    Object? requiredBillingContactFields = freezed,
-    Object? shippingMethods = freezed,
-    Object? jcbEnabled = null,
-  }) {
-    return _then(_$ApplePayPresentParamsImpl(
-      cartItems: null == cartItems
-          ? _value._cartItems
-          : cartItems // ignore: cast_nullable_to_non_nullable
-              as List<ApplePayCartSummaryItem>,
-      country: null == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
-              as String,
-      requiredShippingAddressFields: freezed == requiredShippingAddressFields
-          ? _value._requiredShippingAddressFields
-          : requiredShippingAddressFields // ignore: cast_nullable_to_non_nullable
-              as List<ApplePayContactFieldsType>?,
-      requiredBillingContactFields: freezed == requiredBillingContactFields
-          ? _value._requiredBillingContactFields
-          : requiredBillingContactFields // ignore: cast_nullable_to_non_nullable
-              as List<ApplePayContactFieldsType>?,
-      shippingMethods: freezed == shippingMethods
-          ? _value._shippingMethods
-          : shippingMethods // ignore: cast_nullable_to_non_nullable
-              as List<ApplePayShippingMethod>?,
-      jcbEnabled: null == jcbEnabled
-          ? _value.jcbEnabled
-          : jcbEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ApplePayPresentParams].
+extension ApplePayPresentParamsPatterns on ApplePayPresentParams {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ApplePayPresentParams value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ApplePayPresentParams() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ApplePayPresentParams value)  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayPresentParams():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ApplePayPresentParams value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayPresentParams() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ApplePayCartSummaryItem> cartItems,  String country,  String currency,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  bool jcbEnabled)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ApplePayPresentParams() when $default != null:
+return $default(_that.cartItems,_that.country,_that.currency,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.jcbEnabled);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ApplePayCartSummaryItem> cartItems,  String country,  String currency,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  bool jcbEnabled)  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayPresentParams():
+return $default(_that.cartItems,_that.country,_that.currency,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.jcbEnabled);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ApplePayCartSummaryItem> cartItems,  String country,  String currency,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  bool jcbEnabled)?  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayPresentParams() when $default != null:
+return $default(_that.cartItems,_that.country,_that.currency,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.jcbEnabled);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ApplePayPresentParamsImpl implements _ApplePayPresentParams {
-  const _$ApplePayPresentParamsImpl(
-      {required final List<ApplePayCartSummaryItem> cartItems,
-      required this.country,
-      required this.currency,
-      final List<ApplePayContactFieldsType>? requiredShippingAddressFields,
-      final List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      final List<ApplePayShippingMethod>? shippingMethods,
-      this.jcbEnabled = false})
-      : _cartItems = cartItems,
-        _requiredShippingAddressFields = requiredShippingAddressFields,
-        _requiredBillingContactFields = requiredBillingContactFields,
-        _shippingMethods = shippingMethods;
+class _ApplePayPresentParams implements ApplePayPresentParams {
+  const _ApplePayPresentParams({required final  List<ApplePayCartSummaryItem> cartItems, required this.country, required this.currency, final  List<ApplePayContactFieldsType>? requiredShippingAddressFields, final  List<ApplePayContactFieldsType>? requiredBillingContactFields, final  List<ApplePayShippingMethod>? shippingMethods, this.jcbEnabled = false}): _cartItems = cartItems,_requiredShippingAddressFields = requiredShippingAddressFields,_requiredBillingContactFields = requiredBillingContactFields,_shippingMethods = shippingMethods;
+  factory _ApplePayPresentParams.fromJson(Map<String, dynamic> json) => _$ApplePayPresentParamsFromJson(json);
 
-  factory _$ApplePayPresentParamsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ApplePayPresentParamsImplFromJson(json);
-
-  /// Line Items of the payment request.
-  final List<ApplePayCartSummaryItem> _cartItems;
-
-  /// Line Items of the payment request.
-  @override
-  List<ApplePayCartSummaryItem> get cartItems {
-    if (_cartItems is EqualUnmodifiableListView) return _cartItems;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_cartItems);
-  }
-
-  /// The two letter ISO 3166 country code representing the merchant.
-  @override
-  final String country;
-
-  /// The three letter ISO 4217 code for the currency.
-  @override
-  final String currency;
-
-  /// Fields that will be shown on the required shipping address section. If
-  /// empty no fields will be displayed.
-  final List<ApplePayContactFieldsType>? _requiredShippingAddressFields;
-
-  /// Fields that will be shown on the required shipping address section. If
-  /// empty no fields will be displayed.
-  @override
-  List<ApplePayContactFieldsType>? get requiredShippingAddressFields {
-    final value = _requiredShippingAddressFields;
-    if (value == null) return null;
-    if (_requiredShippingAddressFields is EqualUnmodifiableListView)
-      return _requiredShippingAddressFields;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  /// Fields that will be shown on the required billing address section. If
-  /// empty no fields will be displayed.
-  final List<ApplePayContactFieldsType>? _requiredBillingContactFields;
-
-  /// Fields that will be shown on the required billing address section. If
-  /// empty no fields will be displayed.
-  @override
-  List<ApplePayContactFieldsType>? get requiredBillingContactFields {
-    final value = _requiredBillingContactFields;
-    if (value == null) return null;
-    if (_requiredBillingContactFields is EqualUnmodifiableListView)
-      return _requiredBillingContactFields;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  /// List of available shipping methods for goods.
-  final List<ApplePayShippingMethod>? _shippingMethods;
-
-  /// List of available shipping methods for goods.
-  @override
-  List<ApplePayShippingMethod>? get shippingMethods {
-    final value = _shippingMethods;
-    if (value == null) return null;
-    if (_shippingMethods is EqualUnmodifiableListView) return _shippingMethods;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  /// Add support for jcb as additional payment method.
-  @override
-  @JsonKey()
-  final bool jcbEnabled;
-
-  @override
-  String toString() {
-    return 'ApplePayPresentParams(cartItems: $cartItems, country: $country, currency: $currency, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, jcbEnabled: $jcbEnabled)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApplePayPresentParamsImpl &&
-            const DeepCollectionEquality()
-                .equals(other._cartItems, _cartItems) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.currency, currency) ||
-                other.currency == currency) &&
-            const DeepCollectionEquality().equals(
-                other._requiredShippingAddressFields,
-                _requiredShippingAddressFields) &&
-            const DeepCollectionEquality().equals(
-                other._requiredBillingContactFields,
-                _requiredBillingContactFields) &&
-            const DeepCollectionEquality()
-                .equals(other._shippingMethods, _shippingMethods) &&
-            (identical(other.jcbEnabled, jcbEnabled) ||
-                other.jcbEnabled == jcbEnabled));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_cartItems),
-      country,
-      currency,
-      const DeepCollectionEquality().hash(_requiredShippingAddressFields),
-      const DeepCollectionEquality().hash(_requiredBillingContactFields),
-      const DeepCollectionEquality().hash(_shippingMethods),
-      jcbEnabled);
-
-  /// Create a copy of ApplePayPresentParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplePayPresentParamsImplCopyWith<_$ApplePayPresentParamsImpl>
-      get copyWith => __$$ApplePayPresentParamsImplCopyWithImpl<
-          _$ApplePayPresentParamsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ApplePayPresentParamsImplToJson(
-      this,
-    );
-  }
+/// Line Items of the payment request.
+ final  List<ApplePayCartSummaryItem> _cartItems;
+/// Line Items of the payment request.
+@override List<ApplePayCartSummaryItem> get cartItems {
+  if (_cartItems is EqualUnmodifiableListView) return _cartItems;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_cartItems);
 }
 
-abstract class _ApplePayPresentParams implements ApplePayPresentParams {
-  const factory _ApplePayPresentParams(
-      {required final List<ApplePayCartSummaryItem> cartItems,
-      required final String country,
-      required final String currency,
-      final List<ApplePayContactFieldsType>? requiredShippingAddressFields,
-      final List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      final List<ApplePayShippingMethod>? shippingMethods,
-      final bool jcbEnabled}) = _$ApplePayPresentParamsImpl;
-
-  factory _ApplePayPresentParams.fromJson(Map<String, dynamic> json) =
-      _$ApplePayPresentParamsImpl.fromJson;
-
-  /// Line Items of the payment request.
-  @override
-  List<ApplePayCartSummaryItem> get cartItems;
-
-  /// The two letter ISO 3166 country code representing the merchant.
-  @override
-  String get country;
-
-  /// The three letter ISO 4217 code for the currency.
-  @override
-  String get currency;
-
-  /// Fields that will be shown on the required shipping address section. If
-  /// empty no fields will be displayed.
-  @override
-  List<ApplePayContactFieldsType>? get requiredShippingAddressFields;
-
-  /// Fields that will be shown on the required billing address section. If
-  /// empty no fields will be displayed.
-  @override
-  List<ApplePayContactFieldsType>? get requiredBillingContactFields;
-
-  /// List of available shipping methods for goods.
-  @override
-  List<ApplePayShippingMethod>? get shippingMethods;
-
-  /// Add support for jcb as additional payment method.
-  @override
-  bool get jcbEnabled;
-
-  /// Create a copy of ApplePayPresentParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ApplePayPresentParamsImplCopyWith<_$ApplePayPresentParamsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+/// The two letter ISO 3166 country code representing the merchant.
+@override final  String country;
+/// The three letter ISO 4217 code for the currency.
+@override final  String currency;
+/// Fields that will be shown on the required shipping address section. If
+/// empty no fields will be displayed.
+ final  List<ApplePayContactFieldsType>? _requiredShippingAddressFields;
+/// Fields that will be shown on the required shipping address section. If
+/// empty no fields will be displayed.
+@override List<ApplePayContactFieldsType>? get requiredShippingAddressFields {
+  final value = _requiredShippingAddressFields;
+  if (value == null) return null;
+  if (_requiredShippingAddressFields is EqualUnmodifiableListView) return _requiredShippingAddressFields;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
-ApplePayErrorAddressField _$ApplePayErrorAddressFieldFromJson(
-    Map<String, dynamic> json) {
-  return _ApplePayErrorAddressField.fromJson(json);
+/// Fields that will be shown on the required billing address section. If
+/// empty no fields will be displayed.
+ final  List<ApplePayContactFieldsType>? _requiredBillingContactFields;
+/// Fields that will be shown on the required billing address section. If
+/// empty no fields will be displayed.
+@override List<ApplePayContactFieldsType>? get requiredBillingContactFields {
+  final value = _requiredBillingContactFields;
+  if (value == null) return null;
+  if (_requiredBillingContactFields is EqualUnmodifiableListView) return _requiredBillingContactFields;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
+
+/// List of available shipping methods for goods.
+ final  List<ApplePayShippingMethod>? _shippingMethods;
+/// List of available shipping methods for goods.
+@override List<ApplePayShippingMethod>? get shippingMethods {
+  final value = _shippingMethods;
+  if (value == null) return null;
+  if (_shippingMethods is EqualUnmodifiableListView) return _shippingMethods;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+/// Add support for jcb as additional payment method.
+@override@JsonKey() final  bool jcbEnabled;
+
+/// Create a copy of ApplePayPresentParams
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ApplePayPresentParamsCopyWith<_ApplePayPresentParams> get copyWith => __$ApplePayPresentParamsCopyWithImpl<_ApplePayPresentParams>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ApplePayPresentParamsToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplePayPresentParams&&const DeepCollectionEquality().equals(other._cartItems, _cartItems)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&const DeepCollectionEquality().equals(other._requiredShippingAddressFields, _requiredShippingAddressFields)&&const DeepCollectionEquality().equals(other._requiredBillingContactFields, _requiredBillingContactFields)&&const DeepCollectionEquality().equals(other._shippingMethods, _shippingMethods)&&(identical(other.jcbEnabled, jcbEnabled) || other.jcbEnabled == jcbEnabled));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_cartItems),country,currency,const DeepCollectionEquality().hash(_requiredShippingAddressFields),const DeepCollectionEquality().hash(_requiredBillingContactFields),const DeepCollectionEquality().hash(_shippingMethods),jcbEnabled);
+
+@override
+String toString() {
+  return 'ApplePayPresentParams(cartItems: $cartItems, country: $country, currency: $currency, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, jcbEnabled: $jcbEnabled)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ApplePayPresentParamsCopyWith<$Res> implements $ApplePayPresentParamsCopyWith<$Res> {
+  factory _$ApplePayPresentParamsCopyWith(_ApplePayPresentParams value, $Res Function(_ApplePayPresentParams) _then) = __$ApplePayPresentParamsCopyWithImpl;
+@override @useResult
+$Res call({
+ List<ApplePayCartSummaryItem> cartItems, String country, String currency, List<ApplePayContactFieldsType>? requiredShippingAddressFields, List<ApplePayContactFieldsType>? requiredBillingContactFields, List<ApplePayShippingMethod>? shippingMethods, bool jcbEnabled
+});
+
+
+
+
+}
+/// @nodoc
+class __$ApplePayPresentParamsCopyWithImpl<$Res>
+    implements _$ApplePayPresentParamsCopyWith<$Res> {
+  __$ApplePayPresentParamsCopyWithImpl(this._self, this._then);
+
+  final _ApplePayPresentParams _self;
+  final $Res Function(_ApplePayPresentParams) _then;
+
+/// Create a copy of ApplePayPresentParams
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? cartItems = null,Object? country = null,Object? currency = null,Object? requiredShippingAddressFields = freezed,Object? requiredBillingContactFields = freezed,Object? shippingMethods = freezed,Object? jcbEnabled = null,}) {
+  return _then(_ApplePayPresentParams(
+cartItems: null == cartItems ? _self._cartItems : cartItems // ignore: cast_nullable_to_non_nullable
+as List<ApplePayCartSummaryItem>,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String,currency: null == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
+as String,requiredShippingAddressFields: freezed == requiredShippingAddressFields ? _self._requiredShippingAddressFields : requiredShippingAddressFields // ignore: cast_nullable_to_non_nullable
+as List<ApplePayContactFieldsType>?,requiredBillingContactFields: freezed == requiredBillingContactFields ? _self._requiredBillingContactFields : requiredBillingContactFields // ignore: cast_nullable_to_non_nullable
+as List<ApplePayContactFieldsType>?,shippingMethods: freezed == shippingMethods ? _self._shippingMethods : shippingMethods // ignore: cast_nullable_to_non_nullable
+as List<ApplePayShippingMethod>?,jcbEnabled: null == jcbEnabled ? _self.jcbEnabled : jcbEnabled // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ApplePayErrorAddressField {
-  /// Address field that is affected by the error
-  ApplePayContactFieldsType get field => throw _privateConstructorUsedError;
 
-  /// The error message that will be shown when it is invalid
-  ///
-  /// Defaults to error in the stripe sdk.
-  String? get message => throw _privateConstructorUsedError;
+/// Address field that is affected by the error
+ ApplePayContactFieldsType get field;/// The error message that will be shown when it is invalid
+///
+/// Defaults to error in the stripe sdk.
+ String? get message;
+/// Create a copy of ApplePayErrorAddressField
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ApplePayErrorAddressFieldCopyWith<ApplePayErrorAddressField> get copyWith => _$ApplePayErrorAddressFieldCopyWithImpl<ApplePayErrorAddressField>(this as ApplePayErrorAddressField, _$identity);
 
   /// Serializes this ApplePayErrorAddressField to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ApplePayErrorAddressField
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ApplePayErrorAddressFieldCopyWith<ApplePayErrorAddressField> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplePayErrorAddressField&&(identical(other.field, field) || other.field == field)&&(identical(other.message, message) || other.message == message));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,field,message);
+
+@override
+String toString() {
+  return 'ApplePayErrorAddressField(field: $field, message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ApplePayErrorAddressFieldCopyWith<$Res> {
-  factory $ApplePayErrorAddressFieldCopyWith(ApplePayErrorAddressField value,
-          $Res Function(ApplePayErrorAddressField) then) =
-      _$ApplePayErrorAddressFieldCopyWithImpl<$Res, ApplePayErrorAddressField>;
-  @useResult
-  $Res call({ApplePayContactFieldsType field, String? message});
-}
+abstract mixin class $ApplePayErrorAddressFieldCopyWith<$Res>  {
+  factory $ApplePayErrorAddressFieldCopyWith(ApplePayErrorAddressField value, $Res Function(ApplePayErrorAddressField) _then) = _$ApplePayErrorAddressFieldCopyWithImpl;
+@useResult
+$Res call({
+ ApplePayContactFieldsType field, String? message
+});
 
+
+
+
+}
 /// @nodoc
-class _$ApplePayErrorAddressFieldCopyWithImpl<$Res,
-        $Val extends ApplePayErrorAddressField>
+class _$ApplePayErrorAddressFieldCopyWithImpl<$Res>
     implements $ApplePayErrorAddressFieldCopyWith<$Res> {
-  _$ApplePayErrorAddressFieldCopyWithImpl(this._value, this._then);
+  _$ApplePayErrorAddressFieldCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ApplePayErrorAddressField _self;
+  final $Res Function(ApplePayErrorAddressField) _then;
 
-  /// Create a copy of ApplePayErrorAddressField
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field = null,
-    Object? message = freezed,
-  }) {
-    return _then(_value.copyWith(
-      field: null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as ApplePayContactFieldsType,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of ApplePayErrorAddressField
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? field = null,Object? message = freezed,}) {
+  return _then(_self.copyWith(
+field: null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as ApplePayContactFieldsType,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ApplePayErrorAddressFieldImplCopyWith<$Res>
-    implements $ApplePayErrorAddressFieldCopyWith<$Res> {
-  factory _$$ApplePayErrorAddressFieldImplCopyWith(
-          _$ApplePayErrorAddressFieldImpl value,
-          $Res Function(_$ApplePayErrorAddressFieldImpl) then) =
-      __$$ApplePayErrorAddressFieldImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({ApplePayContactFieldsType field, String? message});
 }
 
-/// @nodoc
-class __$$ApplePayErrorAddressFieldImplCopyWithImpl<$Res>
-    extends _$ApplePayErrorAddressFieldCopyWithImpl<$Res,
-        _$ApplePayErrorAddressFieldImpl>
-    implements _$$ApplePayErrorAddressFieldImplCopyWith<$Res> {
-  __$$ApplePayErrorAddressFieldImplCopyWithImpl(
-      _$ApplePayErrorAddressFieldImpl _value,
-      $Res Function(_$ApplePayErrorAddressFieldImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ApplePayErrorAddressField
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field = null,
-    Object? message = freezed,
-  }) {
-    return _then(_$ApplePayErrorAddressFieldImpl(
-      field: null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as ApplePayContactFieldsType,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ApplePayErrorAddressField].
+extension ApplePayErrorAddressFieldPatterns on ApplePayErrorAddressField {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ApplePayErrorAddressField value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ApplePayErrorAddressField() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ApplePayErrorAddressField value)  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayErrorAddressField():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ApplePayErrorAddressField value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayErrorAddressField() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ApplePayContactFieldsType field,  String? message)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ApplePayErrorAddressField() when $default != null:
+return $default(_that.field,_that.message);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ApplePayContactFieldsType field,  String? message)  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayErrorAddressField():
+return $default(_that.field,_that.message);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ApplePayContactFieldsType field,  String? message)?  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayErrorAddressField() when $default != null:
+return $default(_that.field,_that.message);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ApplePayErrorAddressFieldImpl implements _ApplePayErrorAddressField {
-  const _$ApplePayErrorAddressFieldImpl({required this.field, this.message});
+class _ApplePayErrorAddressField implements ApplePayErrorAddressField {
+  const _ApplePayErrorAddressField({required this.field, this.message});
+  factory _ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) => _$ApplePayErrorAddressFieldFromJson(json);
 
-  factory _$ApplePayErrorAddressFieldImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ApplePayErrorAddressFieldImplFromJson(json);
+/// Address field that is affected by the error
+@override final  ApplePayContactFieldsType field;
+/// The error message that will be shown when it is invalid
+///
+/// Defaults to error in the stripe sdk.
+@override final  String? message;
 
-  /// Address field that is affected by the error
-  @override
-  final ApplePayContactFieldsType field;
+/// Create a copy of ApplePayErrorAddressField
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ApplePayErrorAddressFieldCopyWith<_ApplePayErrorAddressField> get copyWith => __$ApplePayErrorAddressFieldCopyWithImpl<_ApplePayErrorAddressField>(this, _$identity);
 
-  /// The error message that will be shown when it is invalid
-  ///
-  /// Defaults to error in the stripe sdk.
-  @override
-  final String? message;
-
-  @override
-  String toString() {
-    return 'ApplePayErrorAddressField(field: $field, message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApplePayErrorAddressFieldImpl &&
-            (identical(other.field, field) || other.field == field) &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, field, message);
-
-  /// Create a copy of ApplePayErrorAddressField
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplePayErrorAddressFieldImplCopyWith<_$ApplePayErrorAddressFieldImpl>
-      get copyWith => __$$ApplePayErrorAddressFieldImplCopyWithImpl<
-          _$ApplePayErrorAddressFieldImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ApplePayErrorAddressFieldImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ApplePayErrorAddressFieldToJson(this, );
 }
 
-abstract class _ApplePayErrorAddressField implements ApplePayErrorAddressField {
-  const factory _ApplePayErrorAddressField(
-      {required final ApplePayContactFieldsType field,
-      final String? message}) = _$ApplePayErrorAddressFieldImpl;
-
-  factory _ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =
-      _$ApplePayErrorAddressFieldImpl.fromJson;
-
-  /// Address field that is affected by the error
-  @override
-  ApplePayContactFieldsType get field;
-
-  /// The error message that will be shown when it is invalid
-  ///
-  /// Defaults to error in the stripe sdk.
-  @override
-  String? get message;
-
-  /// Create a copy of ApplePayErrorAddressField
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ApplePayErrorAddressFieldImplCopyWith<_$ApplePayErrorAddressFieldImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplePayErrorAddressField&&(identical(other.field, field) || other.field == field)&&(identical(other.message, message) || other.message == message));
 }
 
-ApplePayContactName _$ApplePayContactNameFromJson(Map<String, dynamic> json) {
-  return _ApplePayContactName.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,field,message);
+
+@override
+String toString() {
+  return 'ApplePayErrorAddressField(field: $field, message: $message)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ApplePayErrorAddressFieldCopyWith<$Res> implements $ApplePayErrorAddressFieldCopyWith<$Res> {
+  factory _$ApplePayErrorAddressFieldCopyWith(_ApplePayErrorAddressField value, $Res Function(_ApplePayErrorAddressField) _then) = __$ApplePayErrorAddressFieldCopyWithImpl;
+@override @useResult
+$Res call({
+ ApplePayContactFieldsType field, String? message
+});
+
+
+
+
+}
+/// @nodoc
+class __$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+    implements _$ApplePayErrorAddressFieldCopyWith<$Res> {
+  __$ApplePayErrorAddressFieldCopyWithImpl(this._self, this._then);
+
+  final _ApplePayErrorAddressField _self;
+  final $Res Function(_ApplePayErrorAddressField) _then;
+
+/// Create a copy of ApplePayErrorAddressField
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? field = null,Object? message = freezed,}) {
+  return _then(_ApplePayErrorAddressField(
+field: null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as ApplePayContactFieldsType,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ApplePayContactName {
-  String? get familyName => throw _privateConstructorUsedError;
-  String? get namePrefix => throw _privateConstructorUsedError;
-  String? get nameSuffix => throw _privateConstructorUsedError;
-  String? get givenName => throw _privateConstructorUsedError;
-  String? get middleName => throw _privateConstructorUsedError;
-  String? get nickname => throw _privateConstructorUsedError;
+
+ String? get familyName; String? get namePrefix; String? get nameSuffix; String? get givenName; String? get middleName; String? get nickname;
+/// Create a copy of ApplePayContactName
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ApplePayContactNameCopyWith<ApplePayContactName> get copyWith => _$ApplePayContactNameCopyWithImpl<ApplePayContactName>(this as ApplePayContactName, _$identity);
 
   /// Serializes this ApplePayContactName to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ApplePayContactName
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ApplePayContactNameCopyWith<ApplePayContactName> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplePayContactName&&(identical(other.familyName, familyName) || other.familyName == familyName)&&(identical(other.namePrefix, namePrefix) || other.namePrefix == namePrefix)&&(identical(other.nameSuffix, nameSuffix) || other.nameSuffix == nameSuffix)&&(identical(other.givenName, givenName) || other.givenName == givenName)&&(identical(other.middleName, middleName) || other.middleName == middleName)&&(identical(other.nickname, nickname) || other.nickname == nickname));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,familyName,namePrefix,nameSuffix,givenName,middleName,nickname);
+
+@override
+String toString() {
+  return 'ApplePayContactName(familyName: $familyName, namePrefix: $namePrefix, nameSuffix: $nameSuffix, givenName: $givenName, middleName: $middleName, nickname: $nickname)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ApplePayContactNameCopyWith<$Res> {
-  factory $ApplePayContactNameCopyWith(
-          ApplePayContactName value, $Res Function(ApplePayContactName) then) =
-      _$ApplePayContactNameCopyWithImpl<$Res, ApplePayContactName>;
-  @useResult
-  $Res call(
-      {String? familyName,
-      String? namePrefix,
-      String? nameSuffix,
-      String? givenName,
-      String? middleName,
-      String? nickname});
-}
+abstract mixin class $ApplePayContactNameCopyWith<$Res>  {
+  factory $ApplePayContactNameCopyWith(ApplePayContactName value, $Res Function(ApplePayContactName) _then) = _$ApplePayContactNameCopyWithImpl;
+@useResult
+$Res call({
+ String? familyName, String? namePrefix, String? nameSuffix, String? givenName, String? middleName, String? nickname
+});
 
+
+
+
+}
 /// @nodoc
-class _$ApplePayContactNameCopyWithImpl<$Res, $Val extends ApplePayContactName>
+class _$ApplePayContactNameCopyWithImpl<$Res>
     implements $ApplePayContactNameCopyWith<$Res> {
-  _$ApplePayContactNameCopyWithImpl(this._value, this._then);
+  _$ApplePayContactNameCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ApplePayContactName _self;
+  final $Res Function(ApplePayContactName) _then;
 
-  /// Create a copy of ApplePayContactName
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? familyName = freezed,
-    Object? namePrefix = freezed,
-    Object? nameSuffix = freezed,
-    Object? givenName = freezed,
-    Object? middleName = freezed,
-    Object? nickname = freezed,
-  }) {
-    return _then(_value.copyWith(
-      familyName: freezed == familyName
-          ? _value.familyName
-          : familyName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      namePrefix: freezed == namePrefix
-          ? _value.namePrefix
-          : namePrefix // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nameSuffix: freezed == nameSuffix
-          ? _value.nameSuffix
-          : nameSuffix // ignore: cast_nullable_to_non_nullable
-              as String?,
-      givenName: freezed == givenName
-          ? _value.givenName
-          : givenName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      middleName: freezed == middleName
-          ? _value.middleName
-          : middleName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nickname: freezed == nickname
-          ? _value.nickname
-          : nickname // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of ApplePayContactName
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? familyName = freezed,Object? namePrefix = freezed,Object? nameSuffix = freezed,Object? givenName = freezed,Object? middleName = freezed,Object? nickname = freezed,}) {
+  return _then(_self.copyWith(
+familyName: freezed == familyName ? _self.familyName : familyName // ignore: cast_nullable_to_non_nullable
+as String?,namePrefix: freezed == namePrefix ? _self.namePrefix : namePrefix // ignore: cast_nullable_to_non_nullable
+as String?,nameSuffix: freezed == nameSuffix ? _self.nameSuffix : nameSuffix // ignore: cast_nullable_to_non_nullable
+as String?,givenName: freezed == givenName ? _self.givenName : givenName // ignore: cast_nullable_to_non_nullable
+as String?,middleName: freezed == middleName ? _self.middleName : middleName // ignore: cast_nullable_to_non_nullable
+as String?,nickname: freezed == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ApplePayContactNameImplCopyWith<$Res>
-    implements $ApplePayContactNameCopyWith<$Res> {
-  factory _$$ApplePayContactNameImplCopyWith(_$ApplePayContactNameImpl value,
-          $Res Function(_$ApplePayContactNameImpl) then) =
-      __$$ApplePayContactNameImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? familyName,
-      String? namePrefix,
-      String? nameSuffix,
-      String? givenName,
-      String? middleName,
-      String? nickname});
 }
 
-/// @nodoc
-class __$$ApplePayContactNameImplCopyWithImpl<$Res>
-    extends _$ApplePayContactNameCopyWithImpl<$Res, _$ApplePayContactNameImpl>
-    implements _$$ApplePayContactNameImplCopyWith<$Res> {
-  __$$ApplePayContactNameImplCopyWithImpl(_$ApplePayContactNameImpl _value,
-      $Res Function(_$ApplePayContactNameImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ApplePayContactName
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? familyName = freezed,
-    Object? namePrefix = freezed,
-    Object? nameSuffix = freezed,
-    Object? givenName = freezed,
-    Object? middleName = freezed,
-    Object? nickname = freezed,
-  }) {
-    return _then(_$ApplePayContactNameImpl(
-      familyName: freezed == familyName
-          ? _value.familyName
-          : familyName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      namePrefix: freezed == namePrefix
-          ? _value.namePrefix
-          : namePrefix // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nameSuffix: freezed == nameSuffix
-          ? _value.nameSuffix
-          : nameSuffix // ignore: cast_nullable_to_non_nullable
-              as String?,
-      givenName: freezed == givenName
-          ? _value.givenName
-          : givenName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      middleName: freezed == middleName
-          ? _value.middleName
-          : middleName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nickname: freezed == nickname
-          ? _value.nickname
-          : nickname // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ApplePayContactName].
+extension ApplePayContactNamePatterns on ApplePayContactName {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ApplePayContactName value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ApplePayContactName() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ApplePayContactName value)  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayContactName():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ApplePayContactName value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayContactName() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? familyName,  String? namePrefix,  String? nameSuffix,  String? givenName,  String? middleName,  String? nickname)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ApplePayContactName() when $default != null:
+return $default(_that.familyName,_that.namePrefix,_that.nameSuffix,_that.givenName,_that.middleName,_that.nickname);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? familyName,  String? namePrefix,  String? nameSuffix,  String? givenName,  String? middleName,  String? nickname)  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayContactName():
+return $default(_that.familyName,_that.namePrefix,_that.nameSuffix,_that.givenName,_that.middleName,_that.nickname);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? familyName,  String? namePrefix,  String? nameSuffix,  String? givenName,  String? middleName,  String? nickname)?  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayContactName() when $default != null:
+return $default(_that.familyName,_that.namePrefix,_that.nameSuffix,_that.givenName,_that.middleName,_that.nickname);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ApplePayContactNameImpl implements _ApplePayContactName {
-  const _$ApplePayContactNameImpl(
-      {this.familyName,
-      this.namePrefix,
-      this.nameSuffix,
-      this.givenName,
-      this.middleName,
-      this.nickname});
+class _ApplePayContactName implements ApplePayContactName {
+  const _ApplePayContactName({this.familyName, this.namePrefix, this.nameSuffix, this.givenName, this.middleName, this.nickname});
+  factory _ApplePayContactName.fromJson(Map<String, dynamic> json) => _$ApplePayContactNameFromJson(json);
 
-  factory _$ApplePayContactNameImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ApplePayContactNameImplFromJson(json);
+@override final  String? familyName;
+@override final  String? namePrefix;
+@override final  String? nameSuffix;
+@override final  String? givenName;
+@override final  String? middleName;
+@override final  String? nickname;
 
-  @override
-  final String? familyName;
-  @override
-  final String? namePrefix;
-  @override
-  final String? nameSuffix;
-  @override
-  final String? givenName;
-  @override
-  final String? middleName;
-  @override
-  final String? nickname;
+/// Create a copy of ApplePayContactName
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ApplePayContactNameCopyWith<_ApplePayContactName> get copyWith => __$ApplePayContactNameCopyWithImpl<_ApplePayContactName>(this, _$identity);
 
-  @override
-  String toString() {
-    return 'ApplePayContactName(familyName: $familyName, namePrefix: $namePrefix, nameSuffix: $nameSuffix, givenName: $givenName, middleName: $middleName, nickname: $nickname)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApplePayContactNameImpl &&
-            (identical(other.familyName, familyName) ||
-                other.familyName == familyName) &&
-            (identical(other.namePrefix, namePrefix) ||
-                other.namePrefix == namePrefix) &&
-            (identical(other.nameSuffix, nameSuffix) ||
-                other.nameSuffix == nameSuffix) &&
-            (identical(other.givenName, givenName) ||
-                other.givenName == givenName) &&
-            (identical(other.middleName, middleName) ||
-                other.middleName == middleName) &&
-            (identical(other.nickname, nickname) ||
-                other.nickname == nickname));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, familyName, namePrefix,
-      nameSuffix, givenName, middleName, nickname);
-
-  /// Create a copy of ApplePayContactName
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplePayContactNameImplCopyWith<_$ApplePayContactNameImpl> get copyWith =>
-      __$$ApplePayContactNameImplCopyWithImpl<_$ApplePayContactNameImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ApplePayContactNameImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ApplePayContactNameToJson(this, );
 }
 
-abstract class _ApplePayContactName implements ApplePayContactName {
-  const factory _ApplePayContactName(
-      {final String? familyName,
-      final String? namePrefix,
-      final String? nameSuffix,
-      final String? givenName,
-      final String? middleName,
-      final String? nickname}) = _$ApplePayContactNameImpl;
-
-  factory _ApplePayContactName.fromJson(Map<String, dynamic> json) =
-      _$ApplePayContactNameImpl.fromJson;
-
-  @override
-  String? get familyName;
-  @override
-  String? get namePrefix;
-  @override
-  String? get nameSuffix;
-  @override
-  String? get givenName;
-  @override
-  String? get middleName;
-  @override
-  String? get nickname;
-
-  /// Create a copy of ApplePayContactName
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ApplePayContactNameImplCopyWith<_$ApplePayContactNameImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplePayContactName&&(identical(other.familyName, familyName) || other.familyName == familyName)&&(identical(other.namePrefix, namePrefix) || other.namePrefix == namePrefix)&&(identical(other.nameSuffix, nameSuffix) || other.nameSuffix == nameSuffix)&&(identical(other.givenName, givenName) || other.givenName == givenName)&&(identical(other.middleName, middleName) || other.middleName == middleName)&&(identical(other.nickname, nickname) || other.nickname == nickname));
 }
 
-ApplePayPostalAddress _$ApplePayPostalAddressFromJson(
-    Map<String, dynamic> json) {
-  return _ApplePayPostalAddress.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,familyName,namePrefix,nameSuffix,givenName,middleName,nickname);
+
+@override
+String toString() {
+  return 'ApplePayContactName(familyName: $familyName, namePrefix: $namePrefix, nameSuffix: $nameSuffix, givenName: $givenName, middleName: $middleName, nickname: $nickname)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ApplePayContactNameCopyWith<$Res> implements $ApplePayContactNameCopyWith<$Res> {
+  factory _$ApplePayContactNameCopyWith(_ApplePayContactName value, $Res Function(_ApplePayContactName) _then) = __$ApplePayContactNameCopyWithImpl;
+@override @useResult
+$Res call({
+ String? familyName, String? namePrefix, String? nameSuffix, String? givenName, String? middleName, String? nickname
+});
+
+
+
+
+}
+/// @nodoc
+class __$ApplePayContactNameCopyWithImpl<$Res>
+    implements _$ApplePayContactNameCopyWith<$Res> {
+  __$ApplePayContactNameCopyWithImpl(this._self, this._then);
+
+  final _ApplePayContactName _self;
+  final $Res Function(_ApplePayContactName) _then;
+
+/// Create a copy of ApplePayContactName
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? familyName = freezed,Object? namePrefix = freezed,Object? nameSuffix = freezed,Object? givenName = freezed,Object? middleName = freezed,Object? nickname = freezed,}) {
+  return _then(_ApplePayContactName(
+familyName: freezed == familyName ? _self.familyName : familyName // ignore: cast_nullable_to_non_nullable
+as String?,namePrefix: freezed == namePrefix ? _self.namePrefix : namePrefix // ignore: cast_nullable_to_non_nullable
+as String?,nameSuffix: freezed == nameSuffix ? _self.nameSuffix : nameSuffix // ignore: cast_nullable_to_non_nullable
+as String?,givenName: freezed == givenName ? _self.givenName : givenName // ignore: cast_nullable_to_non_nullable
+as String?,middleName: freezed == middleName ? _self.middleName : middleName // ignore: cast_nullable_to_non_nullable
+as String?,nickname: freezed == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ApplePayPostalAddress {
-  String? get city => throw _privateConstructorUsedError;
-  String? get country => throw _privateConstructorUsedError;
-  String? get postalCode => throw _privateConstructorUsedError;
-  String? get state => throw _privateConstructorUsedError;
-  String? get street => throw _privateConstructorUsedError;
-  String? get isoCountryCode => throw _privateConstructorUsedError;
-  String? get subAdministrativeArea => throw _privateConstructorUsedError;
-  String? get subLocality => throw _privateConstructorUsedError;
+
+ String? get city; String? get country; String? get postalCode; String? get state; String? get street; String? get isoCountryCode; String? get subAdministrativeArea; String? get subLocality;
+/// Create a copy of ApplePayPostalAddress
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ApplePayPostalAddressCopyWith<ApplePayPostalAddress> get copyWith => _$ApplePayPostalAddressCopyWithImpl<ApplePayPostalAddress>(this as ApplePayPostalAddress, _$identity);
 
   /// Serializes this ApplePayPostalAddress to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ApplePayPostalAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ApplePayPostalAddressCopyWith<ApplePayPostalAddress> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplePayPostalAddress&&(identical(other.city, city) || other.city == city)&&(identical(other.country, country) || other.country == country)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.state, state) || other.state == state)&&(identical(other.street, street) || other.street == street)&&(identical(other.isoCountryCode, isoCountryCode) || other.isoCountryCode == isoCountryCode)&&(identical(other.subAdministrativeArea, subAdministrativeArea) || other.subAdministrativeArea == subAdministrativeArea)&&(identical(other.subLocality, subLocality) || other.subLocality == subLocality));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,city,country,postalCode,state,street,isoCountryCode,subAdministrativeArea,subLocality);
+
+@override
+String toString() {
+  return 'ApplePayPostalAddress(city: $city, country: $country, postalCode: $postalCode, state: $state, street: $street, isoCountryCode: $isoCountryCode, subAdministrativeArea: $subAdministrativeArea, subLocality: $subLocality)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ApplePayPostalAddressCopyWith<$Res> {
-  factory $ApplePayPostalAddressCopyWith(ApplePayPostalAddress value,
-          $Res Function(ApplePayPostalAddress) then) =
-      _$ApplePayPostalAddressCopyWithImpl<$Res, ApplePayPostalAddress>;
-  @useResult
-  $Res call(
-      {String? city,
-      String? country,
-      String? postalCode,
-      String? state,
-      String? street,
-      String? isoCountryCode,
-      String? subAdministrativeArea,
-      String? subLocality});
-}
+abstract mixin class $ApplePayPostalAddressCopyWith<$Res>  {
+  factory $ApplePayPostalAddressCopyWith(ApplePayPostalAddress value, $Res Function(ApplePayPostalAddress) _then) = _$ApplePayPostalAddressCopyWithImpl;
+@useResult
+$Res call({
+ String? city, String? country, String? postalCode, String? state, String? street, String? isoCountryCode, String? subAdministrativeArea, String? subLocality
+});
 
+
+
+
+}
 /// @nodoc
-class _$ApplePayPostalAddressCopyWithImpl<$Res,
-        $Val extends ApplePayPostalAddress>
+class _$ApplePayPostalAddressCopyWithImpl<$Res>
     implements $ApplePayPostalAddressCopyWith<$Res> {
-  _$ApplePayPostalAddressCopyWithImpl(this._value, this._then);
+  _$ApplePayPostalAddressCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ApplePayPostalAddress _self;
+  final $Res Function(ApplePayPostalAddress) _then;
 
-  /// Create a copy of ApplePayPostalAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? city = freezed,
-    Object? country = freezed,
-    Object? postalCode = freezed,
-    Object? state = freezed,
-    Object? street = freezed,
-    Object? isoCountryCode = freezed,
-    Object? subAdministrativeArea = freezed,
-    Object? subLocality = freezed,
-  }) {
-    return _then(_value.copyWith(
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-      postalCode: freezed == postalCode
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-      street: freezed == street
-          ? _value.street
-          : street // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isoCountryCode: freezed == isoCountryCode
-          ? _value.isoCountryCode
-          : isoCountryCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subAdministrativeArea: freezed == subAdministrativeArea
-          ? _value.subAdministrativeArea
-          : subAdministrativeArea // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subLocality: freezed == subLocality
-          ? _value.subLocality
-          : subLocality // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of ApplePayPostalAddress
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? city = freezed,Object? country = freezed,Object? postalCode = freezed,Object? state = freezed,Object? street = freezed,Object? isoCountryCode = freezed,Object? subAdministrativeArea = freezed,Object? subLocality = freezed,}) {
+  return _then(_self.copyWith(
+city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as String?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String?,postalCode: freezed == postalCode ? _self.postalCode : postalCode // ignore: cast_nullable_to_non_nullable
+as String?,state: freezed == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as String?,street: freezed == street ? _self.street : street // ignore: cast_nullable_to_non_nullable
+as String?,isoCountryCode: freezed == isoCountryCode ? _self.isoCountryCode : isoCountryCode // ignore: cast_nullable_to_non_nullable
+as String?,subAdministrativeArea: freezed == subAdministrativeArea ? _self.subAdministrativeArea : subAdministrativeArea // ignore: cast_nullable_to_non_nullable
+as String?,subLocality: freezed == subLocality ? _self.subLocality : subLocality // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ApplePayPostalAddressImplCopyWith<$Res>
-    implements $ApplePayPostalAddressCopyWith<$Res> {
-  factory _$$ApplePayPostalAddressImplCopyWith(
-          _$ApplePayPostalAddressImpl value,
-          $Res Function(_$ApplePayPostalAddressImpl) then) =
-      __$$ApplePayPostalAddressImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? city,
-      String? country,
-      String? postalCode,
-      String? state,
-      String? street,
-      String? isoCountryCode,
-      String? subAdministrativeArea,
-      String? subLocality});
 }
 
-/// @nodoc
-class __$$ApplePayPostalAddressImplCopyWithImpl<$Res>
-    extends _$ApplePayPostalAddressCopyWithImpl<$Res,
-        _$ApplePayPostalAddressImpl>
-    implements _$$ApplePayPostalAddressImplCopyWith<$Res> {
-  __$$ApplePayPostalAddressImplCopyWithImpl(_$ApplePayPostalAddressImpl _value,
-      $Res Function(_$ApplePayPostalAddressImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ApplePayPostalAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? city = freezed,
-    Object? country = freezed,
-    Object? postalCode = freezed,
-    Object? state = freezed,
-    Object? street = freezed,
-    Object? isoCountryCode = freezed,
-    Object? subAdministrativeArea = freezed,
-    Object? subLocality = freezed,
-  }) {
-    return _then(_$ApplePayPostalAddressImpl(
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-      postalCode: freezed == postalCode
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-      street: freezed == street
-          ? _value.street
-          : street // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isoCountryCode: freezed == isoCountryCode
-          ? _value.isoCountryCode
-          : isoCountryCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subAdministrativeArea: freezed == subAdministrativeArea
-          ? _value.subAdministrativeArea
-          : subAdministrativeArea // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subLocality: freezed == subLocality
-          ? _value.subLocality
-          : subLocality // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ApplePayPostalAddress].
+extension ApplePayPostalAddressPatterns on ApplePayPostalAddress {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ApplePayPostalAddress value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ApplePayPostalAddress() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ApplePayPostalAddress value)  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayPostalAddress():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ApplePayPostalAddress value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ApplePayPostalAddress() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? city,  String? country,  String? postalCode,  String? state,  String? street,  String? isoCountryCode,  String? subAdministrativeArea,  String? subLocality)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ApplePayPostalAddress() when $default != null:
+return $default(_that.city,_that.country,_that.postalCode,_that.state,_that.street,_that.isoCountryCode,_that.subAdministrativeArea,_that.subLocality);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? city,  String? country,  String? postalCode,  String? state,  String? street,  String? isoCountryCode,  String? subAdministrativeArea,  String? subLocality)  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayPostalAddress():
+return $default(_that.city,_that.country,_that.postalCode,_that.state,_that.street,_that.isoCountryCode,_that.subAdministrativeArea,_that.subLocality);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? city,  String? country,  String? postalCode,  String? state,  String? street,  String? isoCountryCode,  String? subAdministrativeArea,  String? subLocality)?  $default,) {final _that = this;
+switch (_that) {
+case _ApplePayPostalAddress() when $default != null:
+return $default(_that.city,_that.country,_that.postalCode,_that.state,_that.street,_that.isoCountryCode,_that.subAdministrativeArea,_that.subLocality);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ApplePayPostalAddressImpl implements _ApplePayPostalAddress {
-  const _$ApplePayPostalAddressImpl(
-      {this.city,
-      this.country,
-      this.postalCode,
-      this.state,
-      this.street,
-      this.isoCountryCode,
-      this.subAdministrativeArea,
-      this.subLocality});
+class _ApplePayPostalAddress implements ApplePayPostalAddress {
+  const _ApplePayPostalAddress({this.city, this.country, this.postalCode, this.state, this.street, this.isoCountryCode, this.subAdministrativeArea, this.subLocality});
+  factory _ApplePayPostalAddress.fromJson(Map<String, dynamic> json) => _$ApplePayPostalAddressFromJson(json);
 
-  factory _$ApplePayPostalAddressImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ApplePayPostalAddressImplFromJson(json);
+@override final  String? city;
+@override final  String? country;
+@override final  String? postalCode;
+@override final  String? state;
+@override final  String? street;
+@override final  String? isoCountryCode;
+@override final  String? subAdministrativeArea;
+@override final  String? subLocality;
 
-  @override
-  final String? city;
-  @override
-  final String? country;
-  @override
-  final String? postalCode;
-  @override
-  final String? state;
-  @override
-  final String? street;
-  @override
-  final String? isoCountryCode;
-  @override
-  final String? subAdministrativeArea;
-  @override
-  final String? subLocality;
+/// Create a copy of ApplePayPostalAddress
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ApplePayPostalAddressCopyWith<_ApplePayPostalAddress> get copyWith => __$ApplePayPostalAddressCopyWithImpl<_ApplePayPostalAddress>(this, _$identity);
 
-  @override
-  String toString() {
-    return 'ApplePayPostalAddress(city: $city, country: $country, postalCode: $postalCode, state: $state, street: $street, isoCountryCode: $isoCountryCode, subAdministrativeArea: $subAdministrativeArea, subLocality: $subLocality)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApplePayPostalAddressImpl &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.postalCode, postalCode) ||
-                other.postalCode == postalCode) &&
-            (identical(other.state, state) || other.state == state) &&
-            (identical(other.street, street) || other.street == street) &&
-            (identical(other.isoCountryCode, isoCountryCode) ||
-                other.isoCountryCode == isoCountryCode) &&
-            (identical(other.subAdministrativeArea, subAdministrativeArea) ||
-                other.subAdministrativeArea == subAdministrativeArea) &&
-            (identical(other.subLocality, subLocality) ||
-                other.subLocality == subLocality));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, city, country, postalCode, state,
-      street, isoCountryCode, subAdministrativeArea, subLocality);
-
-  /// Create a copy of ApplePayPostalAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplePayPostalAddressImplCopyWith<_$ApplePayPostalAddressImpl>
-      get copyWith => __$$ApplePayPostalAddressImplCopyWithImpl<
-          _$ApplePayPostalAddressImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ApplePayPostalAddressImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ApplePayPostalAddressToJson(this, );
 }
 
-abstract class _ApplePayPostalAddress implements ApplePayPostalAddress {
-  const factory _ApplePayPostalAddress(
-      {final String? city,
-      final String? country,
-      final String? postalCode,
-      final String? state,
-      final String? street,
-      final String? isoCountryCode,
-      final String? subAdministrativeArea,
-      final String? subLocality}) = _$ApplePayPostalAddressImpl;
-
-  factory _ApplePayPostalAddress.fromJson(Map<String, dynamic> json) =
-      _$ApplePayPostalAddressImpl.fromJson;
-
-  @override
-  String? get city;
-  @override
-  String? get country;
-  @override
-  String? get postalCode;
-  @override
-  String? get state;
-  @override
-  String? get street;
-  @override
-  String? get isoCountryCode;
-  @override
-  String? get subAdministrativeArea;
-  @override
-  String? get subLocality;
-
-  /// Create a copy of ApplePayPostalAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ApplePayPostalAddressImplCopyWith<_$ApplePayPostalAddressImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplePayPostalAddress&&(identical(other.city, city) || other.city == city)&&(identical(other.country, country) || other.country == country)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.state, state) || other.state == state)&&(identical(other.street, street) || other.street == street)&&(identical(other.isoCountryCode, isoCountryCode) || other.isoCountryCode == isoCountryCode)&&(identical(other.subAdministrativeArea, subAdministrativeArea) || other.subAdministrativeArea == subAdministrativeArea)&&(identical(other.subLocality, subLocality) || other.subLocality == subLocality));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,city,country,postalCode,state,street,isoCountryCode,subAdministrativeArea,subLocality);
+
+@override
+String toString() {
+  return 'ApplePayPostalAddress(city: $city, country: $country, postalCode: $postalCode, state: $state, street: $street, isoCountryCode: $isoCountryCode, subAdministrativeArea: $subAdministrativeArea, subLocality: $subLocality)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ApplePayPostalAddressCopyWith<$Res> implements $ApplePayPostalAddressCopyWith<$Res> {
+  factory _$ApplePayPostalAddressCopyWith(_ApplePayPostalAddress value, $Res Function(_ApplePayPostalAddress) _then) = __$ApplePayPostalAddressCopyWithImpl;
+@override @useResult
+$Res call({
+ String? city, String? country, String? postalCode, String? state, String? street, String? isoCountryCode, String? subAdministrativeArea, String? subLocality
+});
+
+
+
+
+}
+/// @nodoc
+class __$ApplePayPostalAddressCopyWithImpl<$Res>
+    implements _$ApplePayPostalAddressCopyWith<$Res> {
+  __$ApplePayPostalAddressCopyWithImpl(this._self, this._then);
+
+  final _ApplePayPostalAddress _self;
+  final $Res Function(_ApplePayPostalAddress) _then;
+
+/// Create a copy of ApplePayPostalAddress
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? city = freezed,Object? country = freezed,Object? postalCode = freezed,Object? state = freezed,Object? street = freezed,Object? isoCountryCode = freezed,Object? subAdministrativeArea = freezed,Object? subLocality = freezed,}) {
+  return _then(_ApplePayPostalAddress(
+city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as String?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String?,postalCode: freezed == postalCode ? _self.postalCode : postalCode // ignore: cast_nullable_to_non_nullable
+as String?,state: freezed == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as String?,street: freezed == street ? _self.street : street // ignore: cast_nullable_to_non_nullable
+as String?,isoCountryCode: freezed == isoCountryCode ? _self.isoCountryCode : isoCountryCode // ignore: cast_nullable_to_non_nullable
+as String?,subAdministrativeArea: freezed == subAdministrativeArea ? _self.subAdministrativeArea : subAdministrativeArea // ignore: cast_nullable_to_non_nullable
+as String?,subLocality: freezed == subLocality ? _self.subLocality : subLocality // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

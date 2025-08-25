@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,552 +9,607 @@ part of 'billing_details.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-BillingDetails _$BillingDetailsFromJson(Map<String, dynamic> json) {
-  return _BillingDetails.fromJson(json);
-}
 
 /// @nodoc
 mixin _$BillingDetails {
-  /// Email address.
-  String? get email => throw _privateConstructorUsedError;
 
-  /// Billing address.
-  BillingAddress? get address => throw _privateConstructorUsedError;
-
-  /// Billing phone number.
-  String? get phone => throw _privateConstructorUsedError;
-
-  /// Full name.
-  String? get name => throw _privateConstructorUsedError;
+/// Email address.
+ String? get email;/// Billing address.
+ BillingAddress? get address;/// Billing phone number.
+ String? get phone;/// Full name.
+ String? get name;
+/// Create a copy of BillingDetails
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BillingDetailsCopyWith<BillingDetails> get copyWith => _$BillingDetailsCopyWithImpl<BillingDetails>(this as BillingDetails, _$identity);
 
   /// Serializes this BillingDetails to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BillingDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BillingDetailsCopyWith<BillingDetails> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BillingDetails&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.name, name) || other.name == name));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,email,address,phone,name);
+
+@override
+String toString() {
+  return 'BillingDetails(email: $email, address: $address, phone: $phone, name: $name)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $BillingDetailsCopyWith<$Res> {
-  factory $BillingDetailsCopyWith(
-          BillingDetails value, $Res Function(BillingDetails) then) =
-      _$BillingDetailsCopyWithImpl<$Res, BillingDetails>;
-  @useResult
-  $Res call(
-      {String? email, BillingAddress? address, String? phone, String? name});
+abstract mixin class $BillingDetailsCopyWith<$Res>  {
+  factory $BillingDetailsCopyWith(BillingDetails value, $Res Function(BillingDetails) _then) = _$BillingDetailsCopyWithImpl;
+@useResult
+$Res call({
+ String? email, BillingAddress? address, String? phone, String? name
+});
 
-  $BillingAddressCopyWith<$Res>? get address;
+
+$BillingAddressCopyWith<$Res>? get address;
+
 }
-
 /// @nodoc
-class _$BillingDetailsCopyWithImpl<$Res, $Val extends BillingDetails>
+class _$BillingDetailsCopyWithImpl<$Res>
     implements $BillingDetailsCopyWith<$Res> {
-  _$BillingDetailsCopyWithImpl(this._value, this._then);
+  _$BillingDetailsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BillingDetails _self;
+  final $Res Function(BillingDetails) _then;
 
-  /// Create a copy of BillingDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = freezed,
-    Object? address = freezed,
-    Object? phone = freezed,
-    Object? name = freezed,
-  }) {
-    return _then(_value.copyWith(
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as BillingAddress?,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+/// Create a copy of BillingDetails
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? email = freezed,Object? address = freezed,Object? phone = freezed,Object? name = freezed,}) {
+  return _then(_self.copyWith(
+email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as BillingAddress?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+/// Create a copy of BillingDetails
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BillingAddressCopyWith<$Res>? get address {
+    if (_self.address == null) {
+    return null;
   }
 
-  /// Create a copy of BillingDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BillingAddressCopyWith<$Res>? get address {
-    if (_value.address == null) {
-      return null;
-    }
-
-    return $BillingAddressCopyWith<$Res>(_value.address!, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
-  }
+  return $BillingAddressCopyWith<$Res>(_self.address!, (value) {
+    return _then(_self.copyWith(address: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$BillingDetailsImplCopyWith<$Res>
-    implements $BillingDetailsCopyWith<$Res> {
-  factory _$$BillingDetailsImplCopyWith(_$BillingDetailsImpl value,
-          $Res Function(_$BillingDetailsImpl) then) =
-      __$$BillingDetailsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? email, BillingAddress? address, String? phone, String? name});
 
-  @override
-  $BillingAddressCopyWith<$Res>? get address;
+/// Adds pattern-matching-related methods to [BillingDetails].
+extension BillingDetailsPatterns on BillingDetails {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BillingDetails value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _BillingDetails() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BillingDetails value)  $default,){
+final _that = this;
+switch (_that) {
+case _BillingDetails():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BillingDetails value)?  $default,){
+final _that = this;
+switch (_that) {
+case _BillingDetails() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? email,  BillingAddress? address,  String? phone,  String? name)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _BillingDetails() when $default != null:
+return $default(_that.email,_that.address,_that.phone,_that.name);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? email,  BillingAddress? address,  String? phone,  String? name)  $default,) {final _that = this;
+switch (_that) {
+case _BillingDetails():
+return $default(_that.email,_that.address,_that.phone,_that.name);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? email,  BillingAddress? address,  String? phone,  String? name)?  $default,) {final _that = this;
+switch (_that) {
+case _BillingDetails() when $default != null:
+return $default(_that.email,_that.address,_that.phone,_that.name);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$BillingDetailsImplCopyWithImpl<$Res>
-    extends _$BillingDetailsCopyWithImpl<$Res, _$BillingDetailsImpl>
-    implements _$$BillingDetailsImplCopyWith<$Res> {
-  __$$BillingDetailsImplCopyWithImpl(
-      _$BillingDetailsImpl _value, $Res Function(_$BillingDetailsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of BillingDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = freezed,
-    Object? address = freezed,
-    Object? phone = freezed,
-    Object? name = freezed,
-  }) {
-    return _then(_$BillingDetailsImpl(
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as BillingAddress?,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$BillingDetailsImpl implements _BillingDetails {
-  const _$BillingDetailsImpl({this.email, this.address, this.phone, this.name});
 
-  factory _$BillingDetailsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BillingDetailsImplFromJson(json);
+class _BillingDetails implements BillingDetails {
+  const _BillingDetails({this.email, this.address, this.phone, this.name});
+  factory _BillingDetails.fromJson(Map<String, dynamic> json) => _$BillingDetailsFromJson(json);
 
-  /// Email address.
-  @override
-  final String? email;
+/// Email address.
+@override final  String? email;
+/// Billing address.
+@override final  BillingAddress? address;
+/// Billing phone number.
+@override final  String? phone;
+/// Full name.
+@override final  String? name;
 
-  /// Billing address.
-  @override
-  final BillingAddress? address;
+/// Create a copy of BillingDetails
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BillingDetailsCopyWith<_BillingDetails> get copyWith => __$BillingDetailsCopyWithImpl<_BillingDetails>(this, _$identity);
 
-  /// Billing phone number.
-  @override
-  final String? phone;
+@override
+Map<String, dynamic> toJson() {
+  return _$BillingDetailsToJson(this, );
+}
 
-  /// Full name.
-  @override
-  final String? name;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillingDetails&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.name, name) || other.name == name));
+}
 
-  @override
-  String toString() {
-    return 'BillingDetails(email: $email, address: $address, phone: $phone, name: $name)';
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,email,address,phone,name);
+
+@override
+String toString() {
+  return 'BillingDetails(email: $email, address: $address, phone: $phone, name: $name)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$BillingDetailsCopyWith<$Res> implements $BillingDetailsCopyWith<$Res> {
+  factory _$BillingDetailsCopyWith(_BillingDetails value, $Res Function(_BillingDetails) _then) = __$BillingDetailsCopyWithImpl;
+@override @useResult
+$Res call({
+ String? email, BillingAddress? address, String? phone, String? name
+});
+
+
+@override $BillingAddressCopyWith<$Res>? get address;
+
+}
+/// @nodoc
+class __$BillingDetailsCopyWithImpl<$Res>
+    implements _$BillingDetailsCopyWith<$Res> {
+  __$BillingDetailsCopyWithImpl(this._self, this._then);
+
+  final _BillingDetails _self;
+  final $Res Function(_BillingDetails) _then;
+
+/// Create a copy of BillingDetails
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? email = freezed,Object? address = freezed,Object? phone = freezed,Object? name = freezed,}) {
+  return _then(_BillingDetails(
+email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as BillingAddress?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+/// Create a copy of BillingDetails
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BillingAddressCopyWith<$Res>? get address {
+    if (_self.address == null) {
+    return null;
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BillingDetailsImpl &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.name, name) || other.name == name));
-  }
+  return $BillingAddressCopyWith<$Res>(_self.address!, (value) {
+    return _then(_self.copyWith(address: value));
+  });
+}
+}
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, email, address, phone, name);
-
-  /// Create a copy of BillingDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BillingDetailsImplCopyWith<_$BillingDetailsImpl> get copyWith =>
-      __$$BillingDetailsImplCopyWithImpl<_$BillingDetailsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BillingDetailsImplToJson(
-      this,
+BillingAddress _$BillingAddressFromJson(
+  Map<String, dynamic> json
+) {
+    return _PaymentElementBillingDetailsAddress.fromJson(
+      json
     );
-  }
-}
-
-abstract class _BillingDetails implements BillingDetails {
-  const factory _BillingDetails(
-      {final String? email,
-      final BillingAddress? address,
-      final String? phone,
-      final String? name}) = _$BillingDetailsImpl;
-
-  factory _BillingDetails.fromJson(Map<String, dynamic> json) =
-      _$BillingDetailsImpl.fromJson;
-
-  /// Email address.
-  @override
-  String? get email;
-
-  /// Billing address.
-  @override
-  BillingAddress? get address;
-
-  /// Billing phone number.
-  @override
-  String? get phone;
-
-  /// Full name.
-  @override
-  String? get name;
-
-  /// Create a copy of BillingDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BillingDetailsImplCopyWith<_$BillingDetailsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-BillingAddress _$BillingAddressFromJson(Map<String, dynamic> json) {
-  return _PaymentElementBillingDetailsAddress.fromJson(json);
 }
 
 /// @nodoc
 mixin _$BillingAddress {
-  /// Address line 1 (e.g., street, PO Box, or company name).
-  String? get line1 => throw _privateConstructorUsedError;
 
-  /// Address line 2 (e.g., apartment, suite, unit, or building).
-  String? get line2 => throw _privateConstructorUsedError;
-
-  /// City, district, suburb, town, or village.
-  String? get city => throw _privateConstructorUsedError;
-
-  /// State, county, province, or region.
-  String? get state => throw _privateConstructorUsedError;
-
-  /// Two-letter country code (ISO 3166-1 alpha-2).
-  String? get country => throw _privateConstructorUsedError;
-
-  /// ZIP or postal code.
-  @JsonKey(name: 'postal_code')
-  String? get postalCode => throw _privateConstructorUsedError;
+/// Address line 1 (e.g., street, PO Box, or company name).
+ String? get line1;/// Address line 2 (e.g., apartment, suite, unit, or building).
+ String? get line2;/// City, district, suburb, town, or village.
+ String? get city;/// State, county, province, or region.
+ String? get state;/// Two-letter country code (ISO 3166-1 alpha-2).
+ String? get country;/// ZIP or postal code.
+@JsonKey(name: 'postal_code') String? get postalCode;
+/// Create a copy of BillingAddress
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BillingAddressCopyWith<BillingAddress> get copyWith => _$BillingAddressCopyWithImpl<BillingAddress>(this as BillingAddress, _$identity);
 
   /// Serializes this BillingAddress to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BillingAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BillingAddressCopyWith<BillingAddress> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BillingAddress&&(identical(other.line1, line1) || other.line1 == line1)&&(identical(other.line2, line2) || other.line2 == line2)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,line1,line2,city,state,country,postalCode);
+
+@override
+String toString() {
+  return 'BillingAddress(line1: $line1, line2: $line2, city: $city, state: $state, country: $country, postalCode: $postalCode)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $BillingAddressCopyWith<$Res> {
-  factory $BillingAddressCopyWith(
-          BillingAddress value, $Res Function(BillingAddress) then) =
-      _$BillingAddressCopyWithImpl<$Res, BillingAddress>;
-  @useResult
-  $Res call(
-      {String? line1,
-      String? line2,
-      String? city,
-      String? state,
-      String? country,
-      @JsonKey(name: 'postal_code') String? postalCode});
-}
+abstract mixin class $BillingAddressCopyWith<$Res>  {
+  factory $BillingAddressCopyWith(BillingAddress value, $Res Function(BillingAddress) _then) = _$BillingAddressCopyWithImpl;
+@useResult
+$Res call({
+ String? line1, String? line2, String? city, String? state, String? country,@JsonKey(name: 'postal_code') String? postalCode
+});
 
+
+
+
+}
 /// @nodoc
-class _$BillingAddressCopyWithImpl<$Res, $Val extends BillingAddress>
+class _$BillingAddressCopyWithImpl<$Res>
     implements $BillingAddressCopyWith<$Res> {
-  _$BillingAddressCopyWithImpl(this._value, this._then);
+  _$BillingAddressCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BillingAddress _self;
+  final $Res Function(BillingAddress) _then;
 
-  /// Create a copy of BillingAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? line1 = freezed,
-    Object? line2 = freezed,
-    Object? city = freezed,
-    Object? state = freezed,
-    Object? country = freezed,
-    Object? postalCode = freezed,
-  }) {
-    return _then(_value.copyWith(
-      line1: freezed == line1
-          ? _value.line1
-          : line1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      line2: freezed == line2
-          ? _value.line2
-          : line2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-      postalCode: freezed == postalCode
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of BillingAddress
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? line1 = freezed,Object? line2 = freezed,Object? city = freezed,Object? state = freezed,Object? country = freezed,Object? postalCode = freezed,}) {
+  return _then(_self.copyWith(
+line1: freezed == line1 ? _self.line1 : line1 // ignore: cast_nullable_to_non_nullable
+as String?,line2: freezed == line2 ? _self.line2 : line2 // ignore: cast_nullable_to_non_nullable
+as String?,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as String?,state: freezed == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as String?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String?,postalCode: freezed == postalCode ? _self.postalCode : postalCode // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PaymentElementBillingDetailsAddressImplCopyWith<$Res>
-    implements $BillingAddressCopyWith<$Res> {
-  factory _$$PaymentElementBillingDetailsAddressImplCopyWith(
-          _$PaymentElementBillingDetailsAddressImpl value,
-          $Res Function(_$PaymentElementBillingDetailsAddressImpl) then) =
-      __$$PaymentElementBillingDetailsAddressImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? line1,
-      String? line2,
-      String? city,
-      String? state,
-      String? country,
-      @JsonKey(name: 'postal_code') String? postalCode});
 }
 
-/// @nodoc
-class __$$PaymentElementBillingDetailsAddressImplCopyWithImpl<$Res>
-    extends _$BillingAddressCopyWithImpl<$Res,
-        _$PaymentElementBillingDetailsAddressImpl>
-    implements _$$PaymentElementBillingDetailsAddressImplCopyWith<$Res> {
-  __$$PaymentElementBillingDetailsAddressImplCopyWithImpl(
-      _$PaymentElementBillingDetailsAddressImpl _value,
-      $Res Function(_$PaymentElementBillingDetailsAddressImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of BillingAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? line1 = freezed,
-    Object? line2 = freezed,
-    Object? city = freezed,
-    Object? state = freezed,
-    Object? country = freezed,
-    Object? postalCode = freezed,
-  }) {
-    return _then(_$PaymentElementBillingDetailsAddressImpl(
-      line1: freezed == line1
-          ? _value.line1
-          : line1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      line2: freezed == line2
-          ? _value.line2
-          : line2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-      postalCode: freezed == postalCode
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [BillingAddress].
+extension BillingAddressPatterns on BillingAddress {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PaymentElementBillingDetailsAddress value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PaymentElementBillingDetailsAddress() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PaymentElementBillingDetailsAddress value)  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentElementBillingDetailsAddress():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PaymentElementBillingDetailsAddress value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentElementBillingDetailsAddress() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? line1,  String? line2,  String? city,  String? state,  String? country, @JsonKey(name: 'postal_code')  String? postalCode)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PaymentElementBillingDetailsAddress() when $default != null:
+return $default(_that.line1,_that.line2,_that.city,_that.state,_that.country,_that.postalCode);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? line1,  String? line2,  String? city,  String? state,  String? country, @JsonKey(name: 'postal_code')  String? postalCode)  $default,) {final _that = this;
+switch (_that) {
+case _PaymentElementBillingDetailsAddress():
+return $default(_that.line1,_that.line2,_that.city,_that.state,_that.country,_that.postalCode);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? line1,  String? line2,  String? city,  String? state,  String? country, @JsonKey(name: 'postal_code')  String? postalCode)?  $default,) {final _that = this;
+switch (_that) {
+case _PaymentElementBillingDetailsAddress() when $default != null:
+return $default(_that.line1,_that.line2,_that.city,_that.state,_that.country,_that.postalCode);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PaymentElementBillingDetailsAddressImpl
-    implements _PaymentElementBillingDetailsAddress {
-  const _$PaymentElementBillingDetailsAddressImpl(
-      {this.line1,
-      this.line2,
-      this.city,
-      this.state,
-      this.country,
-      @JsonKey(name: 'postal_code') this.postalCode});
 
-  factory _$PaymentElementBillingDetailsAddressImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PaymentElementBillingDetailsAddressImplFromJson(json);
+class _PaymentElementBillingDetailsAddress implements BillingAddress {
+  const _PaymentElementBillingDetailsAddress({this.line1, this.line2, this.city, this.state, this.country, @JsonKey(name: 'postal_code') this.postalCode});
+  factory _PaymentElementBillingDetailsAddress.fromJson(Map<String, dynamic> json) => _$PaymentElementBillingDetailsAddressFromJson(json);
 
-  /// Address line 1 (e.g., street, PO Box, or company name).
-  @override
-  final String? line1;
+/// Address line 1 (e.g., street, PO Box, or company name).
+@override final  String? line1;
+/// Address line 2 (e.g., apartment, suite, unit, or building).
+@override final  String? line2;
+/// City, district, suburb, town, or village.
+@override final  String? city;
+/// State, county, province, or region.
+@override final  String? state;
+/// Two-letter country code (ISO 3166-1 alpha-2).
+@override final  String? country;
+/// ZIP or postal code.
+@override@JsonKey(name: 'postal_code') final  String? postalCode;
 
-  /// Address line 2 (e.g., apartment, suite, unit, or building).
-  @override
-  final String? line2;
+/// Create a copy of BillingAddress
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaymentElementBillingDetailsAddressCopyWith<_PaymentElementBillingDetailsAddress> get copyWith => __$PaymentElementBillingDetailsAddressCopyWithImpl<_PaymentElementBillingDetailsAddress>(this, _$identity);
 
-  /// City, district, suburb, town, or village.
-  @override
-  final String? city;
-
-  /// State, county, province, or region.
-  @override
-  final String? state;
-
-  /// Two-letter country code (ISO 3166-1 alpha-2).
-  @override
-  final String? country;
-
-  /// ZIP or postal code.
-  @override
-  @JsonKey(name: 'postal_code')
-  final String? postalCode;
-
-  @override
-  String toString() {
-    return 'BillingAddress(line1: $line1, line2: $line2, city: $city, state: $state, country: $country, postalCode: $postalCode)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaymentElementBillingDetailsAddressImpl &&
-            (identical(other.line1, line1) || other.line1 == line1) &&
-            (identical(other.line2, line2) || other.line2 == line2) &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.state, state) || other.state == state) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.postalCode, postalCode) ||
-                other.postalCode == postalCode));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, line1, line2, city, state, country, postalCode);
-
-  /// Create a copy of BillingAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaymentElementBillingDetailsAddressImplCopyWith<
-          _$PaymentElementBillingDetailsAddressImpl>
-      get copyWith => __$$PaymentElementBillingDetailsAddressImplCopyWithImpl<
-          _$PaymentElementBillingDetailsAddressImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaymentElementBillingDetailsAddressImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentElementBillingDetailsAddressToJson(this, );
 }
 
-abstract class _PaymentElementBillingDetailsAddress implements BillingAddress {
-  const factory _PaymentElementBillingDetailsAddress(
-          {final String? line1,
-          final String? line2,
-          final String? city,
-          final String? state,
-          final String? country,
-          @JsonKey(name: 'postal_code') final String? postalCode}) =
-      _$PaymentElementBillingDetailsAddressImpl;
-
-  factory _PaymentElementBillingDetailsAddress.fromJson(
-          Map<String, dynamic> json) =
-      _$PaymentElementBillingDetailsAddressImpl.fromJson;
-
-  /// Address line 1 (e.g., street, PO Box, or company name).
-  @override
-  String? get line1;
-
-  /// Address line 2 (e.g., apartment, suite, unit, or building).
-  @override
-  String? get line2;
-
-  /// City, district, suburb, town, or village.
-  @override
-  String? get city;
-
-  /// State, county, province, or region.
-  @override
-  String? get state;
-
-  /// Two-letter country code (ISO 3166-1 alpha-2).
-  @override
-  String? get country;
-
-  /// ZIP or postal code.
-  @override
-  @JsonKey(name: 'postal_code')
-  String? get postalCode;
-
-  /// Create a copy of BillingAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaymentElementBillingDetailsAddressImplCopyWith<
-          _$PaymentElementBillingDetailsAddressImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementBillingDetailsAddress&&(identical(other.line1, line1) || other.line1 == line1)&&(identical(other.line2, line2) || other.line2 == line2)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,line1,line2,city,state,country,postalCode);
+
+@override
+String toString() {
+  return 'BillingAddress(line1: $line1, line2: $line2, city: $city, state: $state, country: $country, postalCode: $postalCode)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PaymentElementBillingDetailsAddressCopyWith<$Res> implements $BillingAddressCopyWith<$Res> {
+  factory _$PaymentElementBillingDetailsAddressCopyWith(_PaymentElementBillingDetailsAddress value, $Res Function(_PaymentElementBillingDetailsAddress) _then) = __$PaymentElementBillingDetailsAddressCopyWithImpl;
+@override @useResult
+$Res call({
+ String? line1, String? line2, String? city, String? state, String? country,@JsonKey(name: 'postal_code') String? postalCode
+});
+
+
+
+
+}
+/// @nodoc
+class __$PaymentElementBillingDetailsAddressCopyWithImpl<$Res>
+    implements _$PaymentElementBillingDetailsAddressCopyWith<$Res> {
+  __$PaymentElementBillingDetailsAddressCopyWithImpl(this._self, this._then);
+
+  final _PaymentElementBillingDetailsAddress _self;
+  final $Res Function(_PaymentElementBillingDetailsAddress) _then;
+
+/// Create a copy of BillingAddress
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? line1 = freezed,Object? line2 = freezed,Object? city = freezed,Object? state = freezed,Object? country = freezed,Object? postalCode = freezed,}) {
+  return _then(_PaymentElementBillingDetailsAddress(
+line1: freezed == line1 ? _self.line1 : line1 // ignore: cast_nullable_to_non_nullable
+as String?,line2: freezed == line2 ? _self.line2 : line2 // ignore: cast_nullable_to_non_nullable
+as String?,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as String?,state: freezed == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as String?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String?,postalCode: freezed == postalCode ? _self.postalCode : postalCode // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

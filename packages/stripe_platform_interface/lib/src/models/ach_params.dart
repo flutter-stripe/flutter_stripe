@@ -5,10 +5,9 @@ part 'ach_params.freezed.dart';
 part 'ach_params.g.dart';
 
 @freezed
-
 /// Parameters that provide additional information for collecting the bankaccount
 /// for ACH payment
-class CollectBankAccountParams with _$CollectBankAccountParams {
+abstract class CollectBankAccountParams with _$CollectBankAccountParams {
   @JsonSerializable(explicitToJson: true)
   const factory CollectBankAccountParams({
     /// Billingdetails of the account holder
@@ -38,10 +37,10 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
 }
 
 @freezed
-
 /// Parameters that provide additional information for collecting the bankaccount
 /// for ACH payment
-class CollectBankAccountTokenParams with _$CollectBankAccountTokenParams {
+abstract class CollectBankAccountTokenParams
+    with _$CollectBankAccountTokenParams {
   @JsonSerializable(explicitToJson: true)
   const factory CollectBankAccountTokenParams({
     /// ios only. Style options for colors in Financial connections
@@ -63,7 +62,7 @@ class CollectBankAccountTokenParams with _$CollectBankAccountTokenParams {
 /// Specific payment method data needed for collecting the bank account of
 /// an payment method
 @freezed
-class CollectBankAccountPaymentMethodData
+abstract class CollectBankAccountPaymentMethodData
     with _$CollectBankAccountPaymentMethodData {
   @JsonSerializable(explicitToJson: true)
   const factory CollectBankAccountPaymentMethodData({
@@ -71,16 +70,15 @@ class CollectBankAccountPaymentMethodData
   }) = _CollectBankAccountPaymentMethodData;
 
   factory CollectBankAccountPaymentMethodData.fromJson(
-          Map<String, dynamic> json) =>
-      _$CollectBankAccountPaymentMethodDataFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$CollectBankAccountPaymentMethodDataFromJson(json);
 }
 
 /// The type of payment intent used for collecting bank accoutn
 
 @freezed
-
 /// Parameters that provide additional information for verifyting microdeposits
-class VerifyMicroDepositsParams with _$VerifyMicroDepositsParams {
+abstract class VerifyMicroDepositsParams with _$VerifyMicroDepositsParams {
   @JsonSerializable(explicitToJson: true)
   const factory VerifyMicroDepositsParams({
     /// The amounts of the microdeposits that are deposited on the account.

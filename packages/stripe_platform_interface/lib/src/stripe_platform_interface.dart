@@ -39,12 +39,15 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodOptions? options,
   ]);
 
-  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
-      {String? returnURL});
+  Future<PaymentIntent> handleNextAction(
+    String paymentIntentClientSecret, {
+    String? returnURL,
+  });
 
   Future<SetupIntent> handleNextActionForSetupIntent(
-      String setupIntentClientSecret,
-      {String? returnURL});
+    String setupIntentClientSecret, {
+    String? returnURL,
+  });
 
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
@@ -56,7 +59,8 @@ abstract class StripePlatform extends PlatformInterface {
 
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
   Future<PaymentSheetPaymentOption?> initPaymentSheet(
-      SetupPaymentSheetParameters params);
+    SetupPaymentSheetParameters params,
+  );
 
   /// Display the payment sheet.
   Future<PaymentSheetPaymentOption?> presentPaymentSheet({
@@ -71,7 +75,8 @@ abstract class StripePlatform extends PlatformInterface {
 
   /// Configure the payment sheet using [CustomerSheetInitParams] as config.
   Future<CustomerSheetResult?> initCustomerSheet(
-      CustomerSheetInitParams params);
+    CustomerSheetInitParams params,
+  );
 
   /// Display the customersheet sheet.
   Future<CustomerSheetResult?> presentCustomerSheet({
@@ -92,13 +97,15 @@ abstract class StripePlatform extends PlatformInterface {
   @Deprecated('This method is deprecated use [isPlatformPaySupported] instead')
   Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params);
   Future<PaymentMethod> createGooglePayPaymentMethod(
-      CreateGooglePayPaymentParams params);
+    CreateGooglePayPaymentParams params,
+  );
 
   @Deprecated('use the new method [CanAddCardToWalletParams] instead')
   Future<AddToWalletResult> canAddToWallet(String last4);
 
   Future<CanAddCardToWalletResult> canAddCardToWallet(
-      CanAddCardToWalletParams params);
+    CanAddCardToWalletParams params,
+  );
 
   Future<IsCardInWalletResult> isCardInWallet(String cardLastFour);
 
@@ -126,11 +133,13 @@ abstract class StripePlatform extends PlatformInterface {
     bool usesDeprecatedTokenFlow = false,
   });
 
-  Future<void> updatePlatformSheet(
-      {required PlatformPaySheetUpdateParams params});
+  Future<void> updatePlatformSheet({
+    required PlatformPaySheetUpdateParams params,
+  });
 
-  Future<void> configurePlatformOrderTracking(
-      {required PlatformPayOrderDetails orderDetails});
+  Future<void> configurePlatformOrderTracking({
+    required PlatformPayOrderDetails orderDetails,
+  });
 
   /// Creates a token for card details.
   ///
@@ -204,7 +213,7 @@ abstract class StripePlatform extends PlatformInterface {
     Key? key,
     required VoidCallback onPressed,
     required PlatformPayWebPaymentRequestCreateOptions
-        paymentRequestCreateOptions,
+    paymentRequestCreateOptions,
     BoxConstraints? constraints,
     PlatformButtonType? type,
     PlatformButtonStyle? style,

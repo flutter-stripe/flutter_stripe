@@ -17,12 +17,10 @@ extension ExtensionConfirmSetup on Stripe {
   /// your user will be redirected to the return_url you provide
   /// before the Future ever resolves.
   /// see: https://docs.stripe.com/js/setup_intents/confirm_setup
-  Future<SetupIntentResponse> confirmSetup(
-    ConfirmSetupOptions options,
-  ) async {
-    return _confirmSetup(options.toJson().jsify())
-        .toDart
-        .then((response) => response.toDart);
+  Future<SetupIntentResponse> confirmSetup(ConfirmSetupOptions options) async {
+    return _confirmSetup(
+      options.toJson().jsify(),
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('confirmSetup')

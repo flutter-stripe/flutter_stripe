@@ -6,85 +6,72 @@ part of 'payment_method.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaymentMethodImpl _$$PaymentMethodImplFromJson(Map json) =>
-    _$PaymentMethodImpl(
-      id: json['id'] as String,
-      object: json['object'] as String? ?? "payment_method",
-      billingDetails: json['billingDetails'] == null
-          ? null
-          : BillingDetails.fromJson(
-              Map<String, dynamic>.from(json['billingDetails'] as Map)),
-      customer: json['customer'] as String?,
-      metadata: (json['metadata'] as Map?)?.map(
-            (k, e) => MapEntry(k as String, e),
-          ) ??
-          const {},
-      livemode: json['livemode'] as bool? ?? true,
-      created: (json['created'] as num?)?.toInt(),
-      card: json['card'] == null
-          ? null
-          : CardPaymentMethod.fromJson(
-              Map<String, dynamic>.from(json['card'] as Map)),
-      sepaDebit: json['sepaDebit'] == null
-          ? null
-          : SepaDebit.fromJson(
-              Map<String, dynamic>.from(json['sepaDebit'] as Map)),
-      bacsDebit: json['bacsDebit'] == null
-          ? null
-          : BacsDebit.fromJson(
-              Map<String, dynamic>.from(json['bacsDebit'] as Map)),
-      auBecsDebit: json['auBecsDebit'] == null
-          ? null
-          : AuBecsDebit.fromJson(
-              Map<String, dynamic>.from(json['auBecsDebit'] as Map)),
-      sofort: json['sofort'] == null
-          ? null
-          : Sofort.fromJson(Map<String, dynamic>.from(json['sofort'] as Map)),
-      ideal: json['ideal'] == null
-          ? null
-          : Ideal.fromJson(Map<String, dynamic>.from(json['ideal'] as Map)),
-      fpx: json['fpx'] == null
-          ? null
-          : Fpx.fromJson(Map<String, dynamic>.from(json['fpx'] as Map)),
-      upi: json['upi'] == null
-          ? null
-          : Upi.fromJson(Map<String, dynamic>.from(json['upi'] as Map)),
-      usBankAccount: json['usBankAccount'] == null
-          ? null
-          : UsBankAccount.fromJson(
-              Map<String, dynamic>.from(json['usBankAccount'] as Map)),
-      type: $enumDecode(_$PaymentMethodTypeEnumMap, json['type']),
-    );
+_PaymentMethod _$PaymentMethodFromJson(Map json) => _PaymentMethod(
+  id: json['id'] as String,
+  object: json['object'] as String? ?? "payment_method",
+  billingDetails: json['billingDetails'] == null
+      ? null
+      : BillingDetails.fromJson(
+          Map<String, dynamic>.from(json['billingDetails'] as Map),
+        ),
+  customer: json['customer'] as String?,
+  metadata:
+      (json['metadata'] as Map?)?.map((k, e) => MapEntry(k as String, e)) ??
+      const {},
+  livemode: json['livemode'] as bool? ?? true,
+  created: (json['created'] as num?)?.toInt(),
+  card: json['card'] == null
+      ? null
+      : CardPaymentMethod.fromJson(
+          Map<String, dynamic>.from(json['card'] as Map),
+        ),
+  sepaDebit: json['sepaDebit'] == null
+      ? null
+      : SepaDebit.fromJson(Map<String, dynamic>.from(json['sepaDebit'] as Map)),
+  bacsDebit: json['bacsDebit'] == null
+      ? null
+      : BacsDebit.fromJson(Map<String, dynamic>.from(json['bacsDebit'] as Map)),
+  auBecsDebit: json['auBecsDebit'] == null
+      ? null
+      : AuBecsDebit.fromJson(
+          Map<String, dynamic>.from(json['auBecsDebit'] as Map),
+        ),
+  ideal: json['ideal'] == null
+      ? null
+      : Ideal.fromJson(Map<String, dynamic>.from(json['ideal'] as Map)),
+  fpx: json['fpx'] == null
+      ? null
+      : Fpx.fromJson(Map<String, dynamic>.from(json['fpx'] as Map)),
+  upi: json['upi'] == null
+      ? null
+      : Upi.fromJson(Map<String, dynamic>.from(json['upi'] as Map)),
+  usBankAccount: json['usBankAccount'] == null
+      ? null
+      : UsBankAccount.fromJson(
+          Map<String, dynamic>.from(json['usBankAccount'] as Map),
+        ),
+  type: $enumDecode(_$PaymentMethodTypeEnumMap, json['type']),
+);
 
-Map<String, dynamic> _$$PaymentMethodImplToJson(_$PaymentMethodImpl instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'object': instance.object,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('billingDetails', instance.billingDetails?.toJson());
-  writeNotNull('customer', instance.customer);
-  val['metadata'] = instance.metadata;
-  val['livemode'] = instance.livemode;
-  writeNotNull('created', instance.created);
-  writeNotNull('card', instance.card?.toJson());
-  writeNotNull('sepaDebit', instance.sepaDebit?.toJson());
-  writeNotNull('bacsDebit', instance.bacsDebit?.toJson());
-  writeNotNull('auBecsDebit', instance.auBecsDebit?.toJson());
-  writeNotNull('sofort', instance.sofort?.toJson());
-  writeNotNull('ideal', instance.ideal?.toJson());
-  writeNotNull('fpx', instance.fpx?.toJson());
-  writeNotNull('upi', instance.upi?.toJson());
-  writeNotNull('usBankAccount', instance.usBankAccount?.toJson());
-  val['type'] = _$PaymentMethodTypeEnumMap[instance.type]!;
-  return val;
-}
+Map<String, dynamic> _$PaymentMethodToJson(_PaymentMethod instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'object': instance.object,
+      'billingDetails': ?instance.billingDetails?.toJson(),
+      'customer': ?instance.customer,
+      'metadata': instance.metadata,
+      'livemode': instance.livemode,
+      'created': ?instance.created,
+      'card': ?instance.card?.toJson(),
+      'sepaDebit': ?instance.sepaDebit?.toJson(),
+      'bacsDebit': ?instance.bacsDebit?.toJson(),
+      'auBecsDebit': ?instance.auBecsDebit?.toJson(),
+      'ideal': ?instance.ideal?.toJson(),
+      'fpx': ?instance.fpx?.toJson(),
+      'upi': ?instance.upi?.toJson(),
+      'usBankAccount': ?instance.usBankAccount?.toJson(),
+      'type': _$PaymentMethodTypeEnumMap[instance.type]!,
+    };
 
 const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.acssDebit: 'acss_debit',
@@ -115,223 +102,135 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.pix: 'pix',
   PaymentMethodType.promptpay: 'promptpay',
   PaymentMethodType.sepaDebit: 'sepa_debit',
-  PaymentMethodType.sofort: 'sofort',
   PaymentMethodType.usBankAccount: 'us_bank_account',
   PaymentMethodType.wechatPay: 'wechat_pay',
   PaymentMethodType.unknown: 'unknown',
 };
 
-_$AuBecsDebitImpl _$$AuBecsDebitImplFromJson(Map json) => _$AuBecsDebitImpl(
-      fingerprint: json['fingerprint'] as String?,
-      last4: json['last4'] as String?,
-      bsbNumber: json['bsbNumber'] as String?,
-    );
+_AuBecsDebit _$AuBecsDebitFromJson(Map json) => _AuBecsDebit(
+  fingerprint: json['fingerprint'] as String?,
+  last4: json['last4'] as String?,
+  bsbNumber: json['bsbNumber'] as String?,
+);
 
-Map<String, dynamic> _$$AuBecsDebitImplToJson(_$AuBecsDebitImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$AuBecsDebitToJson(_AuBecsDebit instance) =>
+    <String, dynamic>{
+      'fingerprint': ?instance.fingerprint,
+      'last4': ?instance.last4,
+      'bsbNumber': ?instance.bsbNumber,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_BacsDebit _$BacsDebitFromJson(Map json) => _BacsDebit(
+  sortCode: json['sortCode'] as String?,
+  fingerprint: json['fingerprint'] as String?,
+  last4: json['last4'] as String?,
+);
 
-  writeNotNull('fingerprint', instance.fingerprint);
-  writeNotNull('last4', instance.last4);
-  writeNotNull('bsbNumber', instance.bsbNumber);
-  return val;
-}
+Map<String, dynamic> _$BacsDebitToJson(_BacsDebit instance) =>
+    <String, dynamic>{
+      'sortCode': ?instance.sortCode,
+      'fingerprint': ?instance.fingerprint,
+      'last4': ?instance.last4,
+    };
 
-_$BacsDebitImpl _$$BacsDebitImplFromJson(Map json) => _$BacsDebitImpl(
-      sortCode: json['sortCode'] as String?,
-      fingerprint: json['fingerprint'] as String?,
-      last4: json['last4'] as String?,
-    );
+_CardPaymentMethod _$CardPaymentMethodFromJson(Map json) => _CardPaymentMethod(
+  brand: json['brand'] as String?,
+  country: json['country'] as String?,
+  expYear: (json['expYear'] as num?)?.toInt(),
+  expMonth: (json['expMonth'] as num?)?.toInt(),
+  funding: json['funding'] as String?,
+  last4: json['last4'] as String?,
+  preferredNetwork: json['preferredNetwork'] as String?,
+  availableNetworks: (json['availableNetworks'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+);
 
-Map<String, dynamic> _$$BacsDebitImplToJson(_$BacsDebitImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$CardPaymentMethodToJson(_CardPaymentMethod instance) =>
+    <String, dynamic>{
+      'brand': ?instance.brand,
+      'country': ?instance.country,
+      'expYear': ?instance.expYear,
+      'expMonth': ?instance.expMonth,
+      'funding': ?instance.funding,
+      'last4': ?instance.last4,
+      'preferredNetwork': ?instance.preferredNetwork,
+      'availableNetworks': ?instance.availableNetworks,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_Fpx _$FpxFromJson(Map json) => _Fpx(
+  bank: json['bank'] as String?,
+  accountHolderType: json['accountHolderType'] as String?,
+);
 
-  writeNotNull('sortCode', instance.sortCode);
-  writeNotNull('fingerprint', instance.fingerprint);
-  writeNotNull('last4', instance.last4);
-  return val;
-}
+Map<String, dynamic> _$FpxToJson(_Fpx instance) => <String, dynamic>{
+  'bank': ?instance.bank,
+  'accountHolderType': ?instance.accountHolderType,
+};
 
-_$CardPaymentMethodImpl _$$CardPaymentMethodImplFromJson(Map json) =>
-    _$CardPaymentMethodImpl(
-      brand: json['brand'] as String?,
-      country: json['country'] as String?,
-      expYear: (json['expYear'] as num?)?.toInt(),
-      expMonth: (json['expMonth'] as num?)?.toInt(),
-      funding: json['funding'] as String?,
-      last4: json['last4'] as String?,
-      preferredNetwork: json['preferredNetwork'] as String?,
-      availableNetworks: (json['availableNetworks'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+_Ideal _$IdealFromJson(Map json) => _Ideal(
+  bankIdentifierCode: json['bankIdentifierCode'] as String?,
+  bank: json['bank'] as String?,
+);
 
-Map<String, dynamic> _$$CardPaymentMethodImplToJson(
-    _$CardPaymentMethodImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$IdealToJson(_Ideal instance) => <String, dynamic>{
+  'bankIdentifierCode': ?instance.bankIdentifierCode,
+  'bank': ?instance.bank,
+};
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_SepaDebit _$SepaDebitFromJson(Map json) => _SepaDebit(
+  country: json['country'] as String?,
+  bankCode: json['bankCode'] as String?,
+  fingerprint: json['fingerprint'] as String?,
+  last4: json['last4'] as String?,
+);
 
-  writeNotNull('brand', instance.brand);
-  writeNotNull('country', instance.country);
-  writeNotNull('expYear', instance.expYear);
-  writeNotNull('expMonth', instance.expMonth);
-  writeNotNull('funding', instance.funding);
-  writeNotNull('last4', instance.last4);
-  writeNotNull('preferredNetwork', instance.preferredNetwork);
-  writeNotNull('availableNetworks', instance.availableNetworks);
-  return val;
-}
+Map<String, dynamic> _$SepaDebitToJson(_SepaDebit instance) =>
+    <String, dynamic>{
+      'country': ?instance.country,
+      'bankCode': ?instance.bankCode,
+      'fingerprint': ?instance.fingerprint,
+      'last4': ?instance.last4,
+    };
 
-_$FpxImpl _$$FpxImplFromJson(Map json) => _$FpxImpl(
-      bank: json['bank'] as String?,
-      accountHolderType: json['accountHolderType'] as String?,
-    );
+_Upi _$UpiFromJson(Map json) => _Upi(vpa: json['vpa'] as String?);
 
-Map<String, dynamic> _$$FpxImplToJson(_$FpxImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$UpiToJson(_Upi instance) => <String, dynamic>{
+  'vpa': ?instance.vpa,
+};
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_UsBankAccount _$UsBankAccountFromJson(Map json) => _UsBankAccount(
+  routingNumber: json['routingNumber'] as String?,
+  last4: json['last4'] as String?,
+  accountHolderType: $enumDecode(
+    _$UsBankAccountHolderTypeEnumMap,
+    json['accountHolderType'],
+  ),
+  accountType: $enumDecode(_$UsBankAccountTypeEnumMap, json['accountType']),
+  bankName: json['bankName'] as String?,
+  fingerprint: json['fingerprint'] as String?,
+  linkedAccount: json['linkedAccount'] as String?,
+  preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  supportedNetworks: (json['supportedNetworks'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+);
 
-  writeNotNull('bank', instance.bank);
-  writeNotNull('accountHolderType', instance.accountHolderType);
-  return val;
-}
-
-_$IdealImpl _$$IdealImplFromJson(Map json) => _$IdealImpl(
-      bankIdentifierCode: json['bankIdentifierCode'] as String?,
-      bank: json['bank'] as String?,
-    );
-
-Map<String, dynamic> _$$IdealImplToJson(_$IdealImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('bankIdentifierCode', instance.bankIdentifierCode);
-  writeNotNull('bank', instance.bank);
-  return val;
-}
-
-_$SepaDebitImpl _$$SepaDebitImplFromJson(Map json) => _$SepaDebitImpl(
-      country: json['country'] as String?,
-      bankCode: json['bankCode'] as String?,
-      fingerprint: json['fingerprint'] as String?,
-      last4: json['last4'] as String?,
-    );
-
-Map<String, dynamic> _$$SepaDebitImplToJson(_$SepaDebitImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('country', instance.country);
-  writeNotNull('bankCode', instance.bankCode);
-  writeNotNull('fingerprint', instance.fingerprint);
-  writeNotNull('last4', instance.last4);
-  return val;
-}
-
-_$SofortImpl _$$SofortImplFromJson(Map json) => _$SofortImpl(
-      country: json['country'] as String?,
-    );
-
-Map<String, dynamic> _$$SofortImplToJson(_$SofortImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('country', instance.country);
-  return val;
-}
-
-_$UpiImpl _$$UpiImplFromJson(Map json) => _$UpiImpl(
-      vpa: json['vpa'] as String?,
-    );
-
-Map<String, dynamic> _$$UpiImplToJson(_$UpiImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('vpa', instance.vpa);
-  return val;
-}
-
-_$UsBankAccountImpl _$$UsBankAccountImplFromJson(Map json) =>
-    _$UsBankAccountImpl(
-      routingNumber: json['routingNumber'] as String?,
-      last4: json['last4'] as String?,
-      accountHolderType: $enumDecode(
-          _$UsBankAccountHolderTypeEnumMap, json['accountHolderType']),
-      accountType: $enumDecode(_$UsBankAccountTypeEnumMap, json['accountType']),
-      bankName: json['bankName'] as String?,
-      fingerprint: json['fingerprint'] as String?,
-      linkedAccount: json['linkedAccount'] as String?,
-      preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      supportedNetworks: (json['supportedNetworks'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
-
-Map<String, dynamic> _$$UsBankAccountImplToJson(_$UsBankAccountImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('routingNumber', instance.routingNumber);
-  writeNotNull('last4', instance.last4);
-  val['accountHolderType'] =
-      _$UsBankAccountHolderTypeEnumMap[instance.accountHolderType]!;
-  val['accountType'] = _$UsBankAccountTypeEnumMap[instance.accountType]!;
-  writeNotNull('bankName', instance.bankName);
-  writeNotNull('fingerprint', instance.fingerprint);
-  writeNotNull('linkedAccount', instance.linkedAccount);
-  writeNotNull('preferredNetworks', instance.preferredNetworks);
-  writeNotNull('supportedNetworks', instance.supportedNetworks);
-  return val;
-}
+Map<String, dynamic> _$UsBankAccountToJson(_UsBankAccount instance) =>
+    <String, dynamic>{
+      'routingNumber': ?instance.routingNumber,
+      'last4': ?instance.last4,
+      'accountHolderType':
+          _$UsBankAccountHolderTypeEnumMap[instance.accountHolderType]!,
+      'accountType': _$UsBankAccountTypeEnumMap[instance.accountType]!,
+      'bankName': ?instance.bankName,
+      'fingerprint': ?instance.fingerprint,
+      'linkedAccount': ?instance.linkedAccount,
+      'preferredNetworks': ?instance.preferredNetworks,
+      'supportedNetworks': ?instance.supportedNetworks,
+    };
 
 const _$UsBankAccountHolderTypeEnumMap = {
   UsBankAccountHolderType.Company: 'Company',

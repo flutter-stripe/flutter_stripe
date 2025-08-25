@@ -7,9 +7,7 @@ import 'package:stripe_js/stripe_js.dart';
 extension PaymentRequestExtension on Stripe {
   _JS get _js => this as _JS;
 
-  PaymentRequest paymentRequest(
-    PaymentRequestCreateOptions options,
-  ) {
+  PaymentRequest paymentRequest(PaymentRequestCreateOptions options) {
     return PaymentRequest.of(_js.paymentRequest(options));
   }
 }
@@ -52,9 +50,7 @@ class PaymentResponse {
 }
 
 extension type _JS._(JSObject o) {
-  external JsPaymentRequest paymentRequest(
-    PaymentRequestCreateOptions options,
-  );
+  external JsPaymentRequest paymentRequest(PaymentRequestCreateOptions options);
 }
 
 extension type JsPaymentResponse._(JSObject o) {

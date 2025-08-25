@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,2853 +9,2858 @@ part of 'payment_method.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PaymentMethod _$PaymentMethodFromJson(Map<String, dynamic> json) {
-  return _PaymentMethod.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PaymentMethod {
-  /// Unique identifier for the object.
-  String get id => throw _privateConstructorUsedError;
 
-  /// String representing the object’s type.
-  /// Objects of the same type share the same value.
-  String get object => throw _privateConstructorUsedError;
-
-  /// Billing information associated with the PaymentMethod that may be used
-  /// or required by particular types of payment methods.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
-
-  /// The ID of the Customer to which this PaymentMethod is saved.
-  /// This will not be set when the PaymentMethod has not been saved to a
-  /// Customer.
-  String? get customer => throw _privateConstructorUsedError;
-
-  /// Set of key-value pairs that you can attach to an object.
-  /// This can be useful for storing additional information about the object
-  /// in a structured format.
-  Map<String, dynamic> get metadata => throw _privateConstructorUsedError;
-
-  /// Has the value true if the object exists in live mode or the value false
-  /// if the object exists in test mode.
-  bool get livemode => throw _privateConstructorUsedError;
-
-  /// Time at which the object was created.
-  /// Measured in seconds since the Unix epoch.
-  int? get created => throw _privateConstructorUsedError;
-
-  /// Containing additional data in case paymentmethod type is card.
-  CardPaymentMethod? get card => throw _privateConstructorUsedError;
-
-  /// Containing additional data in case paymentmethod type is sepa.
-  SepaDebit? get sepaDebit => throw _privateConstructorUsedError;
-
-  /// Containing additional data in case paymentmethod type is Bacs debit.
-  BacsDebit? get bacsDebit => throw _privateConstructorUsedError;
-
-  /// Containing additional data in case paymentmethod type is Aubecs debit.
-  AuBecsDebit? get auBecsDebit => throw _privateConstructorUsedError;
-
-  /// Containing additional data in case paymentmethod type is sofort.
-  Sofort? get sofort => throw _privateConstructorUsedError;
-
-  /// Containing additional data in case paymentmethod type is Ideal.
-  Ideal? get ideal => throw _privateConstructorUsedError;
-
-  /// Containing additional data in case paymentmethod type is FPX.
-  Fpx? get fpx => throw _privateConstructorUsedError;
-
-  /// Containing additional data in case paymentmethod type is UPI.
-  Upi? get upi => throw _privateConstructorUsedError;
-  UsBankAccount? get usBankAccount => throw _privateConstructorUsedError;
-
-  /// The type of the PaymentMethod.
-  /// An additional hash is included on the PaymentMethod with a name
-  /// matching this value.
-  /// It contains additional information specific to the PaymentMethod type.
-  PaymentMethodType get type => throw _privateConstructorUsedError;
+/// Unique identifier for the object.
+ String get id;/// String representing the object’s type.
+/// Objects of the same type share the same value.
+ String get object;/// Billing information associated with the PaymentMethod that may be used
+/// or required by particular types of payment methods.
+ BillingDetails? get billingDetails;/// The ID of the Customer to which this PaymentMethod is saved.
+/// This will not be set when the PaymentMethod has not been saved to a
+/// Customer.
+ String? get customer;/// Set of key-value pairs that you can attach to an object.
+/// This can be useful for storing additional information about the object
+/// in a structured format.
+ Map<String, dynamic> get metadata;/// Has the value true if the object exists in live mode or the value false
+/// if the object exists in test mode.
+ bool get livemode;/// Time at which the object was created.
+/// Measured in seconds since the Unix epoch.
+ int? get created;/// Containing additional data in case paymentmethod type is card.
+ CardPaymentMethod? get card;/// Containing additional data in case paymentmethod type is sepa.
+ SepaDebit? get sepaDebit;/// Containing additional data in case paymentmethod type is Bacs debit.
+ BacsDebit? get bacsDebit;/// Containing additional data in case paymentmethod type is Aubecs debit.
+ AuBecsDebit? get auBecsDebit;/// Containing additional data in case paymentmethod type is Ideal.
+ Ideal? get ideal;/// Containing additional data in case paymentmethod type is FPX.
+ Fpx? get fpx;/// Containing additional data in case paymentmethod type is UPI.
+ Upi? get upi; UsBankAccount? get usBankAccount;/// The type of the PaymentMethod.
+/// An additional hash is included on the PaymentMethod with a name
+/// matching this value.
+/// It contains additional information specific to the PaymentMethod type.
+ PaymentMethodType get type;
+/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaymentMethodCopyWith<PaymentMethod> get copyWith => _$PaymentMethodCopyWithImpl<PaymentMethod>(this as PaymentMethod, _$identity);
 
   /// Serializes this PaymentMethod to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaymentMethodCopyWith<PaymentMethod> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentMethod&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails)&&(identical(other.customer, customer) || other.customer == customer)&&const DeepCollectionEquality().equals(other.metadata, metadata)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.created, created) || other.created == created)&&(identical(other.card, card) || other.card == card)&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.bacsDebit, bacsDebit) || other.bacsDebit == bacsDebit)&&(identical(other.auBecsDebit, auBecsDebit) || other.auBecsDebit == auBecsDebit)&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.fpx, fpx) || other.fpx == fpx)&&(identical(other.upi, upi) || other.upi == upi)&&(identical(other.usBankAccount, usBankAccount) || other.usBankAccount == usBankAccount)&&(identical(other.type, type) || other.type == type));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,object,billingDetails,customer,const DeepCollectionEquality().hash(metadata),livemode,created,card,sepaDebit,bacsDebit,auBecsDebit,ideal,fpx,upi,usBankAccount,type);
+
+@override
+String toString() {
+  return 'PaymentMethod(id: $id, object: $object, billingDetails: $billingDetails, customer: $customer, metadata: $metadata, livemode: $livemode, created: $created, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, ideal: $ideal, fpx: $fpx, upi: $upi, usBankAccount: $usBankAccount, type: $type)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PaymentMethodCopyWith<$Res> {
-  factory $PaymentMethodCopyWith(
-          PaymentMethod value, $Res Function(PaymentMethod) then) =
-      _$PaymentMethodCopyWithImpl<$Res, PaymentMethod>;
-  @useResult
-  $Res call(
-      {String id,
-      String object,
-      BillingDetails? billingDetails,
-      String? customer,
-      Map<String, dynamic> metadata,
-      bool livemode,
-      int? created,
-      CardPaymentMethod? card,
-      SepaDebit? sepaDebit,
-      BacsDebit? bacsDebit,
-      AuBecsDebit? auBecsDebit,
-      Sofort? sofort,
-      Ideal? ideal,
-      Fpx? fpx,
-      Upi? upi,
-      UsBankAccount? usBankAccount,
-      PaymentMethodType type});
+abstract mixin class $PaymentMethodCopyWith<$Res>  {
+  factory $PaymentMethodCopyWith(PaymentMethod value, $Res Function(PaymentMethod) _then) = _$PaymentMethodCopyWithImpl;
+@useResult
+$Res call({
+ String id, String object, BillingDetails? billingDetails, String? customer, Map<String, dynamic> metadata, bool livemode, int? created, CardPaymentMethod? card, SepaDebit? sepaDebit, BacsDebit? bacsDebit, AuBecsDebit? auBecsDebit, Ideal? ideal, Fpx? fpx, Upi? upi, UsBankAccount? usBankAccount, PaymentMethodType type
+});
 
-  $BillingDetailsCopyWith<$Res>? get billingDetails;
-  $CardPaymentMethodCopyWith<$Res>? get card;
-  $SepaDebitCopyWith<$Res>? get sepaDebit;
-  $BacsDebitCopyWith<$Res>? get bacsDebit;
-  $AuBecsDebitCopyWith<$Res>? get auBecsDebit;
-  $SofortCopyWith<$Res>? get sofort;
-  $IdealCopyWith<$Res>? get ideal;
-  $FpxCopyWith<$Res>? get fpx;
-  $UpiCopyWith<$Res>? get upi;
-  $UsBankAccountCopyWith<$Res>? get usBankAccount;
+
+$BillingDetailsCopyWith<$Res>? get billingDetails;$CardPaymentMethodCopyWith<$Res>? get card;$SepaDebitCopyWith<$Res>? get sepaDebit;$BacsDebitCopyWith<$Res>? get bacsDebit;$AuBecsDebitCopyWith<$Res>? get auBecsDebit;$IdealCopyWith<$Res>? get ideal;$FpxCopyWith<$Res>? get fpx;$UpiCopyWith<$Res>? get upi;$UsBankAccountCopyWith<$Res>? get usBankAccount;
+
 }
-
 /// @nodoc
-class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
+class _$PaymentMethodCopyWithImpl<$Res>
     implements $PaymentMethodCopyWith<$Res> {
-  _$PaymentMethodCopyWithImpl(this._value, this._then);
+  _$PaymentMethodCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PaymentMethod _self;
+  final $Res Function(PaymentMethod) _then;
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? object = null,
-    Object? billingDetails = freezed,
-    Object? customer = freezed,
-    Object? metadata = null,
-    Object? livemode = null,
-    Object? created = freezed,
-    Object? card = freezed,
-    Object? sepaDebit = freezed,
-    Object? bacsDebit = freezed,
-    Object? auBecsDebit = freezed,
-    Object? sofort = freezed,
-    Object? ideal = freezed,
-    Object? fpx = freezed,
-    Object? upi = freezed,
-    Object? usBankAccount = freezed,
-    Object? type = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      object: null == object
-          ? _value.object
-          : object // ignore: cast_nullable_to_non_nullable
-              as String,
-      billingDetails: freezed == billingDetails
-          ? _value.billingDetails
-          : billingDetails // ignore: cast_nullable_to_non_nullable
-              as BillingDetails?,
-      customer: freezed == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      metadata: null == metadata
-          ? _value.metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as int?,
-      card: freezed == card
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as CardPaymentMethod?,
-      sepaDebit: freezed == sepaDebit
-          ? _value.sepaDebit
-          : sepaDebit // ignore: cast_nullable_to_non_nullable
-              as SepaDebit?,
-      bacsDebit: freezed == bacsDebit
-          ? _value.bacsDebit
-          : bacsDebit // ignore: cast_nullable_to_non_nullable
-              as BacsDebit?,
-      auBecsDebit: freezed == auBecsDebit
-          ? _value.auBecsDebit
-          : auBecsDebit // ignore: cast_nullable_to_non_nullable
-              as AuBecsDebit?,
-      sofort: freezed == sofort
-          ? _value.sofort
-          : sofort // ignore: cast_nullable_to_non_nullable
-              as Sofort?,
-      ideal: freezed == ideal
-          ? _value.ideal
-          : ideal // ignore: cast_nullable_to_non_nullable
-              as Ideal?,
-      fpx: freezed == fpx
-          ? _value.fpx
-          : fpx // ignore: cast_nullable_to_non_nullable
-              as Fpx?,
-      upi: freezed == upi
-          ? _value.upi
-          : upi // ignore: cast_nullable_to_non_nullable
-              as Upi?,
-      usBankAccount: freezed == usBankAccount
-          ? _value.usBankAccount
-          : usBankAccount // ignore: cast_nullable_to_non_nullable
-              as UsBankAccount?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodType,
-    ) as $Val);
+/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? object = null,Object? billingDetails = freezed,Object? customer = freezed,Object? metadata = null,Object? livemode = null,Object? created = freezed,Object? card = freezed,Object? sepaDebit = freezed,Object? bacsDebit = freezed,Object? auBecsDebit = freezed,Object? ideal = freezed,Object? fpx = freezed,Object? upi = freezed,Object? usBankAccount = freezed,Object? type = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,object: null == object ? _self.object : object // ignore: cast_nullable_to_non_nullable
+as String,billingDetails: freezed == billingDetails ? _self.billingDetails : billingDetails // ignore: cast_nullable_to_non_nullable
+as BillingDetails?,customer: freezed == customer ? _self.customer : customer // ignore: cast_nullable_to_non_nullable
+as String?,metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,livemode: null == livemode ? _self.livemode : livemode // ignore: cast_nullable_to_non_nullable
+as bool,created: freezed == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
+as int?,card: freezed == card ? _self.card : card // ignore: cast_nullable_to_non_nullable
+as CardPaymentMethod?,sepaDebit: freezed == sepaDebit ? _self.sepaDebit : sepaDebit // ignore: cast_nullable_to_non_nullable
+as SepaDebit?,bacsDebit: freezed == bacsDebit ? _self.bacsDebit : bacsDebit // ignore: cast_nullable_to_non_nullable
+as BacsDebit?,auBecsDebit: freezed == auBecsDebit ? _self.auBecsDebit : auBecsDebit // ignore: cast_nullable_to_non_nullable
+as AuBecsDebit?,ideal: freezed == ideal ? _self.ideal : ideal // ignore: cast_nullable_to_non_nullable
+as Ideal?,fpx: freezed == fpx ? _self.fpx : fpx // ignore: cast_nullable_to_non_nullable
+as Fpx?,upi: freezed == upi ? _self.upi : upi // ignore: cast_nullable_to_non_nullable
+as Upi?,usBankAccount: freezed == usBankAccount ? _self.usBankAccount : usBankAccount // ignore: cast_nullable_to_non_nullable
+as UsBankAccount?,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as PaymentMethodType,
+  ));
+}
+/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_self.billingDetails == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BillingDetailsCopyWith<$Res>? get billingDetails {
-    if (_value.billingDetails == null) {
-      return null;
-    }
-
-    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
-      return _then(_value.copyWith(billingDetails: value) as $Val);
-    });
+  return $BillingDetailsCopyWith<$Res>(_self.billingDetails!, (value) {
+    return _then(_self.copyWith(billingDetails: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardPaymentMethodCopyWith<$Res>? get card {
+    if (_self.card == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CardPaymentMethodCopyWith<$Res>? get card {
-    if (_value.card == null) {
-      return null;
-    }
-
-    return $CardPaymentMethodCopyWith<$Res>(_value.card!, (value) {
-      return _then(_value.copyWith(card: value) as $Val);
-    });
+  return $CardPaymentMethodCopyWith<$Res>(_self.card!, (value) {
+    return _then(_self.copyWith(card: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SepaDebitCopyWith<$Res>? get sepaDebit {
+    if (_self.sepaDebit == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SepaDebitCopyWith<$Res>? get sepaDebit {
-    if (_value.sepaDebit == null) {
-      return null;
-    }
-
-    return $SepaDebitCopyWith<$Res>(_value.sepaDebit!, (value) {
-      return _then(_value.copyWith(sepaDebit: value) as $Val);
-    });
+  return $SepaDebitCopyWith<$Res>(_self.sepaDebit!, (value) {
+    return _then(_self.copyWith(sepaDebit: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BacsDebitCopyWith<$Res>? get bacsDebit {
+    if (_self.bacsDebit == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BacsDebitCopyWith<$Res>? get bacsDebit {
-    if (_value.bacsDebit == null) {
-      return null;
-    }
-
-    return $BacsDebitCopyWith<$Res>(_value.bacsDebit!, (value) {
-      return _then(_value.copyWith(bacsDebit: value) as $Val);
-    });
+  return $BacsDebitCopyWith<$Res>(_self.bacsDebit!, (value) {
+    return _then(_self.copyWith(bacsDebit: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AuBecsDebitCopyWith<$Res>? get auBecsDebit {
+    if (_self.auBecsDebit == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AuBecsDebitCopyWith<$Res>? get auBecsDebit {
-    if (_value.auBecsDebit == null) {
-      return null;
-    }
-
-    return $AuBecsDebitCopyWith<$Res>(_value.auBecsDebit!, (value) {
-      return _then(_value.copyWith(auBecsDebit: value) as $Val);
-    });
+  return $AuBecsDebitCopyWith<$Res>(_self.auBecsDebit!, (value) {
+    return _then(_self.copyWith(auBecsDebit: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$IdealCopyWith<$Res>? get ideal {
+    if (_self.ideal == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SofortCopyWith<$Res>? get sofort {
-    if (_value.sofort == null) {
-      return null;
-    }
-
-    return $SofortCopyWith<$Res>(_value.sofort!, (value) {
-      return _then(_value.copyWith(sofort: value) as $Val);
-    });
+  return $IdealCopyWith<$Res>(_self.ideal!, (value) {
+    return _then(_self.copyWith(ideal: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FpxCopyWith<$Res>? get fpx {
+    if (_self.fpx == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $IdealCopyWith<$Res>? get ideal {
-    if (_value.ideal == null) {
-      return null;
-    }
-
-    return $IdealCopyWith<$Res>(_value.ideal!, (value) {
-      return _then(_value.copyWith(ideal: value) as $Val);
-    });
+  return $FpxCopyWith<$Res>(_self.fpx!, (value) {
+    return _then(_self.copyWith(fpx: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UpiCopyWith<$Res>? get upi {
+    if (_self.upi == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FpxCopyWith<$Res>? get fpx {
-    if (_value.fpx == null) {
-      return null;
-    }
-
-    return $FpxCopyWith<$Res>(_value.fpx!, (value) {
-      return _then(_value.copyWith(fpx: value) as $Val);
-    });
+  return $UpiCopyWith<$Res>(_self.upi!, (value) {
+    return _then(_self.copyWith(upi: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UsBankAccountCopyWith<$Res>? get usBankAccount {
+    if (_self.usBankAccount == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UpiCopyWith<$Res>? get upi {
-    if (_value.upi == null) {
-      return null;
-    }
-
-    return $UpiCopyWith<$Res>(_value.upi!, (value) {
-      return _then(_value.copyWith(upi: value) as $Val);
-    });
-  }
-
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UsBankAccountCopyWith<$Res>? get usBankAccount {
-    if (_value.usBankAccount == null) {
-      return null;
-    }
-
-    return $UsBankAccountCopyWith<$Res>(_value.usBankAccount!, (value) {
-      return _then(_value.copyWith(usBankAccount: value) as $Val);
-    });
-  }
+  return $UsBankAccountCopyWith<$Res>(_self.usBankAccount!, (value) {
+    return _then(_self.copyWith(usBankAccount: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$PaymentMethodImplCopyWith<$Res>
-    implements $PaymentMethodCopyWith<$Res> {
-  factory _$$PaymentMethodImplCopyWith(
-          _$PaymentMethodImpl value, $Res Function(_$PaymentMethodImpl) then) =
-      __$$PaymentMethodImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String id,
-      String object,
-      BillingDetails? billingDetails,
-      String? customer,
-      Map<String, dynamic> metadata,
-      bool livemode,
-      int? created,
-      CardPaymentMethod? card,
-      SepaDebit? sepaDebit,
-      BacsDebit? bacsDebit,
-      AuBecsDebit? auBecsDebit,
-      Sofort? sofort,
-      Ideal? ideal,
-      Fpx? fpx,
-      Upi? upi,
-      UsBankAccount? usBankAccount,
-      PaymentMethodType type});
 
-  @override
-  $BillingDetailsCopyWith<$Res>? get billingDetails;
-  @override
-  $CardPaymentMethodCopyWith<$Res>? get card;
-  @override
-  $SepaDebitCopyWith<$Res>? get sepaDebit;
-  @override
-  $BacsDebitCopyWith<$Res>? get bacsDebit;
-  @override
-  $AuBecsDebitCopyWith<$Res>? get auBecsDebit;
-  @override
-  $SofortCopyWith<$Res>? get sofort;
-  @override
-  $IdealCopyWith<$Res>? get ideal;
-  @override
-  $FpxCopyWith<$Res>? get fpx;
-  @override
-  $UpiCopyWith<$Res>? get upi;
-  @override
-  $UsBankAccountCopyWith<$Res>? get usBankAccount;
+/// Adds pattern-matching-related methods to [PaymentMethod].
+extension PaymentMethodPatterns on PaymentMethod {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PaymentMethod value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PaymentMethod() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PaymentMethod value)  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentMethod():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PaymentMethod value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentMethod() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount,  PaymentMethodType type)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PaymentMethod() when $default != null:
+return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.metadata,_that.livemode,_that.created,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.upi,_that.usBankAccount,_that.type);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount,  PaymentMethodType type)  $default,) {final _that = this;
+switch (_that) {
+case _PaymentMethod():
+return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.metadata,_that.livemode,_that.created,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.upi,_that.usBankAccount,_that.type);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount,  PaymentMethodType type)?  $default,) {final _that = this;
+switch (_that) {
+case _PaymentMethod() when $default != null:
+return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.metadata,_that.livemode,_that.created,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.upi,_that.usBankAccount,_that.type);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$PaymentMethodImplCopyWithImpl<$Res>
-    extends _$PaymentMethodCopyWithImpl<$Res, _$PaymentMethodImpl>
-    implements _$$PaymentMethodImplCopyWith<$Res> {
-  __$$PaymentMethodImplCopyWithImpl(
-      _$PaymentMethodImpl _value, $Res Function(_$PaymentMethodImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? object = null,
-    Object? billingDetails = freezed,
-    Object? customer = freezed,
-    Object? metadata = null,
-    Object? livemode = null,
-    Object? created = freezed,
-    Object? card = freezed,
-    Object? sepaDebit = freezed,
-    Object? bacsDebit = freezed,
-    Object? auBecsDebit = freezed,
-    Object? sofort = freezed,
-    Object? ideal = freezed,
-    Object? fpx = freezed,
-    Object? upi = freezed,
-    Object? usBankAccount = freezed,
-    Object? type = null,
-  }) {
-    return _then(_$PaymentMethodImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      object: null == object
-          ? _value.object
-          : object // ignore: cast_nullable_to_non_nullable
-              as String,
-      billingDetails: freezed == billingDetails
-          ? _value.billingDetails
-          : billingDetails // ignore: cast_nullable_to_non_nullable
-              as BillingDetails?,
-      customer: freezed == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      metadata: null == metadata
-          ? _value._metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as int?,
-      card: freezed == card
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as CardPaymentMethod?,
-      sepaDebit: freezed == sepaDebit
-          ? _value.sepaDebit
-          : sepaDebit // ignore: cast_nullable_to_non_nullable
-              as SepaDebit?,
-      bacsDebit: freezed == bacsDebit
-          ? _value.bacsDebit
-          : bacsDebit // ignore: cast_nullable_to_non_nullable
-              as BacsDebit?,
-      auBecsDebit: freezed == auBecsDebit
-          ? _value.auBecsDebit
-          : auBecsDebit // ignore: cast_nullable_to_non_nullable
-              as AuBecsDebit?,
-      sofort: freezed == sofort
-          ? _value.sofort
-          : sofort // ignore: cast_nullable_to_non_nullable
-              as Sofort?,
-      ideal: freezed == ideal
-          ? _value.ideal
-          : ideal // ignore: cast_nullable_to_non_nullable
-              as Ideal?,
-      fpx: freezed == fpx
-          ? _value.fpx
-          : fpx // ignore: cast_nullable_to_non_nullable
-              as Fpx?,
-      upi: freezed == upi
-          ? _value.upi
-          : upi // ignore: cast_nullable_to_non_nullable
-              as Upi?,
-      usBankAccount: freezed == usBankAccount
-          ? _value.usBankAccount
-          : usBankAccount // ignore: cast_nullable_to_non_nullable
-              as UsBankAccount?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodType,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$PaymentMethodImpl implements _PaymentMethod {
-  const _$PaymentMethodImpl(
-      {required this.id,
-      this.object = "payment_method",
-      this.billingDetails,
-      this.customer,
-      final Map<String, dynamic> metadata = const {},
-      this.livemode = true,
-      this.created,
-      this.card,
-      this.sepaDebit,
-      this.bacsDebit,
-      this.auBecsDebit,
-      this.sofort,
-      this.ideal,
-      this.fpx,
-      this.upi,
-      this.usBankAccount,
-      required this.type})
-      : _metadata = metadata;
+class _PaymentMethod implements PaymentMethod {
+  const _PaymentMethod({required this.id, this.object = "payment_method", this.billingDetails, this.customer, final  Map<String, dynamic> metadata = const {}, this.livemode = true, this.created, this.card, this.sepaDebit, this.bacsDebit, this.auBecsDebit, this.ideal, this.fpx, this.upi, this.usBankAccount, required this.type}): _metadata = metadata;
+  factory _PaymentMethod.fromJson(Map<String, dynamic> json) => _$PaymentMethodFromJson(json);
 
-  factory _$PaymentMethodImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaymentMethodImplFromJson(json);
-
-  /// Unique identifier for the object.
-  @override
-  final String id;
-
-  /// String representing the object’s type.
-  /// Objects of the same type share the same value.
-  @override
-  @JsonKey()
-  final String object;
-
-  /// Billing information associated with the PaymentMethod that may be used
-  /// or required by particular types of payment methods.
-  @override
-  final BillingDetails? billingDetails;
-
-  /// The ID of the Customer to which this PaymentMethod is saved.
-  /// This will not be set when the PaymentMethod has not been saved to a
-  /// Customer.
-  @override
-  final String? customer;
-
-  /// Set of key-value pairs that you can attach to an object.
-  /// This can be useful for storing additional information about the object
-  /// in a structured format.
-  final Map<String, dynamic> _metadata;
-
-  /// Set of key-value pairs that you can attach to an object.
-  /// This can be useful for storing additional information about the object
-  /// in a structured format.
-  @override
-  @JsonKey()
-  Map<String, dynamic> get metadata {
-    if (_metadata is EqualUnmodifiableMapView) return _metadata;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_metadata);
-  }
-
-  /// Has the value true if the object exists in live mode or the value false
-  /// if the object exists in test mode.
-  @override
-  @JsonKey()
-  final bool livemode;
-
-  /// Time at which the object was created.
-  /// Measured in seconds since the Unix epoch.
-  @override
-  final int? created;
-
-  /// Containing additional data in case paymentmethod type is card.
-  @override
-  final CardPaymentMethod? card;
-
-  /// Containing additional data in case paymentmethod type is sepa.
-  @override
-  final SepaDebit? sepaDebit;
-
-  /// Containing additional data in case paymentmethod type is Bacs debit.
-  @override
-  final BacsDebit? bacsDebit;
-
-  /// Containing additional data in case paymentmethod type is Aubecs debit.
-  @override
-  final AuBecsDebit? auBecsDebit;
-
-  /// Containing additional data in case paymentmethod type is sofort.
-  @override
-  final Sofort? sofort;
-
-  /// Containing additional data in case paymentmethod type is Ideal.
-  @override
-  final Ideal? ideal;
-
-  /// Containing additional data in case paymentmethod type is FPX.
-  @override
-  final Fpx? fpx;
-
-  /// Containing additional data in case paymentmethod type is UPI.
-  @override
-  final Upi? upi;
-  @override
-  final UsBankAccount? usBankAccount;
-
-  /// The type of the PaymentMethod.
-  /// An additional hash is included on the PaymentMethod with a name
-  /// matching this value.
-  /// It contains additional information specific to the PaymentMethod type.
-  @override
-  final PaymentMethodType type;
-
-  @override
-  String toString() {
-    return 'PaymentMethod(id: $id, object: $object, billingDetails: $billingDetails, customer: $customer, metadata: $metadata, livemode: $livemode, created: $created, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi, usBankAccount: $usBankAccount, type: $type)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaymentMethodImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.object, object) || other.object == object) &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails) &&
-            (identical(other.customer, customer) ||
-                other.customer == customer) &&
-            const DeepCollectionEquality().equals(other._metadata, _metadata) &&
-            (identical(other.livemode, livemode) ||
-                other.livemode == livemode) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.card, card) || other.card == card) &&
-            (identical(other.sepaDebit, sepaDebit) ||
-                other.sepaDebit == sepaDebit) &&
-            (identical(other.bacsDebit, bacsDebit) ||
-                other.bacsDebit == bacsDebit) &&
-            (identical(other.auBecsDebit, auBecsDebit) ||
-                other.auBecsDebit == auBecsDebit) &&
-            (identical(other.sofort, sofort) || other.sofort == sofort) &&
-            (identical(other.ideal, ideal) || other.ideal == ideal) &&
-            (identical(other.fpx, fpx) || other.fpx == fpx) &&
-            (identical(other.upi, upi) || other.upi == upi) &&
-            (identical(other.usBankAccount, usBankAccount) ||
-                other.usBankAccount == usBankAccount) &&
-            (identical(other.type, type) || other.type == type));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      object,
-      billingDetails,
-      customer,
-      const DeepCollectionEquality().hash(_metadata),
-      livemode,
-      created,
-      card,
-      sepaDebit,
-      bacsDebit,
-      auBecsDebit,
-      sofort,
-      ideal,
-      fpx,
-      upi,
-      usBankAccount,
-      type);
-
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaymentMethodImplCopyWith<_$PaymentMethodImpl> get copyWith =>
-      __$$PaymentMethodImplCopyWithImpl<_$PaymentMethodImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaymentMethodImplToJson(
-      this,
-    );
-  }
+/// Unique identifier for the object.
+@override final  String id;
+/// String representing the object’s type.
+/// Objects of the same type share the same value.
+@override@JsonKey() final  String object;
+/// Billing information associated with the PaymentMethod that may be used
+/// or required by particular types of payment methods.
+@override final  BillingDetails? billingDetails;
+/// The ID of the Customer to which this PaymentMethod is saved.
+/// This will not be set when the PaymentMethod has not been saved to a
+/// Customer.
+@override final  String? customer;
+/// Set of key-value pairs that you can attach to an object.
+/// This can be useful for storing additional information about the object
+/// in a structured format.
+ final  Map<String, dynamic> _metadata;
+/// Set of key-value pairs that you can attach to an object.
+/// This can be useful for storing additional information about the object
+/// in a structured format.
+@override@JsonKey() Map<String, dynamic> get metadata {
+  if (_metadata is EqualUnmodifiableMapView) return _metadata;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_metadata);
 }
 
-abstract class _PaymentMethod implements PaymentMethod {
-  const factory _PaymentMethod(
-      {required final String id,
-      final String object,
-      final BillingDetails? billingDetails,
-      final String? customer,
-      final Map<String, dynamic> metadata,
-      final bool livemode,
-      final int? created,
-      final CardPaymentMethod? card,
-      final SepaDebit? sepaDebit,
-      final BacsDebit? bacsDebit,
-      final AuBecsDebit? auBecsDebit,
-      final Sofort? sofort,
-      final Ideal? ideal,
-      final Fpx? fpx,
-      final Upi? upi,
-      final UsBankAccount? usBankAccount,
-      required final PaymentMethodType type}) = _$PaymentMethodImpl;
+/// Has the value true if the object exists in live mode or the value false
+/// if the object exists in test mode.
+@override@JsonKey() final  bool livemode;
+/// Time at which the object was created.
+/// Measured in seconds since the Unix epoch.
+@override final  int? created;
+/// Containing additional data in case paymentmethod type is card.
+@override final  CardPaymentMethod? card;
+/// Containing additional data in case paymentmethod type is sepa.
+@override final  SepaDebit? sepaDebit;
+/// Containing additional data in case paymentmethod type is Bacs debit.
+@override final  BacsDebit? bacsDebit;
+/// Containing additional data in case paymentmethod type is Aubecs debit.
+@override final  AuBecsDebit? auBecsDebit;
+/// Containing additional data in case paymentmethod type is Ideal.
+@override final  Ideal? ideal;
+/// Containing additional data in case paymentmethod type is FPX.
+@override final  Fpx? fpx;
+/// Containing additional data in case paymentmethod type is UPI.
+@override final  Upi? upi;
+@override final  UsBankAccount? usBankAccount;
+/// The type of the PaymentMethod.
+/// An additional hash is included on the PaymentMethod with a name
+/// matching this value.
+/// It contains additional information specific to the PaymentMethod type.
+@override final  PaymentMethodType type;
 
-  factory _PaymentMethod.fromJson(Map<String, dynamic> json) =
-      _$PaymentMethodImpl.fromJson;
+/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaymentMethodCopyWith<_PaymentMethod> get copyWith => __$PaymentMethodCopyWithImpl<_PaymentMethod>(this, _$identity);
 
-  /// Unique identifier for the object.
-  @override
-  String get id;
-
-  /// String representing the object’s type.
-  /// Objects of the same type share the same value.
-  @override
-  String get object;
-
-  /// Billing information associated with the PaymentMethod that may be used
-  /// or required by particular types of payment methods.
-  @override
-  BillingDetails? get billingDetails;
-
-  /// The ID of the Customer to which this PaymentMethod is saved.
-  /// This will not be set when the PaymentMethod has not been saved to a
-  /// Customer.
-  @override
-  String? get customer;
-
-  /// Set of key-value pairs that you can attach to an object.
-  /// This can be useful for storing additional information about the object
-  /// in a structured format.
-  @override
-  Map<String, dynamic> get metadata;
-
-  /// Has the value true if the object exists in live mode or the value false
-  /// if the object exists in test mode.
-  @override
-  bool get livemode;
-
-  /// Time at which the object was created.
-  /// Measured in seconds since the Unix epoch.
-  @override
-  int? get created;
-
-  /// Containing additional data in case paymentmethod type is card.
-  @override
-  CardPaymentMethod? get card;
-
-  /// Containing additional data in case paymentmethod type is sepa.
-  @override
-  SepaDebit? get sepaDebit;
-
-  /// Containing additional data in case paymentmethod type is Bacs debit.
-  @override
-  BacsDebit? get bacsDebit;
-
-  /// Containing additional data in case paymentmethod type is Aubecs debit.
-  @override
-  AuBecsDebit? get auBecsDebit;
-
-  /// Containing additional data in case paymentmethod type is sofort.
-  @override
-  Sofort? get sofort;
-
-  /// Containing additional data in case paymentmethod type is Ideal.
-  @override
-  Ideal? get ideal;
-
-  /// Containing additional data in case paymentmethod type is FPX.
-  @override
-  Fpx? get fpx;
-
-  /// Containing additional data in case paymentmethod type is UPI.
-  @override
-  Upi? get upi;
-  @override
-  UsBankAccount? get usBankAccount;
-
-  /// The type of the PaymentMethod.
-  /// An additional hash is included on the PaymentMethod with a name
-  /// matching this value.
-  /// It contains additional information specific to the PaymentMethod type.
-  @override
-  PaymentMethodType get type;
-
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaymentMethodImplCopyWith<_$PaymentMethodImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentMethodToJson(this, );
 }
 
-AuBecsDebit _$AuBecsDebitFromJson(Map<String, dynamic> json) {
-  return _AuBecsDebit.fromJson(json);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMethod&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails)&&(identical(other.customer, customer) || other.customer == customer)&&const DeepCollectionEquality().equals(other._metadata, _metadata)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.created, created) || other.created == created)&&(identical(other.card, card) || other.card == card)&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.bacsDebit, bacsDebit) || other.bacsDebit == bacsDebit)&&(identical(other.auBecsDebit, auBecsDebit) || other.auBecsDebit == auBecsDebit)&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.fpx, fpx) || other.fpx == fpx)&&(identical(other.upi, upi) || other.upi == upi)&&(identical(other.usBankAccount, usBankAccount) || other.usBankAccount == usBankAccount)&&(identical(other.type, type) || other.type == type));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,object,billingDetails,customer,const DeepCollectionEquality().hash(_metadata),livemode,created,card,sepaDebit,bacsDebit,auBecsDebit,ideal,fpx,upi,usBankAccount,type);
+
+@override
+String toString() {
+  return 'PaymentMethod(id: $id, object: $object, billingDetails: $billingDetails, customer: $customer, metadata: $metadata, livemode: $livemode, created: $created, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, ideal: $ideal, fpx: $fpx, upi: $upi, usBankAccount: $usBankAccount, type: $type)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PaymentMethodCopyWith<$Res> implements $PaymentMethodCopyWith<$Res> {
+  factory _$PaymentMethodCopyWith(_PaymentMethod value, $Res Function(_PaymentMethod) _then) = __$PaymentMethodCopyWithImpl;
+@override @useResult
+$Res call({
+ String id, String object, BillingDetails? billingDetails, String? customer, Map<String, dynamic> metadata, bool livemode, int? created, CardPaymentMethod? card, SepaDebit? sepaDebit, BacsDebit? bacsDebit, AuBecsDebit? auBecsDebit, Ideal? ideal, Fpx? fpx, Upi? upi, UsBankAccount? usBankAccount, PaymentMethodType type
+});
+
+
+@override $BillingDetailsCopyWith<$Res>? get billingDetails;@override $CardPaymentMethodCopyWith<$Res>? get card;@override $SepaDebitCopyWith<$Res>? get sepaDebit;@override $BacsDebitCopyWith<$Res>? get bacsDebit;@override $AuBecsDebitCopyWith<$Res>? get auBecsDebit;@override $IdealCopyWith<$Res>? get ideal;@override $FpxCopyWith<$Res>? get fpx;@override $UpiCopyWith<$Res>? get upi;@override $UsBankAccountCopyWith<$Res>? get usBankAccount;
+
+}
+/// @nodoc
+class __$PaymentMethodCopyWithImpl<$Res>
+    implements _$PaymentMethodCopyWith<$Res> {
+  __$PaymentMethodCopyWithImpl(this._self, this._then);
+
+  final _PaymentMethod _self;
+  final $Res Function(_PaymentMethod) _then;
+
+/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? object = null,Object? billingDetails = freezed,Object? customer = freezed,Object? metadata = null,Object? livemode = null,Object? created = freezed,Object? card = freezed,Object? sepaDebit = freezed,Object? bacsDebit = freezed,Object? auBecsDebit = freezed,Object? ideal = freezed,Object? fpx = freezed,Object? upi = freezed,Object? usBankAccount = freezed,Object? type = null,}) {
+  return _then(_PaymentMethod(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,object: null == object ? _self.object : object // ignore: cast_nullable_to_non_nullable
+as String,billingDetails: freezed == billingDetails ? _self.billingDetails : billingDetails // ignore: cast_nullable_to_non_nullable
+as BillingDetails?,customer: freezed == customer ? _self.customer : customer // ignore: cast_nullable_to_non_nullable
+as String?,metadata: null == metadata ? _self._metadata : metadata // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,livemode: null == livemode ? _self.livemode : livemode // ignore: cast_nullable_to_non_nullable
+as bool,created: freezed == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
+as int?,card: freezed == card ? _self.card : card // ignore: cast_nullable_to_non_nullable
+as CardPaymentMethod?,sepaDebit: freezed == sepaDebit ? _self.sepaDebit : sepaDebit // ignore: cast_nullable_to_non_nullable
+as SepaDebit?,bacsDebit: freezed == bacsDebit ? _self.bacsDebit : bacsDebit // ignore: cast_nullable_to_non_nullable
+as BacsDebit?,auBecsDebit: freezed == auBecsDebit ? _self.auBecsDebit : auBecsDebit // ignore: cast_nullable_to_non_nullable
+as AuBecsDebit?,ideal: freezed == ideal ? _self.ideal : ideal // ignore: cast_nullable_to_non_nullable
+as Ideal?,fpx: freezed == fpx ? _self.fpx : fpx // ignore: cast_nullable_to_non_nullable
+as Fpx?,upi: freezed == upi ? _self.upi : upi // ignore: cast_nullable_to_non_nullable
+as Upi?,usBankAccount: freezed == usBankAccount ? _self.usBankAccount : usBankAccount // ignore: cast_nullable_to_non_nullable
+as UsBankAccount?,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as PaymentMethodType,
+  ));
+}
+
+/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_self.billingDetails == null) {
+    return null;
+  }
+
+  return $BillingDetailsCopyWith<$Res>(_self.billingDetails!, (value) {
+    return _then(_self.copyWith(billingDetails: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardPaymentMethodCopyWith<$Res>? get card {
+    if (_self.card == null) {
+    return null;
+  }
+
+  return $CardPaymentMethodCopyWith<$Res>(_self.card!, (value) {
+    return _then(_self.copyWith(card: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SepaDebitCopyWith<$Res>? get sepaDebit {
+    if (_self.sepaDebit == null) {
+    return null;
+  }
+
+  return $SepaDebitCopyWith<$Res>(_self.sepaDebit!, (value) {
+    return _then(_self.copyWith(sepaDebit: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BacsDebitCopyWith<$Res>? get bacsDebit {
+    if (_self.bacsDebit == null) {
+    return null;
+  }
+
+  return $BacsDebitCopyWith<$Res>(_self.bacsDebit!, (value) {
+    return _then(_self.copyWith(bacsDebit: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AuBecsDebitCopyWith<$Res>? get auBecsDebit {
+    if (_self.auBecsDebit == null) {
+    return null;
+  }
+
+  return $AuBecsDebitCopyWith<$Res>(_self.auBecsDebit!, (value) {
+    return _then(_self.copyWith(auBecsDebit: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$IdealCopyWith<$Res>? get ideal {
+    if (_self.ideal == null) {
+    return null;
+  }
+
+  return $IdealCopyWith<$Res>(_self.ideal!, (value) {
+    return _then(_self.copyWith(ideal: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FpxCopyWith<$Res>? get fpx {
+    if (_self.fpx == null) {
+    return null;
+  }
+
+  return $FpxCopyWith<$Res>(_self.fpx!, (value) {
+    return _then(_self.copyWith(fpx: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UpiCopyWith<$Res>? get upi {
+    if (_self.upi == null) {
+    return null;
+  }
+
+  return $UpiCopyWith<$Res>(_self.upi!, (value) {
+    return _then(_self.copyWith(upi: value));
+  });
+}/// Create a copy of PaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UsBankAccountCopyWith<$Res>? get usBankAccount {
+    if (_self.usBankAccount == null) {
+    return null;
+  }
+
+  return $UsBankAccountCopyWith<$Res>(_self.usBankAccount!, (value) {
+    return _then(_self.copyWith(usBankAccount: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$AuBecsDebit {
-  /// Unique identifier for the bankaccount.
-  String? get fingerprint => throw _privateConstructorUsedError;
 
-  /// Last 4 digits of the bankaccount number.
-  String? get last4 => throw _privateConstructorUsedError;
-
-  /// Six digit number identifying the bank or branch for this account.
-  String? get bsbNumber => throw _privateConstructorUsedError;
+/// Unique identifier for the bankaccount.
+ String? get fingerprint;/// Last 4 digits of the bankaccount number.
+ String? get last4;/// Six digit number identifying the bank or branch for this account.
+ String? get bsbNumber;
+/// Create a copy of AuBecsDebit
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AuBecsDebitCopyWith<AuBecsDebit> get copyWith => _$AuBecsDebitCopyWithImpl<AuBecsDebit>(this as AuBecsDebit, _$identity);
 
   /// Serializes this AuBecsDebit to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of AuBecsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AuBecsDebitCopyWith<AuBecsDebit> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuBecsDebit&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.bsbNumber, bsbNumber) || other.bsbNumber == bsbNumber));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,fingerprint,last4,bsbNumber);
+
+@override
+String toString() {
+  return 'AuBecsDebit(fingerprint: $fingerprint, last4: $last4, bsbNumber: $bsbNumber)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AuBecsDebitCopyWith<$Res> {
-  factory $AuBecsDebitCopyWith(
-          AuBecsDebit value, $Res Function(AuBecsDebit) then) =
-      _$AuBecsDebitCopyWithImpl<$Res, AuBecsDebit>;
-  @useResult
-  $Res call({String? fingerprint, String? last4, String? bsbNumber});
-}
+abstract mixin class $AuBecsDebitCopyWith<$Res>  {
+  factory $AuBecsDebitCopyWith(AuBecsDebit value, $Res Function(AuBecsDebit) _then) = _$AuBecsDebitCopyWithImpl;
+@useResult
+$Res call({
+ String? fingerprint, String? last4, String? bsbNumber
+});
 
+
+
+
+}
 /// @nodoc
-class _$AuBecsDebitCopyWithImpl<$Res, $Val extends AuBecsDebit>
+class _$AuBecsDebitCopyWithImpl<$Res>
     implements $AuBecsDebitCopyWith<$Res> {
-  _$AuBecsDebitCopyWithImpl(this._value, this._then);
+  _$AuBecsDebitCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AuBecsDebit _self;
+  final $Res Function(AuBecsDebit) _then;
 
-  /// Create a copy of AuBecsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fingerprint = freezed,
-    Object? last4 = freezed,
-    Object? bsbNumber = freezed,
-  }) {
-    return _then(_value.copyWith(
-      fingerprint: freezed == fingerprint
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bsbNumber: freezed == bsbNumber
-          ? _value.bsbNumber
-          : bsbNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of AuBecsDebit
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? fingerprint = freezed,Object? last4 = freezed,Object? bsbNumber = freezed,}) {
+  return _then(_self.copyWith(
+fingerprint: freezed == fingerprint ? _self.fingerprint : fingerprint // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,bsbNumber: freezed == bsbNumber ? _self.bsbNumber : bsbNumber // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AuBecsDebitImplCopyWith<$Res>
-    implements $AuBecsDebitCopyWith<$Res> {
-  factory _$$AuBecsDebitImplCopyWith(
-          _$AuBecsDebitImpl value, $Res Function(_$AuBecsDebitImpl) then) =
-      __$$AuBecsDebitImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? fingerprint, String? last4, String? bsbNumber});
 }
 
-/// @nodoc
-class __$$AuBecsDebitImplCopyWithImpl<$Res>
-    extends _$AuBecsDebitCopyWithImpl<$Res, _$AuBecsDebitImpl>
-    implements _$$AuBecsDebitImplCopyWith<$Res> {
-  __$$AuBecsDebitImplCopyWithImpl(
-      _$AuBecsDebitImpl _value, $Res Function(_$AuBecsDebitImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AuBecsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fingerprint = freezed,
-    Object? last4 = freezed,
-    Object? bsbNumber = freezed,
-  }) {
-    return _then(_$AuBecsDebitImpl(
-      fingerprint: freezed == fingerprint
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bsbNumber: freezed == bsbNumber
-          ? _value.bsbNumber
-          : bsbNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [AuBecsDebit].
+extension AuBecsDebitPatterns on AuBecsDebit {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AuBecsDebit value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AuBecsDebit() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AuBecsDebit value)  $default,){
+final _that = this;
+switch (_that) {
+case _AuBecsDebit():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AuBecsDebit value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AuBecsDebit() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? fingerprint,  String? last4,  String? bsbNumber)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AuBecsDebit() when $default != null:
+return $default(_that.fingerprint,_that.last4,_that.bsbNumber);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? fingerprint,  String? last4,  String? bsbNumber)  $default,) {final _that = this;
+switch (_that) {
+case _AuBecsDebit():
+return $default(_that.fingerprint,_that.last4,_that.bsbNumber);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? fingerprint,  String? last4,  String? bsbNumber)?  $default,) {final _that = this;
+switch (_that) {
+case _AuBecsDebit() when $default != null:
+return $default(_that.fingerprint,_that.last4,_that.bsbNumber);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$AuBecsDebitImpl implements _AuBecsDebit {
-  const _$AuBecsDebitImpl({this.fingerprint, this.last4, this.bsbNumber});
+class _AuBecsDebit implements AuBecsDebit {
+  const _AuBecsDebit({this.fingerprint, this.last4, this.bsbNumber});
+  factory _AuBecsDebit.fromJson(Map<String, dynamic> json) => _$AuBecsDebitFromJson(json);
 
-  factory _$AuBecsDebitImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AuBecsDebitImplFromJson(json);
+/// Unique identifier for the bankaccount.
+@override final  String? fingerprint;
+/// Last 4 digits of the bankaccount number.
+@override final  String? last4;
+/// Six digit number identifying the bank or branch for this account.
+@override final  String? bsbNumber;
 
-  /// Unique identifier for the bankaccount.
-  @override
-  final String? fingerprint;
+/// Create a copy of AuBecsDebit
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AuBecsDebitCopyWith<_AuBecsDebit> get copyWith => __$AuBecsDebitCopyWithImpl<_AuBecsDebit>(this, _$identity);
 
-  /// Last 4 digits of the bankaccount number.
-  @override
-  final String? last4;
-
-  /// Six digit number identifying the bank or branch for this account.
-  @override
-  final String? bsbNumber;
-
-  @override
-  String toString() {
-    return 'AuBecsDebit(fingerprint: $fingerprint, last4: $last4, bsbNumber: $bsbNumber)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuBecsDebitImpl &&
-            (identical(other.fingerprint, fingerprint) ||
-                other.fingerprint == fingerprint) &&
-            (identical(other.last4, last4) || other.last4 == last4) &&
-            (identical(other.bsbNumber, bsbNumber) ||
-                other.bsbNumber == bsbNumber));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, fingerprint, last4, bsbNumber);
-
-  /// Create a copy of AuBecsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuBecsDebitImplCopyWith<_$AuBecsDebitImpl> get copyWith =>
-      __$$AuBecsDebitImplCopyWithImpl<_$AuBecsDebitImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AuBecsDebitImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$AuBecsDebitToJson(this, );
 }
 
-abstract class _AuBecsDebit implements AuBecsDebit {
-  const factory _AuBecsDebit(
-      {final String? fingerprint,
-      final String? last4,
-      final String? bsbNumber}) = _$AuBecsDebitImpl;
-
-  factory _AuBecsDebit.fromJson(Map<String, dynamic> json) =
-      _$AuBecsDebitImpl.fromJson;
-
-  /// Unique identifier for the bankaccount.
-  @override
-  String? get fingerprint;
-
-  /// Last 4 digits of the bankaccount number.
-  @override
-  String? get last4;
-
-  /// Six digit number identifying the bank or branch for this account.
-  @override
-  String? get bsbNumber;
-
-  /// Create a copy of AuBecsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuBecsDebitImplCopyWith<_$AuBecsDebitImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuBecsDebit&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.bsbNumber, bsbNumber) || other.bsbNumber == bsbNumber));
 }
 
-BacsDebit _$BacsDebitFromJson(Map<String, dynamic> json) {
-  return _BacsDebit.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,fingerprint,last4,bsbNumber);
+
+@override
+String toString() {
+  return 'AuBecsDebit(fingerprint: $fingerprint, last4: $last4, bsbNumber: $bsbNumber)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AuBecsDebitCopyWith<$Res> implements $AuBecsDebitCopyWith<$Res> {
+  factory _$AuBecsDebitCopyWith(_AuBecsDebit value, $Res Function(_AuBecsDebit) _then) = __$AuBecsDebitCopyWithImpl;
+@override @useResult
+$Res call({
+ String? fingerprint, String? last4, String? bsbNumber
+});
+
+
+
+
+}
+/// @nodoc
+class __$AuBecsDebitCopyWithImpl<$Res>
+    implements _$AuBecsDebitCopyWith<$Res> {
+  __$AuBecsDebitCopyWithImpl(this._self, this._then);
+
+  final _AuBecsDebit _self;
+  final $Res Function(_AuBecsDebit) _then;
+
+/// Create a copy of AuBecsDebit
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? fingerprint = freezed,Object? last4 = freezed,Object? bsbNumber = freezed,}) {
+  return _then(_AuBecsDebit(
+fingerprint: freezed == fingerprint ? _self.fingerprint : fingerprint // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,bsbNumber: freezed == bsbNumber ? _self.bsbNumber : bsbNumber // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$BacsDebit {
-  /// Sort code of the bankaccount.
-  String? get sortCode => throw _privateConstructorUsedError;
 
-  /// Unique identifier for the bankaccount.
-  String? get fingerprint => throw _privateConstructorUsedError;
-
-  /// Last 4 digits of the bank account.
-  String? get last4 => throw _privateConstructorUsedError;
+/// Sort code of the bankaccount.
+ String? get sortCode;/// Unique identifier for the bankaccount.
+ String? get fingerprint;/// Last 4 digits of the bank account.
+ String? get last4;
+/// Create a copy of BacsDebit
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BacsDebitCopyWith<BacsDebit> get copyWith => _$BacsDebitCopyWithImpl<BacsDebit>(this as BacsDebit, _$identity);
 
   /// Serializes this BacsDebit to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BacsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BacsDebitCopyWith<BacsDebit> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BacsDebit&&(identical(other.sortCode, sortCode) || other.sortCode == sortCode)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,sortCode,fingerprint,last4);
+
+@override
+String toString() {
+  return 'BacsDebit(sortCode: $sortCode, fingerprint: $fingerprint, last4: $last4)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $BacsDebitCopyWith<$Res> {
-  factory $BacsDebitCopyWith(BacsDebit value, $Res Function(BacsDebit) then) =
-      _$BacsDebitCopyWithImpl<$Res, BacsDebit>;
-  @useResult
-  $Res call({String? sortCode, String? fingerprint, String? last4});
-}
+abstract mixin class $BacsDebitCopyWith<$Res>  {
+  factory $BacsDebitCopyWith(BacsDebit value, $Res Function(BacsDebit) _then) = _$BacsDebitCopyWithImpl;
+@useResult
+$Res call({
+ String? sortCode, String? fingerprint, String? last4
+});
 
+
+
+
+}
 /// @nodoc
-class _$BacsDebitCopyWithImpl<$Res, $Val extends BacsDebit>
+class _$BacsDebitCopyWithImpl<$Res>
     implements $BacsDebitCopyWith<$Res> {
-  _$BacsDebitCopyWithImpl(this._value, this._then);
+  _$BacsDebitCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BacsDebit _self;
+  final $Res Function(BacsDebit) _then;
 
-  /// Create a copy of BacsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sortCode = freezed,
-    Object? fingerprint = freezed,
-    Object? last4 = freezed,
-  }) {
-    return _then(_value.copyWith(
-      sortCode: freezed == sortCode
-          ? _value.sortCode
-          : sortCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fingerprint: freezed == fingerprint
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of BacsDebit
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? sortCode = freezed,Object? fingerprint = freezed,Object? last4 = freezed,}) {
+  return _then(_self.copyWith(
+sortCode: freezed == sortCode ? _self.sortCode : sortCode // ignore: cast_nullable_to_non_nullable
+as String?,fingerprint: freezed == fingerprint ? _self.fingerprint : fingerprint // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$BacsDebitImplCopyWith<$Res>
-    implements $BacsDebitCopyWith<$Res> {
-  factory _$$BacsDebitImplCopyWith(
-          _$BacsDebitImpl value, $Res Function(_$BacsDebitImpl) then) =
-      __$$BacsDebitImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? sortCode, String? fingerprint, String? last4});
 }
 
-/// @nodoc
-class __$$BacsDebitImplCopyWithImpl<$Res>
-    extends _$BacsDebitCopyWithImpl<$Res, _$BacsDebitImpl>
-    implements _$$BacsDebitImplCopyWith<$Res> {
-  __$$BacsDebitImplCopyWithImpl(
-      _$BacsDebitImpl _value, $Res Function(_$BacsDebitImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of BacsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sortCode = freezed,
-    Object? fingerprint = freezed,
-    Object? last4 = freezed,
-  }) {
-    return _then(_$BacsDebitImpl(
-      sortCode: freezed == sortCode
-          ? _value.sortCode
-          : sortCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fingerprint: freezed == fingerprint
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [BacsDebit].
+extension BacsDebitPatterns on BacsDebit {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BacsDebit value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _BacsDebit() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BacsDebit value)  $default,){
+final _that = this;
+switch (_that) {
+case _BacsDebit():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BacsDebit value)?  $default,){
+final _that = this;
+switch (_that) {
+case _BacsDebit() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? sortCode,  String? fingerprint,  String? last4)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _BacsDebit() when $default != null:
+return $default(_that.sortCode,_that.fingerprint,_that.last4);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? sortCode,  String? fingerprint,  String? last4)  $default,) {final _that = this;
+switch (_that) {
+case _BacsDebit():
+return $default(_that.sortCode,_that.fingerprint,_that.last4);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? sortCode,  String? fingerprint,  String? last4)?  $default,) {final _that = this;
+switch (_that) {
+case _BacsDebit() when $default != null:
+return $default(_that.sortCode,_that.fingerprint,_that.last4);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$BacsDebitImpl implements _BacsDebit {
-  const _$BacsDebitImpl({this.sortCode, this.fingerprint, this.last4});
+class _BacsDebit implements BacsDebit {
+  const _BacsDebit({this.sortCode, this.fingerprint, this.last4});
+  factory _BacsDebit.fromJson(Map<String, dynamic> json) => _$BacsDebitFromJson(json);
 
-  factory _$BacsDebitImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BacsDebitImplFromJson(json);
+/// Sort code of the bankaccount.
+@override final  String? sortCode;
+/// Unique identifier for the bankaccount.
+@override final  String? fingerprint;
+/// Last 4 digits of the bank account.
+@override final  String? last4;
 
-  /// Sort code of the bankaccount.
-  @override
-  final String? sortCode;
+/// Create a copy of BacsDebit
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BacsDebitCopyWith<_BacsDebit> get copyWith => __$BacsDebitCopyWithImpl<_BacsDebit>(this, _$identity);
 
-  /// Unique identifier for the bankaccount.
-  @override
-  final String? fingerprint;
-
-  /// Last 4 digits of the bank account.
-  @override
-  final String? last4;
-
-  @override
-  String toString() {
-    return 'BacsDebit(sortCode: $sortCode, fingerprint: $fingerprint, last4: $last4)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BacsDebitImpl &&
-            (identical(other.sortCode, sortCode) ||
-                other.sortCode == sortCode) &&
-            (identical(other.fingerprint, fingerprint) ||
-                other.fingerprint == fingerprint) &&
-            (identical(other.last4, last4) || other.last4 == last4));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, sortCode, fingerprint, last4);
-
-  /// Create a copy of BacsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BacsDebitImplCopyWith<_$BacsDebitImpl> get copyWith =>
-      __$$BacsDebitImplCopyWithImpl<_$BacsDebitImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BacsDebitImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$BacsDebitToJson(this, );
 }
 
-abstract class _BacsDebit implements BacsDebit {
-  const factory _BacsDebit(
-      {final String? sortCode,
-      final String? fingerprint,
-      final String? last4}) = _$BacsDebitImpl;
-
-  factory _BacsDebit.fromJson(Map<String, dynamic> json) =
-      _$BacsDebitImpl.fromJson;
-
-  /// Sort code of the bankaccount.
-  @override
-  String? get sortCode;
-
-  /// Unique identifier for the bankaccount.
-  @override
-  String? get fingerprint;
-
-  /// Last 4 digits of the bank account.
-  @override
-  String? get last4;
-
-  /// Create a copy of BacsDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BacsDebitImplCopyWith<_$BacsDebitImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BacsDebit&&(identical(other.sortCode, sortCode) || other.sortCode == sortCode)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4));
 }
 
-CardPaymentMethod _$CardPaymentMethodFromJson(Map<String, dynamic> json) {
-  return _CardPaymentMethod.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,sortCode,fingerprint,last4);
+
+@override
+String toString() {
+  return 'BacsDebit(sortCode: $sortCode, fingerprint: $fingerprint, last4: $last4)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$BacsDebitCopyWith<$Res> implements $BacsDebitCopyWith<$Res> {
+  factory _$BacsDebitCopyWith(_BacsDebit value, $Res Function(_BacsDebit) _then) = __$BacsDebitCopyWithImpl;
+@override @useResult
+$Res call({
+ String? sortCode, String? fingerprint, String? last4
+});
+
+
+
+
+}
+/// @nodoc
+class __$BacsDebitCopyWithImpl<$Res>
+    implements _$BacsDebitCopyWith<$Res> {
+  __$BacsDebitCopyWithImpl(this._self, this._then);
+
+  final _BacsDebit _self;
+  final $Res Function(_BacsDebit) _then;
+
+/// Create a copy of BacsDebit
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? sortCode = freezed,Object? fingerprint = freezed,Object? last4 = freezed,}) {
+  return _then(_BacsDebit(
+sortCode: freezed == sortCode ? _self.sortCode : sortCode // ignore: cast_nullable_to_non_nullable
+as String?,fingerprint: freezed == fingerprint ? _self.fingerprint : fingerprint // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$CardPaymentMethod {
-  /// The brand associated to the card e.g. (visa, amex).
-  String? get brand => throw _privateConstructorUsedError;
 
-  /// Two letter iso code.
-  String? get country => throw _privateConstructorUsedError;
-
-  /// four digit number representing the year of expiry of the card.
-  int? get expYear => throw _privateConstructorUsedError;
-
-  /// two digit number representing the month of expire of the card.
-  int? get expMonth => throw _privateConstructorUsedError;
-
-  /// card funding type e.g. (credit, debit).
-  String? get funding => throw _privateConstructorUsedError;
-
-  /// last four digits of the card.
-  String? get last4 => throw _privateConstructorUsedError;
-
-  /// The preffered card brand for payment
-  String? get preferredNetwork => throw _privateConstructorUsedError;
-
-  /// The available networks the card can run.
-  List<String>? get availableNetworks => throw _privateConstructorUsedError;
+/// The brand associated to the card e.g. (visa, amex).
+ String? get brand;/// Two letter iso code.
+ String? get country;/// four digit number representing the year of expiry of the card.
+ int? get expYear;/// two digit number representing the month of expire of the card.
+ int? get expMonth;/// card funding type e.g. (credit, debit).
+ String? get funding;/// last four digits of the card.
+ String? get last4;/// The preffered card brand for payment
+ String? get preferredNetwork;/// The available networks the card can run.
+ List<String>? get availableNetworks;
+/// Create a copy of CardPaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CardPaymentMethodCopyWith<CardPaymentMethod> get copyWith => _$CardPaymentMethodCopyWithImpl<CardPaymentMethod>(this as CardPaymentMethod, _$identity);
 
   /// Serializes this CardPaymentMethod to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of CardPaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CardPaymentMethodCopyWith<CardPaymentMethod> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardPaymentMethod&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.country, country) || other.country == country)&&(identical(other.expYear, expYear) || other.expYear == expYear)&&(identical(other.expMonth, expMonth) || other.expMonth == expMonth)&&(identical(other.funding, funding) || other.funding == funding)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.preferredNetwork, preferredNetwork) || other.preferredNetwork == preferredNetwork)&&const DeepCollectionEquality().equals(other.availableNetworks, availableNetworks));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,brand,country,expYear,expMonth,funding,last4,preferredNetwork,const DeepCollectionEquality().hash(availableNetworks));
+
+@override
+String toString() {
+  return 'CardPaymentMethod(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4, preferredNetwork: $preferredNetwork, availableNetworks: $availableNetworks)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CardPaymentMethodCopyWith<$Res> {
-  factory $CardPaymentMethodCopyWith(
-          CardPaymentMethod value, $Res Function(CardPaymentMethod) then) =
-      _$CardPaymentMethodCopyWithImpl<$Res, CardPaymentMethod>;
-  @useResult
-  $Res call(
-      {String? brand,
-      String? country,
-      int? expYear,
-      int? expMonth,
-      String? funding,
-      String? last4,
-      String? preferredNetwork,
-      List<String>? availableNetworks});
-}
+abstract mixin class $CardPaymentMethodCopyWith<$Res>  {
+  factory $CardPaymentMethodCopyWith(CardPaymentMethod value, $Res Function(CardPaymentMethod) _then) = _$CardPaymentMethodCopyWithImpl;
+@useResult
+$Res call({
+ String? brand, String? country, int? expYear, int? expMonth, String? funding, String? last4, String? preferredNetwork, List<String>? availableNetworks
+});
 
+
+
+
+}
 /// @nodoc
-class _$CardPaymentMethodCopyWithImpl<$Res, $Val extends CardPaymentMethod>
+class _$CardPaymentMethodCopyWithImpl<$Res>
     implements $CardPaymentMethodCopyWith<$Res> {
-  _$CardPaymentMethodCopyWithImpl(this._value, this._then);
+  _$CardPaymentMethodCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CardPaymentMethod _self;
+  final $Res Function(CardPaymentMethod) _then;
 
-  /// Create a copy of CardPaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? brand = freezed,
-    Object? country = freezed,
-    Object? expYear = freezed,
-    Object? expMonth = freezed,
-    Object? funding = freezed,
-    Object? last4 = freezed,
-    Object? preferredNetwork = freezed,
-    Object? availableNetworks = freezed,
-  }) {
-    return _then(_value.copyWith(
-      brand: freezed == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-      expYear: freezed == expYear
-          ? _value.expYear
-          : expYear // ignore: cast_nullable_to_non_nullable
-              as int?,
-      expMonth: freezed == expMonth
-          ? _value.expMonth
-          : expMonth // ignore: cast_nullable_to_non_nullable
-              as int?,
-      funding: freezed == funding
-          ? _value.funding
-          : funding // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      preferredNetwork: freezed == preferredNetwork
-          ? _value.preferredNetwork
-          : preferredNetwork // ignore: cast_nullable_to_non_nullable
-              as String?,
-      availableNetworks: freezed == availableNetworks
-          ? _value.availableNetworks
-          : availableNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ) as $Val);
-  }
+/// Create a copy of CardPaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? brand = freezed,Object? country = freezed,Object? expYear = freezed,Object? expMonth = freezed,Object? funding = freezed,Object? last4 = freezed,Object? preferredNetwork = freezed,Object? availableNetworks = freezed,}) {
+  return _then(_self.copyWith(
+brand: freezed == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
+as String?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String?,expYear: freezed == expYear ? _self.expYear : expYear // ignore: cast_nullable_to_non_nullable
+as int?,expMonth: freezed == expMonth ? _self.expMonth : expMonth // ignore: cast_nullable_to_non_nullable
+as int?,funding: freezed == funding ? _self.funding : funding // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,preferredNetwork: freezed == preferredNetwork ? _self.preferredNetwork : preferredNetwork // ignore: cast_nullable_to_non_nullable
+as String?,availableNetworks: freezed == availableNetworks ? _self.availableNetworks : availableNetworks // ignore: cast_nullable_to_non_nullable
+as List<String>?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$CardPaymentMethodImplCopyWith<$Res>
-    implements $CardPaymentMethodCopyWith<$Res> {
-  factory _$$CardPaymentMethodImplCopyWith(_$CardPaymentMethodImpl value,
-          $Res Function(_$CardPaymentMethodImpl) then) =
-      __$$CardPaymentMethodImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? brand,
-      String? country,
-      int? expYear,
-      int? expMonth,
-      String? funding,
-      String? last4,
-      String? preferredNetwork,
-      List<String>? availableNetworks});
 }
 
-/// @nodoc
-class __$$CardPaymentMethodImplCopyWithImpl<$Res>
-    extends _$CardPaymentMethodCopyWithImpl<$Res, _$CardPaymentMethodImpl>
-    implements _$$CardPaymentMethodImplCopyWith<$Res> {
-  __$$CardPaymentMethodImplCopyWithImpl(_$CardPaymentMethodImpl _value,
-      $Res Function(_$CardPaymentMethodImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of CardPaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? brand = freezed,
-    Object? country = freezed,
-    Object? expYear = freezed,
-    Object? expMonth = freezed,
-    Object? funding = freezed,
-    Object? last4 = freezed,
-    Object? preferredNetwork = freezed,
-    Object? availableNetworks = freezed,
-  }) {
-    return _then(_$CardPaymentMethodImpl(
-      brand: freezed == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-      expYear: freezed == expYear
-          ? _value.expYear
-          : expYear // ignore: cast_nullable_to_non_nullable
-              as int?,
-      expMonth: freezed == expMonth
-          ? _value.expMonth
-          : expMonth // ignore: cast_nullable_to_non_nullable
-              as int?,
-      funding: freezed == funding
-          ? _value.funding
-          : funding // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      preferredNetwork: freezed == preferredNetwork
-          ? _value.preferredNetwork
-          : preferredNetwork // ignore: cast_nullable_to_non_nullable
-              as String?,
-      availableNetworks: freezed == availableNetworks
-          ? _value._availableNetworks
-          : availableNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [CardPaymentMethod].
+extension CardPaymentMethodPatterns on CardPaymentMethod {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CardPaymentMethod value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CardPaymentMethod() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CardPaymentMethod value)  $default,){
+final _that = this;
+switch (_that) {
+case _CardPaymentMethod():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CardPaymentMethod value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CardPaymentMethod() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? brand,  String? country,  int? expYear,  int? expMonth,  String? funding,  String? last4,  String? preferredNetwork,  List<String>? availableNetworks)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CardPaymentMethod() when $default != null:
+return $default(_that.brand,_that.country,_that.expYear,_that.expMonth,_that.funding,_that.last4,_that.preferredNetwork,_that.availableNetworks);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? brand,  String? country,  int? expYear,  int? expMonth,  String? funding,  String? last4,  String? preferredNetwork,  List<String>? availableNetworks)  $default,) {final _that = this;
+switch (_that) {
+case _CardPaymentMethod():
+return $default(_that.brand,_that.country,_that.expYear,_that.expMonth,_that.funding,_that.last4,_that.preferredNetwork,_that.availableNetworks);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? brand,  String? country,  int? expYear,  int? expMonth,  String? funding,  String? last4,  String? preferredNetwork,  List<String>? availableNetworks)?  $default,) {final _that = this;
+switch (_that) {
+case _CardPaymentMethod() when $default != null:
+return $default(_that.brand,_that.country,_that.expYear,_that.expMonth,_that.funding,_that.last4,_that.preferredNetwork,_that.availableNetworks);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$CardPaymentMethodImpl implements _CardPaymentMethod {
-  const _$CardPaymentMethodImpl(
-      {this.brand,
-      this.country,
-      this.expYear,
-      this.expMonth,
-      this.funding,
-      this.last4,
-      this.preferredNetwork,
-      final List<String>? availableNetworks})
-      : _availableNetworks = availableNetworks;
+class _CardPaymentMethod implements CardPaymentMethod {
+  const _CardPaymentMethod({this.brand, this.country, this.expYear, this.expMonth, this.funding, this.last4, this.preferredNetwork, final  List<String>? availableNetworks}): _availableNetworks = availableNetworks;
+  factory _CardPaymentMethod.fromJson(Map<String, dynamic> json) => _$CardPaymentMethodFromJson(json);
 
-  factory _$CardPaymentMethodImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardPaymentMethodImplFromJson(json);
-
-  /// The brand associated to the card e.g. (visa, amex).
-  @override
-  final String? brand;
-
-  /// Two letter iso code.
-  @override
-  final String? country;
-
-  /// four digit number representing the year of expiry of the card.
-  @override
-  final int? expYear;
-
-  /// two digit number representing the month of expire of the card.
-  @override
-  final int? expMonth;
-
-  /// card funding type e.g. (credit, debit).
-  @override
-  final String? funding;
-
-  /// last four digits of the card.
-  @override
-  final String? last4;
-
-  /// The preffered card brand for payment
-  @override
-  final String? preferredNetwork;
-
-  /// The available networks the card can run.
-  final List<String>? _availableNetworks;
-
-  /// The available networks the card can run.
-  @override
-  List<String>? get availableNetworks {
-    final value = _availableNetworks;
-    if (value == null) return null;
-    if (_availableNetworks is EqualUnmodifiableListView)
-      return _availableNetworks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'CardPaymentMethod(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4, preferredNetwork: $preferredNetwork, availableNetworks: $availableNetworks)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CardPaymentMethodImpl &&
-            (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.expYear, expYear) || other.expYear == expYear) &&
-            (identical(other.expMonth, expMonth) ||
-                other.expMonth == expMonth) &&
-            (identical(other.funding, funding) || other.funding == funding) &&
-            (identical(other.last4, last4) || other.last4 == last4) &&
-            (identical(other.preferredNetwork, preferredNetwork) ||
-                other.preferredNetwork == preferredNetwork) &&
-            const DeepCollectionEquality()
-                .equals(other._availableNetworks, _availableNetworks));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      brand,
-      country,
-      expYear,
-      expMonth,
-      funding,
-      last4,
-      preferredNetwork,
-      const DeepCollectionEquality().hash(_availableNetworks));
-
-  /// Create a copy of CardPaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CardPaymentMethodImplCopyWith<_$CardPaymentMethodImpl> get copyWith =>
-      __$$CardPaymentMethodImplCopyWithImpl<_$CardPaymentMethodImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CardPaymentMethodImplToJson(
-      this,
-    );
-  }
+/// The brand associated to the card e.g. (visa, amex).
+@override final  String? brand;
+/// Two letter iso code.
+@override final  String? country;
+/// four digit number representing the year of expiry of the card.
+@override final  int? expYear;
+/// two digit number representing the month of expire of the card.
+@override final  int? expMonth;
+/// card funding type e.g. (credit, debit).
+@override final  String? funding;
+/// last four digits of the card.
+@override final  String? last4;
+/// The preffered card brand for payment
+@override final  String? preferredNetwork;
+/// The available networks the card can run.
+ final  List<String>? _availableNetworks;
+/// The available networks the card can run.
+@override List<String>? get availableNetworks {
+  final value = _availableNetworks;
+  if (value == null) return null;
+  if (_availableNetworks is EqualUnmodifiableListView) return _availableNetworks;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
-abstract class _CardPaymentMethod implements CardPaymentMethod {
-  const factory _CardPaymentMethod(
-      {final String? brand,
-      final String? country,
-      final int? expYear,
-      final int? expMonth,
-      final String? funding,
-      final String? last4,
-      final String? preferredNetwork,
-      final List<String>? availableNetworks}) = _$CardPaymentMethodImpl;
 
-  factory _CardPaymentMethod.fromJson(Map<String, dynamic> json) =
-      _$CardPaymentMethodImpl.fromJson;
+/// Create a copy of CardPaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CardPaymentMethodCopyWith<_CardPaymentMethod> get copyWith => __$CardPaymentMethodCopyWithImpl<_CardPaymentMethod>(this, _$identity);
 
-  /// The brand associated to the card e.g. (visa, amex).
-  @override
-  String? get brand;
-
-  /// Two letter iso code.
-  @override
-  String? get country;
-
-  /// four digit number representing the year of expiry of the card.
-  @override
-  int? get expYear;
-
-  /// two digit number representing the month of expire of the card.
-  @override
-  int? get expMonth;
-
-  /// card funding type e.g. (credit, debit).
-  @override
-  String? get funding;
-
-  /// last four digits of the card.
-  @override
-  String? get last4;
-
-  /// The preffered card brand for payment
-  @override
-  String? get preferredNetwork;
-
-  /// The available networks the card can run.
-  @override
-  List<String>? get availableNetworks;
-
-  /// Create a copy of CardPaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CardPaymentMethodImplCopyWith<_$CardPaymentMethodImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$CardPaymentMethodToJson(this, );
 }
 
-Fpx _$FpxFromJson(Map<String, dynamic> json) {
-  return _Fpx.fromJson(json);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentMethod&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.country, country) || other.country == country)&&(identical(other.expYear, expYear) || other.expYear == expYear)&&(identical(other.expMonth, expMonth) || other.expMonth == expMonth)&&(identical(other.funding, funding) || other.funding == funding)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.preferredNetwork, preferredNetwork) || other.preferredNetwork == preferredNetwork)&&const DeepCollectionEquality().equals(other._availableNetworks, _availableNetworks));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,brand,country,expYear,expMonth,funding,last4,preferredNetwork,const DeepCollectionEquality().hash(_availableNetworks));
+
+@override
+String toString() {
+  return 'CardPaymentMethod(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4, preferredNetwork: $preferredNetwork, availableNetworks: $availableNetworks)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CardPaymentMethodCopyWith<$Res> implements $CardPaymentMethodCopyWith<$Res> {
+  factory _$CardPaymentMethodCopyWith(_CardPaymentMethod value, $Res Function(_CardPaymentMethod) _then) = __$CardPaymentMethodCopyWithImpl;
+@override @useResult
+$Res call({
+ String? brand, String? country, int? expYear, int? expMonth, String? funding, String? last4, String? preferredNetwork, List<String>? availableNetworks
+});
+
+
+
+
+}
+/// @nodoc
+class __$CardPaymentMethodCopyWithImpl<$Res>
+    implements _$CardPaymentMethodCopyWith<$Res> {
+  __$CardPaymentMethodCopyWithImpl(this._self, this._then);
+
+  final _CardPaymentMethod _self;
+  final $Res Function(_CardPaymentMethod) _then;
+
+/// Create a copy of CardPaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? brand = freezed,Object? country = freezed,Object? expYear = freezed,Object? expMonth = freezed,Object? funding = freezed,Object? last4 = freezed,Object? preferredNetwork = freezed,Object? availableNetworks = freezed,}) {
+  return _then(_CardPaymentMethod(
+brand: freezed == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
+as String?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String?,expYear: freezed == expYear ? _self.expYear : expYear // ignore: cast_nullable_to_non_nullable
+as int?,expMonth: freezed == expMonth ? _self.expMonth : expMonth // ignore: cast_nullable_to_non_nullable
+as int?,funding: freezed == funding ? _self.funding : funding // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,preferredNetwork: freezed == preferredNetwork ? _self.preferredNetwork : preferredNetwork // ignore: cast_nullable_to_non_nullable
+as String?,availableNetworks: freezed == availableNetworks ? _self._availableNetworks : availableNetworks // ignore: cast_nullable_to_non_nullable
+as List<String>?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$Fpx {
-  /// the customer bank
-  String? get bank => throw _privateConstructorUsedError;
 
-  /// accountholder type
-  String? get accountHolderType => throw _privateConstructorUsedError;
+/// the customer bank
+ String? get bank;/// accountholder type
+ String? get accountHolderType;
+/// Create a copy of Fpx
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FpxCopyWith<Fpx> get copyWith => _$FpxCopyWithImpl<Fpx>(this as Fpx, _$identity);
 
   /// Serializes this Fpx to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Fpx
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FpxCopyWith<Fpx> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Fpx&&(identical(other.bank, bank) || other.bank == bank)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,bank,accountHolderType);
+
+@override
+String toString() {
+  return 'Fpx(bank: $bank, accountHolderType: $accountHolderType)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $FpxCopyWith<$Res> {
-  factory $FpxCopyWith(Fpx value, $Res Function(Fpx) then) =
-      _$FpxCopyWithImpl<$Res, Fpx>;
-  @useResult
-  $Res call({String? bank, String? accountHolderType});
+abstract mixin class $FpxCopyWith<$Res>  {
+  factory $FpxCopyWith(Fpx value, $Res Function(Fpx) _then) = _$FpxCopyWithImpl;
+@useResult
+$Res call({
+ String? bank, String? accountHolderType
+});
+
+
+
+
+}
+/// @nodoc
+class _$FpxCopyWithImpl<$Res>
+    implements $FpxCopyWith<$Res> {
+  _$FpxCopyWithImpl(this._self, this._then);
+
+  final Fpx _self;
+  final $Res Function(Fpx) _then;
+
+/// Create a copy of Fpx
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? bank = freezed,Object? accountHolderType = freezed,}) {
+  return _then(_self.copyWith(
+bank: freezed == bank ? _self.bank : bank // ignore: cast_nullable_to_non_nullable
+as String?,accountHolderType: freezed == accountHolderType ? _self.accountHolderType : accountHolderType // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class _$FpxCopyWithImpl<$Res, $Val extends Fpx> implements $FpxCopyWith<$Res> {
-  _$FpxCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Fpx
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? bank = freezed,
-    Object? accountHolderType = freezed,
-  }) {
-    return _then(_value.copyWith(
-      bank: freezed == bank
-          ? _value.bank
-          : bank // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accountHolderType: freezed == accountHolderType
-          ? _value.accountHolderType
-          : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
-/// @nodoc
-abstract class _$$FpxImplCopyWith<$Res> implements $FpxCopyWith<$Res> {
-  factory _$$FpxImplCopyWith(_$FpxImpl value, $Res Function(_$FpxImpl) then) =
-      __$$FpxImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? bank, String? accountHolderType});
+
+/// Adds pattern-matching-related methods to [Fpx].
+extension FpxPatterns on Fpx {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Fpx value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Fpx() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Fpx value)  $default,){
+final _that = this;
+switch (_that) {
+case _Fpx():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Fpx value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Fpx() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? bank,  String? accountHolderType)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Fpx() when $default != null:
+return $default(_that.bank,_that.accountHolderType);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? bank,  String? accountHolderType)  $default,) {final _that = this;
+switch (_that) {
+case _Fpx():
+return $default(_that.bank,_that.accountHolderType);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? bank,  String? accountHolderType)?  $default,) {final _that = this;
+switch (_that) {
+case _Fpx() when $default != null:
+return $default(_that.bank,_that.accountHolderType);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$FpxImplCopyWithImpl<$Res> extends _$FpxCopyWithImpl<$Res, _$FpxImpl>
-    implements _$$FpxImplCopyWith<$Res> {
-  __$$FpxImplCopyWithImpl(_$FpxImpl _value, $Res Function(_$FpxImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Fpx
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? bank = freezed,
-    Object? accountHolderType = freezed,
-  }) {
-    return _then(_$FpxImpl(
-      bank: freezed == bank
-          ? _value.bank
-          : bank // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accountHolderType: freezed == accountHolderType
-          ? _value.accountHolderType
-          : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FpxImpl implements _Fpx {
-  const _$FpxImpl({this.bank, this.accountHolderType});
+class _Fpx implements Fpx {
+  const _Fpx({this.bank, this.accountHolderType});
+  factory _Fpx.fromJson(Map<String, dynamic> json) => _$FpxFromJson(json);
 
-  factory _$FpxImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FpxImplFromJson(json);
+/// the customer bank
+@override final  String? bank;
+/// accountholder type
+@override final  String? accountHolderType;
 
-  /// the customer bank
-  @override
-  final String? bank;
+/// Create a copy of Fpx
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$FpxCopyWith<_Fpx> get copyWith => __$FpxCopyWithImpl<_Fpx>(this, _$identity);
 
-  /// accountholder type
-  @override
-  final String? accountHolderType;
-
-  @override
-  String toString() {
-    return 'Fpx(bank: $bank, accountHolderType: $accountHolderType)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FpxImpl &&
-            (identical(other.bank, bank) || other.bank == bank) &&
-            (identical(other.accountHolderType, accountHolderType) ||
-                other.accountHolderType == accountHolderType));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, bank, accountHolderType);
-
-  /// Create a copy of Fpx
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FpxImplCopyWith<_$FpxImpl> get copyWith =>
-      __$$FpxImplCopyWithImpl<_$FpxImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FpxImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$FpxToJson(this, );
 }
 
-abstract class _Fpx implements Fpx {
-  const factory _Fpx({final String? bank, final String? accountHolderType}) =
-      _$FpxImpl;
-
-  factory _Fpx.fromJson(Map<String, dynamic> json) = _$FpxImpl.fromJson;
-
-  /// the customer bank
-  @override
-  String? get bank;
-
-  /// accountholder type
-  @override
-  String? get accountHolderType;
-
-  /// Create a copy of Fpx
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FpxImplCopyWith<_$FpxImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Fpx&&(identical(other.bank, bank) || other.bank == bank)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType));
 }
 
-Ideal _$IdealFromJson(Map<String, dynamic> json) {
-  return _Ideal.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,bank,accountHolderType);
+
+@override
+String toString() {
+  return 'Fpx(bank: $bank, accountHolderType: $accountHolderType)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$FpxCopyWith<$Res> implements $FpxCopyWith<$Res> {
+  factory _$FpxCopyWith(_Fpx value, $Res Function(_Fpx) _then) = __$FpxCopyWithImpl;
+@override @useResult
+$Res call({
+ String? bank, String? accountHolderType
+});
+
+
+
+
+}
+/// @nodoc
+class __$FpxCopyWithImpl<$Res>
+    implements _$FpxCopyWith<$Res> {
+  __$FpxCopyWithImpl(this._self, this._then);
+
+  final _Fpx _self;
+  final $Res Function(_Fpx) _then;
+
+/// Create a copy of Fpx
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? bank = freezed,Object? accountHolderType = freezed,}) {
+  return _then(_Fpx(
+bank: freezed == bank ? _self.bank : bank // ignore: cast_nullable_to_non_nullable
+as String?,accountHolderType: freezed == accountHolderType ? _self.accountHolderType : accountHolderType // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$Ideal {
-  /// The BIC code of the bank
-  String? get bankIdentifierCode => throw _privateConstructorUsedError;
 
-  /// The bank of the customer
-  String? get bank => throw _privateConstructorUsedError;
+/// The BIC code of the bank
+ String? get bankIdentifierCode;/// The bank of the customer
+ String? get bank;
+/// Create a copy of Ideal
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IdealCopyWith<Ideal> get copyWith => _$IdealCopyWithImpl<Ideal>(this as Ideal, _$identity);
 
   /// Serializes this Ideal to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Ideal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $IdealCopyWith<Ideal> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Ideal&&(identical(other.bankIdentifierCode, bankIdentifierCode) || other.bankIdentifierCode == bankIdentifierCode)&&(identical(other.bank, bank) || other.bank == bank));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,bankIdentifierCode,bank);
+
+@override
+String toString() {
+  return 'Ideal(bankIdentifierCode: $bankIdentifierCode, bank: $bank)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $IdealCopyWith<$Res> {
-  factory $IdealCopyWith(Ideal value, $Res Function(Ideal) then) =
-      _$IdealCopyWithImpl<$Res, Ideal>;
-  @useResult
-  $Res call({String? bankIdentifierCode, String? bank});
-}
+abstract mixin class $IdealCopyWith<$Res>  {
+  factory $IdealCopyWith(Ideal value, $Res Function(Ideal) _then) = _$IdealCopyWithImpl;
+@useResult
+$Res call({
+ String? bankIdentifierCode, String? bank
+});
 
+
+
+
+}
 /// @nodoc
-class _$IdealCopyWithImpl<$Res, $Val extends Ideal>
+class _$IdealCopyWithImpl<$Res>
     implements $IdealCopyWith<$Res> {
-  _$IdealCopyWithImpl(this._value, this._then);
+  _$IdealCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Ideal _self;
+  final $Res Function(Ideal) _then;
 
-  /// Create a copy of Ideal
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? bankIdentifierCode = freezed,
-    Object? bank = freezed,
-  }) {
-    return _then(_value.copyWith(
-      bankIdentifierCode: freezed == bankIdentifierCode
-          ? _value.bankIdentifierCode
-          : bankIdentifierCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bank: freezed == bank
-          ? _value.bank
-          : bank // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of Ideal
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? bankIdentifierCode = freezed,Object? bank = freezed,}) {
+  return _then(_self.copyWith(
+bankIdentifierCode: freezed == bankIdentifierCode ? _self.bankIdentifierCode : bankIdentifierCode // ignore: cast_nullable_to_non_nullable
+as String?,bank: freezed == bank ? _self.bank : bank // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$IdealImplCopyWith<$Res> implements $IdealCopyWith<$Res> {
-  factory _$$IdealImplCopyWith(
-          _$IdealImpl value, $Res Function(_$IdealImpl) then) =
-      __$$IdealImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? bankIdentifierCode, String? bank});
 }
 
-/// @nodoc
-class __$$IdealImplCopyWithImpl<$Res>
-    extends _$IdealCopyWithImpl<$Res, _$IdealImpl>
-    implements _$$IdealImplCopyWith<$Res> {
-  __$$IdealImplCopyWithImpl(
-      _$IdealImpl _value, $Res Function(_$IdealImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Ideal
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? bankIdentifierCode = freezed,
-    Object? bank = freezed,
-  }) {
-    return _then(_$IdealImpl(
-      bankIdentifierCode: freezed == bankIdentifierCode
-          ? _value.bankIdentifierCode
-          : bankIdentifierCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bank: freezed == bank
-          ? _value.bank
-          : bank // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Ideal].
+extension IdealPatterns on Ideal {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Ideal value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Ideal() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Ideal value)  $default,){
+final _that = this;
+switch (_that) {
+case _Ideal():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Ideal value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Ideal() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? bankIdentifierCode,  String? bank)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Ideal() when $default != null:
+return $default(_that.bankIdentifierCode,_that.bank);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? bankIdentifierCode,  String? bank)  $default,) {final _that = this;
+switch (_that) {
+case _Ideal():
+return $default(_that.bankIdentifierCode,_that.bank);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? bankIdentifierCode,  String? bank)?  $default,) {final _that = this;
+switch (_that) {
+case _Ideal() when $default != null:
+return $default(_that.bankIdentifierCode,_that.bank);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$IdealImpl implements _Ideal {
-  const _$IdealImpl({this.bankIdentifierCode, this.bank});
+class _Ideal implements Ideal {
+  const _Ideal({this.bankIdentifierCode, this.bank});
+  factory _Ideal.fromJson(Map<String, dynamic> json) => _$IdealFromJson(json);
 
-  factory _$IdealImpl.fromJson(Map<String, dynamic> json) =>
-      _$$IdealImplFromJson(json);
+/// The BIC code of the bank
+@override final  String? bankIdentifierCode;
+/// The bank of the customer
+@override final  String? bank;
 
-  /// The BIC code of the bank
-  @override
-  final String? bankIdentifierCode;
+/// Create a copy of Ideal
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$IdealCopyWith<_Ideal> get copyWith => __$IdealCopyWithImpl<_Ideal>(this, _$identity);
 
-  /// The bank of the customer
-  @override
-  final String? bank;
-
-  @override
-  String toString() {
-    return 'Ideal(bankIdentifierCode: $bankIdentifierCode, bank: $bank)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$IdealImpl &&
-            (identical(other.bankIdentifierCode, bankIdentifierCode) ||
-                other.bankIdentifierCode == bankIdentifierCode) &&
-            (identical(other.bank, bank) || other.bank == bank));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, bankIdentifierCode, bank);
-
-  /// Create a copy of Ideal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$IdealImplCopyWith<_$IdealImpl> get copyWith =>
-      __$$IdealImplCopyWithImpl<_$IdealImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$IdealImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$IdealToJson(this, );
 }
 
-abstract class _Ideal implements Ideal {
-  const factory _Ideal({final String? bankIdentifierCode, final String? bank}) =
-      _$IdealImpl;
-
-  factory _Ideal.fromJson(Map<String, dynamic> json) = _$IdealImpl.fromJson;
-
-  /// The BIC code of the bank
-  @override
-  String? get bankIdentifierCode;
-
-  /// The bank of the customer
-  @override
-  String? get bank;
-
-  /// Create a copy of Ideal
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$IdealImplCopyWith<_$IdealImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Ideal&&(identical(other.bankIdentifierCode, bankIdentifierCode) || other.bankIdentifierCode == bankIdentifierCode)&&(identical(other.bank, bank) || other.bank == bank));
 }
 
-SepaDebit _$SepaDebitFromJson(Map<String, dynamic> json) {
-  return _SepaDebit.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,bankIdentifierCode,bank);
+
+@override
+String toString() {
+  return 'Ideal(bankIdentifierCode: $bankIdentifierCode, bank: $bank)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$IdealCopyWith<$Res> implements $IdealCopyWith<$Res> {
+  factory _$IdealCopyWith(_Ideal value, $Res Function(_Ideal) _then) = __$IdealCopyWithImpl;
+@override @useResult
+$Res call({
+ String? bankIdentifierCode, String? bank
+});
+
+
+
+
+}
+/// @nodoc
+class __$IdealCopyWithImpl<$Res>
+    implements _$IdealCopyWith<$Res> {
+  __$IdealCopyWithImpl(this._self, this._then);
+
+  final _Ideal _self;
+  final $Res Function(_Ideal) _then;
+
+/// Create a copy of Ideal
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? bankIdentifierCode = freezed,Object? bank = freezed,}) {
+  return _then(_Ideal(
+bankIdentifierCode: freezed == bankIdentifierCode ? _self.bankIdentifierCode : bankIdentifierCode // ignore: cast_nullable_to_non_nullable
+as String?,bank: freezed == bank ? _self.bank : bank // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$SepaDebit {
-  /// Two letter ISO code representing the country of the bank account.
-  String? get country => throw _privateConstructorUsedError;
 
-  /// Bank code associated with the bankaccount.
-  String? get bankCode => throw _privateConstructorUsedError;
-
-  /// Unique ID for the bank account.
-  String? get fingerprint => throw _privateConstructorUsedError;
-
-  /// Last four characters of IBAN.
-  String? get last4 => throw _privateConstructorUsedError;
+/// Two letter ISO code representing the country of the bank account.
+ String? get country;/// Bank code associated with the bankaccount.
+ String? get bankCode;/// Unique ID for the bank account.
+ String? get fingerprint;/// Last four characters of IBAN.
+ String? get last4;
+/// Create a copy of SepaDebit
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SepaDebitCopyWith<SepaDebit> get copyWith => _$SepaDebitCopyWithImpl<SepaDebit>(this as SepaDebit, _$identity);
 
   /// Serializes this SepaDebit to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SepaDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SepaDebitCopyWith<SepaDebit> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SepaDebit&&(identical(other.country, country) || other.country == country)&&(identical(other.bankCode, bankCode) || other.bankCode == bankCode)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,country,bankCode,fingerprint,last4);
+
+@override
+String toString() {
+  return 'SepaDebit(country: $country, bankCode: $bankCode, fingerprint: $fingerprint, last4: $last4)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SepaDebitCopyWith<$Res> {
-  factory $SepaDebitCopyWith(SepaDebit value, $Res Function(SepaDebit) then) =
-      _$SepaDebitCopyWithImpl<$Res, SepaDebit>;
-  @useResult
-  $Res call(
-      {String? country, String? bankCode, String? fingerprint, String? last4});
-}
+abstract mixin class $SepaDebitCopyWith<$Res>  {
+  factory $SepaDebitCopyWith(SepaDebit value, $Res Function(SepaDebit) _then) = _$SepaDebitCopyWithImpl;
+@useResult
+$Res call({
+ String? country, String? bankCode, String? fingerprint, String? last4
+});
 
+
+
+
+}
 /// @nodoc
-class _$SepaDebitCopyWithImpl<$Res, $Val extends SepaDebit>
+class _$SepaDebitCopyWithImpl<$Res>
     implements $SepaDebitCopyWith<$Res> {
-  _$SepaDebitCopyWithImpl(this._value, this._then);
+  _$SepaDebitCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SepaDebit _self;
+  final $Res Function(SepaDebit) _then;
 
-  /// Create a copy of SepaDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? country = freezed,
-    Object? bankCode = freezed,
-    Object? fingerprint = freezed,
-    Object? last4 = freezed,
-  }) {
-    return _then(_value.copyWith(
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bankCode: freezed == bankCode
-          ? _value.bankCode
-          : bankCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fingerprint: freezed == fingerprint
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of SepaDebit
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? country = freezed,Object? bankCode = freezed,Object? fingerprint = freezed,Object? last4 = freezed,}) {
+  return _then(_self.copyWith(
+country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String?,bankCode: freezed == bankCode ? _self.bankCode : bankCode // ignore: cast_nullable_to_non_nullable
+as String?,fingerprint: freezed == fingerprint ? _self.fingerprint : fingerprint // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SepaDebitImplCopyWith<$Res>
-    implements $SepaDebitCopyWith<$Res> {
-  factory _$$SepaDebitImplCopyWith(
-          _$SepaDebitImpl value, $Res Function(_$SepaDebitImpl) then) =
-      __$$SepaDebitImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? country, String? bankCode, String? fingerprint, String? last4});
 }
 
-/// @nodoc
-class __$$SepaDebitImplCopyWithImpl<$Res>
-    extends _$SepaDebitCopyWithImpl<$Res, _$SepaDebitImpl>
-    implements _$$SepaDebitImplCopyWith<$Res> {
-  __$$SepaDebitImplCopyWithImpl(
-      _$SepaDebitImpl _value, $Res Function(_$SepaDebitImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of SepaDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? country = freezed,
-    Object? bankCode = freezed,
-    Object? fingerprint = freezed,
-    Object? last4 = freezed,
-  }) {
-    return _then(_$SepaDebitImpl(
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bankCode: freezed == bankCode
-          ? _value.bankCode
-          : bankCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fingerprint: freezed == fingerprint
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [SepaDebit].
+extension SepaDebitPatterns on SepaDebit {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SepaDebit value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SepaDebit() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SepaDebit value)  $default,){
+final _that = this;
+switch (_that) {
+case _SepaDebit():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SepaDebit value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SepaDebit() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? country,  String? bankCode,  String? fingerprint,  String? last4)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SepaDebit() when $default != null:
+return $default(_that.country,_that.bankCode,_that.fingerprint,_that.last4);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? country,  String? bankCode,  String? fingerprint,  String? last4)  $default,) {final _that = this;
+switch (_that) {
+case _SepaDebit():
+return $default(_that.country,_that.bankCode,_that.fingerprint,_that.last4);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? country,  String? bankCode,  String? fingerprint,  String? last4)?  $default,) {final _that = this;
+switch (_that) {
+case _SepaDebit() when $default != null:
+return $default(_that.country,_that.bankCode,_that.fingerprint,_that.last4);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$SepaDebitImpl implements _SepaDebit {
-  const _$SepaDebitImpl(
-      {this.country, this.bankCode, this.fingerprint, this.last4});
+class _SepaDebit implements SepaDebit {
+  const _SepaDebit({this.country, this.bankCode, this.fingerprint, this.last4});
+  factory _SepaDebit.fromJson(Map<String, dynamic> json) => _$SepaDebitFromJson(json);
 
-  factory _$SepaDebitImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SepaDebitImplFromJson(json);
+/// Two letter ISO code representing the country of the bank account.
+@override final  String? country;
+/// Bank code associated with the bankaccount.
+@override final  String? bankCode;
+/// Unique ID for the bank account.
+@override final  String? fingerprint;
+/// Last four characters of IBAN.
+@override final  String? last4;
 
-  /// Two letter ISO code representing the country of the bank account.
-  @override
-  final String? country;
+/// Create a copy of SepaDebit
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SepaDebitCopyWith<_SepaDebit> get copyWith => __$SepaDebitCopyWithImpl<_SepaDebit>(this, _$identity);
 
-  /// Bank code associated with the bankaccount.
-  @override
-  final String? bankCode;
-
-  /// Unique ID for the bank account.
-  @override
-  final String? fingerprint;
-
-  /// Last four characters of IBAN.
-  @override
-  final String? last4;
-
-  @override
-  String toString() {
-    return 'SepaDebit(country: $country, bankCode: $bankCode, fingerprint: $fingerprint, last4: $last4)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SepaDebitImpl &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.bankCode, bankCode) ||
-                other.bankCode == bankCode) &&
-            (identical(other.fingerprint, fingerprint) ||
-                other.fingerprint == fingerprint) &&
-            (identical(other.last4, last4) || other.last4 == last4));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, country, bankCode, fingerprint, last4);
-
-  /// Create a copy of SepaDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SepaDebitImplCopyWith<_$SepaDebitImpl> get copyWith =>
-      __$$SepaDebitImplCopyWithImpl<_$SepaDebitImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SepaDebitImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SepaDebitToJson(this, );
 }
 
-abstract class _SepaDebit implements SepaDebit {
-  const factory _SepaDebit(
-      {final String? country,
-      final String? bankCode,
-      final String? fingerprint,
-      final String? last4}) = _$SepaDebitImpl;
-
-  factory _SepaDebit.fromJson(Map<String, dynamic> json) =
-      _$SepaDebitImpl.fromJson;
-
-  /// Two letter ISO code representing the country of the bank account.
-  @override
-  String? get country;
-
-  /// Bank code associated with the bankaccount.
-  @override
-  String? get bankCode;
-
-  /// Unique ID for the bank account.
-  @override
-  String? get fingerprint;
-
-  /// Last four characters of IBAN.
-  @override
-  String? get last4;
-
-  /// Create a copy of SepaDebit
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SepaDebitImplCopyWith<_$SepaDebitImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaDebit&&(identical(other.country, country) || other.country == country)&&(identical(other.bankCode, bankCode) || other.bankCode == bankCode)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4));
 }
 
-Sofort _$SofortFromJson(Map<String, dynamic> json) {
-  return _Sofort.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,country,bankCode,fingerprint,last4);
+
+@override
+String toString() {
+  return 'SepaDebit(country: $country, bankCode: $bankCode, fingerprint: $fingerprint, last4: $last4)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$Sofort {
-  /// Two letter ISO code representing the country of the bank account.
-  String? get country => throw _privateConstructorUsedError;
+abstract mixin class _$SepaDebitCopyWith<$Res> implements $SepaDebitCopyWith<$Res> {
+  factory _$SepaDebitCopyWith(_SepaDebit value, $Res Function(_SepaDebit) _then) = __$SepaDebitCopyWithImpl;
+@override @useResult
+$Res call({
+ String? country, String? bankCode, String? fingerprint, String? last4
+});
 
-  /// Serializes this Sofort to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SofortCopyWith<Sofort> get copyWith => throw _privateConstructorUsedError;
+
+
 }
-
 /// @nodoc
-abstract class $SofortCopyWith<$Res> {
-  factory $SofortCopyWith(Sofort value, $Res Function(Sofort) then) =
-      _$SofortCopyWithImpl<$Res, Sofort>;
-  @useResult
-  $Res call({String? country});
+class __$SepaDebitCopyWithImpl<$Res>
+    implements _$SepaDebitCopyWith<$Res> {
+  __$SepaDebitCopyWithImpl(this._self, this._then);
+
+  final _SepaDebit _self;
+  final $Res Function(_SepaDebit) _then;
+
+/// Create a copy of SepaDebit
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? country = freezed,Object? bankCode = freezed,Object? fingerprint = freezed,Object? last4 = freezed,}) {
+  return _then(_SepaDebit(
+country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String?,bankCode: freezed == bankCode ? _self.bankCode : bankCode // ignore: cast_nullable_to_non_nullable
+as String?,fingerprint: freezed == fingerprint ? _self.fingerprint : fingerprint // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class _$SofortCopyWithImpl<$Res, $Val extends Sofort>
-    implements $SofortCopyWith<$Res> {
-  _$SofortCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? country = freezed,
-  }) {
-    return _then(_value.copyWith(
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
-/// @nodoc
-abstract class _$$SofortImplCopyWith<$Res> implements $SofortCopyWith<$Res> {
-  factory _$$SofortImplCopyWith(
-          _$SofortImpl value, $Res Function(_$SofortImpl) then) =
-      __$$SofortImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? country});
-}
-
-/// @nodoc
-class __$$SofortImplCopyWithImpl<$Res>
-    extends _$SofortCopyWithImpl<$Res, _$SofortImpl>
-    implements _$$SofortImplCopyWith<$Res> {
-  __$$SofortImplCopyWithImpl(
-      _$SofortImpl _value, $Res Function(_$SofortImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? country = freezed,
-  }) {
-    return _then(_$SofortImpl(
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable(explicitToJson: true)
-class _$SofortImpl implements _Sofort {
-  const _$SofortImpl({this.country});
-
-  factory _$SofortImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SofortImplFromJson(json);
-
-  /// Two letter ISO code representing the country of the bank account.
-  @override
-  final String? country;
-
-  @override
-  String toString() {
-    return 'Sofort(country: $country)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SofortImpl &&
-            (identical(other.country, country) || other.country == country));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, country);
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SofortImplCopyWith<_$SofortImpl> get copyWith =>
-      __$$SofortImplCopyWithImpl<_$SofortImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SofortImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Sofort implements Sofort {
-  const factory _Sofort({final String? country}) = _$SofortImpl;
-
-  factory _Sofort.fromJson(Map<String, dynamic> json) = _$SofortImpl.fromJson;
-
-  /// Two letter ISO code representing the country of the bank account.
-  @override
-  String? get country;
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SofortImplCopyWith<_$SofortImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Upi _$UpiFromJson(Map<String, dynamic> json) {
-  return _Upi.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Upi {
-  /// The customer's vpa.
-  String? get vpa => throw _privateConstructorUsedError;
+
+/// The customer's vpa.
+ String? get vpa;
+/// Create a copy of Upi
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpiCopyWith<Upi> get copyWith => _$UpiCopyWithImpl<Upi>(this as Upi, _$identity);
 
   /// Serializes this Upi to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Upi
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $UpiCopyWith<Upi> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Upi&&(identical(other.vpa, vpa) || other.vpa == vpa));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,vpa);
+
+@override
+String toString() {
+  return 'Upi(vpa: $vpa)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $UpiCopyWith<$Res> {
-  factory $UpiCopyWith(Upi value, $Res Function(Upi) then) =
-      _$UpiCopyWithImpl<$Res, Upi>;
-  @useResult
-  $Res call({String? vpa});
+abstract mixin class $UpiCopyWith<$Res>  {
+  factory $UpiCopyWith(Upi value, $Res Function(Upi) _then) = _$UpiCopyWithImpl;
+@useResult
+$Res call({
+ String? vpa
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpiCopyWithImpl<$Res>
+    implements $UpiCopyWith<$Res> {
+  _$UpiCopyWithImpl(this._self, this._then);
+
+  final Upi _self;
+  final $Res Function(Upi) _then;
+
+/// Create a copy of Upi
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? vpa = freezed,}) {
+  return _then(_self.copyWith(
+vpa: freezed == vpa ? _self.vpa : vpa // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class _$UpiCopyWithImpl<$Res, $Val extends Upi> implements $UpiCopyWith<$Res> {
-  _$UpiCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Upi
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? vpa = freezed,
-  }) {
-    return _then(_value.copyWith(
-      vpa: freezed == vpa
-          ? _value.vpa
-          : vpa // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
-/// @nodoc
-abstract class _$$UpiImplCopyWith<$Res> implements $UpiCopyWith<$Res> {
-  factory _$$UpiImplCopyWith(_$UpiImpl value, $Res Function(_$UpiImpl) then) =
-      __$$UpiImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? vpa});
+
+/// Adds pattern-matching-related methods to [Upi].
+extension UpiPatterns on Upi {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Upi value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Upi() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Upi value)  $default,){
+final _that = this;
+switch (_that) {
+case _Upi():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Upi value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Upi() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? vpa)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Upi() when $default != null:
+return $default(_that.vpa);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? vpa)  $default,) {final _that = this;
+switch (_that) {
+case _Upi():
+return $default(_that.vpa);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? vpa)?  $default,) {final _that = this;
+switch (_that) {
+case _Upi() when $default != null:
+return $default(_that.vpa);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$UpiImplCopyWithImpl<$Res> extends _$UpiCopyWithImpl<$Res, _$UpiImpl>
-    implements _$$UpiImplCopyWith<$Res> {
-  __$$UpiImplCopyWithImpl(_$UpiImpl _value, $Res Function(_$UpiImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Upi
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? vpa = freezed,
-  }) {
-    return _then(_$UpiImpl(
-      vpa: freezed == vpa
-          ? _value.vpa
-          : vpa // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$UpiImpl implements _Upi {
-  const _$UpiImpl({this.vpa});
+class _Upi implements Upi {
+  const _Upi({this.vpa});
+  factory _Upi.fromJson(Map<String, dynamic> json) => _$UpiFromJson(json);
 
-  factory _$UpiImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UpiImplFromJson(json);
+/// The customer's vpa.
+@override final  String? vpa;
 
-  /// The customer's vpa.
-  @override
-  final String? vpa;
+/// Create a copy of Upi
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UpiCopyWith<_Upi> get copyWith => __$UpiCopyWithImpl<_Upi>(this, _$identity);
 
-  @override
-  String toString() {
-    return 'Upi(vpa: $vpa)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpiImpl &&
-            (identical(other.vpa, vpa) || other.vpa == vpa));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, vpa);
-
-  /// Create a copy of Upi
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpiImplCopyWith<_$UpiImpl> get copyWith =>
-      __$$UpiImplCopyWithImpl<_$UpiImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UpiImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$UpiToJson(this, );
 }
 
-abstract class _Upi implements Upi {
-  const factory _Upi({final String? vpa}) = _$UpiImpl;
-
-  factory _Upi.fromJson(Map<String, dynamic> json) = _$UpiImpl.fromJson;
-
-  /// The customer's vpa.
-  @override
-  String? get vpa;
-
-  /// Create a copy of Upi
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpiImplCopyWith<_$UpiImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Upi&&(identical(other.vpa, vpa) || other.vpa == vpa));
 }
 
-UsBankAccount _$UsBankAccountFromJson(Map<String, dynamic> json) {
-  return _UsBankAccount.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,vpa);
+
+@override
+String toString() {
+  return 'Upi(vpa: $vpa)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UpiCopyWith<$Res> implements $UpiCopyWith<$Res> {
+  factory _$UpiCopyWith(_Upi value, $Res Function(_Upi) _then) = __$UpiCopyWithImpl;
+@override @useResult
+$Res call({
+ String? vpa
+});
+
+
+
+
+}
+/// @nodoc
+class __$UpiCopyWithImpl<$Res>
+    implements _$UpiCopyWith<$Res> {
+  __$UpiCopyWithImpl(this._self, this._then);
+
+  final _Upi _self;
+  final $Res Function(_Upi) _then;
+
+/// Create a copy of Upi
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? vpa = freezed,}) {
+  return _then(_Upi(
+vpa: freezed == vpa ? _self.vpa : vpa // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$UsBankAccount {
-  /// Routing number of the bank account
-  String? get routingNumber => throw _privateConstructorUsedError;
 
-  /// Last 4  digits of the account
-  String? get last4 => throw _privateConstructorUsedError;
-
-  /// The bank account type of the holder
-  UsBankAccountHolderType get accountHolderType =>
-      throw _privateConstructorUsedError;
-
-  /// The account type
-  UsBankAccountType get accountType => throw _privateConstructorUsedError;
-
-  /// The name of the bank of the account
-  String? get bankName => throw _privateConstructorUsedError;
-
-  /// Unique identifier for the bankaccount.
-  String? get fingerprint => throw _privateConstructorUsedError;
-
-  /// Number of linkedaccount
-  String? get linkedAccount => throw _privateConstructorUsedError;
-
-  /// list of preferred network names
-  List<String>? get preferredNetworks => throw _privateConstructorUsedError;
-
-  /// list of preferred network names
-  List<String>? get supportedNetworks => throw _privateConstructorUsedError;
+/// Routing number of the bank account
+ String? get routingNumber;/// Last 4  digits of the account
+ String? get last4;/// The bank account type of the holder
+ UsBankAccountHolderType get accountHolderType;/// The account type
+ UsBankAccountType get accountType;/// The name of the bank of the account
+ String? get bankName;/// Unique identifier for the bankaccount.
+ String? get fingerprint;/// Number of linkedaccount
+ String? get linkedAccount;/// list of preferred network names
+ List<String>? get preferredNetworks;/// list of preferred network names
+ List<String>? get supportedNetworks;
+/// Create a copy of UsBankAccount
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UsBankAccountCopyWith<UsBankAccount> get copyWith => _$UsBankAccountCopyWithImpl<UsBankAccount>(this as UsBankAccount, _$identity);
 
   /// Serializes this UsBankAccount to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of UsBankAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $UsBankAccountCopyWith<UsBankAccount> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsBankAccount&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.linkedAccount, linkedAccount) || other.linkedAccount == linkedAccount)&&const DeepCollectionEquality().equals(other.preferredNetworks, preferredNetworks)&&const DeepCollectionEquality().equals(other.supportedNetworks, supportedNetworks));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,routingNumber,last4,accountHolderType,accountType,bankName,fingerprint,linkedAccount,const DeepCollectionEquality().hash(preferredNetworks),const DeepCollectionEquality().hash(supportedNetworks));
+
+@override
+String toString() {
+  return 'UsBankAccount(routingNumber: $routingNumber, last4: $last4, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, fingerprint: $fingerprint, linkedAccount: $linkedAccount, preferredNetworks: $preferredNetworks, supportedNetworks: $supportedNetworks)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $UsBankAccountCopyWith<$Res> {
-  factory $UsBankAccountCopyWith(
-          UsBankAccount value, $Res Function(UsBankAccount) then) =
-      _$UsBankAccountCopyWithImpl<$Res, UsBankAccount>;
-  @useResult
-  $Res call(
-      {String? routingNumber,
-      String? last4,
-      UsBankAccountHolderType accountHolderType,
-      UsBankAccountType accountType,
-      String? bankName,
-      String? fingerprint,
-      String? linkedAccount,
-      List<String>? preferredNetworks,
-      List<String>? supportedNetworks});
-}
+abstract mixin class $UsBankAccountCopyWith<$Res>  {
+  factory $UsBankAccountCopyWith(UsBankAccount value, $Res Function(UsBankAccount) _then) = _$UsBankAccountCopyWithImpl;
+@useResult
+$Res call({
+ String? routingNumber, String? last4, UsBankAccountHolderType accountHolderType, UsBankAccountType accountType, String? bankName, String? fingerprint, String? linkedAccount, List<String>? preferredNetworks, List<String>? supportedNetworks
+});
 
+
+
+
+}
 /// @nodoc
-class _$UsBankAccountCopyWithImpl<$Res, $Val extends UsBankAccount>
+class _$UsBankAccountCopyWithImpl<$Res>
     implements $UsBankAccountCopyWith<$Res> {
-  _$UsBankAccountCopyWithImpl(this._value, this._then);
+  _$UsBankAccountCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final UsBankAccount _self;
+  final $Res Function(UsBankAccount) _then;
 
-  /// Create a copy of UsBankAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? routingNumber = freezed,
-    Object? last4 = freezed,
-    Object? accountHolderType = null,
-    Object? accountType = null,
-    Object? bankName = freezed,
-    Object? fingerprint = freezed,
-    Object? linkedAccount = freezed,
-    Object? preferredNetworks = freezed,
-    Object? supportedNetworks = freezed,
-  }) {
-    return _then(_value.copyWith(
-      routingNumber: freezed == routingNumber
-          ? _value.routingNumber
-          : routingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accountHolderType: null == accountHolderType
-          ? _value.accountHolderType
-          : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as UsBankAccountHolderType,
-      accountType: null == accountType
-          ? _value.accountType
-          : accountType // ignore: cast_nullable_to_non_nullable
-              as UsBankAccountType,
-      bankName: freezed == bankName
-          ? _value.bankName
-          : bankName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fingerprint: freezed == fingerprint
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      linkedAccount: freezed == linkedAccount
-          ? _value.linkedAccount
-          : linkedAccount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      preferredNetworks: freezed == preferredNetworks
-          ? _value.preferredNetworks
-          : preferredNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      supportedNetworks: freezed == supportedNetworks
-          ? _value.supportedNetworks
-          : supportedNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ) as $Val);
-  }
+/// Create a copy of UsBankAccount
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? routingNumber = freezed,Object? last4 = freezed,Object? accountHolderType = null,Object? accountType = null,Object? bankName = freezed,Object? fingerprint = freezed,Object? linkedAccount = freezed,Object? preferredNetworks = freezed,Object? supportedNetworks = freezed,}) {
+  return _then(_self.copyWith(
+routingNumber: freezed == routingNumber ? _self.routingNumber : routingNumber // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,accountHolderType: null == accountHolderType ? _self.accountHolderType : accountHolderType // ignore: cast_nullable_to_non_nullable
+as UsBankAccountHolderType,accountType: null == accountType ? _self.accountType : accountType // ignore: cast_nullable_to_non_nullable
+as UsBankAccountType,bankName: freezed == bankName ? _self.bankName : bankName // ignore: cast_nullable_to_non_nullable
+as String?,fingerprint: freezed == fingerprint ? _self.fingerprint : fingerprint // ignore: cast_nullable_to_non_nullable
+as String?,linkedAccount: freezed == linkedAccount ? _self.linkedAccount : linkedAccount // ignore: cast_nullable_to_non_nullable
+as String?,preferredNetworks: freezed == preferredNetworks ? _self.preferredNetworks : preferredNetworks // ignore: cast_nullable_to_non_nullable
+as List<String>?,supportedNetworks: freezed == supportedNetworks ? _self.supportedNetworks : supportedNetworks // ignore: cast_nullable_to_non_nullable
+as List<String>?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$UsBankAccountImplCopyWith<$Res>
-    implements $UsBankAccountCopyWith<$Res> {
-  factory _$$UsBankAccountImplCopyWith(
-          _$UsBankAccountImpl value, $Res Function(_$UsBankAccountImpl) then) =
-      __$$UsBankAccountImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? routingNumber,
-      String? last4,
-      UsBankAccountHolderType accountHolderType,
-      UsBankAccountType accountType,
-      String? bankName,
-      String? fingerprint,
-      String? linkedAccount,
-      List<String>? preferredNetworks,
-      List<String>? supportedNetworks});
 }
 
-/// @nodoc
-class __$$UsBankAccountImplCopyWithImpl<$Res>
-    extends _$UsBankAccountCopyWithImpl<$Res, _$UsBankAccountImpl>
-    implements _$$UsBankAccountImplCopyWith<$Res> {
-  __$$UsBankAccountImplCopyWithImpl(
-      _$UsBankAccountImpl _value, $Res Function(_$UsBankAccountImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of UsBankAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? routingNumber = freezed,
-    Object? last4 = freezed,
-    Object? accountHolderType = null,
-    Object? accountType = null,
-    Object? bankName = freezed,
-    Object? fingerprint = freezed,
-    Object? linkedAccount = freezed,
-    Object? preferredNetworks = freezed,
-    Object? supportedNetworks = freezed,
-  }) {
-    return _then(_$UsBankAccountImpl(
-      routingNumber: freezed == routingNumber
-          ? _value.routingNumber
-          : routingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accountHolderType: null == accountHolderType
-          ? _value.accountHolderType
-          : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as UsBankAccountHolderType,
-      accountType: null == accountType
-          ? _value.accountType
-          : accountType // ignore: cast_nullable_to_non_nullable
-              as UsBankAccountType,
-      bankName: freezed == bankName
-          ? _value.bankName
-          : bankName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fingerprint: freezed == fingerprint
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      linkedAccount: freezed == linkedAccount
-          ? _value.linkedAccount
-          : linkedAccount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      preferredNetworks: freezed == preferredNetworks
-          ? _value._preferredNetworks
-          : preferredNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      supportedNetworks: freezed == supportedNetworks
-          ? _value._supportedNetworks
-          : supportedNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [UsBankAccount].
+extension UsBankAccountPatterns on UsBankAccount {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UsBankAccount value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UsBankAccount() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UsBankAccount value)  $default,){
+final _that = this;
+switch (_that) {
+case _UsBankAccount():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UsBankAccount value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UsBankAccount() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? routingNumber,  String? last4,  UsBankAccountHolderType accountHolderType,  UsBankAccountType accountType,  String? bankName,  String? fingerprint,  String? linkedAccount,  List<String>? preferredNetworks,  List<String>? supportedNetworks)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UsBankAccount() when $default != null:
+return $default(_that.routingNumber,_that.last4,_that.accountHolderType,_that.accountType,_that.bankName,_that.fingerprint,_that.linkedAccount,_that.preferredNetworks,_that.supportedNetworks);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? routingNumber,  String? last4,  UsBankAccountHolderType accountHolderType,  UsBankAccountType accountType,  String? bankName,  String? fingerprint,  String? linkedAccount,  List<String>? preferredNetworks,  List<String>? supportedNetworks)  $default,) {final _that = this;
+switch (_that) {
+case _UsBankAccount():
+return $default(_that.routingNumber,_that.last4,_that.accountHolderType,_that.accountType,_that.bankName,_that.fingerprint,_that.linkedAccount,_that.preferredNetworks,_that.supportedNetworks);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? routingNumber,  String? last4,  UsBankAccountHolderType accountHolderType,  UsBankAccountType accountType,  String? bankName,  String? fingerprint,  String? linkedAccount,  List<String>? preferredNetworks,  List<String>? supportedNetworks)?  $default,) {final _that = this;
+switch (_that) {
+case _UsBankAccount() when $default != null:
+return $default(_that.routingNumber,_that.last4,_that.accountHolderType,_that.accountType,_that.bankName,_that.fingerprint,_that.linkedAccount,_that.preferredNetworks,_that.supportedNetworks);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$UsBankAccountImpl implements _UsBankAccount {
-  const _$UsBankAccountImpl(
-      {this.routingNumber,
-      this.last4,
-      required this.accountHolderType,
-      required this.accountType,
-      this.bankName,
-      this.fingerprint,
-      this.linkedAccount,
-      final List<String>? preferredNetworks,
-      final List<String>? supportedNetworks})
-      : _preferredNetworks = preferredNetworks,
-        _supportedNetworks = supportedNetworks;
+class _UsBankAccount implements UsBankAccount {
+  const _UsBankAccount({this.routingNumber, this.last4, required this.accountHolderType, required this.accountType, this.bankName, this.fingerprint, this.linkedAccount, final  List<String>? preferredNetworks, final  List<String>? supportedNetworks}): _preferredNetworks = preferredNetworks,_supportedNetworks = supportedNetworks;
+  factory _UsBankAccount.fromJson(Map<String, dynamic> json) => _$UsBankAccountFromJson(json);
 
-  factory _$UsBankAccountImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UsBankAccountImplFromJson(json);
-
-  /// Routing number of the bank account
-  @override
-  final String? routingNumber;
-
-  /// Last 4  digits of the account
-  @override
-  final String? last4;
-
-  /// The bank account type of the holder
-  @override
-  final UsBankAccountHolderType accountHolderType;
-
-  /// The account type
-  @override
-  final UsBankAccountType accountType;
-
-  /// The name of the bank of the account
-  @override
-  final String? bankName;
-
-  /// Unique identifier for the bankaccount.
-  @override
-  final String? fingerprint;
-
-  /// Number of linkedaccount
-  @override
-  final String? linkedAccount;
-
-  /// list of preferred network names
-  final List<String>? _preferredNetworks;
-
-  /// list of preferred network names
-  @override
-  List<String>? get preferredNetworks {
-    final value = _preferredNetworks;
-    if (value == null) return null;
-    if (_preferredNetworks is EqualUnmodifiableListView)
-      return _preferredNetworks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  /// list of preferred network names
-  final List<String>? _supportedNetworks;
-
-  /// list of preferred network names
-  @override
-  List<String>? get supportedNetworks {
-    final value = _supportedNetworks;
-    if (value == null) return null;
-    if (_supportedNetworks is EqualUnmodifiableListView)
-      return _supportedNetworks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'UsBankAccount(routingNumber: $routingNumber, last4: $last4, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, fingerprint: $fingerprint, linkedAccount: $linkedAccount, preferredNetworks: $preferredNetworks, supportedNetworks: $supportedNetworks)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UsBankAccountImpl &&
-            (identical(other.routingNumber, routingNumber) ||
-                other.routingNumber == routingNumber) &&
-            (identical(other.last4, last4) || other.last4 == last4) &&
-            (identical(other.accountHolderType, accountHolderType) ||
-                other.accountHolderType == accountHolderType) &&
-            (identical(other.accountType, accountType) ||
-                other.accountType == accountType) &&
-            (identical(other.bankName, bankName) ||
-                other.bankName == bankName) &&
-            (identical(other.fingerprint, fingerprint) ||
-                other.fingerprint == fingerprint) &&
-            (identical(other.linkedAccount, linkedAccount) ||
-                other.linkedAccount == linkedAccount) &&
-            const DeepCollectionEquality()
-                .equals(other._preferredNetworks, _preferredNetworks) &&
-            const DeepCollectionEquality()
-                .equals(other._supportedNetworks, _supportedNetworks));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      routingNumber,
-      last4,
-      accountHolderType,
-      accountType,
-      bankName,
-      fingerprint,
-      linkedAccount,
-      const DeepCollectionEquality().hash(_preferredNetworks),
-      const DeepCollectionEquality().hash(_supportedNetworks));
-
-  /// Create a copy of UsBankAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UsBankAccountImplCopyWith<_$UsBankAccountImpl> get copyWith =>
-      __$$UsBankAccountImplCopyWithImpl<_$UsBankAccountImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UsBankAccountImplToJson(
-      this,
-    );
-  }
+/// Routing number of the bank account
+@override final  String? routingNumber;
+/// Last 4  digits of the account
+@override final  String? last4;
+/// The bank account type of the holder
+@override final  UsBankAccountHolderType accountHolderType;
+/// The account type
+@override final  UsBankAccountType accountType;
+/// The name of the bank of the account
+@override final  String? bankName;
+/// Unique identifier for the bankaccount.
+@override final  String? fingerprint;
+/// Number of linkedaccount
+@override final  String? linkedAccount;
+/// list of preferred network names
+ final  List<String>? _preferredNetworks;
+/// list of preferred network names
+@override List<String>? get preferredNetworks {
+  final value = _preferredNetworks;
+  if (value == null) return null;
+  if (_preferredNetworks is EqualUnmodifiableListView) return _preferredNetworks;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
-abstract class _UsBankAccount implements UsBankAccount {
-  const factory _UsBankAccount(
-      {final String? routingNumber,
-      final String? last4,
-      required final UsBankAccountHolderType accountHolderType,
-      required final UsBankAccountType accountType,
-      final String? bankName,
-      final String? fingerprint,
-      final String? linkedAccount,
-      final List<String>? preferredNetworks,
-      final List<String>? supportedNetworks}) = _$UsBankAccountImpl;
-
-  factory _UsBankAccount.fromJson(Map<String, dynamic> json) =
-      _$UsBankAccountImpl.fromJson;
-
-  /// Routing number of the bank account
-  @override
-  String? get routingNumber;
-
-  /// Last 4  digits of the account
-  @override
-  String? get last4;
-
-  /// The bank account type of the holder
-  @override
-  UsBankAccountHolderType get accountHolderType;
-
-  /// The account type
-  @override
-  UsBankAccountType get accountType;
-
-  /// The name of the bank of the account
-  @override
-  String? get bankName;
-
-  /// Unique identifier for the bankaccount.
-  @override
-  String? get fingerprint;
-
-  /// Number of linkedaccount
-  @override
-  String? get linkedAccount;
-
-  /// list of preferred network names
-  @override
-  List<String>? get preferredNetworks;
-
-  /// list of preferred network names
-  @override
-  List<String>? get supportedNetworks;
-
-  /// Create a copy of UsBankAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UsBankAccountImplCopyWith<_$UsBankAccountImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+/// list of preferred network names
+ final  List<String>? _supportedNetworks;
+/// list of preferred network names
+@override List<String>? get supportedNetworks {
+  final value = _supportedNetworks;
+  if (value == null) return null;
+  if (_supportedNetworks is EqualUnmodifiableListView) return _supportedNetworks;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
+
+
+/// Create a copy of UsBankAccount
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UsBankAccountCopyWith<_UsBankAccount> get copyWith => __$UsBankAccountCopyWithImpl<_UsBankAccount>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$UsBankAccountToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsBankAccount&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.linkedAccount, linkedAccount) || other.linkedAccount == linkedAccount)&&const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks)&&const DeepCollectionEquality().equals(other._supportedNetworks, _supportedNetworks));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,routingNumber,last4,accountHolderType,accountType,bankName,fingerprint,linkedAccount,const DeepCollectionEquality().hash(_preferredNetworks),const DeepCollectionEquality().hash(_supportedNetworks));
+
+@override
+String toString() {
+  return 'UsBankAccount(routingNumber: $routingNumber, last4: $last4, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, fingerprint: $fingerprint, linkedAccount: $linkedAccount, preferredNetworks: $preferredNetworks, supportedNetworks: $supportedNetworks)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UsBankAccountCopyWith<$Res> implements $UsBankAccountCopyWith<$Res> {
+  factory _$UsBankAccountCopyWith(_UsBankAccount value, $Res Function(_UsBankAccount) _then) = __$UsBankAccountCopyWithImpl;
+@override @useResult
+$Res call({
+ String? routingNumber, String? last4, UsBankAccountHolderType accountHolderType, UsBankAccountType accountType, String? bankName, String? fingerprint, String? linkedAccount, List<String>? preferredNetworks, List<String>? supportedNetworks
+});
+
+
+
+
+}
+/// @nodoc
+class __$UsBankAccountCopyWithImpl<$Res>
+    implements _$UsBankAccountCopyWith<$Res> {
+  __$UsBankAccountCopyWithImpl(this._self, this._then);
+
+  final _UsBankAccount _self;
+  final $Res Function(_UsBankAccount) _then;
+
+/// Create a copy of UsBankAccount
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? routingNumber = freezed,Object? last4 = freezed,Object? accountHolderType = null,Object? accountType = null,Object? bankName = freezed,Object? fingerprint = freezed,Object? linkedAccount = freezed,Object? preferredNetworks = freezed,Object? supportedNetworks = freezed,}) {
+  return _then(_UsBankAccount(
+routingNumber: freezed == routingNumber ? _self.routingNumber : routingNumber // ignore: cast_nullable_to_non_nullable
+as String?,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
+as String?,accountHolderType: null == accountHolderType ? _self.accountHolderType : accountHolderType // ignore: cast_nullable_to_non_nullable
+as UsBankAccountHolderType,accountType: null == accountType ? _self.accountType : accountType // ignore: cast_nullable_to_non_nullable
+as UsBankAccountType,bankName: freezed == bankName ? _self.bankName : bankName // ignore: cast_nullable_to_non_nullable
+as String?,fingerprint: freezed == fingerprint ? _self.fingerprint : fingerprint // ignore: cast_nullable_to_non_nullable
+as String?,linkedAccount: freezed == linkedAccount ? _self.linkedAccount : linkedAccount // ignore: cast_nullable_to_non_nullable
+as String?,preferredNetworks: freezed == preferredNetworks ? _self._preferredNetworks : preferredNetworks // ignore: cast_nullable_to_non_nullable
+as List<String>?,supportedNetworks: freezed == supportedNetworks ? _self._supportedNetworks : supportedNetworks // ignore: cast_nullable_to_non_nullable
+as List<String>?,
+  ));
+}
+
+
+}
+
+// dart format on

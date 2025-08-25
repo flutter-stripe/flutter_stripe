@@ -9,7 +9,7 @@ part 'customer_sheet.g.dart';
 ///
 /// For more info see https://stripe.com/docs/elements/customer-sheet?platform=react-native
 @freezed
-class CustomerSheetInitParams with _$CustomerSheetInitParams {
+abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
   @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetInitParams({
     /// Color styling used for the Customersheet UI
@@ -45,7 +45,7 @@ class CustomerSheetInitParams with _$CustomerSheetInitParams {
 
     /// Describes how billing details should be collected. All values default to `AUTOMATIC`. If `NEVER` is used for a required field for the Payment Method, you must provide an appropriate value as part of `defaultBillingDetails`.
     BillingDetailsCollectionConfiguration?
-        billingDetailsCollectionConfiguration,
+    billingDetailsCollectionConfiguration,
 
     ///  URL that redirects back to your app that CustomerSheet can use to auto-dismiss web views used for additional authentication, e.g. 3DS2
     String? returnURL,
@@ -76,7 +76,7 @@ class CustomerSheetInitParams with _$CustomerSheetInitParams {
 }
 
 @freezed
-class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
+abstract class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
   @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetPresentParams({
     /// Controls how the modal is presented (after animation). iOS only. Defaults to `popover`.
@@ -95,7 +95,7 @@ class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
 }
 
 @freezed
-class CustomerSheetResult with _$CustomerSheetResult {
+abstract class CustomerSheetResult with _$CustomerSheetResult {
   @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetResult({
     /// The users selected payment option, if one exists.
@@ -112,12 +112,7 @@ class CustomerSheetResult with _$CustomerSheetResult {
       _$CustomerSheetResultFromJson(json);
 }
 
-enum CustomerSheetAnimationStyle {
-  flip,
-  curl,
-  slide,
-  dissolve,
-}
+enum CustomerSheetAnimationStyle { flip, curl, slide, dissolve }
 
 enum CustomerSheetPresentationStyle {
   fullscreen,

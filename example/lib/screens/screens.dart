@@ -17,7 +17,6 @@ import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.da
 import 'package:stripe_example/screens/regional_payment_methods/p24_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/revolutpay_screen.dart';
-import 'package:stripe_example/screens/regional_payment_methods/sofort_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_direct_debit_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_screen.dart';
 import 'package:stripe_example/screens/setup_future_payments/setup_future_payments_screen.dart';
@@ -290,12 +289,6 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (context) => IdealScreen(),
-      ),
-      Example(
-        title: 'Sofort',
-        leading: SizedBox(),
-        builder: (context) => SofortScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Aubecs',

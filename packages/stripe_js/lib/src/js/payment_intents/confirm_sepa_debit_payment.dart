@@ -30,9 +30,10 @@ extension ExtensionSepaDebitPayment on Stripe {
     ConfirmSepaDebitPaymentData? data,
   }) {
     final jsData = (data?.toJson() ?? {}).jsify();
-    return _confirmSepaDebitPayment(clientSecret, jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _confirmSepaDebitPayment(
+      clientSecret,
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('confirmSepaDebitPayment')

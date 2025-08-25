@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -55,16 +57,22 @@ class _AddressSheetState extends State<_AddressSheet> {
     _methodChannel = MethodChannel('flutter.stripe/address_sheet/$viewId');
     _methodChannel?.setMethodCallHandler((call) async {
       if (call.method == 'onSubmitAction') {
-        final tmp = Map<String, dynamic>.from(call.arguments as Map);
-        final tmpAdress = Map<String, dynamic>.from(tmp['address'] as Map);
+        try {
+          final tmp =
+              Map<String, dynamic>.from(call.arguments as Map)['result'];
+          final tmpAdress = Map<String, dynamic>.from(tmp['address'] as Map);
 
-        widget.onSubmit(
-          CollectAddressResult(
-            address: Address.fromJson(tmpAdress),
-            name: tmp['name'] as String,
-            phoneNumber: tmp['phone'] as String?,
-          ),
-        );
+          widget.onSubmit(
+            CollectAddressResult(
+              address: Address.fromJson(tmpAdress),
+              name: tmp['name'] as String,
+              phoneNumber: tmp['phone'] as String?,
+            ),
+          );
+        } catch (e) {
+          log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
+          rethrow;
+        }
       } else if (call.method == 'onErrorAction') {
         final tmp = Map<String, dynamic>.from(call.arguments as Map);
         final foo = Map<String, dynamic>.from(tmp['error'] as Map);

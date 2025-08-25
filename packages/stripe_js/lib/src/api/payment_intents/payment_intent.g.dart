@@ -6,134 +6,139 @@ part of 'payment_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map json) =>
-    _$PaymentIntentImpl(
-      id: json['id'] as String,
-      object: json['object'] as String? ?? "payment_intent",
-      amount: (json['amount'] as num).toInt(),
-      amountCapturable: (json['amount_capturable'] as num?)?.toInt(),
-      amountDetails: json['amount_details'] == null
-          ? const PaymentIntentAmountDetails()
-          : PaymentIntentAmountDetails.fromJson(
-              Map<String, dynamic>.from(json['amount_details'] as Map)),
-      amountReceived: (json['amount_received'] as num?)?.toInt(),
-      application: json['application'] as String?,
-      applicationFeeAmount: (json['application_fee_amount'] as num?)?.toInt(),
-      automaticPaymentMethods: json['automatic_payment_methods'] == null
-          ? null
-          : PaymentIntentAutomaticPaymentMethods.fromJson(
-              Map<String, dynamic>.from(
-                  json['automatic_payment_methods'] as Map)),
-      canceledAt: (json['canceled_at'] as num?)?.toInt(),
-      cancellationReason: $enumDecodeNullable(
-          _$PaymentIntentCancellationReasonEnumMap,
-          json['cancellation_reason']),
-      clientSecret: json['client_secret'] as String,
-      captureMethod: $enumDecodeNullable(
-              _$PaymentIntentCaptureMethodEnumMap, json['capture_method']) ??
-          PaymentIntentCaptureMethod.automatic,
-      confirmationMethod: $enumDecodeNullable(
-              _$PaymentIntentConfirmationMethodEnumMap,
-              json['confirmation_method']) ??
-          PaymentIntentConfirmationMethod.automatic,
-      created: (json['created'] as num?)?.toInt(),
-      currency: json['currency'] as String,
-      customer: json['customer'] as String?,
-      description: json['description'] as String?,
-      invoice: json['invoice'] as String?,
-      lastPaymentError: json['last_payment_error'] == null
-          ? null
-          : StripeError.fromJson(
-              Map<String, dynamic>.from(json['last_payment_error'] as Map)),
-      latestCharge: json['latest_charge'] as String?,
-      livemode: json['livemode'] as bool,
-      metadata: (json['metadata'] as Map?)?.map(
-            (k, e) => MapEntry(k as String, e),
-          ) ??
-          const {},
-      nextAction: json['next_action'],
-      onBehalfOf: json['on_behalf_of'] as String?,
-      paymentMethod: json['payment_method'] as String?,
-      paymentMethodOptions: json['payment_method_options'] as Map? ?? const {},
-      paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e,
-                  unknownValue: PaymentMethodType.unknown))
-              .toList() ??
-          const [],
-      processing: json['processing'],
-      receiptEmail: json['receipt_email'] as String?,
-      review: json['review'] as String?,
-      setupFutureUsage: $enumDecodeNullable(
-          _$PaymentIntentSetupFutureUsageEnumMap, json['setup_future_usage']),
-      shipping: json['shipping'] == null
-          ? null
-          : ShippingDetails.fromJson(
-              Map<String, dynamic>.from(json['shipping'] as Map)),
-      statementDescriptor: json['statement_descriptor'] as String?,
-      statementDescriptorSuffix: json['statement_descriptor_suffix'] as String?,
-      status: $enumDecode(_$PaymentIntentsStatusEnumMap, json['status']),
-      transferData: json['transfer_data'],
-      transferGroup: json['transfer_group'],
-    );
+_PaymentIntent _$PaymentIntentFromJson(Map json) => _PaymentIntent(
+  id: json['id'] as String,
+  object: json['object'] as String? ?? "payment_intent",
+  amount: (json['amount'] as num).toInt(),
+  amountCapturable: (json['amount_capturable'] as num?)?.toInt(),
+  amountDetails: json['amount_details'] == null
+      ? const PaymentIntentAmountDetails()
+      : PaymentIntentAmountDetails.fromJson(
+          Map<String, dynamic>.from(json['amount_details'] as Map),
+        ),
+  amountReceived: (json['amount_received'] as num?)?.toInt(),
+  application: json['application'] as String?,
+  applicationFeeAmount: (json['application_fee_amount'] as num?)?.toInt(),
+  automaticPaymentMethods: json['automatic_payment_methods'] == null
+      ? null
+      : PaymentIntentAutomaticPaymentMethods.fromJson(
+          Map<String, dynamic>.from(json['automatic_payment_methods'] as Map),
+        ),
+  canceledAt: (json['canceled_at'] as num?)?.toInt(),
+  cancellationReason: $enumDecodeNullable(
+    _$PaymentIntentCancellationReasonEnumMap,
+    json['cancellation_reason'],
+  ),
+  clientSecret: json['client_secret'] as String,
+  captureMethod:
+      $enumDecodeNullable(
+        _$PaymentIntentCaptureMethodEnumMap,
+        json['capture_method'],
+      ) ??
+      PaymentIntentCaptureMethod.automatic,
+  confirmationMethod:
+      $enumDecodeNullable(
+        _$PaymentIntentConfirmationMethodEnumMap,
+        json['confirmation_method'],
+      ) ??
+      PaymentIntentConfirmationMethod.automatic,
+  created: (json['created'] as num?)?.toInt(),
+  currency: json['currency'] as String,
+  customer: json['customer'] as String?,
+  description: json['description'] as String?,
+  invoice: json['invoice'] as String?,
+  lastPaymentError: json['last_payment_error'] == null
+      ? null
+      : StripeError.fromJson(
+          Map<String, dynamic>.from(json['last_payment_error'] as Map),
+        ),
+  latestCharge: json['latest_charge'] as String?,
+  livemode: json['livemode'] as bool,
+  metadata:
+      (json['metadata'] as Map?)?.map((k, e) => MapEntry(k as String, e)) ??
+      const {},
+  nextAction: json['next_action'],
+  onBehalfOf: json['on_behalf_of'] as String?,
+  paymentMethod: json['payment_method'] as String?,
+  paymentMethodOptions: json['payment_method_options'] as Map? ?? const {},
+  paymentMethodTypes:
+      (json['payment_method_types'] as List<dynamic>?)
+          ?.map(
+            (e) => $enumDecode(
+              _$PaymentMethodTypeEnumMap,
+              e,
+              unknownValue: PaymentMethodType.unknown,
+            ),
+          )
+          .toList() ??
+      const [],
+  processing: json['processing'],
+  receiptEmail: json['receipt_email'] as String?,
+  review: json['review'] as String?,
+  setupFutureUsage: $enumDecodeNullable(
+    _$PaymentIntentSetupFutureUsageEnumMap,
+    json['setup_future_usage'],
+  ),
+  shipping: json['shipping'] == null
+      ? null
+      : ShippingDetails.fromJson(
+          Map<String, dynamic>.from(json['shipping'] as Map),
+        ),
+  statementDescriptor: json['statement_descriptor'] as String?,
+  statementDescriptorSuffix: json['statement_descriptor_suffix'] as String?,
+  status: $enumDecode(_$PaymentIntentsStatusEnumMap, json['status']),
+  transferData: json['transfer_data'],
+  transferGroup: json['transfer_group'],
+);
 
-Map<String, dynamic> _$$PaymentIntentImplToJson(_$PaymentIntentImpl instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'object': instance.object,
-    'amount': instance.amount,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('amount_capturable', instance.amountCapturable);
-  writeNotNull('amount_details', instance.amountDetails?.toJson());
-  writeNotNull('amount_received', instance.amountReceived);
-  writeNotNull('application', instance.application);
-  writeNotNull('application_fee_amount', instance.applicationFeeAmount);
-  writeNotNull(
-      'automatic_payment_methods', instance.automaticPaymentMethods?.toJson());
-  writeNotNull('canceled_at', instance.canceledAt);
-  writeNotNull('cancellation_reason',
-      _$PaymentIntentCancellationReasonEnumMap[instance.cancellationReason]);
-  val['client_secret'] = instance.clientSecret;
-  val['capture_method'] =
-      _$PaymentIntentCaptureMethodEnumMap[instance.captureMethod]!;
-  val['confirmation_method'] =
-      _$PaymentIntentConfirmationMethodEnumMap[instance.confirmationMethod]!;
-  writeNotNull('created', instance.created);
-  val['currency'] = instance.currency;
-  writeNotNull('customer', instance.customer);
-  writeNotNull('description', instance.description);
-  writeNotNull('invoice', instance.invoice);
-  writeNotNull('last_payment_error', instance.lastPaymentError?.toJson());
-  writeNotNull('latest_charge', instance.latestCharge);
-  val['livemode'] = instance.livemode;
-  val['metadata'] = instance.metadata;
-  writeNotNull('next_action', instance.nextAction);
-  writeNotNull('on_behalf_of', instance.onBehalfOf);
-  writeNotNull('payment_method', instance.paymentMethod);
-  val['payment_method_options'] = instance.paymentMethodOptions;
-  val['payment_method_types'] = instance.paymentMethodTypes
+Map<String, dynamic> _$PaymentIntentToJson(
+  _PaymentIntent instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'object': instance.object,
+  'amount': instance.amount,
+  'amount_capturable': ?instance.amountCapturable,
+  'amount_details': ?instance.amountDetails?.toJson(),
+  'amount_received': ?instance.amountReceived,
+  'application': ?instance.application,
+  'application_fee_amount': ?instance.applicationFeeAmount,
+  'automatic_payment_methods': ?instance.automaticPaymentMethods?.toJson(),
+  'canceled_at': ?instance.canceledAt,
+  'cancellation_reason':
+      ?_$PaymentIntentCancellationReasonEnumMap[instance.cancellationReason],
+  'client_secret': instance.clientSecret,
+  'capture_method':
+      _$PaymentIntentCaptureMethodEnumMap[instance.captureMethod]!,
+  'confirmation_method':
+      _$PaymentIntentConfirmationMethodEnumMap[instance.confirmationMethod]!,
+  'created': ?instance.created,
+  'currency': instance.currency,
+  'customer': ?instance.customer,
+  'description': ?instance.description,
+  'invoice': ?instance.invoice,
+  'last_payment_error': ?instance.lastPaymentError?.toJson(),
+  'latest_charge': ?instance.latestCharge,
+  'livemode': instance.livemode,
+  'metadata': instance.metadata,
+  'next_action': ?instance.nextAction,
+  'on_behalf_of': ?instance.onBehalfOf,
+  'payment_method': ?instance.paymentMethod,
+  'payment_method_options': instance.paymentMethodOptions,
+  'payment_method_types': instance.paymentMethodTypes
       .map((e) => _$PaymentMethodTypeEnumMap[e]!)
-      .toList();
-  writeNotNull('processing', instance.processing);
-  writeNotNull('receipt_email', instance.receiptEmail);
-  writeNotNull('review', instance.review);
-  writeNotNull('setup_future_usage',
-      _$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]);
-  writeNotNull('shipping', instance.shipping?.toJson());
-  writeNotNull('statement_descriptor', instance.statementDescriptor);
-  writeNotNull(
-      'statement_descriptor_suffix', instance.statementDescriptorSuffix);
-  val['status'] = _$PaymentIntentsStatusEnumMap[instance.status]!;
-  writeNotNull('transfer_data', instance.transferData);
-  writeNotNull('transfer_group', instance.transferGroup);
-  return val;
-}
+      .toList(),
+  'processing': ?instance.processing,
+  'receipt_email': ?instance.receiptEmail,
+  'review': ?instance.review,
+  'setup_future_usage':
+      ?_$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage],
+  'shipping': ?instance.shipping?.toJson(),
+  'statement_descriptor': ?instance.statementDescriptor,
+  'statement_descriptor_suffix': ?instance.statementDescriptorSuffix,
+  'status': _$PaymentIntentsStatusEnumMap[instance.status]!,
+  'transfer_data': ?instance.transferData,
+  'transfer_group': ?instance.transferGroup,
+};
 
 const _$PaymentIntentCancellationReasonEnumMap = {
   PaymentIntentCancellationReason.duplicate: 'duplicate',
@@ -185,7 +190,6 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.pix: 'pix',
   PaymentMethodType.promptpay: 'promptpay',
   PaymentMethodType.sepaDebit: 'sepa_debit',
-  PaymentMethodType.sofort: 'sofort',
   PaymentMethodType.usBankAccount: 'us_bank_account',
   PaymentMethodType.wechatPay: 'wechat_pay',
   PaymentMethodType.unknown: 'unknown',
@@ -206,64 +210,29 @@ const _$PaymentIntentsStatusEnumMap = {
   PaymentIntentsStatus.canceled: 'canceled',
 };
 
-_$PaymentIntentAmountDetailsImpl _$$PaymentIntentAmountDetailsImplFromJson(
-        Map json) =>
-    _$PaymentIntentAmountDetailsImpl(
+_PaymentIntentAmountDetails _$PaymentIntentAmountDetailsFromJson(Map json) =>
+    _PaymentIntentAmountDetails(
       tip: json['tip'] == null
           ? const PaymentIntentTip()
           : PaymentIntentTip.fromJson(
-              Map<String, dynamic>.from(json['tip'] as Map)),
+              Map<String, dynamic>.from(json['tip'] as Map),
+            ),
     );
 
-Map<String, dynamic> _$$PaymentIntentAmountDetailsImplToJson(
-    _$PaymentIntentAmountDetailsImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$PaymentIntentAmountDetailsToJson(
+  _PaymentIntentAmountDetails instance,
+) => <String, dynamic>{'tip': ?instance.tip?.toJson()};
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_PaymentIntentTip _$PaymentIntentTipFromJson(Map json) =>
+    _PaymentIntentTip(amount: (json['amount'] as num?)?.toInt());
 
-  writeNotNull('tip', instance.tip?.toJson());
-  return val;
-}
+Map<String, dynamic> _$PaymentIntentTipToJson(_PaymentIntentTip instance) =>
+    <String, dynamic>{'amount': ?instance.amount};
 
-_$PaymentIntentTipImpl _$$PaymentIntentTipImplFromJson(Map json) =>
-    _$PaymentIntentTipImpl(
-      amount: (json['amount'] as num?)?.toInt(),
-    );
+_PaymentIntentAutomaticPaymentMethods
+_$PaymentIntentAutomaticPaymentMethodsFromJson(Map json) =>
+    _PaymentIntentAutomaticPaymentMethods(enabled: json['enabled'] as bool?);
 
-Map<String, dynamic> _$$PaymentIntentTipImplToJson(
-    _$PaymentIntentTipImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('amount', instance.amount);
-  return val;
-}
-
-_$PaymentIntentAutomaticPaymentMethodsImpl
-    _$$PaymentIntentAutomaticPaymentMethodsImplFromJson(Map json) =>
-        _$PaymentIntentAutomaticPaymentMethodsImpl(
-          enabled: json['enabled'] as bool?,
-        );
-
-Map<String, dynamic> _$$PaymentIntentAutomaticPaymentMethodsImplToJson(
-    _$PaymentIntentAutomaticPaymentMethodsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('enabled', instance.enabled);
-  return val;
-}
+Map<String, dynamic> _$PaymentIntentAutomaticPaymentMethodsToJson(
+  _PaymentIntentAutomaticPaymentMethods instance,
+) => <String, dynamic>{'enabled': ?instance.enabled};

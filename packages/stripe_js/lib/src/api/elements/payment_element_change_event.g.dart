@@ -6,9 +6,8 @@ part of 'payment_element_change_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaymentElementChangeEventImpl _$$PaymentElementChangeEventImplFromJson(
-        Map json) =>
-    _$PaymentElementChangeEventImpl(
+_PaymentElementChangeEvent _$PaymentElementChangeEventFromJson(Map json) =>
+    _PaymentElementChangeEvent(
       elementType: json['elementType'] as String,
       empty: json['empty'] as bool,
       complete: json['complete'] as bool,
@@ -16,44 +15,24 @@ _$PaymentElementChangeEventImpl _$$PaymentElementChangeEventImplFromJson(
       value: json['value'] == null
           ? null
           : PaymentElementChangeEventValue.fromJson(
-              Map<String, dynamic>.from(json['value'] as Map)),
+              Map<String, dynamic>.from(json['value'] as Map),
+            ),
     );
 
-Map<String, dynamic> _$$PaymentElementChangeEventImplToJson(
-    _$PaymentElementChangeEventImpl instance) {
-  final val = <String, dynamic>{
-    'elementType': instance.elementType,
-    'empty': instance.empty,
-    'complete': instance.complete,
-    'collapsed': instance.collapsed,
-  };
+Map<String, dynamic> _$PaymentElementChangeEventToJson(
+  _PaymentElementChangeEvent instance,
+) => <String, dynamic>{
+  'elementType': instance.elementType,
+  'empty': instance.empty,
+  'complete': instance.complete,
+  'collapsed': instance.collapsed,
+  'value': ?instance.value?.toJson(),
+};
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_PaymentElementChangeEventValue _$PaymentElementChangeEventValueFromJson(
+  Map json,
+) => _PaymentElementChangeEventValue(type: json['type'] as String?);
 
-  writeNotNull('value', instance.value?.toJson());
-  return val;
-}
-
-_$PaymentElementChangeEventValueImpl
-    _$$PaymentElementChangeEventValueImplFromJson(Map json) =>
-        _$PaymentElementChangeEventValueImpl(
-          type: json['type'] as String?,
-        );
-
-Map<String, dynamic> _$$PaymentElementChangeEventValueImplToJson(
-    _$PaymentElementChangeEventValueImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  return val;
-}
+Map<String, dynamic> _$PaymentElementChangeEventValueToJson(
+  _PaymentElementChangeEventValue instance,
+) => <String, dynamic>{'type': ?instance.type};

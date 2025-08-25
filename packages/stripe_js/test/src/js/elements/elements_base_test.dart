@@ -2,7 +2,6 @@
 
 @TestOn('browser')
 @Tags(["browser"])
-
 import 'package:stripe_js/stripe_js.dart';
 import 'package:test/test.dart';
 

@@ -2,7 +2,6 @@
 
 @TestOn('browser')
 @Tags(["browser"])
-
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import 'package:test/test.dart';
@@ -17,10 +16,7 @@ void main() {
       stripe = Stripe(stripePublishableKey);
     });
     test('can be retrieve Setup Intent', () {
-      expect(
-        stripe.retrieveSetupIntent(setupInputClientSecret),
-        completes,
-      );
+      expect(stripe.retrieveSetupIntent(setupInputClientSecret), completes);
     });
 
     test('retrieved setup intent is valid', () async {
@@ -49,14 +45,12 @@ void main() {
       expect(value.error, isNotNull);
       expect(
         value.error?.toJson(),
-        equals(
-          {
-            'type': 'invalid_request_error',
-            'message':
-                'The client_secret provided does not match the client_secret associated with the SetupIntent.',
-            'param': 'client_secret'
-          },
-        ),
+        equals({
+          'type': 'invalid_request_error',
+          'message':
+              'The client_secret provided does not match the client_secret associated with the SetupIntent.',
+          'param': 'client_secret',
+        }),
       );
     });
   });

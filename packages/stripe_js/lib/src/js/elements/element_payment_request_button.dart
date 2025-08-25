@@ -25,7 +25,8 @@ extension type PaymentRequestButtonElement(StripeElement o)
 
 extension ElementsPaymentRequestExtension on StripeElements {
   PaymentRequestButtonElement createPaymentRequestButton(
-      JsPaymentRequestButtonElementCreateOptions options) {
+    JsPaymentRequestButtonElementCreateOptions options,
+  ) {
     return create('paymentRequestButton', options.jsify())
         as PaymentRequestButtonElement;
   }

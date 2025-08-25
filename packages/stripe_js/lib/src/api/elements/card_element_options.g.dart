@@ -6,48 +6,42 @@ part of 'card_element_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CardElementOptionsImpl _$$CardElementOptionsImplFromJson(Map json) =>
-    _$CardElementOptionsImpl(
+_CardElementOptions _$CardElementOptionsFromJson(Map json) =>
+    _CardElementOptions(
       classes: json['classes'] == null
           ? null
           : CardElementClasses.fromJson(
-              Map<String, dynamic>.from(json['classes'] as Map)),
+              Map<String, dynamic>.from(json['classes'] as Map),
+            ),
       style: json['style'],
       value: json['value'] as String?,
       hidePostalCode: json['hidePostalCode'] as bool?,
-      iconStyle:
-          $enumDecodeNullable(_$CardElementIconStyleEnumMap, json['iconStyle']),
+      iconStyle: $enumDecodeNullable(
+        _$CardElementIconStyleEnumMap,
+        json['iconStyle'],
+      ),
       hideIcon: json['hideIcon'] as bool?,
       disabled: json['disabled'] as bool?,
     );
 
-Map<String, dynamic> _$$CardElementOptionsImplToJson(
-    _$CardElementOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('classes', instance.classes?.toJson());
-  writeNotNull('style', instance.style);
-  writeNotNull('value', instance.value);
-  writeNotNull('hidePostalCode', instance.hidePostalCode);
-  writeNotNull('iconStyle', _$CardElementIconStyleEnumMap[instance.iconStyle]);
-  writeNotNull('hideIcon', instance.hideIcon);
-  writeNotNull('disabled', instance.disabled);
-  return val;
-}
+Map<String, dynamic> _$CardElementOptionsToJson(_CardElementOptions instance) =>
+    <String, dynamic>{
+      'classes': ?instance.classes?.toJson(),
+      'style': ?instance.style,
+      'value': ?instance.value,
+      'hidePostalCode': ?instance.hidePostalCode,
+      'iconStyle': ?_$CardElementIconStyleEnumMap[instance.iconStyle],
+      'hideIcon': ?instance.hideIcon,
+      'disabled': ?instance.disabled,
+    };
 
 const _$CardElementIconStyleEnumMap = {
   CardElementIconStyle.solid: 'solid',
   CardElementIconStyle.defaultStyle: 'defaultStyle',
 };
 
-_$CardElementClassesImpl _$$CardElementClassesImplFromJson(Map json) =>
-    _$CardElementClassesImpl(
+_CardElementClasses _$CardElementClassesFromJson(Map json) =>
+    _CardElementClasses(
       base: json['base'] as String?,
       complete: json['complete'] as String?,
       empty: json['empty'] as String?,
@@ -56,21 +50,12 @@ _$CardElementClassesImpl _$$CardElementClassesImplFromJson(Map json) =>
       webkitAutofill: json['webkitAutofill'] as bool?,
     );
 
-Map<String, dynamic> _$$CardElementClassesImplToJson(
-    _$CardElementClassesImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('base', instance.base);
-  writeNotNull('complete', instance.complete);
-  writeNotNull('empty', instance.empty);
-  writeNotNull('focus', instance.focus);
-  writeNotNull('invalid', instance.invalid);
-  writeNotNull('webkitAutofill', instance.webkitAutofill);
-  return val;
-}
+Map<String, dynamic> _$CardElementClassesToJson(_CardElementClasses instance) =>
+    <String, dynamic>{
+      'base': ?instance.base,
+      'complete': ?instance.complete,
+      'empty': ?instance.empty,
+      'focus': ?instance.focus,
+      'invalid': ?instance.invalid,
+      'webkitAutofill': ?instance.webkitAutofill,
+    };
