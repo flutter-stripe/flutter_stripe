@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v7.0.0`](#flutter_stripe_web---v700)
+
+---
+
+#### `flutter_stripe_web` - `v7.0.0`
+
+ - **FIX**: Remove empty bank parameter from iDEAL payments to comply with Stripe API changes (#2186).
+
+
+## 2025-08-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_js` - `v7.0.0`](#stripe_js---v700)
  - [`flutter_stripe_web` - `v6.5.2`](#flutter_stripe_web---v652)
 

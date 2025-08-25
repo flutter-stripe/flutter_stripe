@@ -1,3 +1,7 @@
+## 7.0.0
+
+ - **FIX**: Remove empty bank parameter from iDEAL payments to comply with Stripe API changes (#2186).
+
 ## 6.5.1
 
 **Fixes**
