@@ -1,3 +1,6 @@
+## 12.0.1
+- fix compilation issue with the stripe_android package
+
 ## 12.0.0
 
 **Breaking changes**

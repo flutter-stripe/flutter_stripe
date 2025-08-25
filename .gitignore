@@ -5,7 +5,6 @@
 .pub/
 
 .env.dart
-build/
 /.idea/
 /stripe_android/android/.gradle/
 
@@ -36,7 +35,6 @@ keystore.properties
 gradlew
 gradlew.bat
 gradle-wrapper.jar
-.flutter-plugins-dependencies
 *.iml
 
 generated_plugin_registrant.dart
@@ -47,7 +45,6 @@ GeneratedPluginRegistrant.swift
 generated_plugin_registrant.*
 generated_plugins.cmake
 build/
-.flutter-plugins
 
 .project
 .classpath

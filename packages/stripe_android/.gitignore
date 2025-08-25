@@ -4,6 +4,4 @@
 .packages
 .pub/
 
-build/
-# Exception: Allow specific ReactBuildConfig.java file
-!android/src/main/kotlin/com/facebook/react/common/build/ReactBuildConfig.java
+./build/
