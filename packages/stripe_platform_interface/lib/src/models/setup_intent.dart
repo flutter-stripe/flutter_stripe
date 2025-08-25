@@ -8,16 +8,14 @@ part 'setup_intent.g.dart';
 // ignore_for_file: constant_identifier_names
 
 @freezed
-
 /// SetupIntent information.
 ///
 /// A setup intent is used to setup and save customer payment information for
 /// future payments.
-class SetupIntent with _$SetupIntent {
+abstract class SetupIntent with _$SetupIntent {
   @JsonSerializable(explicitToJson: true)
   const factory SetupIntent({
     /// Unique identifier.
-
     required String id,
 
     /// Status of the intent.
@@ -26,15 +24,12 @@ class SetupIntent with _$SetupIntent {
     required String status,
 
     /// Determines whether the intent is in live mode or in test mode.
-
     required bool livemode,
 
     /// The client is secret is used for handling the payment from the Client side.
-
     required String clientSecret,
 
     /// Id of the payment method used in this intent.
-
     required String paymentMethodId,
 
     /// Indicates how the intent is used in the future.
@@ -44,7 +39,6 @@ class SetupIntent with _$SetupIntent {
     required List<PaymentMethodType> paymentMethodTypes,
 
     /// Localized description that provides additional context to users.
-
     String? description,
 
     /// Timestamp since epoch that represents the time the intent is created.
@@ -66,9 +60,8 @@ class SetupIntent with _$SetupIntent {
 }
 
 @freezed
-
 /// Incormation about the error that has occured since last payment confirmation.
-class LastSetupError with _$LastSetupError {
+abstract class LastSetupError with _$LastSetupError {
   @JsonSerializable(explicitToJson: true)
   const factory LastSetupError({
     /// Code.

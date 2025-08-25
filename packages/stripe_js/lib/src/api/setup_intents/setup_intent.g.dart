@@ -6,75 +6,73 @@ part of 'setup_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SetupIntentImpl _$$SetupIntentImplFromJson(Map json) => _$SetupIntentImpl(
-      id: json['id'] as String,
-      object: json['object'] as String? ?? "setup_intent",
-      application: json['application'] as String?,
-      attachToSelf: json['attach_to_self'] as String?,
-      cancellationReason: $enumDecodeNullable(
-          _$SetupIntentCancellationReasonEnumMap, json['cancellation_reason']),
-      clientSecret: json['client_secret'] as String,
-      created: (json['created'] as num?)?.toInt(),
-      customer: json['customer'] as String?,
-      description: json['description'] as String?,
-      flowDirections: (json['flow_directions'] as List<dynamic>?)
-          ?.map((e) => $enumDecode(_$SetupIntentFlowDirectionsEnumMap, e))
-          .toList(),
-      lastSetupError: json['last_setup_error'],
-      latestAttempt: json['latest_attempt'] as String?,
-      livemode: json['livemode'] as bool? ?? true,
-      mandate: json['mandate'] as String?,
-      metadata: (json['metadata'] as Map?)?.map(
-            (k, e) => MapEntry(k as String, e),
-          ) ??
-          const {},
-      nextAction: json['next_action'],
-      onBehalfOf: json['on_behalf_of'] as String?,
-      paymentMethod: json['payment_method'] as String?,
-      paymentMethodOptions: json['payment_method_options'],
-      paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
-              .toList() ??
-          const [],
-      singleUseMandate: json['single_use_mandate'] as String?,
-      status: $enumDecode(_$SetupIntentsStatusEnumMap, json['status']),
-      usage: $enumDecodeNullable(_$SetupIntentUsageEnumMap, json['usage']) ??
-          SetupIntentUsage.offSession,
-    );
+_SetupIntent _$SetupIntentFromJson(Map json) => _SetupIntent(
+  id: json['id'] as String,
+  object: json['object'] as String? ?? "setup_intent",
+  application: json['application'] as String?,
+  attachToSelf: json['attach_to_self'] as String?,
+  cancellationReason: $enumDecodeNullable(
+    _$SetupIntentCancellationReasonEnumMap,
+    json['cancellation_reason'],
+  ),
+  clientSecret: json['client_secret'] as String,
+  created: (json['created'] as num?)?.toInt(),
+  customer: json['customer'] as String?,
+  description: json['description'] as String?,
+  flowDirections: (json['flow_directions'] as List<dynamic>?)
+      ?.map((e) => $enumDecode(_$SetupIntentFlowDirectionsEnumMap, e))
+      .toList(),
+  lastSetupError: json['last_setup_error'],
+  latestAttempt: json['latest_attempt'] as String?,
+  livemode: json['livemode'] as bool? ?? true,
+  mandate: json['mandate'] as String?,
+  metadata:
+      (json['metadata'] as Map?)?.map((k, e) => MapEntry(k as String, e)) ??
+      const {},
+  nextAction: json['next_action'],
+  onBehalfOf: json['on_behalf_of'] as String?,
+  paymentMethod: json['payment_method'] as String?,
+  paymentMethodOptions: json['payment_method_options'],
+  paymentMethodTypes:
+      (json['payment_method_types'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
+          .toList() ??
+      const [],
+  singleUseMandate: json['single_use_mandate'] as String?,
+  status: $enumDecode(_$SetupIntentsStatusEnumMap, json['status']),
+  usage:
+      $enumDecodeNullable(_$SetupIntentUsageEnumMap, json['usage']) ??
+      SetupIntentUsage.offSession,
+);
 
-Map<String, dynamic> _$$SetupIntentImplToJson(_$SetupIntentImpl instance) =>
+Map<String, dynamic> _$SetupIntentToJson(_SetupIntent instance) =>
     <String, dynamic>{
       'id': instance.id,
       'object': instance.object,
-      if (instance.application case final value?) 'application': value,
-      if (instance.attachToSelf case final value?) 'attach_to_self': value,
-      if (_$SetupIntentCancellationReasonEnumMap[instance.cancellationReason]
-          case final value?)
-        'cancellation_reason': value,
+      'application': ?instance.application,
+      'attach_to_self': ?instance.attachToSelf,
+      'cancellation_reason':
+          ?_$SetupIntentCancellationReasonEnumMap[instance.cancellationReason],
       'client_secret': instance.clientSecret,
-      if (instance.created case final value?) 'created': value,
-      if (instance.customer case final value?) 'customer': value,
-      if (instance.description case final value?) 'description': value,
-      if (instance.flowDirections
-              ?.map((e) => _$SetupIntentFlowDirectionsEnumMap[e]!)
-              .toList()
-          case final value?)
-        'flow_directions': value,
-      if (instance.lastSetupError case final value?) 'last_setup_error': value,
-      if (instance.latestAttempt case final value?) 'latest_attempt': value,
+      'created': ?instance.created,
+      'customer': ?instance.customer,
+      'description': ?instance.description,
+      'flow_directions': ?instance.flowDirections
+          ?.map((e) => _$SetupIntentFlowDirectionsEnumMap[e]!)
+          .toList(),
+      'last_setup_error': ?instance.lastSetupError,
+      'latest_attempt': ?instance.latestAttempt,
       'livemode': instance.livemode,
-      if (instance.mandate case final value?) 'mandate': value,
+      'mandate': ?instance.mandate,
       'metadata': instance.metadata,
-      if (instance.nextAction case final value?) 'next_action': value,
-      if (instance.onBehalfOf case final value?) 'on_behalf_of': value,
-      if (instance.paymentMethod case final value?) 'payment_method': value,
-      if (instance.paymentMethodOptions case final value?)
-        'payment_method_options': value,
+      'next_action': ?instance.nextAction,
+      'on_behalf_of': ?instance.onBehalfOf,
+      'payment_method': ?instance.paymentMethod,
+      'payment_method_options': ?instance.paymentMethodOptions,
       'payment_method_types': instance.paymentMethodTypes
           .map((e) => _$PaymentMethodTypeEnumMap[e]!)
           .toList(),
-      if (instance.singleUseMandate case final value?)
-        'single_use_mandate': value,
+      'single_use_mandate': ?instance.singleUseMandate,
       'status': _$SetupIntentsStatusEnumMap[instance.status]!,
       'usage': _$SetupIntentUsageEnumMap[instance.usage]!,
     };

@@ -4,7 +4,7 @@ version: 6.5.1
 homepage: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
-  sdk: ">=3.3.0 <4.0.0"
+  sdk: ">=3.8.1 <4.0.0"
   flutter: ">=3.0.0"
 
 dependencies:
@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  freezed_annotation: ^2.0.3
+  freezed_annotation: ^3.1.0
   stripe_platform_interface: ^11.5.0
   stripe_js: ^6.4.0
   web: ^1.0.0
@@ -21,9 +21,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^2.3.2
-  freezed: ^2.3.5
+  freezed: ^3.2.0
   json_serializable: ^6.5.4
-  lints: ^4.0.0
+  lints: ^6.0.0
 
 flutter:
   plugin:

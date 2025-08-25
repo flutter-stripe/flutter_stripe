@@ -11,11 +11,10 @@ part 'payment_intents.g.dart';
 // ignore_for_file: constant_identifier_names
 
 @freezed
-
 /// A payment intent represents the interaction between the user and the payment form.
 ///
 /// For more detailed info see: https://stripe.com/docs/payments/payment-intents.
-class PaymentIntent with _$PaymentIntent {
+abstract class PaymentIntent with _$PaymentIntent {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentIntent({
     /// Unique identifier.
@@ -92,9 +91,8 @@ enum ConfirmationMethod {
 //nextActionMap.putString("type", "urlRedirect")
 //     nextActionMap.putString("redirectUrl", it.url.toString())
 @freezed
-
 /// Shipping information
-class ShippingDetails with _$ShippingDetails {
+abstract class ShippingDetails with _$ShippingDetails {
   @JsonSerializable(explicitToJson: true)
   const factory ShippingDetails({
     /// Recipient address.

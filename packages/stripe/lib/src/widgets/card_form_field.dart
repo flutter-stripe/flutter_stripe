@@ -437,7 +437,7 @@ class _MethodChannelCardFormFieldState
     });
   }
 
-  void _handleCardChanged(arguments) {
+  void _handleCardChanged(dynamic arguments) {
     try {
       final map = Map<String, dynamic>.from(arguments);
       if (map.isEmpty) {
@@ -458,7 +458,7 @@ class _MethodChannelCardFormFieldState
   }
 
   /// Handler called when a field from the platform card field has been focused
-  void _handlePlatformFocusChanged(arguments) {
+  void _handlePlatformFocusChanged(dynamic arguments) {
     try {
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);

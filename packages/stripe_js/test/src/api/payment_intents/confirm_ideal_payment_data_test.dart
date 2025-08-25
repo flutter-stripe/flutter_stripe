@@ -20,10 +20,8 @@ void main() {
           "payment_method": {
             "ideal": fakeElement,
             "type": "ideal",
-            "billing_details": {
-              "name": "Jenny Rosen",
-            },
-          }
+            "billing_details": {"name": "Jenny Rosen"},
+          },
         },
       );
     });
@@ -49,10 +47,8 @@ void main() {
           "payment_method": {
             "ideal": {"bank": "abn_amro"},
             "type": "ideal",
-            "billing_details": {
-              "name": "Jenny Rosen",
-            },
-          }
+            "billing_details": {"name": "Jenny Rosen"},
+          },
         },
       );
     });
@@ -69,10 +65,8 @@ void main() {
           "payment_method": {
             "ideal": {},
             "type": "ideal",
-            "billing_details": {
-              "name": "Jenny Rosen",
-            },
-          }
+            "billing_details": {"name": "Jenny Rosen"},
+          },
         },
       );
     });
@@ -89,10 +83,8 @@ void main() {
           "payment_method": {
             "ideal": {},
             "type": "ideal",
-            "billing_details": {
-              "name": "Jenny Rosen",
-            },
-          }
+            "billing_details": {"name": "Jenny Rosen"},
+          },
         },
       );
     });
@@ -100,13 +92,10 @@ void main() {
     test('extra params parse correctly', () {
       expect(
         ConfirmIdealPaymentData(
-                returnUrl: 'url',
-                setupFutureUsage: PaymentIntentSetupFutureUsage.offSession)
-            .toJson(),
-        {
-          "return_url": "url",
-          "setup_future_usage": "off_session",
-        },
+          returnUrl: 'url',
+          setupFutureUsage: PaymentIntentSetupFutureUsage.offSession,
+        ).toJson(),
+        {"return_url": "url", "setup_future_usage": "off_session"},
       );
     });
   });

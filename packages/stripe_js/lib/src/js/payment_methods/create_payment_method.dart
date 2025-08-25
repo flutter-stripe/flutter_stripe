@@ -14,11 +14,12 @@ extension ExtensionCreatePaymentMethod on Stripe {
   ///
   /// https://stripe.com/docs/js/payment_methods/create_payment_method
   Future<PaymentMethodResponse> createPaymentMethod(
-      CreatePaymentMethodData data) {
+    CreatePaymentMethodData data,
+  ) {
     final jsData = data.toJson().jsify();
-    return _createPaymentMethod(jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _createPaymentMethod(
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('createPaymentMethod')

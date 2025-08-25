@@ -2,7 +2,6 @@
 
 @TestOn('browser')
 @Tags(["browser"])
-
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import 'package:test/test.dart';
@@ -24,8 +23,9 @@ void main() {
     });
 
     test('retrieved setup intent is valid', () async {
-      final value =
-          await stripe.retrievePaymentIntent(paymentIntentClientSecret);
+      final value = await stripe.retrievePaymentIntent(
+        paymentIntentClientSecret,
+      );
       expect(value.error, isNull);
       expect(
         value.paymentIntent?.toJson(),
@@ -53,15 +53,12 @@ void main() {
       expect(value.error, isNotNull);
       expect(
         value.error?.toJson(),
-        equals(
-          {
-            'type': 'invalid_request_error',
-            'code': 'resource_missing',
-            'param': 'intent',
-            'message':
-                'No such payment_intent: \'pi_3M8VVPLLSCwoVL5p1ZZjwhPT\'',
-          },
-        ),
+        equals({
+          'type': 'invalid_request_error',
+          'code': 'resource_missing',
+          'param': 'intent',
+          'message': 'No such payment_intent: \'pi_3M8VVPLLSCwoVL5p1ZZjwhPT\'',
+        }),
       );
     });
   });

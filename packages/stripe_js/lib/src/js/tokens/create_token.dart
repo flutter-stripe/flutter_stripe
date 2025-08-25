@@ -27,30 +27,32 @@ extension ExtensionCreateTokenMethod on Stripe {
     CreateTokenCardData? data,
   ]) {
     final jsData = data?.toJson().jsify();
-    return _createToken(element, jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _createToken(
+      element,
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   /// Use createBankAccountToken to convert bank account information into a
   /// single-use token that you safely pass to your server to use in an API call.
   Future<TokenResponse> createBankAccountToken(
-      CreateTokenBankAccountData data) {
+    CreateTokenBankAccountData data,
+  ) {
     final jsData = data.toJson().jsify();
-    return _createToken('bank_account'.toJS, jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _createToken(
+      'bank_account'.toJS,
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   /// Use createPIIToken to convert personally identifiable information (PII)
   /// into a single-use token for account identity verification.
-  Future<TokenResponse> createPIIToken(
-    CreateTokenPIIData data,
-  ) {
+  Future<TokenResponse> createPIIToken(CreateTokenPIIData data) {
     final jsData = data.toJson().jsify();
-    return _createToken('pii'.toJS, jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _createToken(
+      'pii'.toJS,
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('createToken')

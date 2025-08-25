@@ -6,102 +6,104 @@ part of 'express_checkout_element_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ExpressCheckoutOptionsImpl _$$ExpressCheckoutOptionsImplFromJson(Map json) =>
-    _$ExpressCheckoutOptionsImpl(
+_ExpressCheckoutOptions _$ExpressCheckoutOptionsFromJson(Map json) =>
+    _ExpressCheckoutOptions(
       height: (json['height'] as num?)?.toDouble(),
       buttonTheme: json['buttonTheme'] == null
           ? null
           : ExpressCheckoutButtonTheme.fromJson(
-              Map<String, dynamic>.from(json['buttonTheme'] as Map)),
+              Map<String, dynamic>.from(json['buttonTheme'] as Map),
+            ),
       buttonType: json['buttonType'] == null
           ? null
           : ExpressCheckoutButtonType.fromJson(
-              Map<String, dynamic>.from(json['buttonType'] as Map)),
+              Map<String, dynamic>.from(json['buttonType'] as Map),
+            ),
       layout: json['layout'] == null
           ? null
           : ExpressCheckoutLayout.fromJson(
-              Map<String, dynamic>.from(json['layout'] as Map)),
+              Map<String, dynamic>.from(json['layout'] as Map),
+            ),
       paymentMethods: json['paymentMethods'] == null
           ? null
           : ExpressCheckoutPaymentMethods.fromJson(
-              Map<String, dynamic>.from(json['paymentMethods'] as Map)),
+              Map<String, dynamic>.from(json['paymentMethods'] as Map),
+            ),
     );
 
-Map<String, dynamic> _$$ExpressCheckoutOptionsImplToJson(
-        _$ExpressCheckoutOptionsImpl instance) =>
-    <String, dynamic>{
-      if (instance.height case final value?) 'height': value,
-      if (instance.buttonTheme?.toJson() case final value?)
-        'buttonTheme': value,
-      if (instance.buttonType?.toJson() case final value?) 'buttonType': value,
-      if (instance.layout?.toJson() case final value?) 'layout': value,
-      if (instance.paymentMethods?.toJson() case final value?)
-        'paymentMethods': value,
-    };
+Map<String, dynamic> _$ExpressCheckoutOptionsToJson(
+  _ExpressCheckoutOptions instance,
+) => <String, dynamic>{
+  'height': ?instance.height,
+  'buttonTheme': ?instance.buttonTheme?.toJson(),
+  'buttonType': ?instance.buttonType?.toJson(),
+  'layout': ?instance.layout?.toJson(),
+  'paymentMethods': ?instance.paymentMethods?.toJson(),
+};
 
-_$ExpressCheckoutConfirmEventImpl _$$ExpressCheckoutConfirmEventImplFromJson(
-        Map json) =>
-    _$ExpressCheckoutConfirmEventImpl(
+_ExpressCheckoutConfirmEvent _$ExpressCheckoutConfirmEventFromJson(Map json) =>
+    _ExpressCheckoutConfirmEvent(
       expressPaymentType: json['expressPaymentType'] as String,
       billingDetails: json['billingDetails'] == null
           ? null
           : BillingDetails.fromJson(
-              Map<String, dynamic>.from(json['billingDetails'] as Map)),
+              Map<String, dynamic>.from(json['billingDetails'] as Map),
+            ),
     );
 
-Map<String, dynamic> _$$ExpressCheckoutConfirmEventImplToJson(
-        _$ExpressCheckoutConfirmEventImpl instance) =>
-    <String, dynamic>{
-      'expressPaymentType': instance.expressPaymentType,
-      if (instance.billingDetails?.toJson() case final value?)
-        'billingDetails': value,
-    };
+Map<String, dynamic> _$ExpressCheckoutConfirmEventToJson(
+  _ExpressCheckoutConfirmEvent instance,
+) => <String, dynamic>{
+  'expressPaymentType': instance.expressPaymentType,
+  'billingDetails': ?instance.billingDetails?.toJson(),
+};
 
-_$ExpressCheckoutLayoutImpl _$$ExpressCheckoutLayoutImplFromJson(Map json) =>
-    _$ExpressCheckoutLayoutImpl(
+_ExpressCheckoutLayout _$ExpressCheckoutLayoutFromJson(Map json) =>
+    _ExpressCheckoutLayout(
       maxColumns: (json['maxColumns'] as num?)?.toInt(),
       maxRows: (json['maxRows'] as num?)?.toInt(),
       overflow: $enumDecodeNullable(
-          _$ExpressCheckoutOverflowEnumMap, json['overflow']),
+        _$ExpressCheckoutOverflowEnumMap,
+        json['overflow'],
+      ),
     );
 
-Map<String, dynamic> _$$ExpressCheckoutLayoutImplToJson(
-        _$ExpressCheckoutLayoutImpl instance) =>
-    <String, dynamic>{
-      if (instance.maxColumns case final value?) 'maxColumns': value,
-      if (instance.maxRows case final value?) 'maxRows': value,
-      if (_$ExpressCheckoutOverflowEnumMap[instance.overflow] case final value?)
-        'overflow': value,
-    };
+Map<String, dynamic> _$ExpressCheckoutLayoutToJson(
+  _ExpressCheckoutLayout instance,
+) => <String, dynamic>{
+  'maxColumns': ?instance.maxColumns,
+  'maxRows': ?instance.maxRows,
+  'overflow': ?_$ExpressCheckoutOverflowEnumMap[instance.overflow],
+};
 
 const _$ExpressCheckoutOverflowEnumMap = {
   ExpressCheckoutOverflow.auto: 'auto',
   ExpressCheckoutOverflow.never: 'never',
 };
 
-_$ExpressCheckoutButtonThemeImpl _$$ExpressCheckoutButtonThemeImplFromJson(
-        Map json) =>
-    _$ExpressCheckoutButtonThemeImpl(
+_ExpressCheckoutButtonTheme _$ExpressCheckoutButtonThemeFromJson(Map json) =>
+    _ExpressCheckoutButtonTheme(
       applePay: $enumDecodeNullable(
-          _$ExpressApplePayButtonThemeEnumMap, json['applePay']),
+        _$ExpressApplePayButtonThemeEnumMap,
+        json['applePay'],
+      ),
       googlePay: $enumDecodeNullable(
-          _$ExpressGooglePayButtonThemeEnumMap, json['googlePay']),
+        _$ExpressGooglePayButtonThemeEnumMap,
+        json['googlePay'],
+      ),
       paypal: $enumDecodeNullable(
-          _$ExpressPaypalButtonThemeEnumMap, json['paypal']),
+        _$ExpressPaypalButtonThemeEnumMap,
+        json['paypal'],
+      ),
     );
 
-Map<String, dynamic> _$$ExpressCheckoutButtonThemeImplToJson(
-        _$ExpressCheckoutButtonThemeImpl instance) =>
-    <String, dynamic>{
-      if (_$ExpressApplePayButtonThemeEnumMap[instance.applePay]
-          case final value?)
-        'applePay': value,
-      if (_$ExpressGooglePayButtonThemeEnumMap[instance.googlePay]
-          case final value?)
-        'googlePay': value,
-      if (_$ExpressPaypalButtonThemeEnumMap[instance.paypal] case final value?)
-        'paypal': value,
-    };
+Map<String, dynamic> _$ExpressCheckoutButtonThemeToJson(
+  _ExpressCheckoutButtonTheme instance,
+) => <String, dynamic>{
+  'applePay': ?_$ExpressApplePayButtonThemeEnumMap[instance.applePay],
+  'googlePay': ?_$ExpressGooglePayButtonThemeEnumMap[instance.googlePay],
+  'paypal': ?_$ExpressPaypalButtonThemeEnumMap[instance.paypal],
+};
 
 const _$ExpressApplePayButtonThemeEnumMap = {
   ExpressApplePayButtonTheme.black: 'black',
@@ -122,29 +124,29 @@ const _$ExpressPaypalButtonThemeEnumMap = {
   ExpressPaypalButtonTheme.white: 'white',
 };
 
-_$ExpressCheckoutButtonTypeImpl _$$ExpressCheckoutButtonTypeImplFromJson(
-        Map json) =>
-    _$ExpressCheckoutButtonTypeImpl(
+_ExpressCheckoutButtonType _$ExpressCheckoutButtonTypeFromJson(Map json) =>
+    _ExpressCheckoutButtonType(
       applePay: $enumDecodeNullable(
-          _$ExpressApplePayButtonTypeEnumMap, json['applePay']),
+        _$ExpressApplePayButtonTypeEnumMap,
+        json['applePay'],
+      ),
       googlePay: $enumDecodeNullable(
-          _$ExpressGooglePayButtonTypeEnumMap, json['googlePay']),
-      paypal:
-          $enumDecodeNullable(_$ExpressPaypalButtonTypeEnumMap, json['paypal']),
+        _$ExpressGooglePayButtonTypeEnumMap,
+        json['googlePay'],
+      ),
+      paypal: $enumDecodeNullable(
+        _$ExpressPaypalButtonTypeEnumMap,
+        json['paypal'],
+      ),
     );
 
-Map<String, dynamic> _$$ExpressCheckoutButtonTypeImplToJson(
-        _$ExpressCheckoutButtonTypeImpl instance) =>
-    <String, dynamic>{
-      if (_$ExpressApplePayButtonTypeEnumMap[instance.applePay]
-          case final value?)
-        'applePay': value,
-      if (_$ExpressGooglePayButtonTypeEnumMap[instance.googlePay]
-          case final value?)
-        'googlePay': value,
-      if (_$ExpressPaypalButtonTypeEnumMap[instance.paypal] case final value?)
-        'paypal': value,
-    };
+Map<String, dynamic> _$ExpressCheckoutButtonTypeToJson(
+  _ExpressCheckoutButtonType instance,
+) => <String, dynamic>{
+  'applePay': ?_$ExpressApplePayButtonTypeEnumMap[instance.applePay],
+  'googlePay': ?_$ExpressGooglePayButtonTypeEnumMap[instance.googlePay],
+  'paypal': ?_$ExpressPaypalButtonTypeEnumMap[instance.paypal],
+};
 
 const _$ExpressApplePayButtonTypeEnumMap = {
   ExpressApplePayButtonType.addMoney: 'addMoney',
@@ -181,39 +183,37 @@ const _$ExpressPaypalButtonTypeEnumMap = {
   ExpressPaypalButtonType.pay: 'pay',
 };
 
-_$ExpressCheckoutPaymentMethodsImpl
-    _$$ExpressCheckoutPaymentMethodsImplFromJson(Map json) =>
-        _$ExpressCheckoutPaymentMethodsImpl(
-          applePay: $enumDecodeNullable(
-              _$ExpressPaymentNethodEnabledEnumMap, json['applePay']),
-          googlePay: $enumDecodeNullable(
-              _$ExpressPaymentNethodEnabledEnumMap, json['googlePay']),
-          paypal: $enumDecodeNullable(
-              _$ExpressPaymentNethodEnabledEnumMap, json['paypal']),
-          link: $enumDecodeNullable(
-              _$ExpressPaymentNethodEnabledEnumMap, json['link']),
-          amazonPay: $enumDecodeNullable(
-              _$ExpressPaymentNethodEnabledEnumMap, json['amazonPay']),
-        );
+_ExpressCheckoutPaymentMethods _$ExpressCheckoutPaymentMethodsFromJson(
+  Map json,
+) => _ExpressCheckoutPaymentMethods(
+  applePay: $enumDecodeNullable(
+    _$ExpressPaymentNethodEnabledEnumMap,
+    json['applePay'],
+  ),
+  googlePay: $enumDecodeNullable(
+    _$ExpressPaymentNethodEnabledEnumMap,
+    json['googlePay'],
+  ),
+  paypal: $enumDecodeNullable(
+    _$ExpressPaymentNethodEnabledEnumMap,
+    json['paypal'],
+  ),
+  link: $enumDecodeNullable(_$ExpressPaymentNethodEnabledEnumMap, json['link']),
+  amazonPay: $enumDecodeNullable(
+    _$ExpressPaymentNethodEnabledEnumMap,
+    json['amazonPay'],
+  ),
+);
 
-Map<String, dynamic> _$$ExpressCheckoutPaymentMethodsImplToJson(
-        _$ExpressCheckoutPaymentMethodsImpl instance) =>
-    <String, dynamic>{
-      if (_$ExpressPaymentNethodEnabledEnumMap[instance.applePay]
-          case final value?)
-        'applePay': value,
-      if (_$ExpressPaymentNethodEnabledEnumMap[instance.googlePay]
-          case final value?)
-        'googlePay': value,
-      if (_$ExpressPaymentNethodEnabledEnumMap[instance.paypal]
-          case final value?)
-        'paypal': value,
-      if (_$ExpressPaymentNethodEnabledEnumMap[instance.link] case final value?)
-        'link': value,
-      if (_$ExpressPaymentNethodEnabledEnumMap[instance.amazonPay]
-          case final value?)
-        'amazonPay': value,
-    };
+Map<String, dynamic> _$ExpressCheckoutPaymentMethodsToJson(
+  _ExpressCheckoutPaymentMethods instance,
+) => <String, dynamic>{
+  'applePay': ?_$ExpressPaymentNethodEnabledEnumMap[instance.applePay],
+  'googlePay': ?_$ExpressPaymentNethodEnabledEnumMap[instance.googlePay],
+  'paypal': ?_$ExpressPaymentNethodEnabledEnumMap[instance.paypal],
+  'link': ?_$ExpressPaymentNethodEnabledEnumMap[instance.link],
+  'amazonPay': ?_$ExpressPaymentNethodEnabledEnumMap[instance.amazonPay],
+};
 
 const _$ExpressPaymentNethodEnabledEnumMap = {
   ExpressPaymentNethodEnabled.auto: 'auto',

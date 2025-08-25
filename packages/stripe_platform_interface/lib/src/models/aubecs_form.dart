@@ -6,22 +6,18 @@ part 'aubecs_form.freezed.dart';
 part 'aubecs_form.g.dart';
 
 @freezed
-
 /// Styling information for the AubecsFormField
-class AubecsFormStyle with _$AubecsFormStyle {
+abstract class AubecsFormStyle with _$AubecsFormStyle {
   @JsonSerializable(explicitToJson: true)
   const factory AubecsFormStyle({
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Color of the textinput
     Color? textColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Color of the errormessage
     /// Only available for Android
     Color? textErrorColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Color of the place holder text
     /// Only available for Android
     Color? placeholderColor,
@@ -33,13 +29,11 @@ class AubecsFormStyle with _$AubecsFormStyle {
     /// Only available for Android
     int? borderWidth,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Background color of the form.
     ///
     /// Make sure there is enough contrast with the text color
     Color? backgroundColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     ///  Color of the border of the formfields.
     ///
     /// Make sure there is enough contrast with the text color
@@ -56,9 +50,8 @@ class AubecsFormStyle with _$AubecsFormStyle {
 }
 
 @freezed
-
 /// Input details that will be returned from the form.
-class AubecsFormInputDetails with _$AubecsFormInputDetails {
+abstract class AubecsFormInputDetails with _$AubecsFormInputDetails {
   @JsonSerializable(explicitToJson: true)
   const factory AubecsFormInputDetails({
     /// Six digit identifier to identify the branch of an financial institution.

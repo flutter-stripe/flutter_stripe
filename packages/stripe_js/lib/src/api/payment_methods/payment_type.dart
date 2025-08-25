@@ -105,5 +105,5 @@ enum PaymentMethodType {
   @JsonValue("wechat_pay")
   wechatPay,
 
-  unknown
+  unknown,
 }

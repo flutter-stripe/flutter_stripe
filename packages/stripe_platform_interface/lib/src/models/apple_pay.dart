@@ -14,9 +14,8 @@ enum ApplePayShippingMethodType {
 
   /// Ready to ship.
   ready, //final has been replaced with pending as final is a reserved word in dart
-
   /// Shipping is pending.
-  pending
+  pending,
 }
 
 /// Enum representing the different fields that can be added to the Apple Pay sheet.
@@ -34,21 +33,15 @@ enum ApplePayContactFieldsType {
   phoneticName,
 
   /// Postal adress contact field.
-  postalAddress
+  postalAddress,
 }
 
 /// A type that indicates how to ship purchased items
-enum ApplePayShippingType {
-  storePickup,
-  servicePickup,
-  delivery,
-  shipping,
-}
+enum ApplePayShippingType { storePickup, servicePickup, delivery, shipping }
 
 @freezed
-
 /// Shipping method details regarding apple pay
-class ApplePayShippingMethod with _$ApplePayShippingMethod {
+abstract class ApplePayShippingMethod with _$ApplePayShippingMethod {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayShippingMethod({
     ///  A short, localized description.
@@ -86,12 +79,10 @@ class ApplePayShippingMethod with _$ApplePayShippingMethod {
 }
 
 @Freezed(unionKey: 'paymentType')
-
 /// Object that can be used to explain the different charges on the Apple Pay sheet.
-class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
+abstract class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Immediate')
-
   /// Use this type for payments that will occur immediately.
   const factory ApplePayCartSummaryItem.immediate({
     /// Short localized description of the item.
@@ -106,7 +97,6 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Deferred')
-
   ///  Use this type for a payment that occurs in the future, such as a pre-order. Only available on iOS 15 and up, otherwise falls back to ImmediateCartSummaryItem
   const factory ApplePayCartSummaryItem.deferred({
     /// Short localized description of the item.
@@ -121,7 +111,6 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Recurring')
-
   ///  Use this type for payments that occur more than once, such as a subscription. Only available on iOS 15 and up, otherwise falls back to ImmediateCartSummaryItem
   const factory ApplePayCartSummaryItem.recurring({
     /// Short localized description of the item.
@@ -149,14 +138,10 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
 
 enum ApplePayIntervalUnit { minute, hour, day, month, year }
 
-enum ApplePayMerchantCapability {
-  supports3DS,
-  supportsCredit,
-  supportsDebit,
-}
+enum ApplePayMerchantCapability { supports3DS, supportsCredit, supportsDebit }
 
 @freezed
-class ApplePayPresentParams with _$ApplePayPresentParams {
+abstract class ApplePayPresentParams with _$ApplePayPresentParams {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayPresentParams({
     /// Line Items of the payment request.
@@ -188,7 +173,7 @@ class ApplePayPresentParams with _$ApplePayPresentParams {
 }
 
 @freezed
-class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
+abstract class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayErrorAddressField({
     /// Address field that is affected by the error
@@ -205,9 +190,8 @@ class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
 }
 
 @freezed
-
 /// Contact name data for Apple pay
-class ApplePayContactName with _$ApplePayContactName {
+abstract class ApplePayContactName with _$ApplePayContactName {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayContactName({
     String? familyName,
@@ -223,9 +207,8 @@ class ApplePayContactName with _$ApplePayContactName {
 }
 
 @freezed
-
 /// Postal address data for Apple pay
-class ApplePayPostalAddress with _$ApplePayPostalAddress {
+abstract class ApplePayPostalAddress with _$ApplePayPostalAddress {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayPostalAddress({
     String? city,
@@ -242,10 +225,10 @@ class ApplePayPostalAddress with _$ApplePayPostalAddress {
       _$ApplePayPostalAddressFromJson(json);
 }
 
-typedef OnDidSetShippingContact = FutureOr<void> Function(
-    PlatformPayShippingContact contact);
-typedef OnDidSetShippingMethod = FutureOr<void> Function(
-    ApplePayShippingMethod method);
+typedef OnDidSetShippingContact =
+    FutureOr<void> Function(PlatformPayShippingContact contact);
+typedef OnDidSetShippingMethod =
+    FutureOr<void> Function(ApplePayShippingMethod method);
 typedef OnCouponCodeEntered = FutureOr<void> Function(String couponCode);
 
 typedef OnOrderTracking = FutureOr<void> Function();

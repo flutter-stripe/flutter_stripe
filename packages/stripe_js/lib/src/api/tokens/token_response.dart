@@ -5,7 +5,7 @@ part 'token_response.freezed.dart';
 part 'token_response.g.dart';
 
 @freezed
-class TokenResponse with _$TokenResponse {
+abstract class TokenResponse with _$TokenResponse {
   const factory TokenResponse({
     /// If not null, a Token was created successfully.
     Token? token,

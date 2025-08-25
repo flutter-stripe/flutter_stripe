@@ -18,9 +18,10 @@ extension ExtensionConfirmSepaDebitSetup on Stripe {
     ConfirmSepaDebitSetupData? data,
   }) {
     final jsData = (data?.toJson() ?? {}).jsify();
-    return _confirmSepaDebitSetup(clientSecret, jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _confirmSepaDebitSetup(
+      clientSecret,
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('confirmSepaDebitSetup')

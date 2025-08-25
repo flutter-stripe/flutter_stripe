@@ -31,9 +31,11 @@ extension ExtensionAlipayPayment on Stripe {
   }) {
     final jsData = (data?.toJson() ?? {}).jsify();
     final jsOptions = (options?.toJson() ?? {}).jsify();
-    return _confirmAlipayPayment(clientSecret, jsData, jsOptions)
-        .toDart
-        .then((response) => response.toDart);
+    return _confirmAlipayPayment(
+      clientSecret,
+      jsData,
+      jsOptions,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('confirmAlipayPayment')

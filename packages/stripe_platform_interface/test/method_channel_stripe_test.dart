@@ -28,9 +28,9 @@ void main() {
 
       test('It completetes successfully', () async {
         final completer = Completer();
-        await sut.initialise(publishableKey: 'publishableKey').then(
-              (_) => completer.complete(),
-            );
+        await sut
+            .initialise(publishableKey: 'publishableKey')
+            .then((_) => completer.complete());
         expect(completer.isCompleted, true);
       });
     });
@@ -47,14 +47,17 @@ void main() {
               channelName: methodChannelName,
               method: 'createPaymentMethod',
               result: {
-                "paymentMethod":
-                    PaymentMethodTestInstance.create('id1').jsonMap()
+                "paymentMethod": PaymentMethodTestInstance.create(
+                  'id1',
+                ).jsonMap(),
               },
             ).methodChannel,
           );
-          result = await sut.createPaymentMethod(const PaymentMethodParams.card(
-            paymentMethodData: PaymentMethodData(),
-          ));
+          result = await sut.createPaymentMethod(
+            const PaymentMethodParams.card(
+              paymentMethodData: PaymentMethodData(),
+            ),
+          );
         });
 
         test('It returns payment method', () {
@@ -68,20 +71,22 @@ void main() {
             platformIsIos: true,
             platformIsAndroid: false,
             methodChannel: MethodChannelMock(
-                    channelName: methodChannelName,
-                    method: 'createPaymentMethod',
-                    result: createErrorResponse('whoops'))
-                .methodChannel,
+              channelName: methodChannelName,
+              method: 'createPaymentMethod',
+              result: createErrorResponse('whoops'),
+            ).methodChannel,
           );
         });
 
         test('It returns payment method', () async {
           expect(
-              () async =>
-                  await sut.createPaymentMethod(const PaymentMethodParams.card(
-                    paymentMethodData: PaymentMethodData(),
-                  )),
-              throwsA(isInstanceOf<StripeException>()));
+            () async => await sut.createPaymentMethod(
+              const PaymentMethodParams.card(
+                paymentMethodData: PaymentMethodData(),
+              ),
+            ),
+            throwsA(isInstanceOf<StripeException>()),
+          );
         });
       });
     });
@@ -101,8 +106,8 @@ void main() {
                 'id': 'cvcResultToken',
                 'type': 'Card',
                 'livemode': true,
-                'created': '1630670419'
-              }
+                'created': '1630670419',
+              },
             },
           ).methodChannel,
         );
@@ -126,19 +131,21 @@ void main() {
               channelName: methodChannelName,
               method: 'confirmPayment',
               result: {
-                "paymentIntent":
-                    PaymentIntentTestInstance.create('id1').toJsonMap()
+                "paymentIntent": PaymentIntentTestInstance.create(
+                  'id1',
+                ).toJsonMap(),
               },
             ).methodChannel,
           );
           result = await sut.confirmPayment(
-              'secret',
-              const PaymentMethodParams.card(
-                paymentMethodData: PaymentMethodData(),
-              ),
-              const PaymentMethodOptions(
-                setupFutureUsage: PaymentIntentsFutureUsage.OffSession,
-              ));
+            'secret',
+            const PaymentMethodParams.card(
+              paymentMethodData: PaymentMethodData(),
+            ),
+            const PaymentMethodOptions(
+              setupFutureUsage: PaymentIntentsFutureUsage.OffSession,
+            ),
+          );
         });
 
         test('It returns payment intent', () {
@@ -185,8 +192,9 @@ void main() {
             channelName: methodChannelName,
             method: 'confirmSetupIntent',
             result: {
-              "setupIntent":
-                  SetupIntentTestInstance.create('id1').toJsonMap('id1')
+              "setupIntent": SetupIntentTestInstance.create(
+                'id1',
+              ).toJsonMap('id1'),
             },
           ).methodChannel,
         );
@@ -236,8 +244,9 @@ void main() {
               channelName: methodChannelName,
               method: 'handleNextAction',
               result: {
-                "paymentIntent":
-                    PaymentIntentTestInstance.create('id1').toJsonMap()
+                "paymentIntent": PaymentIntentTestInstance.create(
+                  'id1',
+                ).toJsonMap(),
               },
             ).methodChannel,
           );
@@ -282,8 +291,9 @@ void main() {
               channelName: methodChannelName,
               method: 'retrievePaymentIntent',
               result: {
-                "paymentIntent":
-                    PaymentIntentTestInstance.create('id1').toJsonMap()
+                "paymentIntent": PaymentIntentTestInstance.create(
+                  'id1',
+                ).toJsonMap(),
               },
             ).methodChannel,
           );
@@ -307,8 +317,10 @@ void main() {
           );
         });
         test('It returns paymentintent', () async {
-          expect(() async => await sut.retrievePaymentIntent('clientSecret'),
-              throwsA(const TypeMatcher<StripeException>()));
+          expect(
+            () async => await sut.retrievePaymentIntent('clientSecret'),
+            throwsA(const TypeMatcher<StripeException>()),
+          );
         });
       });
     });
@@ -329,7 +341,8 @@ void main() {
         await sut
             .initPaymentSheet(
               const SetupPaymentSheetParameters(
-                  paymentIntentClientSecret: 'paymentIntentClientSecret'),
+                paymentIntentClientSecret: 'paymentIntentClientSecret',
+              ),
             )
             .then((_) => completer.complete());
       });
@@ -401,8 +414,10 @@ void main() {
         });
 
         test('It throws StripePlatformEsception', () async {
-          expectLater(() async => await sut.presentPaymentSheet(),
-              throwsA(isInstanceOf<StripeException>()));
+          expectLater(
+            () async => await sut.presentPaymentSheet(),
+            throwsA(isInstanceOf<StripeException>()),
+          );
         });
       });
 
@@ -418,8 +433,9 @@ void main() {
               result: true,
             ).methodChannel,
           );
-          result = await sut
-              .googlePayIsSupported(const IsGooglePaySupportedParams());
+          result = await sut.googlePayIsSupported(
+            const IsGooglePaySupportedParams(),
+          );
         });
 
         test('It returns result', () {
@@ -439,8 +455,9 @@ void main() {
               result: true,
             ).methodChannel,
           );
-          result = await sut
-              .googlePayIsSupported(const IsGooglePaySupportedParams());
+          result = await sut.googlePayIsSupported(
+            const IsGooglePaySupportedParams(),
+          );
         });
 
         test('It returns false', () {
@@ -460,9 +477,9 @@ void main() {
                 result: {},
               ).methodChannel,
             );
-            await sut
-                .confirmPaymentSheetPayment()
-                .then((value) => completer.complete());
+            await sut.confirmPaymentSheetPayment().then(
+              (value) => completer.complete(),
+            );
           });
 
           test('It completes operation', () {
@@ -476,16 +493,18 @@ void main() {
               platformIsIos: false,
               platformIsAndroid: true,
               methodChannel: MethodChannelMock(
-                      channelName: methodChannelName,
-                      method: 'confirmPaymentSheetPayment',
-                      result: createErrorResponse('whoops'))
-                  .methodChannel,
+                channelName: methodChannelName,
+                method: 'confirmPaymentSheetPayment',
+                result: createErrorResponse('whoops'),
+              ).methodChannel,
             );
           });
 
           test('It returns failure', () async {
-            expectLater(() async => await sut.confirmPaymentSheetPayment(),
-                throwsA(isInstanceOf<StripeException>()));
+            expectLater(
+              () async => await sut.confirmPaymentSheetPayment(),
+              throwsA(isInstanceOf<StripeException>()),
+            );
           });
         });
       });
@@ -504,10 +523,10 @@ void main() {
             platformIsIos: false,
             platformIsAndroid: true,
             methodChannel: MethodChannelMock(
-                    channelName: methodChannelName,
-                    method: 'createToken',
-                    result: TokenDataTestInstance.create('tokenId').jsonMap())
-                .methodChannel,
+              channelName: methodChannelName,
+              method: 'createToken',
+              result: TokenDataTestInstance.create('tokenId').jsonMap(),
+            ).methodChannel,
           );
 
           result = await sut.createToken(params);
@@ -533,10 +552,9 @@ void main() {
 
         test('It returns correct data', () async {
           expect(
-              () async => await sut.createToken(params),
-              throwsA(
-                const TypeMatcher<StripeException>(),
-              ));
+            () async => await sut.createToken(params),
+            throwsA(const TypeMatcher<StripeException>()),
+          );
         });
       });
     });
@@ -552,10 +570,7 @@ void main() {
             method: 'canAddCardToWallet',
             result: {
               'canAddCard': false,
-              'details': {
-                'token': 'foo',
-                'status': 'CARD_ALREADY_EXISTS',
-              }
+              'details': {'token': 'foo', 'status': 'CARD_ALREADY_EXISTS'},
             },
           ).methodChannel,
         );
@@ -568,8 +583,9 @@ void main() {
           const AddToWalletResult(
             canAddToWallet: false,
             details: AddToWalletDetails(
-                status: CanAddToWalletErrorStatus.CARD_ALREADY_EXISTS,
-                token: 'foo'),
+              status: CanAddToWalletErrorStatus.CARD_ALREADY_EXISTS,
+              token: 'foo',
+            ),
           ),
         );
       });
@@ -591,8 +607,9 @@ void main() {
         await sut
             .initCustomerSheet(
               const CustomerSheetInitParams(
-                  customerId: 'customerId',
-                  customerEphemeralKeySecret: 'customerEphemeralKeySecret'),
+                customerId: 'customerId',
+                customerEphemeralKeySecret: 'customerEphemeralKeySecret',
+              ),
             )
             .then((_) => completer.complete());
       });

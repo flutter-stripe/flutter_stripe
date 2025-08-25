@@ -6,9 +6,8 @@ part of 'push_provisioning.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GooglePayCardTokenImpl _$$GooglePayCardTokenImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GooglePayCardTokenImpl(
+_GooglePayCardToken _$GooglePayCardTokenFromJson(Map<String, dynamic> json) =>
+    _GooglePayCardToken(
       id: json['id'] as String,
       fpanLastFour: json['fpanLastFour'] as String,
       dpanLastFour: json['dpanLastFour'] as String,
@@ -19,8 +18,7 @@ _$GooglePayCardTokenImpl _$$GooglePayCardTokenImplFromJson(
       cardLastFour: json['cardLastFour'] as String,
     );
 
-Map<String, dynamic> _$$GooglePayCardTokenImplToJson(
-        _$GooglePayCardTokenImpl instance) =>
+Map<String, dynamic> _$GooglePayCardTokenToJson(_GooglePayCardToken instance) =>
     <String, dynamic>{
       'id': instance.id,
       'fpanLastFour': instance.fpanLastFour,
@@ -43,55 +41,55 @@ const _$GooglePayCardTokenStatusEnumMap = {
   GooglePayCardTokenStatus.TOKEN_STATE_UNTOKENIZED: 'TOKEN_STATE_UNTOKENIZED',
 };
 
-_$IsCardInWalletResultImpl _$$IsCardInWalletResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$IsCardInWalletResultImpl(
-      isInWallet: json['isInWallet'] as bool,
-      token: json['token'] == null
-          ? null
-          : GooglePayCardToken.fromJson(json['token'] as Map<String, dynamic>),
-    );
+_IsCardInWalletResult _$IsCardInWalletResultFromJson(
+  Map<String, dynamic> json,
+) => _IsCardInWalletResult(
+  isInWallet: json['isInWallet'] as bool,
+  token: json['token'] == null
+      ? null
+      : GooglePayCardToken.fromJson(json['token'] as Map<String, dynamic>),
+);
 
-Map<String, dynamic> _$$IsCardInWalletResultImplToJson(
-        _$IsCardInWalletResultImpl instance) =>
-    <String, dynamic>{
-      'isInWallet': instance.isInWallet,
-      'token': instance.token?.toJson(),
-    };
+Map<String, dynamic> _$IsCardInWalletResultToJson(
+  _IsCardInWalletResult instance,
+) => <String, dynamic>{
+  'isInWallet': instance.isInWallet,
+  'token': instance.token?.toJson(),
+};
 
-_$CanAddCardToWalletResultImpl _$$CanAddCardToWalletResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CanAddCardToWalletResultImpl(
-      canAddCard: json['canAddCard'] as bool,
-      details: json['details'] == null
-          ? null
-          : CanAddCardToDetails.fromJson(
-              json['details'] as Map<String, dynamic>),
-    );
+_CanAddCardToWalletResult _$CanAddCardToWalletResultFromJson(
+  Map<String, dynamic> json,
+) => _CanAddCardToWalletResult(
+  canAddCard: json['canAddCard'] as bool,
+  details: json['details'] == null
+      ? null
+      : CanAddCardToDetails.fromJson(json['details'] as Map<String, dynamic>),
+);
 
-Map<String, dynamic> _$$CanAddCardToWalletResultImplToJson(
-        _$CanAddCardToWalletResultImpl instance) =>
-    <String, dynamic>{
-      'canAddCard': instance.canAddCard,
-      'details': instance.details?.toJson(),
-    };
+Map<String, dynamic> _$CanAddCardToWalletResultToJson(
+  _CanAddCardToWalletResult instance,
+) => <String, dynamic>{
+  'canAddCard': instance.canAddCard,
+  'details': instance.details?.toJson(),
+};
 
-_$CanAddCardToDetailsImpl _$$CanAddCardToDetailsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CanAddCardToDetailsImpl(
+_CanAddCardToDetails _$CanAddCardToDetailsFromJson(Map<String, dynamic> json) =>
+    _CanAddCardToDetails(
       token: json['token'] == null
           ? null
           : GooglePayCardToken.fromJson(json['token'] as Map<String, dynamic>),
       status: $enumDecodeNullable(
-          _$CanAddCardToWalletStatusEnumMap, json['status']),
+        _$CanAddCardToWalletStatusEnumMap,
+        json['status'],
+      ),
     );
 
-Map<String, dynamic> _$$CanAddCardToDetailsImplToJson(
-        _$CanAddCardToDetailsImpl instance) =>
-    <String, dynamic>{
-      'token': instance.token?.toJson(),
-      'status': _$CanAddCardToWalletStatusEnumMap[instance.status],
-    };
+Map<String, dynamic> _$CanAddCardToDetailsToJson(
+  _CanAddCardToDetails instance,
+) => <String, dynamic>{
+  'token': instance.token?.toJson(),
+  'status': _$CanAddCardToWalletStatusEnumMap[instance.status],
+};
 
 const _$CanAddCardToWalletStatusEnumMap = {
   CanAddCardToWalletStatus.MISSING_CONFIGURATION: 'MISSING_CONFIGURATION',
@@ -103,22 +101,22 @@ const _$CanAddCardToWalletStatusEnumMap = {
       'CARD_EXISTS_ON_PAIRED_DEVICE',
 };
 
-_$CanAddCardToWalletParamsImpl _$$CanAddCardToWalletParamsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CanAddCardToWalletParamsImpl(
-      primaryAccountIdentifier: json['primaryAccountIdentifier'] as String?,
-      cardLastFour: json['cardLastFour'] as String,
-      testEnv: json['testEnv'] as bool?,
-      hasPairedAppleWatch: json['hasPairedAppleWatch'] as bool?,
-      supportsTapToPay: json['supportsTapToPay'] as bool?,
-    );
+_CanAddCardToWalletParams _$CanAddCardToWalletParamsFromJson(
+  Map<String, dynamic> json,
+) => _CanAddCardToWalletParams(
+  primaryAccountIdentifier: json['primaryAccountIdentifier'] as String?,
+  cardLastFour: json['cardLastFour'] as String,
+  testEnv: json['testEnv'] as bool?,
+  hasPairedAppleWatch: json['hasPairedAppleWatch'] as bool?,
+  supportsTapToPay: json['supportsTapToPay'] as bool?,
+);
 
-Map<String, dynamic> _$$CanAddCardToWalletParamsImplToJson(
-        _$CanAddCardToWalletParamsImpl instance) =>
-    <String, dynamic>{
-      'primaryAccountIdentifier': instance.primaryAccountIdentifier,
-      'cardLastFour': instance.cardLastFour,
-      'testEnv': instance.testEnv,
-      'hasPairedAppleWatch': instance.hasPairedAppleWatch,
-      'supportsTapToPay': instance.supportsTapToPay,
-    };
+Map<String, dynamic> _$CanAddCardToWalletParamsToJson(
+  _CanAddCardToWalletParams instance,
+) => <String, dynamic>{
+  'primaryAccountIdentifier': instance.primaryAccountIdentifier,
+  'cardLastFour': instance.cardLastFour,
+  'testEnv': instance.testEnv,
+  'hasPairedAppleWatch': instance.hasPairedAppleWatch,
+  'supportsTapToPay': instance.supportsTapToPay,
+};

@@ -74,7 +74,7 @@ enum PaymentIntentSetupFutureUsage {
 ///
 /// https://stripe.com/docs/api/payment_intents
 @freezed
-class PaymentIntent with _$PaymentIntent {
+abstract class PaymentIntent with _$PaymentIntent {
   const factory PaymentIntent({
     /// Unique identifier for the object.
     required String id,
@@ -284,7 +284,7 @@ class PaymentIntent with _$PaymentIntent {
 }
 
 @freezed
-class PaymentIntentAmountDetails with _$PaymentIntentAmountDetails {
+abstract class PaymentIntentAmountDetails with _$PaymentIntentAmountDetails {
   const factory PaymentIntentAmountDetails({
     /// Details about items included in the amount
     @Default(PaymentIntentTip()) PaymentIntentTip? tip,
@@ -295,7 +295,7 @@ class PaymentIntentAmountDetails with _$PaymentIntentAmountDetails {
 }
 
 @freezed
-class PaymentIntentTip with _$PaymentIntentTip {
+abstract class PaymentIntentTip with _$PaymentIntentTip {
   const factory PaymentIntentTip({
     /// Portion of the amount that corresponds to a tip.
     int? amount,
@@ -306,7 +306,7 @@ class PaymentIntentTip with _$PaymentIntentTip {
 }
 
 @freezed
-class PaymentIntentAutomaticPaymentMethods
+abstract class PaymentIntentAutomaticPaymentMethods
     with _$PaymentIntentAutomaticPaymentMethods {
   const factory PaymentIntentAutomaticPaymentMethods({
     /// Automatically calculates compatible payment methods
@@ -314,6 +314,6 @@ class PaymentIntentAutomaticPaymentMethods
   }) = _PaymentIntentAutomaticPaymentMethods;
 
   factory PaymentIntentAutomaticPaymentMethods.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaymentIntentAutomaticPaymentMethodsFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$PaymentIntentAutomaticPaymentMethodsFromJson(json);
 }

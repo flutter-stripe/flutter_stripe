@@ -13,7 +13,7 @@ class ColorKey {
     return null;
   }
 
-  static Color? fromJson(value) {
+  static Color? fromJson(Object? value) {
     throw UnimplementedError();
   }
 }

@@ -5,7 +5,8 @@ part 'three_d_secure.g.dart';
 
 /// Parameters to configure the 3d secure screen.
 @freezed
-class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
+abstract class ThreeDSecureConfigurationParams
+    with _$ThreeDSecureConfigurationParams {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureConfigurationParams({
     /// Styling for the 3d secure navigation bar.
@@ -18,11 +19,9 @@ class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
     ThreeDSecureLabelThemeData? label,
 
     /// Styling for the 3d secure textfield.
-
     ThreeDSecureTextFieldThemeData? textField,
 
     /// Styling for the 3d secure confirmation button.
-
     ThreeDSecureButtonThemeData? submitButton,
 
     /// Styling for the 3d secure cancel button.
@@ -43,9 +42,8 @@ class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
 }
 
 @freezed
-
 /// Styling info related to the 3d secure navigation bar.
-class ThreeDSecureNavigationBarThemeData
+abstract class ThreeDSecureNavigationBarThemeData
     with _$ThreeDSecureNavigationBarThemeData {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureNavigationBarThemeData({
@@ -59,11 +57,9 @@ class ThreeDSecureNavigationBarThemeData
     String? textColor,
 
     /// Color in hex for the status bar.
-
     String? statusBarColor,
 
     /// Color in hex to display navigation bar background.
-
     String? backgroundColor,
 
     /// Font size of header text.
@@ -71,23 +67,19 @@ class ThreeDSecureNavigationBarThemeData
   }) = _ThreeDSecureNavigationBarThemeData;
 
   factory ThreeDSecureNavigationBarThemeData.fromJson(
-          Map<String, dynamic> json) =>
-      _$ThreeDSecureNavigationBarThemeDataFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$ThreeDSecureNavigationBarThemeDataFromJson(json);
 }
 
 @freezed
-
 /// Styling info related to the 3d secure label.
-
-class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
+abstract class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureLabelThemeData({
     /// Color in hex for header text.
-
     String? headingTextColor,
 
     /// Color in hex for label text.
-
     String? textColor,
 
     /// Font size for label text.
@@ -102,10 +94,9 @@ class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
 }
 
 @freezed
-
 /// Styling info related to the 3d secure text field.
-
-class ThreeDSecureTextFieldThemeData with _$ThreeDSecureTextFieldThemeData {
+abstract class ThreeDSecureTextFieldThemeData
+    with _$ThreeDSecureTextFieldThemeData {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureTextFieldThemeData({
     /// Color in hex for the border
@@ -121,7 +112,6 @@ class ThreeDSecureTextFieldThemeData with _$ThreeDSecureTextFieldThemeData {
     String? textColor,
 
     /// Font size for the textfield text.
-
     double? textFontSize,
   }) = _ThreeDSecureTextFieldThemeData;
 
@@ -130,10 +120,8 @@ class ThreeDSecureTextFieldThemeData with _$ThreeDSecureTextFieldThemeData {
 }
 
 @freezed
-
 /// Styling info related to the 3d secure button.
-
-class ThreeDSecureButtonThemeData with _$ThreeDSecureButtonThemeData {
+abstract class ThreeDSecureButtonThemeData with _$ThreeDSecureButtonThemeData {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureButtonThemeData({
     /// Color in hex for button background

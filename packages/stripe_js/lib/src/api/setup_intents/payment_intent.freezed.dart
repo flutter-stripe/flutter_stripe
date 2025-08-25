@@ -12,7 +12,8 @@ part of 'payment_intent.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
   return _PaymentIntent.fromJson(json);
@@ -175,8 +176,7 @@ mixin _$PaymentIntent {
   /// If receipt_email is specified for a payment in live mode, a receipt
   /// will be sent regardless of your email settings.
   @JsonKey(name: "receipt_email")
-  String? get receiptEmail =>
-      throw _privateConstructorUsedError; // ID of the review associated with this PaymentIntent, if any.
+  String? get receiptEmail => throw _privateConstructorUsedError; // ID of the review associated with this PaymentIntent, if any.
   String? get review => throw _privateConstructorUsedError;
 
   /// Indicates that you intend to make future payments with this
@@ -237,55 +237,57 @@ mixin _$PaymentIntent {
 /// @nodoc
 abstract class $PaymentIntentCopyWith<$Res> {
   factory $PaymentIntentCopyWith(
-          PaymentIntent value, $Res Function(PaymentIntent) then) =
-      _$PaymentIntentCopyWithImpl<$Res, PaymentIntent>;
+    PaymentIntent value,
+    $Res Function(PaymentIntent) then,
+  ) = _$PaymentIntentCopyWithImpl<$Res, PaymentIntent>;
   @useResult
-  $Res call(
-      {String id,
-      String object,
-      int amount,
-      @JsonKey(name: "amount_capturable") int? amountCapturable,
-      @JsonKey(name: "amount_received") int? amountReceived,
-      String? application,
-      @JsonKey(name: "application_fee_amount") int? applicationFeeAmount,
-      @JsonKey(name: "automatic_payment_methods")
-      PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
-      @JsonKey(name: "canceled_at") int? canceledAt,
-      @JsonKey(name: "cancellation_reason")
-      PaymentIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret") String clientSecret,
-      @JsonKey(name: "capture_method") PaymentIntentCaptureMethod captureMethod,
-      @JsonKey(name: "confirmation_method")
-      PaymentIntentConfirmationMethod confirmationMethod,
-      int? created,
-      String currency,
-      String? customer,
-      String? description,
-      String? invoice,
-      @JsonKey(name: "last_payment_error") Error? lastPaymentError,
-      @JsonKey(name: "latest_charge") String? latestCharge,
-      bool livemode,
-      Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action") dynamic nextAction,
-      @JsonKey(name: "on_behalf_of") String? onBehalfOf,
-      @JsonKey(name: "payment_method") String? paymentMethod,
-      @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions,
-      @JsonKey(name: "payment_method_types") List<String> paymentMethodTypes,
-      dynamic processing,
-      @JsonKey(name: "receipt_email") String? receiptEmail,
-      String? review,
-      @JsonKey(name: "setup_future_usage")
-      PaymentIntentSetupFutureUsage? setupFutureUsage,
-      ShippingDetails? shipping,
-      @JsonKey(name: "statement_descriptor") String? statementDescriptor,
-      @JsonKey(name: "statement_descriptor_suffix")
-      String? statementDescriptorSuffix,
-      PaymentIntentsStatus status,
-      @JsonKey(name: "transfer_data") dynamic transferData,
-      @JsonKey(name: "transfer_group") dynamic transferGroup});
+  $Res call({
+    String id,
+    String object,
+    int amount,
+    @JsonKey(name: "amount_capturable") int? amountCapturable,
+    @JsonKey(name: "amount_received") int? amountReceived,
+    String? application,
+    @JsonKey(name: "application_fee_amount") int? applicationFeeAmount,
+    @JsonKey(name: "automatic_payment_methods")
+    PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
+    @JsonKey(name: "canceled_at") int? canceledAt,
+    @JsonKey(name: "cancellation_reason")
+    PaymentIntentCancellationReason? cancellationReason,
+    @JsonKey(name: "client_secret") String clientSecret,
+    @JsonKey(name: "capture_method") PaymentIntentCaptureMethod captureMethod,
+    @JsonKey(name: "confirmation_method")
+    PaymentIntentConfirmationMethod confirmationMethod,
+    int? created,
+    String currency,
+    String? customer,
+    String? description,
+    String? invoice,
+    @JsonKey(name: "last_payment_error") Error? lastPaymentError,
+    @JsonKey(name: "latest_charge") String? latestCharge,
+    bool livemode,
+    Map<String, dynamic> metadata,
+    @JsonKey(name: "next_action") dynamic nextAction,
+    @JsonKey(name: "on_behalf_of") String? onBehalfOf,
+    @JsonKey(name: "payment_method") String? paymentMethod,
+    @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions,
+    @JsonKey(name: "payment_method_types") List<String> paymentMethodTypes,
+    dynamic processing,
+    @JsonKey(name: "receipt_email") String? receiptEmail,
+    String? review,
+    @JsonKey(name: "setup_future_usage")
+    PaymentIntentSetupFutureUsage? setupFutureUsage,
+    ShippingDetails? shipping,
+    @JsonKey(name: "statement_descriptor") String? statementDescriptor,
+    @JsonKey(name: "statement_descriptor_suffix")
+    String? statementDescriptorSuffix,
+    PaymentIntentsStatus status,
+    @JsonKey(name: "transfer_data") dynamic transferData,
+    @JsonKey(name: "transfer_group") dynamic transferGroup,
+  });
 
   $PaymentIntentAutomaticPaymentMethodsCopyWith<$Res>?
-      get automaticPaymentMethods;
+  get automaticPaymentMethods;
   $ShippingDetailsCopyWith<$Res>? get shipping;
 }
 
@@ -340,170 +342,175 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     Object? transferData = null,
     Object? transferGroup = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      object: null == object
-          ? _value.object
-          : object // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-      amountCapturable: freezed == amountCapturable
-          ? _value.amountCapturable
-          : amountCapturable // ignore: cast_nullable_to_non_nullable
-              as int?,
-      amountReceived: freezed == amountReceived
-          ? _value.amountReceived
-          : amountReceived // ignore: cast_nullable_to_non_nullable
-              as int?,
-      application: freezed == application
-          ? _value.application
-          : application // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicationFeeAmount: freezed == applicationFeeAmount
-          ? _value.applicationFeeAmount
-          : applicationFeeAmount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      automaticPaymentMethods: freezed == automaticPaymentMethods
-          ? _value.automaticPaymentMethods
-          : automaticPaymentMethods // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentAutomaticPaymentMethods?,
-      canceledAt: freezed == canceledAt
-          ? _value.canceledAt
-          : canceledAt // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cancellationReason: freezed == cancellationReason
-          ? _value.cancellationReason
-          : cancellationReason // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentCancellationReason?,
-      clientSecret: null == clientSecret
-          ? _value.clientSecret
-          : clientSecret // ignore: cast_nullable_to_non_nullable
-              as String,
-      captureMethod: null == captureMethod
-          ? _value.captureMethod
-          : captureMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentCaptureMethod,
-      confirmationMethod: null == confirmationMethod
-          ? _value.confirmationMethod
-          : confirmationMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentConfirmationMethod,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as int?,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
-              as String,
-      customer: freezed == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      invoice: freezed == invoice
-          ? _value.invoice
-          : invoice // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastPaymentError: null == lastPaymentError
-          ? _value.lastPaymentError
-          : lastPaymentError // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      latestCharge: freezed == latestCharge
-          ? _value.latestCharge
-          : latestCharge // ignore: cast_nullable_to_non_nullable
-              as String?,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      metadata: null == metadata
-          ? _value.metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      nextAction: null == nextAction
-          ? _value.nextAction
-          : nextAction // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      onBehalfOf: freezed == onBehalfOf
-          ? _value.onBehalfOf
-          : onBehalfOf // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentMethod: freezed == paymentMethod
-          ? _value.paymentMethod
-          : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentMethodOptions: null == paymentMethodOptions
-          ? _value.paymentMethodOptions
-          : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      paymentMethodTypes: null == paymentMethodTypes
-          ? _value.paymentMethodTypes
-          : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      processing: null == processing
-          ? _value.processing
-          : processing // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      receiptEmail: freezed == receiptEmail
-          ? _value.receiptEmail
-          : receiptEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      review: freezed == review
-          ? _value.review
-          : review // ignore: cast_nullable_to_non_nullable
-              as String?,
-      setupFutureUsage: freezed == setupFutureUsage
-          ? _value.setupFutureUsage
-          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentSetupFutureUsage?,
-      shipping: freezed == shipping
-          ? _value.shipping
-          : shipping // ignore: cast_nullable_to_non_nullable
-              as ShippingDetails?,
-      statementDescriptor: freezed == statementDescriptor
-          ? _value.statementDescriptor
-          : statementDescriptor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statementDescriptorSuffix: freezed == statementDescriptorSuffix
-          ? _value.statementDescriptorSuffix
-          : statementDescriptorSuffix // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentsStatus,
-      transferData: null == transferData
-          ? _value.transferData
-          : transferData // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      transferGroup: null == transferGroup
-          ? _value.transferGroup
-          : transferGroup // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            object: null == object
+                ? _value.object
+                : object // ignore: cast_nullable_to_non_nullable
+                      as String,
+            amount: null == amount
+                ? _value.amount
+                : amount // ignore: cast_nullable_to_non_nullable
+                      as int,
+            amountCapturable: freezed == amountCapturable
+                ? _value.amountCapturable
+                : amountCapturable // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            amountReceived: freezed == amountReceived
+                ? _value.amountReceived
+                : amountReceived // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            application: freezed == application
+                ? _value.application
+                : application // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            applicationFeeAmount: freezed == applicationFeeAmount
+                ? _value.applicationFeeAmount
+                : applicationFeeAmount // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            automaticPaymentMethods: freezed == automaticPaymentMethods
+                ? _value.automaticPaymentMethods
+                : automaticPaymentMethods // ignore: cast_nullable_to_non_nullable
+                      as PaymentIntentAutomaticPaymentMethods?,
+            canceledAt: freezed == canceledAt
+                ? _value.canceledAt
+                : canceledAt // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            cancellationReason: freezed == cancellationReason
+                ? _value.cancellationReason
+                : cancellationReason // ignore: cast_nullable_to_non_nullable
+                      as PaymentIntentCancellationReason?,
+            clientSecret: null == clientSecret
+                ? _value.clientSecret
+                : clientSecret // ignore: cast_nullable_to_non_nullable
+                      as String,
+            captureMethod: null == captureMethod
+                ? _value.captureMethod
+                : captureMethod // ignore: cast_nullable_to_non_nullable
+                      as PaymentIntentCaptureMethod,
+            confirmationMethod: null == confirmationMethod
+                ? _value.confirmationMethod
+                : confirmationMethod // ignore: cast_nullable_to_non_nullable
+                      as PaymentIntentConfirmationMethod,
+            created: freezed == created
+                ? _value.created
+                : created // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            currency: null == currency
+                ? _value.currency
+                : currency // ignore: cast_nullable_to_non_nullable
+                      as String,
+            customer: freezed == customer
+                ? _value.customer
+                : customer // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            description: freezed == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            invoice: freezed == invoice
+                ? _value.invoice
+                : invoice // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            lastPaymentError: null == lastPaymentError
+                ? _value.lastPaymentError
+                : lastPaymentError // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            latestCharge: freezed == latestCharge
+                ? _value.latestCharge
+                : latestCharge // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            livemode: null == livemode
+                ? _value.livemode
+                : livemode // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            metadata: null == metadata
+                ? _value.metadata
+                : metadata // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>,
+            nextAction: null == nextAction
+                ? _value.nextAction
+                : nextAction // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            onBehalfOf: freezed == onBehalfOf
+                ? _value.onBehalfOf
+                : onBehalfOf // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            paymentMethod: freezed == paymentMethod
+                ? _value.paymentMethod
+                : paymentMethod // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            paymentMethodOptions: null == paymentMethodOptions
+                ? _value.paymentMethodOptions
+                : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            paymentMethodTypes: null == paymentMethodTypes
+                ? _value.paymentMethodTypes
+                : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            processing: null == processing
+                ? _value.processing
+                : processing // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            receiptEmail: freezed == receiptEmail
+                ? _value.receiptEmail
+                : receiptEmail // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            review: freezed == review
+                ? _value.review
+                : review // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            setupFutureUsage: freezed == setupFutureUsage
+                ? _value.setupFutureUsage
+                : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+                      as PaymentIntentSetupFutureUsage?,
+            shipping: freezed == shipping
+                ? _value.shipping
+                : shipping // ignore: cast_nullable_to_non_nullable
+                      as ShippingDetails?,
+            statementDescriptor: freezed == statementDescriptor
+                ? _value.statementDescriptor
+                : statementDescriptor // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            statementDescriptorSuffix: freezed == statementDescriptorSuffix
+                ? _value.statementDescriptorSuffix
+                : statementDescriptorSuffix // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as PaymentIntentsStatus,
+            transferData: null == transferData
+                ? _value.transferData
+                : transferData // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            transferGroup: null == transferGroup
+                ? _value.transferGroup
+                : transferGroup // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+          )
+          as $Val,
+    );
   }
 
   @override
   @pragma('vm:prefer-inline')
   $PaymentIntentAutomaticPaymentMethodsCopyWith<$Res>?
-      get automaticPaymentMethods {
+  get automaticPaymentMethods {
     if (_value.automaticPaymentMethods == null) {
       return null;
     }
 
     return $PaymentIntentAutomaticPaymentMethodsCopyWith<$Res>(
-        _value.automaticPaymentMethods!, (value) {
-      return _then(_value.copyWith(automaticPaymentMethods: value) as $Val);
-    });
+      _value.automaticPaymentMethods!,
+      (value) {
+        return _then(_value.copyWith(automaticPaymentMethods: value) as $Val);
+      },
+    );
   }
 
   @override
@@ -523,57 +530,59 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
 abstract class _$$_PaymentIntentCopyWith<$Res>
     implements $PaymentIntentCopyWith<$Res> {
   factory _$$_PaymentIntentCopyWith(
-          _$_PaymentIntent value, $Res Function(_$_PaymentIntent) then) =
-      __$$_PaymentIntentCopyWithImpl<$Res>;
+    _$_PaymentIntent value,
+    $Res Function(_$_PaymentIntent) then,
+  ) = __$$_PaymentIntentCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String object,
-      int amount,
-      @JsonKey(name: "amount_capturable") int? amountCapturable,
-      @JsonKey(name: "amount_received") int? amountReceived,
-      String? application,
-      @JsonKey(name: "application_fee_amount") int? applicationFeeAmount,
-      @JsonKey(name: "automatic_payment_methods")
-      PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
-      @JsonKey(name: "canceled_at") int? canceledAt,
-      @JsonKey(name: "cancellation_reason")
-      PaymentIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret") String clientSecret,
-      @JsonKey(name: "capture_method") PaymentIntentCaptureMethod captureMethod,
-      @JsonKey(name: "confirmation_method")
-      PaymentIntentConfirmationMethod confirmationMethod,
-      int? created,
-      String currency,
-      String? customer,
-      String? description,
-      String? invoice,
-      @JsonKey(name: "last_payment_error") Error? lastPaymentError,
-      @JsonKey(name: "latest_charge") String? latestCharge,
-      bool livemode,
-      Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action") dynamic nextAction,
-      @JsonKey(name: "on_behalf_of") String? onBehalfOf,
-      @JsonKey(name: "payment_method") String? paymentMethod,
-      @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions,
-      @JsonKey(name: "payment_method_types") List<String> paymentMethodTypes,
-      dynamic processing,
-      @JsonKey(name: "receipt_email") String? receiptEmail,
-      String? review,
-      @JsonKey(name: "setup_future_usage")
-      PaymentIntentSetupFutureUsage? setupFutureUsage,
-      ShippingDetails? shipping,
-      @JsonKey(name: "statement_descriptor") String? statementDescriptor,
-      @JsonKey(name: "statement_descriptor_suffix")
-      String? statementDescriptorSuffix,
-      PaymentIntentsStatus status,
-      @JsonKey(name: "transfer_data") dynamic transferData,
-      @JsonKey(name: "transfer_group") dynamic transferGroup});
+  $Res call({
+    String id,
+    String object,
+    int amount,
+    @JsonKey(name: "amount_capturable") int? amountCapturable,
+    @JsonKey(name: "amount_received") int? amountReceived,
+    String? application,
+    @JsonKey(name: "application_fee_amount") int? applicationFeeAmount,
+    @JsonKey(name: "automatic_payment_methods")
+    PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
+    @JsonKey(name: "canceled_at") int? canceledAt,
+    @JsonKey(name: "cancellation_reason")
+    PaymentIntentCancellationReason? cancellationReason,
+    @JsonKey(name: "client_secret") String clientSecret,
+    @JsonKey(name: "capture_method") PaymentIntentCaptureMethod captureMethod,
+    @JsonKey(name: "confirmation_method")
+    PaymentIntentConfirmationMethod confirmationMethod,
+    int? created,
+    String currency,
+    String? customer,
+    String? description,
+    String? invoice,
+    @JsonKey(name: "last_payment_error") Error? lastPaymentError,
+    @JsonKey(name: "latest_charge") String? latestCharge,
+    bool livemode,
+    Map<String, dynamic> metadata,
+    @JsonKey(name: "next_action") dynamic nextAction,
+    @JsonKey(name: "on_behalf_of") String? onBehalfOf,
+    @JsonKey(name: "payment_method") String? paymentMethod,
+    @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions,
+    @JsonKey(name: "payment_method_types") List<String> paymentMethodTypes,
+    dynamic processing,
+    @JsonKey(name: "receipt_email") String? receiptEmail,
+    String? review,
+    @JsonKey(name: "setup_future_usage")
+    PaymentIntentSetupFutureUsage? setupFutureUsage,
+    ShippingDetails? shipping,
+    @JsonKey(name: "statement_descriptor") String? statementDescriptor,
+    @JsonKey(name: "statement_descriptor_suffix")
+    String? statementDescriptorSuffix,
+    PaymentIntentsStatus status,
+    @JsonKey(name: "transfer_data") dynamic transferData,
+    @JsonKey(name: "transfer_group") dynamic transferGroup,
+  });
 
   @override
   $PaymentIntentAutomaticPaymentMethodsCopyWith<$Res>?
-      get automaticPaymentMethods;
+  get automaticPaymentMethods;
   @override
   $ShippingDetailsCopyWith<$Res>? get shipping;
 }
@@ -583,8 +592,9 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
     extends _$PaymentIntentCopyWithImpl<$Res, _$_PaymentIntent>
     implements _$$_PaymentIntentCopyWith<$Res> {
   __$$_PaymentIntentCopyWithImpl(
-      _$_PaymentIntent _value, $Res Function(_$_PaymentIntent) _then)
-      : super(_value, _then);
+    _$_PaymentIntent _value,
+    $Res Function(_$_PaymentIntent) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -627,206 +637,208 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
     Object? transferData = null,
     Object? transferGroup = null,
   }) {
-    return _then(_$_PaymentIntent(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      object: null == object
-          ? _value.object
-          : object // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-      amountCapturable: freezed == amountCapturable
-          ? _value.amountCapturable
-          : amountCapturable // ignore: cast_nullable_to_non_nullable
-              as int?,
-      amountReceived: freezed == amountReceived
-          ? _value.amountReceived
-          : amountReceived // ignore: cast_nullable_to_non_nullable
-              as int?,
-      application: freezed == application
-          ? _value.application
-          : application // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicationFeeAmount: freezed == applicationFeeAmount
-          ? _value.applicationFeeAmount
-          : applicationFeeAmount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      automaticPaymentMethods: freezed == automaticPaymentMethods
-          ? _value.automaticPaymentMethods
-          : automaticPaymentMethods // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentAutomaticPaymentMethods?,
-      canceledAt: freezed == canceledAt
-          ? _value.canceledAt
-          : canceledAt // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cancellationReason: freezed == cancellationReason
-          ? _value.cancellationReason
-          : cancellationReason // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentCancellationReason?,
-      clientSecret: null == clientSecret
-          ? _value.clientSecret
-          : clientSecret // ignore: cast_nullable_to_non_nullable
-              as String,
-      captureMethod: null == captureMethod
-          ? _value.captureMethod
-          : captureMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentCaptureMethod,
-      confirmationMethod: null == confirmationMethod
-          ? _value.confirmationMethod
-          : confirmationMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentConfirmationMethod,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as int?,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
-              as String,
-      customer: freezed == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      invoice: freezed == invoice
-          ? _value.invoice
-          : invoice // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastPaymentError: null == lastPaymentError
-          ? _value.lastPaymentError
-          : lastPaymentError // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      latestCharge: freezed == latestCharge
-          ? _value.latestCharge
-          : latestCharge // ignore: cast_nullable_to_non_nullable
-              as String?,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      metadata: null == metadata
-          ? _value._metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      nextAction: null == nextAction
-          ? _value.nextAction
-          : nextAction // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      onBehalfOf: freezed == onBehalfOf
-          ? _value.onBehalfOf
-          : onBehalfOf // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentMethod: freezed == paymentMethod
-          ? _value.paymentMethod
-          : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentMethodOptions: null == paymentMethodOptions
-          ? _value.paymentMethodOptions
-          : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      paymentMethodTypes: null == paymentMethodTypes
-          ? _value._paymentMethodTypes
-          : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      processing: null == processing
-          ? _value.processing
-          : processing // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      receiptEmail: freezed == receiptEmail
-          ? _value.receiptEmail
-          : receiptEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      review: freezed == review
-          ? _value.review
-          : review // ignore: cast_nullable_to_non_nullable
-              as String?,
-      setupFutureUsage: freezed == setupFutureUsage
-          ? _value.setupFutureUsage
-          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentSetupFutureUsage?,
-      shipping: freezed == shipping
-          ? _value.shipping
-          : shipping // ignore: cast_nullable_to_non_nullable
-              as ShippingDetails?,
-      statementDescriptor: freezed == statementDescriptor
-          ? _value.statementDescriptor
-          : statementDescriptor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statementDescriptorSuffix: freezed == statementDescriptorSuffix
-          ? _value.statementDescriptorSuffix
-          : statementDescriptorSuffix // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentsStatus,
-      transferData: null == transferData
-          ? _value.transferData
-          : transferData // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      transferGroup: null == transferGroup
-          ? _value.transferGroup
-          : transferGroup // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
+    return _then(
+      _$_PaymentIntent(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        object: null == object
+            ? _value.object
+            : object // ignore: cast_nullable_to_non_nullable
+                  as String,
+        amount: null == amount
+            ? _value.amount
+            : amount // ignore: cast_nullable_to_non_nullable
+                  as int,
+        amountCapturable: freezed == amountCapturable
+            ? _value.amountCapturable
+            : amountCapturable // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        amountReceived: freezed == amountReceived
+            ? _value.amountReceived
+            : amountReceived // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        application: freezed == application
+            ? _value.application
+            : application // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        applicationFeeAmount: freezed == applicationFeeAmount
+            ? _value.applicationFeeAmount
+            : applicationFeeAmount // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        automaticPaymentMethods: freezed == automaticPaymentMethods
+            ? _value.automaticPaymentMethods
+            : automaticPaymentMethods // ignore: cast_nullable_to_non_nullable
+                  as PaymentIntentAutomaticPaymentMethods?,
+        canceledAt: freezed == canceledAt
+            ? _value.canceledAt
+            : canceledAt // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        cancellationReason: freezed == cancellationReason
+            ? _value.cancellationReason
+            : cancellationReason // ignore: cast_nullable_to_non_nullable
+                  as PaymentIntentCancellationReason?,
+        clientSecret: null == clientSecret
+            ? _value.clientSecret
+            : clientSecret // ignore: cast_nullable_to_non_nullable
+                  as String,
+        captureMethod: null == captureMethod
+            ? _value.captureMethod
+            : captureMethod // ignore: cast_nullable_to_non_nullable
+                  as PaymentIntentCaptureMethod,
+        confirmationMethod: null == confirmationMethod
+            ? _value.confirmationMethod
+            : confirmationMethod // ignore: cast_nullable_to_non_nullable
+                  as PaymentIntentConfirmationMethod,
+        created: freezed == created
+            ? _value.created
+            : created // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        currency: null == currency
+            ? _value.currency
+            : currency // ignore: cast_nullable_to_non_nullable
+                  as String,
+        customer: freezed == customer
+            ? _value.customer
+            : customer // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        description: freezed == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        invoice: freezed == invoice
+            ? _value.invoice
+            : invoice // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        lastPaymentError: null == lastPaymentError
+            ? _value.lastPaymentError
+            : lastPaymentError // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        latestCharge: freezed == latestCharge
+            ? _value.latestCharge
+            : latestCharge // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        livemode: null == livemode
+            ? _value.livemode
+            : livemode // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        metadata: null == metadata
+            ? _value._metadata
+            : metadata // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>,
+        nextAction: null == nextAction
+            ? _value.nextAction
+            : nextAction // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        onBehalfOf: freezed == onBehalfOf
+            ? _value.onBehalfOf
+            : onBehalfOf // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        paymentMethod: freezed == paymentMethod
+            ? _value.paymentMethod
+            : paymentMethod // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        paymentMethodOptions: null == paymentMethodOptions
+            ? _value.paymentMethodOptions
+            : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        paymentMethodTypes: null == paymentMethodTypes
+            ? _value._paymentMethodTypes
+            : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        processing: null == processing
+            ? _value.processing
+            : processing // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        receiptEmail: freezed == receiptEmail
+            ? _value.receiptEmail
+            : receiptEmail // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        review: freezed == review
+            ? _value.review
+            : review // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        setupFutureUsage: freezed == setupFutureUsage
+            ? _value.setupFutureUsage
+            : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+                  as PaymentIntentSetupFutureUsage?,
+        shipping: freezed == shipping
+            ? _value.shipping
+            : shipping // ignore: cast_nullable_to_non_nullable
+                  as ShippingDetails?,
+        statementDescriptor: freezed == statementDescriptor
+            ? _value.statementDescriptor
+            : statementDescriptor // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        statementDescriptorSuffix: freezed == statementDescriptorSuffix
+            ? _value.statementDescriptorSuffix
+            : statementDescriptorSuffix // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as PaymentIntentsStatus,
+        transferData: null == transferData
+            ? _value.transferData
+            : transferData // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        transferGroup: null == transferGroup
+            ? _value.transferGroup
+            : transferGroup // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_PaymentIntent implements _PaymentIntent {
-  const _$_PaymentIntent(
-      {required this.id,
-      required this.object,
-      required this.amount,
-      @JsonKey(name: "amount_capturable") this.amountCapturable,
-      @JsonKey(name: "amount_received") this.amountReceived,
-      this.application,
-      @JsonKey(name: "application_fee_amount") this.applicationFeeAmount,
-      @JsonKey(name: "automatic_payment_methods") this.automaticPaymentMethods,
-      @JsonKey(name: "canceled_at") this.canceledAt,
-      @JsonKey(name: "cancellation_reason") this.cancellationReason,
-      @JsonKey(name: "client_secret") required this.clientSecret,
-      @JsonKey(name: "capture_method")
-      this.captureMethod = PaymentIntentCaptureMethod.automatic,
-      @JsonKey(name: "confirmation_method")
-      this.confirmationMethod = PaymentIntentConfirmationMethod.automatic,
-      this.created,
-      required this.currency,
-      this.customer,
-      this.description,
-      this.invoice,
-      @JsonKey(name: "last_payment_error") this.lastPaymentError,
-      @JsonKey(name: "latest_charge") this.latestCharge,
-      required this.livemode,
-      final Map<String, dynamic> metadata = const {},
-      @JsonKey(name: "next_action") this.nextAction,
-      @JsonKey(name: "on_behalf_of") this.onBehalfOf,
-      @JsonKey(name: "payment_method") this.paymentMethod,
-      @JsonKey(name: "payment_method_options") this.paymentMethodOptions,
-      @JsonKey(name: "payment_method_types")
-      final List<String> paymentMethodTypes = const [],
-      this.processing,
-      @JsonKey(name: "receipt_email") this.receiptEmail,
-      this.review,
-      @JsonKey(name: "setup_future_usage") this.setupFutureUsage,
-      this.shipping,
-      @JsonKey(name: "statement_descriptor") this.statementDescriptor,
-      @JsonKey(name: "statement_descriptor_suffix")
-      this.statementDescriptorSuffix,
-      required this.status,
-      @JsonKey(name: "transfer_data") this.transferData,
-      @JsonKey(name: "transfer_group") this.transferGroup})
-      : _metadata = metadata,
-        _paymentMethodTypes = paymentMethodTypes;
+  const _$_PaymentIntent({
+    required this.id,
+    required this.object,
+    required this.amount,
+    @JsonKey(name: "amount_capturable") this.amountCapturable,
+    @JsonKey(name: "amount_received") this.amountReceived,
+    this.application,
+    @JsonKey(name: "application_fee_amount") this.applicationFeeAmount,
+    @JsonKey(name: "automatic_payment_methods") this.automaticPaymentMethods,
+    @JsonKey(name: "canceled_at") this.canceledAt,
+    @JsonKey(name: "cancellation_reason") this.cancellationReason,
+    @JsonKey(name: "client_secret") required this.clientSecret,
+    @JsonKey(name: "capture_method")
+    this.captureMethod = PaymentIntentCaptureMethod.automatic,
+    @JsonKey(name: "confirmation_method")
+    this.confirmationMethod = PaymentIntentConfirmationMethod.automatic,
+    this.created,
+    required this.currency,
+    this.customer,
+    this.description,
+    this.invoice,
+    @JsonKey(name: "last_payment_error") this.lastPaymentError,
+    @JsonKey(name: "latest_charge") this.latestCharge,
+    required this.livemode,
+    final Map<String, dynamic> metadata = const {},
+    @JsonKey(name: "next_action") this.nextAction,
+    @JsonKey(name: "on_behalf_of") this.onBehalfOf,
+    @JsonKey(name: "payment_method") this.paymentMethod,
+    @JsonKey(name: "payment_method_options") this.paymentMethodOptions,
+    @JsonKey(name: "payment_method_types")
+    final List<String> paymentMethodTypes = const [],
+    this.processing,
+    @JsonKey(name: "receipt_email") this.receiptEmail,
+    this.review,
+    @JsonKey(name: "setup_future_usage") this.setupFutureUsage,
+    this.shipping,
+    @JsonKey(name: "statement_descriptor") this.statementDescriptor,
+    @JsonKey(name: "statement_descriptor_suffix")
+    this.statementDescriptorSuffix,
+    required this.status,
+    @JsonKey(name: "transfer_data") this.transferData,
+    @JsonKey(name: "transfer_group") this.transferGroup,
+  }) : _metadata = metadata,
+       _paymentMethodTypes = paymentMethodTypes;
 
   factory _$_PaymentIntent.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentIntentFromJson(json);
@@ -1028,7 +1040,7 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
   @JsonKey(name: "receipt_email")
   final String? receiptEmail;
-// ID of the review associated with this PaymentIntent, if any.
+  // ID of the review associated with this PaymentIntent, if any.
   @override
   final String? review;
 
@@ -1108,7 +1120,10 @@ class _$_PaymentIntent implements _PaymentIntent {
                 other.application == application) &&
             (identical(other.applicationFeeAmount, applicationFeeAmount) ||
                 other.applicationFeeAmount == applicationFeeAmount) &&
-            (identical(other.automaticPaymentMethods, automaticPaymentMethods) ||
+            (identical(
+                  other.automaticPaymentMethods,
+                  automaticPaymentMethods,
+                ) ||
                 other.automaticPaymentMethods == automaticPaymentMethods) &&
             (identical(other.canceledAt, canceledAt) ||
                 other.canceledAt == canceledAt) &&
@@ -1128,25 +1143,35 @@ class _$_PaymentIntent implements _PaymentIntent {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.invoice, invoice) || other.invoice == invoice) &&
-            const DeepCollectionEquality()
-                .equals(other.lastPaymentError, lastPaymentError) &&
+            const DeepCollectionEquality().equals(
+              other.lastPaymentError,
+              lastPaymentError,
+            ) &&
             (identical(other.latestCharge, latestCharge) ||
                 other.latestCharge == latestCharge) &&
             (identical(other.livemode, livemode) ||
                 other.livemode == livemode) &&
             const DeepCollectionEquality().equals(other._metadata, _metadata) &&
-            const DeepCollectionEquality()
-                .equals(other.nextAction, nextAction) &&
+            const DeepCollectionEquality().equals(
+              other.nextAction,
+              nextAction,
+            ) &&
             (identical(other.onBehalfOf, onBehalfOf) ||
                 other.onBehalfOf == onBehalfOf) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
-            const DeepCollectionEquality()
-                .equals(other.paymentMethodOptions, paymentMethodOptions) &&
-            const DeepCollectionEquality()
-                .equals(other._paymentMethodTypes, _paymentMethodTypes) &&
-            const DeepCollectionEquality()
-                .equals(other.processing, processing) &&
+            const DeepCollectionEquality().equals(
+              other.paymentMethodOptions,
+              paymentMethodOptions,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._paymentMethodTypes,
+              _paymentMethodTypes,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.processing,
+              processing,
+            ) &&
             (identical(other.receiptEmail, receiptEmail) ||
                 other.receiptEmail == receiptEmail) &&
             (identical(other.review, review) || other.review == review) &&
@@ -1156,58 +1181,64 @@ class _$_PaymentIntent implements _PaymentIntent {
                 other.shipping == shipping) &&
             (identical(other.statementDescriptor, statementDescriptor) ||
                 other.statementDescriptor == statementDescriptor) &&
-            (identical(other.statementDescriptorSuffix,
-                    statementDescriptorSuffix) ||
+            (identical(
+                  other.statementDescriptorSuffix,
+                  statementDescriptorSuffix,
+                ) ||
                 other.statementDescriptorSuffix == statementDescriptorSuffix) &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality()
-                .equals(other.transferData, transferData) &&
-            const DeepCollectionEquality()
-                .equals(other.transferGroup, transferGroup));
+            const DeepCollectionEquality().equals(
+              other.transferData,
+              transferData,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.transferGroup,
+              transferGroup,
+            ));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        object,
-        amount,
-        amountCapturable,
-        amountReceived,
-        application,
-        applicationFeeAmount,
-        automaticPaymentMethods,
-        canceledAt,
-        cancellationReason,
-        clientSecret,
-        captureMethod,
-        confirmationMethod,
-        created,
-        currency,
-        customer,
-        description,
-        invoice,
-        const DeepCollectionEquality().hash(lastPaymentError),
-        latestCharge,
-        livemode,
-        const DeepCollectionEquality().hash(_metadata),
-        const DeepCollectionEquality().hash(nextAction),
-        onBehalfOf,
-        paymentMethod,
-        const DeepCollectionEquality().hash(paymentMethodOptions),
-        const DeepCollectionEquality().hash(_paymentMethodTypes),
-        const DeepCollectionEquality().hash(processing),
-        receiptEmail,
-        review,
-        setupFutureUsage,
-        shipping,
-        statementDescriptor,
-        statementDescriptorSuffix,
-        status,
-        const DeepCollectionEquality().hash(transferData),
-        const DeepCollectionEquality().hash(transferGroup)
-      ]);
+    runtimeType,
+    id,
+    object,
+    amount,
+    amountCapturable,
+    amountReceived,
+    application,
+    applicationFeeAmount,
+    automaticPaymentMethods,
+    canceledAt,
+    cancellationReason,
+    clientSecret,
+    captureMethod,
+    confirmationMethod,
+    created,
+    currency,
+    customer,
+    description,
+    invoice,
+    const DeepCollectionEquality().hash(lastPaymentError),
+    latestCharge,
+    livemode,
+    const DeepCollectionEquality().hash(_metadata),
+    const DeepCollectionEquality().hash(nextAction),
+    onBehalfOf,
+    paymentMethod,
+    const DeepCollectionEquality().hash(paymentMethodOptions),
+    const DeepCollectionEquality().hash(_paymentMethodTypes),
+    const DeepCollectionEquality().hash(processing),
+    receiptEmail,
+    review,
+    setupFutureUsage,
+    shipping,
+    statementDescriptor,
+    statementDescriptorSuffix,
+    status,
+    const DeepCollectionEquality().hash(transferData),
+    const DeepCollectionEquality().hash(transferGroup),
+  ]);
 
   @JsonKey(ignore: true)
   @override
@@ -1217,76 +1248,70 @@ class _$_PaymentIntent implements _PaymentIntent {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentIntentToJson(
-      this,
-    );
+    return _$$_PaymentIntentToJson(this);
   }
 }
 
 abstract class _PaymentIntent implements PaymentIntent {
-  const factory _PaymentIntent(
-      {required final String id,
-      required final String object,
-      required final int amount,
-      @JsonKey(name: "amount_capturable") final int? amountCapturable,
-      @JsonKey(name: "amount_received") final int? amountReceived,
-      final String? application,
-      @JsonKey(name: "application_fee_amount") final int? applicationFeeAmount,
-      @JsonKey(name: "automatic_payment_methods")
-      final PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
-      @JsonKey(name: "canceled_at") final int? canceledAt,
-      @JsonKey(name: "cancellation_reason")
-      final PaymentIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret") required final String clientSecret,
-      @JsonKey(name: "capture_method")
-      final PaymentIntentCaptureMethod captureMethod,
-      @JsonKey(name: "confirmation_method")
-      final PaymentIntentConfirmationMethod confirmationMethod,
-      final int? created,
-      required final String currency,
-      final String? customer,
-      final String? description,
-      final String? invoice,
-      @JsonKey(name: "last_payment_error") final dynamic lastPaymentError,
-      @JsonKey(name: "latest_charge") final String? latestCharge,
-      required final bool livemode,
-      final Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action") final dynamic nextAction,
-      @JsonKey(name: "on_behalf_of") final String? onBehalfOf,
-      @JsonKey(name: "payment_method") final String? paymentMethod,
-      @JsonKey(name: "payment_method_options")
-      final dynamic paymentMethodOptions,
-      @JsonKey(name: "payment_method_types")
-      final List<String> paymentMethodTypes,
-      final dynamic processing,
-      @JsonKey(name: "receipt_email") final String? receiptEmail,
-      final String? review,
-      @JsonKey(name: "setup_future_usage")
-      final PaymentIntentSetupFutureUsage? setupFutureUsage,
-      final ShippingDetails? shipping,
-      @JsonKey(name: "statement_descriptor") final String? statementDescriptor,
-      @JsonKey(name: "statement_descriptor_suffix")
-      final String? statementDescriptorSuffix,
-      required final PaymentIntentsStatus status,
-      @JsonKey(name: "transfer_data") final dynamic transferData,
-      @JsonKey(name: "transfer_group")
-      final dynamic transferGroup}) = _$_PaymentIntent;
+  const factory _PaymentIntent({
+    required final String id,
+    required final String object,
+    required final int amount,
+    @JsonKey(name: "amount_capturable") final int? amountCapturable,
+    @JsonKey(name: "amount_received") final int? amountReceived,
+    final String? application,
+    @JsonKey(name: "application_fee_amount") final int? applicationFeeAmount,
+    @JsonKey(name: "automatic_payment_methods")
+    final PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
+    @JsonKey(name: "canceled_at") final int? canceledAt,
+    @JsonKey(name: "cancellation_reason")
+    final PaymentIntentCancellationReason? cancellationReason,
+    @JsonKey(name: "client_secret") required final String clientSecret,
+    @JsonKey(name: "capture_method")
+    final PaymentIntentCaptureMethod captureMethod,
+    @JsonKey(name: "confirmation_method")
+    final PaymentIntentConfirmationMethod confirmationMethod,
+    final int? created,
+    required final String currency,
+    final String? customer,
+    final String? description,
+    final String? invoice,
+    @JsonKey(name: "last_payment_error") final dynamic lastPaymentError,
+    @JsonKey(name: "latest_charge") final String? latestCharge,
+    required final bool livemode,
+    final Map<String, dynamic> metadata,
+    @JsonKey(name: "next_action") final dynamic nextAction,
+    @JsonKey(name: "on_behalf_of") final String? onBehalfOf,
+    @JsonKey(name: "payment_method") final String? paymentMethod,
+    @JsonKey(name: "payment_method_options") final dynamic paymentMethodOptions,
+    @JsonKey(name: "payment_method_types")
+    final List<String> paymentMethodTypes,
+    final dynamic processing,
+    @JsonKey(name: "receipt_email") final String? receiptEmail,
+    final String? review,
+    @JsonKey(name: "setup_future_usage")
+    final PaymentIntentSetupFutureUsage? setupFutureUsage,
+    final ShippingDetails? shipping,
+    @JsonKey(name: "statement_descriptor") final String? statementDescriptor,
+    @JsonKey(name: "statement_descriptor_suffix")
+    final String? statementDescriptorSuffix,
+    required final PaymentIntentsStatus status,
+    @JsonKey(name: "transfer_data") final dynamic transferData,
+    @JsonKey(name: "transfer_group") final dynamic transferGroup,
+  }) = _$_PaymentIntent;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
       _$_PaymentIntent.fromJson;
 
   @override
-
   /// Unique identifier for the object.
   String get id;
   @override
-
   /// String representing the object’s type.
   /// Objects of the same type share the same value.
   /// Value is "payment_intent".
   String get object;
   @override
-
   /// Amount intended to be collected by this PaymentIntent.
   /// A positive integer representing how much to charge in the
   /// smallest currency unit (e.g., 100 cents to charge $1.00 or 100 to
@@ -1296,22 +1321,18 @@ abstract class _PaymentIntent implements PaymentIntent {
   /// (e.g., a value of 99999999 for a USD charge of $999,999.99).
   int get amount;
   @override
-
   /// The amount that can be captured with from this PaymentIntent (in cents).
   @JsonKey(name: "amount_capturable")
   int? get amountCapturable;
   @override
-
   /// The amount that was collected from this PaymentIntent (in cents).
   @JsonKey(name: "amount_received")
   int? get amountReceived;
   @override
-
   /// CONNECT ONLY
   /// ID of the Connect application that created the PaymentIntent.
   String? get application;
   @override
-
   /// CONNECT ONLY
   /// The amount of the application fee (if any) that will be requested to
   /// be applied to the payment and transferred to the application owner’s
@@ -1322,19 +1343,16 @@ abstract class _PaymentIntent implements PaymentIntent {
   @JsonKey(name: "application_fee_amount")
   int? get applicationFeeAmount;
   @override
-
   /// Settings to configure compatible payment methods from the
   /// Stripe Dashboard
   @JsonKey(name: "automatic_payment_methods")
   PaymentIntentAutomaticPaymentMethods? get automaticPaymentMethods;
   @override
-
   /// Populated when status is canceled, this is the time at which the
   /// PaymentIntent was canceled. Measured in seconds since the Unix epoch.
   @JsonKey(name: "canceled_at")
   int? get canceledAt;
   @override
-
   /// Reason for cancellation of this PaymentIntent,
   /// either user-provided
   /// (duplicate, fraudulent, requested_by_customer, or abandoned) or
@@ -1343,7 +1361,6 @@ abstract class _PaymentIntent implements PaymentIntent {
   @JsonKey(name: "cancellation_reason")
   PaymentIntentCancellationReason? get cancellationReason;
   @override
-
   /// The client secret of this PaymentIntent. Used for client-side retrieval
   /// using a publishable key.
   /// The client secret can be used to complete a payment from your frontend.
@@ -1356,7 +1373,6 @@ abstract class _PaymentIntent implements PaymentIntent {
   @JsonKey(name: "client_secret")
   String get clientSecret;
   @override
-
   /// Controls when the funds will be captured from the customer’s account.
   @JsonKey(name: "capture_method")
   PaymentIntentCaptureMethod get captureMethod;
@@ -1364,17 +1380,14 @@ abstract class _PaymentIntent implements PaymentIntent {
   @JsonKey(name: "confirmation_method")
   PaymentIntentConfirmationMethod get confirmationMethod;
   @override
-
   /// Time at which the object was created. Measured in seconds since the
   /// Unix epoch.
   int? get created;
   @override
-
   /// Three-letter ISO currency code, in lowercase. Must be a supported
   /// currency.
   String get currency;
   @override
-
   /// ID of the Customer this PaymentIntent belongs to, if one exists.
   /// Payment methods attached to other Customers cannot be used with this
   /// PaymentIntent.
@@ -1385,45 +1398,37 @@ abstract class _PaymentIntent implements PaymentIntent {
   /// required actions from the user are complete.
   String? get customer;
   @override
-
   /// An arbitrary string attached to the object.
   /// Often useful for displaying to users.
   String? get description;
   @override
-
   /// ID of the invoice that created this PaymentIntent, if it exists.
   String? get invoice;
   @override
-
   /// The payment error encountered in the previous PaymentIntent confirmation.
   /// It will be cleared if the PaymentIntent is later updated for any reason.
   @JsonKey(name: "last_payment_error")
   dynamic get lastPaymentError;
   @override
-
   /// The latest charge created by this payment intent.
   @JsonKey(name: "latest_charge")
   String? get latestCharge;
   @override
-
   /// Has the value true if the object exists in live mode or the
   /// value false if the object exists in test mode.
   bool get livemode;
   @override
-
   /// Set of key-value pairs that you can attach to an object.
   /// This can be useful for storing additional information about the
   /// object in a structured format.
   Map<String, dynamic> get metadata;
   @override
-
   /// If present, this property tells you what actions you need to
   /// take in order for your customer to fulfill a payment using the
   /// provided source.
   @JsonKey(name: "next_action")
   dynamic get nextAction;
   @override
-
   /// CONNECT ONLY
   /// The account (if any) for which the funds of the PaymentIntent are
   /// intended. See the PaymentIntents use case for connected accounts
@@ -1431,27 +1436,22 @@ abstract class _PaymentIntent implements PaymentIntent {
   @JsonKey(name: "on_behalf_of")
   String? get onBehalfOf;
   @override
-
   /// ID of the payment method used in this PaymentIntent.
   @JsonKey(name: "payment_method")
   String? get paymentMethod;
   @override
-
   /// Payment-method-specific configuration for this PaymentIntent.
   @JsonKey(name: "payment_method_options")
   dynamic get paymentMethodOptions;
   @override
-
   /// The list of payment method types (e.g. card) that this PaymentIntent
   /// is allowed to use.
   @JsonKey(name: "payment_method_types")
   List<String> get paymentMethodTypes;
   @override
-
   /// If present, this property tells you about the processing state of the payment.
   dynamic get processing;
   @override
-
   /// Email address that the receipt for the resulting payment will be sent to.
   /// If receipt_email is specified for a payment in live mode, a receipt
   /// will be sent regardless of your email settings.
@@ -1460,7 +1460,6 @@ abstract class _PaymentIntent implements PaymentIntent {
   @override // ID of the review associated with this PaymentIntent, if any.
   String? get review;
   @override
-
   /// Indicates that you intend to make future payments with this
   /// PaymentIntent’s payment method.
   /// Providing this parameter will attach the payment method to the
@@ -1474,18 +1473,15 @@ abstract class _PaymentIntent implements PaymentIntent {
   @JsonKey(name: "setup_future_usage")
   PaymentIntentSetupFutureUsage? get setupFutureUsage;
   @override
-
   /// Shipping information for this PaymentIntent.
   ShippingDetails? get shipping;
   @override
-
   /// For non-card charges, you can use this value as the complete
   /// description that appears on your customers’ statements.
   /// Must contain at least one letter, maximum 22 characters.
   @JsonKey(name: "statement_descriptor")
   String? get statementDescriptor;
   @override
-
   /// Provides information about a card payment that customers see on
   /// their statements.
   /// Concatenated with the prefix (shortened descriptor) or statement
@@ -1494,13 +1490,11 @@ abstract class _PaymentIntent implements PaymentIntent {
   @JsonKey(name: "statement_descriptor_suffix")
   String? get statementDescriptorSuffix;
   @override
-
   /// Status of this PaymentIntent, one of requires_payment_method,
   /// requires_confirmation, requires_action, processing, requires_capture,
   /// canceled, or succeeded.
   PaymentIntentsStatus get status;
   @override
-
   /// CONNECT ONLY
   /// The data with which to automatically create a Transfer when the payment
   /// is finalized. See the PaymentIntents use case for connected
@@ -1508,7 +1502,6 @@ abstract class _PaymentIntent implements PaymentIntent {
   @JsonKey(name: "transfer_data")
   dynamic get transferData;
   @override
-
   /// CONNECT ONLY
   /// A string that identifies the resulting payment as part of a group.
   /// See the PaymentIntents use case for connected accounts for details.
@@ -1521,7 +1514,8 @@ abstract class _PaymentIntent implements PaymentIntent {
 }
 
 PaymentIntentAmountDetails _$PaymentIntentAmountDetailsFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _PaymentIntentAmountDetails.fromJson(json);
 }
 
@@ -1533,15 +1527,19 @@ mixin _$PaymentIntentAmountDetails {
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentIntentAmountDetailsCopyWith<PaymentIntentAmountDetails>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PaymentIntentAmountDetailsCopyWith<$Res> {
-  factory $PaymentIntentAmountDetailsCopyWith(PaymentIntentAmountDetails value,
-          $Res Function(PaymentIntentAmountDetails) then) =
-      _$PaymentIntentAmountDetailsCopyWithImpl<$Res,
-          PaymentIntentAmountDetails>;
+  factory $PaymentIntentAmountDetailsCopyWith(
+    PaymentIntentAmountDetails value,
+    $Res Function(PaymentIntentAmountDetails) then,
+  ) =
+      _$PaymentIntentAmountDetailsCopyWithImpl<
+        $Res,
+        PaymentIntentAmountDetails
+      >;
   @useResult
   $Res call({PaymentIntentTip? tip});
 
@@ -1549,8 +1547,10 @@ abstract class $PaymentIntentAmountDetailsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentIntentAmountDetailsCopyWithImpl<$Res,
-        $Val extends PaymentIntentAmountDetails>
+class _$PaymentIntentAmountDetailsCopyWithImpl<
+  $Res,
+  $Val extends PaymentIntentAmountDetails
+>
     implements $PaymentIntentAmountDetailsCopyWith<$Res> {
   _$PaymentIntentAmountDetailsCopyWithImpl(this._value, this._then);
 
@@ -1561,15 +1561,16 @@ class _$PaymentIntentAmountDetailsCopyWithImpl<$Res,
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? tip = freezed,
-  }) {
-    return _then(_value.copyWith(
-      tip: freezed == tip
-          ? _value.tip
-          : tip // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentTip?,
-    ) as $Val);
+  $Res call({Object? tip = freezed}) {
+    return _then(
+      _value.copyWith(
+            tip: freezed == tip
+                ? _value.tip
+                : tip // ignore: cast_nullable_to_non_nullable
+                      as PaymentIntentTip?,
+          )
+          as $Val,
+    );
   }
 
   @override
@@ -1589,9 +1590,9 @@ class _$PaymentIntentAmountDetailsCopyWithImpl<$Res,
 abstract class _$$_PaymentIntentAmountDetailsCopyWith<$Res>
     implements $PaymentIntentAmountDetailsCopyWith<$Res> {
   factory _$$_PaymentIntentAmountDetailsCopyWith(
-          _$_PaymentIntentAmountDetails value,
-          $Res Function(_$_PaymentIntentAmountDetails) then) =
-      __$$_PaymentIntentAmountDetailsCopyWithImpl<$Res>;
+    _$_PaymentIntentAmountDetails value,
+    $Res Function(_$_PaymentIntentAmountDetails) then,
+  ) = __$$_PaymentIntentAmountDetailsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({PaymentIntentTip? tip});
@@ -1602,25 +1603,28 @@ abstract class _$$_PaymentIntentAmountDetailsCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentIntentAmountDetailsCopyWithImpl<$Res>
-    extends _$PaymentIntentAmountDetailsCopyWithImpl<$Res,
-        _$_PaymentIntentAmountDetails>
+    extends
+        _$PaymentIntentAmountDetailsCopyWithImpl<
+          $Res,
+          _$_PaymentIntentAmountDetails
+        >
     implements _$$_PaymentIntentAmountDetailsCopyWith<$Res> {
   __$$_PaymentIntentAmountDetailsCopyWithImpl(
-      _$_PaymentIntentAmountDetails _value,
-      $Res Function(_$_PaymentIntentAmountDetails) _then)
-      : super(_value, _then);
+    _$_PaymentIntentAmountDetails _value,
+    $Res Function(_$_PaymentIntentAmountDetails) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? tip = freezed,
-  }) {
-    return _then(_$_PaymentIntentAmountDetails(
-      tip: freezed == tip
-          ? _value.tip
-          : tip // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentTip?,
-    ));
+  $Res call({Object? tip = freezed}) {
+    return _then(
+      _$_PaymentIntentAmountDetails(
+        tip: freezed == tip
+            ? _value.tip
+            : tip // ignore: cast_nullable_to_non_nullable
+                  as PaymentIntentTip?,
+      ),
+    );
   }
 }
 
@@ -1657,33 +1661,33 @@ class _$_PaymentIntentAmountDetails implements _PaymentIntentAmountDetails {
   @override
   @pragma('vm:prefer-inline')
   _$$_PaymentIntentAmountDetailsCopyWith<_$_PaymentIntentAmountDetails>
-      get copyWith => __$$_PaymentIntentAmountDetailsCopyWithImpl<
-          _$_PaymentIntentAmountDetails>(this, _$identity);
+  get copyWith =>
+      __$$_PaymentIntentAmountDetailsCopyWithImpl<
+        _$_PaymentIntentAmountDetails
+      >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentIntentAmountDetailsToJson(
-      this,
-    );
+    return _$$_PaymentIntentAmountDetailsToJson(this);
   }
 }
 
 abstract class _PaymentIntentAmountDetails
     implements PaymentIntentAmountDetails {
-  const factory _PaymentIntentAmountDetails(
-      {required final PaymentIntentTip? tip}) = _$_PaymentIntentAmountDetails;
+  const factory _PaymentIntentAmountDetails({
+    required final PaymentIntentTip? tip,
+  }) = _$_PaymentIntentAmountDetails;
 
   factory _PaymentIntentAmountDetails.fromJson(Map<String, dynamic> json) =
       _$_PaymentIntentAmountDetails.fromJson;
 
   @override
-
   /// Details about items included in the amount
   PaymentIntentTip? get tip;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentIntentAmountDetailsCopyWith<_$_PaymentIntentAmountDetails>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 PaymentIntentTip _$PaymentIntentTipFromJson(Map<String, dynamic> json) {
@@ -1704,8 +1708,9 @@ mixin _$PaymentIntentTip {
 /// @nodoc
 abstract class $PaymentIntentTipCopyWith<$Res> {
   factory $PaymentIntentTipCopyWith(
-          PaymentIntentTip value, $Res Function(PaymentIntentTip) then) =
-      _$PaymentIntentTipCopyWithImpl<$Res, PaymentIntentTip>;
+    PaymentIntentTip value,
+    $Res Function(PaymentIntentTip) then,
+  ) = _$PaymentIntentTipCopyWithImpl<$Res, PaymentIntentTip>;
   @useResult
   $Res call({int? amount});
 }
@@ -1722,15 +1727,16 @@ class _$PaymentIntentTipCopyWithImpl<$Res, $Val extends PaymentIntentTip>
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? amount = freezed,
-  }) {
-    return _then(_value.copyWith(
-      amount: freezed == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+  $Res call({Object? amount = freezed}) {
+    return _then(
+      _value.copyWith(
+            amount: freezed == amount
+                ? _value.amount
+                : amount // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -1738,8 +1744,9 @@ class _$PaymentIntentTipCopyWithImpl<$Res, $Val extends PaymentIntentTip>
 abstract class _$$_PaymentIntentTipCopyWith<$Res>
     implements $PaymentIntentTipCopyWith<$Res> {
   factory _$$_PaymentIntentTipCopyWith(
-          _$_PaymentIntentTip value, $Res Function(_$_PaymentIntentTip) then) =
-      __$$_PaymentIntentTipCopyWithImpl<$Res>;
+    _$_PaymentIntentTip value,
+    $Res Function(_$_PaymentIntentTip) then,
+  ) = __$$_PaymentIntentTipCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? amount});
@@ -1750,20 +1757,21 @@ class __$$_PaymentIntentTipCopyWithImpl<$Res>
     extends _$PaymentIntentTipCopyWithImpl<$Res, _$_PaymentIntentTip>
     implements _$$_PaymentIntentTipCopyWith<$Res> {
   __$$_PaymentIntentTipCopyWithImpl(
-      _$_PaymentIntentTip _value, $Res Function(_$_PaymentIntentTip) _then)
-      : super(_value, _then);
+    _$_PaymentIntentTip _value,
+    $Res Function(_$_PaymentIntentTip) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? amount = freezed,
-  }) {
-    return _then(_$_PaymentIntentTip(
-      amount: freezed == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+  $Res call({Object? amount = freezed}) {
+    return _then(
+      _$_PaymentIntentTip(
+        amount: freezed == amount
+            ? _value.amount
+            : amount // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
@@ -1804,9 +1812,7 @@ class _$_PaymentIntentTip implements _PaymentIntentTip {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentIntentTipToJson(
-      this,
-    );
+    return _$$_PaymentIntentTipToJson(this);
   }
 }
 
@@ -1818,7 +1824,6 @@ abstract class _PaymentIntentTip implements PaymentIntentTip {
       _$_PaymentIntentTip.fromJson;
 
   @override
-
   /// Portion of the amount that corresponds to a tip.
   int? get amount;
   @override
@@ -1828,7 +1833,7 @@ abstract class _PaymentIntentTip implements PaymentIntentTip {
 }
 
 PaymentIntentAutomaticPaymentMethods
-    _$PaymentIntentAutomaticPaymentMethodsFromJson(Map<String, dynamic> json) {
+_$PaymentIntentAutomaticPaymentMethodsFromJson(Map<String, dynamic> json) {
   return _PaymentIntentAutomaticPaymentMethods.fromJson(json);
 }
 
@@ -1840,24 +1845,30 @@ mixin _$PaymentIntentAutomaticPaymentMethods {
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentIntentAutomaticPaymentMethodsCopyWith<
-          PaymentIntentAutomaticPaymentMethods>
-      get copyWith => throw _privateConstructorUsedError;
+    PaymentIntentAutomaticPaymentMethods
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PaymentIntentAutomaticPaymentMethodsCopyWith<$Res> {
   factory $PaymentIntentAutomaticPaymentMethodsCopyWith(
-          PaymentIntentAutomaticPaymentMethods value,
-          $Res Function(PaymentIntentAutomaticPaymentMethods) then) =
-      _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res,
-          PaymentIntentAutomaticPaymentMethods>;
+    PaymentIntentAutomaticPaymentMethods value,
+    $Res Function(PaymentIntentAutomaticPaymentMethods) then,
+  ) =
+      _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<
+        $Res,
+        PaymentIntentAutomaticPaymentMethods
+      >;
   @useResult
   $Res call({bool? enabled});
 }
 
 /// @nodoc
-class _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res,
-        $Val extends PaymentIntentAutomaticPaymentMethods>
+class _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<
+  $Res,
+  $Val extends PaymentIntentAutomaticPaymentMethods
+>
     implements $PaymentIntentAutomaticPaymentMethodsCopyWith<$Res> {
   _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl(this._value, this._then);
 
@@ -1868,15 +1879,16 @@ class _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res,
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? enabled = freezed,
-  }) {
-    return _then(_value.copyWith(
-      enabled: freezed == enabled
-          ? _value.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+  $Res call({Object? enabled = freezed}) {
+    return _then(
+      _value.copyWith(
+            enabled: freezed == enabled
+                ? _value.enabled
+                : enabled // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -1884,9 +1896,9 @@ class _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res,
 abstract class _$$_PaymentIntentAutomaticPaymentMethodsCopyWith<$Res>
     implements $PaymentIntentAutomaticPaymentMethodsCopyWith<$Res> {
   factory _$$_PaymentIntentAutomaticPaymentMethodsCopyWith(
-          _$_PaymentIntentAutomaticPaymentMethods value,
-          $Res Function(_$_PaymentIntentAutomaticPaymentMethods) then) =
-      __$$_PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res>;
+    _$_PaymentIntentAutomaticPaymentMethods value,
+    $Res Function(_$_PaymentIntentAutomaticPaymentMethods) then,
+  ) = __$$_PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool? enabled});
@@ -1894,25 +1906,28 @@ abstract class _$$_PaymentIntentAutomaticPaymentMethodsCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res>
-    extends _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res,
-        _$_PaymentIntentAutomaticPaymentMethods>
+    extends
+        _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<
+          $Res,
+          _$_PaymentIntentAutomaticPaymentMethods
+        >
     implements _$$_PaymentIntentAutomaticPaymentMethodsCopyWith<$Res> {
   __$$_PaymentIntentAutomaticPaymentMethodsCopyWithImpl(
-      _$_PaymentIntentAutomaticPaymentMethods _value,
-      $Res Function(_$_PaymentIntentAutomaticPaymentMethods) _then)
-      : super(_value, _then);
+    _$_PaymentIntentAutomaticPaymentMethods _value,
+    $Res Function(_$_PaymentIntentAutomaticPaymentMethods) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? enabled = freezed,
-  }) {
-    return _then(_$_PaymentIntentAutomaticPaymentMethods(
-      enabled: freezed == enabled
-          ? _value.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+  $Res call({Object? enabled = freezed}) {
+    return _then(
+      _$_PaymentIntentAutomaticPaymentMethods(
+        enabled: freezed == enabled
+            ? _value.enabled
+            : enabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
@@ -1923,8 +1938,8 @@ class _$_PaymentIntentAutomaticPaymentMethods
   const _$_PaymentIntentAutomaticPaymentMethods({required this.enabled});
 
   factory _$_PaymentIntentAutomaticPaymentMethods.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_PaymentIntentAutomaticPaymentMethodsFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$$_PaymentIntentAutomaticPaymentMethodsFromJson(json);
 
   /// Automatically calculates compatible payment methods
   @override
@@ -1951,34 +1966,36 @@ class _$_PaymentIntentAutomaticPaymentMethods
   @override
   @pragma('vm:prefer-inline')
   _$$_PaymentIntentAutomaticPaymentMethodsCopyWith<
-          _$_PaymentIntentAutomaticPaymentMethods>
-      get copyWith => __$$_PaymentIntentAutomaticPaymentMethodsCopyWithImpl<
-          _$_PaymentIntentAutomaticPaymentMethods>(this, _$identity);
+    _$_PaymentIntentAutomaticPaymentMethods
+  >
+  get copyWith =>
+      __$$_PaymentIntentAutomaticPaymentMethodsCopyWithImpl<
+        _$_PaymentIntentAutomaticPaymentMethods
+      >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentIntentAutomaticPaymentMethodsToJson(
-      this,
-    );
+    return _$$_PaymentIntentAutomaticPaymentMethodsToJson(this);
   }
 }
 
 abstract class _PaymentIntentAutomaticPaymentMethods
     implements PaymentIntentAutomaticPaymentMethods {
-  const factory _PaymentIntentAutomaticPaymentMethods(
-      {required final bool? enabled}) = _$_PaymentIntentAutomaticPaymentMethods;
+  const factory _PaymentIntentAutomaticPaymentMethods({
+    required final bool? enabled,
+  }) = _$_PaymentIntentAutomaticPaymentMethods;
 
   factory _PaymentIntentAutomaticPaymentMethods.fromJson(
-          Map<String, dynamic> json) =
-      _$_PaymentIntentAutomaticPaymentMethods.fromJson;
+    Map<String, dynamic> json,
+  ) = _$_PaymentIntentAutomaticPaymentMethods.fromJson;
 
   @override
-
   /// Automatically calculates compatible payment methods
   bool? get enabled;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentIntentAutomaticPaymentMethodsCopyWith<
-          _$_PaymentIntentAutomaticPaymentMethods>
-      get copyWith => throw _privateConstructorUsedError;
+    _$_PaymentIntentAutomaticPaymentMethods
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }

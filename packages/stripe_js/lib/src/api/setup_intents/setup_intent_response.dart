@@ -1,11 +1,11 @@
-import 'package:stripe_js/stripe_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stripe_js/stripe_api.dart';
 
 part 'setup_intent_response.freezed.dart';
 part 'setup_intent_response.g.dart';
 
 @freezed
-class SetupIntentResponse with _$SetupIntentResponse {
+abstract class SetupIntentResponse with _$SetupIntentResponse {
   const factory SetupIntentResponse({
     /// If not null, a SetupIntent was retrieved successfully
     SetupIntent? setupIntent,

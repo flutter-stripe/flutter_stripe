@@ -5,9 +5,8 @@ part 'express_checkout_element_options.freezed.dart';
 part 'express_checkout_element_options.g.dart';
 
 @freezed
-
 /// Options for the express checkout element
-class ExpressCheckoutOptions with _$ExpressCheckoutOptions {
+abstract class ExpressCheckoutOptions with _$ExpressCheckoutOptions {
   factory ExpressCheckoutOptions({
     /// height of the widget
     double? height,
@@ -30,9 +29,8 @@ class ExpressCheckoutOptions with _$ExpressCheckoutOptions {
 }
 
 @freezed
-
 /// Confirm parameters from the express checkout element
-class ExpressCheckoutConfirmEvent with _$ExpressCheckoutConfirmEvent {
+abstract class ExpressCheckoutConfirmEvent with _$ExpressCheckoutConfirmEvent {
   factory ExpressCheckoutConfirmEvent({
     /// The method that was used to pay.
     required String expressPaymentType,
@@ -44,9 +42,8 @@ class ExpressCheckoutConfirmEvent with _$ExpressCheckoutConfirmEvent {
 }
 
 @freezed
-
 /// Layout parameters of the express checkout element
-class ExpressCheckoutLayout with _$ExpressCheckoutLayout {
+abstract class ExpressCheckoutLayout with _$ExpressCheckoutLayout {
   const factory ExpressCheckoutLayout({
     int? maxColumns,
     int? maxRows,
@@ -58,9 +55,8 @@ class ExpressCheckoutLayout with _$ExpressCheckoutLayout {
 }
 
 @freezed
-
 /// The theme of the express checkout button
-class ExpressCheckoutButtonTheme with _$ExpressCheckoutButtonTheme {
+abstract class ExpressCheckoutButtonTheme with _$ExpressCheckoutButtonTheme {
   const factory ExpressCheckoutButtonTheme({
     ExpressApplePayButtonTheme? applePay,
     ExpressGooglePayButtonTheme? googlePay,
@@ -72,9 +68,8 @@ class ExpressCheckoutButtonTheme with _$ExpressCheckoutButtonTheme {
 }
 
 @freezed
-
 /// Specify the preferred button type to display.
-class ExpressCheckoutButtonType with _$ExpressCheckoutButtonType {
+abstract class ExpressCheckoutButtonType with _$ExpressCheckoutButtonType {
   const factory ExpressCheckoutButtonType({
     ExpressApplePayButtonType? applePay,
     ExpressGooglePayButtonType? googlePay,
@@ -86,9 +81,9 @@ class ExpressCheckoutButtonType with _$ExpressCheckoutButtonType {
 }
 
 @freezed
-
 /// The layout of the express checkout button
-class ExpressCheckoutPaymentMethods with _$ExpressCheckoutPaymentMethods {
+abstract class ExpressCheckoutPaymentMethods
+    with _$ExpressCheckoutPaymentMethods {
   const factory ExpressCheckoutPaymentMethods({
     ExpressPaymentNethodEnabled? applePay,
     ExpressPaymentNethodEnabled? googlePay,
@@ -128,7 +123,7 @@ enum ExpressApplePayButtonType {
   subscribe,
   support,
   tip,
-  topUp
+  topUp,
 }
 
 /// The type of google pay button to display
@@ -140,7 +135,7 @@ enum ExpressGooglePayButtonType {
   order,
   pay,
   plain,
-  subscribe
+  subscribe,
 }
 
 /// The type of paypal button to display

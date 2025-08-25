@@ -43,5 +43,5 @@ enum ElementsType {
   postalCode,
   paymentRequestButton,
   iban,
-  idealBank
+  idealBank,
 }

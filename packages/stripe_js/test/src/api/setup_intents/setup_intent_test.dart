@@ -15,27 +15,28 @@ void main() {
           "livemode": false,
           "metadata": {},
           "payment_method_options": {
-            "card": {"request_three_d_secure": "automatic"}
+            "card": {"request_three_d_secure": "automatic"},
           },
           "payment_method_types": ["card"],
           "status": "requires_payment_method",
-          "usage": "off_session"
+          "usage": "off_session",
         };
 
         expect(
-            SetupIntent(
-              id: "seti_1EuLZI2eZvKYlo2ClGUjTBUi",
-              clientSecret:
-                  "seti_1EuLZI2eZvKYlo2ClGUjTBUi_secret_FP9teCGsMtJlhYfuW1z9U0Aa9JKyTIK",
-              status: SetupIntentsStatus.requiresPaymentMethod,
-              livemode: false,
-              created: 1562687364,
-              paymentMethodTypes: [PaymentMethodType.card],
-              paymentMethodOptions: {
-                "card": {"request_three_d_secure": "automatic"}
-              },
-            ).toJson(),
-            equals(value));
+          SetupIntent(
+            id: "seti_1EuLZI2eZvKYlo2ClGUjTBUi",
+            clientSecret:
+                "seti_1EuLZI2eZvKYlo2ClGUjTBUi_secret_FP9teCGsMtJlhYfuW1z9U0Aa9JKyTIK",
+            status: SetupIntentsStatus.requiresPaymentMethod,
+            livemode: false,
+            created: 1562687364,
+            paymentMethodTypes: [PaymentMethodType.card],
+            paymentMethodOptions: {
+              "card": {"request_three_d_secure": "automatic"},
+            },
+          ).toJson(),
+          equals(value),
+        );
       });
       test('reverse parsing correctly', () {
         final value = {
@@ -61,14 +62,14 @@ void main() {
             "card": {
               "mandate_options": null,
               "network": null,
-              "request_three_d_secure": "automatic"
-            }
+              "request_three_d_secure": "automatic",
+            },
           },
           "payment_method_types": ["card"],
           "redaction": null,
           "single_use_mandate": null,
           "status": "requires_payment_method",
-          "usage": "off_session"
+          "usage": "off_session",
         };
 
         expect(
@@ -86,8 +87,8 @@ void main() {
                 "card": {
                   "mandate_options": null,
                   "network": null,
-                  "request_three_d_secure": "automatic"
-                }
+                  "request_three_d_secure": "automatic",
+                },
               },
             ),
           ),

@@ -5,7 +5,7 @@ part 'payment_method_response.freezed.dart';
 part 'payment_method_response.g.dart';
 
 @freezed
-class PaymentMethodResponse with _$PaymentMethodResponse {
+abstract class PaymentMethodResponse with _$PaymentMethodResponse {
   const factory PaymentMethodResponse({
     /// If not null, a PaymentMethod was created  successfully
     PaymentMethod? paymentMethod,

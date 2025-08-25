@@ -4,7 +4,7 @@ part 'create_token_card_data.freezed.dart';
 part 'create_token_card_data.g.dart';
 
 @freezed
-class CreateTokenCardData with _$CreateTokenCardData {
+abstract class CreateTokenCardData with _$CreateTokenCardData {
   const factory CreateTokenCardData({
     /// RECOMMENDED
     /// Cardholder name.
