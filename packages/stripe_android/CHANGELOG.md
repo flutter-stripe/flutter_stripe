@@ -1,3 +1,5 @@
+## 12.0.0
+
 ## 11.5.0
 Align with Stripe React Native [0.43.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.43.0):
 
