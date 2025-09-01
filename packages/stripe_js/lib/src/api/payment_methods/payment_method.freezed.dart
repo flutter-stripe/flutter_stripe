@@ -41,7 +41,7 @@ mixin _$PaymentMethod {
 /// An additional hash is included on the PaymentMethod with a name
 /// matching this value.
 /// It contains additional information specific to the PaymentMethod type.
- PaymentMethodType get type;
+@JsonKey(unknownEnumValue: PaymentMethodType.unknown) PaymentMethodType get type;
 /// Create a copy of PaymentMethod
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -74,7 +74,7 @@ abstract mixin class $PaymentMethodCopyWith<$Res>  {
   factory $PaymentMethodCopyWith(PaymentMethod value, $Res Function(PaymentMethod) _then) = _$PaymentMethodCopyWithImpl;
 @useResult
 $Res call({
- String id, String object, BillingDetails? billingDetails, String? customer, Map<String, dynamic> metadata, bool livemode, int? created, CardPaymentMethod? card, SepaDebit? sepaDebit, BacsDebit? bacsDebit, AuBecsDebit? auBecsDebit, Ideal? ideal, Fpx? fpx, Upi? upi, UsBankAccount? usBankAccount, PaymentMethodType type
+ String id, String object, BillingDetails? billingDetails, String? customer, Map<String, dynamic> metadata, bool livemode, int? created, CardPaymentMethod? card, SepaDebit? sepaDebit, BacsDebit? bacsDebit, AuBecsDebit? auBecsDebit, Ideal? ideal, Fpx? fpx, Upi? upi, UsBankAccount? usBankAccount,@JsonKey(unknownEnumValue: PaymentMethodType.unknown) PaymentMethodType type
 });
 
 
@@ -302,7 +302,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount,  PaymentMethodType type)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount, @JsonKey(unknownEnumValue: PaymentMethodType.unknown)  PaymentMethodType type)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaymentMethod() when $default != null:
 return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.metadata,_that.livemode,_that.created,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.upi,_that.usBankAccount,_that.type);case _:
@@ -323,7 +323,7 @@ return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount,  PaymentMethodType type)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount, @JsonKey(unknownEnumValue: PaymentMethodType.unknown)  PaymentMethodType type)  $default,) {final _that = this;
 switch (_that) {
 case _PaymentMethod():
 return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.metadata,_that.livemode,_that.created,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.upi,_that.usBankAccount,_that.type);case _:
@@ -343,7 +343,7 @@ return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount,  PaymentMethodType type)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String object,  BillingDetails? billingDetails,  String? customer,  Map<String, dynamic> metadata,  bool livemode,  int? created,  CardPaymentMethod? card,  SepaDebit? sepaDebit,  BacsDebit? bacsDebit,  AuBecsDebit? auBecsDebit,  Ideal? ideal,  Fpx? fpx,  Upi? upi,  UsBankAccount? usBankAccount, @JsonKey(unknownEnumValue: PaymentMethodType.unknown)  PaymentMethodType type)?  $default,) {final _that = this;
 switch (_that) {
 case _PaymentMethod() when $default != null:
 return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.metadata,_that.livemode,_that.created,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.upi,_that.usBankAccount,_that.type);case _:
@@ -358,7 +358,7 @@ return $default(_that.id,_that.object,_that.billingDetails,_that.customer,_that.
 
 @JsonSerializable(explicitToJson: true)
 class _PaymentMethod implements PaymentMethod {
-  const _PaymentMethod({required this.id, this.object = "payment_method", this.billingDetails, this.customer, final  Map<String, dynamic> metadata = const {}, this.livemode = true, this.created, this.card, this.sepaDebit, this.bacsDebit, this.auBecsDebit, this.ideal, this.fpx, this.upi, this.usBankAccount, required this.type}): _metadata = metadata;
+  const _PaymentMethod({required this.id, this.object = "payment_method", this.billingDetails, this.customer, final  Map<String, dynamic> metadata = const {}, this.livemode = true, this.created, this.card, this.sepaDebit, this.bacsDebit, this.auBecsDebit, this.ideal, this.fpx, this.upi, this.usBankAccount, @JsonKey(unknownEnumValue: PaymentMethodType.unknown) required this.type}): _metadata = metadata;
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) => _$PaymentMethodFromJson(json);
 
 /// Unique identifier for the object.
@@ -411,7 +411,7 @@ class _PaymentMethod implements PaymentMethod {
 /// An additional hash is included on the PaymentMethod with a name
 /// matching this value.
 /// It contains additional information specific to the PaymentMethod type.
-@override final  PaymentMethodType type;
+@override@JsonKey(unknownEnumValue: PaymentMethodType.unknown) final  PaymentMethodType type;
 
 /// Create a copy of PaymentMethod
 /// with the given fields replaced by the non-null parameter values.
@@ -446,7 +446,7 @@ abstract mixin class _$PaymentMethodCopyWith<$Res> implements $PaymentMethodCopy
   factory _$PaymentMethodCopyWith(_PaymentMethod value, $Res Function(_PaymentMethod) _then) = __$PaymentMethodCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String object, BillingDetails? billingDetails, String? customer, Map<String, dynamic> metadata, bool livemode, int? created, CardPaymentMethod? card, SepaDebit? sepaDebit, BacsDebit? bacsDebit, AuBecsDebit? auBecsDebit, Ideal? ideal, Fpx? fpx, Upi? upi, UsBankAccount? usBankAccount, PaymentMethodType type
+ String id, String object, BillingDetails? billingDetails, String? customer, Map<String, dynamic> metadata, bool livemode, int? created, CardPaymentMethod? card, SepaDebit? sepaDebit, BacsDebit? bacsDebit, AuBecsDebit? auBecsDebit, Ideal? ideal, Fpx? fpx, Upi? upi, UsBankAccount? usBankAccount,@JsonKey(unknownEnumValue: PaymentMethodType.unknown) PaymentMethodType type
 });
 
 
