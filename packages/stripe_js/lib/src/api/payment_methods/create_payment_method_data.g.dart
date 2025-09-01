@@ -6,8 +6,8 @@ part of 'create_payment_method_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_CreatePaymentMethodData _$CreatePaymentMethodDataFromJson(Map json) =>
-    _CreatePaymentMethodData(
+_CreatePaymentMethodDataCard _$CreatePaymentMethodDataCardFromJson(Map json) =>
+    _CreatePaymentMethodDataCard(
       type: json['type'] as String,
       card: const ElementConverter().fromJson(json['card']),
       auBecsDebit: const ElementConverter().fromJson(json['au_becs_debit']),
@@ -24,10 +24,11 @@ _CreatePaymentMethodData _$CreatePaymentMethodDataFromJson(Map json) =>
           : BillingDetails.fromJson(
               Map<String, dynamic>.from(json['billing_details'] as Map),
             ),
+      $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$CreatePaymentMethodDataToJson(
-  _CreatePaymentMethodData instance,
+Map<String, dynamic> _$CreatePaymentMethodDataCardToJson(
+  _CreatePaymentMethodDataCard instance,
 ) => <String, dynamic>{
   'type': instance.type,
   'card': ?_$JsonConverterToJson<dynamic, Element>(
@@ -56,9 +57,24 @@ Map<String, dynamic> _$CreatePaymentMethodDataToJson(
   'sepa_debit[iban]': ?instance.sepaDebitIban,
   'upi[vpa]': ?instance.upiVpa,
   'billing_details': ?instance.billingDetails?.toJson(),
+  'runtimeType': instance.$type,
 };
 
 Json? _$JsonConverterToJson<Json, Value>(
   Value? value,
   Json? Function(Value value) toJson,
 ) => value == null ? null : toJson(value);
+
+_CreatePaymentMethodDataElements _$CreatePaymentMethodDataElementsFromJson(
+  Map json,
+) => _CreatePaymentMethodDataElements(
+  elements: const ElementsConverter().fromJson(json['elements']),
+  $type: json['runtimeType'] as String?,
+);
+
+Map<String, dynamic> _$CreatePaymentMethodDataElementsToJson(
+  _CreatePaymentMethodDataElements instance,
+) => <String, dynamic>{
+  'elements': ?const ElementsConverter().toJson(instance.elements),
+  'runtimeType': instance.$type,
+};
