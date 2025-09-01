@@ -38,12 +38,10 @@ extension ExtensionConfirmPayment on Stripe {
   /// and hide the waiting indicator.
   ///
   /// https://stripe.com/docs/js/payment_intents/confirm_payment
-  Future<PaymentIntentResponse> confirmPayment(
-    ConfirmPaymentOptions options,
-  ) {
-    return _confirmPayment(options.toJson().jsify())
-        .toDart
-        .then((response) => response.toDart);
+  Future<PaymentIntentResponse> confirmPayment(ConfirmPaymentOptions options) {
+    return _confirmPayment(
+      options.toJson().jsify(),
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('confirmPayment')

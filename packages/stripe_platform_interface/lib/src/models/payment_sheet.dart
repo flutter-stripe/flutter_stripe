@@ -12,7 +12,7 @@ part 'payment_sheet.g.dart';
 ///
 /// For more info about the payment sheet see: https://stripe.com/docs/payments/accept-a-payment.
 @freezed
-class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
+abstract class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
   @JsonSerializable(explicitToJson: true)
   const factory SetupPaymentSheetParameters({
     /// Whether or not to use a custom flow.
@@ -44,7 +44,6 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// The client secret of this SetupIntent
     ///
     /// If this value is null make sure to add a [paymentIntentClientSecret]
-
     String? setupIntentClientSecret,
 
     /// Use this when you want to collect payment information before creating a
@@ -66,6 +65,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// Configuration related to Google Pay
     /// If set, PaymentSheet displays Google Pay as a payment option
     PaymentSheetGooglePay? googlePay,
+
+    /// Configuration related to Link
+    LinkDisplayParams? linkDisplayParams,
 
     /// Flag that allows payment methods that do not move money at the send of the checkout.
     ///
@@ -102,7 +104,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 
     /// Configuration for how billing details are collected during checkout.
     BillingDetailsCollectionConfiguration?
-        billingDetailsCollectionConfiguration,
+    billingDetailsCollectionConfiguration,
 
     ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
     String? removeSavedPaymentMethodMessage,
@@ -117,6 +119,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// Note: This is only a client-side solution.
     ///Note: Card brand filtering is not currently supported in Link.
     CardBrandAcceptance? cardBrandAcceptance,
+
+    /// Configuration for custom payment methods in PaymentSheet
+    CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
@@ -124,7 +129,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 }
 
 @freezed
-class IntentConfiguration with _$IntentConfiguration {
+abstract class IntentConfiguration with _$IntentConfiguration {
   @JsonSerializable(explicitToJson: true)
   const factory IntentConfiguration({
     /// Data related to the future payment intent
@@ -159,6 +164,9 @@ sealed class IntentMode with _$IntentMode {
 
     /// Capture method for the future payment intent
     CaptureMethod? captureMethod,
+
+    /// Payment method options
+    PaymentMethodOptions? paymentMethodOptions,
   }) = _PaymentMode;
 
   @JsonSerializable(explicitToJson: true)
@@ -175,7 +183,7 @@ sealed class IntentMode with _$IntentMode {
 
 /// Parameters related to the Payment sheet Apple Pay config.
 @freezed
-class PaymentSheetApplePay with _$PaymentSheetApplePay {
+abstract class PaymentSheetApplePay with _$PaymentSheetApplePay {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetApplePay({
     ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
@@ -205,7 +213,7 @@ class PaymentSheetApplePay with _$PaymentSheetApplePay {
 
 /// Parameters related to the Payment sheet Google Pay config.
 @freezed
-class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
+abstract class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetGooglePay({
     ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
@@ -236,7 +244,7 @@ class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
 
 /// Parameters that change the appearance of the payment sheet.
 @freezed
-class PaymentSheetAppearance with _$PaymentSheetAppearance {
+abstract class PaymentSheetAppearance with _$PaymentSheetAppearance {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetAppearance({
     /// Color parameters
@@ -247,6 +255,12 @@ class PaymentSheetAppearance with _$PaymentSheetAppearance {
 
     /// PaymentSheet appearance
     PaymentSheetPrimaryButtonAppearance? primaryButton,
+
+    /// Describes the appearance of the Embedded Mobile Payment Element
+    EmbeddedPaymentElementAppearance? embeddedPaymentElement,
+
+    /// Describes the inset values applied to Mobile Payment Element forms
+    EdgeInsetsConfig? formInsetValues,
   }) = _PaymentSheetAppearance;
 
   factory PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
@@ -255,7 +269,8 @@ class PaymentSheetAppearance with _$PaymentSheetAppearance {
 
 /// Color settings for the Paymentsheet.
 @freezed
-class PaymentSheetAppearanceColors with _$PaymentSheetAppearanceColors {
+abstract class PaymentSheetAppearanceColors
+    with _$PaymentSheetAppearanceColors {
   const factory PaymentSheetAppearanceColors({
     ///  Color of the button that represents the primary action on the payment sheet.
     ///
@@ -310,7 +325,7 @@ class PaymentSheetAppearanceColors with _$PaymentSheetAppearanceColors {
 
 /// Parameters that change the appearance of the payment sheet.
 @freezed
-class PaymentSheetShape with _$PaymentSheetShape {
+abstract class PaymentSheetShape with _$PaymentSheetShape {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShape({
     /// Borderradius for the paymentsheet corners
@@ -329,7 +344,7 @@ class PaymentSheetShape with _$PaymentSheetShape {
 
 /// Shadow config parameters
 @freezed
-class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
+abstract class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShadowParams({
     /// Shadow color
@@ -348,7 +363,7 @@ class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
 
 /// Shadow config parameters
 @freezed
-class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
+abstract class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShadowOffset({
     /// X value
@@ -363,7 +378,7 @@ class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
 }
 
 @freezed
-class PaymentSheetPrimaryButtonAppearance
+abstract class PaymentSheetPrimaryButtonAppearance
     with _$PaymentSheetPrimaryButtonAppearance {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonAppearance({
@@ -375,12 +390,13 @@ class PaymentSheetPrimaryButtonAppearance
   }) = _PaymentSheetPrimaryButtonAppearance;
 
   factory PaymentSheetPrimaryButtonAppearance.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaymentSheetPrimaryButtonAppearanceFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$PaymentSheetPrimaryButtonAppearanceFromJson(json);
 }
 
 @freezed
-class PaymentSheetPrimaryButtonShape with _$PaymentSheetPrimaryButtonShape {
+abstract class PaymentSheetPrimaryButtonShape
+    with _$PaymentSheetPrimaryButtonShape {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonShape({
     /// Configuration of the primary button's shadow.
@@ -398,7 +414,8 @@ class PaymentSheetPrimaryButtonShape with _$PaymentSheetPrimaryButtonShape {
 }
 
 @freezed
-class PaymentSheetPrimaryButtonTheme with _$PaymentSheetPrimaryButtonTheme {
+abstract class PaymentSheetPrimaryButtonTheme
+    with _$PaymentSheetPrimaryButtonTheme {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonTheme({
     /// Colors when displaying button in dark theme
@@ -413,7 +430,7 @@ class PaymentSheetPrimaryButtonTheme with _$PaymentSheetPrimaryButtonTheme {
 }
 
 @freezed
-class PaymentSheetPrimaryButtonThemeColors
+abstract class PaymentSheetPrimaryButtonThemeColors
     with _$PaymentSheetPrimaryButtonThemeColors {
   const factory PaymentSheetPrimaryButtonThemeColors({
     /// Primary button background color
@@ -429,8 +446,8 @@ class PaymentSheetPrimaryButtonThemeColors
   }) = _PaymentSheetPrimaryButtonThemeColors;
 
   factory PaymentSheetPrimaryButtonThemeColors.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaymentSheetPrimaryButtonThemeColorsFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$PaymentSheetPrimaryButtonThemeColorsFromJson(json);
 }
 
 class UserInterfaceStyleKey {
@@ -448,7 +465,7 @@ class UserInterfaceStyleKey {
     }
   }
 
-  static Color? fromJson(value) {
+  static Color? fromJson(Object? value) {
     throw UnimplementedError();
   }
 }
@@ -456,7 +473,8 @@ class UserInterfaceStyleKey {
 /// Parameters used to display the payment sheet.
 @freezed
 @Deprecated('Parameters are now inherited from initPaymentSheet')
-class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
+abstract class PresentPaymentSheetParameters
+    with _$PresentPaymentSheetParameters {
   const factory PresentPaymentSheetParameters({
     /// Key used for client-side retrieval using a publishable key.
     required String clientSecret,
@@ -476,7 +494,7 @@ class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
 }
 
 @freezed
-class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
+abstract class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPresentOptions({
     /// The number of milliseconds (after presenting) before the Payment Sheet
@@ -491,7 +509,7 @@ class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
 }
 
 @freezed
-class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
+abstract class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPaymentOption({
     /// The label of the payment option
@@ -506,7 +524,7 @@ class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
 }
 
 @freezed
-class BillingDetailsCollectionConfiguration
+abstract class BillingDetailsCollectionConfiguration
     with _$BillingDetailsCollectionConfiguration {
   @JsonSerializable(explicitToJson: true)
   const factory BillingDetailsCollectionConfiguration({
@@ -537,8 +555,8 @@ class BillingDetailsCollectionConfiguration
   }) = _BillingDetailsCollectionConfiguration;
 
   factory BillingDetailsCollectionConfiguration.fromJson(
-          Map<String, dynamic> json) =>
-      _$BillingDetailsCollectionConfigurationFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$BillingDetailsCollectionConfigurationFromJson(json);
 }
 
 /// Types of how to collect non address fields
@@ -578,10 +596,8 @@ enum IntentFutureUsage {
   OnSession,
 }
 
-typedef ConfirmHandler = void Function(
-  PaymentMethod result,
-  bool shouldSavePaymentMethod,
-);
+typedef ConfirmHandler =
+    void Function(PaymentMethod result, bool shouldSavePaymentMethod);
 
 List<int> _cardBrandListToJson(List<CardBrand>? list) {
   if (list == null) {
@@ -619,9 +635,8 @@ enum CardBrandAcceptanceFilter {
 }
 
 @freezed
-
 /// Options to block certain card brands on the client
-class CardBrandAcceptance with _$CardBrandAcceptance {
+abstract class CardBrandAcceptance with _$CardBrandAcceptance {
   const factory CardBrandAcceptance.all({
     @Default(CardBrandAcceptanceFilter.all) CardBrandAcceptanceFilter filter,
   }) = _CardBrandAcceptanceAll;
@@ -646,4 +661,248 @@ class CardBrandAcceptance with _$CardBrandAcceptance {
 
   factory CardBrandAcceptance.fromJson(Map<String, Object?> json) =>
       _$CardBrandAcceptanceFromJson(json);
+}
+
+@freezed
+/// Parameters for Link display
+abstract class LinkDisplayParams with _$LinkDisplayParams {
+  const factory LinkDisplayParams({
+    /// Display configuration for Link
+    required LinkDisplay linkDisplay,
+  }) = _LinkDisplayParams;
+
+  factory LinkDisplayParams.fromJson(Map<String, Object?> json) =>
+      _$LinkDisplayParamsFromJson(json);
+}
+
+enum LinkDisplay {
+  /// Link will be displayed when available
+  automatic,
+
+  /// Link will be displayed when available
+  manual,
+}
+
+@freezed
+abstract class EdgeInsetsConfig with _$EdgeInsetsConfig {
+  const factory EdgeInsetsConfig({
+    double? top,
+    double? bottom,
+    double? left,
+    double? right,
+  }) = _EdgeInsetsConfig;
+
+  factory EdgeInsetsConfig.fromJson(Map<String, Object?> json) =>
+      _$EdgeInsetsConfigFromJson(json);
+}
+
+enum RowStyle {
+  /// A flat style with radio buttons
+  flatWithRadio,
+
+  /// A floating button style
+  floatingButton,
+
+  /// A flat style with a checkmark
+  flatWithCheckmark,
+
+  /// A flat style with a chevron
+  /// Note that the EmbeddedPaymentElementConfiguration.rowSelectionBehavior must be set to `immediateAction` to use this style.
+  flatWithChevron,
+}
+
+/// Describes the appearance of the radio button
+@freezed
+abstract class RadioConfig with _$RadioConfig {
+  const factory RadioConfig({
+    /// The color of the radio button when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The root appearance.colors.primary
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    Color? selectedColor,
+
+    /// The color of the radio button when unselected, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The root appearance.colors.componentBorder
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    Color? unselectedColor,
+  }) = _RadioConfig;
+
+  factory RadioConfig.fromJson(Map<String, Object?> json) =>
+      _$RadioConfigFromJson(json);
+}
+
+/// Describes the appearance of the checkmark
+@freezed
+abstract class CheckmarkConfig with _$CheckmarkConfig {
+  const factory CheckmarkConfig({
+    /// The color of the checkmark when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The root appearance.colors.primary
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? color,
+  }) = _CheckmarkConfig;
+
+  factory CheckmarkConfig.fromJson(Map<String, Object?> json) =>
+      _$CheckmarkConfigFromJson(json);
+}
+
+/// Describes the appearance of the chevron
+@freezed
+abstract class ChevronConfig with _$ChevronConfig {
+  const factory ChevronConfig({
+    /// The color of the chevron, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The iOS or Android system gray color
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? color,
+  }) = _ChevronConfig;
+
+  factory ChevronConfig.fromJson(Map<String, Object?> json) =>
+      _$ChevronConfigFromJson(json);
+}
+
+/// Describes the appearance of the flat style row
+@freezed
+abstract class FlatConfig with _$FlatConfig {
+  const factory FlatConfig({
+    /// The thickness of the separator line between rows.
+    /// @default 1.0
+    double? separatorThickness,
+
+    /// The color of the separator line between rows, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The root appearance.colors.componentBorder
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    Color? separatorColor,
+
+    /// The insets of the separator line between rows.
+    /// @default { top: 0, left: 30, bottom: 0, right: 0 } for RowStyle.FlatWithRadio
+    /// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithChevron, and RowStyle.FloatingButton
+    EdgeInsetsConfig? separatorInsets,
+
+    /// Determines if the top separator is visible at the top of the Element.
+    /// @default true
+    bool? topSeparatorEnabled,
+
+    /// Determines if the bottom separator is visible at the bottom of the Element.
+    /// @default true
+    bool? bottomSeparatorEnabled,
+
+    /// Appearance settings for the radio button (used when RowStyle is FlatWithRadio)
+    RadioConfig? radio,
+
+    /// Appearance settings for the checkmark (used when RowStyle is FlatWithCheckmark)
+    CheckmarkConfig? checkmark,
+
+    /// Appearance settings for the chevron (used when RowStyle is FlatWithChevron)
+    ChevronConfig? chevron,
+  }) = _FlatConfig;
+
+  factory FlatConfig.fromJson(Map<String, Object?> json) =>
+      _$FlatConfigFromJson(json);
+}
+
+/// Describes the appearance of the floating button style payment method row
+@freezed
+abstract class FloatingConfig with _$FloatingConfig {
+  const factory FloatingConfig({
+    /// The spacing between payment method rows.
+    double? spacing,
+  }) = _FloatingConfig;
+
+  factory FloatingConfig.fromJson(Map<String, Object?> json) =>
+      _$FloatingConfigFromJson(json);
+}
+
+/// Describes the appearance of the row in the Embedded Mobile Payment Element
+@freezed
+abstract class RowConfig with _$RowConfig {
+  const factory RowConfig({
+    /// The display style of the row.
+    RowStyle? style,
+
+    /// Additional vertical insets applied to a payment method row.
+    /// Increasing this value increases the height of each row.
+    /// @default 6.0
+    double? additionalInsets,
+
+    /// Appearance settings for the flat style row
+    FlatConfig? flat,
+
+    /// Appearance settings for the floating button style row
+    FloatingConfig? floating,
+  }) = _RowConfig;
+
+  factory RowConfig.fromJson(Map<String, Object?> json) =>
+      _$RowConfigFromJson(json);
+}
+
+/// Describes the appearance of the Embedded Mobile Payment Element
+@freezed
+abstract class EmbeddedPaymentElementAppearance
+    with _$EmbeddedPaymentElementAppearance {
+  const factory EmbeddedPaymentElementAppearance({RowConfig? row}) =
+      _EmbeddedPaymentElementAppearance;
+
+  factory EmbeddedPaymentElementAppearance.fromJson(
+    Map<String, Object?> json,
+  ) => _$EmbeddedPaymentElementAppearanceFromJson(json);
+}
+
+///
+///Configuration for a custom payment method.
+///
+@freezed
+abstract class CustomPaymentMethod with _$CustomPaymentMethod {
+  @JsonSerializable(explicitToJson: true)
+  const factory CustomPaymentMethod({
+    /// The custom payment method ID (beginning with `cpmt_`) as created in your Stripe Dashboard.
+    required String id,
+
+    /// Optional subtitle to display beneath the custom payment method name.
+    String? subtitle,
+
+    /// Whether to disable billing detail collection for this custom payment method. Defaults to true.
+    bool? disableBillingDetailCollection,
+  }) = _CustomPaymentMethod;
+
+  factory CustomPaymentMethod.fromJson(Map<String, Object?> json) =>
+      _$CustomPaymentMethodFromJson(json);
+}
+
+///
+/// Custom payment method confirmation result type for PaymentSheet.
+///
+enum CustomPaymentMethodResultStatus {
+  /// The custom payment method transaction was completed successfully */
+  completed,
+
+  /// The custom payment method transaction was canceled by the user */
+  canceled,
+
+  /// The custom payment method transaction failed */
+  failed,
+}
+
+/// Callback function called when a custom payment method is selected and confirmed.
+/// Your implementation should complete the payment using your custom payment provider's SDK.
+typedef ConfirmCustomPaymentMethodCallback =
+    void Function(
+      CustomPaymentMethod customPaymentMethod,
+      BillingDetails? billingDetails,
+      void Function(CustomPaymentMethodResultStatus result) resultHandler,
+    );
+
+/// Configuration for custom payment methods in PaymentSheet.
+@freezed
+abstract class CustomPaymentMethodConfiguration
+    with _$CustomPaymentMethodConfiguration {
+  @JsonSerializable(explicitToJson: true)
+  const factory CustomPaymentMethodConfiguration({
+    /// Array of custom payment methods to display in the Payment Sheet
+    @JsonKey(name: 'customPaymentMethods')
+    required List<CustomPaymentMethod> customPaymentMethods,
+
+    /// Callback function to handle custom payment method confirmation
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    ConfirmCustomPaymentMethodCallback? confirmCustomPaymentMethodCallback,
+  }) = _CustomPaymentMethodConfiguration;
+
+  factory CustomPaymentMethodConfiguration.fromJson(
+    Map<String, dynamic> json,
+  ) => _$CustomPaymentMethodConfigurationFromJson(json);
 }

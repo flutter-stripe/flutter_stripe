@@ -1,4 +1,4 @@
-library stripe_platform_interface;
+library;
 
 export 'src/card_edit_controller.dart';
 export 'src/models/address_sheet.dart';

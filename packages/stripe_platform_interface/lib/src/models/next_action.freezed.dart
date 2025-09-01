@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1182 +9,610 @@ part of 'next_action.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-NextAction _$NextActionFromJson(Map<String, dynamic> json) {
-  switch (json['type']) {
-    case 'urlRedirect':
-      return _NextActionRedirect.fromJson(json);
-    case 'oxxoVoucher':
-      return _NextActionOxxo.fromJson(json);
-    case 'weChatRedirect':
-      return _NextActionWeChatRedirect.fromJson(json);
-    case 'verifyWithMicrodeposits':
-      return _NextActionMicroDeposits.fromJson(json);
-    case 'multibanco':
-      return _NextActionMultiBanco.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(
-          json, 'type', 'NextAction', 'Invalid union type "${json['type']}"!');
-  }
+NextAction _$NextActionFromJson(
+  Map<String, dynamic> json
+) {
+        switch (json['type']) {
+                  case 'urlRedirect':
+          return _NextActionRedirect.fromJson(
+            json
+          );
+                case 'oxxoVoucher':
+          return _NextActionOxxo.fromJson(
+            json
+          );
+                case 'weChatRedirect':
+          return _NextActionWeChatRedirect.fromJson(
+            json
+          );
+                case 'verifyWithMicrodeposits':
+          return _NextActionMicroDeposits.fromJson(
+            json
+          );
+                case 'multibanco':
+          return _NextActionMultiBanco.fromJson(
+            json
+          );
+        
+          default:
+            throw CheckedFromJsonException(
+  json,
+  'type',
+  'NextAction',
+  'Invalid union type "${json['type']}"!'
+);
+        }
+      
 }
 
 /// @nodoc
 mixin _$NextAction {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? redirectUrl) redirectToUrl,
-    required TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)
-        displayOxxoDetails,
-    required TResult Function(String? redirectUrl) wechatPayRedirect,
-    required TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)
-        verifyWithMicroDeposits,
-    required TResult Function(String? voucherURL) multibanco,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? redirectUrl)? redirectToUrl,
-    TResult? Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult? Function(String? redirectUrl)? wechatPayRedirect,
-    TResult? Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult? Function(String? voucherURL)? multibanco,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult Function(String? voucherURL)? multibanco,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NextActionRedirect value) redirectToUrl,
-    required TResult Function(_NextActionOxxo value) displayOxxoDetails,
-    required TResult Function(_NextActionWeChatRedirect value)
-        wechatPayRedirect,
-    required TResult Function(_NextActionMicroDeposits value)
-        verifyWithMicroDeposits,
-    required TResult Function(_NextActionMultiBanco value) multibanco,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NextActionRedirect value)? redirectToUrl,
-    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult? Function(_NextActionMultiBanco value)? multibanco,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult Function(_NextActionMultiBanco value)? multibanco,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
 
   /// Serializes this NextAction to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NextAction);
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'NextAction()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $NextActionCopyWith<$Res> {
-  factory $NextActionCopyWith(
-          NextAction value, $Res Function(NextAction) then) =
-      _$NextActionCopyWithImpl<$Res, NextAction>;
+class $NextActionCopyWith<$Res>  {
+$NextActionCopyWith(NextAction _, $Res Function(NextAction) __);
 }
 
-/// @nodoc
-class _$NextActionCopyWithImpl<$Res, $Val extends NextAction>
-    implements $NextActionCopyWith<$Res> {
-  _$NextActionCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [NextAction].
+extension NextActionPatterns on NextAction {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _NextActionRedirect value)?  redirectToUrl,TResult Function( _NextActionOxxo value)?  displayOxxoDetails,TResult Function( _NextActionWeChatRedirect value)?  wechatPayRedirect,TResult Function( _NextActionMicroDeposits value)?  verifyWithMicroDeposits,TResult Function( _NextActionMultiBanco value)?  multibanco,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _NextActionRedirect() when redirectToUrl != null:
+return redirectToUrl(_that);case _NextActionOxxo() when displayOxxoDetails != null:
+return displayOxxoDetails(_that);case _NextActionWeChatRedirect() when wechatPayRedirect != null:
+return wechatPayRedirect(_that);case _NextActionMicroDeposits() when verifyWithMicroDeposits != null:
+return verifyWithMicroDeposits(_that);case _NextActionMultiBanco() when multibanco != null:
+return multibanco(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _NextActionRedirect value)  redirectToUrl,required TResult Function( _NextActionOxxo value)  displayOxxoDetails,required TResult Function( _NextActionWeChatRedirect value)  wechatPayRedirect,required TResult Function( _NextActionMicroDeposits value)  verifyWithMicroDeposits,required TResult Function( _NextActionMultiBanco value)  multibanco,}){
+final _that = this;
+switch (_that) {
+case _NextActionRedirect():
+return redirectToUrl(_that);case _NextActionOxxo():
+return displayOxxoDetails(_that);case _NextActionWeChatRedirect():
+return wechatPayRedirect(_that);case _NextActionMicroDeposits():
+return verifyWithMicroDeposits(_that);case _NextActionMultiBanco():
+return multibanco(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _NextActionRedirect value)?  redirectToUrl,TResult? Function( _NextActionOxxo value)?  displayOxxoDetails,TResult? Function( _NextActionWeChatRedirect value)?  wechatPayRedirect,TResult? Function( _NextActionMicroDeposits value)?  verifyWithMicroDeposits,TResult? Function( _NextActionMultiBanco value)?  multibanco,}){
+final _that = this;
+switch (_that) {
+case _NextActionRedirect() when redirectToUrl != null:
+return redirectToUrl(_that);case _NextActionOxxo() when displayOxxoDetails != null:
+return displayOxxoDetails(_that);case _NextActionWeChatRedirect() when wechatPayRedirect != null:
+return wechatPayRedirect(_that);case _NextActionMicroDeposits() when verifyWithMicroDeposits != null:
+return verifyWithMicroDeposits(_that);case _NextActionMultiBanco() when multibanco != null:
+return multibanco(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String? redirectUrl)?  redirectToUrl,TResult Function( int? expiration,  String? voucherURL,  String? voucherNumber)?  displayOxxoDetails,TResult Function( String? redirectUrl)?  wechatPayRedirect,TResult Function( String? arrivalDate,  String? redirectUrl,  String? microdepositType)?  verifyWithMicroDeposits,TResult Function( String? voucherURL)?  multibanco,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _NextActionRedirect() when redirectToUrl != null:
+return redirectToUrl(_that.redirectUrl);case _NextActionOxxo() when displayOxxoDetails != null:
+return displayOxxoDetails(_that.expiration,_that.voucherURL,_that.voucherNumber);case _NextActionWeChatRedirect() when wechatPayRedirect != null:
+return wechatPayRedirect(_that.redirectUrl);case _NextActionMicroDeposits() when verifyWithMicroDeposits != null:
+return verifyWithMicroDeposits(_that.arrivalDate,_that.redirectUrl,_that.microdepositType);case _NextActionMultiBanco() when multibanco != null:
+return multibanco(_that.voucherURL);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String? redirectUrl)  redirectToUrl,required TResult Function( int? expiration,  String? voucherURL,  String? voucherNumber)  displayOxxoDetails,required TResult Function( String? redirectUrl)  wechatPayRedirect,required TResult Function( String? arrivalDate,  String? redirectUrl,  String? microdepositType)  verifyWithMicroDeposits,required TResult Function( String? voucherURL)  multibanco,}) {final _that = this;
+switch (_that) {
+case _NextActionRedirect():
+return redirectToUrl(_that.redirectUrl);case _NextActionOxxo():
+return displayOxxoDetails(_that.expiration,_that.voucherURL,_that.voucherNumber);case _NextActionWeChatRedirect():
+return wechatPayRedirect(_that.redirectUrl);case _NextActionMicroDeposits():
+return verifyWithMicroDeposits(_that.arrivalDate,_that.redirectUrl,_that.microdepositType);case _NextActionMultiBanco():
+return multibanco(_that.voucherURL);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String? redirectUrl)?  redirectToUrl,TResult? Function( int? expiration,  String? voucherURL,  String? voucherNumber)?  displayOxxoDetails,TResult? Function( String? redirectUrl)?  wechatPayRedirect,TResult? Function( String? arrivalDate,  String? redirectUrl,  String? microdepositType)?  verifyWithMicroDeposits,TResult? Function( String? voucherURL)?  multibanco,}) {final _that = this;
+switch (_that) {
+case _NextActionRedirect() when redirectToUrl != null:
+return redirectToUrl(_that.redirectUrl);case _NextActionOxxo() when displayOxxoDetails != null:
+return displayOxxoDetails(_that.expiration,_that.voucherURL,_that.voucherNumber);case _NextActionWeChatRedirect() when wechatPayRedirect != null:
+return wechatPayRedirect(_that.redirectUrl);case _NextActionMicroDeposits() when verifyWithMicroDeposits != null:
+return verifyWithMicroDeposits(_that.arrivalDate,_that.redirectUrl,_that.microdepositType);case _NextActionMultiBanco() when multibanco != null:
+return multibanco(_that.voucherURL);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$NextActionRedirectImplCopyWith<$Res> {
-  factory _$$NextActionRedirectImplCopyWith(_$NextActionRedirectImpl value,
-          $Res Function(_$NextActionRedirectImpl) then) =
-      __$$NextActionRedirectImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? redirectUrl});
-}
-
-/// @nodoc
-class __$$NextActionRedirectImplCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res, _$NextActionRedirectImpl>
-    implements _$$NextActionRedirectImplCopyWith<$Res> {
-  __$$NextActionRedirectImplCopyWithImpl(_$NextActionRedirectImpl _value,
-      $Res Function(_$NextActionRedirectImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? redirectUrl = freezed,
-  }) {
-    return _then(_$NextActionRedirectImpl(
-      redirectUrl: freezed == redirectUrl
-          ? _value.redirectUrl
-          : redirectUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable(explicitToJson: true)
-class _$NextActionRedirectImpl implements _NextActionRedirect {
-  const _$NextActionRedirectImpl({this.redirectUrl, final String? $type})
-      : $type = $type ?? 'urlRedirect';
-
-  factory _$NextActionRedirectImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NextActionRedirectImplFromJson(json);
-
-  /// Url to redirect to
-  @override
-  final String? redirectUrl;
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'NextAction.redirectToUrl(redirectUrl: $redirectUrl)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NextActionRedirectImpl &&
-            (identical(other.redirectUrl, redirectUrl) ||
-                other.redirectUrl == redirectUrl));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, redirectUrl);
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NextActionRedirectImplCopyWith<_$NextActionRedirectImpl> get copyWith =>
-      __$$NextActionRedirectImplCopyWithImpl<_$NextActionRedirectImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? redirectUrl) redirectToUrl,
-    required TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)
-        displayOxxoDetails,
-    required TResult Function(String? redirectUrl) wechatPayRedirect,
-    required TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)
-        verifyWithMicroDeposits,
-    required TResult Function(String? voucherURL) multibanco,
-  }) {
-    return redirectToUrl(redirectUrl);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? redirectUrl)? redirectToUrl,
-    TResult? Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult? Function(String? redirectUrl)? wechatPayRedirect,
-    TResult? Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult? Function(String? voucherURL)? multibanco,
-  }) {
-    return redirectToUrl?.call(redirectUrl);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult Function(String? voucherURL)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (redirectToUrl != null) {
-      return redirectToUrl(redirectUrl);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NextActionRedirect value) redirectToUrl,
-    required TResult Function(_NextActionOxxo value) displayOxxoDetails,
-    required TResult Function(_NextActionWeChatRedirect value)
-        wechatPayRedirect,
-    required TResult Function(_NextActionMicroDeposits value)
-        verifyWithMicroDeposits,
-    required TResult Function(_NextActionMultiBanco value) multibanco,
-  }) {
-    return redirectToUrl(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NextActionRedirect value)? redirectToUrl,
-    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult? Function(_NextActionMultiBanco value)? multibanco,
-  }) {
-    return redirectToUrl?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult Function(_NextActionMultiBanco value)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (redirectToUrl != null) {
-      return redirectToUrl(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NextActionRedirectImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _NextActionRedirect implements NextAction {
-  const factory _NextActionRedirect({final String? redirectUrl}) =
-      _$NextActionRedirectImpl;
-
-  factory _NextActionRedirect.fromJson(Map<String, dynamic> json) =
-      _$NextActionRedirectImpl.fromJson;
-
-  /// Url to redirect to
-  String? get redirectUrl;
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NextActionRedirectImplCopyWith<_$NextActionRedirectImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$NextActionOxxoImplCopyWith<$Res> {
-  factory _$$NextActionOxxoImplCopyWith(_$NextActionOxxoImpl value,
-          $Res Function(_$NextActionOxxoImpl) then) =
-      __$$NextActionOxxoImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int? expiration, String? voucherURL, String? voucherNumber});
-}
-
-/// @nodoc
-class __$$NextActionOxxoImplCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res, _$NextActionOxxoImpl>
-    implements _$$NextActionOxxoImplCopyWith<$Res> {
-  __$$NextActionOxxoImplCopyWithImpl(
-      _$NextActionOxxoImpl _value, $Res Function(_$NextActionOxxoImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? expiration = freezed,
-    Object? voucherURL = freezed,
-    Object? voucherNumber = freezed,
-  }) {
-    return _then(_$NextActionOxxoImpl(
-      expiration: freezed == expiration
-          ? _value.expiration
-          : expiration // ignore: cast_nullable_to_non_nullable
-              as int?,
-      voucherURL: freezed == voucherURL
-          ? _value.voucherURL
-          : voucherURL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      voucherNumber: freezed == voucherNumber
-          ? _value.voucherNumber
-          : voucherNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$NextActionOxxoImpl implements _NextActionOxxo {
-  const _$NextActionOxxoImpl(
-      {this.expiration,
-      this.voucherURL,
-      this.voucherNumber,
-      final String? $type})
-      : $type = $type ?? 'oxxoVoucher';
+class _NextActionRedirect implements NextAction {
+  const _NextActionRedirect({this.redirectUrl, final  String? $type}): $type = $type ?? 'urlRedirect';
+  factory _NextActionRedirect.fromJson(Map<String, dynamic> json) => _$NextActionRedirectFromJson(json);
 
-  factory _$NextActionOxxoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NextActionOxxoImplFromJson(json);
+/// Url to redirect to
+ final  String? redirectUrl;
 
-  /// expiration date of the voucher in UTC
-  @override
-  final int? expiration;
+@JsonKey(name: 'type')
+final String $type;
 
-  /// The URL for the hosted OXXO voucher page, which allows customers to view and print an OXXO voucher.
-  @override
-  final String? voucherURL;
 
-  /// Oxxo reference number
-  @override
-  final String? voucherNumber;
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$NextActionRedirectCopyWith<_NextActionRedirect> get copyWith => __$NextActionRedirectCopyWithImpl<_NextActionRedirect>(this, _$identity);
 
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'NextAction.displayOxxoDetails(expiration: $expiration, voucherURL: $voucherURL, voucherNumber: $voucherNumber)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NextActionOxxoImpl &&
-            (identical(other.expiration, expiration) ||
-                other.expiration == expiration) &&
-            (identical(other.voucherURL, voucherURL) ||
-                other.voucherURL == voucherURL) &&
-            (identical(other.voucherNumber, voucherNumber) ||
-                other.voucherNumber == voucherNumber));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, expiration, voucherURL, voucherNumber);
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NextActionOxxoImplCopyWith<_$NextActionOxxoImpl> get copyWith =>
-      __$$NextActionOxxoImplCopyWithImpl<_$NextActionOxxoImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? redirectUrl) redirectToUrl,
-    required TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)
-        displayOxxoDetails,
-    required TResult Function(String? redirectUrl) wechatPayRedirect,
-    required TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)
-        verifyWithMicroDeposits,
-    required TResult Function(String? voucherURL) multibanco,
-  }) {
-    return displayOxxoDetails(expiration, voucherURL, voucherNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? redirectUrl)? redirectToUrl,
-    TResult? Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult? Function(String? redirectUrl)? wechatPayRedirect,
-    TResult? Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult? Function(String? voucherURL)? multibanco,
-  }) {
-    return displayOxxoDetails?.call(expiration, voucherURL, voucherNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult Function(String? voucherURL)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (displayOxxoDetails != null) {
-      return displayOxxoDetails(expiration, voucherURL, voucherNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NextActionRedirect value) redirectToUrl,
-    required TResult Function(_NextActionOxxo value) displayOxxoDetails,
-    required TResult Function(_NextActionWeChatRedirect value)
-        wechatPayRedirect,
-    required TResult Function(_NextActionMicroDeposits value)
-        verifyWithMicroDeposits,
-    required TResult Function(_NextActionMultiBanco value) multibanco,
-  }) {
-    return displayOxxoDetails(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NextActionRedirect value)? redirectToUrl,
-    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult? Function(_NextActionMultiBanco value)? multibanco,
-  }) {
-    return displayOxxoDetails?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult Function(_NextActionMultiBanco value)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (displayOxxoDetails != null) {
-      return displayOxxoDetails(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NextActionOxxoImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$NextActionRedirectToJson(this, );
 }
 
-abstract class _NextActionOxxo implements NextAction {
-  const factory _NextActionOxxo(
-      {final int? expiration,
-      final String? voucherURL,
-      final String? voucherNumber}) = _$NextActionOxxoImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionRedirect&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl));
+}
 
-  factory _NextActionOxxo.fromJson(Map<String, dynamic> json) =
-      _$NextActionOxxoImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,redirectUrl);
 
-  /// expiration date of the voucher in UTC
-  int? get expiration;
+@override
+String toString() {
+  return 'NextAction.redirectToUrl(redirectUrl: $redirectUrl)';
+}
 
-  /// The URL for the hosted OXXO voucher page, which allows customers to view and print an OXXO voucher.
-  String? get voucherURL;
 
-  /// Oxxo reference number
-  String? get voucherNumber;
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NextActionOxxoImplCopyWith<_$NextActionOxxoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NextActionWeChatRedirectImplCopyWith<$Res> {
-  factory _$$NextActionWeChatRedirectImplCopyWith(
-          _$NextActionWeChatRedirectImpl value,
-          $Res Function(_$NextActionWeChatRedirectImpl) then) =
-      __$$NextActionWeChatRedirectImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? redirectUrl});
+abstract mixin class _$NextActionRedirectCopyWith<$Res> implements $NextActionCopyWith<$Res> {
+  factory _$NextActionRedirectCopyWith(_NextActionRedirect value, $Res Function(_NextActionRedirect) _then) = __$NextActionRedirectCopyWithImpl;
+@useResult
+$Res call({
+ String? redirectUrl
+});
+
+
+
+
+}
+/// @nodoc
+class __$NextActionRedirectCopyWithImpl<$Res>
+    implements _$NextActionRedirectCopyWith<$Res> {
+  __$NextActionRedirectCopyWithImpl(this._self, this._then);
+
+  final _NextActionRedirect _self;
+  final $Res Function(_NextActionRedirect) _then;
+
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? redirectUrl = freezed,}) {
+  return _then(_NextActionRedirect(
+redirectUrl: freezed == redirectUrl ? _self.redirectUrl : redirectUrl // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$NextActionWeChatRedirectImplCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res, _$NextActionWeChatRedirectImpl>
-    implements _$$NextActionWeChatRedirectImplCopyWith<$Res> {
-  __$$NextActionWeChatRedirectImplCopyWithImpl(
-      _$NextActionWeChatRedirectImpl _value,
-      $Res Function(_$NextActionWeChatRedirectImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? redirectUrl = freezed,
-  }) {
-    return _then(_$NextActionWeChatRedirectImpl(
-      redirectUrl: freezed == redirectUrl
-          ? _value.redirectUrl
-          : redirectUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$NextActionWeChatRedirectImpl implements _NextActionWeChatRedirect {
-  const _$NextActionWeChatRedirectImpl({this.redirectUrl, final String? $type})
-      : $type = $type ?? 'weChatRedirect';
+class _NextActionOxxo implements NextAction {
+  const _NextActionOxxo({this.expiration, this.voucherURL, this.voucherNumber, final  String? $type}): $type = $type ?? 'oxxoVoucher';
+  factory _NextActionOxxo.fromJson(Map<String, dynamic> json) => _$NextActionOxxoFromJson(json);
 
-  factory _$NextActionWeChatRedirectImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NextActionWeChatRedirectImplFromJson(json);
+/// expiration date of the voucher in UTC
+ final  int? expiration;
+/// The URL for the hosted OXXO voucher page, which allows customers to view and print an OXXO voucher.
+ final  String? voucherURL;
+/// Oxxo reference number
+ final  String? voucherNumber;
 
-  /// Url to the Qr code.
-  @override
-  final String? redirectUrl;
+@JsonKey(name: 'type')
+final String $type;
 
-  @JsonKey(name: 'type')
-  final String $type;
 
-  @override
-  String toString() {
-    return 'NextAction.wechatPayRedirect(redirectUrl: $redirectUrl)';
-  }
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$NextActionOxxoCopyWith<_NextActionOxxo> get copyWith => __$NextActionOxxoCopyWithImpl<_NextActionOxxo>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NextActionWeChatRedirectImpl &&
-            (identical(other.redirectUrl, redirectUrl) ||
-                other.redirectUrl == redirectUrl));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, redirectUrl);
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NextActionWeChatRedirectImplCopyWith<_$NextActionWeChatRedirectImpl>
-      get copyWith => __$$NextActionWeChatRedirectImplCopyWithImpl<
-          _$NextActionWeChatRedirectImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? redirectUrl) redirectToUrl,
-    required TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)
-        displayOxxoDetails,
-    required TResult Function(String? redirectUrl) wechatPayRedirect,
-    required TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)
-        verifyWithMicroDeposits,
-    required TResult Function(String? voucherURL) multibanco,
-  }) {
-    return wechatPayRedirect(redirectUrl);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? redirectUrl)? redirectToUrl,
-    TResult? Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult? Function(String? redirectUrl)? wechatPayRedirect,
-    TResult? Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult? Function(String? voucherURL)? multibanco,
-  }) {
-    return wechatPayRedirect?.call(redirectUrl);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult Function(String? voucherURL)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (wechatPayRedirect != null) {
-      return wechatPayRedirect(redirectUrl);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NextActionRedirect value) redirectToUrl,
-    required TResult Function(_NextActionOxxo value) displayOxxoDetails,
-    required TResult Function(_NextActionWeChatRedirect value)
-        wechatPayRedirect,
-    required TResult Function(_NextActionMicroDeposits value)
-        verifyWithMicroDeposits,
-    required TResult Function(_NextActionMultiBanco value) multibanco,
-  }) {
-    return wechatPayRedirect(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NextActionRedirect value)? redirectToUrl,
-    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult? Function(_NextActionMultiBanco value)? multibanco,
-  }) {
-    return wechatPayRedirect?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult Function(_NextActionMultiBanco value)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (wechatPayRedirect != null) {
-      return wechatPayRedirect(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NextActionWeChatRedirectImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$NextActionOxxoToJson(this, );
 }
 
-abstract class _NextActionWeChatRedirect implements NextAction {
-  const factory _NextActionWeChatRedirect({final String? redirectUrl}) =
-      _$NextActionWeChatRedirectImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionOxxo&&(identical(other.expiration, expiration) || other.expiration == expiration)&&(identical(other.voucherURL, voucherURL) || other.voucherURL == voucherURL)&&(identical(other.voucherNumber, voucherNumber) || other.voucherNumber == voucherNumber));
+}
 
-  factory _NextActionWeChatRedirect.fromJson(Map<String, dynamic> json) =
-      _$NextActionWeChatRedirectImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,expiration,voucherURL,voucherNumber);
 
-  /// Url to the Qr code.
-  String? get redirectUrl;
+@override
+String toString() {
+  return 'NextAction.displayOxxoDetails(expiration: $expiration, voucherURL: $voucherURL, voucherNumber: $voucherNumber)';
+}
 
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NextActionWeChatRedirectImplCopyWith<_$NextActionWeChatRedirectImpl>
-      get copyWith => throw _privateConstructorUsedError;
+
 }
 
 /// @nodoc
-abstract class _$$NextActionMicroDepositsImplCopyWith<$Res> {
-  factory _$$NextActionMicroDepositsImplCopyWith(
-          _$NextActionMicroDepositsImpl value,
-          $Res Function(_$NextActionMicroDepositsImpl) then) =
-      __$$NextActionMicroDepositsImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {String? arrivalDate, String? redirectUrl, String? microdepositType});
+abstract mixin class _$NextActionOxxoCopyWith<$Res> implements $NextActionCopyWith<$Res> {
+  factory _$NextActionOxxoCopyWith(_NextActionOxxo value, $Res Function(_NextActionOxxo) _then) = __$NextActionOxxoCopyWithImpl;
+@useResult
+$Res call({
+ int? expiration, String? voucherURL, String? voucherNumber
+});
+
+
+
+
+}
+/// @nodoc
+class __$NextActionOxxoCopyWithImpl<$Res>
+    implements _$NextActionOxxoCopyWith<$Res> {
+  __$NextActionOxxoCopyWithImpl(this._self, this._then);
+
+  final _NextActionOxxo _self;
+  final $Res Function(_NextActionOxxo) _then;
+
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? expiration = freezed,Object? voucherURL = freezed,Object? voucherNumber = freezed,}) {
+  return _then(_NextActionOxxo(
+expiration: freezed == expiration ? _self.expiration : expiration // ignore: cast_nullable_to_non_nullable
+as int?,voucherURL: freezed == voucherURL ? _self.voucherURL : voucherURL // ignore: cast_nullable_to_non_nullable
+as String?,voucherNumber: freezed == voucherNumber ? _self.voucherNumber : voucherNumber // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$NextActionMicroDepositsImplCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res, _$NextActionMicroDepositsImpl>
-    implements _$$NextActionMicroDepositsImplCopyWith<$Res> {
-  __$$NextActionMicroDepositsImplCopyWithImpl(
-      _$NextActionMicroDepositsImpl _value,
-      $Res Function(_$NextActionMicroDepositsImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? arrivalDate = freezed,
-    Object? redirectUrl = freezed,
-    Object? microdepositType = freezed,
-  }) {
-    return _then(_$NextActionMicroDepositsImpl(
-      arrivalDate: freezed == arrivalDate
-          ? _value.arrivalDate
-          : arrivalDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      redirectUrl: freezed == redirectUrl
-          ? _value.redirectUrl
-          : redirectUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      microdepositType: freezed == microdepositType
-          ? _value.microdepositType
-          : microdepositType // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$NextActionMicroDepositsImpl implements _NextActionMicroDeposits {
-  const _$NextActionMicroDepositsImpl(
-      {this.arrivalDate,
-      this.redirectUrl,
-      this.microdepositType,
-      final String? $type})
-      : $type = $type ?? 'verifyWithMicrodeposits';
+class _NextActionWeChatRedirect implements NextAction {
+  const _NextActionWeChatRedirect({this.redirectUrl, final  String? $type}): $type = $type ?? 'weChatRedirect';
+  factory _NextActionWeChatRedirect.fromJson(Map<String, dynamic> json) => _$NextActionWeChatRedirectFromJson(json);
 
-  factory _$NextActionMicroDepositsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NextActionMicroDepositsImplFromJson(json);
+/// Url to the Qr code.
+ final  String? redirectUrl;
 
-  /// The timestamp of when the microdeposits are expended to land
-  @override
-  final String? arrivalDate;
+@JsonKey(name: 'type')
+final String $type;
 
-  /// The URL for the hosted verification page.
-  @override
-  final String? redirectUrl;
 
-  /// The type of the microdeposit sent to the customer.
-  @override
-  final String? microdepositType;
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$NextActionWeChatRedirectCopyWith<_NextActionWeChatRedirect> get copyWith => __$NextActionWeChatRedirectCopyWithImpl<_NextActionWeChatRedirect>(this, _$identity);
 
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'NextAction.verifyWithMicroDeposits(arrivalDate: $arrivalDate, redirectUrl: $redirectUrl, microdepositType: $microdepositType)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NextActionMicroDepositsImpl &&
-            (identical(other.arrivalDate, arrivalDate) ||
-                other.arrivalDate == arrivalDate) &&
-            (identical(other.redirectUrl, redirectUrl) ||
-                other.redirectUrl == redirectUrl) &&
-            (identical(other.microdepositType, microdepositType) ||
-                other.microdepositType == microdepositType));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, arrivalDate, redirectUrl, microdepositType);
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NextActionMicroDepositsImplCopyWith<_$NextActionMicroDepositsImpl>
-      get copyWith => __$$NextActionMicroDepositsImplCopyWithImpl<
-          _$NextActionMicroDepositsImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? redirectUrl) redirectToUrl,
-    required TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)
-        displayOxxoDetails,
-    required TResult Function(String? redirectUrl) wechatPayRedirect,
-    required TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)
-        verifyWithMicroDeposits,
-    required TResult Function(String? voucherURL) multibanco,
-  }) {
-    return verifyWithMicroDeposits(arrivalDate, redirectUrl, microdepositType);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? redirectUrl)? redirectToUrl,
-    TResult? Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult? Function(String? redirectUrl)? wechatPayRedirect,
-    TResult? Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult? Function(String? voucherURL)? multibanco,
-  }) {
-    return verifyWithMicroDeposits?.call(
-        arrivalDate, redirectUrl, microdepositType);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult Function(String? voucherURL)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (verifyWithMicroDeposits != null) {
-      return verifyWithMicroDeposits(
-          arrivalDate, redirectUrl, microdepositType);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NextActionRedirect value) redirectToUrl,
-    required TResult Function(_NextActionOxxo value) displayOxxoDetails,
-    required TResult Function(_NextActionWeChatRedirect value)
-        wechatPayRedirect,
-    required TResult Function(_NextActionMicroDeposits value)
-        verifyWithMicroDeposits,
-    required TResult Function(_NextActionMultiBanco value) multibanco,
-  }) {
-    return verifyWithMicroDeposits(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NextActionRedirect value)? redirectToUrl,
-    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult? Function(_NextActionMultiBanco value)? multibanco,
-  }) {
-    return verifyWithMicroDeposits?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult Function(_NextActionMultiBanco value)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (verifyWithMicroDeposits != null) {
-      return verifyWithMicroDeposits(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NextActionMicroDepositsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$NextActionWeChatRedirectToJson(this, );
 }
 
-abstract class _NextActionMicroDeposits implements NextAction {
-  const factory _NextActionMicroDeposits(
-      {final String? arrivalDate,
-      final String? redirectUrl,
-      final String? microdepositType}) = _$NextActionMicroDepositsImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionWeChatRedirect&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl));
+}
 
-  factory _NextActionMicroDeposits.fromJson(Map<String, dynamic> json) =
-      _$NextActionMicroDepositsImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,redirectUrl);
 
-  /// The timestamp of when the microdeposits are expended to land
-  String? get arrivalDate;
+@override
+String toString() {
+  return 'NextAction.wechatPayRedirect(redirectUrl: $redirectUrl)';
+}
 
-  /// The URL for the hosted verification page.
-  String? get redirectUrl;
 
-  /// The type of the microdeposit sent to the customer.
-  String? get microdepositType;
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NextActionMicroDepositsImplCopyWith<_$NextActionMicroDepositsImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NextActionMultiBancoImplCopyWith<$Res> {
-  factory _$$NextActionMultiBancoImplCopyWith(_$NextActionMultiBancoImpl value,
-          $Res Function(_$NextActionMultiBancoImpl) then) =
-      __$$NextActionMultiBancoImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? voucherURL});
+abstract mixin class _$NextActionWeChatRedirectCopyWith<$Res> implements $NextActionCopyWith<$Res> {
+  factory _$NextActionWeChatRedirectCopyWith(_NextActionWeChatRedirect value, $Res Function(_NextActionWeChatRedirect) _then) = __$NextActionWeChatRedirectCopyWithImpl;
+@useResult
+$Res call({
+ String? redirectUrl
+});
+
+
+
+
+}
+/// @nodoc
+class __$NextActionWeChatRedirectCopyWithImpl<$Res>
+    implements _$NextActionWeChatRedirectCopyWith<$Res> {
+  __$NextActionWeChatRedirectCopyWithImpl(this._self, this._then);
+
+  final _NextActionWeChatRedirect _self;
+  final $Res Function(_NextActionWeChatRedirect) _then;
+
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? redirectUrl = freezed,}) {
+  return _then(_NextActionWeChatRedirect(
+redirectUrl: freezed == redirectUrl ? _self.redirectUrl : redirectUrl // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$NextActionMultiBancoImplCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res, _$NextActionMultiBancoImpl>
-    implements _$$NextActionMultiBancoImplCopyWith<$Res> {
-  __$$NextActionMultiBancoImplCopyWithImpl(_$NextActionMultiBancoImpl _value,
-      $Res Function(_$NextActionMultiBancoImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? voucherURL = freezed,
-  }) {
-    return _then(_$NextActionMultiBancoImpl(
-      voucherURL: freezed == voucherURL
-          ? _value.voucherURL
-          : voucherURL // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$NextActionMultiBancoImpl implements _NextActionMultiBanco {
-  const _$NextActionMultiBancoImpl({this.voucherURL, final String? $type})
-      : $type = $type ?? 'multibanco';
+class _NextActionMicroDeposits implements NextAction {
+  const _NextActionMicroDeposits({this.arrivalDate, this.redirectUrl, this.microdepositType, final  String? $type}): $type = $type ?? 'verifyWithMicrodeposits';
+  factory _NextActionMicroDeposits.fromJson(Map<String, dynamic> json) => _$NextActionMicroDepositsFromJson(json);
 
-  factory _$NextActionMultiBancoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NextActionMultiBancoImplFromJson(json);
+/// The timestamp of when the microdeposits are expended to land
+ final  String? arrivalDate;
+/// The URL for the hosted verification page.
+ final  String? redirectUrl;
+/// The type of the microdeposit sent to the customer.
+ final  String? microdepositType;
 
-  /// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.
-  @override
-  final String? voucherURL;
+@JsonKey(name: 'type')
+final String $type;
 
-  @JsonKey(name: 'type')
-  final String $type;
 
-  @override
-  String toString() {
-    return 'NextAction.multibanco(voucherURL: $voucherURL)';
-  }
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$NextActionMicroDepositsCopyWith<_NextActionMicroDeposits> get copyWith => __$NextActionMicroDepositsCopyWithImpl<_NextActionMicroDeposits>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NextActionMultiBancoImpl &&
-            (identical(other.voucherURL, voucherURL) ||
-                other.voucherURL == voucherURL));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, voucherURL);
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NextActionMultiBancoImplCopyWith<_$NextActionMultiBancoImpl>
-      get copyWith =>
-          __$$NextActionMultiBancoImplCopyWithImpl<_$NextActionMultiBancoImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? redirectUrl) redirectToUrl,
-    required TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)
-        displayOxxoDetails,
-    required TResult Function(String? redirectUrl) wechatPayRedirect,
-    required TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)
-        verifyWithMicroDeposits,
-    required TResult Function(String? voucherURL) multibanco,
-  }) {
-    return multibanco(voucherURL);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? redirectUrl)? redirectToUrl,
-    TResult? Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult? Function(String? redirectUrl)? wechatPayRedirect,
-    TResult? Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult? Function(String? voucherURL)? multibanco,
-  }) {
-    return multibanco?.call(voucherURL);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
-            int? expiration, String? voucherURL, String? voucherNumber)?
-        displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
-            String? arrivalDate, String? redirectUrl, String? microdepositType)?
-        verifyWithMicroDeposits,
-    TResult Function(String? voucherURL)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (multibanco != null) {
-      return multibanco(voucherURL);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NextActionRedirect value) redirectToUrl,
-    required TResult Function(_NextActionOxxo value) displayOxxoDetails,
-    required TResult Function(_NextActionWeChatRedirect value)
-        wechatPayRedirect,
-    required TResult Function(_NextActionMicroDeposits value)
-        verifyWithMicroDeposits,
-    required TResult Function(_NextActionMultiBanco value) multibanco,
-  }) {
-    return multibanco(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NextActionRedirect value)? redirectToUrl,
-    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult? Function(_NextActionMultiBanco value)? multibanco,
-  }) {
-    return multibanco?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
-    TResult Function(_NextActionMultiBanco value)? multibanco,
-    required TResult orElse(),
-  }) {
-    if (multibanco != null) {
-      return multibanco(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NextActionMultiBancoImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$NextActionMicroDepositsToJson(this, );
 }
 
-abstract class _NextActionMultiBanco implements NextAction {
-  const factory _NextActionMultiBanco({final String? voucherURL}) =
-      _$NextActionMultiBancoImpl;
-
-  factory _NextActionMultiBanco.fromJson(Map<String, dynamic> json) =
-      _$NextActionMultiBancoImpl.fromJson;
-
-  /// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.
-  String? get voucherURL;
-
-  /// Create a copy of NextAction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NextActionMultiBancoImplCopyWith<_$NextActionMultiBancoImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionMicroDeposits&&(identical(other.arrivalDate, arrivalDate) || other.arrivalDate == arrivalDate)&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl)&&(identical(other.microdepositType, microdepositType) || other.microdepositType == microdepositType));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,arrivalDate,redirectUrl,microdepositType);
+
+@override
+String toString() {
+  return 'NextAction.verifyWithMicroDeposits(arrivalDate: $arrivalDate, redirectUrl: $redirectUrl, microdepositType: $microdepositType)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$NextActionMicroDepositsCopyWith<$Res> implements $NextActionCopyWith<$Res> {
+  factory _$NextActionMicroDepositsCopyWith(_NextActionMicroDeposits value, $Res Function(_NextActionMicroDeposits) _then) = __$NextActionMicroDepositsCopyWithImpl;
+@useResult
+$Res call({
+ String? arrivalDate, String? redirectUrl, String? microdepositType
+});
+
+
+
+
+}
+/// @nodoc
+class __$NextActionMicroDepositsCopyWithImpl<$Res>
+    implements _$NextActionMicroDepositsCopyWith<$Res> {
+  __$NextActionMicroDepositsCopyWithImpl(this._self, this._then);
+
+  final _NextActionMicroDeposits _self;
+  final $Res Function(_NextActionMicroDeposits) _then;
+
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? arrivalDate = freezed,Object? redirectUrl = freezed,Object? microdepositType = freezed,}) {
+  return _then(_NextActionMicroDeposits(
+arrivalDate: freezed == arrivalDate ? _self.arrivalDate : arrivalDate // ignore: cast_nullable_to_non_nullable
+as String?,redirectUrl: freezed == redirectUrl ? _self.redirectUrl : redirectUrl // ignore: cast_nullable_to_non_nullable
+as String?,microdepositType: freezed == microdepositType ? _self.microdepositType : microdepositType // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _NextActionMultiBanco implements NextAction {
+  const _NextActionMultiBanco({this.voucherURL, final  String? $type}): $type = $type ?? 'multibanco';
+  factory _NextActionMultiBanco.fromJson(Map<String, dynamic> json) => _$NextActionMultiBancoFromJson(json);
+
+/// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.
+ final  String? voucherURL;
+
+@JsonKey(name: 'type')
+final String $type;
+
+
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$NextActionMultiBancoCopyWith<_NextActionMultiBanco> get copyWith => __$NextActionMultiBancoCopyWithImpl<_NextActionMultiBanco>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$NextActionMultiBancoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionMultiBanco&&(identical(other.voucherURL, voucherURL) || other.voucherURL == voucherURL));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,voucherURL);
+
+@override
+String toString() {
+  return 'NextAction.multibanco(voucherURL: $voucherURL)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$NextActionMultiBancoCopyWith<$Res> implements $NextActionCopyWith<$Res> {
+  factory _$NextActionMultiBancoCopyWith(_NextActionMultiBanco value, $Res Function(_NextActionMultiBanco) _then) = __$NextActionMultiBancoCopyWithImpl;
+@useResult
+$Res call({
+ String? voucherURL
+});
+
+
+
+
+}
+/// @nodoc
+class __$NextActionMultiBancoCopyWithImpl<$Res>
+    implements _$NextActionMultiBancoCopyWith<$Res> {
+  __$NextActionMultiBancoCopyWithImpl(this._self, this._then);
+
+  final _NextActionMultiBanco _self;
+  final $Res Function(_NextActionMultiBanco) _then;
+
+/// Create a copy of NextAction
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? voucherURL = freezed,}) {
+  return _then(_NextActionMultiBanco(
+voucherURL: freezed == voucherURL ? _self.voucherURL : voucherURL // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

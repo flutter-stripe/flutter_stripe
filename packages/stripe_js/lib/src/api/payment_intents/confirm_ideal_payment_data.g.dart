@@ -6,35 +6,30 @@ part of 'confirm_ideal_payment_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmIdealPaymentDataImpl _$$ConfirmIdealPaymentDataImplFromJson(
-        Map json) =>
-    _$ConfirmIdealPaymentDataImpl(
+_ConfirmIdealPaymentData _$ConfirmIdealPaymentDataFromJson(Map json) =>
+    _ConfirmIdealPaymentData(
       paymentMethod: json['payment_method'] == null
           ? null
           : IdealPaymentMethodDetails.fromJson(
-              Map<String, dynamic>.from(json['payment_method'] as Map)),
+              Map<String, dynamic>.from(json['payment_method'] as Map),
+            ),
       returnUrl: json['return_url'] as String?,
       setupFutureUsage: $enumDecodeNullable(
-          _$PaymentIntentSetupFutureUsageEnumMap, json['setup_future_usage']),
+        _$PaymentIntentSetupFutureUsageEnumMap,
+        json['setup_future_usage'],
+      ),
     );
 
-Map<String, dynamic> _$$ConfirmIdealPaymentDataImplToJson(
-    _$ConfirmIdealPaymentDataImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('payment_method',
-      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
-  writeNotNull('return_url', instance.returnUrl);
-  writeNotNull('setup_future_usage',
-      _$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]);
-  return val;
-}
+Map<String, dynamic> _$ConfirmIdealPaymentDataToJson(
+  _ConfirmIdealPaymentData instance,
+) => <String, dynamic>{
+  'payment_method': ?PaymentMethodDetails.toJsonConverter(
+    instance.paymentMethod,
+  ),
+  'return_url': ?instance.returnUrl,
+  'setup_future_usage':
+      ?_$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage],
+};
 
 const _$PaymentIntentSetupFutureUsageEnumMap = {
   PaymentIntentSetupFutureUsage.onSession: 'on_session',

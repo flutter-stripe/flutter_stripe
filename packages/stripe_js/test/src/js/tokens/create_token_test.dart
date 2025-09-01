@@ -2,7 +2,6 @@
 
 @TestOn('browser')
 @Tags(["browser"])
-
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import 'package:test/test.dart';
@@ -69,7 +68,7 @@ void main() {
           equals({
             'type': 'validation_error',
             'code': 'incomplete_number',
-            'message': 'Your card number is incomplete.'
+            'message': 'Your card number is incomplete.',
           }),
         );
       });
@@ -78,22 +77,25 @@ void main() {
     group('createBankAccountToken', () {
       test('can be called', () async {
         expect(
-          stripe.createBankAccountToken(CreateTokenBankAccountData(
-            country: 'US',
-            currency: 'USD',
-            accountNumber: '22',
-          )),
+          stripe.createBankAccountToken(
+            CreateTokenBankAccountData(
+              country: 'US',
+              currency: 'USD',
+              accountNumber: '22',
+            ),
+          ),
           completes,
         );
       });
 
       test('returns  when invalid data', () async {
-        final response =
-            await stripe.createBankAccountToken(CreateTokenBankAccountData(
-          country: 'invalid',
-          currency: 'USD',
-          accountNumber: '22',
-        ));
+        final response = await stripe.createBankAccountToken(
+          CreateTokenBankAccountData(
+            country: 'invalid',
+            currency: 'USD',
+            accountNumber: '22',
+          ),
+        );
         expect(
           response.error?.toJson(),
           equals({
@@ -101,7 +103,7 @@ void main() {
             'code': 'bank_account_unusable',
             'param': 'bank_account[country]',
             'message':
-                'Country INVALID not supported (you should use the 2-letter country code, e.g. US).'
+                'Country INVALID not supported (you should use the 2-letter country code, e.g. US).',
           }),
         );
       });
@@ -119,10 +121,7 @@ void main() {
         final response = await stripe.createPIIToken(
           CreateTokenPIIData(personalIdNumber: 'a'),
         );
-        expect(
-          response.token?.id,
-          startsWith('pii_'),
-        );
+        expect(response.token?.id, startsWith('pii_'));
       });
     });
   });

@@ -16,13 +16,14 @@ extension ExtensionCreatePaymentMethod on Stripe {
   ///
   /// https://stripe.com/docs/js/payment_methods/create_payment_method
   Future<PaymentMethodResponse> createPaymentMethod(
-      CreatePaymentMethodData data) {
+    CreatePaymentMethodData data,
+  ) {
     /// with multiple constructors freezed will add a `runtimeType` field to the
     /// JSON which is not compatible with the Stripe API so we remove it manually
     final jsData = (data.toJson()..remove('runtimeType')).jsify();
-    return _createPaymentMethod(jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _createPaymentMethod(
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('createPaymentMethod')

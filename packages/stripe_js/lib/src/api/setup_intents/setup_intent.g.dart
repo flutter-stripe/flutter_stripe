@@ -6,84 +6,76 @@ part of 'setup_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SetupIntentImpl _$$SetupIntentImplFromJson(Map json) => _$SetupIntentImpl(
-      id: json['id'] as String,
-      object: json['object'] as String? ?? "setup_intent",
-      application: json['application'] as String?,
-      attachToSelf: json['attach_to_self'] as String?,
-      cancellationReason: $enumDecodeNullable(
-          _$SetupIntentCancellationReasonEnumMap, json['cancellation_reason']),
-      clientSecret: json['client_secret'] as String,
-      created: (json['created'] as num?)?.toInt(),
-      customer: json['customer'] as String?,
-      description: json['description'] as String?,
-      flowDirections: (json['flow_directions'] as List<dynamic>?)
-          ?.map((e) => $enumDecode(_$SetupIntentFlowDirectionsEnumMap, e))
-          .toList(),
-      lastSetupError: json['last_setup_error'],
-      latestAttempt: json['latest_attempt'] as String?,
-      livemode: json['livemode'] as bool? ?? true,
-      mandate: json['mandate'] as String?,
-      metadata: (json['metadata'] as Map?)?.map(
-            (k, e) => MapEntry(k as String, e),
-          ) ??
-          const {},
-      nextAction: json['next_action'],
-      onBehalfOf: json['on_behalf_of'] as String?,
-      paymentMethod: json['payment_method'] as String?,
-      paymentMethodOptions: json['payment_method_options'],
-      paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
-              .toList() ??
-          const [],
-      singleUseMandate: json['single_use_mandate'] as String?,
-      status: $enumDecode(_$SetupIntentsStatusEnumMap, json['status']),
-      usage: $enumDecodeNullable(_$SetupIntentUsageEnumMap, json['usage']) ??
-          SetupIntentUsage.offSession,
-    );
+_SetupIntent _$SetupIntentFromJson(Map json) => _SetupIntent(
+  id: json['id'] as String,
+  object: json['object'] as String? ?? "setup_intent",
+  application: json['application'] as String?,
+  attachToSelf: json['attach_to_self'] as String?,
+  cancellationReason: $enumDecodeNullable(
+    _$SetupIntentCancellationReasonEnumMap,
+    json['cancellation_reason'],
+  ),
+  clientSecret: json['client_secret'] as String,
+  created: (json['created'] as num?)?.toInt(),
+  customer: json['customer'] as String?,
+  description: json['description'] as String?,
+  flowDirections: (json['flow_directions'] as List<dynamic>?)
+      ?.map((e) => $enumDecode(_$SetupIntentFlowDirectionsEnumMap, e))
+      .toList(),
+  lastSetupError: json['last_setup_error'],
+  latestAttempt: json['latest_attempt'] as String?,
+  livemode: json['livemode'] as bool? ?? true,
+  mandate: json['mandate'] as String?,
+  metadata:
+      (json['metadata'] as Map?)?.map((k, e) => MapEntry(k as String, e)) ??
+      const {},
+  nextAction: json['next_action'],
+  onBehalfOf: json['on_behalf_of'] as String?,
+  paymentMethod: json['payment_method'] as String?,
+  paymentMethodOptions: json['payment_method_options'],
+  paymentMethodTypes:
+      (json['payment_method_types'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
+          .toList() ??
+      const [],
+  singleUseMandate: json['single_use_mandate'] as String?,
+  status: $enumDecode(_$SetupIntentsStatusEnumMap, json['status']),
+  usage:
+      $enumDecodeNullable(_$SetupIntentUsageEnumMap, json['usage']) ??
+      SetupIntentUsage.offSession,
+);
 
-Map<String, dynamic> _$$SetupIntentImplToJson(_$SetupIntentImpl instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'object': instance.object,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('application', instance.application);
-  writeNotNull('attach_to_self', instance.attachToSelf);
-  writeNotNull('cancellation_reason',
-      _$SetupIntentCancellationReasonEnumMap[instance.cancellationReason]);
-  val['client_secret'] = instance.clientSecret;
-  writeNotNull('created', instance.created);
-  writeNotNull('customer', instance.customer);
-  writeNotNull('description', instance.description);
-  writeNotNull(
-      'flow_directions',
-      instance.flowDirections
+Map<String, dynamic> _$SetupIntentToJson(_SetupIntent instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'object': instance.object,
+      'application': ?instance.application,
+      'attach_to_self': ?instance.attachToSelf,
+      'cancellation_reason':
+          ?_$SetupIntentCancellationReasonEnumMap[instance.cancellationReason],
+      'client_secret': instance.clientSecret,
+      'created': ?instance.created,
+      'customer': ?instance.customer,
+      'description': ?instance.description,
+      'flow_directions': ?instance.flowDirections
           ?.map((e) => _$SetupIntentFlowDirectionsEnumMap[e]!)
-          .toList());
-  writeNotNull('last_setup_error', instance.lastSetupError);
-  writeNotNull('latest_attempt', instance.latestAttempt);
-  val['livemode'] = instance.livemode;
-  writeNotNull('mandate', instance.mandate);
-  val['metadata'] = instance.metadata;
-  writeNotNull('next_action', instance.nextAction);
-  writeNotNull('on_behalf_of', instance.onBehalfOf);
-  writeNotNull('payment_method', instance.paymentMethod);
-  writeNotNull('payment_method_options', instance.paymentMethodOptions);
-  val['payment_method_types'] = instance.paymentMethodTypes
-      .map((e) => _$PaymentMethodTypeEnumMap[e]!)
-      .toList();
-  writeNotNull('single_use_mandate', instance.singleUseMandate);
-  val['status'] = _$SetupIntentsStatusEnumMap[instance.status]!;
-  val['usage'] = _$SetupIntentUsageEnumMap[instance.usage]!;
-  return val;
-}
+          .toList(),
+      'last_setup_error': ?instance.lastSetupError,
+      'latest_attempt': ?instance.latestAttempt,
+      'livemode': instance.livemode,
+      'mandate': ?instance.mandate,
+      'metadata': instance.metadata,
+      'next_action': ?instance.nextAction,
+      'on_behalf_of': ?instance.onBehalfOf,
+      'payment_method': ?instance.paymentMethod,
+      'payment_method_options': ?instance.paymentMethodOptions,
+      'payment_method_types': instance.paymentMethodTypes
+          .map((e) => _$PaymentMethodTypeEnumMap[e]!)
+          .toList(),
+      'single_use_mandate': ?instance.singleUseMandate,
+      'status': _$SetupIntentsStatusEnumMap[instance.status]!,
+      'usage': _$SetupIntentUsageEnumMap[instance.usage]!,
+    };
 
 const _$SetupIntentCancellationReasonEnumMap = {
   SetupIntentCancellationReason.duplicate: 'duplicate',
@@ -125,7 +117,6 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.pix: 'pix',
   PaymentMethodType.promptpay: 'promptpay',
   PaymentMethodType.sepaDebit: 'sepa_debit',
-  PaymentMethodType.sofort: 'sofort',
   PaymentMethodType.usBankAccount: 'us_bank_account',
   PaymentMethodType.wechatPay: 'wechat_pay',
   PaymentMethodType.unknown: 'unknown',

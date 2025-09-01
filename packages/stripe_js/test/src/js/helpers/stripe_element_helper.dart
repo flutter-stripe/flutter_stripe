@@ -11,11 +11,9 @@ extension type JSIFrameElement(JSObject element) {
 extension WaitStripeElement on StripeElement {
   Future<void> waitForReady() {
     final completer = Completer();
-    onReady(
-      (event) {
-        completer.complete();
-      },
-    );
+    onReady((event) {
+      completer.complete();
+    });
     return completer.future;
   }
 }
@@ -34,24 +32,28 @@ extension ElementWaitFor on web.Element {
     // ignore: prefer_typing_uninitialized_variables
     late final mutationObserver;
     mutationObserver = web.MutationObserver(
-        (JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
-      web.console.log("$innerHTML".toJS);
-      final element = querySelector(selectors);
-      if (element != null) {
-        web.console.log("found".toJS);
-        mutationObserver.disconnect();
-        completer.complete(element);
-      }
-    }.toJS);
+      (JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
+        web.console.log("$innerHTML".toJS);
+        final element = querySelector(selectors);
+        if (element != null) {
+          web.console.log("found".toJS);
+          mutationObserver.disconnect();
+          completer.complete(element);
+        }
+      }.toJS,
+    );
     web.console.log("searching".toJS);
 
     mutationObserver.observe(this, childList: true, subtree: true);
     append(web.HTMLDivElement());
     await Future.delayed(Duration(seconds: 2));
     append(web.HTMLDivElement());
-    return completer.future.timeout(timeout, onTimeout: () {
-      mutationObserver.disconnect();
-      throw TimeoutException('Could not find element $selectors');
-    });
+    return completer.future.timeout(
+      timeout,
+      onTimeout: () {
+        mutationObserver.disconnect();
+        throw TimeoutException('Could not find element $selectors');
+      },
+    );
   }
 }

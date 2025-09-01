@@ -29,16 +29,17 @@ mixin CardFieldContext {
   }
 
   void updateCardDetails(
-      CardFieldInputDetails value, CardEditController controller) {
+    CardFieldInputDetails value,
+    CardEditController controller,
+  ) {
     controller._updateDetails(value);
   }
 }
 
 class CardEditController extends ChangeNotifier {
   CardEditController({CardFieldInputDetails? initialDetails})
-      : initalDetails = initialDetails,
-        _details =
-            initialDetails ?? const CardFieldInputDetails(complete: false);
+    : initalDetails = initialDetails,
+      _details = initialDetails ?? const CardFieldInputDetails(complete: false);
 
   final CardFieldInputDetails? initalDetails;
   CardFieldInputDetails _details;
@@ -76,7 +77,9 @@ class CardEditController extends ChangeNotifier {
   CardFieldContext? _context;
   CardFieldContext get context {
     assert(
-        _context != null, 'CardEditController is not attached to any CardView');
+      _context != null,
+      'CardEditController is not attached to any CardView',
+    );
     return _context!;
   }
 }

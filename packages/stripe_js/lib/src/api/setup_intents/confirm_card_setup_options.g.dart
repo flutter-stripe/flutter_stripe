@@ -6,22 +6,11 @@ part of 'confirm_card_setup_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmCardSetupOptionsImpl _$$ConfirmCardSetupOptionsImplFromJson(
-        Map json) =>
-    _$ConfirmCardSetupOptionsImpl(
+_ConfirmCardSetupOptions _$ConfirmCardSetupOptionsFromJson(Map json) =>
+    _ConfirmCardSetupOptions(
       handleActions: json['handleActions'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$ConfirmCardSetupOptionsImplToJson(
-    _$ConfirmCardSetupOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('handleActions', instance.handleActions);
-  return val;
-}
+Map<String, dynamic> _$ConfirmCardSetupOptionsToJson(
+  _ConfirmCardSetupOptions instance,
+) => <String, dynamic>{'handleActions': ?instance.handleActions};

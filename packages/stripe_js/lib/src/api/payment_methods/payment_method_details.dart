@@ -38,7 +38,7 @@ const paymentMethodDetailJsonKey = JsonKey(
 );
 
 @Freezed(unionKey: 'type')
-class CardPaymentMethodDetails
+sealed class CardPaymentMethodDetails
     with _$CardPaymentMethodDetails
     implements PaymentMethodDetails {
   @FreezedUnionValue('card')
@@ -78,13 +78,13 @@ class CardPaymentMethodDetails
 }
 
 @Freezed(unionKey: 'type')
-class IdealPaymentMethodDetails
+abstract class IdealPaymentMethodDetails
     with _$IdealPaymentMethodDetails
     implements PaymentMethodDetails {
   @FreezedUnionValue('ideal')
   @Implements<IdPaymentMethodDetails>()
   const factory IdealPaymentMethodDetails.id(String id) =
-      _IdIdealPaymentMethodDetails;
+      _IdIdealPaymentMethodDetailsIdOnly;
 
   /// Use stripe.confirmCardPayment with payment data from an Element by
   /// passing a card or cardNumber Element as payment_method[card] in the
@@ -99,7 +99,7 @@ class IdealPaymentMethodDetails
 
     /// The billing_details associated with the card.
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
-  }) = _IdealPaymentMethodDetails;
+  }) = _IdealPaymentMethodDetailsWithBilling;
 
   /// If you already know the customer’s bank or want to collect it yourself,
   /// then you do not need to use the idealBank Element.
@@ -119,13 +119,13 @@ class IdealPaymentMethodDetails
 }
 
 @Freezed(unionKey: 'type')
-class P24PaymentMethodDetails
+abstract class P24PaymentMethodDetails
     with _$P24PaymentMethodDetails
     implements PaymentMethodDetails {
   @FreezedUnionValue('p24')
   @Implements<IdPaymentMethodDetails>()
   const factory P24PaymentMethodDetails.id(String id) =
-      _IdP24PaymentMethodDetails;
+      _IdP24PaymentMethodDetailsIdOnly;
 
   /// Use stripe.confirmCardPayment with payment data from an Element by
   /// passing a card or cardNumber Element as payment_method[card] in the
@@ -137,7 +137,7 @@ class P24PaymentMethodDetails
   const factory P24PaymentMethodDetails({
     /// The billing_details associated with the card.
     @JsonKey(name: "billing_details") required BillingDetails? billingDetails,
-  }) = _P24PaymentMethodDetails;
+  }) = _P24PaymentMethodDetailsWithBilling;
 
   factory P24PaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
       _$P24PaymentMethodDetailsFromJson(json);
@@ -145,7 +145,7 @@ class P24PaymentMethodDetails
 
 /// An object detailing the customer's iDEAL bank.
 @freezed
-class IdealBankData with _$IdealBankData {
+abstract class IdealBankData with _$IdealBankData {
   const factory IdealBankData({
     /// The customer's bank.
     String? bank,
@@ -156,11 +156,10 @@ class IdealBankData with _$IdealBankData {
 }
 
 @freezed
-class CardTokenPaymentMethod with _$CardTokenPaymentMethod {
+abstract class CardTokenPaymentMethod with _$CardTokenPaymentMethod {
   /// Config parameters for card payment method.
-  const factory CardTokenPaymentMethod({
-    required String token,
-  }) = _CardTokenPaymentMethod;
+  const factory CardTokenPaymentMethod({required String token}) =
+      _CardTokenPaymentMethod;
 
   factory CardTokenPaymentMethod.fromJson(Map<String, dynamic> json) =>
       _$CardTokenPaymentMethodFromJson(json);

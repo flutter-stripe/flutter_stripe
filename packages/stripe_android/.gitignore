@@ -4,4 +4,4 @@
 .packages
 .pub/
 
-build/
+./build/

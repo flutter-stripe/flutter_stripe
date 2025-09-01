@@ -4,10 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('CreateTokenCardData', () {
     test('expected default value', () {
-      expect(
-        CreateTokenCardData().toJson(),
-        {},
-      );
+      expect(CreateTokenCardData().toJson(), {});
     });
 
     test('parses correctly', () {

@@ -6,21 +6,9 @@ part of 'confirm_sepa_debit_setup_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmCardSetupDataImpl _$$ConfirmCardSetupDataImplFromJson(Map json) =>
-    _$ConfirmCardSetupDataImpl(
-      paymentMethod: json['payment_method'] as String?,
-    );
+_ConfirmCardSetupData _$ConfirmCardSetupDataFromJson(Map json) =>
+    _ConfirmCardSetupData(paymentMethod: json['payment_method'] as String?);
 
-Map<String, dynamic> _$$ConfirmCardSetupDataImplToJson(
-    _$ConfirmCardSetupDataImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('payment_method', instance.paymentMethod);
-  return val;
-}
+Map<String, dynamic> _$ConfirmCardSetupDataToJson(
+  _ConfirmCardSetupData instance,
+) => <String, dynamic>{'payment_method': ?instance.paymentMethod};

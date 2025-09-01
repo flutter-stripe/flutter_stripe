@@ -97,9 +97,6 @@ enum PaymentMethodType {
   @JsonValue("sepa_debit")
   sepaDebit,
 
-  /// Sofort is a bank redirect payment method used in Europe.
-  sofort,
-
   /// ACH Direct Debit is used to debit US bank accounts through the Automated Clearing House (ACH) payments system.
   @JsonValue("us_bank_account")
   usBankAccount,
@@ -108,5 +105,5 @@ enum PaymentMethodType {
   @JsonValue("wechat_pay")
   wechatPay,
 
-  unknown
+  unknown,
 }

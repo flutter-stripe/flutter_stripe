@@ -4,21 +4,13 @@ import 'package:test/test.dart';
 void main() {
   group('ConfirmAcssDebitPaymentData', () {
     test('expected default value', () {
-      expect(
-        ConfirmAcssDebitPaymentData().toJson(),
-        {},
-      );
+      expect(ConfirmAcssDebitPaymentData().toJson(), {});
     });
 
     test('parses correctly', () {
-      expect(
-        ConfirmAcssDebitPaymentData(
-          paymentMethod: 'id',
-        ).toJson(),
-        {
-          "payment_method": "id",
-        },
-      );
+      expect(ConfirmAcssDebitPaymentData(paymentMethod: 'id').toJson(), {
+        "payment_method": "id",
+      });
     });
   });
 }

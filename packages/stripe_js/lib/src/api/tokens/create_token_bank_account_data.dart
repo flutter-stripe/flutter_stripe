@@ -5,7 +5,7 @@ part 'create_token_bank_account_data.freezed.dart';
 part 'create_token_bank_account_data.g.dart';
 
 @freezed
-class CreateTokenBankAccountData with _$CreateTokenBankAccountData {
+abstract class CreateTokenBankAccountData with _$CreateTokenBankAccountData {
   const factory CreateTokenBankAccountData({
     required String country,
 

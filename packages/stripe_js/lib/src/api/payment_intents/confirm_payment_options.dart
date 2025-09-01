@@ -6,7 +6,7 @@ part 'confirm_payment_options.freezed.dart';
 part 'confirm_payment_options.g.dart';
 
 @freezed
-class ConfirmPaymentOptions with _$ConfirmPaymentOptions {
+abstract class ConfirmPaymentOptions with _$ConfirmPaymentOptions {
   const factory ConfirmPaymentOptions({
     /// The Elements instance that was used to create the Payment Element.
     @ElementsConverter() required Elements elements,
@@ -36,7 +36,7 @@ class ConfirmPaymentOptions with _$ConfirmPaymentOptions {
 }
 
 @freezed
-class ConfirmPaymentParams with _$ConfirmPaymentParams {
+abstract class ConfirmPaymentParams with _$ConfirmPaymentParams {
   const factory ConfirmPaymentParams({
     /// The url your customer will be directed to after they complete payment.
     // ignore: non_constant_identifier_names

@@ -5,7 +5,7 @@ part 'card_details.g.dart';
 
 /// Credit Card Details
 @freezed
-class CardDetails with _$CardDetails {
+abstract class CardDetails with _$CardDetails {
   @JsonSerializable(explicitToJson: true)
   factory CardDetails({
     String? number,

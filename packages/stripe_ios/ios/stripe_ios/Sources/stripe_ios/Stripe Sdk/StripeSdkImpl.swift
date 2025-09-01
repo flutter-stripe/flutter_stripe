@@ -1,16 +1,16 @@
 import PassKit
-import Stripe
-import StripePaymentSheet
+@_spi(DashboardOnly) @_spi(STP) import Stripe
+@_spi(EmbeddedPaymentElementPrivateBeta) import StripePaymentSheet
 import StripeFinancialConnections
 import Foundation
-#if canImport(stripe_objc)
-import stripe_objc
-#endif
 
-@objc(StripeSdk)
-class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
-    public var cardFieldView: CardFieldView? = nil
-    public var cardFormView: CardFormView? = nil
+@objc(StripeSdkImpl)
+public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
+    @objc public static let shared = StripeSdkImpl()
+
+    @objc public weak var emitter: StripeSdkEmitter? = nil
+    var cardFieldView: CardFieldView? = nil
+    var cardFormView: CardFormView? = nil
 
     var merchantIdentifier: String? = nil
 
@@ -62,26 +62,12 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     var setSelectedPaymentOptionCallback: (() -> Void)? = nil
     var fetchSelectedPaymentOptionCallback: ((CustomerPaymentOption?) -> Void)? = nil
     var setupIntentClientSecretForCustomerAttachCallback: ((String) -> Void)? = nil
+    var customPaymentMethodResultCallback: ((PaymentSheetResult) -> Void)?
 
-    var hasEventListeners = false
-    override func startObserving() {
-        hasEventListeners = true
-    }
-    override func stopObserving() {
-        hasEventListeners = false
-    }
+    var embeddedInstance: EmbeddedPaymentElement? = nil
+    lazy var embeddedInstanceDelegate = StripeSdkEmbeddedPaymentElementDelegate(sdkImpl: self)
 
-    override func supportedEvents() -> [String]! {
-        return ["onOrderTrackingCallback", "onConfirmHandlerCallback", "onCustomerAdapterFetchPaymentMethodsCallback", "onCustomerAdapterAttachPaymentMethodCallback",
-        "onCustomerAdapterDetachPaymentMethodCallback", "onCustomerAdapterSetSelectedPaymentOptionCallback", "onCustomerAdapterFetchSelectedPaymentOptionCallback",
-        "onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback", "onFinancialConnectionsEvent"]
-    }
-
-    @objc override static func requiresMainQueueSetup() -> Bool {
-        return false
-    }
-
-    @objc override func constantsToExport() -> [AnyHashable : Any] {
+    @objc public func getConstants() -> [AnyHashable : Any] {
         return [
             "API_VERSIONS": [
                 "CORE": STPAPIClient.apiVersion,
@@ -91,7 +77,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(initialise:resolver:rejecter:)
-    func initialise(params: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+    public func initialise(params: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         let publishableKey = params["publishableKey"] as! String
         let appInfo = params["appInfo"] as! NSDictionary
         let stripeAccountId = params["stripeAccountId"] as? String
@@ -109,6 +95,10 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
         StripeAPI.defaultPublishableKey = publishableKey
         STPAPIClient.shared.stripeAccount = stripeAccountId
 
+        if STPAPIClient.shared.publishableKeyIsUserKey {
+            STPAPIClient.shared.userKeyLiveMode = UserDefaults.standard.object(forKey: "stripe_userKeyLiveMode") as? Bool ?? true
+        }
+
         let name = appInfo["name"] as? String ?? ""
         let partnerId = appInfo["partnerId"] as? String ?? ""
         let version = appInfo["version"] as? String ?? ""
@@ -120,7 +110,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(initPaymentSheet:resolver:rejecter:)
-    func initPaymentSheet(params: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
+    public func initPaymentSheet(params: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
                           rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
         let (error, configuration) = buildPaymentSheetConfiguration(params: params)
         guard let configuration = configuration else {
@@ -132,7 +122,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(intentCreationCallback:resolver:rejecter:)
-    @MainActor func intentCreationCallback(result: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
+    @MainActor public func intentCreationCallback(result: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
                           rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
         guard let paymentSheetIntentCreationCallback = self.paymentSheetIntentCreationCallback else {
             resolve(Errors.createError(ErrorType.Failed, "No intent creation callback was set"))
@@ -141,23 +131,41 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
         if let clientSecret = result["clientSecret"] as? String {
             paymentSheetIntentCreationCallback(.success(clientSecret))
         } else {
-          struct ConfirmationError: Error, LocalizedError {
-            private var errorMessage: String
-            init(errorMessage: String) {
-              self.errorMessage = errorMessage
-            }
-            public var errorDescription: String? {
-              return errorMessage
-            }
-          }
           let errorParams = result["error"] as? NSDictionary
           let error = ConfirmationError.init(errorMessage: errorParams?["localizedMessage"] as? String ?? "An unknown error occurred.")
           paymentSheetIntentCreationCallback(.failure(error))
         }
     }
+    
+    @objc(customPaymentMethodResultCallback:resolver:rejecter:)
+    @MainActor public func customPaymentMethodResultCallback(result: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
+                          rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        guard let customPaymentMethodResultCallback = self.customPaymentMethodResultCallback else {
+            resolve(Errors.createError(ErrorType.Failed, "Internal error: no custom payment method callback"))
+            return
+        }
+
+        let status = result["status"] as? String ?? ""
+        let errorMessage = result["error"] as? String
+
+        switch status {
+        case "completed":
+            customPaymentMethodResultCallback(.completed)
+        case "canceled":
+            customPaymentMethodResultCallback(.canceled)
+        case "failed":
+            let error = ConfirmationError.init(errorMessage: errorMessage ?? "An unknown error occurred.")
+            customPaymentMethodResultCallback(.failed(error: error))
+        default:
+            let error = ConfirmationError.init(errorMessage: "Unknown custom payment method result status")
+            customPaymentMethodResultCallback(.failed(error: error))
+        }
+
+        resolve(NSNull())
+    }
 
     @objc(confirmPaymentSheetPayment:rejecter:)
-    func confirmPaymentSheetPayment(resolver resolve: @escaping RCTPromiseResolveBlock,
+    public func confirmPaymentSheetPayment(resolver resolve: @escaping RCTPromiseResolveBlock,
                                     rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
         DispatchQueue.main.async {
             if (self.paymentSheetFlowController != nil) {
@@ -179,14 +187,14 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(resetPaymentSheetCustomer:rejecter:)
-    func resetPaymentSheetCustomer(resolver resolve: @escaping RCTPromiseResolveBlock,
+    public func resetPaymentSheetCustomer(resolver resolve: @escaping RCTPromiseResolveBlock,
                                    rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
         PaymentSheet.resetCustomer()
         resolve(nil)
     }
 
     @objc(presentPaymentSheet:resolver:rejecter:)
-    func presentPaymentSheet(options: NSDictionary,
+    public func presentPaymentSheet(options: NSDictionary,
                              resolver resolve: @escaping RCTPromiseResolveBlock,
                              rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
         var paymentSheetViewController: UIViewController?
@@ -236,7 +244,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(createTokenForCVCUpdate:resolver:rejecter:)
-    func createTokenForCVCUpdate(cvc: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    public func createTokenForCVCUpdate(cvc: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
         guard let cvc = cvc else {
             resolve(Errors.createError(ErrorType.Failed, "You must provide CVC"))
             return;
@@ -253,7 +261,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(confirmSetupIntent:data:options:resolver:rejecter:)
-    func confirmSetupIntent (setupIntentClientSecret: String, params: NSDictionary,
+    public func confirmSetupIntent (setupIntentClientSecret: String, params: NSDictionary,
                              options: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
                              rejecter reject: @escaping RCTPromiseRejectBlock) {
         let paymentMethodData = params["paymentMethodData"] as? NSDictionary
@@ -321,7 +329,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(updatePlatformPaySheet:shippingMethods:errors:resolver:rejecter:)
-    func updatePlatformPaySheet(summaryItems: NSArray,
+    public func updatePlatformPaySheet(summaryItems: NSArray,
                              shippingMethods: NSArray,
                              errors: [NSDictionary],
                              resolver resolve: @escaping RCTPromiseResolveBlock,
@@ -368,13 +376,13 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(openApplePaySetup:rejecter:)
-    func openApplePaySetup(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+    public func openApplePaySetup(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         PKPassLibrary.init().openPaymentSetup()
         resolve([])
     }
 
     @objc(handleURLCallback:resolver:rejecter:)
-    func handleURLCallback(url: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    public func handleURLCallback(url: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
       guard let url = url else {
         resolve(false)
         return;
@@ -391,14 +399,14 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(isPlatformPaySupported:resolver:rejecter:)
-    func isPlatformPaySupported(params: NSDictionary,
+  public func isPlatformPaySupported(params: NSDictionary,
                                           resolver resolve: @escaping RCTPromiseResolveBlock,
                                           rejecter reject: @escaping RCTPromiseRejectBlock) {
         resolve(StripeAPI.deviceSupportsApplePay())
     }
 
     @objc(createPlatformPayPaymentMethod:usesDeprecatedTokenFlow:resolver:rejecter:)
-    func createPlatformPayPaymentMethod(params: NSDictionary,
+  public func createPlatformPayPaymentMethod(params: NSDictionary,
                                         usesDeprecatedTokenFlow: Bool,
                                           resolver resolve: @escaping RCTPromiseResolveBlock,
                                           rejecter reject: @escaping RCTPromiseRejectBlock) {
@@ -436,13 +444,13 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(dismissPlatformPay:rejecter:)
-    func dismissPlatformPay(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+  public func dismissPlatformPay(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         let didDismiss = maybeDismissApplePay()
         resolve(didDismiss)
     }
 
     @objc(confirmPlatformPay:params:isPaymentIntent:resolver:rejecter:)
-    func confirmPlatformPay(
+  public func confirmPlatformPay(
         clientSecret: String?,
         params: NSDictionary,
         isPaymentIntent: Bool,
@@ -487,7 +495,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(createPaymentMethod:options:resolver:rejecter:)
-    func createPaymentMethod(
+  public func createPaymentMethod(
         params: NSDictionary,
         options: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
@@ -529,7 +537,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(createToken:resolver:rejecter:)
-    func createToken(
+  public func createToken(
         params: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
@@ -636,7 +644,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(handleNextAction:returnURL:resolver:rejecter:)
-    func handleNextAction(
+  public func handleNextAction(
         paymentIntentClientSecret: String,
         returnURL: String?,
         resolver resolve: @escaping RCTPromiseResolveBlock,
@@ -668,7 +676,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(handleNextActionForSetup:returnURL:resolver:rejecter:)
-    func handleNextActionForSetup(
+    public func handleNextActionForSetup(
         setupIntentClientSecret: String,
         returnURL: String?,
         resolver resolve: @escaping RCTPromiseResolveBlock,
@@ -700,7 +708,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(collectBankAccount:clientSecret:params:resolver:rejecter:)
-    func collectBankAccount(
+  public func collectBankAccount(
         isPaymentIntent: Bool,
         clientSecret: NSString,
         params: NSDictionary,
@@ -736,13 +744,9 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
             connectionsReturnURL = nil
         }
 
-        var onEvent: ((FinancialConnectionsEvent) -> Void)? = nil
-
-        if hasEventListeners {
-            onEvent = { [weak self] event in
-              let mappedEvent = Mappers.financialConnectionsEventToMap(event)
-              self?.sendEvent(withName: "onFinancialConnectionsEvent", body: mappedEvent)
-            }
+        let onEvent = { [weak self] (event: FinancialConnectionsEvent) in
+            let mappedEvent = Mappers.financialConnectionsEventToMap(event)
+            self?.emitter?.emitOnFinancialConnectionsEvent(mappedEvent)
         }
 
         let style = STPBankAccountCollectorUserInterfaceStyle(from: params)
@@ -806,7 +810,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(confirmPayment:data:options:resolver:rejecter:)
-    func confirmPayment(
+  public func confirmPayment(
         paymentIntentClientSecret: String,
         params: NSDictionary?,
         options: NSDictionary,
@@ -897,7 +901,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(retrievePaymentIntent:resolver:rejecter:)
-    func retrievePaymentIntent(
+  public func retrievePaymentIntent(
         clientSecret: String,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
@@ -921,7 +925,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(retrieveSetupIntent:resolver:rejecter:)
-    func retrieveSetupIntent(
+  public func retrieveSetupIntent(
         clientSecret: String,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
@@ -945,7 +949,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(verifyMicrodeposits:clientSecret:params:resolver:rejecter:)
-    func verifyMicrodeposits(
+  public func verifyMicrodeposits(
         isPaymentIntent: Bool,
         clientSecret: NSString,
         params: NSDictionary,
@@ -1013,7 +1017,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(canAddCardToWallet:resolver:rejecter:)
-    func canAddCardToWallet(
+  public func canAddCardToWallet(
         params: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
@@ -1031,7 +1035,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(isCardInWallet:resolver:rejecter:)
-    func isCardInWallet(
+  public func isCardInWallet(
         params: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
@@ -1044,7 +1048,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(collectBankAccountToken:params:resolver:rejecter:)
-    func collectBankAccountToken(
+  public func collectBankAccountToken(
         clientSecret: String,
         params: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
@@ -1062,13 +1066,10 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
         }
 
         let configuration = FinancialConnectionsSheet.Configuration(from: params)
-        var onEvent: ((FinancialConnectionsEvent) -> Void)? = nil
 
-        if hasEventListeners {
-          onEvent = { [weak self] event in
+        let onEvent = { [weak self] (event: FinancialConnectionsEvent) in
             let mappedEvent = Mappers.financialConnectionsEventToMap(event)
-            self?.sendEvent(withName: "onFinancialConnectionsEvent", body: mappedEvent)
-          }
+            self?.emitter?.emitOnFinancialConnectionsEvent(mappedEvent)
         }
 
         FinancialConnections.presentForToken(
@@ -1081,7 +1082,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(collectFinancialConnectionsAccounts:params:resolver:rejecter:)
-    func collectFinancialConnectionsAccounts(
+    public func collectFinancialConnectionsAccounts(
         clientSecret: String,
         params: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
@@ -1099,13 +1100,10 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
         }
 
         let configuration = FinancialConnectionsSheet.Configuration(from: params)
-        var onEvent: ((FinancialConnectionsEvent) -> Void)? = nil
 
-        if hasEventListeners {
-          onEvent = { [weak self] event in
+        let onEvent = { [weak self] (event: FinancialConnectionsEvent) in
             let mappedEvent = Mappers.financialConnectionsEventToMap(event)
-            self?.sendEvent(withName: "onFinancialConnectionsEvent", body: mappedEvent)
-          }
+            self?.emitter?.emitOnFinancialConnectionsEvent(mappedEvent)
         }
 
         FinancialConnections.present(
@@ -1118,7 +1116,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
     }
 
     @objc(configureOrderTracking:orderIdentifier:webServiceUrl:authenticationToken:resolver:rejecter:)
-    func configureOrderTracking(
+  public func configureOrderTracking(
         orderTypeIdentifier: String,
         orderIdentifier: String,
         webServiceUrl: String,
@@ -1143,7 +1141,7 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
 #endif
     }
 
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         confirmPaymentResolver?(Errors.createError(ErrorType.Canceled, "FPX Payment has been canceled"))
     }
 
@@ -1177,6 +1175,16 @@ class StripeSdk: RCTEventEmitter, UIAdaptivePresentationControllerDelegate {
             break
         }
     }
+    
+    struct ConfirmationError: Error, LocalizedError {
+      private var errorMessage: String
+      init(errorMessage: String) {
+        self.errorMessage = errorMessage
+      }
+      public var errorDescription: String? {
+        return errorMessage
+      }
+    }
 }
 
 func findViewControllerPresenter(from uiViewController: UIViewController) -> UIViewController {
@@ -1194,8 +1202,8 @@ func findViewControllerPresenter(from uiViewController: UIViewController) -> UIV
     return presentingViewController
 }
 
-extension StripeSdk: STPAuthenticationContext {
-    func authenticationPresentingViewController() -> UIViewController {
+extension StripeSdkImpl: STPAuthenticationContext {
+  public func authenticationPresentingViewController() -> UIViewController {
         return findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
     }
 }

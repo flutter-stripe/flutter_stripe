@@ -437,7 +437,7 @@ class _MethodChannelCardFormFieldState
     });
   }
 
-  void _handleCardChanged(arguments) {
+  void _handleCardChanged(dynamic arguments) {
     try {
       final map = Map<String, dynamic>.from(arguments);
       if (map.isEmpty) {
@@ -445,7 +445,8 @@ class _MethodChannelCardFormFieldState
         controller._updateDetails(details);
         widget.onCardChanged?.call(details);
       } else {
-        final details = CardFieldInputDetails.fromJson(map);
+        final details = CardFieldInputDetails.fromJson(
+            Map<String, dynamic>.from(map['card']));
         controller._updateDetails(details);
         widget.onCardChanged?.call(details);
       }
@@ -457,7 +458,7 @@ class _MethodChannelCardFormFieldState
   }
 
   /// Handler called when a field from the platform card field has been focused
-  void _handlePlatformFocusChanged(arguments) {
+  void _handlePlatformFocusChanged(dynamic arguments) {
     try {
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);

@@ -9,32 +9,27 @@ part 'card_field_input.freezed.dart';
 part 'card_field_input.g.dart';
 
 @freezed
-
 /// Styiling information for the cardfield.
-class CardStyle with _$CardStyle {
+abstract class CardStyle with _$CardStyle {
   @JsonSerializable(explicitToJson: true)
   factory CardStyle({
     /// Width for the border.
     int? borderWidth,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Background color of the cardfield
     ///
     /// Make sure that there is enough contrast with the text color.
     Color? backgroundColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Border color of the cardfield.
     Color? borderColor,
 
     /// Borderradius that can give the Cardfield rounded corners.
     int? borderRadius,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Cursor color when the card has focus.
     Color? cursorColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Color of the typed text on the Card fuekd.
     Color? textColor,
 
@@ -48,7 +43,6 @@ class CardStyle with _$CardStyle {
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
     Color? textErrorColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Color of the placeholder text.
     Color? placeholderColor,
   }) = _CardStyleConstructor;
@@ -59,27 +53,25 @@ class CardStyle with _$CardStyle {
   CardStyle._();
 
   CardStyle apply(CardStyle? style) => copyWith(
-        borderWidth: style?.borderWidth ?? borderWidth,
-        backgroundColor: style?.backgroundColor ?? backgroundColor,
-        borderColor: style?.borderColor ?? borderColor,
-        borderRadius: style?.borderRadius ?? borderRadius,
-        cursorColor: style?.cursorColor ?? cursorColor,
-        textColor: style?.textColor ?? textColor,
-        fontSize: style?.fontSize ?? fontSize,
-        textErrorColor: style?.textErrorColor ?? textErrorColor,
-        placeholderColor: style?.placeholderColor ?? placeholderColor,
-        fontFamily: style?.fontFamily ?? fontFamily,
-      );
+    borderWidth: style?.borderWidth ?? borderWidth,
+    backgroundColor: style?.backgroundColor ?? backgroundColor,
+    borderColor: style?.borderColor ?? borderColor,
+    borderRadius: style?.borderRadius ?? borderRadius,
+    cursorColor: style?.cursorColor ?? cursorColor,
+    textColor: style?.textColor ?? textColor,
+    fontSize: style?.fontSize ?? fontSize,
+    textErrorColor: style?.textErrorColor ?? textErrorColor,
+    placeholderColor: style?.placeholderColor ?? placeholderColor,
+    fontFamily: style?.fontFamily ?? fontFamily,
+  );
 }
 
 @freezed
-
 /// Styiling information for the cardfield.
-class CardFormStyle with _$CardFormStyle {
+abstract class CardFormStyle with _$CardFormStyle {
   @JsonSerializable(explicitToJson: true)
   factory CardFormStyle({
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Background color of the cardformfield
     ///
     /// Make sure that there is enough contrast with the text color.
@@ -88,18 +80,15 @@ class CardFormStyle with _$CardFormStyle {
     /// Width for the border.
     int? borderWidth,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Border color of the cardfield.
     Color? borderColor,
 
     /// Borderradius that can give the Cardfield rounded corners.
     int? borderRadius,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Cursor color when the card has focus.
     Color? cursorColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Color of the typed text on the Card fuekd.
     Color? textColor,
 
@@ -110,7 +99,6 @@ class CardFormStyle with _$CardFormStyle {
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
     Color? textErrorColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-
     /// Color of the placeholder text.
     Color? placeholderColor,
   }) = _CardFormStyleConstructor;
@@ -121,22 +109,21 @@ class CardFormStyle with _$CardFormStyle {
   CardFormStyle._();
 
   CardFormStyle apply(CardFormStyle? style) => copyWith(
-        backgroundColor: style?.backgroundColor ?? backgroundColor,
-        borderWidth: style?.borderWidth ?? borderWidth,
-        borderColor: style?.borderColor ?? borderColor,
-        borderRadius: style?.borderRadius ?? borderRadius,
-        cursorColor: style?.cursorColor ?? cursorColor,
-        textColor: style?.textColor ?? textColor,
-        fontSize: style?.fontSize ?? fontSize,
-        textErrorColor: style?.textErrorColor ?? textErrorColor,
-        placeholderColor: style?.placeholderColor ?? placeholderColor,
-      );
+    backgroundColor: style?.backgroundColor ?? backgroundColor,
+    borderWidth: style?.borderWidth ?? borderWidth,
+    borderColor: style?.borderColor ?? borderColor,
+    borderRadius: style?.borderRadius ?? borderRadius,
+    cursorColor: style?.cursorColor ?? cursorColor,
+    textColor: style?.textColor ?? textColor,
+    fontSize: style?.fontSize ?? fontSize,
+    textErrorColor: style?.textErrorColor ?? textErrorColor,
+    placeholderColor: style?.placeholderColor ?? placeholderColor,
+  );
 }
 
 @freezed
-
 /// Localized text for the placeholders of the card fields.
-class CardPlaceholder with _$CardPlaceholder {
+abstract class CardPlaceholder with _$CardPlaceholder {
   @JsonSerializable(explicitToJson: true)
   factory CardPlaceholder({
     /// Localized placeholder for card number field.
@@ -161,17 +148,16 @@ class CardPlaceholder with _$CardPlaceholder {
   ///
   /// In case fields are null the original value will be used.
   CardPlaceholder apply(CardPlaceholder? placeholder) => copyWith(
-        number: placeholder?.number ?? number,
-        expiration: placeholder?.expiration ?? expiration,
-        cvc: placeholder?.cvc ?? cvc,
-        postalCode: placeholder?.postalCode ?? postalCode,
-      );
+    number: placeholder?.number ?? number,
+    expiration: placeholder?.expiration ?? expiration,
+    cvc: placeholder?.cvc ?? cvc,
+    postalCode: placeholder?.postalCode ?? postalCode,
+  );
 }
 
 @freezed
-
 /// User input details.
-class CardFieldInputDetails with _$CardFieldInputDetails {
+abstract class CardFieldInputDetails with _$CardFieldInputDetails {
   const CardFieldInputDetails._();
 
   @JsonSerializable(explicitToJson: true)
@@ -218,7 +204,7 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
 
 /// Used to communicate with the card handler on the native platform side when focus changes.
 @freezed
-class CardFieldFocusName with _$CardFieldFocusName {
+abstract class CardFieldFocusName with _$CardFieldFocusName {
   @JsonSerializable(explicitToJson: true)
   factory CardFieldFocusName({CardFieldName? focusedField}) =
       _CardFieldFocusName;
@@ -230,26 +216,17 @@ class CardFieldFocusName with _$CardFieldFocusName {
 /// Enum representing the different fiels on the card field.
 enum CardFieldName {
   @JsonValue('CardNumber')
-
   /// Card number field.
   cardNumber,
   @JsonValue('Cvc')
-
   /// Cvc field.
   cvc,
   @JsonValue('ExpiryDate')
-
   /// Expiry date field.
   expiryDate,
   @JsonValue('PostalCode')
-
   /// Postal code field.
   postalCode,
 }
 
-enum CardValidationState {
-  Unknown,
-  Valid,
-  Invalid,
-  Incomplete,
-}
+enum CardValidationState { Unknown, Valid, Invalid, Incomplete }

@@ -12,7 +12,7 @@ part 'payment_method.g.dart';
 ///
 /// https://stripe.com/docs/payments/payment-methods for more info.
 @freezed
-class PaymentMethod with _$PaymentMethod {
+abstract class PaymentMethod with _$PaymentMethod {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethod({
     /// Unique identifier for the object.
@@ -48,31 +48,21 @@ class PaymentMethod with _$PaymentMethod {
     CardPaymentMethod? card,
 
     /// Containing additional data in case paymentmethod type is sepa.
-
     SepaDebit? sepaDebit,
 
     /// Containing additional data in case paymentmethod type is Bacs debit.
-
     BacsDebit? bacsDebit,
 
     /// Containing additional data in case paymentmethod type is Aubecs debit.
-
     AuBecsDebit? auBecsDebit,
 
-    /// Containing additional data in case paymentmethod type is sofort.
-
-    Sofort? sofort,
-
     /// Containing additional data in case paymentmethod type is Ideal.
-
     Ideal? ideal,
 
     /// Containing additional data in case paymentmethod type is FPX.
-
     Fpx? fpx,
 
     /// Containing additional data in case paymentmethod type is UPI.
-
     Upi? upi,
     UsBankAccount? usBankAccount,
 
@@ -89,10 +79,8 @@ class PaymentMethod with _$PaymentMethod {
 }
 
 @freezed
-
 /// AubecsDebit data associated with the payment method
-
-class AuBecsDebit with _$AuBecsDebit {
+abstract class AuBecsDebit with _$AuBecsDebit {
   @JsonSerializable(explicitToJson: true)
   const factory AuBecsDebit({
     /// Unique identifier for the bankaccount.
@@ -110,16 +98,14 @@ class AuBecsDebit with _$AuBecsDebit {
 }
 
 @freezed
-
 /// BacsDebit data associated with the payment method
-class BacsDebit with _$BacsDebit {
+abstract class BacsDebit with _$BacsDebit {
   @JsonSerializable(explicitToJson: true)
   const factory BacsDebit({
     /// Sort code of the bankaccount.
     String? sortCode,
 
     /// Unique identifier for the bankaccount.
-
     String? fingerprint,
 
     /// Last 4 digits of the bank account.
@@ -130,9 +116,8 @@ class BacsDebit with _$BacsDebit {
 }
 
 @freezed
-
 /// Card data associated with the payment method
-class CardPaymentMethod with _$CardPaymentMethod {
+abstract class CardPaymentMethod with _$CardPaymentMethod {
   @JsonSerializable(explicitToJson: true)
   const factory CardPaymentMethod({
     /// The brand associated to the card e.g. (visa, amex).
@@ -165,7 +150,7 @@ class CardPaymentMethod with _$CardPaymentMethod {
 }
 
 @freezed
-class Fpx with _$Fpx {
+abstract class Fpx with _$Fpx {
   /// Fpx data associated with the payment method
 
   @JsonSerializable(explicitToJson: true)
@@ -181,9 +166,8 @@ class Fpx with _$Fpx {
 }
 
 @freezed
-
 /// Ideal data associated with the payment method
-class Ideal with _$Ideal {
+abstract class Ideal with _$Ideal {
   @JsonSerializable(explicitToJson: true)
   const factory Ideal({
     /// The BIC code of the bank
@@ -196,10 +180,8 @@ class Ideal with _$Ideal {
 }
 
 @freezed
-
 /// SepaDebit data associated with the payment method
-
-class SepaDebit with _$SepaDebit {
+abstract class SepaDebit with _$SepaDebit {
   @JsonSerializable(explicitToJson: true)
   const factory SepaDebit({
     /// Two letter ISO code representing the country of the bank account.
@@ -220,24 +202,8 @@ class SepaDebit with _$SepaDebit {
 }
 
 @freezed
-
-/// Sofort data associated with the payment method
-
-class Sofort with _$Sofort {
-  @JsonSerializable(explicitToJson: true)
-  const factory Sofort({
-    /// Two letter ISO code representing the country of the bank account.
-    String? country,
-  }) = _Sofort;
-
-  factory Sofort.fromJson(Map<String, dynamic> json) => _$SofortFromJson(json);
-}
-
-@freezed
-
 /// Upi data associated with the payment method.
-
-class Upi with _$Upi {
+abstract class Upi with _$Upi {
   @JsonSerializable(explicitToJson: true)
   const factory Upi({
     /// The customer's vpa.
@@ -260,7 +226,7 @@ enum UsBankAccountHolderType {
 
 /// Data associated with the payment method Us bank account.
 @freezed
-class UsBankAccount with _$UsBankAccount {
+abstract class UsBankAccount with _$UsBankAccount {
   @JsonSerializable(explicitToJson: true)
   const factory UsBankAccount({
     /// Routing number of the bank account
@@ -295,8 +261,4 @@ class UsBankAccount with _$UsBankAccount {
       _$UsBankAccountFromJson(json);
 }
 
-enum UsBankAccountType {
-  Savings,
-  Checking,
-  Unknown,
-}
+enum UsBankAccountType { Savings, Checking, Unknown }

@@ -4,7 +4,7 @@ part 'confirm_sepa_debit_setup_data.freezed.dart';
 part 'confirm_sepa_debit_setup_data.g.dart';
 
 @freezed
-class ConfirmSepaDebitSetupData with _$ConfirmSepaDebitSetupData {
+abstract class ConfirmSepaDebitSetupData with _$ConfirmSepaDebitSetupData {
   const factory ConfirmSepaDebitSetupData({
     /// The id of an existing PaymentMethod or an object of collected data.
     @JsonKey(name: "payment_method") String? paymentMethod,

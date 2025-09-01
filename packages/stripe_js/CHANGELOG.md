@@ -1,3 +1,13 @@
+## 7.0.0
+
+**Breaking changes**
+- This package now supports and requires Freezed v3
+
+**Fixes**
+ - #2176 support Klarna on the web
+ - #2180 collect bank account token failing due to missing parameter
+ - #2186 remove empty bank parameter from iDEAL payments to comply with Stripe API changes
+
 ## 6.4.0
 - Use latest platform interface
 

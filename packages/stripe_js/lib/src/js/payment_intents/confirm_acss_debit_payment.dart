@@ -33,9 +33,11 @@ extension ExtensionAcssDebitPayment on Stripe {
   }) async {
     final jsData = (data?.toJson() ?? {}).jsify();
     final jsOptions = (options?.toJson() ?? {}).jsify();
-    return _confirmAcssDebitPayment(clientSecret, jsData, jsOptions)
-        .toDart
-        .then((response) => response.toDart);
+    return _confirmAcssDebitPayment(
+      clientSecret,
+      jsData,
+      jsOptions,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('confirmAcssDebitPayment')

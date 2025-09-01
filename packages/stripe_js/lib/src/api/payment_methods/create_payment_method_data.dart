@@ -6,7 +6,7 @@ part 'create_payment_method_data.freezed.dart';
 part 'create_payment_method_data.g.dart';
 
 @freezed
-class CreatePaymentMethodData with _$CreatePaymentMethodData {
+abstract class CreatePaymentMethodData with _$CreatePaymentMethodData {
   const factory CreatePaymentMethodData.card({
     /// Unique identifier for the object.
     required String type,
@@ -39,11 +39,9 @@ class CreatePaymentMethodData with _$CreatePaymentMethodData {
     @JsonKey(name: "sepa_debit[iban]") String? sepaDebitIban,
 
     /// The customer's VPA.
-
     @JsonKey(name: "upi[vpa]") String? upiVpa,
 
     /// Billing information associated with the PaymentMethod that may be used or required by particular types of payment methods.
-
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
   }) = _CreatePaymentMethodDataCard;
 
