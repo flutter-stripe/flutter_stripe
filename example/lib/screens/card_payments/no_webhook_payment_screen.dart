@@ -43,6 +43,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
         CardField(
           preferredNetworks: [CardBrand.Amex],
           controller: controller,
+          numberHintText: '34556689232',
         ),
         SizedBox(height: 20),
         LoadingButton(
@@ -75,9 +76,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
         ),
         Divider(),
         SizedBox(height: 20),
-        ResponseCard(
-          response: controller.details.toJson().toPrettyString(),
-        )
+        ResponseCard(response: controller.details.toJson().toPrettyString()),
       ],
     );
   }
@@ -106,11 +105,10 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
 
       // 2. Create payment method
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-          params: PaymentMethodParams.card(
-        paymentMethodData: PaymentMethodData(
-          billingDetails: billingDetails,
+        params: PaymentMethodParams.card(
+          paymentMethodData: PaymentMethodData(billingDetails: billingDetails),
         ),
-      ));
+      );
 
       // 3. call API to create PaymentIntent
       final paymentIntentResult = await callNoWebhookPayEndpointMethodId(
@@ -123,8 +121,9 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
       if (paymentIntentResult['error'] != null) {
         // Error during creating or confirming Intent
         if (context.mounted) {
-          scaffoldMessenger.showSnackBar(SnackBar(
-              content: Text('Error: ${paymentIntentResult['error']}')));
+          scaffoldMessenger.showSnackBar(
+            SnackBar(content: Text('Error: ${paymentIntentResult['error']}')),
+          );
         }
         return;
       }
@@ -134,9 +133,11 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
           context.mounted) {
         // Payment succedeed
 
-        scaffoldMessenger.showSnackBar(SnackBar(
-            content:
-                Text('Success!: The payment was confirmed successfully!')));
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Success!: The payment was confirmed successfully!'),
+          ),
+        );
         return;
       }
 
@@ -154,8 +155,9 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
         } else {
           // Payment succedeed
           if (context.mounted) {
-            scaffoldMessenger.showSnackBar(SnackBar(
-                content: Text('Error: ${paymentIntentResult['error']}')));
+            scaffoldMessenger.showSnackBar(
+              SnackBar(content: Text('Error: ${paymentIntentResult['error']}')),
+            );
           }
         }
       }
@@ -170,15 +172,19 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
   Future<void> confirmIntent(String paymentIntentId) async {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await callNoWebhookPayEndpointIntentId(
-        paymentIntentId: paymentIntentId);
+      paymentIntentId: paymentIntentId,
+    );
     if (result['error'] != null && context.mounted) {
-      scaffoldMessenger
-          .showSnackBar(SnackBar(content: Text('Error: ${result['error']}')));
+      scaffoldMessenger.showSnackBar(
+        SnackBar(content: Text('Error: ${result['error']}')),
+      );
     } else {
       if (context.mounted) {
-        scaffoldMessenger.showSnackBar(SnackBar(
-            content:
-                Text('Success!: The payment was confirmed successfully!')));
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Success!: The payment was confirmed successfully!'),
+          ),
+        );
       }
     }
   }
@@ -189,9 +195,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     final url = Uri.parse('$kApiUrl/charge-card-off-session');
     final response = await http.post(
       url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json'},
       body: json.encode({'paymentIntentId': paymentIntentId}),
     );
     return json.decode(response.body);
@@ -206,14 +210,12 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     final url = Uri.parse('$kApiUrl/pay-without-webhooks');
     final response = await http.post(
       url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json'},
       body: json.encode({
         'useStripeSdk': useStripeSdk,
         'paymentMethodId': paymentMethodId,
         'currency': currency,
-        'items': items
+        'items': items,
       }),
     );
     return json.decode(response.body);
