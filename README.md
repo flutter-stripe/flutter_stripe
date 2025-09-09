@@ -59,6 +59,9 @@ This plugin requires several changes to be able to work on Android devices. Plea
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Error
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
+-dontwarn kotlinx.parcelize.Parceler$DefaultImpls
+-dontwarn kotlinx.parcelize.Parceler
+-dontwarn kotlinx.parcelize.Parcelize
 # Keep Stripe classes
 -keep class com.stripe.** { *; }
 ```
