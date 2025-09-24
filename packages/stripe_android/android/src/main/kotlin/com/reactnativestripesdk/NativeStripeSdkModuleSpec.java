@@ -45,7 +45,7 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
     return NAME;
   }
 
-  private void invoke(String eventName, ReadableMap params) {
+  private void invoke(String eventName, Object params) {
     getReactApplicationContext()
       .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
       .emit(eventName, params);
@@ -316,4 +316,16 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
   @ReactMethod
   @DoNotStrip
   public abstract void clearEmbeddedPaymentOption(double viewTag, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void setFinancialConnectionsForceNativeFlow(boolean enabled, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void addListener(String eventType);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void removeListeners(double count);
 }

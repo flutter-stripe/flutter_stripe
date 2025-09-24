@@ -18,7 +18,7 @@ public class DeviceEventManagerModule {
             this.channel = channel;
         }
 
-        public void emit(String eventName, ReadableMap params) {
+        public void emit(String eventName, Object params) {
             uiThreadHandler.post(() -> channel.invokeMethod(eventName, params));
         }
     }
