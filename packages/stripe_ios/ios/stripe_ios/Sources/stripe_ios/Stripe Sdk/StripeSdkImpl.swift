@@ -1,6 +1,7 @@
 import PassKit
 @_spi(DashboardOnly) @_spi(STP) import Stripe
 @_spi(EmbeddedPaymentElementPrivateBeta) import StripePaymentSheet
+@_spi(STP) import StripePayments
 import StripeFinancialConnections
 import Foundation
 
@@ -136,7 +137,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
           paymentSheetIntentCreationCallback(.failure(error))
         }
     }
-    
+
     @objc(customPaymentMethodResultCallback:resolver:rejecter:)
     @MainActor public func customPaymentMethodResultCallback(result: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
                           rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
@@ -211,14 +212,14 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             paymentSheetViewController = UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()
             if let paymentSheetFlowController = self.paymentSheetFlowController {
                 paymentSheetFlowController.presentPaymentOptions(from: findViewControllerPresenter(from: paymentSheetViewController!)
-                ) {
+                ) { didCancel in
                     paymentSheetViewController = nil
                     if let paymentOption = self.paymentSheetFlowController?.paymentOption {
                         let option: NSDictionary = [
                             "label": paymentOption.label,
                             "image": paymentOption.image.pngData()?.base64EncodedString() ?? ""
                         ]
-                        resolve(Mappers.createResult("paymentOption", option))
+                        resolve(Mappers.createResult("paymentOption", option, additionalFields: ["didCancel": didCancel]))
                     } else {
                         resolve(Errors.createError(ErrorType.Canceled, "The payment option selection flow has been canceled"))
                     }
@@ -464,6 +465,12 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         let (error, paymentRequest) = ApplePayUtils.createPaymentRequest(merchantIdentifier: merchantIdentifier, params: applePayPatams)
         guard let paymentRequest = paymentRequest else {
             resolve(error)
+            return
+        }
+
+        // Prevent multiple simultaneous Apple Pay presentations
+        if self.confirmApplePayResolver != nil {
+            resolve(Errors.createError(ErrorType.Failed, "Apple Pay is already in progress"))
             return
         }
 
@@ -812,7 +819,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     @objc(confirmPayment:data:options:resolver:rejecter:)
   public func confirmPayment(
         paymentIntentClientSecret: String,
-        params: NSDictionary?,
+        params: NSDictionary,
         options: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
@@ -820,8 +827,10 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         self.confirmPaymentResolver = resolve
         self.confirmPaymentClientSecret = paymentIntentClientSecret
 
-        let paymentMethodData = params?["paymentMethodData"] as? NSDictionary
-        let (missingPaymentMethodError, paymentMethodType) = getPaymentMethodType(params: params)
+        // Handle React Native null values - when null is passed from JS, it becomes NSNull
+        let actualParams = (params == NSNull()) ? nil : params
+        let paymentMethodData = actualParams?["paymentMethodData"] as? NSDictionary
+        let (missingPaymentMethodError, paymentMethodType) = getPaymentMethodType(params: actualParams)
         if (missingPaymentMethodError != nil) {
             resolve(missingPaymentMethodError)
             return
@@ -1141,6 +1150,16 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
 #endif
     }
 
+    @objc(setFinancialConnectionsForceNativeFlow:resolver:rejecter:)
+    public func setFinancialConnectionsForceNativeFlow(
+        enabled: Bool,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        UserDefaults.standard.set(enabled, forKey: "FINANCIAL_CONNECTIONS_EXAMPLE_APP_ENABLE_NATIVE")
+        resolve(nil)
+    }
+
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         confirmPaymentResolver?(Errors.createError(ErrorType.Canceled, "FPX Payment has been canceled"))
     }
@@ -1175,7 +1194,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             break
         }
     }
-    
+
     struct ConfirmationError: Error, LocalizedError {
       private var errorMessage: String
       init(errorMessage: String) {
