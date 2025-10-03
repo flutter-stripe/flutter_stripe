@@ -1238,10 +1238,7 @@ switch (_that) {
 case PlatformPayPaymentMethodParamsGooglePay():
 return googlePay(_that);case PlatformPayPaymentMethodParamsApplePay():
 return applePay(_that);case PlatformPayPaymentMethodParamsWeb():
-return web(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return web(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -1306,10 +1303,7 @@ switch (_that) {
 case PlatformPayPaymentMethodParamsGooglePay():
 return googlePay(_that.googlePayParams,_that.googlePayPaymentMethodParams);case PlatformPayPaymentMethodParamsApplePay():
 return applePay(_that.applePayParams);case PlatformPayPaymentMethodParamsWeb():
-return web(_that.options);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return web(_that.options);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
