@@ -4901,8 +4901,6 @@ class _PaymentMethodParamsKlarna implements PaymentMethodParams {
 
 /// Paymentmethod data for this paymentmethod.
 ///
-/// Make sure to add an email and country (part of the address) in the
-/// billingdetails which is required for using Klarna.
 @override final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
