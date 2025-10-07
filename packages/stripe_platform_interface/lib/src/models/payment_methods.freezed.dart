@@ -3177,6 +3177,10 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(
           return _PaymentMethodParamsUsBankAccount.fromJson(
             json
           );
+                case 'Elements':
+          return _PaymentMethodParamsElements.fromJson(
+            json
+          );
         
           default:
             throw CheckedFromJsonException(
@@ -3192,8 +3196,7 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(
 /// @nodoc
 mixin _$PaymentMethodParams {
 
-/// Paymentmethod data for this paymentmethod.
- Object get paymentMethodData;
+
 
   /// Serializes this PaymentMethodParams to a JSON map.
   Map<String, dynamic> toJson();
@@ -3201,16 +3204,16 @@ mixin _$PaymentMethodParams {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentMethodParams&&const DeepCollectionEquality().equals(other.paymentMethodData, paymentMethodData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentMethodParams);
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(paymentMethodData));
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PaymentMethodParams(paymentMethodData: $paymentMethodData)';
+  return 'PaymentMethodParams()';
 }
 
 
@@ -3236,7 +3239,7 @@ extension PaymentMethodParamsPatterns on PaymentMethodParams {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _PaymentMethodParamsCard value)?  card,TResult Function( _PaymentMethodParamsCardWithToken value)?  cardFromToken,TResult Function( _PaymentMethodParamsCardWithMethodId value)?  cardFromMethodId,TResult Function( _PaymentMethodParamsAlipay value)?  alipay,TResult Function( _PaymentMethodParamsCashAppPay value)?  cashAppPay,TResult Function( _PaymentMethodParamsIdeal value)?  ideal,TResult Function( _PaymentMethodParamsAubecs value)?  aubecs,TResult Function( _PaymentMethodParamsBankContact value)?  bancontact,TResult Function( _PaymentMethodParamsGiroPay value)?  giroPay,TResult Function( _PaymentMethodParamsEps value)?  eps,TResult Function( _PaymentMethodParamsAffirm value)?  affirm,TResult Function( _PaymentMethodParamsPay value)?  grabPay,TResult Function( _PaymentMethodParamsP24 value)?  p24,TResult Function( _PaymentMethodParamsFpx value)?  fpx,TResult Function( _PaymentMethodParamsSepaDebit value)?  sepaDebit,TResult Function( _PaymentMethodParamsAfterpayClearpay value)?  afterpayClearpay,TResult Function( _PaymentMethodParamsOxxo value)?  oxxo,TResult Function( _PaymentMethodParamsKlarna value)?  klarna,TResult Function( _PaymentMethodParamsPayPal value)?  payPal,TResult Function( _PaymentMethodParamsRevolutPay value)?  revolutPay,TResult Function( _PaymentMethodParamsUsBankAccount value)?  usBankAccount,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _PaymentMethodParamsCard value)?  card,TResult Function( _PaymentMethodParamsCardWithToken value)?  cardFromToken,TResult Function( _PaymentMethodParamsCardWithMethodId value)?  cardFromMethodId,TResult Function( _PaymentMethodParamsAlipay value)?  alipay,TResult Function( _PaymentMethodParamsCashAppPay value)?  cashAppPay,TResult Function( _PaymentMethodParamsIdeal value)?  ideal,TResult Function( _PaymentMethodParamsAubecs value)?  aubecs,TResult Function( _PaymentMethodParamsBankContact value)?  bancontact,TResult Function( _PaymentMethodParamsGiroPay value)?  giroPay,TResult Function( _PaymentMethodParamsEps value)?  eps,TResult Function( _PaymentMethodParamsAffirm value)?  affirm,TResult Function( _PaymentMethodParamsPay value)?  grabPay,TResult Function( _PaymentMethodParamsP24 value)?  p24,TResult Function( _PaymentMethodParamsFpx value)?  fpx,TResult Function( _PaymentMethodParamsSepaDebit value)?  sepaDebit,TResult Function( _PaymentMethodParamsAfterpayClearpay value)?  afterpayClearpay,TResult Function( _PaymentMethodParamsOxxo value)?  oxxo,TResult Function( _PaymentMethodParamsKlarna value)?  klarna,TResult Function( _PaymentMethodParamsPayPal value)?  payPal,TResult Function( _PaymentMethodParamsRevolutPay value)?  revolutPay,TResult Function( _PaymentMethodParamsUsBankAccount value)?  usBankAccount,TResult Function( _PaymentMethodParamsElements value)?  elements,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _PaymentMethodParamsCard() when card != null:
@@ -3260,7 +3263,8 @@ return oxxo(_that);case _PaymentMethodParamsKlarna() when klarna != null:
 return klarna(_that);case _PaymentMethodParamsPayPal() when payPal != null:
 return payPal(_that);case _PaymentMethodParamsRevolutPay() when revolutPay != null:
 return revolutPay(_that);case _PaymentMethodParamsUsBankAccount() when usBankAccount != null:
-return usBankAccount(_that);case _:
+return usBankAccount(_that);case _PaymentMethodParamsElements() when elements != null:
+return elements(_that);case _:
   return orElse();
 
 }
@@ -3278,7 +3282,7 @@ return usBankAccount(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _PaymentMethodParamsCard value)  card,required TResult Function( _PaymentMethodParamsCardWithToken value)  cardFromToken,required TResult Function( _PaymentMethodParamsCardWithMethodId value)  cardFromMethodId,required TResult Function( _PaymentMethodParamsAlipay value)  alipay,required TResult Function( _PaymentMethodParamsCashAppPay value)  cashAppPay,required TResult Function( _PaymentMethodParamsIdeal value)  ideal,required TResult Function( _PaymentMethodParamsAubecs value)  aubecs,required TResult Function( _PaymentMethodParamsBankContact value)  bancontact,required TResult Function( _PaymentMethodParamsGiroPay value)  giroPay,required TResult Function( _PaymentMethodParamsEps value)  eps,required TResult Function( _PaymentMethodParamsAffirm value)  affirm,required TResult Function( _PaymentMethodParamsPay value)  grabPay,required TResult Function( _PaymentMethodParamsP24 value)  p24,required TResult Function( _PaymentMethodParamsFpx value)  fpx,required TResult Function( _PaymentMethodParamsSepaDebit value)  sepaDebit,required TResult Function( _PaymentMethodParamsAfterpayClearpay value)  afterpayClearpay,required TResult Function( _PaymentMethodParamsOxxo value)  oxxo,required TResult Function( _PaymentMethodParamsKlarna value)  klarna,required TResult Function( _PaymentMethodParamsPayPal value)  payPal,required TResult Function( _PaymentMethodParamsRevolutPay value)  revolutPay,required TResult Function( _PaymentMethodParamsUsBankAccount value)  usBankAccount,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _PaymentMethodParamsCard value)  card,required TResult Function( _PaymentMethodParamsCardWithToken value)  cardFromToken,required TResult Function( _PaymentMethodParamsCardWithMethodId value)  cardFromMethodId,required TResult Function( _PaymentMethodParamsAlipay value)  alipay,required TResult Function( _PaymentMethodParamsCashAppPay value)  cashAppPay,required TResult Function( _PaymentMethodParamsIdeal value)  ideal,required TResult Function( _PaymentMethodParamsAubecs value)  aubecs,required TResult Function( _PaymentMethodParamsBankContact value)  bancontact,required TResult Function( _PaymentMethodParamsGiroPay value)  giroPay,required TResult Function( _PaymentMethodParamsEps value)  eps,required TResult Function( _PaymentMethodParamsAffirm value)  affirm,required TResult Function( _PaymentMethodParamsPay value)  grabPay,required TResult Function( _PaymentMethodParamsP24 value)  p24,required TResult Function( _PaymentMethodParamsFpx value)  fpx,required TResult Function( _PaymentMethodParamsSepaDebit value)  sepaDebit,required TResult Function( _PaymentMethodParamsAfterpayClearpay value)  afterpayClearpay,required TResult Function( _PaymentMethodParamsOxxo value)  oxxo,required TResult Function( _PaymentMethodParamsKlarna value)  klarna,required TResult Function( _PaymentMethodParamsPayPal value)  payPal,required TResult Function( _PaymentMethodParamsRevolutPay value)  revolutPay,required TResult Function( _PaymentMethodParamsUsBankAccount value)  usBankAccount,required TResult Function( _PaymentMethodParamsElements value)  elements,}){
 final _that = this;
 switch (_that) {
 case _PaymentMethodParamsCard():
@@ -3302,7 +3306,8 @@ return oxxo(_that);case _PaymentMethodParamsKlarna():
 return klarna(_that);case _PaymentMethodParamsPayPal():
 return payPal(_that);case _PaymentMethodParamsRevolutPay():
 return revolutPay(_that);case _PaymentMethodParamsUsBankAccount():
-return usBankAccount(_that);case _:
+return usBankAccount(_that);case _PaymentMethodParamsElements():
+return elements(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -3319,7 +3324,7 @@ return usBankAccount(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _PaymentMethodParamsCard value)?  card,TResult? Function( _PaymentMethodParamsCardWithToken value)?  cardFromToken,TResult? Function( _PaymentMethodParamsCardWithMethodId value)?  cardFromMethodId,TResult? Function( _PaymentMethodParamsAlipay value)?  alipay,TResult? Function( _PaymentMethodParamsCashAppPay value)?  cashAppPay,TResult? Function( _PaymentMethodParamsIdeal value)?  ideal,TResult? Function( _PaymentMethodParamsAubecs value)?  aubecs,TResult? Function( _PaymentMethodParamsBankContact value)?  bancontact,TResult? Function( _PaymentMethodParamsGiroPay value)?  giroPay,TResult? Function( _PaymentMethodParamsEps value)?  eps,TResult? Function( _PaymentMethodParamsAffirm value)?  affirm,TResult? Function( _PaymentMethodParamsPay value)?  grabPay,TResult? Function( _PaymentMethodParamsP24 value)?  p24,TResult? Function( _PaymentMethodParamsFpx value)?  fpx,TResult? Function( _PaymentMethodParamsSepaDebit value)?  sepaDebit,TResult? Function( _PaymentMethodParamsAfterpayClearpay value)?  afterpayClearpay,TResult? Function( _PaymentMethodParamsOxxo value)?  oxxo,TResult? Function( _PaymentMethodParamsKlarna value)?  klarna,TResult? Function( _PaymentMethodParamsPayPal value)?  payPal,TResult? Function( _PaymentMethodParamsRevolutPay value)?  revolutPay,TResult? Function( _PaymentMethodParamsUsBankAccount value)?  usBankAccount,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _PaymentMethodParamsCard value)?  card,TResult? Function( _PaymentMethodParamsCardWithToken value)?  cardFromToken,TResult? Function( _PaymentMethodParamsCardWithMethodId value)?  cardFromMethodId,TResult? Function( _PaymentMethodParamsAlipay value)?  alipay,TResult? Function( _PaymentMethodParamsCashAppPay value)?  cashAppPay,TResult? Function( _PaymentMethodParamsIdeal value)?  ideal,TResult? Function( _PaymentMethodParamsAubecs value)?  aubecs,TResult? Function( _PaymentMethodParamsBankContact value)?  bancontact,TResult? Function( _PaymentMethodParamsGiroPay value)?  giroPay,TResult? Function( _PaymentMethodParamsEps value)?  eps,TResult? Function( _PaymentMethodParamsAffirm value)?  affirm,TResult? Function( _PaymentMethodParamsPay value)?  grabPay,TResult? Function( _PaymentMethodParamsP24 value)?  p24,TResult? Function( _PaymentMethodParamsFpx value)?  fpx,TResult? Function( _PaymentMethodParamsSepaDebit value)?  sepaDebit,TResult? Function( _PaymentMethodParamsAfterpayClearpay value)?  afterpayClearpay,TResult? Function( _PaymentMethodParamsOxxo value)?  oxxo,TResult? Function( _PaymentMethodParamsKlarna value)?  klarna,TResult? Function( _PaymentMethodParamsPayPal value)?  payPal,TResult? Function( _PaymentMethodParamsRevolutPay value)?  revolutPay,TResult? Function( _PaymentMethodParamsUsBankAccount value)?  usBankAccount,TResult? Function( _PaymentMethodParamsElements value)?  elements,}){
 final _that = this;
 switch (_that) {
 case _PaymentMethodParamsCard() when card != null:
@@ -3343,7 +3348,8 @@ return oxxo(_that);case _PaymentMethodParamsKlarna() when klarna != null:
 return klarna(_that);case _PaymentMethodParamsPayPal() when payPal != null:
 return payPal(_that);case _PaymentMethodParamsRevolutPay() when revolutPay != null:
 return revolutPay(_that);case _PaymentMethodParamsUsBankAccount() when usBankAccount != null:
-return usBankAccount(_that);case _:
+return usBankAccount(_that);case _PaymentMethodParamsElements() when elements != null:
+return elements(_that);case _:
   return null;
 
 }
@@ -3360,7 +3366,7 @@ return usBankAccount(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PaymentMethodData paymentMethodData)?  card,TResult Function( PaymentMethodDataCardFromToken paymentMethodData)?  cardFromToken,TResult Function( PaymentMethodDataCardFromMethod paymentMethodData)?  cardFromMethodId,TResult Function( PaymentMethodData paymentMethodData)?  alipay,TResult Function( PaymentMethodData paymentMethodData)?  cashAppPay,TResult Function( PaymentMethodDataIdeal paymentMethodData)?  ideal,TResult Function( PaymentMethodDataAubecs paymentMethodData)?  aubecs,TResult Function( PaymentMethodData paymentMethodData)?  bancontact,TResult Function( PaymentMethodData paymentMethodData)?  giroPay,TResult Function( PaymentMethodData paymentMethodData)?  eps,TResult Function( PaymentMethodData paymentMethodData)?  affirm,TResult Function( PaymentMethodData paymentMethodData)?  grabPay,TResult Function( PaymentMethodData paymentMethodData)?  p24,TResult Function( PaymentMethodDataFpx paymentMethodData)?  fpx,TResult Function( PaymentMethodDataSepa paymentMethodData)?  sepaDebit,TResult Function( PaymentMethodDataAfterPay paymentMethodData)?  afterpayClearpay,TResult Function( PaymentMethodData paymentMethodData)?  oxxo,TResult Function( PaymentMethodData paymentMethodData)?  klarna,TResult Function( PaymentMethodData paymentMethodData)?  payPal,TResult Function( PaymentMethodData paymentMethodData)?  revolutPay,TResult Function( PaymentMethodDataUsBank paymentMethodData)?  usBankAccount,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PaymentMethodData paymentMethodData)?  card,TResult Function( PaymentMethodDataCardFromToken paymentMethodData)?  cardFromToken,TResult Function( PaymentMethodDataCardFromMethod paymentMethodData)?  cardFromMethodId,TResult Function( PaymentMethodData paymentMethodData)?  alipay,TResult Function( PaymentMethodData paymentMethodData)?  cashAppPay,TResult Function( PaymentMethodDataIdeal paymentMethodData)?  ideal,TResult Function( PaymentMethodDataAubecs paymentMethodData)?  aubecs,TResult Function( PaymentMethodData paymentMethodData)?  bancontact,TResult Function( PaymentMethodData paymentMethodData)?  giroPay,TResult Function( PaymentMethodData paymentMethodData)?  eps,TResult Function( PaymentMethodData paymentMethodData)?  affirm,TResult Function( PaymentMethodData paymentMethodData)?  grabPay,TResult Function( PaymentMethodData paymentMethodData)?  p24,TResult Function( PaymentMethodDataFpx paymentMethodData)?  fpx,TResult Function( PaymentMethodDataSepa paymentMethodData)?  sepaDebit,TResult Function( PaymentMethodDataAfterPay paymentMethodData)?  afterpayClearpay,TResult Function( PaymentMethodData paymentMethodData)?  oxxo,TResult Function( PaymentMethodData paymentMethodData)?  klarna,TResult Function( PaymentMethodData paymentMethodData)?  payPal,TResult Function( PaymentMethodData paymentMethodData)?  revolutPay,TResult Function( PaymentMethodDataUsBank paymentMethodData)?  usBankAccount,TResult Function()?  elements,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaymentMethodParamsCard() when card != null:
 return card(_that.paymentMethodData);case _PaymentMethodParamsCardWithToken() when cardFromToken != null:
@@ -3383,7 +3389,8 @@ return oxxo(_that.paymentMethodData);case _PaymentMethodParamsKlarna() when klar
 return klarna(_that.paymentMethodData);case _PaymentMethodParamsPayPal() when payPal != null:
 return payPal(_that.paymentMethodData);case _PaymentMethodParamsRevolutPay() when revolutPay != null:
 return revolutPay(_that.paymentMethodData);case _PaymentMethodParamsUsBankAccount() when usBankAccount != null:
-return usBankAccount(_that.paymentMethodData);case _:
+return usBankAccount(_that.paymentMethodData);case _PaymentMethodParamsElements() when elements != null:
+return elements();case _:
   return orElse();
 
 }
@@ -3401,7 +3408,7 @@ return usBankAccount(_that.paymentMethodData);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PaymentMethodData paymentMethodData)  card,required TResult Function( PaymentMethodDataCardFromToken paymentMethodData)  cardFromToken,required TResult Function( PaymentMethodDataCardFromMethod paymentMethodData)  cardFromMethodId,required TResult Function( PaymentMethodData paymentMethodData)  alipay,required TResult Function( PaymentMethodData paymentMethodData)  cashAppPay,required TResult Function( PaymentMethodDataIdeal paymentMethodData)  ideal,required TResult Function( PaymentMethodDataAubecs paymentMethodData)  aubecs,required TResult Function( PaymentMethodData paymentMethodData)  bancontact,required TResult Function( PaymentMethodData paymentMethodData)  giroPay,required TResult Function( PaymentMethodData paymentMethodData)  eps,required TResult Function( PaymentMethodData paymentMethodData)  affirm,required TResult Function( PaymentMethodData paymentMethodData)  grabPay,required TResult Function( PaymentMethodData paymentMethodData)  p24,required TResult Function( PaymentMethodDataFpx paymentMethodData)  fpx,required TResult Function( PaymentMethodDataSepa paymentMethodData)  sepaDebit,required TResult Function( PaymentMethodDataAfterPay paymentMethodData)  afterpayClearpay,required TResult Function( PaymentMethodData paymentMethodData)  oxxo,required TResult Function( PaymentMethodData paymentMethodData)  klarna,required TResult Function( PaymentMethodData paymentMethodData)  payPal,required TResult Function( PaymentMethodData paymentMethodData)  revolutPay,required TResult Function( PaymentMethodDataUsBank paymentMethodData)  usBankAccount,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PaymentMethodData paymentMethodData)  card,required TResult Function( PaymentMethodDataCardFromToken paymentMethodData)  cardFromToken,required TResult Function( PaymentMethodDataCardFromMethod paymentMethodData)  cardFromMethodId,required TResult Function( PaymentMethodData paymentMethodData)  alipay,required TResult Function( PaymentMethodData paymentMethodData)  cashAppPay,required TResult Function( PaymentMethodDataIdeal paymentMethodData)  ideal,required TResult Function( PaymentMethodDataAubecs paymentMethodData)  aubecs,required TResult Function( PaymentMethodData paymentMethodData)  bancontact,required TResult Function( PaymentMethodData paymentMethodData)  giroPay,required TResult Function( PaymentMethodData paymentMethodData)  eps,required TResult Function( PaymentMethodData paymentMethodData)  affirm,required TResult Function( PaymentMethodData paymentMethodData)  grabPay,required TResult Function( PaymentMethodData paymentMethodData)  p24,required TResult Function( PaymentMethodDataFpx paymentMethodData)  fpx,required TResult Function( PaymentMethodDataSepa paymentMethodData)  sepaDebit,required TResult Function( PaymentMethodDataAfterPay paymentMethodData)  afterpayClearpay,required TResult Function( PaymentMethodData paymentMethodData)  oxxo,required TResult Function( PaymentMethodData paymentMethodData)  klarna,required TResult Function( PaymentMethodData paymentMethodData)  payPal,required TResult Function( PaymentMethodData paymentMethodData)  revolutPay,required TResult Function( PaymentMethodDataUsBank paymentMethodData)  usBankAccount,required TResult Function()  elements,}) {final _that = this;
 switch (_that) {
 case _PaymentMethodParamsCard():
 return card(_that.paymentMethodData);case _PaymentMethodParamsCardWithToken():
@@ -3424,7 +3431,8 @@ return oxxo(_that.paymentMethodData);case _PaymentMethodParamsKlarna():
 return klarna(_that.paymentMethodData);case _PaymentMethodParamsPayPal():
 return payPal(_that.paymentMethodData);case _PaymentMethodParamsRevolutPay():
 return revolutPay(_that.paymentMethodData);case _PaymentMethodParamsUsBankAccount():
-return usBankAccount(_that.paymentMethodData);case _:
+return usBankAccount(_that.paymentMethodData);case _PaymentMethodParamsElements():
+return elements();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -3441,7 +3449,7 @@ return usBankAccount(_that.paymentMethodData);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PaymentMethodData paymentMethodData)?  card,TResult? Function( PaymentMethodDataCardFromToken paymentMethodData)?  cardFromToken,TResult? Function( PaymentMethodDataCardFromMethod paymentMethodData)?  cardFromMethodId,TResult? Function( PaymentMethodData paymentMethodData)?  alipay,TResult? Function( PaymentMethodData paymentMethodData)?  cashAppPay,TResult? Function( PaymentMethodDataIdeal paymentMethodData)?  ideal,TResult? Function( PaymentMethodDataAubecs paymentMethodData)?  aubecs,TResult? Function( PaymentMethodData paymentMethodData)?  bancontact,TResult? Function( PaymentMethodData paymentMethodData)?  giroPay,TResult? Function( PaymentMethodData paymentMethodData)?  eps,TResult? Function( PaymentMethodData paymentMethodData)?  affirm,TResult? Function( PaymentMethodData paymentMethodData)?  grabPay,TResult? Function( PaymentMethodData paymentMethodData)?  p24,TResult? Function( PaymentMethodDataFpx paymentMethodData)?  fpx,TResult? Function( PaymentMethodDataSepa paymentMethodData)?  sepaDebit,TResult? Function( PaymentMethodDataAfterPay paymentMethodData)?  afterpayClearpay,TResult? Function( PaymentMethodData paymentMethodData)?  oxxo,TResult? Function( PaymentMethodData paymentMethodData)?  klarna,TResult? Function( PaymentMethodData paymentMethodData)?  payPal,TResult? Function( PaymentMethodData paymentMethodData)?  revolutPay,TResult? Function( PaymentMethodDataUsBank paymentMethodData)?  usBankAccount,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PaymentMethodData paymentMethodData)?  card,TResult? Function( PaymentMethodDataCardFromToken paymentMethodData)?  cardFromToken,TResult? Function( PaymentMethodDataCardFromMethod paymentMethodData)?  cardFromMethodId,TResult? Function( PaymentMethodData paymentMethodData)?  alipay,TResult? Function( PaymentMethodData paymentMethodData)?  cashAppPay,TResult? Function( PaymentMethodDataIdeal paymentMethodData)?  ideal,TResult? Function( PaymentMethodDataAubecs paymentMethodData)?  aubecs,TResult? Function( PaymentMethodData paymentMethodData)?  bancontact,TResult? Function( PaymentMethodData paymentMethodData)?  giroPay,TResult? Function( PaymentMethodData paymentMethodData)?  eps,TResult? Function( PaymentMethodData paymentMethodData)?  affirm,TResult? Function( PaymentMethodData paymentMethodData)?  grabPay,TResult? Function( PaymentMethodData paymentMethodData)?  p24,TResult? Function( PaymentMethodDataFpx paymentMethodData)?  fpx,TResult? Function( PaymentMethodDataSepa paymentMethodData)?  sepaDebit,TResult? Function( PaymentMethodDataAfterPay paymentMethodData)?  afterpayClearpay,TResult? Function( PaymentMethodData paymentMethodData)?  oxxo,TResult? Function( PaymentMethodData paymentMethodData)?  klarna,TResult? Function( PaymentMethodData paymentMethodData)?  payPal,TResult? Function( PaymentMethodData paymentMethodData)?  revolutPay,TResult? Function( PaymentMethodDataUsBank paymentMethodData)?  usBankAccount,TResult? Function()?  elements,}) {final _that = this;
 switch (_that) {
 case _PaymentMethodParamsCard() when card != null:
 return card(_that.paymentMethodData);case _PaymentMethodParamsCardWithToken() when cardFromToken != null:
@@ -3464,7 +3472,8 @@ return oxxo(_that.paymentMethodData);case _PaymentMethodParamsKlarna() when klar
 return klarna(_that.paymentMethodData);case _PaymentMethodParamsPayPal() when payPal != null:
 return payPal(_that.paymentMethodData);case _PaymentMethodParamsRevolutPay() when revolutPay != null:
 return revolutPay(_that.paymentMethodData);case _PaymentMethodParamsUsBankAccount() when usBankAccount != null:
-return usBankAccount(_that.paymentMethodData);case _:
+return usBankAccount(_that.paymentMethodData);case _PaymentMethodParamsElements() when elements != null:
+return elements();case _:
   return null;
 
 }
@@ -3480,7 +3489,7 @@ class _PaymentMethodParamsCard implements PaymentMethodParams {
   factory _PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsCardFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -3563,7 +3572,7 @@ class _PaymentMethodParamsCardWithToken implements PaymentMethodParams {
   factory _PaymentMethodParamsCardWithToken.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsCardWithTokenFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodDataCardFromToken paymentMethodData;
+ final  PaymentMethodDataCardFromToken paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -3646,7 +3655,7 @@ class _PaymentMethodParamsCardWithMethodId implements PaymentMethodParams {
   factory _PaymentMethodParamsCardWithMethodId.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsCardWithMethodIdFromJson(json);
 
 /// Payment method data object for card from payment method.
-@override final  PaymentMethodDataCardFromMethod paymentMethodData;
+ final  PaymentMethodDataCardFromMethod paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -3729,7 +3738,7 @@ class _PaymentMethodParamsAlipay implements PaymentMethodParams {
   factory _PaymentMethodParamsAlipay.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsAlipayFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -3812,7 +3821,7 @@ class _PaymentMethodParamsCashAppPay implements PaymentMethodParams {
   factory _PaymentMethodParamsCashAppPay.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsCashAppPayFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -3895,7 +3904,7 @@ class _PaymentMethodParamsIdeal implements PaymentMethodParams {
   factory _PaymentMethodParamsIdeal.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsIdealFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodDataIdeal paymentMethodData;
+ final  PaymentMethodDataIdeal paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -3978,7 +3987,7 @@ class _PaymentMethodParamsAubecs implements PaymentMethodParams {
   factory _PaymentMethodParamsAubecs.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsAubecsFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodDataAubecs paymentMethodData;
+ final  PaymentMethodDataAubecs paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4061,7 +4070,7 @@ class _PaymentMethodParamsBankContact implements PaymentMethodParams {
   factory _PaymentMethodParamsBankContact.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsBankContactFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4144,7 +4153,7 @@ class _PaymentMethodParamsGiroPay implements PaymentMethodParams {
   factory _PaymentMethodParamsGiroPay.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsGiroPayFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4227,7 +4236,7 @@ class _PaymentMethodParamsEps implements PaymentMethodParams {
   factory _PaymentMethodParamsEps.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsEpsFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4310,7 +4319,7 @@ class _PaymentMethodParamsAffirm implements PaymentMethodParams {
   factory _PaymentMethodParamsAffirm.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsAffirmFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4393,7 +4402,7 @@ class _PaymentMethodParamsPay implements PaymentMethodParams {
   factory _PaymentMethodParamsPay.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsPayFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4476,7 +4485,7 @@ class _PaymentMethodParamsP24 implements PaymentMethodParams {
   factory _PaymentMethodParamsP24.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsP24FromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4559,7 +4568,7 @@ class _PaymentMethodParamsFpx implements PaymentMethodParams {
   factory _PaymentMethodParamsFpx.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsFpxFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodDataFpx paymentMethodData;
+ final  PaymentMethodDataFpx paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4642,7 +4651,7 @@ class _PaymentMethodParamsSepaDebit implements PaymentMethodParams {
   factory _PaymentMethodParamsSepaDebit.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsSepaDebitFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodDataSepa paymentMethodData;
+ final  PaymentMethodDataSepa paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4724,7 +4733,7 @@ class _PaymentMethodParamsAfterpayClearpay implements PaymentMethodParams {
   const _PaymentMethodParamsAfterpayClearpay({required this.paymentMethodData, final  String? $type}): $type = $type ?? 'AfterpayClearpay';
   factory _PaymentMethodParamsAfterpayClearpay.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsAfterpayClearpayFromJson(json);
 
-@override final  PaymentMethodDataAfterPay paymentMethodData;
+ final  PaymentMethodDataAfterPay paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4807,7 +4816,7 @@ class _PaymentMethodParamsOxxo implements PaymentMethodParams {
   factory _PaymentMethodParamsOxxo.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsOxxoFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4893,7 +4902,7 @@ class _PaymentMethodParamsKlarna implements PaymentMethodParams {
 ///
 /// Make sure to add an email and country (part of the address) in the
 /// billingdetails which is required for using Klarna.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -4976,7 +4985,7 @@ class _PaymentMethodParamsPayPal implements PaymentMethodParams {
   factory _PaymentMethodParamsPayPal.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsPayPalFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -5059,7 +5068,7 @@ class _PaymentMethodParamsRevolutPay implements PaymentMethodParams {
   factory _PaymentMethodParamsRevolutPay.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsRevolutPayFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodData paymentMethodData;
+ final  PaymentMethodData paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -5142,7 +5151,7 @@ class _PaymentMethodParamsUsBankAccount implements PaymentMethodParams {
   factory _PaymentMethodParamsUsBankAccount.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsUsBankAccountFromJson(json);
 
 /// Paymentmethod data for this paymentmethod.
-@override final  PaymentMethodDataUsBank paymentMethodData;
+ final  PaymentMethodDataUsBank paymentMethodData;
 
 @JsonKey(name: 'paymentMethodType')
 final String $type;
@@ -5216,6 +5225,45 @@ $PaymentMethodDataUsBankCopyWith<$Res> get paymentMethodData {
   });
 }
 }
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _PaymentMethodParamsElements implements PaymentMethodParams {
+  const _PaymentMethodParamsElements({final  String? $type}): $type = $type ?? 'Elements';
+  factory _PaymentMethodParamsElements.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsElementsFromJson(json);
+
+
+
+@JsonKey(name: 'paymentMethodType')
+final String $type;
+
+
+
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentMethodParamsElementsToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMethodParamsElements);
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PaymentMethodParams.elements()';
+}
+
+
+}
+
+
+
 
 
 /// @nodoc
