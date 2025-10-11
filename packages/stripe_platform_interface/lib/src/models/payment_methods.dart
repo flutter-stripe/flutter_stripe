@@ -421,8 +421,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.klarna({
     /// Paymentmethod data for this paymentmethod.
     ///
-    /// Make sure to add an email and country (part of the address) in the
-    /// billingdetails which is required for using Klarna.
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsKlarna;
 
@@ -448,6 +446,12 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataUsBank paymentMethodData,
   }) = _PaymentMethodParamsUsBankAccount;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Billie')
+  factory PaymentMethodParams.billie({
+    required PaymentMethodData paymentMethodData,
+  }) = _PaymentMethodParamsBillie;
 
   // TODO uncomment and regenerate when we can re-enable wechat pay
   // @JsonSerializable(explicitToJson: true)
