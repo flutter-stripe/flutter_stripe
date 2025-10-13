@@ -64,6 +64,8 @@ class EmbeddedPaymentElementView(
 
   val rowSelectionBehaviorType = mutableStateOf<RowSelectionBehaviorType?>(null)
 
+  var onConfirmResult: ((Map<String, Any?>) -> Unit)? = null
+
   private val reactContext get() = context as ThemedReactContext
   private val events = Channel<Event>(Channel.UNLIMITED)
 
@@ -217,6 +219,19 @@ class EmbeddedPaymentElementView(
                     }
                   }
                 }
+
+              // Call Flutter method channel result callback
+              onConfirmResult?.invoke(
+                when (result) {
+                  is EmbeddedPaymentElement.Result.Completed ->
+                    mapOf("status" to "completed")
+                  is EmbeddedPaymentElement.Result.Canceled ->
+                    mapOf("status" to "canceled")
+                  is EmbeddedPaymentElement.Result.Failed ->
+                    mapOf("status" to "failed", "error" to (result.error.message ?: "Unknown error"))
+                }
+              )
+
               requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementFormSheetConfirmComplete(map)
             },
           ).confirmCustomPaymentMethodCallback(confirmCustomPaymentMethodCallback)
