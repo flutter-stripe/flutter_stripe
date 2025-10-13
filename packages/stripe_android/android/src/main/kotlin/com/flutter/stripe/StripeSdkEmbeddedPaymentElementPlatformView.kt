@@ -1,0 +1,81 @@
+package com.flutter.stripe
+
+import android.content.Context
+import android.view.View
+import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.EmbeddedPaymentElementView
+import com.reactnativestripesdk.EmbeddedPaymentElementViewManager
+import com.reactnativestripesdk.StripeSdkModule
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugin.platform.PlatformView
+
+class StripeSdkEmbeddedPaymentElementPlatformView(
+    private val context: Context,
+    channel: MethodChannel,
+    id: Int,
+    creationParams: Map<String?, Any?>?,
+    private val viewManager: EmbeddedPaymentElementViewManager,
+    sdkAccessor: () -> StripeSdkModule
+) : PlatformView, MethodChannel.MethodCallHandler {
+
+    private val themedContext = ThemedReactContext(sdkAccessor().reactContext, channel, sdkAccessor)
+    private val embeddedView: EmbeddedPaymentElementView = viewManager.createViewInstance(themedContext)
+
+    init {
+        channel.setMethodCallHandler(this)
+
+        creationParams?.convertToReadables()?.forEach { entry ->
+            when (entry.key) {
+                "configuration" -> {
+                    viewManager.setConfiguration(embeddedView, entry.value)
+                }
+                "intentConfiguration" -> {
+                    viewManager.setIntentConfiguration(embeddedView, entry.value)
+                }
+            }
+        }
+    }
+
+    override fun getView(): View {
+        return embeddedView
+    }
+
+    override fun dispose() {
+        viewManager.onDropViewInstance(embeddedView)
+    }
+
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+        when (call.method) {
+            "confirm" -> {
+                viewManager.confirm(embeddedView)
+                result.success(null)
+            }
+            "clearPaymentOption" -> {
+                viewManager.clearPaymentOption(embeddedView)
+                result.success(null)
+            }
+            "updateConfiguration" -> {
+                val config = call.arguments.convertToReadable()
+                viewManager.setConfiguration(embeddedView, config)
+                result.success(null)
+            }
+            "updateIntentConfiguration" -> {
+                val intentConfig = call.arguments.convertToReadable()
+                viewManager.setIntentConfiguration(embeddedView, intentConfig)
+                result.success(null)
+            }
+            else -> {
+                result.notImplemented()
+            }
+        }
+    }
+
+    override fun onFlutterViewAttached(flutterView: View) {
+        embeddedView.post {
+            embeddedView.requestLayout()
+            embeddedView.invalidate()
+        }
+    }
+}

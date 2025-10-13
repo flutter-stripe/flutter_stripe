@@ -107,6 +107,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
 
         STPAPIClient.shared.appInfo = STPAppInfo(name: name, partnerId: partnerId, version: version, url: url)
         self.merchantIdentifier = merchantIdentifier
+        StripeSdkImpl.shared.merchantIdentifier = merchantIdentifier
         resolve(NSNull())
     }
 
