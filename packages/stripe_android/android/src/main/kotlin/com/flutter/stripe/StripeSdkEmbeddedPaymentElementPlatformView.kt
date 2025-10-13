@@ -49,8 +49,11 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when (call.method) {
             "confirm" -> {
+                embeddedView.onConfirmResult = { resultMap ->
+                    result.success(resultMap)
+                    embeddedView.onConfirmResult = null
+                }
                 viewManager.confirm(embeddedView)
-                result.success(null)
             }
             "clearPaymentOption" -> {
                 viewManager.clearPaymentOption(embeddedView)
