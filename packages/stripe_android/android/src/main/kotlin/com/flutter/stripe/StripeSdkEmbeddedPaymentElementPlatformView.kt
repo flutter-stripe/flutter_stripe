@@ -59,16 +59,6 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
                 viewManager.clearPaymentOption(embeddedView)
                 result.success(null)
             }
-            "updateConfiguration" -> {
-                val config = call.arguments.convertToReadable()
-                viewManager.setConfiguration(embeddedView, config)
-                result.success(null)
-            }
-            "updateIntentConfiguration" -> {
-                val intentConfig = call.arguments.convertToReadable()
-                viewManager.setIntentConfiguration(embeddedView, intentConfig)
-                result.success(null)
-            }
             else -> {
                 result.notImplemented()
             }
