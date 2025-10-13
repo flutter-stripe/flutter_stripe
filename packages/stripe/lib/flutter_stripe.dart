@@ -7,5 +7,7 @@ export 'src/widgets/adress_sheet.dart';
 export 'src/widgets/aubecs_debit_form.dart';
 export 'src/widgets/card_field.dart';
 export 'src/widgets/card_form_field.dart';
+export 'src/widgets/embedded_payment_element.dart';
+export 'src/widgets/embedded_payment_element_controller.dart';
 // export 'src/widgets/google_pay_button.dart';
 export 'src/widgets/platform_pay_button.dart';
