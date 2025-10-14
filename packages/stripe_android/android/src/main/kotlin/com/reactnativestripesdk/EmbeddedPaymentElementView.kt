@@ -65,6 +65,11 @@ class EmbeddedPaymentElementView(
   val rowSelectionBehaviorType = mutableStateOf<RowSelectionBehaviorType?>(null)
 
   var onConfirmResult: ((Map<String, Any?>) -> Unit)? = null
+  var onHeightChanged: ((Float) -> Unit)? = null
+  var onPaymentOptionChanged: ((Map<String, Any?>?) -> Unit)? = null
+  var onLoadingFailed: ((String) -> Unit)? = null
+  var onRowSelectionImmediateAction: (() -> Unit)? = null
+  var onFormSheetConfirmComplete: ((Map<String, Any>) -> Unit)? = null
 
   private val reactContext get() = context as ThemedReactContext
   private val events = Channel<Event>(Channel.UNLIMITED)
@@ -202,37 +207,35 @@ class EmbeddedPaymentElementView(
               }
             },
             resultCallback = { result ->
-              val map =
-                Arguments.createMap().apply {
-                  when (result) {
-                    is EmbeddedPaymentElement.Result.Completed -> {
-                      putString("status", "completed")
-                    }
+              val resultMap = when (result) {
+                is EmbeddedPaymentElement.Result.Completed ->
+                  mapOf("status" to "completed")
+                is EmbeddedPaymentElement.Result.Canceled ->
+                  mapOf("status" to "canceled")
+                is EmbeddedPaymentElement.Result.Failed ->
+                  mapOf("status" to "failed", "error" to (result.error.message ?: "Unknown error"))
+              }
 
-                    is EmbeddedPaymentElement.Result.Canceled -> {
-                      putString("status", "canceled")
-                    }
+              onConfirmResult?.invoke(resultMap)
 
-                    is EmbeddedPaymentElement.Result.Failed -> {
-                      putString("status", "failed")
-                      putString("error", result.error.message ?: "Unknown error")
+              onFormSheetConfirmComplete?.invoke(resultMap) ?: run {
+                val map =
+                  Arguments.createMap().apply {
+                    when (result) {
+                      is EmbeddedPaymentElement.Result.Completed -> {
+                        putString("status", "completed")
+                      }
+                      is EmbeddedPaymentElement.Result.Canceled -> {
+                        putString("status", "canceled")
+                      }
+                      is EmbeddedPaymentElement.Result.Failed -> {
+                        putString("status", "failed")
+                        putString("error", result.error.message ?: "Unknown error")
+                      }
                     }
                   }
-                }
-
-              // Call Flutter method channel result callback
-              onConfirmResult?.invoke(
-                when (result) {
-                  is EmbeddedPaymentElement.Result.Completed ->
-                    mapOf("status" to "completed")
-                  is EmbeddedPaymentElement.Result.Canceled ->
-                    mapOf("status" to "canceled")
-                  is EmbeddedPaymentElement.Result.Failed ->
-                    mapOf("status" to "failed", "error" to (result.error.message ?: "Unknown error"))
-                }
-              )
-
-              requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementFormSheetConfirmComplete(map)
+                requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementFormSheetConfirmComplete(map)
+              }
             },
           ).confirmCustomPaymentMethodCallback(confirmCustomPaymentMethodCallback)
           .rowSelectionBehavior(
@@ -240,7 +243,9 @@ class EmbeddedPaymentElementView(
               EmbeddedPaymentElement.RowSelectionBehavior.default()
             } else {
               EmbeddedPaymentElement.RowSelectionBehavior.immediateAction {
-                requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementRowSelectionImmediateAction()
+                onRowSelectionImmediateAction?.invoke() ?: run {
+                  requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementRowSelectionImmediateAction()
+                }
               }
             },
           )
@@ -266,15 +271,15 @@ class EmbeddedPaymentElementView(
             when (result) {
               is EmbeddedPaymentElement.ConfigureResult.Succeeded -> reportHeightChange(1f)
               is EmbeddedPaymentElement.ConfigureResult.Failed -> {
-                // send the error back to JS
                 val err = result.error
                 val msg = err.localizedMessage ?: err.toString()
-                // build a RN map
-                val payload =
-                  Arguments.createMap().apply {
-                    putString("message", msg)
-                  }
-                requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementLoadingFailed(payload)
+                onLoadingFailed?.invoke(msg) ?: run {
+                  val payload =
+                    Arguments.createMap().apply {
+                      putString("message", msg)
+                    }
+                  requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementLoadingFailed(payload)
+                }
               }
             }
           }
@@ -292,11 +297,13 @@ class EmbeddedPaymentElementView(
     LaunchedEffect(embedded) {
       embedded.paymentOption.collect { opt ->
         val optMap = opt?.toWritableMap()
-        val payload =
-          Arguments.createMap().apply {
-            putMap("paymentOption", optMap)
-          }
-        requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementDidUpdatePaymentOption(payload)
+        onPaymentOptionChanged?.invoke(optMap) ?: run {
+          val payload =
+            Arguments.createMap().apply {
+              putMap("paymentOption", optMap)
+            }
+          requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementDidUpdatePaymentOption(payload)
+        }
       }
     }
 
@@ -356,11 +363,13 @@ class EmbeddedPaymentElementView(
   }
 
   private fun reportHeightChange(height: Float) {
-    val params =
-      Arguments.createMap().apply {
-        putDouble("height", height.toDouble())
-      }
-    requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementDidUpdateHeight(params)
+    onHeightChanged?.invoke(height) ?: run {
+      val params =
+        Arguments.createMap().apply {
+          putDouble("height", height.toDouble())
+        }
+      requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementDidUpdateHeight(params)
+    }
   }
 
   // APIs

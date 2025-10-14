@@ -26,6 +26,26 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
     init {
         channel.setMethodCallHandler(this)
 
+        embeddedView.onHeightChanged = { height ->
+            channel.invokeMethod("onHeightChanged", mapOf("height" to height.toDouble()))
+        }
+
+        embeddedView.onPaymentOptionChanged = { paymentOption ->
+            channel.invokeMethod("onPaymentOptionChanged", mapOf("paymentOption" to paymentOption))
+        }
+
+        embeddedView.onLoadingFailed = { message ->
+            channel.invokeMethod("embeddedPaymentElementLoadingFailed", mapOf("message" to message))
+        }
+
+        embeddedView.onRowSelectionImmediateAction = {
+            channel.invokeMethod("embeddedPaymentElementRowSelectionImmediateAction", null)
+        }
+
+        embeddedView.onFormSheetConfirmComplete = { result ->
+            channel.invokeMethod("embeddedPaymentElementFormSheetConfirmComplete", result)
+        }
+
         creationParams?.let { params ->
             val configMap = params["configuration"] as? Map<*, *>
             val intentConfigMap = params["intentConfiguration"] as? Map<*, *>
