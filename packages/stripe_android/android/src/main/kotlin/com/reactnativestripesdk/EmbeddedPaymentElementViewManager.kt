@@ -260,7 +260,7 @@ fun ReadableMap.getStringArrayList(key: String): List<String>? {
   val array: ReadableArray = getArray(key) ?: return null
 
   val result = mutableListOf<String>()
-  for (i in 0 until array.size()) {
+  for (i in 0 until array.size) {
     // getString returns null if the element isn't actually a string
     array.getString(i)?.let { result.add(it) }
   }
@@ -275,7 +275,7 @@ fun ReadableMap.getIntegerArrayList(key: String): List<Int>? {
   val array: ReadableArray = getArray(key) ?: return null
 
   val result = mutableListOf<Int>()
-  for (i in 0 until array.size()) {
+  for (i in 0 until array.size) {
     // getType check to skip non-number entries
     if (array.getType(i) == ReadableType.Number) {
       // if it's actually a float/double, this will truncate; adjust as needed
