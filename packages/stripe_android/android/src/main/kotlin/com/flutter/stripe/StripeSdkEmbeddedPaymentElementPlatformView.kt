@@ -29,10 +29,10 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
         creationParams?.convertToReadables()?.forEach { entry ->
             when (entry.key) {
                 "configuration" -> {
-                    viewManager.setConfiguration(embeddedView, entry.value)
+                    entry.value?.let { viewManager.setConfiguration(embeddedView, it as com.facebook.react.bridge.Dynamic) }
                 }
                 "intentConfiguration" -> {
-                    viewManager.setIntentConfiguration(embeddedView, entry.value)
+                    entry.value?.let { viewManager.setIntentConfiguration(embeddedView, it as com.facebook.react.bridge.Dynamic) }
                 }
             }
         }
