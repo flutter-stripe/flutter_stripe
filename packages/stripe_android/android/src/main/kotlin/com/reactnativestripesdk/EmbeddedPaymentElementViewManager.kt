@@ -154,7 +154,11 @@ class EmbeddedPaymentElementViewManager :
         email = mapToCollectionMode(billingConfigParams?.getString("email")),
         address = mapToAddressCollectionMode(billingConfigParams?.getString("address")),
         attachDefaultsToPaymentMethod =
-          billingConfigParams?.getBooleanOr("attachDefaultsToPaymentMethod", false) ?: false,
+          if (billingConfigParams?.containsKey("attachDefaultsToPaymentMethod") == true) {
+            billingConfigParams.getBoolean("attachDefaultsToPaymentMethod")
+          } else {
+            false
+          },
       )
     val allowsRemovalOfLastSavedPaymentMethod =
       if (bundle.containsKey("allowsRemovalOfLastSavedPaymentMethod")) {
@@ -206,11 +210,7 @@ class EmbeddedPaymentElementViewManager :
         )
         .customPaymentMethods(
           parseCustomPaymentMethods(
-            bundle.getBundle("customPaymentMethodConfiguration").apply {
-              bundle.getBundle("customPaymentMethodConfiguration")?.let { readable ->
-                putSerializable("customPaymentMethodConfigurationReadableMap", readable)
-              }
-            },
+            bundle.getBundle("customPaymentMethodConfiguration") ?: Bundle(),
           ),
         )
 
