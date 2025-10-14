@@ -511,12 +511,9 @@ private fun dynamicColorFromParams(
   }
 
   // First check if it's a nested Bundle { "light": "#RRGGBB", "dark": "#RRGGBB" }
-  val colorBundle =
-    try {
-      params.getBundle(key)
-    } catch (e: ClassCastException) {
-      null
-    }
+  val value = params.get(key)
+  val colorBundle = if (value is Bundle) value else null
+
   if (colorBundle != null) {
     val isDark =
       (
