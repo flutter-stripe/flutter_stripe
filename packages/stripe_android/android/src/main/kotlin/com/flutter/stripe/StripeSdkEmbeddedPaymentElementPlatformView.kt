@@ -26,13 +26,31 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
     init {
         channel.setMethodCallHandler(this)
 
-        creationParams?.convertToReadables()?.forEach { entry ->
-            when (entry.key) {
-                "configuration" -> {
-                    entry.value?.let { viewManager.setConfiguration(embeddedView, it as com.facebook.react.bridge.Dynamic) }
-                }
-                "intentConfiguration" -> {
-                    entry.value?.let { viewManager.setIntentConfiguration(embeddedView, it as com.facebook.react.bridge.Dynamic) }
+        creationParams?.let { params ->
+            val configMap = params["configuration"] as? Map<*, *>
+            val intentConfigMap = params["intentConfiguration"] as? Map<*, *>
+
+            if (configMap != null) {
+                @Suppress("UNCHECKED_CAST")
+                val configBundle = mapToBundle(configMap as Map<String?, Any?>)
+                val rowSelectionBehaviorType = viewManager.parseRowSelectionBehavior(configBundle)
+                embeddedView.rowSelectionBehaviorType.value = rowSelectionBehaviorType
+                val elementConfig = viewManager.parseElementConfiguration(configBundle, context)
+                embeddedView.latestElementConfig = elementConfig
+            }
+
+            if (intentConfigMap != null) {
+                @Suppress("UNCHECKED_CAST")
+                val intentConfigBundle = mapToBundle(intentConfigMap as Map<String?, Any?>)
+                val intentConfig = viewManager.parseIntentConfiguration(intentConfigBundle)
+                embeddedView.latestIntentConfig = intentConfig
+            }
+
+            if (embeddedView.latestElementConfig != null && embeddedView.latestIntentConfig != null) {
+                embeddedView.configure(embeddedView.latestElementConfig!!, embeddedView.latestIntentConfig!!)
+                embeddedView.post {
+                    embeddedView.requestLayout()
+                    embeddedView.invalidate()
                 }
             }
         }
