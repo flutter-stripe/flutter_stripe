@@ -109,7 +109,7 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
 
     @MainActor
     private func attachEmbeddedView(_ embeddedElement: EmbeddedPaymentElement) {
-        delegate = FlutterEmbeddedPaymentElementDelegate(channel: channel, embeddedView: embeddedView)
+        delegate = FlutterEmbeddedPaymentElementDelegate(channel: channel)
         embeddedElement.delegate = delegate
 
         let paymentElementView = embeddedElement.view
@@ -156,20 +156,27 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
 
 class FlutterEmbeddedPaymentElementDelegate: EmbeddedPaymentElementDelegate {
     weak var channel: FlutterMethodChannel?
-    weak var embeddedView: UIView?
+    private var lastReportedHeight: CGFloat = 0
 
-    init(channel: FlutterMethodChannel, embeddedView: UIView) {
+    init(channel: FlutterMethodChannel) {
         self.channel = channel
-        self.embeddedView = embeddedView
     }
 
     func embeddedPaymentElementDidUpdateHeight(embeddedPaymentElement: StripePaymentSheet.EmbeddedPaymentElement) {
         guard let channel = channel else { return }
 
-        let newHeight = embeddedPaymentElement.view.systemLayoutSizeFitting(
-            CGSize(width: embeddedPaymentElement.view.bounds.width, height: UIView.layoutFittingCompressedSize.height)
-        ).height
+        let paymentView = embeddedPaymentElement.view
+        paymentView.layoutIfNeeded()
 
+        let targetSize = paymentView.systemLayoutSizeFitting(
+            UIView.layoutFittingCompressedSize
+        )
+        let newHeight = targetSize.height
+
+        guard newHeight > 0 else { return }
+        guard abs(newHeight - lastReportedHeight) > 1.0 else { return }
+
+        lastReportedHeight = newHeight
         channel.invokeMethod("onHeightChanged", arguments: ["height": newHeight])
     }
 
@@ -181,7 +188,7 @@ class FlutterEmbeddedPaymentElementDelegate: EmbeddedPaymentElementDelegate {
     }
 
     func embeddedPaymentElementWillPresent(embeddedPaymentElement: EmbeddedPaymentElement) {
-        if let viewController = embeddedView?.window?.rootViewController {
+        if let viewController = embeddedPaymentElement.view.window?.rootViewController {
             embeddedPaymentElement.presentingViewController = viewController
         }
     }
