@@ -161,6 +161,8 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
           final arguments = call.arguments as Map?;
           if (arguments != null) {
             final height = (arguments['height'] as num?)?.toDouble() ?? 0;
+            if (height <= 0) return;
+
             setState(() {
               _currentHeight = height;
             });
@@ -215,9 +217,14 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
       );
     }
 
-    return SizedBox(
-      height: _currentHeight > 0 ? _currentHeight : 400,
-      child: platformView,
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+      alignment: Alignment.topCenter,
+      child: SizedBox(
+        height: _currentHeight > 0 ? _currentHeight : 400,
+        child: platformView,
+      ),
     );
   }
 }
