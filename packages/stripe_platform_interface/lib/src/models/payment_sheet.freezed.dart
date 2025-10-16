@@ -8393,8 +8393,8 @@ return $default(_that.spacing);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _FloatingConfig implements FloatingConfig {
   const _FloatingConfig({this.spacing});
   factory _FloatingConfig.fromJson(Map<String, dynamic> json) => _$FloatingConfigFromJson(json);
@@ -8690,8 +8690,8 @@ return $default(_that.style,_that.additionalInsets,_that.flat,_that.floating);ca
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _RowConfig implements RowConfig {
   const _RowConfig({this.style, this.additionalInsets, this.flat, this.floating});
   factory _RowConfig.fromJson(Map<String, dynamic> json) => _$RowConfigFromJson(json);
@@ -9001,8 +9001,8 @@ return $default(_that.row);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _EmbeddedPaymentElementAppearance implements EmbeddedPaymentElementAppearance {
   const _EmbeddedPaymentElementAppearance({this.row});
   factory _EmbeddedPaymentElementAppearance.fromJson(Map<String, dynamic> json) => _$EmbeddedPaymentElementAppearanceFromJson(json);

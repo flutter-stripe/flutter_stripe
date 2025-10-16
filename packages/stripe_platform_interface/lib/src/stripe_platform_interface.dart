@@ -191,6 +191,9 @@ abstract class StripePlatform extends PlatformInterface {
   /// or not successfull when using a defferred payment method.
   Future<void> intentCreationCallback(IntentCreationCallbackParams params);
 
+  /// Set the confirm handler for embedded payment elements
+  void setConfirmHandler(ConfirmHandler? handler);
+
   Widget buildCard({
     Key? key,
     required CardEditController controller,

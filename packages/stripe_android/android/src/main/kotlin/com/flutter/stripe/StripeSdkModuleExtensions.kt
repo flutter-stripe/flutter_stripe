@@ -55,3 +55,49 @@ fun Any.convertToReadable(): Any {
         else -> this
     }
 }
+
+fun mapToBundle(map: Map<String?, Any?>?): android.os.Bundle {
+    val result = android.os.Bundle()
+    if (map == null) {
+        return result
+    }
+
+    for ((key, value) in map) {
+        if (key == null) continue
+
+        when (value) {
+            null -> result.putString(key, null)
+            is Boolean -> result.putBoolean(key, value)
+            is Int -> result.putInt(key, value)
+            is Long -> result.putLong(key, value)
+            is Double -> result.putDouble(key, value)
+            is String -> result.putString(key, value)
+            is Map<*, *> -> {
+                @Suppress("UNCHECKED_CAST")
+                result.putBundle(key, mapToBundle(value as Map<String?, Any?>))
+            }
+            is List<*> -> {
+                val list = value as List<*>
+                if (list.isEmpty()) {
+                    result.putStringArrayList(key, ArrayList())
+                } else {
+                    when (list.first()) {
+                        is String -> {
+                            @Suppress("UNCHECKED_CAST")
+                            result.putStringArrayList(key, ArrayList(list as List<String>))
+                        }
+                        is Int -> {
+                            @Suppress("UNCHECKED_CAST")
+                            result.putIntegerArrayList(key, ArrayList(list as List<Int>))
+                        }
+                        else -> {
+                            android.util.Log.e("mapToBundle", "Cannot put arrays of objects into bundles. Failed on: $key.")
+                        }
+                    }
+                }
+            }
+            else -> android.util.Log.e("mapToBundle", "Could not convert object with key: $key, type: ${value::class.java}")
+        }
+    }
+    return result
+}

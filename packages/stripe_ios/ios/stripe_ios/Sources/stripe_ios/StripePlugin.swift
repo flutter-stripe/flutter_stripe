@@ -49,6 +49,7 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
 
         let instance = StripePlugin(channel: channel)
         instance.emitter = instance
+        StripeSdkImpl.shared.emitter = instance
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
 
@@ -71,6 +72,10 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         // Addressheet
         let addressSheetFactory = AddressSheetViewFactory(messenger: registrar.messenger(), delegate: instance)
         registrar.register(addressSheetFactory, withId: "flutter.stripe/address_sheet")
+
+        // Embedded Payment Element
+        let embeddedPaymentElementFactory = EmbeddedPaymentElementViewFactory(messenger: registrar.messenger())
+        registrar.register(embeddedPaymentElementFactory, withId: "flutter.stripe/embedded_payment_element")
 
     }
 
@@ -760,7 +765,11 @@ extension  StripePlugin {
             return
         }
 
-        intentCreationCallback(result: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        StripeSdkImpl.shared.intentCreationCallback(
+            result: params,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
         result(nil)
     }
 

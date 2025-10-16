@@ -58,8 +58,9 @@ class _AddressSheetState extends State<_AddressSheet> {
     _methodChannel?.setMethodCallHandler((call) async {
       if (call.method == 'onSubmitAction') {
         try {
-          final tmp =
-              Map<String, dynamic>.from(call.arguments as Map)['result'];
+          final tmp = Map<String, dynamic>.from(
+            call.arguments as Map,
+          )['result'];
           final tmpAdress = Map<String, dynamic>.from(tmp['address'] as Map);
 
           widget.onSubmit(
@@ -70,7 +71,9 @@ class _AddressSheetState extends State<_AddressSheet> {
             ),
           );
         } catch (e) {
-          log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
+          log(
+            'An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new',
+          );
           rethrow;
         }
       } else if (call.method == 'onErrorAction') {
@@ -78,7 +81,8 @@ class _AddressSheetState extends State<_AddressSheet> {
         final foo = Map<String, dynamic>.from(tmp['error'] as Map);
 
         widget.onError(
-            StripeException(error: LocalizedErrorMessage.fromJson(foo)));
+          StripeException(error: LocalizedErrorMessage.fromJson(foo)),
+        );
       }
     });
   }
@@ -99,21 +103,22 @@ class _AddressSheetState extends State<_AddressSheet> {
                 return AndroidViewSurface(
                   controller: controller as AndroidViewController,
                   hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-                  gestureRecognizers: const <Factory<
-                      OneSequenceGestureRecognizer>>{},
+                  gestureRecognizers:
+                      const <Factory<OneSequenceGestureRecognizer>>{},
                 );
               },
               onCreatePlatformView: (params) {
                 onPlatformViewCreated(params.id);
                 return PlatformViewsService.initExpensiveAndroidView(
-                  id: params.id,
-                  viewType: _viewType,
-                  layoutDirection: TextDirection.ltr,
-                  creationParams: widget.addressSheetParams.toJson(),
-                  creationParamsCodec: const StandardMessageCodec(),
-                )
+                    id: params.id,
+                    viewType: _viewType,
+                    layoutDirection: TextDirection.ltr,
+                    creationParams: widget.addressSheetParams.toJson(),
+                    creationParamsCodec: const StandardMessageCodec(),
+                  )
                   ..addOnPlatformViewCreatedListener(
-                      params.onPlatformViewCreated)
+                    params.onPlatformViewCreated,
+                  )
                   ..create();
               },
               viewType: _viewType,

@@ -2,8 +2,15 @@ group 'com.flutter.stripe'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.8.0'
+    def kotlin_version = rootProject.ext.has('kotlinVersion')
+        ? rootProject.ext.get('kotlinVersion')
+        : '1.9.0'
+
+    ext.kotlin_version = kotlin_version
     ext.stripe_version = '21.26.+'
+    ext.compose_version = '1.5.1'
+
+    def kotlinMajor = kotlin_version.tokenize('\\.')[0].toInteger()
 
     repositories {
         google()
@@ -13,6 +20,10 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:8.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // only use compose-compiler plugin when Kotlin >= 2.0
+        if (kotlinMajor >= 2) {
+            classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlin_version"
+        }
     }
 }
 
@@ -23,8 +34,17 @@ rootProject.allprojects {
     }
 }
 
+def kotlin_version = rootProject.ext.has('kotlinVersion')
+    ? rootProject.ext.get('kotlinVersion')
+    : '1.9.0'
+def kotlinMajor = kotlin_version.tokenize('\\.')[0].toInteger()
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+// Only apply compose plugin if Kotlin >= 2.0
+if (kotlinMajor >= 2) {
+    apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+}
 
 android {
     namespace 'com.flutter.stripe'
@@ -37,6 +57,14 @@ android {
 
     kotlinOptions {
         jvmTarget = '17'
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = '1.5.1'
     }
 
     sourceSets {
@@ -58,6 +86,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+
+    // Jetpack Compose dependencies for EmbeddedPaymentElement
+    implementation platform('androidx.compose:compose-bom:2023.10.01')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.foundation:foundation'
+    implementation 'androidx.compose.runtime:runtime'
+    implementation 'androidx.activity:activity-compose:1.8.0'
 
     // play-services-wallet is already included in stripe-android
     compileOnly "com.google.android.gms:play-services-wallet:19.3.0"

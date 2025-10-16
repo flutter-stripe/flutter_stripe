@@ -524,4 +524,3 @@ extension StripeSdkImpl {
       }
     }
 }
-
