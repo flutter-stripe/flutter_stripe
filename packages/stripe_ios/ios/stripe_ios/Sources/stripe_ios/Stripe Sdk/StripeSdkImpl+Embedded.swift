@@ -31,6 +31,7 @@ extension StripeSdkImpl {
     let intentConfig = buildIntentConfiguration(
       modeParams: modeParams,
       paymentMethodTypes: intentConfig["paymentMethodTypes"] as? [String],
+      paymentMethodConfigurationId: intentConfig["paymentMethodConfigurationId"] as? String,
       captureMethod: mapCaptureMethod(captureMethodString)
     )
 
@@ -132,6 +133,7 @@ extension StripeSdkImpl {
     let intentConfiguration = buildIntentConfiguration(
       modeParams: modeParams,
       paymentMethodTypes: intentConfig["paymentMethodTypes"] as? [String],
+      paymentMethodConfigurationId: intentConfig["paymentMethodConfigurationId"] as? String,
       captureMethod: mapCaptureMethod(captureMethodString)
     )
 

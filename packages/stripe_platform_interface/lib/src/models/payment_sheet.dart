@@ -140,6 +140,10 @@ abstract class IntentConfiguration with _$IntentConfiguration {
     /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
     List<String>? paymentMethodTypes,
 
+    /// Configuration ID for the selected payment method configuration.
+    /// See https://stripe.com/docs/payments/multiple-payment-method-configs
+    String? paymentMethodConfigurationId,
+
     /// Called when the customer confirms payment. Your implementation should create
     /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
     @JsonKey(includeFromJson: false, includeToJson: false)

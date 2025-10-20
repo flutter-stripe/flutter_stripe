@@ -135,6 +135,8 @@ _IntentConfiguration _$IntentConfigurationFromJson(Map<String, dynamic> json) =>
       paymentMethodTypes: (json['paymentMethodTypes'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      paymentMethodConfigurationId:
+          json['paymentMethodConfigurationId'] as String?,
     );
 
 Map<String, dynamic> _$IntentConfigurationToJson(
@@ -142,6 +144,7 @@ Map<String, dynamic> _$IntentConfigurationToJson(
 ) => <String, dynamic>{
   'mode': instance.mode.toJson(),
   'paymentMethodTypes': instance.paymentMethodTypes,
+  'paymentMethodConfigurationId': instance.paymentMethodConfigurationId,
 };
 
 _PaymentMode _$PaymentModeFromJson(Map<String, dynamic> json) => _PaymentMode(

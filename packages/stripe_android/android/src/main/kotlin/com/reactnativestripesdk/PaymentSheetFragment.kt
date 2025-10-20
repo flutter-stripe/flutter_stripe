@@ -615,6 +615,7 @@ class PaymentSheetFragment :
         paymentMethodTypes =
           intentConfigurationParams.getStringArrayList("paymentMethodTypes")?.toList()
             ?: emptyList(),
+        paymentMethodConfigurationId = intentConfigurationParams.getString("paymentMethodConfigurationId"),
       )
     }
 
