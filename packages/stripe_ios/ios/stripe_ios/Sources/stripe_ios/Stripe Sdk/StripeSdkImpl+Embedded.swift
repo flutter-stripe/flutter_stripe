@@ -40,6 +40,7 @@ extension StripeSdkImpl {
       modeParams: modeParams,
       paymentMethodTypes: intentConfig["paymentMethodTypes"] as? [String],
       onBehalfOf: intentConfig["onBehalfOf"] as? String,
+      paymentMethodConfigurationId: intentConfig["paymentMethodConfigurationId"] as? String,
       captureMethod: StripeSdkImpl.mapCaptureMethod(captureMethodString),
       useConfirmationTokenCallback: hasConfirmationTokenHandler
     )
@@ -155,6 +156,7 @@ extension StripeSdkImpl {
       modeParams: modeParams,
       paymentMethodTypes: intentConfig["paymentMethodTypes"] as? [String],
       onBehalfOf: intentConfig["onBehalfOf"] as? String,
+      paymentMethodConfigurationId: intentConfig["paymentMethodConfigurationId"] as? String,
       captureMethod: StripeSdkImpl.mapCaptureMethod(captureMethodString),
       useConfirmationTokenCallback: hasConfirmationTokenHandler
     )
