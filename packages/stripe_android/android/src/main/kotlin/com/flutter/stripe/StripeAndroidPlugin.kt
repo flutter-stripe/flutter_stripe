@@ -11,6 +11,7 @@ import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
 import com.reactnativestripesdk.addresssheet.AddressSheetViewManager
 import com.reactnativestripesdk.pushprovisioning.AddToWalletButtonManager
+import com.reactnativestripesdk.EmbeddedPaymentElementViewManager
 import com.reactnativestripesdk.utils.getIntOrNull
 import com.reactnativestripesdk.utils.getValOr
 import com.stripe.android.model.PaymentMethodCreateParams
@@ -57,6 +58,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         AddressSheetViewManager()
     }
 
+    private val embeddedPaymentElementViewManager: EmbeddedPaymentElementViewManager by lazy {
+        EmbeddedPaymentElementViewManager()
+    }
+
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(flutterPluginBinding.applicationContext)
 
@@ -78,6 +83,9 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             .platformViewRegistry
             .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager(flutterPluginBinding.applicationContext)){stripeSdk})
         flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/address_sheet", StripeAddressSheetPlatformViewFactory(flutterPluginBinding, addressSheetFormViewManager ){stripeSdk})
+        flutterPluginBinding
+            .platformViewRegistry
+            .registerViewFactory("flutter.stripe/embedded_payment_element", StripeSdkEmbeddedPaymentElementPlatformViewFactory(flutterPluginBinding, embeddedPaymentElementViewManager){stripeSdk})
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {

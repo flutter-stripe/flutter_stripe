@@ -220,6 +220,7 @@ extension StripeSdkImpl {
             let intentConfig = buildIntentConfiguration(
                 modeParams: modeParams,
                 paymentMethodTypes: intentConfiguration["paymentMethodTypes"] as? [String],
+                paymentMethodConfigurationId: intentConfiguration["paymentMethodConfigurationId"] as? String,
                 captureMethod: mapCaptureMethod(captureMethodString)
             )
 
@@ -292,6 +293,7 @@ extension StripeSdkImpl {
     func buildIntentConfiguration(
         modeParams: NSDictionary,
         paymentMethodTypes: [String]?,
+        paymentMethodConfigurationId: String?,
         captureMethod: PaymentSheet.IntentConfiguration.CaptureMethod
     ) -> PaymentSheet.IntentConfiguration {
         var mode: PaymentSheet.IntentConfiguration.Mode
@@ -313,6 +315,7 @@ extension StripeSdkImpl {
         return PaymentSheet.IntentConfiguration.init(
             mode: mode,
             paymentMethodTypes: paymentMethodTypes,
+            paymentMethodConfigurationId: paymentMethodConfigurationId,
             confirmHandler: { paymentMethod, shouldSavePaymentMethod, intentCreationCallback in
                 self.paymentSheetIntentCreationCallback = intentCreationCallback
                 self.emitter?.emitOnConfirmHandlerCallback([
@@ -524,4 +527,3 @@ extension StripeSdkImpl {
       }
     }
 }
-

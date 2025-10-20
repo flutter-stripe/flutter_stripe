@@ -26,11 +26,11 @@ class ApplePayButton extends StatelessWidget {
     this.onShippingMethodSelected,
     this.onCouponCodeEntered,
     this.onOrderTracking,
-  })  : assert(constraints == null || constraints.debugAssertIsValid()),
-        constraints = (width != null || height != null)
-            ? constraints?.tighten(width: width, height: height) ??
-                BoxConstraints.tightFor(width: width, height: height)
-            : constraints;
+  }) : assert(constraints == null || constraints.debugAssertIsValid()),
+       constraints = (width != null || height != null)
+           ? constraints?.tighten(width: width, height: height) ??
+                 BoxConstraints.tightFor(width: width, height: height)
+           : constraints;
 
   /// Style of the the apple payment button.
   ///
@@ -84,11 +84,11 @@ class ApplePayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ConstrainedBox(
-        constraints: constraints ??
-            const BoxConstraints.tightFor(
-                height: _kApplePayButtonDefaultHeight),
-        child: _platform,
-      );
+    constraints:
+        constraints ??
+        const BoxConstraints.tightFor(height: _kApplePayButtonDefaultHeight),
+    child: _platform,
+  );
 
   Widget get _platform {
     switch (defaultTargetPlatform) {
@@ -105,7 +105,8 @@ class ApplePayButton extends StatelessWidget {
         );
       default:
         throw UnsupportedError(
-            'This platform $defaultTargetPlatform does not support Apple Pay');
+          'This platform $defaultTargetPlatform does not support Apple Pay',
+        );
     }
   }
 }
@@ -145,7 +146,7 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
       creationParams: {
         'type': widget.type.id,
         'buttonStyle': widget.style.id,
-        'borderRadius': widget.cornerRadius
+        'borderRadius': widget.cornerRadius,
       },
       onPlatformViewCreated: (viewId) {
         methodChannel = MethodChannel('flutter.stripe/apple_pay/$viewId');
@@ -184,8 +185,9 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
           Stripe.instance.debugUpdatePlatformSheetCalled = false;
           return true;
         }());
-        final args =
-            Map<String, dynamic>.from(call.arguments['shippingMethod']);
+        final args = Map<String, dynamic>.from(
+          call.arguments['shippingMethod'],
+        );
 
         final newShippingMethod = ApplePayShippingMethod.fromJson(args);
         await widget.onShippingMethodSelected!.call(newShippingMethod);

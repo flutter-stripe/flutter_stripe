@@ -31,11 +31,29 @@ extension StripeSdkImpl {
     let intentConfig = buildIntentConfiguration(
       modeParams: modeParams,
       paymentMethodTypes: intentConfig["paymentMethodTypes"] as? [String],
+      paymentMethodConfigurationId: intentConfig["paymentMethodConfigurationId"] as? String,
       captureMethod: mapCaptureMethod(captureMethodString)
     )
 
-    guard let configuration = buildEmbeddedPaymentElementConfiguration(params: configuration).configuration else {
+    let configResult = buildEmbeddedPaymentElementConfiguration(params: configuration)
+    if let error = configResult.error {
+      resolve(error)
+      return
+    }
+    guard let configuration = configResult.configuration else {
       resolve(Errors.createError(ErrorType.Failed, "Invalid configuration"))
+      return
+    }
+
+    if STPAPIClient.shared.publishableKey == nil || STPAPIClient.shared.publishableKey?.isEmpty == true {
+      let errorMsg = "Stripe publishableKey is not set"
+      resolve(Errors.createError(ErrorType.Failed, errorMsg))
+      return
+    }
+
+    if configuration.returnURL == nil || configuration.returnURL?.isEmpty == true {
+      let errorMsg = "returnURL is required for EmbeddedPaymentElement"
+      resolve(Errors.createError(ErrorType.Failed, errorMsg))
       return
     }
 
@@ -49,19 +67,20 @@ extension StripeSdkImpl {
         embeddedPaymentElement.presentingViewController = RCTPresentedViewController()
         self.embeddedInstance = embeddedPaymentElement
 
-        // success: resolve promise
         resolve(nil)
 
-        // publish initial state
         embeddedInstanceDelegate.embeddedPaymentElementDidUpdateHeight(embeddedPaymentElement: embeddedPaymentElement)
         embeddedInstanceDelegate.embeddedPaymentElementDidUpdatePaymentOption(embeddedPaymentElement: embeddedPaymentElement)
       } catch {
-        // 1) still resolve the promise so JS hook can finish loading
-        resolve(nil)
-
-        // 2) emit a loading‐failed event with the error message
         let msg = error.localizedDescription
-        self.emitter?.emitEmbeddedPaymentElementLoadingFailed(["message": msg])
+
+        if self.emitter != nil {
+          self.emitter?.emitEmbeddedPaymentElementLoadingFailed(["message": msg])
+        } else {
+          //TODO HANDLE emitter nil
+        }
+
+        resolve(nil)
       }
     }
 
@@ -71,8 +90,14 @@ extension StripeSdkImpl {
   public func confirmEmbeddedPaymentElement(resolve: @escaping RCTPromiseResolveBlock,
                                             reject: @escaping RCTPromiseRejectBlock) {
       DispatchQueue.main.async { [weak self] in
-          self?.embeddedInstance?.presentingViewController = RCTPresentedViewController()
-          self?.embeddedInstance?.confirm { result in
+          guard let embeddedInstance = self?.embeddedInstance else {
+              resolve([
+                "status": "failed",
+                "error": "Embedded payment element not available"
+              ])
+              return
+          }
+          embeddedInstance.confirm { result in
               switch result {
               case .completed:
                   // Return an object with { status: 'completed' }
@@ -108,6 +133,7 @@ extension StripeSdkImpl {
     let intentConfiguration = buildIntentConfiguration(
       modeParams: modeParams,
       paymentMethodTypes: intentConfig["paymentMethodTypes"] as? [String],
+      paymentMethodConfigurationId: intentConfig["paymentMethodConfigurationId"] as? String,
       captureMethod: mapCaptureMethod(captureMethodString)
     )
 
@@ -146,14 +172,34 @@ extension StripeSdkImpl {
 
 class StripeSdkEmbeddedPaymentElementDelegate: EmbeddedPaymentElementDelegate {
   weak var sdkImpl: StripeSdkImpl?
+  // Simulator was getting stuck because CA re-enters this callback; keep it guarded.
+  private var isUpdatingHeight = false
+  private var lastReportedHeight: CGFloat = 0
 
   init(sdkImpl: StripeSdkImpl) {
     self.sdkImpl = sdkImpl
   }
 
   func embeddedPaymentElementDidUpdateHeight(embeddedPaymentElement: StripePaymentSheet.EmbeddedPaymentElement) {
-    let newHeight = embeddedPaymentElement.view.systemLayoutSizeFitting(CGSize(width: embeddedPaymentElement.view.bounds.width, height: UIView.layoutFittingCompressedSize.height)).height
-    self.sdkImpl?.emitter?.emitEmbeddedPaymentElementDidUpdateHeight(["height": newHeight])
+    guard !isUpdatingHeight else { return }
+    guard embeddedPaymentElement.view.window != nil else { return }
+
+    isUpdatingHeight = true
+    DispatchQueue.main.async { [weak self, weak embeddedPaymentElement] in
+      defer { self?.isUpdatingHeight = false }
+
+      guard let self, let embeddedPaymentElement,
+            embeddedPaymentElement.view.window != nil else { return }
+
+      let newHeight = embeddedPaymentElement.view.systemLayoutSizeFitting(
+        CGSize(width: embeddedPaymentElement.view.bounds.width,
+               height: UIView.layoutFittingCompressedSize.height)
+      ).height
+
+      guard newHeight > 0, abs(newHeight - self.lastReportedHeight) > 1 else { return }
+      self.lastReportedHeight = newHeight
+      self.sdkImpl?.emitter?.emitEmbeddedPaymentElementDidUpdateHeight(["height": newHeight])
+    }
   }
 
   func embeddedPaymentElementDidUpdatePaymentOption(embeddedPaymentElement: EmbeddedPaymentElement) {

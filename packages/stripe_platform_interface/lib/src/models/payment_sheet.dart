@@ -140,6 +140,10 @@ abstract class IntentConfiguration with _$IntentConfiguration {
     /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
     List<String>? paymentMethodTypes,
 
+    /// Configuration ID for the selected payment method configuration.
+    /// See https://stripe.com/docs/payments/multiple-payment-method-configs
+    String? paymentMethodConfigurationId,
+
     /// Called when the customer confirms payment. Your implementation should create
     /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
     @JsonKey(includeFromJson: false, includeToJson: false)
@@ -451,7 +455,6 @@ abstract class PaymentSheetPrimaryButtonThemeColors
     /// The text color of the primary button when in a success state. Supports both single color strings and light/dark color objects.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
     Color? successTextColor,
-
   }) = _PaymentSheetPrimaryButtonThemeColors;
 
   factory PaymentSheetPrimaryButtonThemeColors.fromJson(
@@ -606,7 +609,11 @@ enum IntentFutureUsage {
 }
 
 typedef ConfirmHandler =
-    void Function(PaymentMethod result, bool shouldSavePaymentMethod);
+    void Function(
+      PaymentMethod result,
+      bool shouldSavePaymentMethod,
+      void Function(IntentCreationCallbackParams) intentCreationCallback,
+    );
 
 List<int> _cardBrandListToJson(List<CardBrand>? list) {
   if (list == null) {
@@ -808,6 +815,7 @@ abstract class FlatConfig with _$FlatConfig {
 /// Describes the appearance of the floating button style payment method row
 @freezed
 abstract class FloatingConfig with _$FloatingConfig {
+  @JsonSerializable(explicitToJson: true)
   const factory FloatingConfig({
     /// The spacing between payment method rows.
     double? spacing,
@@ -820,6 +828,7 @@ abstract class FloatingConfig with _$FloatingConfig {
 /// Describes the appearance of the row in the Embedded Mobile Payment Element
 @freezed
 abstract class RowConfig with _$RowConfig {
+  @JsonSerializable(explicitToJson: true)
   const factory RowConfig({
     /// The display style of the row.
     RowStyle? style,
@@ -844,6 +853,7 @@ abstract class RowConfig with _$RowConfig {
 @freezed
 abstract class EmbeddedPaymentElementAppearance
     with _$EmbeddedPaymentElementAppearance {
+  @JsonSerializable(explicitToJson: true)
   const factory EmbeddedPaymentElementAppearance({RowConfig? row}) =
       _EmbeddedPaymentElementAppearance;
 
