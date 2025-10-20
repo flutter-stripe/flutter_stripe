@@ -172,14 +172,34 @@ extension StripeSdkImpl {
 
 class StripeSdkEmbeddedPaymentElementDelegate: EmbeddedPaymentElementDelegate {
   weak var sdkImpl: StripeSdkImpl?
+  // Simulator was getting stuck because CA re-enters this callback; keep it guarded.
+  private var isUpdatingHeight = false
+  private var lastReportedHeight: CGFloat = 0
 
   init(sdkImpl: StripeSdkImpl) {
     self.sdkImpl = sdkImpl
   }
 
   func embeddedPaymentElementDidUpdateHeight(embeddedPaymentElement: StripePaymentSheet.EmbeddedPaymentElement) {
-    let newHeight = embeddedPaymentElement.view.systemLayoutSizeFitting(CGSize(width: embeddedPaymentElement.view.bounds.width, height: UIView.layoutFittingCompressedSize.height)).height
-    self.sdkImpl?.emitter?.emitEmbeddedPaymentElementDidUpdateHeight(["height": newHeight])
+    guard !isUpdatingHeight else { return }
+    guard embeddedPaymentElement.view.window != nil else { return }
+
+    isUpdatingHeight = true
+    DispatchQueue.main.async { [weak self, weak embeddedPaymentElement] in
+      defer { self?.isUpdatingHeight = false }
+
+      guard let self, let embeddedPaymentElement,
+            embeddedPaymentElement.view.window != nil else { return }
+
+      let newHeight = embeddedPaymentElement.view.systemLayoutSizeFitting(
+        CGSize(width: embeddedPaymentElement.view.bounds.width,
+               height: UIView.layoutFittingCompressedSize.height)
+      ).height
+
+      guard newHeight > 0, abs(newHeight - self.lastReportedHeight) > 1 else { return }
+      self.lastReportedHeight = newHeight
+      self.sdkImpl?.emitter?.emitEmbeddedPaymentElementDidUpdateHeight(["height": newHeight])
+    }
   }
 
   func embeddedPaymentElementDidUpdatePaymentOption(embeddedPaymentElement: EmbeddedPaymentElement) {
