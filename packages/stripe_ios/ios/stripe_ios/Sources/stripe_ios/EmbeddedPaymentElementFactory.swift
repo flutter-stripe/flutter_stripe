@@ -157,27 +157,38 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
 class FlutterEmbeddedPaymentElementDelegate: EmbeddedPaymentElementDelegate {
     weak var channel: FlutterMethodChannel?
     private var lastReportedHeight: CGFloat = 0
+    private var isReportingHeight = false
 
     init(channel: FlutterMethodChannel) {
         self.channel = channel
     }
 
     func embeddedPaymentElementDidUpdateHeight(embeddedPaymentElement: StripePaymentSheet.EmbeddedPaymentElement) {
-        guard let channel = channel else { return }
+        guard channel != nil else { return }
+        guard !isReportingHeight else { return }
 
-        let paymentView = embeddedPaymentElement.view
-        paymentView.layoutIfNeeded()
+        isReportingHeight = true
+        DispatchQueue.main.async { [weak self, weak embeddedPaymentElement] in
+            guard let self else { return }
+            defer { self.isReportingHeight = false }
+            guard
+                let embeddedPaymentElement,
+                let channel = self.channel,
+                embeddedPaymentElement.view.window != nil
+            else { return }
 
-        let targetSize = paymentView.systemLayoutSizeFitting(
-            UIView.layoutFittingCompressedSize
-        )
-        let newHeight = targetSize.height
+            let targetSize = embeddedPaymentElement.view.systemLayoutSizeFitting(
+                UIView.layoutFittingCompressedSize
+            )
+            let newHeight = targetSize.height
 
-        guard newHeight > 0 else { return }
-        guard abs(newHeight - lastReportedHeight) > 1.0 else { return }
+            guard newHeight > 0 else { return }
+            guard abs(newHeight - self.lastReportedHeight) > 1.0 else { return }
 
-        lastReportedHeight = newHeight
-        channel.invokeMethod("onHeightChanged", arguments: ["height": newHeight])
+            // Simulator was getting stuck because CA re-enters this callback; keep it guarded.
+            self.lastReportedHeight = newHeight
+            channel.invokeMethod("onHeightChanged", arguments: ["height": newHeight])
+        }
     }
 
     func embeddedPaymentElementDidUpdatePaymentOption(embeddedPaymentElement: EmbeddedPaymentElement) {
