@@ -1,3 +1,10 @@
+## 12.1.0
+
+**Features**
+- Sync with Stripe React Native [0.53.1](https://github.com/stripe/stripe-react-native/releases/tag/v0.53.1)
+- Add support for billie payment
+- Add config params paymentsheet
+
 ## 12.0.1
 - fix compilation issue with the stripe_ios package when using SPM
 
