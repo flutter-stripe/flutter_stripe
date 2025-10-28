@@ -63,5 +63,3 @@ lcov.info
 /test-results/
 /playwright-report/
 /playwright/.cache/
-
-example_terminal/build

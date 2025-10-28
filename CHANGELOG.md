@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v12.1.0`](#flutter_stripe---v1210)
+
+---
+
+#### `flutter_stripe` - `v12.1.0`
+
+ - **FIX**: add new proguard rules to prevent release build from building (#2213).
+
+
+## 2025-10-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v7.1.0`](#flutter_stripe_web---v710)
 
 ---
