@@ -1,7 +1,7 @@
 import PassKit
 @_spi(DashboardOnly) @_spi(STP) import Stripe
-@_spi(EmbeddedPaymentElementPrivateBeta) import StripePaymentSheet
-@_spi(STP) import StripePayments
+@_spi(EmbeddedPaymentElementPrivateBeta) @_spi(CustomerSessionBetaAccess) import StripePaymentSheet
+@_spi(STP) @_spi(ConfirmationTokensPublicPreview) import StripePayments
 import StripeFinancialConnections
 import Foundation
 
@@ -18,6 +18,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     internal var paymentSheet: PaymentSheet?
     internal var paymentSheetFlowController: PaymentSheet.FlowController?
     var paymentSheetIntentCreationCallback: ((Result<String, Error>) -> Void)?
+    var paymentSheetConfirmationTokenIntentCreationCallback: ((Result<String, Error>) -> Void)?
 
     var urlScheme: String? = nil
 
@@ -64,6 +65,8 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     var fetchSelectedPaymentOptionCallback: ((CustomerPaymentOption?) -> Void)? = nil
     var setupIntentClientSecretForCustomerAttachCallback: ((String) -> Void)? = nil
     var customPaymentMethodResultCallback: ((PaymentSheetResult) -> Void)?
+    var clientSecretProviderSetupIntentClientSecretCallback: ((String) -> Void)? = nil
+    var clientSecretProviderCustomerSessionClientSecretCallback: ((CustomerSessionClientSecret) -> Void)? = nil
 
     var embeddedInstance: EmbeddedPaymentElement? = nil
     lazy var embeddedInstanceDelegate = StripeSdkEmbeddedPaymentElementDelegate(sdkImpl: self)
@@ -135,6 +138,22 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
           let errorParams = result["error"] as? NSDictionary
           let error = ConfirmationError.init(errorMessage: errorParams?["localizedMessage"] as? String ?? "An unknown error occurred.")
           paymentSheetIntentCreationCallback(.failure(error))
+        }
+    }
+
+    @objc(confirmationTokenCreationCallback:resolver:rejecter:)
+    @MainActor public func confirmationTokenCreationCallback(result: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
+                          rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
+        guard let paymentSheetConfirmationTokenIntentCreationCallback = self.paymentSheetConfirmationTokenIntentCreationCallback else {
+            resolve(Errors.createError(ErrorType.Failed, "No confirmation token intent creation callback was set"))
+            return
+        }
+        if let clientSecret = result["clientSecret"] as? String {
+            paymentSheetConfirmationTokenIntentCreationCallback(.success(clientSecret))
+        } else {
+          let errorParams = result["error"] as? NSDictionary
+          let error = ConfirmationError.init(errorMessage: errorParams?["localizedMessage"] as? String ?? "An unknown error occurred.")
+          paymentSheetConfirmationTokenIntentCreationCallback(.failure(error))
         }
     }
 

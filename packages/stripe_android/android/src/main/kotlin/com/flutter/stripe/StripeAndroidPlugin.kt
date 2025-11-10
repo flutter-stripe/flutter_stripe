@@ -7,7 +7,6 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.DisplayMetricsHolder
 import com.facebook.react.uimanager.ThemedReactContext
-import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
 import com.reactnativestripesdk.addresssheet.AddressSheetViewManager
 import com.reactnativestripesdk.pushprovisioning.AddToWalletButtonManager
@@ -278,6 +277,24 @@ If you continue to have trouble, follow this discussion to get some support http
                     promise = Promise(result)
                 )
             }
+            "confirmationTokenCreationCallback" -> {
+                stripeSdk.confirmationTokenCreationCallback(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+                )
+            }
+            "clientSecretProviderSetupIntentClientSecretCallback" -> {
+                stripeSdk.clientSecretProviderSetupIntentClientSecretCallback(
+                    setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
+                    promise = Promise(result)
+                )
+            }
+            "clientSecretProviderCustomerSessionClientSecretCallback" -> {
+                stripeSdk.clientSecretProviderCustomerSessionClientSecretCallback(
+                    customerSessionClientSecretJson = call.requiredArgument("customerSessionClientSecretJson"),
+                    promise = Promise(result)
+                )
+            }
             else -> result.notImplemented()
         }
     }
@@ -293,10 +310,6 @@ If you continue to have trouble, follow this discussion to get some support http
             binding.activity !is FlutterFragmentActivity -> {
                 initializationError =
                     "Your Main Activity ${binding.activity.javaClass} is not a subclass FlutterFragmentActivity."
-            }
-            !ThemeEnforcement.isAppCompatTheme(binding.activity) -> {
-                initializationError =
-                    "Your theme isn't set to use Theme.AppCompat or Theme.MaterialComponents."
             }
             else -> {
                 val context = ReactApplicationContext(binding, channel) { stripeSdk }
