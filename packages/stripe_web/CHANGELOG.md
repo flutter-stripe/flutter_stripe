@@ -1,3 +1,8 @@
+## 7.1.0
+
+**Features**
+- Sync with Stripe React Native [0.53.1](https://github.com/stripe/stripe-react-native/releases/tag/v0.53.1)
+
 ## 7.0.0
 
 **Breaking changes**
