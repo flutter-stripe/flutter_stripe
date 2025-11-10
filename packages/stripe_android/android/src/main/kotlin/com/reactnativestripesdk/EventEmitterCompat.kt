@@ -12,7 +12,7 @@ class EventEmitterCompat(
 ) {
   private fun invoke(
     eventName: String,
-    params: ReadableMap? = null,
+    params: Any? = null,
   ) {
     reactApplicationContext
       .getJSModule(
@@ -22,6 +22,10 @@ class EventEmitterCompat(
 
   fun emitOnConfirmHandlerCallback(value: ReadableMap?) {
     invoke("onConfirmHandlerCallback", value)
+  }
+
+  fun emitOnConfirmationTokenHandlerCallback(value: ReadableMap?) {
+    invoke("onConfirmationTokenHandlerCallback", value)
   }
 
   fun emitOnFinancialConnectionsEvent(value: ReadableMap?) {
@@ -54,6 +58,14 @@ class EventEmitterCompat(
 
   fun emitOnCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback() {
     invoke("onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback")
+  }
+
+  fun emitOnCustomerSessionProviderSetupIntentClientSecret() {
+    invoke("onCustomerSessionProviderSetupIntentClientSecret")
+  }
+
+  fun emitOnCustomerSessionProviderCustomerSessionClientSecret() {
+    invoke("onCustomerSessionProviderCustomerSessionClientSecret")
   }
 
   fun emitEmbeddedPaymentElementDidUpdateHeight(value: ReadableMap?) {
