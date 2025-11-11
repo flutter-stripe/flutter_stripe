@@ -33,7 +33,7 @@ class CardField extends StatefulWidget {
     this.preferredNetworks,
     this.onBehalfOf,
     this.androidPlatformViewRenderType =
-        AndroidPlatformViewRenderType.expensiveAndroidView,
+        AndroidPlatformViewRenderType.surfaceAndroidView,
   });
 
   /// Decoration related to the input fields.
@@ -116,7 +116,7 @@ class CardField extends StatefulWidget {
   /// Type of platformview used for rendering on Android.
   ///
   /// This is an advanced option and changing this should be tested on multiple android devices.
-  /// Defaults to [AndroidPlatformViewRenderType.expensiveAndroidView]
+  /// Defaults to [AndroidPlatformViewRenderType.surfaceAndroidView]
   final AndroidPlatformViewRenderType androidPlatformViewRenderType;
 
   @override
@@ -668,6 +668,19 @@ class _AndroidCardField extends StatelessWidget {
               )
               ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
               ..create();
+          case AndroidPlatformViewRenderType.surfaceAndroidView:
+            return PlatformViewsService.initSurfaceAndroidView(
+                id: params.id,
+                viewType: viewType,
+                layoutDirection: Directionality.of(context),
+                creationParams: creationParams,
+                creationParamsCodec: const StandardMessageCodec(),
+                onFocus: () {
+                  params.onFocusChanged(true);
+                },
+              )
+              ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+              ..create();
           case AndroidPlatformViewRenderType.androidView:
             return PlatformViewsService.initAndroidView(
                 id: params.id,
@@ -718,7 +731,8 @@ const kCardFieldDefaultFontFamily = 'Roboto';
 enum AndroidPlatformViewRenderType {
   /// Controls an Android view that is composed using the Android view hierarchy
   expensiveAndroidView,
-
+  /// Like expensiveAndroidView, but Uses Texture Layer Hybrid Composition (TLHC) when possible, falling back to Hybrid Composition only when necessary.
+  surfaceAndroidView,
   /// Use an Android view composed using a GL texture.
   ///
   /// This is more efficient but has more issues on older Android devices.
