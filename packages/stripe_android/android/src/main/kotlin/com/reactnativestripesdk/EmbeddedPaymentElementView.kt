@@ -20,11 +20,13 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.facebook.react.bridge.Arguments
+import com.facebook.react.bridge.WritableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.toWritableMap
 import com.reactnativestripesdk.utils.KeepJsAwakeTask
 import com.reactnativestripesdk.utils.mapFromCustomPaymentMethod
 import com.reactnativestripesdk.utils.mapFromPaymentMethod
+import com.stripe.android.core.exception.StripeException
 import com.stripe.android.model.PaymentMethod
 import com.stripe.android.paymentelement.CustomPaymentMethodResult
 import com.stripe.android.paymentelement.CustomPaymentMethodResultHandler
@@ -42,6 +44,31 @@ import kotlinx.coroutines.launch
 enum class RowSelectionBehaviorType {
   Default,
   ImmediateAction,
+}
+
+data class EmbeddedPaymentElementLoadingError(
+  val message: String,
+  val code: String?,
+  val details: Map<String, Any?>?,
+) {
+  fun toMap(): Map<String, Any?> {
+    val payload = mutableMapOf<String, Any?>("message" to message)
+    code?.let { payload["code"] = it }
+    details?.let { payload["details"] = it }
+    return payload
+  }
+
+  fun toWritableMap(): WritableMap {
+    val map = Arguments.createMap()
+    map.putString("message", message)
+    if (code != null) {
+      map.putString("code", code)
+    } else {
+      map.putNull("code")
+    }
+    details?.let { map.putMap("details", it.toWritableMapDynamic()) }
+    return map
+  }
 }
 
 @OptIn(ExperimentalCustomPaymentMethodsApi::class)
@@ -67,7 +94,7 @@ class EmbeddedPaymentElementView(
   var onConfirmResult: ((Map<String, Any?>) -> Unit)? = null
   var onHeightChanged: ((Float) -> Unit)? = null
   var onPaymentOptionChanged: ((Map<String, Any?>?) -> Unit)? = null
-  var onLoadingFailed: ((String) -> Unit)? = null
+  var onLoadingFailed: ((EmbeddedPaymentElementLoadingError) -> Unit)? = null
   var onRowSelectionImmediateAction: (() -> Unit)? = null
   var onFormSheetConfirmComplete: ((Map<String, Any>) -> Unit)? = null
 
@@ -271,14 +298,11 @@ class EmbeddedPaymentElementView(
             when (result) {
               is EmbeddedPaymentElement.ConfigureResult.Succeeded -> reportHeightChange(1f)
               is EmbeddedPaymentElement.ConfigureResult.Failed -> {
-                val err = result.error
-                val msg = err.localizedMessage ?: err.toString()
-                onLoadingFailed?.invoke(msg) ?: run {
-                  val payload =
-                    Arguments.createMap().apply {
-                      putString("message", msg)
-                    }
-                  requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementLoadingFailed(payload)
+                val errorPayload = result.error.asEmbeddedPaymentElementLoadingError()
+                onLoadingFailed?.invoke(errorPayload) ?: run {
+                  requireStripeSdkModule().eventEmitter.emitEmbeddedPaymentElementLoadingFailed(
+                    errorPayload.toWritableMap(),
+                  )
                 }
               }
             }
@@ -389,4 +413,60 @@ class EmbeddedPaymentElementView(
   }
 
   private fun requireStripeSdkModule() = requireNotNull(reactContext.getNativeModule(StripeSdkModule::class.java))
+}
+
+private fun Throwable.asEmbeddedPaymentElementLoadingError(): EmbeddedPaymentElementLoadingError {
+  val localized = localizedMessage
+  val rawMessage = message
+  val baseMessage = localized ?: rawMessage ?: toString()
+  val detailsMap = mutableMapOf<String, Any?>(
+    "localizedMessage" to localized,
+    "message" to rawMessage,
+    "type" to this::class.qualifiedName,
+  )
+  var code: String? = null
+
+  if (this is StripeException) {
+    val stripeError = this.stripeError
+    detailsMap["stripeErrorCode"] = stripeError?.code
+    detailsMap["stripeErrorMessage"] = stripeError?.message
+    detailsMap["declineCode"] = stripeError?.declineCode
+    code = stripeError?.code
+  }
+
+  cause?.let {
+    detailsMap["cause"] = it.localizedMessage ?: it.toString()
+  }
+
+  if (code.isNullOrBlank()) {
+    code = this::class.simpleName
+  }
+
+  val filteredDetails = detailsMap.filterValues { it != null }
+
+  return EmbeddedPaymentElementLoadingError(
+    message = baseMessage,
+    code = code,
+    details = if (filteredDetails.isNotEmpty()) filteredDetails else null,
+  )
+}
+
+private fun Map<String, Any?>.toWritableMapDynamic(): WritableMap {
+  val map = Arguments.createMap()
+  for ((key, value) in this) {
+    when (value) {
+      null -> map.putNull(key)
+      is String -> map.putString(key, value)
+      is Boolean -> map.putBoolean(key, value)
+      is Int -> map.putInt(key, value)
+      is Double -> map.putDouble(key, value)
+      is Float -> map.putDouble(key, value.toDouble())
+      is Map<*, *> -> {
+        @Suppress("UNCHECKED_CAST")
+        map.putMap(key, (value as Map<String, Any?>).toWritableMapDynamic())
+      }
+      else -> map.putString(key, value.toString())
+    }
+  }
+  return map
 }

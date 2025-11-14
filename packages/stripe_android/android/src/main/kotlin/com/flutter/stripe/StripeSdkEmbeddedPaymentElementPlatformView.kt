@@ -2,8 +2,8 @@ package com.flutter.stripe
 
 import android.content.Context
 import android.view.View
-import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.EmbeddedPaymentElementLoadingError
 import com.reactnativestripesdk.EmbeddedPaymentElementView
 import com.reactnativestripesdk.EmbeddedPaymentElementViewManager
 import com.reactnativestripesdk.StripeSdkModule
@@ -34,8 +34,8 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
             channel.invokeMethod("onPaymentOptionChanged", mapOf("paymentOption" to paymentOption))
         }
 
-        embeddedView.onLoadingFailed = { message ->
-            channel.invokeMethod("embeddedPaymentElementLoadingFailed", mapOf("message" to message))
+        embeddedView.onLoadingFailed = { error: EmbeddedPaymentElementLoadingError ->
+            channel.invokeMethod("embeddedPaymentElementLoadingFailed", error.toMap())
         }
 
         embeddedView.onRowSelectionImmediateAction = {
