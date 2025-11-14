@@ -72,15 +72,20 @@ extension StripeSdkImpl {
         embeddedInstanceDelegate.embeddedPaymentElementDidUpdateHeight(embeddedPaymentElement: embeddedPaymentElement)
         embeddedInstanceDelegate.embeddedPaymentElementDidUpdatePaymentOption(embeddedPaymentElement: embeddedPaymentElement)
       } catch {
-        let msg = error.localizedDescription
-
-        if self.emitter != nil {
-          self.emitter?.emitEmbeddedPaymentElementLoadingFailed(["message": msg])
-        } else {
-          //TODO HANDLE emitter nil
-        }
-
-        resolve(nil)
+        let errorPayload = Errors.createError(ErrorType.Failed, error)
+        let errorDetails = errorPayload["error"] as? NSDictionary
+        let (message, code) = extractEmbeddedPaymentElementErrorInfo(
+          from: errorDetails,
+          fallbackMessage: error.localizedDescription,
+          fallbackCode: ErrorType.Failed
+        )
+        dispatchEmbeddedPaymentElementLoadingFailed(
+          message: message,
+          code: code,
+          details: errorDetails
+        )
+        resolve(errorPayload)
+        return
       }
     }
 
@@ -152,7 +157,18 @@ extension StripeSdkImpl {
       case .canceled:
         resolve(["status": "canceled"])
       case .failed(let error):
-        self.emitter?.emitEmbeddedPaymentElementLoadingFailed(["message": error.localizedDescription])
+        let errorPayload = Errors.createError(ErrorType.Failed, error)
+        let errorDetails = errorPayload["error"] as? NSDictionary
+        let (message, code) = extractEmbeddedPaymentElementErrorInfo(
+          from: errorDetails,
+          fallbackMessage: error.localizedDescription,
+          fallbackCode: ErrorType.Failed
+        )
+        dispatchEmbeddedPaymentElementLoadingFailed(
+          message: message,
+          code: code,
+          details: errorDetails
+        )
         // We don't resolve with an error b/c loading errors are handled via the embeddedPaymentElementLoadingFailed event
         resolve(nil)
       }
@@ -163,6 +179,37 @@ extension StripeSdkImpl {
   public func clearEmbeddedPaymentOption() {
     DispatchQueue.main.async {
       self.embeddedInstance?.clearPaymentOption()
+    }
+  }
+
+  private func extractEmbeddedPaymentElementErrorInfo(
+    from details: NSDictionary?,
+    fallbackMessage: String,
+    fallbackCode: String
+  ) -> (message: String, code: String) {
+    let message = (details?["localizedMessage"] as? String)
+      ?? (details?["message"] as? String)
+      ?? fallbackMessage
+    let code = (details?["code"] as? String) ?? fallbackCode
+    return (message, code)
+  }
+
+  private func dispatchEmbeddedPaymentElementLoadingFailed(
+    message: String,
+    code: String?,
+    details: NSDictionary?
+  ) {
+    guard self.emitter != nil else { return }
+    DispatchQueue.main.async { [weak self] in
+      guard let emitter = self?.emitter else { return }
+      var payload: [String: Any] = ["message": message]
+      if let code = code {
+        payload["code"] = code
+      }
+      if let details = details {
+        payload["details"] = details
+      }
+      emitter.emitEmbeddedPaymentElementLoadingFailed(payload)
     }
   }
 

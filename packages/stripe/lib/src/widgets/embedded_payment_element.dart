@@ -13,7 +13,9 @@ typedef PaymentOptionChangedCallback =
 typedef HeightChangedCallback = void Function(double height);
 
 /// Called when the embedded payment element fails to load.
-typedef LoadingFailedCallback = void Function(String message);
+typedef LoadingFailedCallback = void Function(
+  EmbeddedPaymentElementLoadingException error,
+);
 
 /// Called when form sheet confirmation completes.
 typedef FormSheetConfirmCompleteCallback =
@@ -21,6 +23,29 @@ typedef FormSheetConfirmCompleteCallback =
 
 /// Called when a row is selected with immediate action behavior.
 typedef RowSelectionImmediateActionCallback = void Function();
+
+/// Structured error returned when the embedded payment element fails to load.
+@immutable
+class EmbeddedPaymentElementLoadingException implements Exception {
+  const EmbeddedPaymentElementLoadingException({
+    required this.message,
+    this.code,
+    this.details,
+  });
+
+  /// Human-readable description for displaying to the user.
+  final String message;
+
+  /// Error code returned by the platform, when available.
+  final String? code;
+
+  /// Additional diagnostic information from the native SDK, if provided.
+  final Map<String, dynamic>? details;
+
+  @override
+  String toString() =>
+      'EmbeddedPaymentElementLoadingException(message: $message, code: $code, details: $details)';
+}
 
 /// A widget that displays Stripe's Embedded Payment Element.
 ///
@@ -170,9 +195,8 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
           }
           break;
         case 'embeddedPaymentElementLoadingFailed':
-          final arguments = call.arguments as Map?;
-          final message = arguments?['message'] as String? ?? 'Unknown error';
-          widget.onLoadingFailed?.call(message);
+          final error = _parseLoadingError(call.arguments);
+          widget.onLoadingFailed?.call(error);
           break;
         case 'embeddedPaymentElementFormSheetConfirmComplete':
           final arguments = call.arguments as Map?;
@@ -188,6 +212,48 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
     } catch (e) {
       debugPrint('Error handling method call ${call.method}: $e');
     }
+  }
+
+  EmbeddedPaymentElementLoadingException _parseLoadingError(dynamic payload) {
+    if (payload is Map) {
+      final map = <String, dynamic>{};
+      for (final entry in payload.entries) {
+        if (entry.key is String) {
+          map[entry.key as String] = entry.value;
+        } else {
+          map['${entry.key}'] = entry.value;
+        }
+      }
+
+      var message = (map['localizedMessage'] as String?) ??
+          (map['message'] as String?);
+      final code = map['code'] as String?;
+      final detailsRaw = map['details'];
+      Map<String, dynamic>? details;
+      if (detailsRaw is Map) {
+        details = <String, dynamic>{};
+        for (final entry in detailsRaw.entries) {
+          if (entry.key is String) {
+            details![entry.key as String] = entry.value;
+          } else {
+            details!['${entry.key}'] = entry.value;
+          }
+        }
+        message ??= (details?['localizedMessage'] as String?) ??
+            (details?['message'] as String?);
+      }
+      message ??= 'Unknown error';
+      return EmbeddedPaymentElementLoadingException(
+        message: message,
+        code: code,
+        details: details,
+      );
+    }
+
+    final message = payload is String && payload.isNotEmpty
+        ? payload
+        : 'Unknown error';
+    return EmbeddedPaymentElementLoadingException(message: message);
   }
 
   @override

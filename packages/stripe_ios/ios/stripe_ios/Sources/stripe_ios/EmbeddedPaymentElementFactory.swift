@@ -86,9 +86,15 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
                     guard let self = self else { return }
 
                     if let resultDict = result as? NSDictionary,
-                       let error = resultDict["error"] as? NSDictionary,
-                       let message = error["message"] as? String {
-                        self.channel.invokeMethod("embeddedPaymentElementLoadingFailed", arguments: ["message": message])
+                       let error = resultDict["error"] as? NSDictionary {
+                        let message = (error["localizedMessage"] as? String)
+                            ?? (error["message"] as? String)
+                            ?? "Unknown error"
+                        var payload: [String: Any] = ["message": message, "details": error]
+                        if let code = error["code"] {
+                            payload["code"] = code
+                        }
+                        self.channel.invokeMethod("embeddedPaymentElementLoadingFailed", arguments: payload)
                         return
                     }
 
@@ -102,7 +108,15 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
             reject: { [weak self] code, message, error in
                 guard let self = self else { return }
                 let errorMessage = message ?? error?.localizedDescription ?? "Unknown error"
-                self.channel.invokeMethod("embeddedPaymentElementLoadingFailed", arguments: ["message": errorMessage])
+                var payload: [String: Any] = ["message": errorMessage]
+                if let error = error {
+                    let errorDetails = Errors.createError(code ?? ErrorType.Failed, error)
+                    if let details = errorDetails["error"] {
+                        payload["details"] = details
+                    }
+                    payload["code"] = code ?? ErrorType.Failed
+                }
+                self.channel.invokeMethod("embeddedPaymentElementLoadingFailed", arguments: payload)
             }
         )
     }
