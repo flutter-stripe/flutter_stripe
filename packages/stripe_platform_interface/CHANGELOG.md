@@ -1,3 +1,8 @@
+## 12.1.1
+
+**Fixes**
+ - 2064 crash collect bankaccounttoken
+
 ## 12.1.0
 
 **Features**
