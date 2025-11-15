@@ -182,6 +182,7 @@ extension StripeSdkImpl {
     }
   }
 
+  @nonobjc
   private func extractEmbeddedPaymentElementErrorInfo(
     from details: NSDictionary?,
     fallbackMessage: String,
@@ -194,6 +195,7 @@ extension StripeSdkImpl {
     return (message, code)
   }
 
+  @nonobjc
   private func dispatchEmbeddedPaymentElementLoadingFailed(
     message: String,
     code: String?,
