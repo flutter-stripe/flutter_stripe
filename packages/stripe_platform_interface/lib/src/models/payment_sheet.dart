@@ -451,7 +451,6 @@ abstract class PaymentSheetPrimaryButtonThemeColors
     /// The text color of the primary button when in a success state. Supports both single color strings and light/dark color objects.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
     Color? successTextColor,
-
   }) = _PaymentSheetPrimaryButtonThemeColors;
 
   factory PaymentSheetPrimaryButtonThemeColors.fromJson(
