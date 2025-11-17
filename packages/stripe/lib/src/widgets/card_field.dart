@@ -541,9 +541,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   void _handleCardChanged(dynamic arguments) {
     try {
       final map = Map<String, dynamic>.from(arguments);
-      final update = CardFieldInputDetails.fromJson(
-        Map<String, dynamic>.from(map['card']),
-      );
+      final update = CardFieldInputDetails.fromJson(map);
       updateCardDetails(update, controller);
       widget.onCardChanged?.call(update);
       // ignore: avoid_catches_without_on_clauses
