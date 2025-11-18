@@ -254,21 +254,35 @@ class WebStripe extends StripePlatform {
     PaymentMethodParams data,
     PaymentMethodOptions? options,
   ) async {
-    final response = await data
-        .maybeWhen<Future<stripe_js.SetupIntentResponse>>(card: (params) {
-      final data = stripe_js.ConfirmCardSetupData(
-        paymentMethod: stripe_js.CardPaymentMethodDetails(
-          card: element!,
-          billingDetails: params.billingDetails?.toJs(),
-        ),
-      );
-      return js.confirmCardSetup(
-        setupIntentClientSecret,
-        data: data,
-      );
-    }, orElse: () {
-      throw UnimplementedError();
-    });
+    final response =
+        await data.maybeWhen<Future<stripe_js.SetupIntentResponse>>(
+      card: (params) {
+        final data = stripe_js.ConfirmCardSetupData(
+          paymentMethod: stripe_js.CardPaymentMethodDetails(
+            card: element!,
+            billingDetails: params.billingDetails?.toJs(),
+          ),
+        );
+        return js.confirmCardSetup(
+          setupIntentClientSecret,
+          data: data,
+        );
+      },
+      cardFromMethodId: (params) {
+        final data = stripe_js.ConfirmCardSetupData(
+          paymentMethod: stripe_js.CardPaymentMethodDetails.id(
+            params.paymentMethodId,
+          ),
+        );
+        return js.confirmCardSetup(
+          setupIntentClientSecret,
+          data: data,
+        );
+      },
+      orElse: () {
+        throw UnimplementedError();
+      },
+    );
     if (response.error != null) {
       throw response.error!;
     }
