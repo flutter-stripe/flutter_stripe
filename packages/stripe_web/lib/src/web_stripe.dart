@@ -57,9 +57,9 @@ class WebStripe extends StripePlatform {
     _urlScheme = urlScheme;
 
     if (__stripe != null) {
-      // Check if the new stripeAccountId is different
+      // Check if the new stripeAccountId or locale is different
       if (__stripe!.stripeAccount != stripeAccountId || __stripe!.locale != locale) {
-        // Re-initialize with new stripeAccountId
+        // Re-initialize with new stripeAccountId or locale
         await stripe_js.loadStripe();
         var stripeOption = stripe_js.StripeOptions();
         if (__stripe!.stripeAccount != stripeAccountId) {
