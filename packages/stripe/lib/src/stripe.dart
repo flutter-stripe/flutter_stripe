@@ -97,6 +97,20 @@ class Stripe {
     instance.markNeedsSettings();
   }
 
+  /// Retrieves the locale.
+  /// For now works on web only.
+  static String? get locale => instance._locale;
+
+  /// Sets the locale.
+  /// For now works on web only.
+  static set locale(String? value) {
+    if (value == instance._locale) {
+      return;
+    }
+    instance._locale = value;
+    instance.markNeedsSettings();
+  }
+
   /// Reconfigures the Stripe platform by applying the current values for
   /// [publishableKey], [merchantIdentifier], [stripeAccountId],
   /// [threeDSecureParams], [urlScheme], [setReturnUrlSchemeOnAndroid]
@@ -107,6 +121,7 @@ class Stripe {
     threeDSecureParams: threeDSecureParams,
     urlScheme: urlScheme,
     setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
+    locale: locale,
   );
 
   /// Exposes a [ValueListenable] whether or not GooglePay (on Android) or Apple Pay (on iOS)
@@ -706,6 +721,7 @@ class Stripe {
   String? _merchantIdentifier;
   String? _urlScheme;
   bool? _setReturnUrlSchemeOnAndroid;
+  String? _locale;
 
   static StripePlatform? __platform;
 
@@ -732,6 +748,7 @@ class Stripe {
     String? merchantIdentifier,
     String? urlScheme,
     bool? setReturnUrlSchemeOnAndroid,
+    String? locale,
   }) async {
     _needsSettings = false;
     await _platform.initialise(
@@ -741,6 +758,7 @@ class Stripe {
       merchantIdentifier: merchantIdentifier,
       urlScheme: urlScheme,
       setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
+      locale: locale,
     );
   }
 
