@@ -687,8 +687,8 @@ enum LinkDisplay {
   /// Link will be displayed when available
   automatic,
 
-  /// Link will be displayed when available
-  manual,
+  /// Link will never be displayed
+  never,
 }
 
 @freezed

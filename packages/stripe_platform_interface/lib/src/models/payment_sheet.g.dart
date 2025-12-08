@@ -625,7 +625,7 @@ Map<String, dynamic> _$LinkDisplayParamsToJson(_LinkDisplayParams instance) =>
 
 const _$LinkDisplayEnumMap = {
   LinkDisplay.automatic: 'automatic',
-  LinkDisplay.manual: 'manual',
+  LinkDisplay.never: 'never',
 };
 
 _EdgeInsetsConfig _$EdgeInsetsConfigFromJson(Map<String, dynamic> json) =>
