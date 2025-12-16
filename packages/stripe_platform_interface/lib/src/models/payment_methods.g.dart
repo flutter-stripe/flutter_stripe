@@ -529,6 +529,22 @@ Map<String, dynamic> _$PaymentMethodParamsRevolutPayToJson(
   'paymentMethodType': instance.$type,
 };
 
+_PaymentMethodParamsAlmaPay _$PaymentMethodParamsAlmaPayFromJson(
+  Map<String, dynamic> json,
+) => _PaymentMethodParamsAlmaPay(
+  paymentMethodData: PaymentMethodData.fromJson(
+    json['paymentMethodData'] as Map<String, dynamic>,
+  ),
+  $type: json['paymentMethodType'] as String?,
+);
+
+Map<String, dynamic> _$PaymentMethodParamsAlmaPayToJson(
+  _PaymentMethodParamsAlmaPay instance,
+) => <String, dynamic>{
+  'paymentMethodData': instance.paymentMethodData.toJson(),
+  'paymentMethodType': instance.$type,
+};
+
 _PaymentMethodParamsUsBankAccount _$PaymentMethodParamsUsBankAccountFromJson(
   Map<String, dynamic> json,
 ) => _PaymentMethodParamsUsBankAccount(

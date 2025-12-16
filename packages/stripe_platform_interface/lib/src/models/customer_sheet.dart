@@ -26,6 +26,9 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
     /// The identifier of the Stripe Customer object. See https://stripe.com/docs/api/customers/object#customer_object-id
     required String customerId,
 
+    /// Intent configuration for the customer sheet.
+    IntentConfiguration? intentConfiguration,
+
     /// A short-lived token that allows the SDK to access a Customer's payment methods.
     required String customerEphemeralKeySecret,
 

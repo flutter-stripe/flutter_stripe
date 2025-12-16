@@ -17,6 +17,11 @@ _CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
         ),
   setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
   customerId: json['customerId'] as String,
+  intentConfiguration: json['intentConfiguration'] == null
+      ? null
+      : IntentConfiguration.fromJson(
+          json['intentConfiguration'] as Map<String, dynamic>,
+        ),
   customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String,
   merchantDisplayName: json['merchantDisplayName'] as String?,
   allowsRemovalOfLastSavedPaymentMethod:
@@ -55,6 +60,7 @@ Map<String, dynamic> _$CustomerSheetInitParamsToJson(
   'appearance': instance.appearance?.toJson(),
   'setupIntentClientSecret': instance.setupIntentClientSecret,
   'customerId': instance.customerId,
+  'intentConfiguration': instance.intentConfiguration?.toJson(),
   'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
   'merchantDisplayName': instance.merchantDisplayName,
   'allowsRemovalOfLastSavedPaymentMethod':
