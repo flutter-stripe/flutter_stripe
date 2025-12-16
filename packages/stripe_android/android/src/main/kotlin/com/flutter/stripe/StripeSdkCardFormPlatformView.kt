@@ -48,8 +48,8 @@ class StripeSdkCardFormPlatformView(
 
             val binding = StripeCardFormViewBinding.bind(cardView.cardForm)
             val number = getValOr(value, "number", null)
-            val expirationYear = getIntOrNull(value, "expiryYear")
-            val expirationMonth = getIntOrNull(value, "expiryMonth")
+            val expirationYear = value.getIntOrNull("expiryYear")
+            val expirationMonth = value.getIntOrNull("expiryMonth")
             val cvc = getValOr(value, "cvc", null)
             number?.let {
                 binding.cardMultilineWidget.cardNumberEditText.setText(it)

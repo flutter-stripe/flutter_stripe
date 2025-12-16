@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.8.0'
-    ext.stripe_version = '21.29.+'
+    ext.stripe_version = '22.2.+'
 
     repositories {
         google()
@@ -49,8 +49,9 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
 
+    implementation 'com.facebook.fresco:fresco:3.5.0'
+    implementation "androidx.browser:browser:1.8.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
     implementation "com.stripe:stripe-android:$stripe_version"
     implementation "com.stripe:financial-connections:$stripe_version"

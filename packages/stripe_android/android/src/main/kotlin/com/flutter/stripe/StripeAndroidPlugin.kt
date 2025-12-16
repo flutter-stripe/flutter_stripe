@@ -75,7 +75,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             .registerViewFactory("flutter.stripe/aubecs_form_field", StripeAubecsDebitPlatformViewFactory(flutterPluginBinding, aubecsDebitManager){stripeSdk})
         flutterPluginBinding
             .platformViewRegistry
-            .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager(flutterPluginBinding.applicationContext)){stripeSdk})
+            .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager()){stripeSdk})
         flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/address_sheet", StripeAddressSheetPlatformViewFactory(flutterPluginBinding, addressSheetFormViewManager ){stripeSdk})
     }
 
@@ -295,6 +295,13 @@ If you continue to have trouble, follow this discussion to get some support http
                     promise = Promise(result)
                 )
             }
+            "openAuthenticatedWebView" -> {
+                stripeSdk.openAuthenticatedWebView(
+                    id = call.requiredArgument("id"),
+                    url = call.requiredArgument<String>("url"),
+                    promise = Promise(result)
+                )
+            }
             else -> result.notImplemented()
         }
     }
@@ -359,8 +366,8 @@ fun CardFieldViewManager.getCardViewInstance(): CardFieldView? {
 
 fun CardFieldViewManager.setCardDetails(value: ReadableMap, reactContext: ThemedReactContext) {
     val number = getValOr(value, "number", null)
-    val expirationYear = getIntOrNull(value, "expirationYear")
-    val expirationMonth = getIntOrNull(value, "expirationMonth")
+    val expirationYear = value.getIntOrNull("expirationYear")
+    val expirationMonth = value.getIntOrNull("expirationMonth")
     val cvc = getValOr(value, "cvc", null)
 
     val cardViewInstance = getCardViewInstance() ?: createViewInstance(reactContext)

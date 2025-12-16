@@ -2,10 +2,8 @@ package com.reactnativestripesdk
 
 import com.facebook.react.bridge.ReactApplicationContext
 import com.stripe.android.customersheet.CustomerSheet
-import com.stripe.android.paymentsheet.ExperimentalCustomerSessionApi
 import kotlinx.coroutines.CompletableDeferred
 
-@OptIn(ExperimentalCustomerSessionApi::class)
 class ReactNativeCustomerSessionProvider(
   val context: ReactApplicationContext,
   val intentConfiguration: CustomerSheet.IntentConfiguration,
@@ -13,7 +11,8 @@ class ReactNativeCustomerSessionProvider(
   private val stripeSdkModule = context.getNativeModule(StripeSdkModule::class.java)
 
   internal var provideSetupIntentClientSecretCallback: CompletableDeferred<String>? = null
-  internal var providesCustomerSessionClientSecretCallback: CompletableDeferred<CustomerSheet.CustomerSessionClientSecret>? = null
+  internal var providesCustomerSessionClientSecretCallback:
+    CompletableDeferred<CustomerSheet.CustomerSessionClientSecret>? = null
 
   override suspend fun intentConfiguration(): Result<CustomerSheet.IntentConfiguration> = Result.success(intentConfiguration)
 
