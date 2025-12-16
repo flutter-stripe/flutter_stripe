@@ -261,6 +261,16 @@ abstract class PaymentSheetAppearance with _$PaymentSheetAppearance {
 
     /// Describes the inset values applied to Mobile Payment Element forms
     EdgeInsetsConfig? formInsetValues,
+
+    /// Setting this boolean to `true` will call the iOS applyLiquidGlass() method
+    /// (https://stripe.dev/stripe-ios/stripepaymentsheet/documentation/stripepaymentsheet/paymentsheet/appearance/applyliquidglass())
+    /// on the Appearance object prior to applying other appearance customizations set on AppearanceParams.
+    /// Requires iOS26 and Xcode 26, and will be ignored if these requirements are not met.
+    /// @default false
+    bool? applyLiquidGlass,
+
+    /// Describes the navigation bar style (iOS only)
+    NavigationBarStyle? navigationBarStyle,
   }) = _PaymentSheetAppearance;
 
   factory PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
@@ -593,6 +603,14 @@ enum AddressCollectionMode {
 
   /// Collect the full billing address, regardless of the Payment Method's requirements. */
   full,
+}
+
+enum NavigationBarStyle {
+  /// Default style
+  Plain,
+
+  /// Style to match iOS 26 Liquid Glass. Requires: iOS26 and Xcode 26, and will be ignored if these requirements are not met. */
+  Glass,
 }
 
 /// The type of payment method to attach to a Customer.

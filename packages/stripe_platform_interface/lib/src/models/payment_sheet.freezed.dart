@@ -2034,7 +2034,13 @@ mixin _$PaymentSheetAppearance {
  PaymentSheetShape? get shapes;/// PaymentSheet appearance
  PaymentSheetPrimaryButtonAppearance? get primaryButton;/// Describes the appearance of the Embedded Mobile Payment Element
  EmbeddedPaymentElementAppearance? get embeddedPaymentElement;/// Describes the inset values applied to Mobile Payment Element forms
- EdgeInsetsConfig? get formInsetValues;
+ EdgeInsetsConfig? get formInsetValues;/// Setting this boolean to `true` will call the iOS applyLiquidGlass() method
+/// (https://stripe.dev/stripe-ios/stripepaymentsheet/documentation/stripepaymentsheet/paymentsheet/appearance/applyliquidglass())
+/// on the Appearance object prior to applying other appearance customizations set on AppearanceParams.
+/// Requires iOS26 and Xcode 26, and will be ignored if these requirements are not met.
+/// @default false
+ bool? get applyLiquidGlass;/// Describes the navigation bar style (iOS only)
+ NavigationBarStyle? get navigationBarStyle;
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2047,16 +2053,16 @@ $PaymentSheetAppearanceCopyWith<PaymentSheetAppearance> get copyWith => _$Paymen
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues)&&(identical(other.applyLiquidGlass, applyLiquidGlass) || other.applyLiquidGlass == applyLiquidGlass)&&(identical(other.navigationBarStyle, navigationBarStyle) || other.navigationBarStyle == navigationBarStyle));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues);
+int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues,applyLiquidGlass,navigationBarStyle);
 
 @override
 String toString() {
-  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues)';
+  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues, applyLiquidGlass: $applyLiquidGlass, navigationBarStyle: $navigationBarStyle)';
 }
 
 
@@ -2067,7 +2073,7 @@ abstract mixin class $PaymentSheetAppearanceCopyWith<$Res>  {
   factory $PaymentSheetAppearanceCopyWith(PaymentSheetAppearance value, $Res Function(PaymentSheetAppearance) _then) = _$PaymentSheetAppearanceCopyWithImpl;
 @useResult
 $Res call({
- PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes, PaymentSheetPrimaryButtonAppearance? primaryButton, EmbeddedPaymentElementAppearance? embeddedPaymentElement, EdgeInsetsConfig? formInsetValues
+ PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes, PaymentSheetPrimaryButtonAppearance? primaryButton, EmbeddedPaymentElementAppearance? embeddedPaymentElement, EdgeInsetsConfig? formInsetValues, bool? applyLiquidGlass, NavigationBarStyle? navigationBarStyle
 });
 
 
@@ -2084,14 +2090,16 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res>
 
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,Object? applyLiquidGlass = freezed,Object? navigationBarStyle = freezed,}) {
   return _then(_self.copyWith(
 colors: freezed == colors ? _self.colors : colors // ignore: cast_nullable_to_non_nullable
 as PaymentSheetAppearanceColors?,shapes: freezed == shapes ? _self.shapes : shapes // ignore: cast_nullable_to_non_nullable
 as PaymentSheetShape?,primaryButton: freezed == primaryButton ? _self.primaryButton : primaryButton // ignore: cast_nullable_to_non_nullable
 as PaymentSheetPrimaryButtonAppearance?,embeddedPaymentElement: freezed == embeddedPaymentElement ? _self.embeddedPaymentElement : embeddedPaymentElement // ignore: cast_nullable_to_non_nullable
 as EmbeddedPaymentElementAppearance?,formInsetValues: freezed == formInsetValues ? _self.formInsetValues : formInsetValues // ignore: cast_nullable_to_non_nullable
-as EdgeInsetsConfig?,
+as EdgeInsetsConfig?,applyLiquidGlass: freezed == applyLiquidGlass ? _self.applyLiquidGlass : applyLiquidGlass // ignore: cast_nullable_to_non_nullable
+as bool?,navigationBarStyle: freezed == navigationBarStyle ? _self.navigationBarStyle : navigationBarStyle // ignore: cast_nullable_to_non_nullable
+as NavigationBarStyle?,
   ));
 }
 /// Create a copy of PaymentSheetAppearance
@@ -2236,10 +2244,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues,  bool? applyLiquidGlass,  NavigationBarStyle? navigationBarStyle)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaymentSheetAppearance() when $default != null:
-return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues);case _:
+return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues,_that.applyLiquidGlass,_that.navigationBarStyle);case _:
   return orElse();
 
 }
@@ -2257,10 +2265,10 @@ return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaym
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues,  bool? applyLiquidGlass,  NavigationBarStyle? navigationBarStyle)  $default,) {final _that = this;
 switch (_that) {
 case _PaymentSheetAppearance():
-return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues);case _:
+return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues,_that.applyLiquidGlass,_that.navigationBarStyle);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -2277,10 +2285,10 @@ return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaym
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues,  bool? applyLiquidGlass,  NavigationBarStyle? navigationBarStyle)?  $default,) {final _that = this;
 switch (_that) {
 case _PaymentSheetAppearance() when $default != null:
-return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues);case _:
+return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues,_that.applyLiquidGlass,_that.navigationBarStyle);case _:
   return null;
 
 }
@@ -2292,7 +2300,7 @@ return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaym
 
 @JsonSerializable(explicitToJson: true)
 class _PaymentSheetAppearance implements PaymentSheetAppearance {
-  const _PaymentSheetAppearance({this.colors, this.shapes, this.primaryButton, this.embeddedPaymentElement, this.formInsetValues});
+  const _PaymentSheetAppearance({this.colors, this.shapes, this.primaryButton, this.embeddedPaymentElement, this.formInsetValues, this.applyLiquidGlass, this.navigationBarStyle});
   factory _PaymentSheetAppearance.fromJson(Map<String, dynamic> json) => _$PaymentSheetAppearanceFromJson(json);
 
 /// Color parameters
@@ -2305,6 +2313,14 @@ class _PaymentSheetAppearance implements PaymentSheetAppearance {
 @override final  EmbeddedPaymentElementAppearance? embeddedPaymentElement;
 /// Describes the inset values applied to Mobile Payment Element forms
 @override final  EdgeInsetsConfig? formInsetValues;
+/// Setting this boolean to `true` will call the iOS applyLiquidGlass() method
+/// (https://stripe.dev/stripe-ios/stripepaymentsheet/documentation/stripepaymentsheet/paymentsheet/appearance/applyliquidglass())
+/// on the Appearance object prior to applying other appearance customizations set on AppearanceParams.
+/// Requires iOS26 and Xcode 26, and will be ignored if these requirements are not met.
+/// @default false
+@override final  bool? applyLiquidGlass;
+/// Describes the navigation bar style (iOS only)
+@override final  NavigationBarStyle? navigationBarStyle;
 
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
@@ -2319,16 +2335,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues)&&(identical(other.applyLiquidGlass, applyLiquidGlass) || other.applyLiquidGlass == applyLiquidGlass)&&(identical(other.navigationBarStyle, navigationBarStyle) || other.navigationBarStyle == navigationBarStyle));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues);
+int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues,applyLiquidGlass,navigationBarStyle);
 
 @override
 String toString() {
-  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues)';
+  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues, applyLiquidGlass: $applyLiquidGlass, navigationBarStyle: $navigationBarStyle)';
 }
 
 
@@ -2339,7 +2355,7 @@ abstract mixin class _$PaymentSheetAppearanceCopyWith<$Res> implements $PaymentS
   factory _$PaymentSheetAppearanceCopyWith(_PaymentSheetAppearance value, $Res Function(_PaymentSheetAppearance) _then) = __$PaymentSheetAppearanceCopyWithImpl;
 @override @useResult
 $Res call({
- PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes, PaymentSheetPrimaryButtonAppearance? primaryButton, EmbeddedPaymentElementAppearance? embeddedPaymentElement, EdgeInsetsConfig? formInsetValues
+ PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes, PaymentSheetPrimaryButtonAppearance? primaryButton, EmbeddedPaymentElementAppearance? embeddedPaymentElement, EdgeInsetsConfig? formInsetValues, bool? applyLiquidGlass, NavigationBarStyle? navigationBarStyle
 });
 
 
@@ -2356,14 +2372,16 @@ class __$PaymentSheetAppearanceCopyWithImpl<$Res>
 
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,Object? applyLiquidGlass = freezed,Object? navigationBarStyle = freezed,}) {
   return _then(_PaymentSheetAppearance(
 colors: freezed == colors ? _self.colors : colors // ignore: cast_nullable_to_non_nullable
 as PaymentSheetAppearanceColors?,shapes: freezed == shapes ? _self.shapes : shapes // ignore: cast_nullable_to_non_nullable
 as PaymentSheetShape?,primaryButton: freezed == primaryButton ? _self.primaryButton : primaryButton // ignore: cast_nullable_to_non_nullable
 as PaymentSheetPrimaryButtonAppearance?,embeddedPaymentElement: freezed == embeddedPaymentElement ? _self.embeddedPaymentElement : embeddedPaymentElement // ignore: cast_nullable_to_non_nullable
 as EmbeddedPaymentElementAppearance?,formInsetValues: freezed == formInsetValues ? _self.formInsetValues : formInsetValues // ignore: cast_nullable_to_non_nullable
-as EdgeInsetsConfig?,
+as EdgeInsetsConfig?,applyLiquidGlass: freezed == applyLiquidGlass ? _self.applyLiquidGlass : applyLiquidGlass // ignore: cast_nullable_to_non_nullable
+as bool?,navigationBarStyle: freezed == navigationBarStyle ? _self.navigationBarStyle : navigationBarStyle // ignore: cast_nullable_to_non_nullable
+as NavigationBarStyle?,
   ));
 }
 
