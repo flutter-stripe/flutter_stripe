@@ -595,16 +595,16 @@ class MethodChannelStripe extends StripePlatform {
       {'clientSecret': clientSecret, 'params': params.toJson()},
     );
 
-    // workaround for fact that created is parsed as string from Stripe android
-    final created = result?['token']['created'];
-    if (created != null && created is String) {
-      result?['token']['created'] = int.tryParse(created);
-    }
-
     _financialConnectionsEventHandler = params.onEvent;
 
     if (result!.containsKey('error')) {
       throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
+    }
+
+    // workaround for fact that created is parsed as string from Stripe android
+    final created = result?['token']['created'];
+    if (created != null && created is String) {
+      result?['token']['created'] = int.tryParse(created);
     }
 
     return FinancialConnectionTokenResult.fromJson(result);

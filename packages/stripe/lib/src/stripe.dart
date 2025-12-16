@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
+import 'package:meta/meta.dart';
 
 /// [Stripe] is the facade of the library and exposes the operations that can be
 /// executed on the Stripe platform.
