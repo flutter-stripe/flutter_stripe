@@ -4,7 +4,7 @@
 //
 
 import Foundation
-
+import UIKit
 @objc(ConnectAccountOnboardingViewManager)
 class ConnectAccountOnboardingViewManager: RCTViewManager {
     override func view() -> UIView! {
