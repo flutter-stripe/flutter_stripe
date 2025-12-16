@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/ach_params.dart';
+import 'package:stripe_platform_interface/src/models/confirmation_token.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/customer_sheet.dart';
 import 'package:stripe_platform_interface/src/models/financial_connections.dart';
@@ -42,6 +43,7 @@ class MethodChannelStripe extends StripePlatform {
   final bool _platformIsIos;
   final bool _platformIsAndroid;
   ConfirmHandler? _confirmHandler;
+  ConfirmTokenHandler? _confirmTokenHandler;
   ConfirmCustomPaymentMethodCallback? _confirmCustomPaymentMethodCallback;
   FinancialConnectionsEventHandler? _financialConnectionsEventHandler;
 
@@ -76,6 +78,12 @@ class MethodChannelStripe extends StripePlatform {
           method,
           call.arguments['shouldSavePaymentMethod'] as bool,
         );
+      } else if (call.method == 'onConfirmationTokenHandlerCallback' &&
+          _confirmTokenHandler != null) {
+        final method = ResultParser<ConfirmationTokenResult>(
+          parseJson: (json) => ConfirmationTokenResult.fromJson(json),
+        ).parse(result: call.arguments!, successResultKey: 'paymentMethod');
+        _confirmTokenHandler!(method);
       } else if (call.method == 'onCustomPaymentMethodConfirmHandlerCallback' &&
           _confirmCustomPaymentMethodCallback != null) {
         final method =
@@ -242,6 +250,9 @@ class MethodChannelStripe extends StripePlatform {
     });
     if (params.intentConfiguration?.confirmHandler != null) {
       _confirmHandler = params.intentConfiguration?.confirmHandler;
+    }
+    if (params.intentConfiguration?.confirmTokenHandler != null) {
+      _confirmTokenHandler = params.intentConfiguration?.confirmTokenHandler;
     }
     if (params
             .customPaymentMethodConfiguration
@@ -603,9 +614,9 @@ class MethodChannelStripe extends StripePlatform {
     }
 
     // workaround for fact that created is parsed as string from Stripe android
-    final created = result?['token']['created'];
+    final created = result['token']['created'];
     if (created != null && created is String) {
-      result?['token']['created'] = int.tryParse(created);
+      result['token']['created'] = int.tryParse(created);
     }
 
     return FinancialConnectionTokenResult.fromJson(result);
@@ -698,6 +709,15 @@ class MethodChannelStripe extends StripePlatform {
     IntentCreationCallbackParams params,
   ) async {
     await _methodChannel.invokeMethod('intentCreationCallback', {
+      'params': params.toJson(),
+    });
+  }
+
+  @override
+  Future<void> confirmationTokenCreationCallback(
+    IntentCreationCallbackParams params,
+  ) async {
+    await _methodChannel.invokeMethod('confirmationTokenCreationCallback', {
       'params': params.toJson(),
     });
   }

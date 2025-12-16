@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/color.dart';
+import 'package:stripe_platform_interface/src/models/confirmation_token.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 part 'payment_sheet.freezed.dart';
@@ -144,6 +145,10 @@ abstract class IntentConfiguration with _$IntentConfiguration {
     /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
     @JsonKey(includeFromJson: false, includeToJson: false)
     ConfirmHandler? confirmHandler,
+
+    /// Called when the customer confirms token payment. 
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    ConfirmTokenHandler? confirmTokenHandler,
 
     /// Confirm handler
   }) = _IntentConfiguration;
@@ -624,6 +629,8 @@ enum IntentFutureUsage {
 
 typedef ConfirmHandler =
     void Function(PaymentMethod result, bool shouldSavePaymentMethod);
+
+typedef ConfirmTokenHandler = void Function(ConfirmationTokenResult result);
 
 List<int> _cardBrandListToJson(List<CardBrand>? list) {
   if (list == null) {
