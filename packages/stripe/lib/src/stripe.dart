@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
+import 'package:meta/meta.dart';
 
 /// [Stripe] is the facade of the library and exposes the operations that can be
 /// executed on the Stripe platform.
@@ -102,13 +102,13 @@ class Stripe {
   /// [publishableKey], [merchantIdentifier], [stripeAccountId],
   /// [threeDSecureParams], [urlScheme], [setReturnUrlSchemeOnAndroid]
   Future<void> applySettings() => _initialise(
-        publishableKey: publishableKey,
-        merchantIdentifier: merchantIdentifier,
-        stripeAccountId: stripeAccountId,
-        threeDSecureParams: threeDSecureParams,
-        urlScheme: urlScheme,
-        setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
-      );
+    publishableKey: publishableKey,
+    merchantIdentifier: merchantIdentifier,
+    stripeAccountId: stripeAccountId,
+    threeDSecureParams: threeDSecureParams,
+    urlScheme: urlScheme,
+    setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
+  );
 
   /// Exposes a [ValueListenable] whether or not GooglePay (on Android) or Apple Pay (on iOS)
   /// is supported for this device.
@@ -133,8 +133,9 @@ class Stripe {
   }) async {
     await _awaitForSettings();
     final isSupported = await _platform.isPlatformPaySupported(
-        params: googlePay,
-        paymentRequestOptions: webPaymentRequestCreateOptions);
+      params: googlePay,
+      paymentRequestOptions: webPaymentRequestCreateOptions,
+    );
 
     _isPlatformPaySupported ??= ValueNotifier(false);
     _isPlatformPaySupported?.value = isSupported;
@@ -276,8 +277,10 @@ class Stripe {
   }) async {
     await _awaitForSettings();
     try {
-      final paymentMethod =
-          await _platform.createPaymentMethod(params, options);
+      final paymentMethod = await _platform.createPaymentMethod(
+        params,
+        options,
+      );
       return paymentMethod;
     } on StripeError catch (error) {
       throw StripeError(message: error.message, code: error.message);
@@ -370,12 +373,16 @@ class Stripe {
   /// several seconds and it is important to not resubmit the form.
   ///
   /// Throws a [StripeException] when confirming the handle card action fails.
-  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
-      {String? returnURL}) async {
+  Future<PaymentIntent> handleNextAction(
+    String paymentIntentClientSecret, {
+    String? returnURL,
+  }) async {
     await _awaitForSettings();
     try {
-      final paymentIntent = await _platform
-          .handleNextAction(paymentIntentClientSecret, returnURL: returnURL);
+      final paymentIntent = await _platform.handleNextAction(
+        paymentIntentClientSecret,
+        returnURL: returnURL,
+      );
       return paymentIntent;
     } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);
@@ -389,13 +396,15 @@ class Stripe {
   ///
   /// Throws a [StripeException] when confirming the handle card action fails.
   Future<SetupIntent> handleNextActionForSetupIntent(
-      String setupIntentClientSecret,
-      {String? returnURL}) async {
+    String setupIntentClientSecret, {
+    String? returnURL,
+  }) async {
     await _awaitForSettings();
     try {
       final paymentIntent = await _platform.handleNextActionForSetupIntent(
-          setupIntentClientSecret,
-          returnURL: returnURL);
+        setupIntentClientSecret,
+        returnURL: returnURL,
+      );
       return paymentIntent;
     } on StripeError {
       rethrow;
@@ -416,7 +425,10 @@ class Stripe {
     await _awaitForSettings();
     try {
       final setupIntent = await _platform.confirmSetupIntent(
-          paymentIntentClientSecret, params, options);
+        paymentIntentClientSecret,
+        params,
+        options,
+      );
       return setupIntent;
     } on StripeException {
       rethrow;
@@ -428,14 +440,10 @@ class Stripe {
   /// Returns a single-use token.
   ///
   /// Throws [StripeError] in case creating the token fails.
-  Future<String?> createTokenForCVCUpdate(
-    String cvc,
-  ) async {
+  Future<String?> createTokenForCVCUpdate(String cvc) async {
     await _awaitForSettings();
     try {
-      final tokenId = await _platform.createTokenForCVCUpdate(
-        cvc,
-      );
+      final tokenId = await _platform.createTokenForCVCUpdate(cvc);
       return tokenId;
     } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);
@@ -451,9 +459,10 @@ class Stripe {
     required SetupPaymentSheetParameters paymentSheetParameters,
   }) async {
     assert(
-        !(paymentSheetParameters.applePay != null &&
-            instance._merchantIdentifier == null),
-        'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account');
+      !(paymentSheetParameters.applePay != null &&
+          instance._merchantIdentifier == null),
+      'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account',
+    );
     await _awaitForSettings();
     return _platform.initPaymentSheet(paymentSheetParameters);
   }
@@ -473,7 +482,8 @@ class Stripe {
   /// Method used to confirm to the user that the intent is created successfull
   /// or not successfull when using a defferred payment method.
   Future<void> intentCreationCallback(
-      IntentCreationCallbackParams params) async {
+    IntentCreationCallbackParams params,
+  ) async {
     await _awaitForSettings();
     return await _platform.intentCreationCallback(params);
   }
@@ -506,7 +516,8 @@ class Stripe {
 
   /// Inititialise google pay
   @Deprecated(
-      'Use [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent] or [createPlatformPayPaymentMethod] instead.')
+    'Use [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent] or [createPlatformPayPaymentMethod] instead.',
+  )
   Future<void> initGooglePay(GooglePayInitParams params) async {
     return await _platform.initGooglePay(params);
   }
@@ -515,7 +526,8 @@ class Stripe {
   ///
   /// Throws a [StripeException] in case it is failing
   @Deprecated(
-      'Use [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent].')
+    'Use [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent].',
+  )
   Future<void> presentGooglePay(PresentGooglePayParams params) async {
     return await _platform.presentGooglePay(params);
   }
@@ -525,7 +537,8 @@ class Stripe {
   /// Throws a [StripeException] in case it is failing
   @Deprecated('Use [createPlatformPayPaymentMethod instead.')
   Future<PaymentMethod> createGooglePayPaymentMethod(
-      CreateGooglePayPaymentParams params) async {
+    CreateGooglePayPaymentParams params,
+  ) async {
     return await _platform.createGooglePayPaymentMethod(params);
   }
 
@@ -566,11 +579,9 @@ class Stripe {
   /// iOS at the moment.
   Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
     /// Whether the clientsecret is associated with setup or paymentintent
-
     required bool isPaymentIntent,
 
     /// The clientSecret of the payment and setup intent
-
     required String clientSecret,
 
     /// Parameters to verify the microdeposits.
@@ -596,7 +607,8 @@ class Stripe {
   /// on this particular device.
   /// Throws [StripeException] in case creating the token fails.
   Future<CanAddCardToWalletResult> canAddCardToWallet(
-      CanAddCardToWalletParams params) async {
+    CanAddCardToWalletParams params,
+  ) async {
     return await _platform.canAddCardToWallet(params);
   }
 
@@ -616,7 +628,8 @@ class Stripe {
 
   Future<FinancialConnectionTokenResult> collectBankAccountToken({
     required String clientSecret,
-    CollectBankAccountTokenParams? params,
+    CollectBankAccountTokenParams params =
+        const CollectBankAccountTokenParams(),
   }) async {
     try {
       return _platform.collectBankAccountToken(
@@ -637,7 +650,8 @@ class Stripe {
 
   Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
     required String clientSecret,
-    CollectFinancialConnectionsAccountsParams? params,
+    CollectFinancialConnectionsAccountsParams params =
+        const CollectFinancialConnectionsAccountsParams(),
   }) async {
     try {
       return _platform.collectFinancialConnectionsAccounts(
@@ -650,8 +664,9 @@ class Stripe {
   }
 
   /// Initializes the customer sheet with the provided [parameters].
-  Future<CustomerSheetResult?> initCustomerSheet(
-      {required CustomerSheetInitParams customerSheetInitParams}) async {
+  Future<CustomerSheetResult?> initCustomerSheet({
+    required CustomerSheetInitParams customerSheetInitParams,
+  }) async {
     await _awaitForSettings();
     return _platform.initCustomerSheet(customerSheetInitParams);
   }
@@ -666,7 +681,7 @@ class Stripe {
 
   /// Retrieve the customer sheet payment option selection.
   Future<CustomerSheetResult?>
-      retrieveCustomerSheetPaymentOptionSelection() async {
+  retrieveCustomerSheetPaymentOptionSelection() async {
     await _awaitForSettings();
 
     return _platform.retrieveCustomerSheetPaymentOptionSelection();
@@ -711,13 +726,14 @@ class Stripe {
     }
   }
 
-  Future<void> _initialise(
-      {required String publishableKey,
-      String? stripeAccountId,
-      ThreeDSecureConfigurationParams? threeDSecureParams,
-      String? merchantIdentifier,
-      String? urlScheme,
-      bool? setReturnUrlSchemeOnAndroid}) async {
+  Future<void> _initialise({
+    required String publishableKey,
+    String? stripeAccountId,
+    ThreeDSecureConfigurationParams? threeDSecureParams,
+    String? merchantIdentifier,
+    String? urlScheme,
+    bool? setReturnUrlSchemeOnAndroid,
+  }) async {
     _needsSettings = false;
     await _platform.initialise(
       publishableKey: publishableKey,

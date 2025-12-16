@@ -586,17 +586,23 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<FinancialConnectionTokenResult> collectBankAccountToken({
     required String clientSecret,
-    CollectBankAccountTokenParams? params,
+    required CollectBankAccountTokenParams params,
   }) async {
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
       'collectBankAccountToken',
-      {'clientSecret': clientSecret, 'params': params?.toJson()},
+      {'clientSecret': clientSecret, 'params': params.toJson()},
     );
 
-    _financialConnectionsEventHandler = params?.onEvent;
+    _financialConnectionsEventHandler = params.onEvent;
 
     if (result!.containsKey('error')) {
       throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
+    }
+
+    // workaround for fact that created is parsed as string from Stripe android
+    final created = result?['token']['created'];
+    if (created != null && created is String) {
+      result?['token']['created'] = int.tryParse(created);
     }
 
     return FinancialConnectionTokenResult.fromJson(result);

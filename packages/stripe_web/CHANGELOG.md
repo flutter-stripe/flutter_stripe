@@ -1,3 +1,23 @@
+## 7.1.1
+
+**Fixes**
+ - 2064 crash collect bankaccounttoken
+ 
+## 7.1.0
+
+**Features**
+- Sync with Stripe React Native [0.53.1](https://github.com/stripe/stripe-react-native/releases/tag/v0.53.1)
+
+## 7.0.0
+
+**Breaking changes**
+- This package now supports and requires Freezed v3
+
+**Fixes**
+ - #2176 support Klarna on the web
+ - #2180 collect bank account token failing due to missing parameter
+ - #2186 remove empty bank parameter from iDEAL payments to comply with Stripe API changes
+ 
 ## 6.5.1
 
 **Fixes**

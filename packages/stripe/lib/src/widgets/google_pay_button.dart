@@ -38,9 +38,9 @@ class _GooglePayButtonState extends State<GooglePayButton> {
   void initState() {
     // ignore: deprecated_member_use_from_same_package
     _creationParams['buttonType'] = widget.type.name;
-    _creationParams['type'] = widget.buttonType.id;
-    _creationParams['appearance'] = widget.appearance.id;
-    _creationParams['borderRadius'] = widget.borderRadius;
+    _creationParams['type'] = widget.buttonType.id.toDouble();
+    _creationParams['appearance'] = widget.appearance.id.toDouble();
+    _creationParams['borderRadius'] = widget.borderRadius?.toDouble();
     super.initState();
   }
 
@@ -67,12 +67,12 @@ class _GooglePayButtonState extends State<GooglePayButton> {
       onCreatePlatformView: (params) {
         onPlatformViewCreated(params.id);
         return PlatformViewsService.initExpensiveAndroidView(
-          id: params.id,
-          viewType: GooglePayButton._viewType,
-          layoutDirection: TextDirection.ltr,
-          creationParams: _creationParams,
-          creationParamsCodec: const StandardMessageCodec(),
-        )
+            id: params.id,
+            viewType: GooglePayButton._viewType,
+            layoutDirection: TextDirection.ltr,
+            creationParams: _creationParams,
+            creationParamsCodec: const StandardMessageCodec(),
+          )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();
       },

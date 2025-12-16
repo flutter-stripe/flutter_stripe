@@ -1,6 +1,6 @@
 name: flutter_stripe_web
 description: Stripe sdk bindings for the Flutter web platform. This package contains the implementation of the platform interface for web.
-version: 6.5.1
+version: 7.1.1
 homepage: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
@@ -13,8 +13,8 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   freezed_annotation: ^3.1.0
-  stripe_platform_interface: ^11.5.0
-  stripe_js: ^6.4.0
+  stripe_platform_interface: ^12.1.1
+  stripe_js: ^7.1.0
   web: ^1.0.0
 
 dev_dependencies:

@@ -45,7 +45,7 @@ import com.stripe.android.paymentelement.PaymentMethodOptionsSetupFutureUsagePre
 import com.stripe.android.paymentsheet.CreateIntentCallback
 import com.stripe.android.paymentsheet.CreateIntentResult
 import com.stripe.android.paymentsheet.ExperimentalCustomerSessionApi
-import com.stripe.android.paymentsheet.PaymentOptionCallback
+import com.stripe.android.paymentsheet.PaymentOptionResultCallback
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
 import com.stripe.android.paymentsheet.PaymentSheetResultCallback
@@ -124,15 +124,16 @@ class PaymentSheetFragment :
       }
 
     val paymentOptionCallback =
-      PaymentOptionCallback { paymentOption ->
+      PaymentOptionResultCallback { paymentOptionResult ->
         val result =
-          paymentOption?.let {
+          paymentOptionResult.paymentOption?.let {
             val bitmap = getBitmapFromVectorDrawable(context, it.drawableResourceId)
             val imageString = getBase64FromBitmap(bitmap)
             val option: WritableMap = WritableNativeMap()
             option.putString("label", it.label)
             option.putString("image", imageString)
-            createResult("paymentOption", option)
+            val additionalFields: Map<String, Any> = mapOf("didCancel" to paymentOptionResult.didCancel)
+            createResult("paymentOption", option, additionalFields)
           }
             ?: run {
               if (paymentSheetTimedOut) {
@@ -193,7 +194,7 @@ class PaymentSheetFragment :
             putBoolean("shouldSavePaymentMethod", shouldSavePaymentMethod)
           }
 
-        stripeSdkModule?.emitOnConfirmHandlerCallback(params)
+        stripeSdkModule?.eventEmitter?.emitOnConfirmHandlerCallback(params)
 
         val resultFromJavascript = paymentSheetIntentCreationCallback.await()
         // reset the completable
@@ -250,6 +251,7 @@ class PaymentSheetFragment :
         .googlePay(googlePayConfig)
         .appearance(appearance)
         .shippingDetails(shippingDetails)
+        .link(linkConfig)
         .billingDetailsCollectionConfiguration(billingDetailsConfig)
         .preferredNetworks(
           mapToPreferredNetworks(arguments?.getIntegerArrayList("preferredNetworks")),
@@ -272,7 +274,7 @@ class PaymentSheetFragment :
           PaymentSheet.FlowController
             .Builder(
               resultCallback = paymentResultCallback,
-              paymentOptionCallback = paymentOptionCallback,
+              paymentOptionResultCallback = paymentOptionCallback,
             ).createIntentCallback(createIntentCallback)
             .confirmCustomPaymentMethodCallback(this)
             .build(this)
@@ -280,7 +282,7 @@ class PaymentSheetFragment :
           PaymentSheet.FlowController
             .Builder(
               resultCallback = paymentResultCallback,
-              paymentOptionCallback = paymentOptionCallback,
+              paymentOptionResultCallback = paymentOptionCallback,
             ).confirmCustomPaymentMethodCallback(this)
             .build(this)
         }
@@ -479,7 +481,7 @@ class PaymentSheetFragment :
         delay(100)
 
         // Emit event so JS can show the Alert and eventually respond via `customPaymentMethodResultCallback`.
-        stripeSdkModule.emitOnCustomPaymentMethodConfirmHandlerCallback(
+        stripeSdkModule.eventEmitter.emitOnCustomPaymentMethodConfirmHandlerCallback(
           mapFromCustomPaymentMethod(customPaymentMethod, billingDetails),
         )
 
@@ -550,7 +552,7 @@ class PaymentSheetFragment :
       )
 
     internal fun buildGooglePayConfig(params: Bundle?): PaymentSheet.GooglePayConfiguration? {
-      if (params == null) {
+      if (params == null || params.isEmpty) {
         return null
       }
 
@@ -617,14 +619,13 @@ class PaymentSheetFragment :
     }
 
     @OptIn(PaymentMethodOptionsSetupFutureUsagePreview::class)
-    private fun buildIntentConfigurationMode(modeParams: Bundle): PaymentSheet.IntentConfiguration.Mode {
-      val currencyCode =
-        modeParams.getString("currencyCode")
-          ?: throw PaymentSheetException(
-            "You must provide a value to intentConfiguration.mode.currencyCode",
-          )
-
-      return if (modeParams.containsKey("amount")) {
+    private fun buildIntentConfigurationMode(modeParams: Bundle): PaymentSheet.IntentConfiguration.Mode =
+      if (modeParams.containsKey("amount")) {
+        val currencyCode =
+          modeParams.getString("currencyCode")
+            ?: throw PaymentSheetException(
+              "You must provide a value to intentConfiguration.mode.currencyCode",
+            )
         PaymentSheet.IntentConfiguration.Mode.Payment(
           amount = modeParams.getInt("amount").toLong(),
           currency = currencyCode,
@@ -639,11 +640,10 @@ class PaymentSheetFragment :
               "You must provide a value to intentConfiguration.mode.setupFutureUsage",
             )
         PaymentSheet.IntentConfiguration.Mode.Setup(
-          currency = currencyCode,
+          currency = modeParams.getString("currencyCode"),
           setupFutureUse = setupFutureUsage,
         )
       }
-    }
 
     @OptIn(ExperimentalCustomerSessionApi::class)
     @Throws(PaymentSheetException::class)
@@ -693,7 +693,7 @@ fun getBitmapFromDrawable(drawable: Drawable): Bitmap? {
       drawableCompat.intrinsicHeight,
       Bitmap.Config.ARGB_8888,
     )
-  bitmap.eraseColor(Color.WHITE)
+  bitmap.eraseColor(Color.TRANSPARENT)
   val canvas = Canvas(bitmap)
   drawable.setBounds(0, 0, canvas.width, canvas.height)
   drawable.draw(canvas)

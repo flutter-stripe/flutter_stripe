@@ -20,9 +20,4 @@ enum ApplePayButtonType {
 }
 
 /// Predefined styles for the Apple pay button.
-enum ApplePayButtonStyle {
-  white,
-  whiteOutline,
-  black,
-  automatic,
-}
+enum ApplePayButtonStyle { white, whiteOutline, black, automatic }

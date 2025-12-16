@@ -466,6 +466,8 @@ _$PaymentSheetPrimaryButtonThemeColorsFromJson(Map<String, dynamic> json) =>
       background: ColorKey.fromJson(json['background']),
       text: ColorKey.fromJson(json['text']),
       border: ColorKey.fromJson(json['border']),
+      successBackgroundColor: ColorKey.fromJson(json['successBackgroundColor']),
+      successTextColor: ColorKey.fromJson(json['successTextColor']),
     );
 
 Map<String, dynamic> _$PaymentSheetPrimaryButtonThemeColorsToJson(
@@ -474,6 +476,8 @@ Map<String, dynamic> _$PaymentSheetPrimaryButtonThemeColorsToJson(
   'background': ColorKey.toJson(instance.background),
   'text': ColorKey.toJson(instance.text),
   'border': ColorKey.toJson(instance.border),
+  'successBackgroundColor': ColorKey.toJson(instance.successBackgroundColor),
+  'successTextColor': ColorKey.toJson(instance.successTextColor),
 };
 
 _PresentParameters _$PresentParametersFromJson(Map<String, dynamic> json) =>
@@ -657,10 +661,10 @@ _CheckmarkConfig _$CheckmarkConfigFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CheckmarkConfigToJson(_CheckmarkConfig instance) =>
     <String, dynamic>{'color': ColorKey.toJson(instance.color)};
 
-_ChevronConfig _$ChevronConfigFromJson(Map<String, dynamic> json) =>
-    _ChevronConfig(color: ColorKey.fromJson(json['color']));
+_DisclosureConfig _$DisclosureConfigFromJson(Map<String, dynamic> json) =>
+    _DisclosureConfig(color: ColorKey.fromJson(json['color']));
 
-Map<String, dynamic> _$ChevronConfigToJson(_ChevronConfig instance) =>
+Map<String, dynamic> _$DisclosureConfigToJson(_DisclosureConfig instance) =>
     <String, dynamic>{'color': ColorKey.toJson(instance.color)};
 
 _FlatConfig _$FlatConfigFromJson(Map<String, dynamic> json) => _FlatConfig(
@@ -679,9 +683,9 @@ _FlatConfig _$FlatConfigFromJson(Map<String, dynamic> json) => _FlatConfig(
   checkmark: json['checkmark'] == null
       ? null
       : CheckmarkConfig.fromJson(json['checkmark'] as Map<String, dynamic>),
-  chevron: json['chevron'] == null
+  disclosure: json['disclosure'] == null
       ? null
-      : ChevronConfig.fromJson(json['chevron'] as Map<String, dynamic>),
+      : DisclosureConfig.fromJson(json['disclosure'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$FlatConfigToJson(_FlatConfig instance) =>
@@ -693,7 +697,7 @@ Map<String, dynamic> _$FlatConfigToJson(_FlatConfig instance) =>
       'bottomSeparatorEnabled': instance.bottomSeparatorEnabled,
       'radio': instance.radio,
       'checkmark': instance.checkmark,
-      'chevron': instance.chevron,
+      'disclosure': instance.disclosure,
     };
 
 _FloatingConfig _$FloatingConfigFromJson(Map<String, dynamic> json) =>
@@ -725,7 +729,7 @@ const _$RowStyleEnumMap = {
   RowStyle.flatWithRadio: 'flatWithRadio',
   RowStyle.floatingButton: 'floatingButton',
   RowStyle.flatWithCheckmark: 'flatWithCheckmark',
-  RowStyle.flatWithChevron: 'flatWithChevron',
+  RowStyle.flatWithDisclosure: 'flatWithDisclosure',
 };
 
 _EmbeddedPaymentElementAppearance _$EmbeddedPaymentElementAppearanceFromJson(

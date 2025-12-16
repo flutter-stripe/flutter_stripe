@@ -7,6 +7,7 @@
 
 import Foundation
 @_spi(EmbeddedPaymentElementPrivateBeta) @_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(STP) @_spi(CustomPaymentMethodsBeta) import StripePaymentSheet
+import UIKit
 
 @objc(StripeSdkImpl)
 extension StripeSdkImpl {
@@ -213,6 +214,10 @@ extension StripeSdkImpl {
 
     if let allowsDelayedPaymentMethods = params["allowsDelayedPaymentMethods"] as? Bool {
       configuration.allowsDelayedPaymentMethods = allowsDelayedPaymentMethods
+    }
+
+    if let embeddedViewDisplaysMandateText = params["embeddedViewDisplaysMandateText"] as? Bool {
+      configuration.embeddedViewDisplaysMandateText = embeddedViewDisplaysMandateText
     }
 
     if let removeSavedPaymentMethodMessage = params["removeSavedPaymentMethodMessage"] as? String {

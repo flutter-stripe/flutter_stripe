@@ -39,23 +39,23 @@ func RCTMakeAndLogError(_ error: String, _ something: String?, _ anotherSomethin
 
 @objc(StripePlugin)
 class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
-    
-    
+
+
     private var channel: FlutterMethodChannel
 
     static func register(with registrar: FlutterPluginRegistrar) {
         // Method Channel
         let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec())
-        
+
         let instance = StripePlugin(channel: channel)
         instance.emitter = instance
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
-        
+
         // Card Field
         let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger(), delegate:instance)
         registrar.register(cardFieldFactory, withId: "flutter.stripe/card_field")
-        
+
         // Card Form
         let cardFormFactory = CardFormFactory(messenger: registrar.messenger(), delegate: instance)
         registrar.register(cardFormFactory, withId: "flutter.stripe/card_form_field")
@@ -63,17 +63,17 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         // AueBECS Debit Form
         let auebecsFormFactory = AuBECSDebitFormFactory(messenger: registrar.messenger(), delegate: instance)
         registrar.register(auebecsFormFactory, withId: "flutter.stripe/aubecs_form_field")
-        
+
         // Apple Pay Button
         let applePayFactory = ApplePayButtonViewFactory(messenger: registrar.messenger(),stripeSdk: instance)
         registrar.register(applePayFactory, withId: "flutter.stripe/apple_pay")
-        
+
         // Addressheet
         let addressSheetFactory = AddressSheetViewFactory(messenger: registrar.messenger(), delegate: instance)
         registrar.register(addressSheetFactory, withId: "flutter.stripe/address_sheet")
-        
+
     }
-    
+
     init(channel : FlutterMethodChannel) {
         self.channel = channel
         super.init()
@@ -219,7 +219,7 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         case "customerAdapterFetchSelectedPaymentOptionCallback":
             let arguments = call.arguments as? FlutterMap
             let paymentOption = arguments?["paymentOption"] as? String
-            
+
             return customerAdapterFetchSelectedPaymentOptionCallback(
                 paymentOption: paymentOption,
                 resolver: resolver(for: result),
@@ -242,8 +242,8 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             result(FlutterMethodNotImplemented)
         }
     }
-    
-    
+
+
     func resolver(for result: @escaping FlutterResult) -> RCTPromiseResolveBlock {
         return { (response) in
             var data : Any?
@@ -256,23 +256,23 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             result(NSNull.replaceForNil(data as AnyObject))
         }
     }
-    
+
     func rejecter(for result: @escaping FlutterResult) -> RCTPromiseRejectBlock {
         return { (code, message, error) in
             result(FlutterError.init(code: code ?? "Failed", message: message, details: error))
         }
     }
-    
+
     func sendEvent(withName name: String, body: [String:  Any]) {
         channel.invokeMethod(name, arguments: body)
     }
-    
+
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return StripeAPI.handleURLCallback(with: url)
     }
-    
+
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]) -> Void) -> Bool {
-        
+
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
                 return StripeAPI.handleURLCallback(with: url)
@@ -286,74 +286,74 @@ extension StripePlugin: StripeSdkEmitter {
     func emitOnCustomPaymentMethodConfirmHandlerCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onCustomPaymentMethodConfirmHandlerCallback", body: value)
     }
-    
-    
+
+
     func emitOnConfirmHandlerCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onConfirmHandlerCallback", body: value)
     }
-    
+
     func emitOnFinancialConnectionsEvent(_ value: [String : Any]) {
         self.sendEvent(withName: "onFinancialConnectionsEvent", body: value)
     }
-    
+
     func emitOnOrderTrackingCallback() {
         self.sendEvent(withName: "onOrderTrackingCallback", body:[:])
     }
-    
+
     func emitOnCustomerAdapterFetchPaymentMethodsCallback() {
         self.sendEvent(withName: "onCustomerAdapterFetchPaymentMethodsCallback", body:[:])
     }
-    
+
     func emitOnCustomerAdapterAttachPaymentMethodCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onCustomerAdapterAttachPaymentMethodCallback", body:value)
     }
-    
+
     func emitOnCustomerAdapterDetachPaymentMethodCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onCustomerAdapterDetachPaymentMethodCallback", body:value)
     }
-    
+
     func emitOnCustomerAdapterSetSelectedPaymentOptionCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onCustomerAdapterSetSelectedPaymentOptionCallback", body:value)
     }
-    
+
     func emitOnCustomerAdapterFetchSelectedPaymentOptionCallback() {
         self.sendEvent(withName: "onCustomerAdapterFetchSelectedPaymentOptionCallback", body:[:])
     }
-    
+
     func emitOnCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback() {
         self.sendEvent(withName: "onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback", body:[:])
     }
-    
+
     func emitEmbeddedPaymentElementDidUpdateHeight(_ value: [String : Any]) {
         self.sendEvent(withName: "embeddedPaymentElementDidUpdateHeight", body:value)
     }
-    
+
     func emitEmbeddedPaymentElementWillPresent() {
         self.sendEvent(withName: "embeddedPaymentElementWillPresent", body:[:])
     }
-    
+
     func emitEmbeddedPaymentElementDidUpdatePaymentOption(_ value: [String : Any]) {
         self.sendEvent(withName: "embeddedPaymentElementDidUpdatePaymentOption", body: value)
     }
-    
+
     func emitEmbeddedPaymentElementFormSheetConfirmComplete(_ value: [String : Any]) {
         self.sendEvent(withName: "embeddedPaymentElementFormSheetConfirmComplete", body: value)
     }
-    
+
     func emitEmbeddedPaymentElementRowSelectionImmediateAction() {
         self.sendEvent(withName: "embeddedPaymentElementRowSelectionImmediateAction", body:[:])
     }
-    
+
     func emitEmbeddedPaymentElementLoadingFailed(_ value: [String : Any]) {
         self.sendEvent(withName: "embeddedPaymentElementLoadingFailed", body:value)
     }
-    
+
 }
 
 
 // Mark: MethodChannel handlers
 extension  StripePlugin {
-    
+
     func initialise(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let params = call.arguments as? NSDictionary else {
             result(FlutterError.invalidParams)
@@ -361,7 +361,7 @@ extension  StripePlugin {
         }
         initialise(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func initPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               var params = arguments["params"] as? NSDictionary else {
@@ -377,11 +377,11 @@ extension  StripePlugin {
         }
         initPaymentSheet(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func confirmPaymentSheetPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         confirmPaymentSheetPayment(resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func presentPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
             let options = arguments["options"] as? NSDictionary else {
@@ -397,7 +397,7 @@ extension  StripePlugin {
             }
         }, rejecter: rejecter(for: result))
     }
-    
+
     func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap else {
             result(FlutterError.invalidParams)
@@ -406,7 +406,7 @@ extension  StripePlugin {
         let cvc = arguments["cvc"] as? String
         createTokenForCVCUpdate(cvc: cvc, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func confirmSetupIntent(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let setupIntentClientSecret = arguments["setupIntentClientSecret"] as? String,
@@ -417,14 +417,14 @@ extension  StripePlugin {
         }
         confirmSetupIntent(setupIntentClientSecret: setupIntentClientSecret, params: params, options: options,resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func openApplePaySetup(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         openApplePaySetup(
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func verifyMicrodeposits(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let isPaymentIntent = arguments["isPaymentIntent"] as? Bool,
@@ -441,7 +441,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func collectBankAccount(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let isPaymentIntent = arguments["isPaymentIntent"] as? Bool,
@@ -458,7 +458,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func isCardInWallet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["params"] as? NSDictionary else {
@@ -471,7 +471,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func canAddCardToWallet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["params"] as? NSDictionary else {
@@ -484,7 +484,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func handleURLCallback(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? NSDictionary,
               let url = arguments["url"] as? String else {
@@ -497,7 +497,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func createPaymentMethod(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["data"] as? NSDictionary,
@@ -512,7 +512,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func handleNextAction(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String else {
@@ -526,7 +526,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func handleNextActionForSetupIntent(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let paymentIntentClientSecret = arguments["setupIntentClientSecret"] as? String else {
@@ -540,15 +540,16 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func confirmPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
-              let options = arguments["options"] as? NSDictionary else {
+              let options = arguments["options"] as? NSDictionary,
+              let params = arguments["params"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
-        let params = arguments["params"] as? NSDictionary
+        
         confirmPayment(
             paymentIntentClientSecret: paymentIntentClientSecret,
             params: params,
@@ -557,7 +558,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func retrievePaymentIntent(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let clientSecret = arguments["clientSecret"] as? String else {
@@ -570,7 +571,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func retrieveSetupIntent(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let clientSecret = arguments["clientSecret"] as? String else {
@@ -583,8 +584,8 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
-    
+
+
     func configure3dSecure(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["params"] as? NSDictionary else {
@@ -594,7 +595,7 @@ extension  StripePlugin {
         configure3dSecure(params)
         result(nil)
     }
-    
+
     func createToken(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["params"] as? NSDictionary else {
@@ -605,7 +606,7 @@ extension  StripePlugin {
                     resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }
-    
+
     func collectBankAccountToken(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap else {
             result(FlutterError.invalidParams)
@@ -624,7 +625,7 @@ extension  StripePlugin {
                     resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }
-    
+
     func collectFinancialConnectionsAccounts(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap else {
             result(FlutterError.invalidParams)
@@ -643,34 +644,34 @@ extension  StripePlugin {
                     resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }
-    
+
     func resetPaymentSheetCustomer(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         resetPaymentSheetCustomer(resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }
-    
+
     func updatePlatformPaySheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap else {
             result(FlutterError.invalidParams)
             return
         }
-        
+
         guard let params = arguments["params"] as? NSDictionary else{
             result(FlutterError.invalidParams)
             return
         }
-        
+
         guard let summaryItems = params["summaryItems"] as? NSArray,
          let shippingMethods = params["shippingMethods"] as? NSArray else {
             result(FlutterError.invalidParams)
             return
         }
-        
+
         let errors = params["errors"] as? [NSDictionary]
-        
+
         updatePlatformPaySheet(summaryItems: summaryItems, shippingMethods: shippingMethods, errors: errors ?? [], resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func isPlatformPaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let params = arguments["params"] as? NSDictionary else {
@@ -679,7 +680,7 @@ extension  StripePlugin {
         }
         isPlatformPaySupported(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func createPlatformPayPaymentMethod(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let params = arguments["params"] as? NSDictionary,
@@ -690,11 +691,11 @@ extension  StripePlugin {
         }
         createPlatformPayPaymentMethod(params: params, usesDeprecatedTokenFlow: usesDeprecatedTokenFlow, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func dismissPlatformPay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         dismissPlatformPay(resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func confirmPlatformPay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
        let clientSecret = arguments["clientSecret"] as? String,
@@ -706,7 +707,7 @@ extension  StripePlugin {
        }
         confirmPlatformPay(clientSecret: clientSecret, params: params, isPaymentIntent: isPaymentIntent, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
-    
+
     func configureOrderTracking(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
        let orderTypeIdentifier = arguments["orderTypeIdentifier"] as? String,
@@ -726,7 +727,7 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func handleNextActionForSetup(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
        let setupIntentClientSecret = arguments["setupIntentClientSecret"] as? String,
@@ -742,15 +743,15 @@ extension  StripePlugin {
             rejecter: rejecter(for: result)
         )
     }
-    
+
     func addListener(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         //startObserving()
     }
-    
+
     func removeListener(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         //stopObserving()
     }
-    
+
     func intentCreationCallback(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let params = arguments["params"] as? NSDictionary
@@ -758,11 +759,11 @@ extension  StripePlugin {
             result(FlutterError.invalidParams)
             return
         }
-        
+
         intentCreationCallback(result: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
         result(nil)
     }
-    
+
     func confirmCustomPaymentMethodCallback (_ call: FlutterMethodCall, result: @escaping FlutterResult){
         guard let arguments = call.arguments as? FlutterMap,
               let params = arguments["params"] as? NSDictionary
@@ -770,11 +771,11 @@ extension  StripePlugin {
             result(FlutterError.invalidParams)
             return
         }
-        
+
         customPaymentMethodResultCallback(result: params, resolver: resolver(for: result),  rejecter: rejecter(for: result))
         result(nil)
     }
-    
+
     func dangerouslyUpdateCardDetails(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["params"] as? NSDictionary else {
