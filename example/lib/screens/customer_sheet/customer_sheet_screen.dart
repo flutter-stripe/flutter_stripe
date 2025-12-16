@@ -51,12 +51,8 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
     final url = Uri.parse('$kApiUrl/customer-sheet');
     final response = await http.post(
       url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: json.encode({
-        'a': 'a',
-      }),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'a': 'a'}),
     );
     final body = json.decode(response.body);
     if (body['error'] != null) {
@@ -88,7 +84,7 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
 
       // 2. initialize the customer sheet
       await Stripe.instance.initCustomerSheet(
-        customerSheetInitParams: CustomerSheetInitParams(
+        customerSheetInitParams: CustomerSheetInitParams.adapter(
           // Main params
           // setupIntentClientSecret: data['setupIntent'],
           merchantDisplayName: 'Flutter Stripe Store Demo',
@@ -105,9 +101,7 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
       });
     } catch (e) {
       if (context.mounted) {
-        scaffoldMessenger.showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
+        scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error: $e')));
       }
       rethrow;
     }
@@ -127,7 +121,8 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
         scaffoldMessenger.showSnackBar(
           SnackBar(
             content: Text(
-                'Payment preferences modfied completed option selected: ${result?.paymentOption?.label}}'),
+              'Payment preferences modfied completed option selected: ${result?.paymentOption?.label}}',
+            ),
           ),
         );
       }
@@ -143,9 +138,7 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
       } else {
         if (context.mounted) {
           scaffoldMessenger.showSnackBar(
-            SnackBar(
-              content: Text('Unforeseen error: $e'),
-            ),
+            SnackBar(content: Text('Unforeseen error: $e')),
           );
         }
       }

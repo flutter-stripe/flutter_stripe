@@ -6,15 +6,9 @@ part of 'customer_sheet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
+_CustomerSheetInitParamsAdapter _$CustomerSheetInitParamsAdapterFromJson(
   Map<String, dynamic> json,
-) => _CustomerSheetInitParams(
-  style: $enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
-  appearance: json['appearance'] == null
-      ? null
-      : PaymentSheetAppearance.fromJson(
-          json['appearance'] as Map<String, dynamic>,
-        ),
+) => _CustomerSheetInitParamsAdapter(
   setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
   customerId: json['customerId'] as String,
   intentConfiguration: json['intentConfiguration'] == null
@@ -23,6 +17,12 @@ _CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
           json['intentConfiguration'] as Map<String, dynamic>,
         ),
   customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String,
+  style: $enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
+  appearance: json['appearance'] == null
+      ? null
+      : PaymentSheetAppearance.fromJson(
+          json['appearance'] as Map<String, dynamic>,
+        ),
   merchantDisplayName: json['merchantDisplayName'] as String?,
   allowsRemovalOfLastSavedPaymentMethod:
       json['allowsRemovalOfLastSavedPaymentMethod'] as bool?,
@@ -51,17 +51,18 @@ _CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
       : CardBrandAcceptance.fromJson(
           json['cardBrandAcceptance'] as Map<String, dynamic>,
         ),
+  $type: json['runtimeType'] as String?,
 );
 
-Map<String, dynamic> _$CustomerSheetInitParamsToJson(
-  _CustomerSheetInitParams instance,
+Map<String, dynamic> _$CustomerSheetInitParamsAdapterToJson(
+  _CustomerSheetInitParamsAdapter instance,
 ) => <String, dynamic>{
-  'style': UserInterfaceStyleKey.toJson(instance.style),
-  'appearance': instance.appearance?.toJson(),
   'setupIntentClientSecret': instance.setupIntentClientSecret,
   'customerId': instance.customerId,
   'intentConfiguration': instance.intentConfiguration?.toJson(),
   'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
+  'style': UserInterfaceStyleKey.toJson(instance.style),
+  'appearance': instance.appearance?.toJson(),
   'merchantDisplayName': instance.merchantDisplayName,
   'allowsRemovalOfLastSavedPaymentMethod':
       instance.allowsRemovalOfLastSavedPaymentMethod,
@@ -76,6 +77,7 @@ Map<String, dynamic> _$CustomerSheetInitParamsToJson(
   'googlePayEnabled': instance.googlePayEnabled,
   'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
   'cardBrandAcceptance': instance.cardBrandAcceptance?.toJson(),
+  'runtimeType': instance.$type,
 };
 
 const _$ThemeModeEnumMap = {
@@ -94,6 +96,78 @@ const _$CardBrandEnumMap = {
   CardBrand.UnionPay: 'UnionPay',
   CardBrand.Visa: 'Visa',
   CardBrand.Unknown: 'Unknown',
+};
+
+_CustomerSheetInitParamsSession _$CustomerSheetInitParamsSessionFromJson(
+  Map<String, dynamic> json,
+) => _CustomerSheetInitParamsSession(
+  setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
+  customerId: json['customerId'] as String?,
+  intentConfiguration: IntentConfiguration.fromJson(
+    json['intentConfiguration'] as Map<String, dynamic>,
+  ),
+  customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
+  style: $enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
+  appearance: json['appearance'] == null
+      ? null
+      : PaymentSheetAppearance.fromJson(
+          json['appearance'] as Map<String, dynamic>,
+        ),
+  merchantDisplayName: json['merchantDisplayName'] as String?,
+  allowsRemovalOfLastSavedPaymentMethod:
+      json['allowsRemovalOfLastSavedPaymentMethod'] as bool?,
+  headerTextForSelectionScreen: json['headerTextForSelectionScreen'] as String?,
+  defaultBillingDetails: json['defaultBillingDetails'] == null
+      ? null
+      : BillingDetails.fromJson(
+          json['defaultBillingDetails'] as Map<String, dynamic>,
+        ),
+  billingDetailsCollectionConfiguration:
+      json['billingDetailsCollectionConfiguration'] == null
+      ? null
+      : BillingDetailsCollectionConfiguration.fromJson(
+          json['billingDetailsCollectionConfiguration'] as Map<String, dynamic>,
+        ),
+  returnURL: json['returnURL'] as String?,
+  removeSavedPaymentMethodMessage:
+      json['removeSavedPaymentMethodMessage'] as String?,
+  applePayEnabled: json['applePayEnabled'] as bool? ?? true,
+  googlePayEnabled: json['googlePayEnabled'] as bool? ?? true,
+  preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
+      ?.map((e) => $enumDecode(_$CardBrandEnumMap, e))
+      .toList(),
+  cardBrandAcceptance: json['cardBrandAcceptance'] == null
+      ? null
+      : CardBrandAcceptance.fromJson(
+          json['cardBrandAcceptance'] as Map<String, dynamic>,
+        ),
+  $type: json['runtimeType'] as String?,
+);
+
+Map<String, dynamic> _$CustomerSheetInitParamsSessionToJson(
+  _CustomerSheetInitParamsSession instance,
+) => <String, dynamic>{
+  'setupIntentClientSecret': instance.setupIntentClientSecret,
+  'customerId': instance.customerId,
+  'intentConfiguration': instance.intentConfiguration.toJson(),
+  'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
+  'style': UserInterfaceStyleKey.toJson(instance.style),
+  'appearance': instance.appearance?.toJson(),
+  'merchantDisplayName': instance.merchantDisplayName,
+  'allowsRemovalOfLastSavedPaymentMethod':
+      instance.allowsRemovalOfLastSavedPaymentMethod,
+  'headerTextForSelectionScreen': instance.headerTextForSelectionScreen,
+  'defaultBillingDetails': instance.defaultBillingDetails?.toJson(),
+  'billingDetailsCollectionConfiguration': instance
+      .billingDetailsCollectionConfiguration
+      ?.toJson(),
+  'returnURL': instance.returnURL,
+  'removeSavedPaymentMethodMessage': instance.removeSavedPaymentMethodMessage,
+  'applePayEnabled': instance.applePayEnabled,
+  'googlePayEnabled': instance.googlePayEnabled,
+  'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
+  'cardBrandAcceptance': instance.cardBrandAcceptance?.toJson(),
+  'runtimeType': instance.$type,
 };
 
 _CustomerSheetPresentParams _$CustomerSheetPresentParamsFromJson(
