@@ -853,3 +853,11 @@ extension  StripePlugin {
         result(nil)
     }
 }
+
+func RCTKeyWindow() -> UIWindow? {
+    return UIApplication.shared
+        .connectedScenes
+        .compactMap { $0 as? UIWindowScene }
+        .flatMap { $0.windows }
+        .first { $0.isKeyWindow }
+}

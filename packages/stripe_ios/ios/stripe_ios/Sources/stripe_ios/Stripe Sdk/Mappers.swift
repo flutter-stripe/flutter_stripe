@@ -1,8 +1,13 @@
-import Stripe
-import PassKit
-import StripePaymentSheet
-@_spi(ConfirmationTokensPublicPreview) import StripePayments
 import Contacts
+import PassKit
+import Stripe
+@_spi(ConfirmationTokensPublicPreview) import StripePayments
+#if canImport(StripeCryptoOnramp)
+@_spi(STP) import StripeCryptoOnramp
+@_spi(STP) import StripePaymentSheet
+#else
+import StripePaymentSheet
+#endif
 
 class Mappers {
     class func createResult(_ key: String, _ value: NSDictionary?, additionalFields: [String: Any]? = nil) -> NSDictionary {
@@ -71,13 +76,13 @@ class Mappers {
             "routingNumber": bankAccount.routingNumber ?? NSNull(),
             "status": mapFromBankAccountStatus(bankAccount.status) ?? NSNull(),
             "fingerprint": bankAccount.fingerprint ?? NSNull(),
-            "last4": bankAccount.last4 ?? NSNull()
+            "last4": bankAccount.last4 ?? NSNull(),
         ]
         return result
     }
 
     class func mapFromCard(_ card: STPCard?) -> NSDictionary? {
-        if (card == nil) {
+        if card == nil {
             return nil
         }
         let cardMap: NSDictionary = [
@@ -164,7 +169,7 @@ class Mappers {
     class func mapToShippingMethods(shippingMethods: NSArray?) -> [PKShippingMethod] {
         var shippingMethodsList: [PKShippingMethod] = []
 
-        if let methods = shippingMethods as? [[String : Any]] {
+        if let methods = shippingMethods as? [[String: Any]] {
             for method in methods {
                 let label = method["label"] as? String ?? ""
                 let amount = NSDecimalNumber(string: method["amount"] as? String ?? "")
@@ -191,7 +196,7 @@ class Mappers {
             "identifier": shippingMethod.identifier ?? "",
             "amount": shippingMethod.amount.stringValue,
             "isPending": shippingMethod.type == .pending,
-            "label": shippingMethod.label
+            "label": shippingMethod.label,
         ]
 
         if #available(iOS 15.0, *) {
@@ -238,21 +243,21 @@ class Mappers {
 
     class func mapAddressFields(_ addressFields: [String]) -> [String] {
         return addressFields.map {
-            if ($0 == "street") {
+            if $0 == "street" {
                 return CNPostalAddressStreetKey
-            } else if ($0 == "city") {
+            } else if $0 == "city" {
                 return CNPostalAddressCityKey
-            } else if ($0 == "subAdministrativeArea") {
+            } else if $0 == "subAdministrativeArea" {
                 return CNPostalAddressSubAdministrativeAreaKey
-            } else if ($0 == "state") {
+            } else if $0 == "state" {
                 return CNPostalAddressStateKey
-            } else if ($0 == "postalCode") {
+            } else if $0 == "postalCode" {
                 return CNPostalAddressPostalCodeKey
-            } else if ($0 == "country") {
+            } else if $0 == "country" {
                 return CNPostalAddressCountryKey
-            } else if ($0 == "countryCode") {
+            } else if $0 == "countryCode" {
                 return CNPostalAddressISOCountryCodeKey
-            } else if ($0 == "subLocality") {
+            } else if $0 == "subLocality" {
                 return CNPostalAddressSubLocalityKey
             }
             return ""
@@ -287,7 +292,6 @@ class Mappers {
         case STPPaymentMethodType.SEPADebit: return "SepaDebit"
         case STPPaymentMethodType.AUBECSDebit: return "AuBecsDebit"
         case STPPaymentMethodType.bacsDebit: return "BacsDebit"
-        case STPPaymentMethodType.giropay: return "Giropay"
         case STPPaymentMethodType.przelewy24: return "P24"
         case STPPaymentMethodType.EPS: return "Eps"
         case STPPaymentMethodType.bancontact: return "Bancontact"
@@ -320,7 +324,6 @@ class Mappers {
             case "SepaDebit": return STPPaymentMethodType.SEPADebit
             case "AuBecsDebit": return STPPaymentMethodType.AUBECSDebit
             case "BacsDebit": return STPPaymentMethodType.bacsDebit
-            case "Giropay": return STPPaymentMethodType.giropay
             case "P24": return STPPaymentMethodType.przelewy24
             case "Eps": return STPPaymentMethodType.EPS
             case "Bancontact": return STPPaymentMethodType.bancontact
@@ -372,7 +375,7 @@ class Mappers {
                 "state": address.state ?? NSNull(),
                 "country": address.country ?? NSNull(),
                 "line1": address.line1 ?? NSNull(),
-                "line2":address.line2 ?? NSNull(),
+                "line2": address.line2 ?? NSNull(),
                 "postalCode": address.postalCode ?? NSNull(),
             ]
         }
@@ -413,7 +416,7 @@ class Mappers {
                 "message": lastPaymentError.message ?? NSNull(),
                 "type": mapFromPaymentIntentLastPaymentErrorType(lastPaymentError.type) ?? NSNull(),
                 "declineCode": lastPaymentError.declineCode ?? NSNull(),
-                "paymentMethod": mapFromPaymentMethod(lastPaymentError.paymentMethod) ?? NSNull()
+                "paymentMethod": mapFromPaymentMethod(lastPaymentError.paymentMethod) ?? NSNull(),
             ]
 
             intent.setValue(paymentError, forKey: "lastPaymentError")
@@ -427,7 +430,7 @@ class Mappers {
             intent.setValue(convertDateToUnixTimestampMilliseconds(date: canceledAt), forKey: "canceledAt")
         }
 
-        return intent;
+        return intent
     }
 
     class func mapNextAction(nextAction: STPIntentAction?) -> NSDictionary? {
@@ -443,12 +446,12 @@ class Mappers {
             case .redirectToURL:
                 return [
                     "type": "urlRedirect",
-                    "redirectUrl": it.redirectToURL?.url.absoluteString ?? NSNull()
+                    "redirectUrl": it.redirectToURL?.url.absoluteString ?? NSNull(),
                 ]
             case .weChatPayRedirectToApp:
                 return [
                     "type": "weChatRedirect",
-                    "redirectUrl": it.weChatPayRedirectToApp?.nativeURL?.absoluteString ?? NSNull()
+                    "redirectUrl": it.weChatPayRedirectToApp?.nativeURL?.absoluteString ?? NSNull(),
                 ]
             case .alipayHandleRedirect:
                 return [
@@ -613,7 +616,7 @@ class Mappers {
         if let brand = brand {
             switch brand {
             case "Visa": return STPCardBrand.visa
-            case "AmericanExpress" : return STPCardBrand.amex
+            case "AmericanExpress": return STPCardBrand.amex
             case "MasterCard": return STPCardBrand.mastercard
             case "Discover": return STPCardBrand.discover
             case "JCB": return STPCardBrand.JCB
@@ -641,7 +644,7 @@ class Mappers {
             "preferredNetwork": paymentMethod.card?.networks?.preferred ?? NSNull(),
             "availableNetworks": paymentMethod.card?.networks?.available ?? NSNull(),
             "threeDSecureUsage": [
-              "isSupported": paymentMethod.card?.threeDSecureUsage?.supported ?? false
+                "isSupported": paymentMethod.card?.threeDSecureUsage?.supported ?? false
             ],
         ]
 
@@ -654,12 +657,12 @@ class Mappers {
         let bacsDebit: NSDictionary = [
             "fingerprint": paymentMethod.bacsDebit?.fingerprint ?? NSNull(),
             "last4": paymentMethod.bacsDebit?.last4 ?? NSNull(),
-            "sortCode": paymentMethod.bacsDebit?.sortCode ?? NSNull()
+            "sortCode": paymentMethod.bacsDebit?.sortCode ?? NSNull(),
         ]
         let auBECSDebit: NSDictionary = [
             "bsbNumber": paymentMethod.auBECSDebit?.bsbNumber ?? NSNull(),
             "fingerprint": paymentMethod.auBECSDebit?.fingerprint ?? NSNull(),
-            "last4": paymentMethod.auBECSDebit?.last4 ?? NSNull()
+            "last4": paymentMethod.auBECSDebit?.last4 ?? NSNull(),
         ]
         let USBankAccount: NSDictionary = [
             "routingNumber": paymentMethod.usBankAccount?.routingNumber ?? NSNull(),
@@ -667,7 +670,7 @@ class Mappers {
             "accountType": mapFromUSBankAccountType(type: paymentMethod.usBankAccount?.accountType),
             "last4": paymentMethod.usBankAccount?.last4 ?? NSNull(),
             "bankName": paymentMethod.usBankAccount?.bankName ?? NSNull(),
-            "linkedAccount": paymentMethod.usBankAccount?.linkedAccount ?? NSNull(),
+            "linkedAccount": paymentMethod.usBankAccount?.financialConnectionsAccount ?? NSNull(),
             "fingerprint": paymentMethod.usBankAccount?.fingerprint ?? NSNull(),
             "preferredNetworks": paymentMethod.usBankAccount?.networks?.preferred ?? NSNull(),
             "supportedNetworks": paymentMethod.usBankAccount?.networks?.supported ?? NSNull(),
@@ -681,7 +684,7 @@ class Mappers {
             "Card": card,
             "Ideal": [
                 "bankIdentifierCode": paymentMethod.iDEAL?.bankIdentifierCode ?? "",
-                "bankName": paymentMethod.iDEAL?.bankName ?? ""
+                "bankName": paymentMethod.iDEAL?.bankName ?? "",
             ],
             "Fpx": [
                 "bank": paymentMethod.fpx?.bankIdentifierCode ?? "",
@@ -692,7 +695,7 @@ class Mappers {
             "Upi": [
                 "vpa": paymentMethod.upi?.vpa
             ],
-            "USBankAccount": USBankAccount
+            "USBankAccount": USBankAccount,
         ]
         return method
     }
@@ -702,18 +705,18 @@ class Mappers {
             return nil
         }
 
-        var paymentMethodPreview: NSDictionary? = nil
+        var paymentMethodPreview: NSDictionary?
         if let preview = confirmationToken.paymentMethodPreview {
             paymentMethodPreview = [
                 "type": Mappers.mapPaymentMethodType(type: preview.type),
                 "billingDetails": Mappers.mapFromBillingDetails(billingDetails: preview.billingDetails),
                 "allowRedisplay": mapFromAllowRedisplay(allowRedisplay: preview.allowRedisplay) ?? NSNull(),
                 "customerId": preview.customerId ?? NSNull(),
-                "allResponseFields": preview.allResponseFields
+                "allResponseFields": preview.allResponseFields,
             ]
         }
 
-        var shipping: NSDictionary? = nil
+        var shipping: NSDictionary?
         if let shippingDetails = confirmationToken.shipping {
             var addressDetails: NSDictionary = [:]
             if let address = shippingDetails.address {
@@ -729,7 +732,7 @@ class Mappers {
             shipping = [
                 "address": addressDetails,
                 "name": shippingDetails.name ?? NSNull(),
-                "phone": shippingDetails.phone ?? NSNull()
+                "phone": shippingDetails.phone ?? NSNull(),
             ]
         }
 
@@ -744,7 +747,7 @@ class Mappers {
             "setupFutureUsage": mapFromSetupFutureUsage(setupFutureUsage: confirmationToken.setupFutureUsage) ?? NSNull(),
             "paymentMethodPreview": paymentMethodPreview ?? NSNull(),
             "shipping": shipping ?? NSNull(),
-            "allResponseFields": confirmationToken.allResponseFields
+            "allResponseFields": confirmationToken.allResponseFields,
         ]
         return token
     }
@@ -838,9 +841,8 @@ class Mappers {
             "nextAction": mapNextAction(nextAction: setupIntent.nextAction) ?? NSNull(),
         ]
 
-
         let types = setupIntent.paymentMethodTypes.map {
-            mapPaymentMethodType(type: STPPaymentMethodType.init(rawValue: Int(truncating: $0))!)
+            mapPaymentMethodType(type: $0)
         }
 
         intent.setValue(types, forKey: "paymentMethodTypes")
@@ -852,7 +854,7 @@ class Mappers {
                 "message": lastSetupError.message ?? NSNull(),
                 "type": mapFromSetupIntentLastPaymentErrorType(lastSetupError.type) ?? NSNull(),
                 "declineCode": lastSetupError.declineCode ?? NSNull(),
-                "paymentMethod": mapFromPaymentMethod(lastSetupError.paymentMethod) ?? NSNull()
+                "paymentMethod": mapFromPaymentMethod(lastSetupError.paymentMethod) ?? NSNull(),
             ]
             intent.setValue(setupError, forKey: "lastSetupError")
         }
@@ -879,7 +881,7 @@ class Mappers {
 
     class func mapUICustomization(_ params: NSDictionary) -> STPThreeDSUICustomization {
         let uiCustomization = STPThreeDSUICustomization()
-        if let labelSettings = params["label"] as? Dictionary<String, Any?> {
+        if let labelSettings = params["label"] as? [String: Any?] {
             if let headingTextColor = labelSettings["headingTextColor"] as? String {
                 uiCustomization.labelCustomization.headingTextColor = UIColor(hexString: headingTextColor)
             }
@@ -894,7 +896,7 @@ class Mappers {
             }
         }
 
-        if let navigationBarSettings = params["navigationBar"] as? Dictionary<String, Any?> {
+        if let navigationBarSettings = params["navigationBar"] as? [String: Any?] {
             if let barTintColor = navigationBarSettings["barTintColor"] as? String {
                 uiCustomization.navigationBarCustomization.barTintColor = UIColor(hexString: barTintColor)
             }
@@ -918,7 +920,7 @@ class Mappers {
             }
         }
 
-        if let textFieldSettings = params["textField"] as? Dictionary<String, Any?> {
+        if let textFieldSettings = params["textField"] as? [String: Any?] {
             if let borderColor = textFieldSettings["borderColor"] as? String {
                 uiCustomization.textFieldCustomization.borderColor = UIColor(hexString: borderColor)
             }
@@ -936,7 +938,7 @@ class Mappers {
             }
         }
 
-        if let footerSettings = params["footer"] as? Dictionary<String, Any?> {
+        if let footerSettings = params["footer"] as? [String: Any?] {
             if let backgroundColor = footerSettings["backgroundColor"] as? String {
                 uiCustomization.footerCustomization.backgroundColor = UIColor(hexString: backgroundColor)
             }
@@ -951,7 +953,7 @@ class Mappers {
             }
         }
 
-        if let submitButtonSettings = params["submitButton"] as? Dictionary<String, Any?> {
+        if let submitButtonSettings = params["submitButton"] as? [String: Any?] {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.submit)
 
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
@@ -970,7 +972,7 @@ class Mappers {
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.submit)
         }
 
-        if let submitButtonSettings = params["cancelButton"] as? Dictionary<String, Any?> {
+        if let submitButtonSettings = params["cancelButton"] as? [String: Any?] {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.cancel)
 
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
@@ -989,7 +991,7 @@ class Mappers {
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.cancel)
         }
 
-        if let submitButtonSettings = params["continueButton"] as? Dictionary<String, Any?> {
+        if let submitButtonSettings = params["continueButton"] as? [String: Any?] {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.continue)
 
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
@@ -1008,7 +1010,7 @@ class Mappers {
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.continue)
         }
 
-        if let submitButtonSettings = params["nextButton"] as? Dictionary<String, Any?> {
+        if let submitButtonSettings = params["nextButton"] as? [String: Any?] {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.next)
 
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
@@ -1027,7 +1029,7 @@ class Mappers {
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.next)
         }
 
-        if let submitButtonSettings = params["resendButton"] as? Dictionary<String, Any?> {
+        if let submitButtonSettings = params["resendButton"] as? [String: Any?] {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.resend)
 
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
@@ -1050,7 +1052,6 @@ class Mappers {
             uiCustomization.backgroundColor = UIColor(hexString: backgroundColor)
         }
 
-
         return uiCustomization
     }
 
@@ -1061,7 +1062,6 @@ class Mappers {
         }
         return nil
     }
-
 
     class func mapFromCardValidationState(state: STPCardValidationState?) -> String {
         if let state = state {
@@ -1077,7 +1077,7 @@ class Mappers {
 
     class func mapToPKAddPassButtonStyle(style: String?) -> PKAddPassButtonStyle {
         if let style = style {
-            if (style == "onDarkBackground") {
+            if style == "onDarkBackground" {
                 return .blackOutline
             }
         }
@@ -1087,9 +1087,9 @@ class Mappers {
     class func mapFromUSBankAccountHolderType(type: STPPaymentMethodUSBankAccountHolderType?) -> String {
         if let type = type {
             switch type {
-                case STPPaymentMethodUSBankAccountHolderType.company: return "Company"
-                case STPPaymentMethodUSBankAccountHolderType.individual: return "Individual"
-                case STPPaymentMethodUSBankAccountHolderType.unknown: return "Unknown"
+            case STPPaymentMethodUSBankAccountHolderType.company: return "Company"
+            case STPPaymentMethodUSBankAccountHolderType.individual: return "Individual"
+            case STPPaymentMethodUSBankAccountHolderType.unknown: return "Unknown"
             }
         }
         return "Unknown"
@@ -1097,18 +1097,18 @@ class Mappers {
 
     class func mapToUSBankAccountHolderType(type: String?) -> STPPaymentMethodUSBankAccountHolderType {
         switch type {
-            case "Company": return STPPaymentMethodUSBankAccountHolderType.company
-            case "Individual": return STPPaymentMethodUSBankAccountHolderType.individual
-            default: return STPPaymentMethodUSBankAccountHolderType.individual
+        case "Company": return STPPaymentMethodUSBankAccountHolderType.company
+        case "Individual": return STPPaymentMethodUSBankAccountHolderType.individual
+        default: return STPPaymentMethodUSBankAccountHolderType.individual
         }
     }
 
     class func mapFromUSBankAccountType(type: STPPaymentMethodUSBankAccountType?) -> String {
         if let type = type {
             switch type {
-                case STPPaymentMethodUSBankAccountType.savings: return "Savings"
-                case STPPaymentMethodUSBankAccountType.checking: return "Checking"
-                case STPPaymentMethodUSBankAccountType.unknown: return "Unknown"
+            case STPPaymentMethodUSBankAccountType.savings: return "Savings"
+            case STPPaymentMethodUSBankAccountType.checking: return "Checking"
+            case STPPaymentMethodUSBankAccountType.unknown: return "Unknown"
             }
         }
         return "Unknown"
@@ -1116,9 +1116,9 @@ class Mappers {
 
     class func mapToUSBankAccountType(type: String?) -> STPPaymentMethodUSBankAccountType {
         switch type {
-            case "Savings": return STPPaymentMethodUSBankAccountType.savings
-            case "Checking": return STPPaymentMethodUSBankAccountType.checking
-            default: return STPPaymentMethodUSBankAccountType.checking
+        case "Savings": return STPPaymentMethodUSBankAccountType.savings
+        case "Checking": return STPPaymentMethodUSBankAccountType.checking
+        default: return STPPaymentMethodUSBankAccountType.checking
         }
     }
 
@@ -1148,25 +1148,162 @@ class Mappers {
     }
 
     class func financialConnectionsEventToMap(_ event: FinancialConnectionsEvent) -> [String: Any] {
-      var metadata: [String: Any] = [:]
+        var metadata: [String: Any] = [:]
 
-      if let manualEntry = event.metadata.manualEntry {
-        metadata["manualEntry"] = manualEntry
-      }
+        if let manualEntry = event.metadata.manualEntry {
+            metadata["manualEntry"] = manualEntry
+        }
 
-      if let institutionName = event.metadata.institutionName {
-        metadata["institutionName"] = institutionName
-      }
+        if let institutionName = event.metadata.institutionName {
+            metadata["institutionName"] = institutionName
+        }
 
-      if let errorCode = event.metadata.errorCode {
-        metadata["errorCode"] = errorCode.rawValue
-      }
+        if let errorCode = event.metadata.errorCode {
+            metadata["errorCode"] = errorCode.rawValue
+        }
 
-      let mappedEvent: [String: Any] = [
-        "name": event.name.rawValue,
-        "metadata": metadata
-      ]
+        let mappedEvent: [String: Any] = [
+            "name": event.name.rawValue,
+            "metadata": metadata,
+        ]
 
-      return mappedEvent
+        return mappedEvent
     }
+
+#if canImport(StripeCryptoOnramp)
+    class func mapToLinkAppearance(_ params: [String: Any?]) -> LinkAppearance {
+        let darkColors = params["darkColors"] as? [String: Any?]
+        let lightColors = params["lightColors"] as? [String: Any?]
+
+        let darkPrimaryHex = darkColors?["primary"] as? String
+        let lightPrimaryHex = lightColors?["primary"] as? String
+        let darkSelectedBorderHex = darkColors?["borderSelected"] as? String
+        let lightSelectedBorderHex = lightColors?["borderSelected"] as? String
+
+        let darkPrimary = darkPrimaryHex.flatMap { UIColor(hexString: $0) }
+        let lightPrimary = lightPrimaryHex.flatMap { UIColor(hexString: $0) }
+
+        let darkSelectedBorder = darkSelectedBorderHex.flatMap { UIColor(hexString: $0) }
+        let lightSelectedBorder = lightSelectedBorderHex.flatMap { UIColor(hexString: $0) }
+
+        let primary: UIColor? = if let darkPrimary, let lightPrimary {
+            UIColor { trait in
+                trait.userInterfaceStyle == .dark ? darkPrimary : lightPrimary
+            }
+        } else {
+            darkPrimary ?? lightPrimary
+        }
+
+        let selectedBorder: UIColor? = if let darkSelectedBorder, let lightSelectedBorder {
+            UIColor { trait in
+                trait.userInterfaceStyle == .dark ? darkSelectedBorder : lightSelectedBorder
+            }
+        } else {
+            darkSelectedBorder ?? lightSelectedBorder
+        }
+
+        let colors: LinkAppearance.Colors? = if primary != nil || selectedBorder != nil {
+            .init(primary: primary, selectedBorder: selectedBorder)
+        } else {
+            nil
+        }
+
+        let primaryButtonConfiguration: LinkAppearance.PrimaryButtonConfiguration? =
+            if let primaryButton = params["primaryButton"] as? [String: CGFloat],
+                let cornerRadius = primaryButton["cornerRadius"],
+                let height = primaryButton["height"] {
+                    .init(cornerRadius: cornerRadius, height: height)
+        } else {
+            nil
+        }
+
+        let style: PaymentSheet.UserInterfaceStyle = switch params["style"] as? String ?? "" {
+        case "ALWAYS_LIGHT": .alwaysLight
+        case "ALWAYS_DARK": .alwaysDark
+        default: .automatic
+        }
+
+        return LinkAppearance(
+            colors: colors,
+            primaryButton: primaryButtonConfiguration,
+            style: style,
+            reduceLinkBranding: true
+        )
+    }
+
+    class func mapToKycAddress(_ params: [String: String]) -> Address {
+        return Address(
+            city: params["city"],
+            country: params["country"],
+            line1: params["line1"],
+            line2: params["line2"],
+            postalCode: params["postalCode"],
+            state: params["state"]
+        )
+    }
+
+    class func mapToKycInfo(_ params: [String: Any?]) throws -> KycInfo {
+        guard let firstName = params["firstName"] as? String, !firstName.isEmpty else {
+            throw KycInfoError.missingRequiredField("firstName")
+        }
+
+        guard let lastName = params["lastName"] as? String, !lastName.isEmpty else {
+            throw KycInfoError.missingRequiredField("lastName")
+        }
+
+        guard let idNumber = params["idNumber"] as? String, !idNumber.isEmpty else {
+            throw KycInfoError.missingRequiredField("idNumber")
+        }
+
+        guard let dateOfBirthParams = params["dateOfBirth"] as? [String: Int] else {
+            throw KycInfoError.missingRequiredField("dateOfBirth")
+        }
+
+        guard let day = dateOfBirthParams["day"] else {
+            throw KycInfoError.missingRequiredField("dateOfBirth.day")
+        }
+
+        guard let month = dateOfBirthParams["month"] else {
+            throw KycInfoError.missingRequiredField("dateOfBirth.month")
+        }
+
+        guard let year = dateOfBirthParams["year"] else {
+            throw KycInfoError.missingRequiredField("dateOfBirth.year")
+        }
+
+        let dateOfBirth = KycInfo.DateOfBirth(day: day, month: month, year: year)
+
+        // All address parameters are optional, so we don’t guard.
+        let address = if let addressParams = params["address"] as? [String: String] {
+            mapToKycAddress(addressParams)
+        } else {
+            Address()
+        }
+
+        return KycInfo(
+            firstName: firstName,
+            lastName: lastName,
+            idNumber: idNumber,
+            address: address,
+            dateOfBirth: dateOfBirth
+        )
+    }
+
+    class func paymentMethodDisplayDataToMap(_ paymentMethodDisplayData: PaymentMethodDisplayData) -> [String: String] {
+        var result = [
+            "icon": "data:image/png;base64," + (paymentMethodDisplayData.icon.pngData()?.base64EncodedString(options: []) ?? ""),
+            "label": paymentMethodDisplayData.label,
+        ]
+
+        if let sublabel = paymentMethodDisplayData.sublabel {
+            result["sublabel"] = sublabel
+        }
+
+        return result
+    }
+
+    enum KycInfoError: Swift.Error {
+        case missingRequiredField(String)
+    }
+#endif
 }
