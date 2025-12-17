@@ -56,9 +56,6 @@ enum PaymentMethodType {
   /// FPX is a Malaysia-based bank redirect payment method.
   fpx,
 
-  /// giropay is a German bank redirect payment method.
-  giropay,
-
   /// GrabPay is a digital wallet payment method used in Southeast Asia.
   grabpay,
 

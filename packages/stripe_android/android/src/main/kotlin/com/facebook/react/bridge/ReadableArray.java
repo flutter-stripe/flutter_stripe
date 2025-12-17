@@ -73,4 +73,12 @@ public class ReadableArray extends ArrayList<Object> {
             return ReadableType.Null;
         }
     }
+
+    public ReadableMap getMap(int i) {
+        try {
+            return new ReadableMap(array.getJSONObject(i));
+        } catch (JSONException e) {
+            return null;
+        }
+    }
 }

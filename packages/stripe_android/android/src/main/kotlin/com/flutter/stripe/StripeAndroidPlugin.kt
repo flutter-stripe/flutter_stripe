@@ -7,7 +7,6 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.DisplayMetricsHolder
 import com.facebook.react.uimanager.ThemedReactContext
-import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
 import com.reactnativestripesdk.addresssheet.AddressSheetViewManager
 import com.reactnativestripesdk.pushprovisioning.AddToWalletButtonManager
@@ -76,7 +75,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             .registerViewFactory("flutter.stripe/aubecs_form_field", StripeAubecsDebitPlatformViewFactory(flutterPluginBinding, aubecsDebitManager){stripeSdk})
         flutterPluginBinding
             .platformViewRegistry
-            .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager(flutterPluginBinding.applicationContext)){stripeSdk})
+            .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager()){stripeSdk})
         flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/address_sheet", StripeAddressSheetPlatformViewFactory(flutterPluginBinding, addressSheetFormViewManager ){stripeSdk})
     }
 
@@ -278,6 +277,31 @@ If you continue to have trouble, follow this discussion to get some support http
                     promise = Promise(result)
                 )
             }
+            "confirmationTokenCreationCallback" -> {
+                stripeSdk.confirmationTokenCreationCallback(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+                )
+            }
+            "clientSecretProviderSetupIntentClientSecretCallback" -> {
+                stripeSdk.clientSecretProviderSetupIntentClientSecretCallback(
+                    setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
+                    promise = Promise(result)
+                )
+            }
+            "clientSecretProviderCustomerSessionClientSecretCallback" -> {
+                stripeSdk.clientSecretProviderCustomerSessionClientSecretCallback(
+                    customerSessionClientSecretJson = call.requiredArgument("customerSessionClientSecretJson"),
+                    promise = Promise(result)
+                )
+            }
+            "openAuthenticatedWebView" -> {
+                stripeSdk.openAuthenticatedWebView(
+                    id = call.requiredArgument("id"),
+                    url = call.requiredArgument<String>("url"),
+                    promise = Promise(result)
+                )
+            }
             else -> result.notImplemented()
         }
     }
@@ -293,10 +317,6 @@ If you continue to have trouble, follow this discussion to get some support http
             binding.activity !is FlutterFragmentActivity -> {
                 initializationError =
                     "Your Main Activity ${binding.activity.javaClass} is not a subclass FlutterFragmentActivity."
-            }
-            !ThemeEnforcement.isAppCompatTheme(binding.activity) -> {
-                initializationError =
-                    "Your theme isn't set to use Theme.AppCompat or Theme.MaterialComponents."
             }
             else -> {
                 val context = ReactApplicationContext(binding, channel) { stripeSdk }
@@ -346,8 +366,8 @@ fun CardFieldViewManager.getCardViewInstance(): CardFieldView? {
 
 fun CardFieldViewManager.setCardDetails(value: ReadableMap, reactContext: ThemedReactContext) {
     val number = getValOr(value, "number", null)
-    val expirationYear = getIntOrNull(value, "expirationYear")
-    val expirationMonth = getIntOrNull(value, "expirationMonth")
+    val expirationYear = value.getIntOrNull("expirationYear")
+    val expirationMonth = value.getIntOrNull("expirationMonth")
     val cvc = getValOr(value, "cvc", null)
 
     val cardViewInstance = getCardViewInstance() ?: createViewInstance(reactContext)

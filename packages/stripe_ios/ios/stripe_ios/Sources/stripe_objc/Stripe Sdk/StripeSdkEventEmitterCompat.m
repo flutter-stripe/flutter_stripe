@@ -1,5 +1,3 @@
-#ifndef RCT_NEW_ARCH_ENABLED
-
 #import "StripeSdkEventEmitterCompat.h"
 
 @implementation StripeSdkEventEmitterCompat
@@ -9,12 +7,15 @@
   return @[
     @"onOrderTrackingCallback",
     @"onConfirmHandlerCallback",
+    @"onConfirmationTokenHandlerCallback",
     @"onCustomerAdapterFetchPaymentMethodsCallback",
     @"onCustomerAdapterAttachPaymentMethodCallback",
     @"onCustomerAdapterDetachPaymentMethodCallback",
     @"onCustomerAdapterSetSelectedPaymentOptionCallback",
     @"onCustomerAdapterFetchSelectedPaymentOptionCallback",
     @"onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback",
+    @"onCustomerSessionProviderSetupIntentClientSecret",
+    @"onCustomerSessionProviderCustomerSessionClientSecret",
     @"onFinancialConnectionsEvent",
     @"embeddedPaymentElementDidUpdateHeight",
     @"embeddedPaymentElementWillPresent",
@@ -22,13 +23,19 @@
     @"embeddedPaymentElementFormSheetConfirmComplete",
     @"embeddedPaymentElementRowSelectionImmediateAction",
     @"embeddedPaymentElementLoadingFailed",
-    @"onCustomPaymentMethodConfirmHandlerCallback"
+    @"onCustomPaymentMethodConfirmHandlerCallback",
+    @"onCheckoutClientSecretRequested"
   ];
 }
 
 - (void)emitOnConfirmHandlerCallback:(NSDictionary *)value
 {
   [self sendEventWithName:@"onConfirmHandlerCallback" body:value];
+}
+
+- (void)emitOnConfirmationTokenHandlerCallback:(NSDictionary *)value
+{
+  [self sendEventWithName:@"onConfirmationTokenHandlerCallback" body:value];
 }
 
 - (void)emitOnFinancialConnectionsEvent:(NSDictionary *)value
@@ -71,6 +78,16 @@
   [self sendEventWithName:@"onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback" body:@{}];
 }
 
+- (void)emitOnCustomerSessionProviderSetupIntentClientSecret
+{
+  [self sendEventWithName:@"onCustomerSessionProviderSetupIntentClientSecret" body:@{}];
+}
+
+- (void)emitOnCustomerSessionProviderCustomerSessionClientSecret
+{
+  [self sendEventWithName:@"onCustomerSessionProviderCustomerSessionClientSecret" body:@{}];
+}
+
 - (void)emitEmbeddedPaymentElementDidUpdateHeight:(NSDictionary *)value
 {
   [self sendEventWithName:@"embeddedPaymentElementDidUpdateHeight" body:value];
@@ -106,6 +123,9 @@
   [self sendEventWithName:@"onCustomPaymentMethodConfirmHandlerCallback" body:value];
 }
 
-@end
+- (void)emitOnCheckoutClientSecretRequested:(NSDictionary *)value
+{
+  [self sendEventWithName:@"onCheckoutClientSecretRequested" body:value];
+}
 
-#endif
+@end
