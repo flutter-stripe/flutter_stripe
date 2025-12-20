@@ -75,7 +75,7 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> confirmPaymentSheetPayment();
 
   /// Configure the payment sheet using [CustomerSheetInitParams] as config.
-  Future<CustomerSheetResult?> initCustomerSheet(
+  Future<void> initCustomerSheet(
     CustomerSheetInitParams params,
   );
 

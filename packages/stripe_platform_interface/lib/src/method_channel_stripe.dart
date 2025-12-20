@@ -291,18 +291,17 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<CustomerSheetResult?> initCustomerSheet(
-    CustomerSheetInitParams params,
-  ) async {
+  Future<void> initCustomerSheet(CustomerSheetInitParams params) async {
     final result = await _methodChannel.invokeMethod('initCustomerSheet', {
       'params': params.toJson(),
       'customerAdapterOverrides': {},
     });
 
-    if (result is List) {
-      return null;
-    } else {
-      return _parseCustomerSheetResult(result);
+    // Check for errors only
+    // iOS returns empty array, Android returns empty map on success - both are fine
+    if (result is Map<String, dynamic> && result['error'] != null) {
+      result['runtimeType'] = 'failed';
+      throw StripeException.fromJson(result);
     }
   }
 
@@ -602,9 +601,9 @@ class MethodChannelStripe extends StripePlatform {
     }
 
     // workaround for fact that created is parsed as string from Stripe android
-    final created = result?['token']['created'];
+    final created = result['token']['created'];
     if (created != null && created is String) {
-      result?['token']['created'] = int.tryParse(created);
+      result['token']['created'] = int.tryParse(created);
     }
 
     return FinancialConnectionTokenResult.fromJson(result);
