@@ -679,7 +679,7 @@ class Stripe {
   }
 
   /// Initializes the customer sheet with the provided [parameters].
-  Future<CustomerSheetResult?> initCustomerSheet({
+  Future<void> initCustomerSheet({
     required CustomerSheetInitParams customerSheetInitParams,
   }) async {
     await _awaitForSettings();

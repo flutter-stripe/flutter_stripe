@@ -58,7 +58,8 @@ class WebStripe extends StripePlatform {
 
     if (__stripe != null) {
       // Check if the new stripeAccountId or locale is different
-      if (__stripe!.stripeAccount != stripeAccountId || __stripe!.locale != locale) {
+      if (__stripe!.stripeAccount != stripeAccountId ||
+          __stripe!.locale != locale) {
         // Re-initialize with new stripeAccountId or locale
         await stripe_js.loadStripe();
         var stripeOption = stripe_js.StripeOptions();
@@ -636,7 +637,7 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<CustomerSheetResult?> initCustomerSheet(
+  Future<void> initCustomerSheet(
       CustomerSheetInitParams params) {
     throw WebUnsupportedError.method('initCustomerSheet');
   }
