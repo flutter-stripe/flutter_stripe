@@ -544,12 +544,11 @@ extension  StripePlugin {
     func confirmPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
-              let options = arguments["options"] as? NSDictionary,
-              let params = arguments["params"] as? NSDictionary else {
+              let options = arguments["options"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
-        
+        let params = arguments["params"] as? NSDictionary
         confirmPayment(
             paymentIntentClientSecret: paymentIntentClientSecret,
             params: params,
