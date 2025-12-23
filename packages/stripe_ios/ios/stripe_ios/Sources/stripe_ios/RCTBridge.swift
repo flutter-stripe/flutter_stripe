@@ -90,7 +90,7 @@ public class RCTEventEmitter : NSObject {
 
 
 func registerFont(_ fontFamily: String) {
-    let controller = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController;
+    let controller = findRootViewController() as? FlutterViewController;
     let bundle = Bundle.main
     let fontKey = controller?.lookupKey(forAsset: "fonts/\(fontFamily).ttf")
     let path = bundle.path(forResource: fontKey, ofType: nil)

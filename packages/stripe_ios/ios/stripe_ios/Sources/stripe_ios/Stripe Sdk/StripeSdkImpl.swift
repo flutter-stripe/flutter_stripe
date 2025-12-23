@@ -170,7 +170,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                                     rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
         DispatchQueue.main.async {
             if (self.paymentSheetFlowController != nil) {
-                self.paymentSheetFlowController?.confirm(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()) { paymentResult in
+                self.paymentSheetFlowController?.confirm(from: findRootViewController()) { paymentResult in
                     switch paymentResult {
                     case .completed:
                         resolve([])
@@ -209,7 +209,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             }
         }
         DispatchQueue.main.async {
-            paymentSheetViewController = UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()
+            paymentSheetViewController = findRootViewController()
             if let paymentSheetFlowController = self.paymentSheetFlowController {
                 paymentSheetFlowController.presentPaymentOptions(from: findViewControllerPresenter(from: paymentSheetViewController!)
                 ) { didCancel in
@@ -432,7 +432,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         if let applePaymentAuthorizationController = self.applePaymentAuthorizationController {
             applePaymentAuthorizationController.delegate = self
             DispatchQueue.main.async {
-                let vc = findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
+                let vc = findViewControllerPresenter(from: findRootViewController())
                 vc.present(
                     applePaymentAuthorizationController,
                     animated: true,
@@ -765,7 +765,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                     clientSecret: clientSecret as String,
                     returnURL: connectionsReturnURL,
                     params: collectParams,
-                    from: findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()),
+                    from: findViewControllerPresenter(from: findRootViewController()),
                     onEvent: onEvent
                 ) { intent, error in
                     if let error = error {
@@ -792,7 +792,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                     clientSecret: clientSecret as String,
                     returnURL: connectionsReturnURL,
                     params: collectParams,
-                    from: findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()),
+                    from: findViewControllerPresenter(from: findRootViewController()),
                     onEvent: onEvent
                 ) { intent, error in
                     if let error = error {
@@ -1206,6 +1206,33 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     }
 }
 
+func findKeyWindow() -> UIWindow? {
+    if #available(iOS 13.0, *) {
+        for scene in UIApplication.shared.connectedScenes {
+            if let windowScene = scene as? UIWindowScene {
+                for window in windowScene.windows {
+                    if window.isKeyWindow {
+                        return window
+                    }
+                }
+            }
+        }
+    } else {
+        return UIApplication.shared.keyWindow
+    }
+    return UIApplication.shared.delegate?.window ?? nil
+}
+
+func findRootViewController() -> UIViewController {
+    if let root = UIApplication.shared.delegate?.window??.rootViewController {
+        return root
+    }
+    if let root = findKeyWindow()?.rootViewController {
+        return root
+    }
+    return UIViewController()
+}
+
 func findViewControllerPresenter(from uiViewController: UIViewController) -> UIViewController {
     // Note: creating a UIViewController inside here results in a nil window
     // This is a bit of a hack: We traverse the view hierarchy looking for the most reasonable VC to present from.
@@ -1223,7 +1250,7 @@ func findViewControllerPresenter(from uiViewController: UIViewController) -> UIV
 
 extension StripeSdkImpl: STPAuthenticationContext {
   public func authenticationPresentingViewController() -> UIViewController {
-        return findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
+        return findViewControllerPresenter(from: findRootViewController())
     }
 }
 
