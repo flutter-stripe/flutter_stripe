@@ -1208,29 +1208,19 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
 
 func findKeyWindow() -> UIWindow? {
     if #available(iOS 13.0, *) {
-        for scene in UIApplication.shared.connectedScenes {
-            if let windowScene = scene as? UIWindowScene {
-                for window in windowScene.windows {
-                    if window.isKeyWindow {
-                        return window
-                    }
-                }
-            }
-        }
+        let sceneWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+        
+        return sceneWindow ?? UIApplication.shared.delegate?.window ?? nil
     } else {
-        return UIApplication.shared.keyWindow
+        return UIApplication.shared.delegate?.window ?? UIApplication.shared.keyWindow
     }
-    return UIApplication.shared.delegate?.window ?? nil
 }
 
 func findRootViewController() -> UIViewController {
-    if let root = UIApplication.shared.delegate?.window??.rootViewController {
-        return root
-    }
-    if let root = findKeyWindow()?.rootViewController {
-        return root
-    }
-    return UIViewController()
+    return findKeyWindow()?.rootViewController ?? UIViewController()
 }
 
 func findViewControllerPresenter(from uiViewController: UIViewController) -> UIViewController {
