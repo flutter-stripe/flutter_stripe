@@ -77,7 +77,7 @@ public class AddressSheetView: UIView {
         let navigationController = UINavigationController(rootViewController: addressViewController!)
         navigationController.modalPresentationStyle = getModalPresentationStyle()
         navigationController.modalTransitionStyle = getModalTransitionStyle()
-        let vc = findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
+        let vc = findViewControllerPresenter(from: findRootViewController())
         vc.present(navigationController, animated: true)
     }
     

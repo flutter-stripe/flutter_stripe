@@ -90,7 +90,7 @@ public class AddToWalletButtonView: UIView {
             return self.testEnv ? STPFakeAddPaymentPassViewController(requestConfiguration: config, delegate: self) : PKAddPaymentPassViewController(requestConfiguration: config, delegate: self)
         }()
 
-        let vc = findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
+        let vc = findViewControllerPresenter(from: findRootViewController())
         vc.present(controller!, animated: true, completion: nil)
     }
     
