@@ -291,7 +291,7 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<CustomerSheetResult?> initCustomerSheet(
+  Future<void> initCustomerSheet(
     CustomerSheetInitParams params,
   ) async {
     final result = await _methodChannel.invokeMethod('initCustomerSheet', {
@@ -299,10 +299,11 @@ class MethodChannelStripe extends StripePlatform {
       'customerAdapterOverrides': {},
     });
 
-    if (result is List) {
-      return null;
-    } else {
-      return _parseCustomerSheetResult(result);
+    // iOS returns empty array [], Android returns empty map {} on success
+    // Only check for errors
+    if (result is Map<String, dynamic> && result['error'] != null) {
+      result['runtimeType'] = 'failed';
+      throw StripeException.fromJson(result);
     }
   }
 
