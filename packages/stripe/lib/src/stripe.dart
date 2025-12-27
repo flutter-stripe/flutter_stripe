@@ -349,7 +349,71 @@ class Stripe {
     await _platform.openApplePaySetup();
   }
 
-  /// Handle URL callback from iDeal payment returnUrl to close iOS in-app webview
+  /// Handles URL callbacks for redirect-based payment methods on iOS.
+  ///
+  /// Call this method when your app receives a deep link that matches your
+  /// Stripe `returnURL`. This is essential for payment methods that require
+  /// external authentication, including:
+  /// - Link
+  /// - iDEAL
+  /// - Bancontact
+  /// - Other redirect-based payment methods
+  ///
+  /// ## When to use this method
+  ///
+  /// If your app uses Flutter's deep linking (`FlutterDeepLinkingEnabled: true`
+  /// in Info.plist), you must manually forward Stripe URLs to this method.
+  ///
+  /// Example with `go_router`:
+  /// ```dart
+  /// GoRouter(
+  ///   redirect: (context, state) {
+  ///     final uri = state.uri;
+  ///     // Check if this is a Stripe callback URL
+  ///     if (uri.scheme == 'yourappscheme' &&
+  ///         (uri.host == 'safepay' || uri.host == 'stripe-redirect')) {
+  ///       Stripe.instance.handleURLCallback(uri.toString());
+  ///       return '/'; // Navigate to your payment result screen
+  ///     }
+  ///     return null;
+  ///   },
+  ///   // ... rest of your router configuration
+  /// );
+  /// ```
+  ///
+  /// ## Setup requirements
+  ///
+  /// 1. Configure your URL scheme in `Info.plist`:
+  ///    ```xml
+  ///    <key>CFBundleURLTypes</key>
+  ///    <array>
+  ///      <dict>
+  ///        <key>CFBundleURLSchemes</key>
+  ///        <array>
+  ///          <string>yourappscheme</string>
+  ///        </array>
+  ///      </dict>
+  ///    </array>
+  ///    ```
+  ///
+  /// 2. Set the same URL scheme when initializing Stripe:
+  ///    ```dart
+  ///    Stripe.urlScheme = 'yourappscheme';
+  ///    ```
+  ///
+  /// 3. Use a matching `returnURL` in PaymentSheet:
+  ///    ```dart
+  ///    await Stripe.instance.initPaymentSheet(
+  ///      paymentSheetParameters: SetupPaymentSheetParameters(
+  ///        returnURL: 'yourappscheme://stripe-redirect',
+  ///        // ... other parameters
+  ///      ),
+  ///    );
+  ///    ```
+  ///
+  /// Returns `true` if the URL was successfully handled by the Stripe SDK,
+  /// `false` otherwise. A `false` return may indicate that no active payment
+  /// flow was waiting for a callback.
   Future<bool> handleURLCallback(String url) async {
     try {
       return await _platform.handleURLCallback(url);

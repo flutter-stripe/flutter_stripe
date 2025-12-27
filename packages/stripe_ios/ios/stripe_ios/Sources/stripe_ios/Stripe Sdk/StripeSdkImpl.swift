@@ -385,17 +385,33 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     @objc(handleURLCallback:resolver:rejecter:)
     public func handleURLCallback(url: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
       guard let url = url else {
+        #if DEBUG
+        print("[flutter_stripe] handleURLCallback called with nil URL")
+        #endif
         resolve(false)
         return;
       }
-      let urlObj = URL(string: url)
-      if (urlObj == nil) {
+      guard let urlObj = URL(string: url) else {
+        #if DEBUG
+        print("[flutter_stripe] handleURLCallback called with invalid URL: \(url)")
+        #endif
         resolve(false)
-      } else {
-        DispatchQueue.main.async {
-          let stripeHandled = StripeAPI.handleURLCallback(with: urlObj!)
-          resolve(stripeHandled)
+        return
+      }
+      DispatchQueue.main.async {
+        let stripeHandled = StripeAPI.handleURLCallback(with: urlObj)
+        #if DEBUG
+        if stripeHandled {
+          print("[flutter_stripe] URL callback successfully handled by Stripe SDK: \(url)")
+        } else {
+          print("[flutter_stripe] URL callback not handled by Stripe SDK: \(url)")
+          print("[flutter_stripe] This may occur if:")
+          print("[flutter_stripe]   - No active PaymentSheet or payment flow is waiting for a callback")
+          print("[flutter_stripe]   - The URL does not match the expected returnURL format")
+          print("[flutter_stripe]   - The app was terminated while the user was in an external authentication flow")
         }
+        #endif
+        resolve(stripeHandled)
       }
     }
 
