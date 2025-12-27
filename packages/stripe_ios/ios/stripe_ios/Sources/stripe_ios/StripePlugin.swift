@@ -268,7 +268,17 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return StripeAPI.handleURLCallback(with: url)
+        let handled = StripeAPI.handleURLCallback(with: url)
+        #if DEBUG
+        if !handled {
+            print("[flutter_stripe] URL callback received but not handled by Stripe SDK: \(url.absoluteString)")
+            print("[flutter_stripe] If using Link or other redirect-based payment methods, ensure:")
+            print("[flutter_stripe]   1. The returnURL in PaymentSheet matches your app's URL scheme")
+            print("[flutter_stripe]   2. CFBundleURLSchemes in Info.plist includes your URL scheme")
+            print("[flutter_stripe]   3. If using FlutterDeepLinkingEnabled, call Stripe.handleURLCallback() manually from your Flutter deep link handler")
+        }
+        #endif
+        return handled
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]) -> Void) -> Bool {
