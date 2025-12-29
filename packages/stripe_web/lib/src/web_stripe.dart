@@ -636,8 +636,7 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<CustomerSheetResult?> initCustomerSheet(
-      CustomerSheetInitParams params) {
+  Future<void> initCustomerSheet(CustomerSheetInitParams params) {
     throw WebUnsupportedError.method('initCustomerSheet');
   }
 
