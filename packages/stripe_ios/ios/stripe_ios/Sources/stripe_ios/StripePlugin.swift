@@ -501,6 +501,16 @@ extension  StripePlugin {
             result(FlutterError.init(code: ErrorType.Failed, message: "Invalid parametes", details: nil))
             return
         }
+
+        // Validate URL format before passing to StripeSdkImpl
+        guard URL(string: url) != nil else {
+            #if DEBUG
+            print("[flutter_stripe] handleURLCallback called with invalid URL: \(url)")
+            #endif
+            result(false)
+            return
+        }
+
         handleURLCallback(
             url: url,
             resolver: resolver(for: result),

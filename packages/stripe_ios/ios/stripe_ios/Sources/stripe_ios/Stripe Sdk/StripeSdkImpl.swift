@@ -391,7 +391,8 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         resolve(false)
         return;
       }
-      guard let urlObj = URL(string: url) else {
+      let urlObj = URL(string: url)
+      if (urlObj == nil) {
         #if DEBUG
         print("[flutter_stripe] handleURLCallback called with invalid URL: \(url)")
         #endif
@@ -399,7 +400,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         return
       }
       DispatchQueue.main.async {
-        let stripeHandled = StripeAPI.handleURLCallback(with: urlObj)
+        let stripeHandled = StripeAPI.handleURLCallback(with: urlObj!)
         #if DEBUG
         if stripeHandled {
           print("[flutter_stripe] URL callback successfully handled by Stripe SDK: \(url)")
