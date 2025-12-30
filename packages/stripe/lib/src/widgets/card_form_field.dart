@@ -330,11 +330,24 @@ class _MethodChannelCardFormFieldState
 
     Widget platform;
     if (defaultTargetPlatform == TargetPlatform.android) {
-      platform = _AndroidCardFormField(
-        key: _MethodChannelCardFormField._key,
-        viewType: _MethodChannelCardFormField._viewType,
-        creationParams: creationParams,
-        onPlatformViewCreated: onPlatformViewCreated,
+      platform = Listener(
+        onPointerDown: (_) {
+          if (!widget.focusNode.hasFocus) {
+            widget.focusNode.requestFocus();
+          }
+        },
+        child: Focus(
+          autofocus: widget.autofocus,
+          descendantsAreFocusable: true,
+          focusNode: widget.focusNode,
+          onFocusChange: _handleFrameworkFocusChanged,
+          child: _AndroidCardFormField(
+            key: _MethodChannelCardFormField._key,
+            viewType: _MethodChannelCardFormField._viewType,
+            creationParams: creationParams,
+            onPlatformViewCreated: onPlatformViewCreated,
+          ),
+        ),
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = Listener(
