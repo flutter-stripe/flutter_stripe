@@ -431,12 +431,25 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
     Widget platform;
     if (defaultTargetPlatform == TargetPlatform.android) {
-      platform = _AndroidCardField(
-        key: _MethodChannelCardField._key,
-        viewType: _MethodChannelCardField._viewType,
-        creationParams: creationParams,
-        onPlatformViewCreated: onPlatformViewCreated,
-        androidPlatformViewRenderType: widget.androidPlatformViewRenderType,
+      platform = Listener(
+        onPointerDown: (_) {
+          if (!widget.focusNode.hasFocus) {
+            widget.focusNode.requestFocus();
+          }
+        },
+        child: Focus(
+          autofocus: widget.autofocus,
+          descendantsAreFocusable: true,
+          focusNode: widget.focusNode,
+          onFocusChange: _handleFrameworkFocusChanged,
+          child: _AndroidCardField(
+            key: _MethodChannelCardField._key,
+            viewType: _MethodChannelCardField._viewType,
+            creationParams: creationParams,
+            onPlatformViewCreated: onPlatformViewCreated,
+            androidPlatformViewRenderType: widget.androidPlatformViewRenderType,
+          ),
+        ),
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = Listener(
