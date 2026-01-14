@@ -10,6 +10,69 @@ part 'customer_sheet.g.dart';
 /// For more info see https://stripe.com/docs/elements/customer-sheet?platform=react-native
 @freezed
 abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
+  @Deprecated(
+    "Use CustomerSheetInitParams.adapter or CustomerSheetInitParams.session instead",
+  )
+  const factory CustomerSheetInitParams({
+    /// Color styling used for the Customersheet UI
+    @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+
+    /// Appearance of the customersheet.
+    ///
+    /// When no appearance defined it will fallback to [style] or Stripe default.
+    PaymentSheetAppearance? appearance,
+
+    /// Optional but recommended for cards, required for other payment methods. The SetupIntent client secret that will be used to confirm a new payment method. If this is missing, you will only be able to add cards without authentication steps.
+    String? setupIntentClientSecret,
+
+    /// The identifier of the Stripe Customer object. See https://stripe.com/docs/api/customers/object#customer_object-id
+    required String customerId,
+
+    /// A short-lived token that allows the SDK to access a Customer's payment methods.
+    required String customerEphemeralKeySecret,
+
+    /// Your customer-facing business name. The default value is the name of your app.
+    String? merchantDisplayName,
+
+    ///This is an experimental feature that may be removed at any time.
+    /// Defaults to true. If true, the customer can delete all saved payment methods.
+    /// If false, the customer can't delete if they only have one saved payment method remaining.
+    bool? allowsRemovalOfLastSavedPaymentMethod,
+
+    /// Optional configuration for setting the header text of the Payment Method selection screen
+    String? headerTextForSelectionScreen,
+
+    /// CustomerSheet pre-populates fields with the values provided. If `billingDetailsCollectionConfiguration.attachDefaultsToPaymentMethod` is `true`, these values will be attached to the payment method even if they are not collected by the CustomerSheet UI.
+    BillingDetails? defaultBillingDetails,
+
+    /// Describes how billing details should be collected. All values default to `AUTOMATIC`. If `NEVER` is used for a required field for the Payment Method, you must provide an appropriate value as part of `defaultBillingDetails`.
+    BillingDetailsCollectionConfiguration?
+    billingDetailsCollectionConfiguration,
+
+    ///  URL that redirects back to your app that CustomerSheet can use to auto-dismiss web views used for additional authentication, e.g. 3DS2
+    String? returnURL,
+
+    /// Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+    String? removeSavedPaymentMethodMessage,
+
+    ///  Whether to show Apple Pay as an option. Defaults to `false`.
+    @Default(true) bool applePayEnabled,
+
+    /// Whether to show Google Pay as an option. Defaults to `false`.
+    @Default(true) bool googlePayEnabled,
+
+    /// The list of preferred networks that should be used to process payments made with a co-branded card.
+    /// This value will only be used if your user hasn't selected a network themselves.
+    @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
+
+    /// By default, PaymentSheet will accept all supported cards by Stripe.
+    /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+    ///
+    /// Note: This is only a client-side solution.
+    ///Note: Card brand filtering is not currently supported in Link.
+    CardBrandAcceptance? cardBrandAcceptance,
+  }) = _CustomerSheetInitParamsDeprecated;
+
   @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetInitParams.adapter({
     /// Optional but recommended for cards, required for other payment methods. The SetupIntent client secret that will be used to confirm a new payment method. If this is missing, you will only be able to add cards without authentication steps.

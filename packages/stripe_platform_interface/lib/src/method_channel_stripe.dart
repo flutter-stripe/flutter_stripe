@@ -305,8 +305,36 @@ class MethodChannelStripe extends StripePlatform {
   Future<void> initCustomerSheet(
     CustomerSheetInitParams params,
   ) async {
+    // Convert deprecated constructor to adapter variant for native SDK compatibility
+    final normalizedParams = params.map(
+      (deprecated) => CustomerSheetInitParams.adapter(
+        setupIntentClientSecret: deprecated.setupIntentClientSecret,
+        customerId: deprecated.customerId,
+        intentConfiguration: null,
+        customerEphemeralKeySecret: deprecated.customerEphemeralKeySecret,
+        style: deprecated.style,
+        appearance: deprecated.appearance,
+        merchantDisplayName: deprecated.merchantDisplayName,
+        allowsRemovalOfLastSavedPaymentMethod:
+            deprecated.allowsRemovalOfLastSavedPaymentMethod,
+        headerTextForSelectionScreen: deprecated.headerTextForSelectionScreen,
+        defaultBillingDetails: deprecated.defaultBillingDetails,
+        billingDetailsCollectionConfiguration:
+            deprecated.billingDetailsCollectionConfiguration,
+        returnURL: deprecated.returnURL,
+        removeSavedPaymentMethodMessage:
+            deprecated.removeSavedPaymentMethodMessage,
+        applePayEnabled: deprecated.applePayEnabled,
+        googlePayEnabled: deprecated.googlePayEnabled,
+        preferredNetworks: deprecated.preferredNetworks,
+        cardBrandAcceptance: deprecated.cardBrandAcceptance,
+      ),
+      adapter: (adapter) => adapter,
+      session: (session) => session,
+    );
+
     final result = await _methodChannel.invokeMethod('initCustomerSheet', {
-      'params': params.toJson(),
+      'params': normalizedParams.toJson(),
       'customerAdapterOverrides': {},
     });
 

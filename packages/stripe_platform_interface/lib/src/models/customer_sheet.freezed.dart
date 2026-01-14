@@ -15,7 +15,11 @@ CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
   Map<String, dynamic> json
 ) {
         switch (json['runtimeType']) {
-                  case 'adapter':
+                  case 'default':
+          return _CustomerSheetInitParamsDeprecated.fromJson(
+            json
+          );
+                case 'adapter':
           return _CustomerSheetInitParamsAdapter.fromJson(
             json
           );
@@ -38,15 +42,14 @@ CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
 /// @nodoc
 mixin _$CustomerSheetInitParams {
 
-/// Optional but recommended for cards, required for other payment methods. The SetupIntent client secret that will be used to confirm a new payment method. If this is missing, you will only be able to add cards without authentication steps.
- String? get setupIntentClientSecret;/// The identifier of the Stripe Customer object. See https://stripe.com/docs/api/customers/object#customer_object-id
- String? get customerId;/// Intent configuration for the customer sheet.
- IntentConfiguration? get intentConfiguration;/// A short-lived token that allows the SDK to access a Customer's payment methods.
- String? get customerEphemeralKeySecret;/// Color styling used for the Customersheet UI
+/// Color styling used for the Customersheet UI
 @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? get style;/// Appearance of the customersheet.
 ///
 /// When no appearance defined it will fallback to [style] or Stripe default.
- PaymentSheetAppearance? get appearance;/// Your customer-facing business name. The default value is the name of your app.
+ PaymentSheetAppearance? get appearance;/// Optional but recommended for cards, required for other payment methods. The SetupIntent client secret that will be used to confirm a new payment method. If this is missing, you will only be able to add cards without authentication steps.
+ String? get setupIntentClientSecret;/// The identifier of the Stripe Customer object. See https://stripe.com/docs/api/customers/object#customer_object-id
+ String? get customerId;/// A short-lived token that allows the SDK to access a Customer's payment methods.
+ String? get customerEphemeralKeySecret;/// Your customer-facing business name. The default value is the name of your app.
  String? get merchantDisplayName;///This is an experimental feature that may be removed at any time.
 /// Defaults to true. If true, the customer can delete all saved payment methods.
 /// If false, the customer can't delete if they only have one saved payment method remaining.
@@ -77,16 +80,16 @@ $CustomerSheetInitParamsCopyWith<CustomerSheetInitParams> get copyWith => _$Cust
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomerSheetInitParams&&(identical(other.setupIntentClientSecret, setupIntentClientSecret) || other.setupIntentClientSecret == setupIntentClientSecret)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.intentConfiguration, intentConfiguration) || other.intentConfiguration == intentConfiguration)&&(identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) || other.customerEphemeralKeySecret == customerEphemeralKeySecret)&&(identical(other.style, style) || other.style == style)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.merchantDisplayName, merchantDisplayName) || other.merchantDisplayName == merchantDisplayName)&&(identical(other.allowsRemovalOfLastSavedPaymentMethod, allowsRemovalOfLastSavedPaymentMethod) || other.allowsRemovalOfLastSavedPaymentMethod == allowsRemovalOfLastSavedPaymentMethod)&&(identical(other.headerTextForSelectionScreen, headerTextForSelectionScreen) || other.headerTextForSelectionScreen == headerTextForSelectionScreen)&&(identical(other.defaultBillingDetails, defaultBillingDetails) || other.defaultBillingDetails == defaultBillingDetails)&&(identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) || other.billingDetailsCollectionConfiguration == billingDetailsCollectionConfiguration)&&(identical(other.returnURL, returnURL) || other.returnURL == returnURL)&&(identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage)&&(identical(other.applePayEnabled, applePayEnabled) || other.applePayEnabled == applePayEnabled)&&(identical(other.googlePayEnabled, googlePayEnabled) || other.googlePayEnabled == googlePayEnabled)&&const DeepCollectionEquality().equals(other.preferredNetworks, preferredNetworks)&&(identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomerSheetInitParams&&(identical(other.style, style) || other.style == style)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.setupIntentClientSecret, setupIntentClientSecret) || other.setupIntentClientSecret == setupIntentClientSecret)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) || other.customerEphemeralKeySecret == customerEphemeralKeySecret)&&(identical(other.merchantDisplayName, merchantDisplayName) || other.merchantDisplayName == merchantDisplayName)&&(identical(other.allowsRemovalOfLastSavedPaymentMethod, allowsRemovalOfLastSavedPaymentMethod) || other.allowsRemovalOfLastSavedPaymentMethod == allowsRemovalOfLastSavedPaymentMethod)&&(identical(other.headerTextForSelectionScreen, headerTextForSelectionScreen) || other.headerTextForSelectionScreen == headerTextForSelectionScreen)&&(identical(other.defaultBillingDetails, defaultBillingDetails) || other.defaultBillingDetails == defaultBillingDetails)&&(identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) || other.billingDetailsCollectionConfiguration == billingDetailsCollectionConfiguration)&&(identical(other.returnURL, returnURL) || other.returnURL == returnURL)&&(identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage)&&(identical(other.applePayEnabled, applePayEnabled) || other.applePayEnabled == applePayEnabled)&&(identical(other.googlePayEnabled, googlePayEnabled) || other.googlePayEnabled == googlePayEnabled)&&const DeepCollectionEquality().equals(other.preferredNetworks, preferredNetworks)&&(identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,setupIntentClientSecret,customerId,intentConfiguration,customerEphemeralKeySecret,style,appearance,merchantDisplayName,allowsRemovalOfLastSavedPaymentMethod,headerTextForSelectionScreen,defaultBillingDetails,billingDetailsCollectionConfiguration,returnURL,removeSavedPaymentMethodMessage,applePayEnabled,googlePayEnabled,const DeepCollectionEquality().hash(preferredNetworks),cardBrandAcceptance);
+int get hashCode => Object.hash(runtimeType,style,appearance,setupIntentClientSecret,customerId,customerEphemeralKeySecret,merchantDisplayName,allowsRemovalOfLastSavedPaymentMethod,headerTextForSelectionScreen,defaultBillingDetails,billingDetailsCollectionConfiguration,returnURL,removeSavedPaymentMethodMessage,applePayEnabled,googlePayEnabled,const DeepCollectionEquality().hash(preferredNetworks),cardBrandAcceptance);
 
 @override
 String toString() {
-  return 'CustomerSheetInitParams(setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, intentConfiguration: $intentConfiguration, customerEphemeralKeySecret: $customerEphemeralKeySecret, style: $style, appearance: $appearance, merchantDisplayName: $merchantDisplayName, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance)';
+  return 'CustomerSheetInitParams(style: $style, appearance: $appearance, setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, merchantDisplayName: $merchantDisplayName, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance)';
 }
 
 
@@ -97,11 +100,11 @@ abstract mixin class $CustomerSheetInitParamsCopyWith<$Res>  {
   factory $CustomerSheetInitParamsCopyWith(CustomerSheetInitParams value, $Res Function(CustomerSheetInitParams) _then) = _$CustomerSheetInitParamsCopyWithImpl;
 @useResult
 $Res call({
- String? setupIntentClientSecret, String customerId, IntentConfiguration intentConfiguration, String customerEphemeralKeySecret,@JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style, PaymentSheetAppearance? appearance, String? merchantDisplayName, bool? allowsRemovalOfLastSavedPaymentMethod, String? headerTextForSelectionScreen, BillingDetails? defaultBillingDetails, BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration, String? returnURL, String? removeSavedPaymentMethodMessage, bool applePayEnabled, bool googlePayEnabled,@JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks, CardBrandAcceptance? cardBrandAcceptance
+@JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style, PaymentSheetAppearance? appearance, String? setupIntentClientSecret, String customerId, String customerEphemeralKeySecret, String? merchantDisplayName, bool? allowsRemovalOfLastSavedPaymentMethod, String? headerTextForSelectionScreen, BillingDetails? defaultBillingDetails, BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration, String? returnURL, String? removeSavedPaymentMethodMessage, bool applePayEnabled, bool googlePayEnabled,@JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks, CardBrandAcceptance? cardBrandAcceptance
 });
 
 
-$IntentConfigurationCopyWith<$Res>? get intentConfiguration;$PaymentSheetAppearanceCopyWith<$Res>? get appearance;$BillingDetailsCopyWith<$Res>? get defaultBillingDetails;$BillingDetailsCollectionConfigurationCopyWith<$Res>? get billingDetailsCollectionConfiguration;$CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
+$PaymentSheetAppearanceCopyWith<$Res>? get appearance;$BillingDetailsCopyWith<$Res>? get defaultBillingDetails;$BillingDetailsCollectionConfigurationCopyWith<$Res>? get billingDetailsCollectionConfiguration;$CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
 
 }
 /// @nodoc
@@ -114,15 +117,14 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res>
 
 /// Create a copy of CustomerSheetInitParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? setupIntentClientSecret = freezed,Object? customerId = null,Object? intentConfiguration = null,Object? customerEphemeralKeySecret = null,Object? style = freezed,Object? appearance = freezed,Object? merchantDisplayName = freezed,Object? allowsRemovalOfLastSavedPaymentMethod = freezed,Object? headerTextForSelectionScreen = freezed,Object? defaultBillingDetails = freezed,Object? billingDetailsCollectionConfiguration = freezed,Object? returnURL = freezed,Object? removeSavedPaymentMethodMessage = freezed,Object? applePayEnabled = null,Object? googlePayEnabled = null,Object? preferredNetworks = freezed,Object? cardBrandAcceptance = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? style = freezed,Object? appearance = freezed,Object? setupIntentClientSecret = freezed,Object? customerId = null,Object? customerEphemeralKeySecret = null,Object? merchantDisplayName = freezed,Object? allowsRemovalOfLastSavedPaymentMethod = freezed,Object? headerTextForSelectionScreen = freezed,Object? defaultBillingDetails = freezed,Object? billingDetailsCollectionConfiguration = freezed,Object? returnURL = freezed,Object? removeSavedPaymentMethodMessage = freezed,Object? applePayEnabled = null,Object? googlePayEnabled = null,Object? preferredNetworks = freezed,Object? cardBrandAcceptance = freezed,}) {
   return _then(_self.copyWith(
-setupIntentClientSecret: freezed == setupIntentClientSecret ? _self.setupIntentClientSecret : setupIntentClientSecret // ignore: cast_nullable_to_non_nullable
-as String?,customerId: null == customerId ? _self.customerId! : customerId // ignore: cast_nullable_to_non_nullable
-as String,intentConfiguration: null == intentConfiguration ? _self.intentConfiguration! : intentConfiguration // ignore: cast_nullable_to_non_nullable
-as IntentConfiguration,customerEphemeralKeySecret: null == customerEphemeralKeySecret ? _self.customerEphemeralKeySecret! : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
-as String,style: freezed == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
+style: freezed == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
 as ThemeMode?,appearance: freezed == appearance ? _self.appearance : appearance // ignore: cast_nullable_to_non_nullable
-as PaymentSheetAppearance?,merchantDisplayName: freezed == merchantDisplayName ? _self.merchantDisplayName : merchantDisplayName // ignore: cast_nullable_to_non_nullable
+as PaymentSheetAppearance?,setupIntentClientSecret: freezed == setupIntentClientSecret ? _self.setupIntentClientSecret : setupIntentClientSecret // ignore: cast_nullable_to_non_nullable
+as String?,customerId: null == customerId ? _self.customerId! : customerId // ignore: cast_nullable_to_non_nullable
+as String,customerEphemeralKeySecret: null == customerEphemeralKeySecret ? _self.customerEphemeralKeySecret! : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
+as String,merchantDisplayName: freezed == merchantDisplayName ? _self.merchantDisplayName : merchantDisplayName // ignore: cast_nullable_to_non_nullable
 as String?,allowsRemovalOfLastSavedPaymentMethod: freezed == allowsRemovalOfLastSavedPaymentMethod ? _self.allowsRemovalOfLastSavedPaymentMethod : allowsRemovalOfLastSavedPaymentMethod // ignore: cast_nullable_to_non_nullable
 as bool?,headerTextForSelectionScreen: freezed == headerTextForSelectionScreen ? _self.headerTextForSelectionScreen : headerTextForSelectionScreen // ignore: cast_nullable_to_non_nullable
 as String?,defaultBillingDetails: freezed == defaultBillingDetails ? _self.defaultBillingDetails : defaultBillingDetails // ignore: cast_nullable_to_non_nullable
@@ -137,18 +139,6 @@ as CardBrandAcceptance?,
   ));
 }
 /// Create a copy of CustomerSheetInitParams
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$IntentConfigurationCopyWith<$Res>? get intentConfiguration {
-    if (_self.intentConfiguration == null) {
-    return null;
-  }
-
-  return $IntentConfigurationCopyWith<$Res>(_self.intentConfiguration!, (value) {
-    return _then(_self.copyWith(intentConfiguration: value));
-  });
-}/// Create a copy of CustomerSheetInitParams
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -214,10 +204,11 @@ extension CustomerSheetInitParamsPatterns on CustomerSheetInitParams {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _CustomerSheetInitParamsAdapter value)?  adapter,TResult Function( _CustomerSheetInitParamsSession value)?  session,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CustomerSheetInitParamsDeprecated value)?  $default,{TResult Function( _CustomerSheetInitParamsAdapter value)?  adapter,TResult Function( _CustomerSheetInitParamsSession value)?  session,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _CustomerSheetInitParamsAdapter() when adapter != null:
+case _CustomerSheetInitParamsDeprecated() when $default != null:
+return $default(_that);case _CustomerSheetInitParamsAdapter() when adapter != null:
 return adapter(_that);case _CustomerSheetInitParamsSession() when session != null:
 return session(_that);case _:
   return orElse();
@@ -237,10 +228,11 @@ return session(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _CustomerSheetInitParamsAdapter value)  adapter,required TResult Function( _CustomerSheetInitParamsSession value)  session,}){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CustomerSheetInitParamsDeprecated value)  $default,{required TResult Function( _CustomerSheetInitParamsAdapter value)  adapter,required TResult Function( _CustomerSheetInitParamsSession value)  session,}){
 final _that = this;
 switch (_that) {
-case _CustomerSheetInitParamsAdapter():
+case _CustomerSheetInitParamsDeprecated():
+return $default(_that);case _CustomerSheetInitParamsAdapter():
 return adapter(_that);case _CustomerSheetInitParamsSession():
 return session(_that);case _:
   throw StateError('Unexpected subclass');
@@ -259,10 +251,11 @@ return session(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _CustomerSheetInitParamsAdapter value)?  adapter,TResult? Function( _CustomerSheetInitParamsSession value)?  session,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CustomerSheetInitParamsDeprecated value)?  $default,{TResult? Function( _CustomerSheetInitParamsAdapter value)?  adapter,TResult? Function( _CustomerSheetInitParamsSession value)?  session,}){
 final _that = this;
 switch (_that) {
-case _CustomerSheetInitParamsAdapter() when adapter != null:
+case _CustomerSheetInitParamsDeprecated() when $default != null:
+return $default(_that);case _CustomerSheetInitParamsAdapter() when adapter != null:
 return adapter(_that);case _CustomerSheetInitParamsSession() when session != null:
 return session(_that);case _:
   return null;
@@ -281,9 +274,10 @@ return session(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String? setupIntentClientSecret,  String customerId,  IntentConfiguration? intentConfiguration,  String customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  adapter,TResult Function( String? setupIntentClientSecret,  String? customerId,  IntentConfiguration intentConfiguration,  String? customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  session,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? setupIntentClientSecret,  String customerId,  String customerEphemeralKeySecret,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  $default,{TResult Function( String? setupIntentClientSecret,  String customerId,  IntentConfiguration? intentConfiguration,  String customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  adapter,TResult Function( String? setupIntentClientSecret,  String? customerId,  IntentConfiguration intentConfiguration,  String? customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  session,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _CustomerSheetInitParamsAdapter() when adapter != null:
+case _CustomerSheetInitParamsDeprecated() when $default != null:
+return $default(_that.style,_that.appearance,_that.setupIntentClientSecret,_that.customerId,_that.customerEphemeralKeySecret,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _CustomerSheetInitParamsAdapter() when adapter != null:
 return adapter(_that.setupIntentClientSecret,_that.customerId,_that.intentConfiguration,_that.customerEphemeralKeySecret,_that.style,_that.appearance,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _CustomerSheetInitParamsSession() when session != null:
 return session(_that.setupIntentClientSecret,_that.customerId,_that.intentConfiguration,_that.customerEphemeralKeySecret,_that.style,_that.appearance,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _:
   return orElse();
@@ -303,9 +297,10 @@ return session(_that.setupIntentClientSecret,_that.customerId,_that.intentConfig
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String? setupIntentClientSecret,  String customerId,  IntentConfiguration? intentConfiguration,  String customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)  adapter,required TResult Function( String? setupIntentClientSecret,  String? customerId,  IntentConfiguration intentConfiguration,  String? customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)  session,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? setupIntentClientSecret,  String customerId,  String customerEphemeralKeySecret,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)  $default,{required TResult Function( String? setupIntentClientSecret,  String customerId,  IntentConfiguration? intentConfiguration,  String customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)  adapter,required TResult Function( String? setupIntentClientSecret,  String? customerId,  IntentConfiguration intentConfiguration,  String? customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)  session,}) {final _that = this;
 switch (_that) {
-case _CustomerSheetInitParamsAdapter():
+case _CustomerSheetInitParamsDeprecated():
+return $default(_that.style,_that.appearance,_that.setupIntentClientSecret,_that.customerId,_that.customerEphemeralKeySecret,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _CustomerSheetInitParamsAdapter():
 return adapter(_that.setupIntentClientSecret,_that.customerId,_that.intentConfiguration,_that.customerEphemeralKeySecret,_that.style,_that.appearance,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _CustomerSheetInitParamsSession():
 return session(_that.setupIntentClientSecret,_that.customerId,_that.intentConfiguration,_that.customerEphemeralKeySecret,_that.style,_that.appearance,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _:
   throw StateError('Unexpected subclass');
@@ -324,9 +319,10 @@ return session(_that.setupIntentClientSecret,_that.customerId,_that.intentConfig
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String? setupIntentClientSecret,  String customerId,  IntentConfiguration? intentConfiguration,  String customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  adapter,TResult? Function( String? setupIntentClientSecret,  String? customerId,  IntentConfiguration intentConfiguration,  String? customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  session,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? setupIntentClientSecret,  String customerId,  String customerEphemeralKeySecret,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  $default,{TResult? Function( String? setupIntentClientSecret,  String customerId,  IntentConfiguration? intentConfiguration,  String customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  adapter,TResult? Function( String? setupIntentClientSecret,  String? customerId,  IntentConfiguration intentConfiguration,  String? customerEphemeralKeySecret, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetAppearance? appearance,  String? merchantDisplayName,  bool? allowsRemovalOfLastSavedPaymentMethod,  String? headerTextForSelectionScreen,  BillingDetails? defaultBillingDetails,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? returnURL,  String? removeSavedPaymentMethodMessage,  bool applePayEnabled,  bool googlePayEnabled, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance)?  session,}) {final _that = this;
 switch (_that) {
-case _CustomerSheetInitParamsAdapter() when adapter != null:
+case _CustomerSheetInitParamsDeprecated() when $default != null:
+return $default(_that.style,_that.appearance,_that.setupIntentClientSecret,_that.customerId,_that.customerEphemeralKeySecret,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _CustomerSheetInitParamsAdapter() when adapter != null:
 return adapter(_that.setupIntentClientSecret,_that.customerId,_that.intentConfiguration,_that.customerEphemeralKeySecret,_that.style,_that.appearance,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _CustomerSheetInitParamsSession() when session != null:
 return session(_that.setupIntentClientSecret,_that.customerId,_that.intentConfiguration,_that.customerEphemeralKeySecret,_that.style,_that.appearance,_that.merchantDisplayName,_that.allowsRemovalOfLastSavedPaymentMethod,_that.headerTextForSelectionScreen,_that.defaultBillingDetails,_that.billingDetailsCollectionConfiguration,_that.returnURL,_that.removeSavedPaymentMethodMessage,_that.applePayEnabled,_that.googlePayEnabled,_that.preferredNetworks,_that.cardBrandAcceptance);case _:
   return null;
@@ -334,6 +330,192 @@ return session(_that.setupIntentClientSecret,_that.customerId,_that.intentConfig
 }
 }
 
+}
+
+/// @nodoc
+@JsonSerializable()
+@Deprecated("Use CustomerSheetInitParams.adapter or CustomerSheetInitParams.session instead")
+class _CustomerSheetInitParamsDeprecated implements CustomerSheetInitParams {
+  const _CustomerSheetInitParamsDeprecated({@JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style, this.appearance, this.setupIntentClientSecret, required this.customerId, required this.customerEphemeralKeySecret, this.merchantDisplayName, this.allowsRemovalOfLastSavedPaymentMethod, this.headerTextForSelectionScreen, this.defaultBillingDetails, this.billingDetailsCollectionConfiguration, this.returnURL, this.removeSavedPaymentMethodMessage, this.applePayEnabled = true, this.googlePayEnabled = true, @JsonKey(toJson: _cardBrandListToJson) final  List<CardBrand>? preferredNetworks, this.cardBrandAcceptance, final  String? $type}): _preferredNetworks = preferredNetworks,$type = $type ?? 'default';
+  factory _CustomerSheetInitParamsDeprecated.fromJson(Map<String, dynamic> json) => _$CustomerSheetInitParamsDeprecatedFromJson(json);
+
+/// Color styling used for the Customersheet UI
+@override@JsonKey(toJson: UserInterfaceStyleKey.toJson) final  ThemeMode? style;
+/// Appearance of the customersheet.
+///
+/// When no appearance defined it will fallback to [style] or Stripe default.
+@override final  PaymentSheetAppearance? appearance;
+/// Optional but recommended for cards, required for other payment methods. The SetupIntent client secret that will be used to confirm a new payment method. If this is missing, you will only be able to add cards without authentication steps.
+@override final  String? setupIntentClientSecret;
+/// The identifier of the Stripe Customer object. See https://stripe.com/docs/api/customers/object#customer_object-id
+@override final  String customerId;
+/// A short-lived token that allows the SDK to access a Customer's payment methods.
+@override final  String customerEphemeralKeySecret;
+/// Your customer-facing business name. The default value is the name of your app.
+@override final  String? merchantDisplayName;
+///This is an experimental feature that may be removed at any time.
+/// Defaults to true. If true, the customer can delete all saved payment methods.
+/// If false, the customer can't delete if they only have one saved payment method remaining.
+@override final  bool? allowsRemovalOfLastSavedPaymentMethod;
+/// Optional configuration for setting the header text of the Payment Method selection screen
+@override final  String? headerTextForSelectionScreen;
+/// CustomerSheet pre-populates fields with the values provided. If `billingDetailsCollectionConfiguration.attachDefaultsToPaymentMethod` is `true`, these values will be attached to the payment method even if they are not collected by the CustomerSheet UI.
+@override final  BillingDetails? defaultBillingDetails;
+/// Describes how billing details should be collected. All values default to `AUTOMATIC`. If `NEVER` is used for a required field for the Payment Method, you must provide an appropriate value as part of `defaultBillingDetails`.
+@override final  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration;
+///  URL that redirects back to your app that CustomerSheet can use to auto-dismiss web views used for additional authentication, e.g. 3DS2
+@override final  String? returnURL;
+/// Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+@override final  String? removeSavedPaymentMethodMessage;
+///  Whether to show Apple Pay as an option. Defaults to `false`.
+@override@JsonKey() final  bool applePayEnabled;
+/// Whether to show Google Pay as an option. Defaults to `false`.
+@override@JsonKey() final  bool googlePayEnabled;
+/// The list of preferred networks that should be used to process payments made with a co-branded card.
+/// This value will only be used if your user hasn't selected a network themselves.
+ final  List<CardBrand>? _preferredNetworks;
+/// The list of preferred networks that should be used to process payments made with a co-branded card.
+/// This value will only be used if your user hasn't selected a network themselves.
+@override@JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? get preferredNetworks {
+  final value = _preferredNetworks;
+  if (value == null) return null;
+  if (_preferredNetworks is EqualUnmodifiableListView) return _preferredNetworks;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+/// By default, PaymentSheet will accept all supported cards by Stripe.
+/// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+///
+/// Note: This is only a client-side solution.
+///Note: Card brand filtering is not currently supported in Link.
+@override final  CardBrandAcceptance? cardBrandAcceptance;
+
+@JsonKey(name: 'runtimeType')
+final String $type;
+
+
+/// Create a copy of CustomerSheetInitParams
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CustomerSheetInitParamsDeprecatedCopyWith<_CustomerSheetInitParamsDeprecated> get copyWith => __$CustomerSheetInitParamsDeprecatedCopyWithImpl<_CustomerSheetInitParamsDeprecated>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$CustomerSheetInitParamsDeprecatedToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomerSheetInitParamsDeprecated&&(identical(other.style, style) || other.style == style)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.setupIntentClientSecret, setupIntentClientSecret) || other.setupIntentClientSecret == setupIntentClientSecret)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) || other.customerEphemeralKeySecret == customerEphemeralKeySecret)&&(identical(other.merchantDisplayName, merchantDisplayName) || other.merchantDisplayName == merchantDisplayName)&&(identical(other.allowsRemovalOfLastSavedPaymentMethod, allowsRemovalOfLastSavedPaymentMethod) || other.allowsRemovalOfLastSavedPaymentMethod == allowsRemovalOfLastSavedPaymentMethod)&&(identical(other.headerTextForSelectionScreen, headerTextForSelectionScreen) || other.headerTextForSelectionScreen == headerTextForSelectionScreen)&&(identical(other.defaultBillingDetails, defaultBillingDetails) || other.defaultBillingDetails == defaultBillingDetails)&&(identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) || other.billingDetailsCollectionConfiguration == billingDetailsCollectionConfiguration)&&(identical(other.returnURL, returnURL) || other.returnURL == returnURL)&&(identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage)&&(identical(other.applePayEnabled, applePayEnabled) || other.applePayEnabled == applePayEnabled)&&(identical(other.googlePayEnabled, googlePayEnabled) || other.googlePayEnabled == googlePayEnabled)&&const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks)&&(identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,style,appearance,setupIntentClientSecret,customerId,customerEphemeralKeySecret,merchantDisplayName,allowsRemovalOfLastSavedPaymentMethod,headerTextForSelectionScreen,defaultBillingDetails,billingDetailsCollectionConfiguration,returnURL,removeSavedPaymentMethodMessage,applePayEnabled,googlePayEnabled,const DeepCollectionEquality().hash(_preferredNetworks),cardBrandAcceptance);
+
+@override
+String toString() {
+  return 'CustomerSheetInitParams(style: $style, appearance: $appearance, setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, merchantDisplayName: $merchantDisplayName, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CustomerSheetInitParamsDeprecatedCopyWith<$Res> implements $CustomerSheetInitParamsCopyWith<$Res> {
+  factory _$CustomerSheetInitParamsDeprecatedCopyWith(_CustomerSheetInitParamsDeprecated value, $Res Function(_CustomerSheetInitParamsDeprecated) _then) = __$CustomerSheetInitParamsDeprecatedCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style, PaymentSheetAppearance? appearance, String? setupIntentClientSecret, String customerId, String customerEphemeralKeySecret, String? merchantDisplayName, bool? allowsRemovalOfLastSavedPaymentMethod, String? headerTextForSelectionScreen, BillingDetails? defaultBillingDetails, BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration, String? returnURL, String? removeSavedPaymentMethodMessage, bool applePayEnabled, bool googlePayEnabled,@JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks, CardBrandAcceptance? cardBrandAcceptance
+});
+
+
+@override $PaymentSheetAppearanceCopyWith<$Res>? get appearance;@override $BillingDetailsCopyWith<$Res>? get defaultBillingDetails;@override $BillingDetailsCollectionConfigurationCopyWith<$Res>? get billingDetailsCollectionConfiguration;@override $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
+
+}
+/// @nodoc
+class __$CustomerSheetInitParamsDeprecatedCopyWithImpl<$Res>
+    implements _$CustomerSheetInitParamsDeprecatedCopyWith<$Res> {
+  __$CustomerSheetInitParamsDeprecatedCopyWithImpl(this._self, this._then);
+
+  final _CustomerSheetInitParamsDeprecated _self;
+  final $Res Function(_CustomerSheetInitParamsDeprecated) _then;
+
+/// Create a copy of CustomerSheetInitParams
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? style = freezed,Object? appearance = freezed,Object? setupIntentClientSecret = freezed,Object? customerId = null,Object? customerEphemeralKeySecret = null,Object? merchantDisplayName = freezed,Object? allowsRemovalOfLastSavedPaymentMethod = freezed,Object? headerTextForSelectionScreen = freezed,Object? defaultBillingDetails = freezed,Object? billingDetailsCollectionConfiguration = freezed,Object? returnURL = freezed,Object? removeSavedPaymentMethodMessage = freezed,Object? applePayEnabled = null,Object? googlePayEnabled = null,Object? preferredNetworks = freezed,Object? cardBrandAcceptance = freezed,}) {
+  return _then(_CustomerSheetInitParamsDeprecated(
+style: freezed == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
+as ThemeMode?,appearance: freezed == appearance ? _self.appearance : appearance // ignore: cast_nullable_to_non_nullable
+as PaymentSheetAppearance?,setupIntentClientSecret: freezed == setupIntentClientSecret ? _self.setupIntentClientSecret : setupIntentClientSecret // ignore: cast_nullable_to_non_nullable
+as String?,customerId: null == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
+as String,customerEphemeralKeySecret: null == customerEphemeralKeySecret ? _self.customerEphemeralKeySecret : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
+as String,merchantDisplayName: freezed == merchantDisplayName ? _self.merchantDisplayName : merchantDisplayName // ignore: cast_nullable_to_non_nullable
+as String?,allowsRemovalOfLastSavedPaymentMethod: freezed == allowsRemovalOfLastSavedPaymentMethod ? _self.allowsRemovalOfLastSavedPaymentMethod : allowsRemovalOfLastSavedPaymentMethod // ignore: cast_nullable_to_non_nullable
+as bool?,headerTextForSelectionScreen: freezed == headerTextForSelectionScreen ? _self.headerTextForSelectionScreen : headerTextForSelectionScreen // ignore: cast_nullable_to_non_nullable
+as String?,defaultBillingDetails: freezed == defaultBillingDetails ? _self.defaultBillingDetails : defaultBillingDetails // ignore: cast_nullable_to_non_nullable
+as BillingDetails?,billingDetailsCollectionConfiguration: freezed == billingDetailsCollectionConfiguration ? _self.billingDetailsCollectionConfiguration : billingDetailsCollectionConfiguration // ignore: cast_nullable_to_non_nullable
+as BillingDetailsCollectionConfiguration?,returnURL: freezed == returnURL ? _self.returnURL : returnURL // ignore: cast_nullable_to_non_nullable
+as String?,removeSavedPaymentMethodMessage: freezed == removeSavedPaymentMethodMessage ? _self.removeSavedPaymentMethodMessage : removeSavedPaymentMethodMessage // ignore: cast_nullable_to_non_nullable
+as String?,applePayEnabled: null == applePayEnabled ? _self.applePayEnabled : applePayEnabled // ignore: cast_nullable_to_non_nullable
+as bool,googlePayEnabled: null == googlePayEnabled ? _self.googlePayEnabled : googlePayEnabled // ignore: cast_nullable_to_non_nullable
+as bool,preferredNetworks: freezed == preferredNetworks ? _self._preferredNetworks : preferredNetworks // ignore: cast_nullable_to_non_nullable
+as List<CardBrand>?,cardBrandAcceptance: freezed == cardBrandAcceptance ? _self.cardBrandAcceptance : cardBrandAcceptance // ignore: cast_nullable_to_non_nullable
+as CardBrandAcceptance?,
+  ));
+}
+
+/// Create a copy of CustomerSheetInitParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaymentSheetAppearanceCopyWith<$Res>? get appearance {
+    if (_self.appearance == null) {
+    return null;
+  }
+
+  return $PaymentSheetAppearanceCopyWith<$Res>(_self.appearance!, (value) {
+    return _then(_self.copyWith(appearance: value));
+  });
+}/// Create a copy of CustomerSheetInitParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BillingDetailsCopyWith<$Res>? get defaultBillingDetails {
+    if (_self.defaultBillingDetails == null) {
+    return null;
+  }
+
+  return $BillingDetailsCopyWith<$Res>(_self.defaultBillingDetails!, (value) {
+    return _then(_self.copyWith(defaultBillingDetails: value));
+  });
+}/// Create a copy of CustomerSheetInitParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BillingDetailsCollectionConfigurationCopyWith<$Res>? get billingDetailsCollectionConfiguration {
+    if (_self.billingDetailsCollectionConfiguration == null) {
+    return null;
+  }
+
+  return $BillingDetailsCollectionConfigurationCopyWith<$Res>(_self.billingDetailsCollectionConfiguration!, (value) {
+    return _then(_self.copyWith(billingDetailsCollectionConfiguration: value));
+  });
+}/// Create a copy of CustomerSheetInitParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance {
+    if (_self.cardBrandAcceptance == null) {
+    return null;
+  }
+
+  return $CardBrandAcceptanceCopyWith<$Res>(_self.cardBrandAcceptance!, (value) {
+    return _then(_self.copyWith(cardBrandAcceptance: value));
+  });
+}
 }
 
 /// @nodoc
@@ -348,7 +530,7 @@ class _CustomerSheetInitParamsAdapter implements CustomerSheetInitParams {
 /// The identifier of the Stripe Customer object. See https://stripe.com/docs/api/customers/object#customer_object-id
 @override final  String customerId;
 /// Intent configuration for the customer sheet.
-@override final  IntentConfiguration? intentConfiguration;
+ final  IntentConfiguration? intentConfiguration;
 /// A short-lived token that allows the SDK to access a Customer's payment methods.
 @override final  String customerEphemeralKeySecret;
 /// Color styling used for the Customersheet UI
@@ -438,7 +620,7 @@ $Res call({
 });
 
 
-@override $IntentConfigurationCopyWith<$Res>? get intentConfiguration;@override $PaymentSheetAppearanceCopyWith<$Res>? get appearance;@override $BillingDetailsCopyWith<$Res>? get defaultBillingDetails;@override $BillingDetailsCollectionConfigurationCopyWith<$Res>? get billingDetailsCollectionConfiguration;@override $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
+$IntentConfigurationCopyWith<$Res>? get intentConfiguration;@override $PaymentSheetAppearanceCopyWith<$Res>? get appearance;@override $BillingDetailsCopyWith<$Res>? get defaultBillingDetails;@override $BillingDetailsCollectionConfigurationCopyWith<$Res>? get billingDetailsCollectionConfiguration;@override $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
 
 }
 /// @nodoc
@@ -550,7 +732,7 @@ class _CustomerSheetInitParamsSession implements CustomerSheetInitParams {
 /// The identifier of the Stripe Customer object. See https://stripe.com/docs/api/customers/object#customer_object-id
 @override final  String? customerId;
 /// Intent configuration for the customer sheet.
-@override final  IntentConfiguration intentConfiguration;
+ final  IntentConfiguration intentConfiguration;
 /// A short-lived token that allows the SDK to access a Customer's payment methods.
 @override final  String? customerEphemeralKeySecret;
 /// Color styling used for the Customersheet UI
@@ -640,7 +822,7 @@ $Res call({
 });
 
 
-@override $IntentConfigurationCopyWith<$Res> get intentConfiguration;@override $PaymentSheetAppearanceCopyWith<$Res>? get appearance;@override $BillingDetailsCopyWith<$Res>? get defaultBillingDetails;@override $BillingDetailsCollectionConfigurationCopyWith<$Res>? get billingDetailsCollectionConfiguration;@override $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
+$IntentConfigurationCopyWith<$Res> get intentConfiguration;@override $PaymentSheetAppearanceCopyWith<$Res>? get appearance;@override $BillingDetailsCopyWith<$Res>? get defaultBillingDetails;@override $BillingDetailsCollectionConfigurationCopyWith<$Res>? get billingDetailsCollectionConfiguration;@override $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
 
 }
 /// @nodoc

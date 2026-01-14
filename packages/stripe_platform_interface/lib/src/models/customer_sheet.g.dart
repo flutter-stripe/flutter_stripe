@@ -6,6 +6,91 @@ part of 'customer_sheet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_CustomerSheetInitParamsDeprecated _$CustomerSheetInitParamsDeprecatedFromJson(
+  Map<String, dynamic> json,
+) => _CustomerSheetInitParamsDeprecated(
+  style: $enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
+  appearance: json['appearance'] == null
+      ? null
+      : PaymentSheetAppearance.fromJson(
+          json['appearance'] as Map<String, dynamic>,
+        ),
+  setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
+  customerId: json['customerId'] as String,
+  customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String,
+  merchantDisplayName: json['merchantDisplayName'] as String?,
+  allowsRemovalOfLastSavedPaymentMethod:
+      json['allowsRemovalOfLastSavedPaymentMethod'] as bool?,
+  headerTextForSelectionScreen: json['headerTextForSelectionScreen'] as String?,
+  defaultBillingDetails: json['defaultBillingDetails'] == null
+      ? null
+      : BillingDetails.fromJson(
+          json['defaultBillingDetails'] as Map<String, dynamic>,
+        ),
+  billingDetailsCollectionConfiguration:
+      json['billingDetailsCollectionConfiguration'] == null
+      ? null
+      : BillingDetailsCollectionConfiguration.fromJson(
+          json['billingDetailsCollectionConfiguration'] as Map<String, dynamic>,
+        ),
+  returnURL: json['returnURL'] as String?,
+  removeSavedPaymentMethodMessage:
+      json['removeSavedPaymentMethodMessage'] as String?,
+  applePayEnabled: json['applePayEnabled'] as bool? ?? true,
+  googlePayEnabled: json['googlePayEnabled'] as bool? ?? true,
+  preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
+      ?.map((e) => $enumDecode(_$CardBrandEnumMap, e))
+      .toList(),
+  cardBrandAcceptance: json['cardBrandAcceptance'] == null
+      ? null
+      : CardBrandAcceptance.fromJson(
+          json['cardBrandAcceptance'] as Map<String, dynamic>,
+        ),
+  $type: json['runtimeType'] as String?,
+);
+
+Map<String, dynamic> _$CustomerSheetInitParamsDeprecatedToJson(
+  _CustomerSheetInitParamsDeprecated instance,
+) => <String, dynamic>{
+  'style': UserInterfaceStyleKey.toJson(instance.style),
+  'appearance': instance.appearance,
+  'setupIntentClientSecret': instance.setupIntentClientSecret,
+  'customerId': instance.customerId,
+  'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
+  'merchantDisplayName': instance.merchantDisplayName,
+  'allowsRemovalOfLastSavedPaymentMethod':
+      instance.allowsRemovalOfLastSavedPaymentMethod,
+  'headerTextForSelectionScreen': instance.headerTextForSelectionScreen,
+  'defaultBillingDetails': instance.defaultBillingDetails,
+  'billingDetailsCollectionConfiguration':
+      instance.billingDetailsCollectionConfiguration,
+  'returnURL': instance.returnURL,
+  'removeSavedPaymentMethodMessage': instance.removeSavedPaymentMethodMessage,
+  'applePayEnabled': instance.applePayEnabled,
+  'googlePayEnabled': instance.googlePayEnabled,
+  'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
+  'cardBrandAcceptance': instance.cardBrandAcceptance,
+  'runtimeType': instance.$type,
+};
+
+const _$ThemeModeEnumMap = {
+  ThemeMode.system: 'system',
+  ThemeMode.light: 'light',
+  ThemeMode.dark: 'dark',
+};
+
+const _$CardBrandEnumMap = {
+  CardBrand.JCB: 'JCB',
+  CardBrand.Amex: 'Amex',
+  CardBrand.CartesBancaires: 'CartesBancaires',
+  CardBrand.DinersClub: 'DinersClub',
+  CardBrand.Discover: 'Discover',
+  CardBrand.Mastercard: 'Mastercard',
+  CardBrand.UnionPay: 'UnionPay',
+  CardBrand.Visa: 'Visa',
+  CardBrand.Unknown: 'Unknown',
+};
+
 _CustomerSheetInitParamsAdapter _$CustomerSheetInitParamsAdapterFromJson(
   Map<String, dynamic> json,
 ) => _CustomerSheetInitParamsAdapter(
@@ -78,24 +163,6 @@ Map<String, dynamic> _$CustomerSheetInitParamsAdapterToJson(
   'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
   'cardBrandAcceptance': instance.cardBrandAcceptance?.toJson(),
   'runtimeType': instance.$type,
-};
-
-const _$ThemeModeEnumMap = {
-  ThemeMode.system: 'system',
-  ThemeMode.light: 'light',
-  ThemeMode.dark: 'dark',
-};
-
-const _$CardBrandEnumMap = {
-  CardBrand.JCB: 'JCB',
-  CardBrand.Amex: 'Amex',
-  CardBrand.CartesBancaires: 'CartesBancaires',
-  CardBrand.DinersClub: 'DinersClub',
-  CardBrand.Discover: 'Discover',
-  CardBrand.Mastercard: 'Mastercard',
-  CardBrand.UnionPay: 'UnionPay',
-  CardBrand.Visa: 'Visa',
-  CardBrand.Unknown: 'Unknown',
 };
 
 _CustomerSheetInitParamsSession _$CustomerSheetInitParamsSessionFromJson(
