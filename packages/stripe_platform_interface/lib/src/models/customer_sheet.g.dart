@@ -101,7 +101,7 @@ _CustomerSheetInitParamsAdapter _$CustomerSheetInitParamsAdapterFromJson(
       : IntentConfiguration.fromJson(
           json['intentConfiguration'] as Map<String, dynamic>,
         ),
-  customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String,
+  customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
   style: $enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
   appearance: json['appearance'] == null
       ? null

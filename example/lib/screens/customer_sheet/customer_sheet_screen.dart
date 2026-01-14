@@ -86,7 +86,7 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
       await Stripe.instance.initCustomerSheet(
         customerSheetInitParams: CustomerSheetInitParams.adapter(
           // Main params
-          // setupIntentClientSecret: data['setupIntent'],
+          setupIntentClientSecret: data['setupIntent'],
           merchantDisplayName: 'Flutter Stripe Store Demo',
           allowsRemovalOfLastSavedPaymentMethod: true,
           // Customer params
@@ -129,6 +129,7 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
     } on Exception catch (e) {
       if (e is StripeException) {
         if (context.mounted) {
+          print('StripeException: ${e.error}');
           scaffoldMessenger.showSnackBar(
             SnackBar(
               content: Text('Error from Stripe: ${e.error.localizedMessage}'),

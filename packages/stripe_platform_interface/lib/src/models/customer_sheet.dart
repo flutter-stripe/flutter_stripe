@@ -85,7 +85,7 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
     IntentConfiguration? intentConfiguration,
 
     /// A short-lived token that allows the SDK to access a Customer's payment methods.
-    required String customerEphemeralKeySecret,
+    String? customerEphemeralKeySecret,
 
     /// Color styling used for the Customersheet UI
     @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
