@@ -30,6 +30,10 @@ class CardFormField extends StatefulWidget {
     this.disabled = false,
     this.controller,
     this.preferredNetworks,
+    this.numberHintText,
+    this.expirationHintText,
+    this.cvcHintText,
+    this.postalCodeHintText,
     super.key,
   });
 
@@ -92,6 +96,18 @@ class CardFormField extends StatefulWidget {
   /// The list of preferred networks that should be used to process payments made with a co-branded card.
   /// This value will only be used if your user hasn't selected a network themselves.
   final List<CardBrand>? preferredNetworks;
+
+  /// Android only: Hint text for the card number field.
+  final String? numberHintText;
+
+  /// Android only: Hint text for the expiration date field.
+  final String? expirationHintText;
+
+  /// Android only: Hint text for the cvc field.
+  final String? cvcHintText;
+
+  /// Android only: Hint text for the postal code field.
+  final String? postalCodeHintText;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -207,6 +223,10 @@ class _CardFormFieldState extends State<CardFormField> {
       onFocus: widget.onFocus,
       countryCode: widget.countryCode,
       preferredNetworks: widget.preferredNetworks,
+      numberHintText: widget.numberHintText,
+      expirationHintText: widget.expirationHintText,
+      cvcHintText: widget.cvcHintText,
+      postalCodeHintText: widget.postalCodeHintText,
     );
   }
 
@@ -232,6 +252,10 @@ class _MethodChannelCardFormField extends StatefulWidget {
     this.disabled = false,
     this.preferredNetworks,
     this.countryCode,
+    this.numberHintText,
+    this.expirationHintText,
+    this.cvcHintText,
+    this.postalCodeHintText,
   }) : assert(constraints == null || constraints.debugAssertIsValid()),
        constraints = (width != null || height != null)
            ? constraints?.tighten(width: width, height: height) ??
@@ -251,6 +275,10 @@ class _MethodChannelCardFormField extends StatefulWidget {
   final bool dangerouslyUpdateFullCardDetails;
   final String? countryCode;
   final List<CardBrand>? preferredNetworks;
+  final String? numberHintText;
+  final String? expirationHintText;
+  final String? cvcHintText;
+  final String? postalCodeHintText;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_form_field';
@@ -312,6 +340,14 @@ class _MethodChannelCardFormFieldState
   Widget build(BuildContext context) {
     final style = resolveStyle(widget.style);
     // Pass parameters to the platform side.
+    // Build placeholder map for hint text (Android only)
+    final placeholder = <String, dynamic>{
+      if (widget.numberHintText != null) 'number': widget.numberHintText,
+      if (widget.expirationHintText != null) 'expiration': widget.expirationHintText,
+      if (widget.cvcHintText != null) 'cvc': widget.cvcHintText,
+      if (widget.postalCodeHintText != null) 'postalCode': widget.postalCodeHintText,
+    };
+
     final creationParams = <String, dynamic>{
       'cardStyle': style.toJson(),
       'postalCodeEnabled': widget.enablePostalCode,
@@ -326,6 +362,7 @@ class _MethodChannelCardFormFieldState
             .toList(),
       'disabled': widget.disabled,
       'defaultValues': {'countryCode': widget.countryCode},
+      if (placeholder.isNotEmpty) 'placeholders': placeholder,
     };
 
     Widget platform;
@@ -434,6 +471,20 @@ class _MethodChannelCardFormFieldState
       });
     }
     _lastStyle = style;
+    // Handle placeholder/hint text changes (Android only)
+    if (widget.numberHintText != oldWidget.numberHintText ||
+        widget.expirationHintText != oldWidget.expirationHintText ||
+        widget.cvcHintText != oldWidget.cvcHintText ||
+        widget.postalCodeHintText != oldWidget.postalCodeHintText) {
+      final placeholder = <String, dynamic>{
+        if (widget.numberHintText != null) 'number': widget.numberHintText,
+        if (widget.expirationHintText != null) 'expiration': widget.expirationHintText,
+        if (widget.cvcHintText != null) 'cvc': widget.cvcHintText,
+        if (widget.postalCodeHintText != null) 'postalCode': widget.postalCodeHintText,
+      };
+      // Use 'placeholders' as method name - Android delegate uses it as property name
+      _methodChannel?.invokeMethod('placeholders', placeholder);
+    }
     super.didUpdateWidget(oldWidget);
   }
 
