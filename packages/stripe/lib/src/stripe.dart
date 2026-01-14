@@ -743,11 +743,13 @@ class Stripe {
   }
 
   /// Initializes the customer sheet with the provided [parameters].
-  Future<CustomerSheetResult?> initCustomerSheet({
+  ///
+  /// Throws a [StripeException] if initialization fails.
+  Future<void> initCustomerSheet({
     required CustomerSheetInitParams customerSheetInitParams,
   }) async {
     await _awaitForSettings();
-    return _platform.initCustomerSheet(customerSheetInitParams);
+    await _platform.initCustomerSheet(customerSheetInitParams);
   }
 
   /// Display the customersheet sheet. With the provided [options].
