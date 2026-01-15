@@ -567,6 +567,14 @@ class Stripe {
     return await _platform.intentCreationCallback(params);
   }
 
+  ///Called when the customer confirms payment using confirmation tokens.
+  Future<void> confirmationTokenCreationCallback(
+    IntentCreationCallbackParams params,
+  ) async {
+    await _awaitForSettings();
+    return await _platform.confirmationTokenCreationCallback(params);
+  }
+
   /// Call this method when the user logs out from your app.
   ///
   /// This will ensure that any persisted authentication state in the

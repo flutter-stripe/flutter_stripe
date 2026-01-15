@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Created by FFuF, Jonas Bark on 2019-10-02.
  */
-public class ReadableMap extends Dynamic implements Map<String, Object> {
+public class ReadableMap extends Dynamic {
 
     private JSONObject map;
 

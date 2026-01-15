@@ -662,6 +662,12 @@ class WebStripe extends StripePlatform {
   Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) {
     throw WebUnsupportedError.method('isCardInWallet');
   }
+
+  @override
+  Future<void> confirmationTokenCreationCallback(
+      IntentCreationCallbackParams params) {
+    throw WebUnsupportedError.method('confirmationTokenCreationCallback');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {
