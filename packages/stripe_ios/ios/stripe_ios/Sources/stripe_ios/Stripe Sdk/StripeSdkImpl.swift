@@ -875,7 +875,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     @objc(confirmPayment:data:options:resolver:rejecter:)
     public func confirmPayment(
         paymentIntentClientSecret: String,
-        params: NSDictionary,
+        params: NSDictionary?,
         options: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
