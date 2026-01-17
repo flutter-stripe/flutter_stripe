@@ -37,6 +37,14 @@ class EmbeddedPaymentElementController extends ChangeNotifier {
     await _context?.clearPaymentOption();
   }
 
+  /// Unmounts the platform view before navigation.
+  /// Must be awaited to ensure the UiKitView is fully disposed.
+  /// This is irreversible for the widget's lifetime.
+  Future<void> disposeView() async {
+    if (!hasEmbeddedPaymentElement) return;
+    await _context?.disposeView();
+  }
+
   @override
   void dispose() {
     _context = null;
@@ -47,4 +55,5 @@ class EmbeddedPaymentElementController extends ChangeNotifier {
 abstract class EmbeddedPaymentElementContext {
   Future<Map<String, dynamic>?> confirm();
   Future<void> clearPaymentOption();
+  Future<void> disposeView();
 }

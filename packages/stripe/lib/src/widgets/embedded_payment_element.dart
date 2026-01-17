@@ -111,6 +111,7 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
 
   MethodChannel? _methodChannel;
   double _currentHeight = 0;
+  bool _showPlatformView = true;
 
   @override
   void initState() {
@@ -154,6 +155,14 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
   @override
   Future<void> clearPaymentOption() async {
     await _methodChannel?.invokeMethod('clearPaymentOption');
+  }
+
+  @override
+  Future<void> disposeView() async {
+    if (!_showPlatformView || !mounted) return;
+    setState(() => _showPlatformView = false);
+    await WidgetsBinding.instance.endOfFrame;
+    _methodChannel = null;
   }
 
   void _onPlatformViewCreated(int viewId) {
@@ -258,6 +267,8 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
 
   @override
   Widget build(BuildContext context) {
+    if (!_showPlatformView) return const SizedBox.shrink();
+
     final creationParams = <String, dynamic>{
       'intentConfiguration': widget.intentConfiguration.toJson(),
       'configuration': widget.configuration.toJson(),
