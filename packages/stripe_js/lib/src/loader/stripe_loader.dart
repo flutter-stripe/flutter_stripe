@@ -9,16 +9,17 @@ Future<void> _injectSrcScript(String src, String windowVar) async {
   Completer completer = Completer();
 
   // Create callback function that will be called when script loads
-  globalContext['ff_trigger_$windowVar'] = ((JSAny? _) {
+  void onLoadCallback(JSAny? _) {
     completer.complete();
-  }).toJS;
+  }
+  globalContext['ff_trigger_$windowVar'] = (onLoadCallback).toJS;
 
   // Create and inject the script tag
   HTMLScriptElement script = HTMLScriptElement();
   script.type = 'text/javascript';
   script.src = src;
   script.crossOrigin = 'anonymous';
-  script.onload = ((_) {
+  script.onload = ((JSAny? _) {
     if (globalContext[windowVar] != null) {
       globalContext.callMethod('ff_trigger_$windowVar'.toJS);
     }
