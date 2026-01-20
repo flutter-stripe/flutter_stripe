@@ -3,8 +3,6 @@ import 'dart:js_interop';
 import 'package:web/web.dart';
 import 'dart:js_interop_unsafe';
 
-const String _version = "v3";
-
 /// Injects a `script` with a `src` dynamically into the head of the current
 /// document.
 Future<void> _injectSrcScript(String src, String windowVar) async {
@@ -43,5 +41,5 @@ Future<void> loadStripe() async {
     return;
   }
 
-  return _injectSrcScript('https://js.stripe.com/v3/', 'stripe_$_version');
+  return _injectSrcScript('https://js.stripe.com/v3/', 'Stripe');
 }
