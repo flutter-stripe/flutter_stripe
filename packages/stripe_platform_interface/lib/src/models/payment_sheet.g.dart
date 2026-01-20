@@ -303,6 +303,11 @@ _PaymentSheetAppearance _$PaymentSheetAppearanceFromJson(
       : EdgeInsetsConfig.fromJson(
           json['formInsetValues'] as Map<String, dynamic>,
         ),
+  applyLiquidGlass: json['applyLiquidGlass'] as bool?,
+  navigationBarStyle: $enumDecodeNullable(
+    _$NavigationBarStyleEnumMap,
+    json['navigationBarStyle'],
+  ),
 );
 
 Map<String, dynamic> _$PaymentSheetAppearanceToJson(
@@ -313,6 +318,14 @@ Map<String, dynamic> _$PaymentSheetAppearanceToJson(
   'primaryButton': instance.primaryButton?.toJson(),
   'embeddedPaymentElement': instance.embeddedPaymentElement?.toJson(),
   'formInsetValues': instance.formInsetValues?.toJson(),
+  'applyLiquidGlass': instance.applyLiquidGlass,
+  'navigationBarStyle':
+      _$NavigationBarStyleEnumMap[instance.navigationBarStyle],
+};
+
+const _$NavigationBarStyleEnumMap = {
+  NavigationBarStyle.Plain: 'Plain',
+  NavigationBarStyle.Glass: 'Glass',
 };
 
 _PaymentSheetAppearanceColors _$PaymentSheetAppearanceColorsFromJson(

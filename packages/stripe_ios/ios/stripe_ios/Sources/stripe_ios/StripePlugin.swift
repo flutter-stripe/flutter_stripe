@@ -173,6 +173,39 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
                 resolver: resolver(for: result),
                 rejecter: rejecter(for: result)
             )
+        case "clientSecretProviderSetupIntentClientSecretCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+            let setupIntentClientSecret = arguments["setupIntentClientSecret"] as? String else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return clientSecretProviderSetupIntentClientSecretCallback(
+                setupIntentClientSecret: setupIntentClientSecret,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "confirmationTokenCreationCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+                  let res = arguments["result"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return confirmationTokenCreationCallback(
+                result: res,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "clientSecretProviderCustomerSessionClientSecretCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+                  let customerSessionClientSecretDict = arguments["customerSessionClientSecretJson"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return clientSecretProviderCustomerSessionClientSecretCallback(
+                customerSessionClientSecretDict: customerSessionClientSecretDict,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
         case "retrieveCustomerSheetPaymentOptionSelection":
             return retrieveCustomerSheetPaymentOptionSelection(
                 resolver: resolver(for: result),
@@ -293,6 +326,18 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
 }
 
 extension StripePlugin: StripeSdkEmitter {
+    func emitOnConfirmationTokenHandlerCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onConfirmationTokenHandlerCallback", body: value)
+    }
+    
+    func emitOnCustomerSessionProviderSetupIntentClientSecret() {
+        self.sendEvent(withName: "onCustomerSessionProviderSetupIntentClientSecret", body: [:])
+    }
+    
+    func emitOnCustomerSessionProviderCustomerSessionClientSecret() {
+        self.sendEvent(withName: "onCustomerSessionProviderCustomerSessionClientSecret", body: [:])
+    }
+    
     func emitOnCustomPaymentMethodConfirmHandlerCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onCustomPaymentMethodConfirmHandlerCallback", body: value)
     }
@@ -807,4 +852,12 @@ extension  StripePlugin {
         cardFieldView?.dangerouslyUpdateCardDetails(params: params)
         result(nil)
     }
+}
+
+func RCTKeyWindow() -> UIWindow? {
+    return UIApplication.shared
+        .connectedScenes
+        .compactMap { $0 as? UIWindowScene }
+        .flatMap { $0.windows }
+        .first { $0.isKeyWindow }
 }

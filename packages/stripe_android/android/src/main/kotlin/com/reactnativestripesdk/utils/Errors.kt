@@ -1,7 +1,7 @@
 package com.reactnativestripesdk.utils
 
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.WritableMap
-import com.facebook.react.bridge.WritableNativeMap
 import com.stripe.android.core.exception.APIException
 import com.stripe.android.core.exception.AuthenticationException
 import com.stripe.android.core.exception.InvalidRequestException
@@ -66,8 +66,8 @@ internal fun mapError(
   type: String?,
   stripeErrorCode: String?,
 ): WritableMap {
-  val map: WritableMap = WritableNativeMap()
-  val details: WritableMap = WritableNativeMap()
+  val map: WritableMap = Arguments.createMap()
+  val details: WritableMap = Arguments.createMap()
   details.putString("code", code)
   details.putString("message", message)
   details.putString("localizedMessage", localizedMessage)
@@ -178,8 +178,18 @@ internal fun createError(
   return mapError(code, error.message, error.localizedMessage, null, null, null)
 }
 
+internal fun createCanceledError(message: String? = null): WritableMap = createError(ErrorType.Canceled.toString(), message)
+
+internal fun createFailedError(error: Throwable): WritableMap = createError(ErrorType.Failed.toString(), error)
+
 internal fun createMissingInitError(): WritableMap =
   createError(
     ErrorType.Failed.toString(),
     "Stripe has not been initialized. Initialize Stripe in your app with the StripeProvider component or the initStripe method.",
+  )
+
+internal fun createOnrampNotConfiguredError(): WritableMap =
+  createError(
+    ErrorType.Failed.toString(),
+    "Onramp is not configured.",
   )

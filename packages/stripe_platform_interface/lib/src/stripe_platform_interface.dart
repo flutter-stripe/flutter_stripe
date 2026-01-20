@@ -194,6 +194,11 @@ abstract class StripePlatform extends PlatformInterface {
   /// or not successfull when using a defferred payment method.
   Future<void> intentCreationCallback(IntentCreationCallbackParams params);
 
+  /// Method Called when the customer confirms payment using confirmation tokens.
+  Future<void> confirmationTokenCreationCallback(
+    IntentCreationCallbackParams params,
+  );
+
   Widget buildCard({
     Key? key,
     required CardEditController controller,

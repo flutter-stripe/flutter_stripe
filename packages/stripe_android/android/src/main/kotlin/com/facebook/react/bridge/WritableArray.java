@@ -42,7 +42,7 @@ public class WritableArray extends ReadableArray {
         add(value);
     }
 
-    public void pushArray(@NotNull WritableArray toWritableArray) {
+    public void pushArray(@NotNull ReadableArray toWritableArray) {
         add(toWritableArray);
     }
 }

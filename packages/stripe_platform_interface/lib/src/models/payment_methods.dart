@@ -267,7 +267,6 @@ enum PaymentMethodType {
   SepaDebit,
   AuBecsDebit,
   BacsDebit,
-  Giropay,
   P24,
   Eps,
   Bancontact,
@@ -349,14 +348,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsBankContact;
 
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('Giropay')
-  /// Config parameters for giropay payment method.
-  const factory PaymentMethodParams.giroPay({
-    /// Paymentmethod data for this paymentmethod.
-    required PaymentMethodData paymentMethodData,
-  }) = _PaymentMethodParamsGiroPay;
-
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Eps')
   /// Config parameters for eps payment method.
   const factory PaymentMethodParams.eps({
@@ -434,11 +425,19 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('RevolutPay')
-  /// Paypal is in private beta make sure to request access at Stripe to try it out.
+  /// RevolutPay params.
   const factory PaymentMethodParams.revolutPay({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsRevolutPay;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Alma')
+  /// Alma params.
+  const factory PaymentMethodParams.alma({
+    /// Paymentmethod data for this paymentmethod.
+    required PaymentMethodData paymentMethodData,
+  }) = _PaymentMethodParamsAlmaPay;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('USBankAccount')
