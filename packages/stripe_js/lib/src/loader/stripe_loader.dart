@@ -12,7 +12,8 @@ Future<void> _injectSrcScript(String src, String windowVar) async {
   script.text =
       '''
       window.ff_trigger_$windowVar = async (callback) => {
-        callback(await import("$src"));
+        const module = await import("$src");
+        callback(module.default || module);
       };
     ''';
 
