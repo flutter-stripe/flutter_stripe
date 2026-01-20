@@ -12,6 +12,7 @@ Future<void> _injectSrcScript(String src, String windowVar) async {
   void onLoadCallback(JSAny? _) {
     completer.complete();
   }
+
   globalContext['ff_trigger_$windowVar'] = (onLoadCallback).toJS;
 
   // Create and inject the script tag
