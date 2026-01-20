@@ -6,31 +6,29 @@ import 'dart:js_interop_unsafe';
 /// Injects a `script` with a `src` dynamically into the head of the current
 /// document.
 Future<void> _injectSrcScript(String src, String windowVar) async {
+  Completer completer = Completer();
+
+  // Create callback function that will be called when script loads
+  globalContext['ff_trigger_$windowVar'] = ((JSAny? _) {
+    completer.complete();
+  }).toJS;
+
+  // Create and inject the script tag
   HTMLScriptElement script = HTMLScriptElement();
   script.type = 'text/javascript';
+  script.src = src;
   script.crossOrigin = 'anonymous';
-  script.text =
-      '''
-      window.ff_trigger_$windowVar = async (callback) => {
-        const module = await import("$src");
-        callback(module.default || module);
-      };
-    ''';
+  script.onload = ((_) {
+    if (globalContext[windowVar] != null) {
+      globalContext.callMethod('ff_trigger_$windowVar'.toJS);
+    }
+  }).toJS;
 
   assert(document.head != null);
   document.head!.append(script);
-  Completer completer = Completer();
-
-  globalContext.callMethod(
-    'ff_trigger_$windowVar'.toJS,
-    ((JSAny? module) {
-      globalContext[windowVar] = module;
-      globalContext.delete('ff_trigger_$windowVar'.toJS);
-      completer.complete();
-    }).toJS,
-  );
 
   await completer.future;
+  globalContext.delete('ff_trigger_$windowVar'.toJS);
 }
 
 // Initializes the Stripe JS SDKs by injecting them into the `head` of the
