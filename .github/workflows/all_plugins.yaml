@@ -172,9 +172,12 @@ jobs:
       with:
         api-level: 34
         arch: x86_64
-        emulator-boot-timeout: 1400
+        emulator-boot-timeout: 1800
+        force-avd-creation: false
+        emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+        disable-animations: true
         working-directory: example
-        script: | 
+        script: |
           sleep 15;
           flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart;
           cd android && ./gradlew :app:connectedDebugAndroidTest;
