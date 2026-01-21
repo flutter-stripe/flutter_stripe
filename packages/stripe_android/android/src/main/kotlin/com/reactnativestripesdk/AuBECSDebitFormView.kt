@@ -2,14 +2,15 @@ package com.reactnativestripesdk
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.widget.FrameLayout
+import androidx.core.graphics.toColorInt
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.UIManagerHelper
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
+import com.reactnativestripesdk.utils.getIntOr
 import com.reactnativestripesdk.utils.getIntOrNull
 import com.reactnativestripesdk.utils.getValOr
 import com.stripe.android.databinding.StripeBecsDebitWidgetBinding
@@ -41,31 +42,34 @@ class AuBECSDebitFormView(
     val textColor = getValOr(value, "textColor", null)
     val textErrorColor = getValOr(value, "textErrorColor", null)
     val placeholderColor = getValOr(value, "placeholderColor", null)
-    val fontSize = getIntOrNull(value, "fontSize")
-    val borderWidth = getIntOrNull(value, "borderWidth")
+    val fontSize = value.getIntOrNull("fontSize")
+    val borderWidth = value.getIntOrNull("borderWidth")
     val backgroundColor = getValOr(value, "backgroundColor", null)
     val borderColor = getValOr(value, "borderColor", null)
-    val borderRadius = getIntOrNull(value, "borderRadius") ?: 0
+    val borderRadius = value.getIntOr("borderRadius", 0)
 
     textColor?.let {
-      (binding.accountNumberEditText as StripeEditText).setTextColor(Color.parseColor(it))
-      (binding.bsbEditText as StripeEditText).setTextColor(Color.parseColor(it))
-      (binding.emailEditText as StripeEditText).setTextColor(Color.parseColor(it))
-      (binding.nameEditText).setTextColor(Color.parseColor(it))
+      val color = it.toColorInt()
+      (binding.accountNumberEditText as StripeEditText).setTextColor(color)
+      (binding.bsbEditText as StripeEditText).setTextColor(color)
+      (binding.emailEditText as StripeEditText).setTextColor(color)
+      (binding.nameEditText).setTextColor(color)
     }
 
     textErrorColor?.let {
-      (binding.accountNumberEditText as StripeEditText).setErrorColor(Color.parseColor(it))
-      (binding.bsbEditText as StripeEditText).setErrorColor(Color.parseColor(it))
-      (binding.emailEditText as StripeEditText).setErrorColor(Color.parseColor(it))
-      (binding.nameEditText).setErrorColor(Color.parseColor(it))
+      val color = it.toColorInt()
+      (binding.accountNumberEditText as StripeEditText).setErrorColor(color)
+      (binding.bsbEditText as StripeEditText).setErrorColor(color)
+      (binding.emailEditText as StripeEditText).setErrorColor(color)
+      (binding.nameEditText).setErrorColor(color)
     }
 
     placeholderColor?.let {
-      (binding.accountNumberEditText as StripeEditText).setHintTextColor(Color.parseColor(it))
-      (binding.bsbEditText as StripeEditText).setHintTextColor(Color.parseColor(it))
-      (binding.emailEditText as StripeEditText).setHintTextColor(Color.parseColor(it))
-      (binding.nameEditText).setHintTextColor(Color.parseColor(it))
+      val color = it.toColorInt()
+      (binding.accountNumberEditText as StripeEditText).setHintTextColor(color)
+      (binding.bsbEditText as StripeEditText).setHintTextColor(color)
+      (binding.emailEditText as StripeEditText).setHintTextColor(color)
+      (binding.nameEditText).setHintTextColor(color)
     }
 
     fontSize?.let {
@@ -83,12 +87,12 @@ class AuBECSDebitFormView(
           .build(),
       ).also { shape ->
         shape.strokeWidth = 0.0f
-        shape.strokeColor = ColorStateList.valueOf(Color.parseColor("#000000"))
-        shape.fillColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+        shape.strokeColor = ColorStateList.valueOf("#000000".toColorInt())
+        shape.fillColor = ColorStateList.valueOf("#FFFFFF".toColorInt())
         borderWidth?.let { shape.strokeWidth = (it * 2).toFloat() }
-        borderColor?.let { shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it)) }
+        borderColor?.let { shape.strokeColor = ColorStateList.valueOf(it.toColorInt()) }
         backgroundColor?.let {
-          shape.fillColor = ColorStateList.valueOf(Color.parseColor(it))
+          shape.fillColor = ColorStateList.valueOf(it.toColorInt())
         }
       }
   }

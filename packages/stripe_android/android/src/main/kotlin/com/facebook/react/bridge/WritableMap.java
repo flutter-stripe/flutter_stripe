@@ -32,6 +32,10 @@ public class WritableMap extends ReadableMap {
         put(key, value);
     }
 
+    public void putLong(String key, Long value) {
+        put(key, value);
+    }
+
     public void putMap(String key, WritableMap map) {
         put(key, map);
     }
@@ -58,5 +62,11 @@ public class WritableMap extends ReadableMap {
 
     public void putNull(@NotNull String key) {
         put(key, null);
+    }
+
+    public void merge(ReadableMap source) {
+        for (String key : source.keySet()) {
+            this.put(key, source.get(key));
+        }
     }
 }

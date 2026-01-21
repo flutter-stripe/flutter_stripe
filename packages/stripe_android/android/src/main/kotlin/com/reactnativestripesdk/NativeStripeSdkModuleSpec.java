@@ -45,78 +45,18 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
     return NAME;
   }
 
-  private void invoke(String eventName, ReadableMap params) {
+  private void invoke(String eventName, Object params) {
     getReactApplicationContext()
       .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
       .emit(eventName, params);
   }
 
+  public void invalidate() {
+
+  }
+
   private void invoke(String eventName) {
     invoke(eventName, null);
-  }
-
-  protected final void emitOnConfirmHandlerCallback(ReadableMap value) {
-    invoke("onConfirmHandlerCallback", value);
-  }
-
-  protected final void emitOnFinancialConnectionsEvent(ReadableMap value) {
-    invoke("onFinancialConnectionsEvent", value);
-  }
-
-  protected final void emitOnOrderTrackingCallback() {
-    invoke("onOrderTrackingCallback");
-  }
-
-  protected final void emitOnCustomerAdapterFetchPaymentMethodsCallback() {
-    invoke("onCustomerAdapterFetchPaymentMethodsCallback");
-  }
-
-  protected final void emitOnCustomerAdapterAttachPaymentMethodCallback(ReadableMap value) {
-    invoke("onCustomerAdapterAttachPaymentMethodCallback", value);
-  }
-
-  protected final void emitOnCustomerAdapterDetachPaymentMethodCallback(ReadableMap value) {
-    invoke("onCustomerAdapterDetachPaymentMethodCallback", value);
-  }
-
-  protected final void emitOnCustomerAdapterSetSelectedPaymentOptionCallback(ReadableMap value) {
-    invoke("onCustomerAdapterSetSelectedPaymentOptionCallback", value);
-  }
-
-  protected final void emitOnCustomerAdapterFetchSelectedPaymentOptionCallback() {
-    invoke("onCustomerAdapterFetchSelectedPaymentOptionCallback");
-  }
-
-  protected final void emitOnCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback() {
-    invoke("onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback");
-  }
-
-  protected final void emitEmbeddedPaymentElementDidUpdateHeight(ReadableMap value) {
-    invoke("embeddedPaymentElementDidUpdateHeight", value);
-  }
-
-  protected final void emitEmbeddedPaymentElementWillPresent() {
-    invoke("embeddedPaymentElementWillPresent");
-  }
-
-  protected final void emitEmbeddedPaymentElementDidUpdatePaymentOption(ReadableMap value) {
-    invoke("embeddedPaymentElementDidUpdatePaymentOption", value);
-  }
-
-  protected final void emitEmbeddedPaymentElementFormSheetConfirmComplete(ReadableMap value) {
-    invoke("embeddedPaymentElementFormSheetConfirmComplete", value);
-  }
-
-  protected final void emitEmbeddedPaymentElementRowSelectionImmediateAction() {
-    invoke("embeddedPaymentElementRowSelectionImmediateAction");
-  }
-
-  protected final void emitEmbeddedPaymentElementLoadingFailed(ReadableMap value) {
-    invoke("embeddedPaymentElementLoadingFailed", value);
-  }
-
-  protected final void emitOnCustomPaymentMethodConfirmHandlerCallback(ReadableMap value) {
-    invoke("onCustomPaymentMethodConfirmHandlerCallback", value);
   }
 
   @ReactMethod
@@ -158,6 +98,10 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
   @ReactMethod
   @DoNotStrip
   public abstract void intentCreationCallback(ReadableMap result, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void confirmationTokenCreationCallback(ReadableMap result, Promise promise);
 
   @ReactMethod
   @DoNotStrip
@@ -303,6 +247,14 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
 
   @ReactMethod
   @DoNotStrip
+  public abstract void clientSecretProviderSetupIntentClientSecretCallback(String setupIntentClientSecret, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void clientSecretProviderCustomerSessionClientSecretCallback(ReadableMap customerSessionClientSecret, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
   public abstract void createEmbeddedPaymentElement(ReadableMap intentConfig, ReadableMap configuration, Promise promise);
 
   @ReactMethod
@@ -316,4 +268,20 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
   @ReactMethod
   @DoNotStrip
   public abstract void clearEmbeddedPaymentOption(double viewTag, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void setFinancialConnectionsForceNativeFlow(boolean enabled, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void openAuthenticatedWebView(String id, String url, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void addListener(String eventType);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void removeListeners(double count);
 }

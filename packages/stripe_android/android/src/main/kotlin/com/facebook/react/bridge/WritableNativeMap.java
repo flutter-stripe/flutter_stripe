@@ -21,4 +21,13 @@ public class WritableNativeMap extends WritableMap {
     public WritableNativeMap() {
         super(new HashMap<>());
     }
+
+    public void merge(ReadableMap source) {
+        if (source == null) {
+            return;
+        }
+        for (String key : source.keySet()) {
+            put(key, source.get(key));
+        }
+    }
 }

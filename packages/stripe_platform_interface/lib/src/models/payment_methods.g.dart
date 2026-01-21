@@ -337,22 +337,6 @@ Map<String, dynamic> _$PaymentMethodParamsBankContactToJson(
   'paymentMethodType': instance.$type,
 };
 
-_PaymentMethodParamsGiroPay _$PaymentMethodParamsGiroPayFromJson(
-  Map<String, dynamic> json,
-) => _PaymentMethodParamsGiroPay(
-  paymentMethodData: PaymentMethodData.fromJson(
-    json['paymentMethodData'] as Map<String, dynamic>,
-  ),
-  $type: json['paymentMethodType'] as String?,
-);
-
-Map<String, dynamic> _$PaymentMethodParamsGiroPayToJson(
-  _PaymentMethodParamsGiroPay instance,
-) => <String, dynamic>{
-  'paymentMethodData': instance.paymentMethodData.toJson(),
-  'paymentMethodType': instance.$type,
-};
-
 _PaymentMethodParamsEps _$PaymentMethodParamsEpsFromJson(
   Map<String, dynamic> json,
 ) => _PaymentMethodParamsEps(
@@ -529,6 +513,22 @@ Map<String, dynamic> _$PaymentMethodParamsRevolutPayToJson(
   'paymentMethodType': instance.$type,
 };
 
+_PaymentMethodParamsAlmaPay _$PaymentMethodParamsAlmaPayFromJson(
+  Map<String, dynamic> json,
+) => _PaymentMethodParamsAlmaPay(
+  paymentMethodData: PaymentMethodData.fromJson(
+    json['paymentMethodData'] as Map<String, dynamic>,
+  ),
+  $type: json['paymentMethodType'] as String?,
+);
+
+Map<String, dynamic> _$PaymentMethodParamsAlmaPayToJson(
+  _PaymentMethodParamsAlmaPay instance,
+) => <String, dynamic>{
+  'paymentMethodData': instance.paymentMethodData.toJson(),
+  'paymentMethodType': instance.$type,
+};
+
 _PaymentMethodParamsUsBankAccount _$PaymentMethodParamsUsBankAccountFromJson(
   Map<String, dynamic> json,
 ) => _PaymentMethodParamsUsBankAccount(
@@ -545,13 +545,21 @@ Map<String, dynamic> _$PaymentMethodParamsUsBankAccountToJson(
   'paymentMethodType': instance.$type,
 };
 
-_PaymentMethodParamsElements _$PaymentMethodParamsElementsFromJson(
+_PaymentMethodParamsBillie _$PaymentMethodParamsBillieFromJson(
   Map<String, dynamic> json,
-) => _PaymentMethodParamsElements($type: json['paymentMethodType'] as String?);
+) => _PaymentMethodParamsBillie(
+  paymentMethodData: PaymentMethodData.fromJson(
+    json['paymentMethodData'] as Map<String, dynamic>,
+  ),
+  $type: json['paymentMethodType'] as String?,
+);
 
-Map<String, dynamic> _$PaymentMethodParamsElementsToJson(
-  _PaymentMethodParamsElements instance,
-) => <String, dynamic>{'paymentMethodType': instance.$type};
+Map<String, dynamic> _$PaymentMethodParamsBillieToJson(
+  _PaymentMethodParamsBillie instance,
+) => <String, dynamic>{
+  'paymentMethodData': instance.paymentMethodData.toJson(),
+  'paymentMethodType': instance.$type,
+};
 
 _PaymentMethodData _$PaymentMethodDataFromJson(Map<String, dynamic> json) =>
     _PaymentMethodData(

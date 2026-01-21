@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/color.dart';
+import 'package:stripe_platform_interface/src/models/confirmation_token.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 part 'payment_sheet.freezed.dart';
@@ -145,6 +146,10 @@ abstract class IntentConfiguration with _$IntentConfiguration {
     @JsonKey(includeFromJson: false, includeToJson: false)
     ConfirmHandler? confirmHandler,
 
+    /// Called when the customer confirms token payment. 
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    ConfirmTokenHandler? confirmTokenHandler,
+
     /// Confirm handler
   }) = _IntentConfiguration;
 
@@ -261,6 +266,16 @@ abstract class PaymentSheetAppearance with _$PaymentSheetAppearance {
 
     /// Describes the inset values applied to Mobile Payment Element forms
     EdgeInsetsConfig? formInsetValues,
+
+    /// Setting this boolean to `true` will call the iOS applyLiquidGlass() method
+    /// (https://stripe.dev/stripe-ios/stripepaymentsheet/documentation/stripepaymentsheet/paymentsheet/appearance/applyliquidglass())
+    /// on the Appearance object prior to applying other appearance customizations set on AppearanceParams.
+    /// Requires iOS26 and Xcode 26, and will be ignored if these requirements are not met.
+    /// @default false
+    bool? applyLiquidGlass,
+
+    /// Describes the navigation bar style (iOS only)
+    NavigationBarStyle? navigationBarStyle,
   }) = _PaymentSheetAppearance;
 
   factory PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
@@ -443,6 +458,14 @@ abstract class PaymentSheetPrimaryButtonThemeColors
     /// Primary button border color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
     Color? border,
+
+    /// The background color of the primary button when in a success state.
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    Color? successBackgroundColor,
+
+    /// The text color of the primary button when in a success state. Supports both single color strings and light/dark color objects.
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    Color? successTextColor,
   }) = _PaymentSheetPrimaryButtonThemeColors;
 
   factory PaymentSheetPrimaryButtonThemeColors.fromJson(
@@ -587,6 +610,14 @@ enum AddressCollectionMode {
   full,
 }
 
+enum NavigationBarStyle {
+  /// Default style
+  Plain,
+
+  /// Style to match iOS 26 Liquid Glass. Requires: iOS26 and Xcode 26, and will be ignored if these requirements are not met. */
+  Glass,
+}
+
 /// The type of payment method to attach to a Customer.
 enum IntentFutureUsage {
   /// The payment method will be used for future off-session payments.
@@ -598,6 +629,8 @@ enum IntentFutureUsage {
 
 typedef ConfirmHandler =
     void Function(PaymentMethod result, bool shouldSavePaymentMethod);
+
+typedef ConfirmTokenHandler = void Function(ConfirmationTokenResult result);
 
 List<int> _cardBrandListToJson(List<CardBrand>? list) {
   if (list == null) {
@@ -706,9 +739,9 @@ enum RowStyle {
   /// A flat style with a checkmark
   flatWithCheckmark,
 
-  /// A flat style with a chevron
+  /// A flat style with a disclosure
   /// Note that the EmbeddedPaymentElementConfiguration.rowSelectionBehavior must be set to `immediateAction` to use this style.
-  flatWithChevron,
+  flatWithDisclosure,
 }
 
 /// Describes the appearance of the radio button
@@ -743,17 +776,17 @@ abstract class CheckmarkConfig with _$CheckmarkConfig {
       _$CheckmarkConfigFromJson(json);
 }
 
-/// Describes the appearance of the chevron
+/// Describes the appearance of the disclosure indicator
 @freezed
-abstract class ChevronConfig with _$ChevronConfig {
-  const factory ChevronConfig({
-    /// The color of the chevron, represented as a hex string #AARRGGBB or #RRGGBB.
+abstract class DisclosureConfig with _$DisclosureConfig {
+  const factory DisclosureConfig({
+    /// The color of the disclosure indicator, represented as a hex string #AARRGGBB or #RRGGBB.
     /// @default The iOS or Android system gray color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? color,
-  }) = _ChevronConfig;
+  }) = _DisclosureConfig;
 
-  factory ChevronConfig.fromJson(Map<String, Object?> json) =>
-      _$ChevronConfigFromJson(json);
+  factory DisclosureConfig.fromJson(Map<String, Object?> json) =>
+      _$DisclosureConfigFromJson(json);
 }
 
 /// Describes the appearance of the flat style row
@@ -771,7 +804,7 @@ abstract class FlatConfig with _$FlatConfig {
 
     /// The insets of the separator line between rows.
     /// @default { top: 0, left: 30, bottom: 0, right: 0 } for RowStyle.FlatWithRadio
-    /// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithChevron, and RowStyle.FloatingButton
+    /// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithDisclosuse, and RowStyle.FloatingButton
     EdgeInsetsConfig? separatorInsets,
 
     /// Determines if the top separator is visible at the top of the Element.
@@ -788,8 +821,8 @@ abstract class FlatConfig with _$FlatConfig {
     /// Appearance settings for the checkmark (used when RowStyle is FlatWithCheckmark)
     CheckmarkConfig? checkmark,
 
-    /// Appearance settings for the chevron (used when RowStyle is FlatWithChevron)
-    ChevronConfig? chevron,
+    /// Appearance settings for the disclosure indicator (used when RowStyle is FlatWithDisclosure)
+    DisclosureConfig? disclosure,
   }) = _FlatConfig;
 
   factory FlatConfig.fromJson(Map<String, Object?> json) =>

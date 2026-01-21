@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/ach_params.dart';
+import 'package:stripe_platform_interface/src/models/confirmation_token.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/customer_sheet.dart';
 import 'package:stripe_platform_interface/src/models/financial_connections.dart';
@@ -43,6 +44,7 @@ class MethodChannelStripe extends StripePlatform {
   final bool _platformIsIos;
   final bool _platformIsAndroid;
   ConfirmHandler? _confirmHandler;
+  ConfirmTokenHandler? _confirmTokenHandler;
   ConfirmCustomPaymentMethodCallback? _confirmCustomPaymentMethodCallback;
   FinancialConnectionsEventHandler? _financialConnectionsEventHandler;
 
@@ -54,6 +56,7 @@ class MethodChannelStripe extends StripePlatform {
     String? merchantIdentifier,
     String? urlScheme,
     bool? setReturnUrlSchemeOnAndroid,
+    String? locale,
   }) async {
     await _methodChannel.invokeMethod('initialise', {
       'publishableKey': publishableKey,
@@ -63,6 +66,7 @@ class MethodChannelStripe extends StripePlatform {
       'threeDSecureParams': threeDSecureParams,
       'urlScheme': urlScheme,
       'setReturnUrlSchemeOnAndroid': setReturnUrlSchemeOnAndroid,
+      'locale': locale,
     });
 
     _methodChannel.setMethodCallHandler((call) async {
@@ -75,6 +79,12 @@ class MethodChannelStripe extends StripePlatform {
           method,
           call.arguments['shouldSavePaymentMethod'] as bool,
         );
+      } else if (call.method == 'onConfirmationTokenHandlerCallback' &&
+          _confirmTokenHandler != null) {
+        final method = ResultParser<ConfirmationTokenResult>(
+          parseJson: (json) => ConfirmationTokenResult.fromJson(json),
+        ).parse(result: call.arguments!, successResultKey: 'paymentMethod');
+        _confirmTokenHandler!(method);
       } else if (call.method == 'onCustomPaymentMethodConfirmHandlerCallback' &&
           _confirmCustomPaymentMethodCallback != null) {
         final method =
@@ -251,6 +261,9 @@ class MethodChannelStripe extends StripePlatform {
     if (params.intentConfiguration?.confirmHandler != null) {
       _confirmHandler = params.intentConfiguration?.confirmHandler;
     }
+    if (params.intentConfiguration?.confirmTokenHandler != null) {
+      _confirmTokenHandler = params.intentConfiguration?.confirmTokenHandler;
+    }
     if (params
             .customPaymentMethodConfiguration
             ?.confirmCustomPaymentMethodCallback !=
@@ -299,18 +312,47 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<CustomerSheetResult?> initCustomerSheet(
+  Future<void> initCustomerSheet(
     CustomerSheetInitParams params,
   ) async {
+    // Convert deprecated constructor to adapter variant for native SDK compatibility
+    final normalizedParams = params.map(
+      (deprecated) => CustomerSheetInitParams.adapter(
+        setupIntentClientSecret: deprecated.setupIntentClientSecret,
+        customerId: deprecated.customerId,
+        intentConfiguration: null,
+        customerEphemeralKeySecret: deprecated.customerEphemeralKeySecret,
+        style: deprecated.style,
+        appearance: deprecated.appearance,
+        merchantDisplayName: deprecated.merchantDisplayName,
+        allowsRemovalOfLastSavedPaymentMethod:
+            deprecated.allowsRemovalOfLastSavedPaymentMethod,
+        headerTextForSelectionScreen: deprecated.headerTextForSelectionScreen,
+        defaultBillingDetails: deprecated.defaultBillingDetails,
+        billingDetailsCollectionConfiguration:
+            deprecated.billingDetailsCollectionConfiguration,
+        returnURL: deprecated.returnURL,
+        removeSavedPaymentMethodMessage:
+            deprecated.removeSavedPaymentMethodMessage,
+        applePayEnabled: deprecated.applePayEnabled,
+        googlePayEnabled: deprecated.googlePayEnabled,
+        preferredNetworks: deprecated.preferredNetworks,
+        cardBrandAcceptance: deprecated.cardBrandAcceptance,
+      ),
+      adapter: (adapter) => adapter,
+      session: (session) => session,
+    );
+
     final result = await _methodChannel.invokeMethod('initCustomerSheet', {
-      'params': params.toJson(),
+      'params': normalizedParams.toJson(),
       'customerAdapterOverrides': {},
     });
 
-    if (result is List) {
-      return null;
-    } else {
-      return _parseCustomerSheetResult(result);
+    // iOS returns empty array [], Android returns empty map {} on success
+    // Only check for errors
+    if (result is Map<String, dynamic> && result['error'] != null) {
+      result['runtimeType'] = 'failed';
+      throw StripeException.fromJson(result);
     }
   }
 
@@ -618,17 +660,23 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<FinancialConnectionTokenResult> collectBankAccountToken({
     required String clientSecret,
-    CollectBankAccountTokenParams? params,
+    required CollectBankAccountTokenParams params,
   }) async {
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
       'collectBankAccountToken',
-      {'clientSecret': clientSecret, 'params': params?.toJson()},
+      {'clientSecret': clientSecret, 'params': params.toJson()},
     );
 
-    _financialConnectionsEventHandler = params?.onEvent;
+    _financialConnectionsEventHandler = params.onEvent;
 
     if (result!.containsKey('error')) {
       throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
+    }
+
+    // workaround for fact that created is parsed as string from Stripe android
+    final created = result['token']['created'];
+    if (created != null && created is String) {
+      result['token']['created'] = int.tryParse(created);
     }
 
     return FinancialConnectionTokenResult.fromJson(result);
@@ -721,6 +769,15 @@ class MethodChannelStripe extends StripePlatform {
     IntentCreationCallbackParams params,
   ) async {
     await _methodChannel.invokeMethod('intentCreationCallback', {
+      'params': params.toJson(),
+    });
+  }
+
+  @override
+  Future<void> confirmationTokenCreationCallback(
+    IntentCreationCallbackParams params,
+  ) async {
+    await _methodChannel.invokeMethod('confirmationTokenCreationCallback', {
       'params': params.toJson(),
     });
   }

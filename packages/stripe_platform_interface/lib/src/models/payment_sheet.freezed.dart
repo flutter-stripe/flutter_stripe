@@ -717,7 +717,8 @@ mixin _$IntentConfiguration {
 /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
  List<String>? get paymentMethodTypes;/// Called when the customer confirms payment. Your implementation should create
 /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
-@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? get confirmHandler;
+@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? get confirmHandler;/// Called when the customer confirms token payment. 
+@JsonKey(includeFromJson: false, includeToJson: false) ConfirmTokenHandler? get confirmTokenHandler;
 /// Create a copy of IntentConfiguration
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -730,16 +731,16 @@ $IntentConfigurationCopyWith<IntentConfiguration> get copyWith => _$IntentConfig
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, paymentMethodTypes)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, paymentMethodTypes)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(paymentMethodTypes),confirmHandler);
+int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(paymentMethodTypes),confirmHandler,confirmTokenHandler);
 
 @override
 String toString() {
-  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, confirmHandler: $confirmHandler)';
+  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
 }
 
 
@@ -750,7 +751,7 @@ abstract mixin class $IntentConfigurationCopyWith<$Res>  {
   factory $IntentConfigurationCopyWith(IntentConfiguration value, $Res Function(IntentConfiguration) _then) = _$IntentConfigurationCopyWithImpl;
 @useResult
 $Res call({
- IntentMode mode, List<String>? paymentMethodTypes,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? confirmHandler
+ IntentMode mode, List<String>? paymentMethodTypes,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? confirmHandler,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmTokenHandler? confirmTokenHandler
 });
 
 
@@ -767,12 +768,13 @@ class _$IntentConfigurationCopyWithImpl<$Res>
 
 /// Create a copy of IntentConfiguration
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? confirmHandler = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? confirmHandler = freezed,Object? confirmTokenHandler = freezed,}) {
   return _then(_self.copyWith(
 mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
 as IntentMode,paymentMethodTypes: freezed == paymentMethodTypes ? _self.paymentMethodTypes : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
 as List<String>?,confirmHandler: freezed == confirmHandler ? _self.confirmHandler : confirmHandler // ignore: cast_nullable_to_non_nullable
-as ConfirmHandler?,
+as ConfirmHandler?,confirmTokenHandler: freezed == confirmTokenHandler ? _self.confirmTokenHandler : confirmTokenHandler // ignore: cast_nullable_to_non_nullable
+as ConfirmTokenHandler?,
   ));
 }
 /// Create a copy of IntentConfiguration
@@ -866,10 +868,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntentConfiguration() when $default != null:
-return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler);case _:
+return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.confirmTokenHandler);case _:
   return orElse();
 
 }
@@ -887,10 +889,10 @@ return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)  $default,) {final _that = this;
 switch (_that) {
 case _IntentConfiguration():
-return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler);case _:
+return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.confirmTokenHandler);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -907,10 +909,10 @@ return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)?  $default,) {final _that = this;
 switch (_that) {
 case _IntentConfiguration() when $default != null:
-return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler);case _:
+return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.confirmTokenHandler);case _:
   return null;
 
 }
@@ -922,7 +924,7 @@ return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler);case _
 
 @JsonSerializable(explicitToJson: true)
 class _IntentConfiguration implements IntentConfiguration {
-  const _IntentConfiguration({required this.mode, final  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmHandler}): _paymentMethodTypes = paymentMethodTypes;
+  const _IntentConfiguration({required this.mode, final  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmTokenHandler}): _paymentMethodTypes = paymentMethodTypes;
   factory _IntentConfiguration.fromJson(Map<String, dynamic> json) => _$IntentConfigurationFromJson(json);
 
 /// Data related to the future payment intent
@@ -945,6 +947,8 @@ class _IntentConfiguration implements IntentConfiguration {
 /// Called when the customer confirms payment. Your implementation should create
 /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
 @override@JsonKey(includeFromJson: false, includeToJson: false) final  ConfirmHandler? confirmHandler;
+/// Called when the customer confirms token payment. 
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  ConfirmTokenHandler? confirmTokenHandler;
 
 /// Create a copy of IntentConfiguration
 /// with the given fields replaced by the non-null parameter values.
@@ -959,16 +963,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other._paymentMethodTypes, _paymentMethodTypes)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other._paymentMethodTypes, _paymentMethodTypes)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(_paymentMethodTypes),confirmHandler);
+int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(_paymentMethodTypes),confirmHandler,confirmTokenHandler);
 
 @override
 String toString() {
-  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, confirmHandler: $confirmHandler)';
+  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
 }
 
 
@@ -979,7 +983,7 @@ abstract mixin class _$IntentConfigurationCopyWith<$Res> implements $IntentConfi
   factory _$IntentConfigurationCopyWith(_IntentConfiguration value, $Res Function(_IntentConfiguration) _then) = __$IntentConfigurationCopyWithImpl;
 @override @useResult
 $Res call({
- IntentMode mode, List<String>? paymentMethodTypes,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? confirmHandler
+ IntentMode mode, List<String>? paymentMethodTypes,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? confirmHandler,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmTokenHandler? confirmTokenHandler
 });
 
 
@@ -996,12 +1000,13 @@ class __$IntentConfigurationCopyWithImpl<$Res>
 
 /// Create a copy of IntentConfiguration
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? confirmHandler = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? confirmHandler = freezed,Object? confirmTokenHandler = freezed,}) {
   return _then(_IntentConfiguration(
 mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
 as IntentMode,paymentMethodTypes: freezed == paymentMethodTypes ? _self._paymentMethodTypes : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
 as List<String>?,confirmHandler: freezed == confirmHandler ? _self.confirmHandler : confirmHandler // ignore: cast_nullable_to_non_nullable
-as ConfirmHandler?,
+as ConfirmHandler?,confirmTokenHandler: freezed == confirmTokenHandler ? _self.confirmTokenHandler : confirmTokenHandler // ignore: cast_nullable_to_non_nullable
+as ConfirmTokenHandler?,
   ));
 }
 
@@ -2034,7 +2039,13 @@ mixin _$PaymentSheetAppearance {
  PaymentSheetShape? get shapes;/// PaymentSheet appearance
  PaymentSheetPrimaryButtonAppearance? get primaryButton;/// Describes the appearance of the Embedded Mobile Payment Element
  EmbeddedPaymentElementAppearance? get embeddedPaymentElement;/// Describes the inset values applied to Mobile Payment Element forms
- EdgeInsetsConfig? get formInsetValues;
+ EdgeInsetsConfig? get formInsetValues;/// Setting this boolean to `true` will call the iOS applyLiquidGlass() method
+/// (https://stripe.dev/stripe-ios/stripepaymentsheet/documentation/stripepaymentsheet/paymentsheet/appearance/applyliquidglass())
+/// on the Appearance object prior to applying other appearance customizations set on AppearanceParams.
+/// Requires iOS26 and Xcode 26, and will be ignored if these requirements are not met.
+/// @default false
+ bool? get applyLiquidGlass;/// Describes the navigation bar style (iOS only)
+ NavigationBarStyle? get navigationBarStyle;
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2047,16 +2058,16 @@ $PaymentSheetAppearanceCopyWith<PaymentSheetAppearance> get copyWith => _$Paymen
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues)&&(identical(other.applyLiquidGlass, applyLiquidGlass) || other.applyLiquidGlass == applyLiquidGlass)&&(identical(other.navigationBarStyle, navigationBarStyle) || other.navigationBarStyle == navigationBarStyle));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues);
+int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues,applyLiquidGlass,navigationBarStyle);
 
 @override
 String toString() {
-  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues)';
+  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues, applyLiquidGlass: $applyLiquidGlass, navigationBarStyle: $navigationBarStyle)';
 }
 
 
@@ -2067,7 +2078,7 @@ abstract mixin class $PaymentSheetAppearanceCopyWith<$Res>  {
   factory $PaymentSheetAppearanceCopyWith(PaymentSheetAppearance value, $Res Function(PaymentSheetAppearance) _then) = _$PaymentSheetAppearanceCopyWithImpl;
 @useResult
 $Res call({
- PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes, PaymentSheetPrimaryButtonAppearance? primaryButton, EmbeddedPaymentElementAppearance? embeddedPaymentElement, EdgeInsetsConfig? formInsetValues
+ PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes, PaymentSheetPrimaryButtonAppearance? primaryButton, EmbeddedPaymentElementAppearance? embeddedPaymentElement, EdgeInsetsConfig? formInsetValues, bool? applyLiquidGlass, NavigationBarStyle? navigationBarStyle
 });
 
 
@@ -2084,14 +2095,16 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res>
 
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,Object? applyLiquidGlass = freezed,Object? navigationBarStyle = freezed,}) {
   return _then(_self.copyWith(
 colors: freezed == colors ? _self.colors : colors // ignore: cast_nullable_to_non_nullable
 as PaymentSheetAppearanceColors?,shapes: freezed == shapes ? _self.shapes : shapes // ignore: cast_nullable_to_non_nullable
 as PaymentSheetShape?,primaryButton: freezed == primaryButton ? _self.primaryButton : primaryButton // ignore: cast_nullable_to_non_nullable
 as PaymentSheetPrimaryButtonAppearance?,embeddedPaymentElement: freezed == embeddedPaymentElement ? _self.embeddedPaymentElement : embeddedPaymentElement // ignore: cast_nullable_to_non_nullable
 as EmbeddedPaymentElementAppearance?,formInsetValues: freezed == formInsetValues ? _self.formInsetValues : formInsetValues // ignore: cast_nullable_to_non_nullable
-as EdgeInsetsConfig?,
+as EdgeInsetsConfig?,applyLiquidGlass: freezed == applyLiquidGlass ? _self.applyLiquidGlass : applyLiquidGlass // ignore: cast_nullable_to_non_nullable
+as bool?,navigationBarStyle: freezed == navigationBarStyle ? _self.navigationBarStyle : navigationBarStyle // ignore: cast_nullable_to_non_nullable
+as NavigationBarStyle?,
   ));
 }
 /// Create a copy of PaymentSheetAppearance
@@ -2236,10 +2249,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues,  bool? applyLiquidGlass,  NavigationBarStyle? navigationBarStyle)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaymentSheetAppearance() when $default != null:
-return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues);case _:
+return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues,_that.applyLiquidGlass,_that.navigationBarStyle);case _:
   return orElse();
 
 }
@@ -2257,10 +2270,10 @@ return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaym
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues,  bool? applyLiquidGlass,  NavigationBarStyle? navigationBarStyle)  $default,) {final _that = this;
 switch (_that) {
 case _PaymentSheetAppearance():
-return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues);case _:
+return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues,_that.applyLiquidGlass,_that.navigationBarStyle);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -2277,10 +2290,10 @@ return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaym
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PaymentSheetAppearanceColors? colors,  PaymentSheetShape? shapes,  PaymentSheetPrimaryButtonAppearance? primaryButton,  EmbeddedPaymentElementAppearance? embeddedPaymentElement,  EdgeInsetsConfig? formInsetValues,  bool? applyLiquidGlass,  NavigationBarStyle? navigationBarStyle)?  $default,) {final _that = this;
 switch (_that) {
 case _PaymentSheetAppearance() when $default != null:
-return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues);case _:
+return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaymentElement,_that.formInsetValues,_that.applyLiquidGlass,_that.navigationBarStyle);case _:
   return null;
 
 }
@@ -2292,7 +2305,7 @@ return $default(_that.colors,_that.shapes,_that.primaryButton,_that.embeddedPaym
 
 @JsonSerializable(explicitToJson: true)
 class _PaymentSheetAppearance implements PaymentSheetAppearance {
-  const _PaymentSheetAppearance({this.colors, this.shapes, this.primaryButton, this.embeddedPaymentElement, this.formInsetValues});
+  const _PaymentSheetAppearance({this.colors, this.shapes, this.primaryButton, this.embeddedPaymentElement, this.formInsetValues, this.applyLiquidGlass, this.navigationBarStyle});
   factory _PaymentSheetAppearance.fromJson(Map<String, dynamic> json) => _$PaymentSheetAppearanceFromJson(json);
 
 /// Color parameters
@@ -2305,6 +2318,14 @@ class _PaymentSheetAppearance implements PaymentSheetAppearance {
 @override final  EmbeddedPaymentElementAppearance? embeddedPaymentElement;
 /// Describes the inset values applied to Mobile Payment Element forms
 @override final  EdgeInsetsConfig? formInsetValues;
+/// Setting this boolean to `true` will call the iOS applyLiquidGlass() method
+/// (https://stripe.dev/stripe-ios/stripepaymentsheet/documentation/stripepaymentsheet/paymentsheet/appearance/applyliquidglass())
+/// on the Appearance object prior to applying other appearance customizations set on AppearanceParams.
+/// Requires iOS26 and Xcode 26, and will be ignored if these requirements are not met.
+/// @default false
+@override final  bool? applyLiquidGlass;
+/// Describes the navigation bar style (iOS only)
+@override final  NavigationBarStyle? navigationBarStyle;
 
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
@@ -2319,16 +2340,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues)&&(identical(other.applyLiquidGlass, applyLiquidGlass) || other.applyLiquidGlass == applyLiquidGlass)&&(identical(other.navigationBarStyle, navigationBarStyle) || other.navigationBarStyle == navigationBarStyle));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues);
+int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues,applyLiquidGlass,navigationBarStyle);
 
 @override
 String toString() {
-  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues)';
+  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues, applyLiquidGlass: $applyLiquidGlass, navigationBarStyle: $navigationBarStyle)';
 }
 
 
@@ -2339,7 +2360,7 @@ abstract mixin class _$PaymentSheetAppearanceCopyWith<$Res> implements $PaymentS
   factory _$PaymentSheetAppearanceCopyWith(_PaymentSheetAppearance value, $Res Function(_PaymentSheetAppearance) _then) = __$PaymentSheetAppearanceCopyWithImpl;
 @override @useResult
 $Res call({
- PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes, PaymentSheetPrimaryButtonAppearance? primaryButton, EmbeddedPaymentElementAppearance? embeddedPaymentElement, EdgeInsetsConfig? formInsetValues
+ PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes, PaymentSheetPrimaryButtonAppearance? primaryButton, EmbeddedPaymentElementAppearance? embeddedPaymentElement, EdgeInsetsConfig? formInsetValues, bool? applyLiquidGlass, NavigationBarStyle? navigationBarStyle
 });
 
 
@@ -2356,14 +2377,16 @@ class __$PaymentSheetAppearanceCopyWithImpl<$Res>
 
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,Object? applyLiquidGlass = freezed,Object? navigationBarStyle = freezed,}) {
   return _then(_PaymentSheetAppearance(
 colors: freezed == colors ? _self.colors : colors // ignore: cast_nullable_to_non_nullable
 as PaymentSheetAppearanceColors?,shapes: freezed == shapes ? _self.shapes : shapes // ignore: cast_nullable_to_non_nullable
 as PaymentSheetShape?,primaryButton: freezed == primaryButton ? _self.primaryButton : primaryButton // ignore: cast_nullable_to_non_nullable
 as PaymentSheetPrimaryButtonAppearance?,embeddedPaymentElement: freezed == embeddedPaymentElement ? _self.embeddedPaymentElement : embeddedPaymentElement // ignore: cast_nullable_to_non_nullable
 as EmbeddedPaymentElementAppearance?,formInsetValues: freezed == formInsetValues ? _self.formInsetValues : formInsetValues // ignore: cast_nullable_to_non_nullable
-as EdgeInsetsConfig?,
+as EdgeInsetsConfig?,applyLiquidGlass: freezed == applyLiquidGlass ? _self.applyLiquidGlass : applyLiquidGlass // ignore: cast_nullable_to_non_nullable
+as bool?,navigationBarStyle: freezed == navigationBarStyle ? _self.navigationBarStyle : navigationBarStyle // ignore: cast_nullable_to_non_nullable
+as NavigationBarStyle?,
   ));
 }
 
@@ -4563,7 +4586,9 @@ mixin _$PaymentSheetPrimaryButtonThemeColors {
 /// Primary button background color
 @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get background;/// Primary button text color
 @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get text;/// Primary button border color
-@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get border;
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get border;/// The background color of the primary button when in a success state.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get successBackgroundColor;/// The text color of the primary button when in a success state. Supports both single color strings and light/dark color objects.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get successTextColor;
 /// Create a copy of PaymentSheetPrimaryButtonThemeColors
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -4576,16 +4601,16 @@ $PaymentSheetPrimaryButtonThemeColorsCopyWith<PaymentSheetPrimaryButtonThemeColo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonThemeColors&&(identical(other.background, background) || other.background == background)&&(identical(other.text, text) || other.text == text)&&(identical(other.border, border) || other.border == border));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonThemeColors&&(identical(other.background, background) || other.background == background)&&(identical(other.text, text) || other.text == text)&&(identical(other.border, border) || other.border == border)&&(identical(other.successBackgroundColor, successBackgroundColor) || other.successBackgroundColor == successBackgroundColor)&&(identical(other.successTextColor, successTextColor) || other.successTextColor == successTextColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,background,text,border);
+int get hashCode => Object.hash(runtimeType,background,text,border,successBackgroundColor,successTextColor);
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonThemeColors(background: $background, text: $text, border: $border)';
+  return 'PaymentSheetPrimaryButtonThemeColors(background: $background, text: $text, border: $border, successBackgroundColor: $successBackgroundColor, successTextColor: $successTextColor)';
 }
 
 
@@ -4596,7 +4621,7 @@ abstract mixin class $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>  {
   factory $PaymentSheetPrimaryButtonThemeColorsCopyWith(PaymentSheetPrimaryButtonThemeColors value, $Res Function(PaymentSheetPrimaryButtonThemeColors) _then) = _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? background,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? text,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? border
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? background,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? text,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? border,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? successBackgroundColor,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? successTextColor
 });
 
 
@@ -4613,11 +4638,13 @@ class _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
 
 /// Create a copy of PaymentSheetPrimaryButtonThemeColors
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? background = freezed,Object? text = freezed,Object? border = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? background = freezed,Object? text = freezed,Object? border = freezed,Object? successBackgroundColor = freezed,Object? successTextColor = freezed,}) {
   return _then(_self.copyWith(
 background: freezed == background ? _self.background : background // ignore: cast_nullable_to_non_nullable
 as Color?,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as Color?,border: freezed == border ? _self.border : border // ignore: cast_nullable_to_non_nullable
+as Color?,successBackgroundColor: freezed == successBackgroundColor ? _self.successBackgroundColor : successBackgroundColor // ignore: cast_nullable_to_non_nullable
+as Color?,successTextColor: freezed == successTextColor ? _self.successTextColor : successTextColor // ignore: cast_nullable_to_non_nullable
 as Color?,
   ));
 }
@@ -4703,10 +4730,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? background, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? text, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? border)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? background, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? text, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? border, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? successBackgroundColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? successTextColor)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaymentSheetPrimaryButtonThemeColors() when $default != null:
-return $default(_that.background,_that.text,_that.border);case _:
+return $default(_that.background,_that.text,_that.border,_that.successBackgroundColor,_that.successTextColor);case _:
   return orElse();
 
 }
@@ -4724,10 +4751,10 @@ return $default(_that.background,_that.text,_that.border);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? background, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? text, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? border)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? background, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? text, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? border, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? successBackgroundColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? successTextColor)  $default,) {final _that = this;
 switch (_that) {
 case _PaymentSheetPrimaryButtonThemeColors():
-return $default(_that.background,_that.text,_that.border);case _:
+return $default(_that.background,_that.text,_that.border,_that.successBackgroundColor,_that.successTextColor);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -4744,10 +4771,10 @@ return $default(_that.background,_that.text,_that.border);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? background, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? text, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? border)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? background, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? text, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? border, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? successBackgroundColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? successTextColor)?  $default,) {final _that = this;
 switch (_that) {
 case _PaymentSheetPrimaryButtonThemeColors() when $default != null:
-return $default(_that.background,_that.text,_that.border);case _:
+return $default(_that.background,_that.text,_that.border,_that.successBackgroundColor,_that.successTextColor);case _:
   return null;
 
 }
@@ -4759,7 +4786,7 @@ return $default(_that.background,_that.text,_that.border);case _:
 @JsonSerializable()
 
 class _PaymentSheetPrimaryButtonThemeColors implements PaymentSheetPrimaryButtonThemeColors {
-  const _PaymentSheetPrimaryButtonThemeColors({@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.background, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.text, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.border});
+  const _PaymentSheetPrimaryButtonThemeColors({@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.background, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.text, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.border, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.successBackgroundColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.successTextColor});
   factory _PaymentSheetPrimaryButtonThemeColors.fromJson(Map<String, dynamic> json) => _$PaymentSheetPrimaryButtonThemeColorsFromJson(json);
 
 /// Primary button background color
@@ -4768,6 +4795,10 @@ class _PaymentSheetPrimaryButtonThemeColors implements PaymentSheetPrimaryButton
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? text;
 /// Primary button border color
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? border;
+/// The background color of the primary button when in a success state.
+@override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? successBackgroundColor;
+/// The text color of the primary button when in a success state. Supports both single color strings and light/dark color objects.
+@override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? successTextColor;
 
 /// Create a copy of PaymentSheetPrimaryButtonThemeColors
 /// with the given fields replaced by the non-null parameter values.
@@ -4782,16 +4813,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonThemeColors&&(identical(other.background, background) || other.background == background)&&(identical(other.text, text) || other.text == text)&&(identical(other.border, border) || other.border == border));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonThemeColors&&(identical(other.background, background) || other.background == background)&&(identical(other.text, text) || other.text == text)&&(identical(other.border, border) || other.border == border)&&(identical(other.successBackgroundColor, successBackgroundColor) || other.successBackgroundColor == successBackgroundColor)&&(identical(other.successTextColor, successTextColor) || other.successTextColor == successTextColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,background,text,border);
+int get hashCode => Object.hash(runtimeType,background,text,border,successBackgroundColor,successTextColor);
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonThemeColors(background: $background, text: $text, border: $border)';
+  return 'PaymentSheetPrimaryButtonThemeColors(background: $background, text: $text, border: $border, successBackgroundColor: $successBackgroundColor, successTextColor: $successTextColor)';
 }
 
 
@@ -4802,7 +4833,7 @@ abstract mixin class _$PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> implem
   factory _$PaymentSheetPrimaryButtonThemeColorsCopyWith(_PaymentSheetPrimaryButtonThemeColors value, $Res Function(_PaymentSheetPrimaryButtonThemeColors) _then) = __$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? background,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? text,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? border
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? background,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? text,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? border,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? successBackgroundColor,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? successTextColor
 });
 
 
@@ -4819,11 +4850,13 @@ class __$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
 
 /// Create a copy of PaymentSheetPrimaryButtonThemeColors
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? background = freezed,Object? text = freezed,Object? border = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? background = freezed,Object? text = freezed,Object? border = freezed,Object? successBackgroundColor = freezed,Object? successTextColor = freezed,}) {
   return _then(_PaymentSheetPrimaryButtonThemeColors(
 background: freezed == background ? _self.background : background // ignore: cast_nullable_to_non_nullable
 as Color?,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as Color?,border: freezed == border ? _self.border : border // ignore: cast_nullable_to_non_nullable
+as Color?,successBackgroundColor: freezed == successBackgroundColor ? _self.successBackgroundColor : successBackgroundColor // ignore: cast_nullable_to_non_nullable
+as Color?,successTextColor: freezed == successTextColor ? _self.successTextColor : successTextColor // ignore: cast_nullable_to_non_nullable
 as Color?,
   ));
 }
@@ -7514,24 +7547,24 @@ as Color?,
 
 
 /// @nodoc
-mixin _$ChevronConfig {
+mixin _$DisclosureConfig {
 
-/// The color of the chevron, represented as a hex string #AARRGGBB or #RRGGBB.
+/// The color of the disclosure indicator, represented as a hex string #AARRGGBB or #RRGGBB.
 /// @default The iOS or Android system gray color
 @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get color;
-/// Create a copy of ChevronConfig
+/// Create a copy of DisclosureConfig
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ChevronConfigCopyWith<ChevronConfig> get copyWith => _$ChevronConfigCopyWithImpl<ChevronConfig>(this as ChevronConfig, _$identity);
+$DisclosureConfigCopyWith<DisclosureConfig> get copyWith => _$DisclosureConfigCopyWithImpl<DisclosureConfig>(this as DisclosureConfig, _$identity);
 
-  /// Serializes this ChevronConfig to a JSON map.
+  /// Serializes this DisclosureConfig to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChevronConfig&&(identical(other.color, color) || other.color == color));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DisclosureConfig&&(identical(other.color, color) || other.color == color));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -7540,15 +7573,15 @@ int get hashCode => Object.hash(runtimeType,color);
 
 @override
 String toString() {
-  return 'ChevronConfig(color: $color)';
+  return 'DisclosureConfig(color: $color)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ChevronConfigCopyWith<$Res>  {
-  factory $ChevronConfigCopyWith(ChevronConfig value, $Res Function(ChevronConfig) _then) = _$ChevronConfigCopyWithImpl;
+abstract mixin class $DisclosureConfigCopyWith<$Res>  {
+  factory $DisclosureConfigCopyWith(DisclosureConfig value, $Res Function(DisclosureConfig) _then) = _$DisclosureConfigCopyWithImpl;
 @useResult
 $Res call({
 @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? color
@@ -7559,14 +7592,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$ChevronConfigCopyWithImpl<$Res>
-    implements $ChevronConfigCopyWith<$Res> {
-  _$ChevronConfigCopyWithImpl(this._self, this._then);
+class _$DisclosureConfigCopyWithImpl<$Res>
+    implements $DisclosureConfigCopyWith<$Res> {
+  _$DisclosureConfigCopyWithImpl(this._self, this._then);
 
-  final ChevronConfig _self;
-  final $Res Function(ChevronConfig) _then;
+  final DisclosureConfig _self;
+  final $Res Function(DisclosureConfig) _then;
 
-/// Create a copy of ChevronConfig
+/// Create a copy of DisclosureConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? color = freezed,}) {
   return _then(_self.copyWith(
@@ -7578,8 +7611,8 @@ as Color?,
 }
 
 
-/// Adds pattern-matching-related methods to [ChevronConfig].
-extension ChevronConfigPatterns on ChevronConfig {
+/// Adds pattern-matching-related methods to [DisclosureConfig].
+extension DisclosureConfigPatterns on DisclosureConfig {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -7592,10 +7625,10 @@ extension ChevronConfigPatterns on ChevronConfig {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ChevronConfig value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DisclosureConfig value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ChevronConfig() when $default != null:
+case _DisclosureConfig() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -7614,10 +7647,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ChevronConfig value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DisclosureConfig value)  $default,){
 final _that = this;
 switch (_that) {
-case _ChevronConfig():
+case _DisclosureConfig():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -7635,10 +7668,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ChevronConfig value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DisclosureConfig value)?  $default,){
 final _that = this;
 switch (_that) {
-case _ChevronConfig() when $default != null:
+case _DisclosureConfig() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -7658,7 +7691,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? color)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ChevronConfig() when $default != null:
+case _DisclosureConfig() when $default != null:
 return $default(_that.color);case _:
   return orElse();
 
@@ -7679,7 +7712,7 @@ return $default(_that.color);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? color)  $default,) {final _that = this;
 switch (_that) {
-case _ChevronConfig():
+case _DisclosureConfig():
 return $default(_that.color);case _:
   throw StateError('Unexpected subclass');
 
@@ -7699,7 +7732,7 @@ return $default(_that.color);case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? color)?  $default,) {final _that = this;
 switch (_that) {
-case _ChevronConfig() when $default != null:
+case _DisclosureConfig() when $default != null:
 return $default(_that.color);case _:
   return null;
 
@@ -7711,28 +7744,28 @@ return $default(_that.color);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _ChevronConfig implements ChevronConfig {
-  const _ChevronConfig({@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.color});
-  factory _ChevronConfig.fromJson(Map<String, dynamic> json) => _$ChevronConfigFromJson(json);
+class _DisclosureConfig implements DisclosureConfig {
+  const _DisclosureConfig({@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.color});
+  factory _DisclosureConfig.fromJson(Map<String, dynamic> json) => _$DisclosureConfigFromJson(json);
 
-/// The color of the chevron, represented as a hex string #AARRGGBB or #RRGGBB.
+/// The color of the disclosure indicator, represented as a hex string #AARRGGBB or #RRGGBB.
 /// @default The iOS or Android system gray color
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? color;
 
-/// Create a copy of ChevronConfig
+/// Create a copy of DisclosureConfig
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ChevronConfigCopyWith<_ChevronConfig> get copyWith => __$ChevronConfigCopyWithImpl<_ChevronConfig>(this, _$identity);
+_$DisclosureConfigCopyWith<_DisclosureConfig> get copyWith => __$DisclosureConfigCopyWithImpl<_DisclosureConfig>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ChevronConfigToJson(this, );
+  return _$DisclosureConfigToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChevronConfig&&(identical(other.color, color) || other.color == color));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DisclosureConfig&&(identical(other.color, color) || other.color == color));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -7741,15 +7774,15 @@ int get hashCode => Object.hash(runtimeType,color);
 
 @override
 String toString() {
-  return 'ChevronConfig(color: $color)';
+  return 'DisclosureConfig(color: $color)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ChevronConfigCopyWith<$Res> implements $ChevronConfigCopyWith<$Res> {
-  factory _$ChevronConfigCopyWith(_ChevronConfig value, $Res Function(_ChevronConfig) _then) = __$ChevronConfigCopyWithImpl;
+abstract mixin class _$DisclosureConfigCopyWith<$Res> implements $DisclosureConfigCopyWith<$Res> {
+  factory _$DisclosureConfigCopyWith(_DisclosureConfig value, $Res Function(_DisclosureConfig) _then) = __$DisclosureConfigCopyWithImpl;
 @override @useResult
 $Res call({
 @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? color
@@ -7760,17 +7793,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$ChevronConfigCopyWithImpl<$Res>
-    implements _$ChevronConfigCopyWith<$Res> {
-  __$ChevronConfigCopyWithImpl(this._self, this._then);
+class __$DisclosureConfigCopyWithImpl<$Res>
+    implements _$DisclosureConfigCopyWith<$Res> {
+  __$DisclosureConfigCopyWithImpl(this._self, this._then);
 
-  final _ChevronConfig _self;
-  final $Res Function(_ChevronConfig) _then;
+  final _DisclosureConfig _self;
+  final $Res Function(_DisclosureConfig) _then;
 
-/// Create a copy of ChevronConfig
+/// Create a copy of DisclosureConfig
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? color = freezed,}) {
-  return _then(_ChevronConfig(
+  return _then(_DisclosureConfig(
 color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as Color?,
   ));
@@ -7789,15 +7822,15 @@ mixin _$FlatConfig {
 /// @default The root appearance.colors.componentBorder
 @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get separatorColor;/// The insets of the separator line between rows.
 /// @default { top: 0, left: 30, bottom: 0, right: 0 } for RowStyle.FlatWithRadio
-/// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithChevron, and RowStyle.FloatingButton
+/// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithDisclosuse, and RowStyle.FloatingButton
  EdgeInsetsConfig? get separatorInsets;/// Determines if the top separator is visible at the top of the Element.
 /// @default true
  bool? get topSeparatorEnabled;/// Determines if the bottom separator is visible at the bottom of the Element.
 /// @default true
  bool? get bottomSeparatorEnabled;/// Appearance settings for the radio button (used when RowStyle is FlatWithRadio)
  RadioConfig? get radio;/// Appearance settings for the checkmark (used when RowStyle is FlatWithCheckmark)
- CheckmarkConfig? get checkmark;/// Appearance settings for the chevron (used when RowStyle is FlatWithChevron)
- ChevronConfig? get chevron;
+ CheckmarkConfig? get checkmark;/// Appearance settings for the disclosure indicator (used when RowStyle is FlatWithDisclosure)
+ DisclosureConfig? get disclosure;
 /// Create a copy of FlatConfig
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -7810,16 +7843,16 @@ $FlatConfigCopyWith<FlatConfig> get copyWith => _$FlatConfigCopyWithImpl<FlatCon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FlatConfig&&(identical(other.separatorThickness, separatorThickness) || other.separatorThickness == separatorThickness)&&(identical(other.separatorColor, separatorColor) || other.separatorColor == separatorColor)&&(identical(other.separatorInsets, separatorInsets) || other.separatorInsets == separatorInsets)&&(identical(other.topSeparatorEnabled, topSeparatorEnabled) || other.topSeparatorEnabled == topSeparatorEnabled)&&(identical(other.bottomSeparatorEnabled, bottomSeparatorEnabled) || other.bottomSeparatorEnabled == bottomSeparatorEnabled)&&(identical(other.radio, radio) || other.radio == radio)&&(identical(other.checkmark, checkmark) || other.checkmark == checkmark)&&(identical(other.chevron, chevron) || other.chevron == chevron));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FlatConfig&&(identical(other.separatorThickness, separatorThickness) || other.separatorThickness == separatorThickness)&&(identical(other.separatorColor, separatorColor) || other.separatorColor == separatorColor)&&(identical(other.separatorInsets, separatorInsets) || other.separatorInsets == separatorInsets)&&(identical(other.topSeparatorEnabled, topSeparatorEnabled) || other.topSeparatorEnabled == topSeparatorEnabled)&&(identical(other.bottomSeparatorEnabled, bottomSeparatorEnabled) || other.bottomSeparatorEnabled == bottomSeparatorEnabled)&&(identical(other.radio, radio) || other.radio == radio)&&(identical(other.checkmark, checkmark) || other.checkmark == checkmark)&&(identical(other.disclosure, disclosure) || other.disclosure == disclosure));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,separatorThickness,separatorColor,separatorInsets,topSeparatorEnabled,bottomSeparatorEnabled,radio,checkmark,chevron);
+int get hashCode => Object.hash(runtimeType,separatorThickness,separatorColor,separatorInsets,topSeparatorEnabled,bottomSeparatorEnabled,radio,checkmark,disclosure);
 
 @override
 String toString() {
-  return 'FlatConfig(separatorThickness: $separatorThickness, separatorColor: $separatorColor, separatorInsets: $separatorInsets, topSeparatorEnabled: $topSeparatorEnabled, bottomSeparatorEnabled: $bottomSeparatorEnabled, radio: $radio, checkmark: $checkmark, chevron: $chevron)';
+  return 'FlatConfig(separatorThickness: $separatorThickness, separatorColor: $separatorColor, separatorInsets: $separatorInsets, topSeparatorEnabled: $topSeparatorEnabled, bottomSeparatorEnabled: $bottomSeparatorEnabled, radio: $radio, checkmark: $checkmark, disclosure: $disclosure)';
 }
 
 
@@ -7830,11 +7863,11 @@ abstract mixin class $FlatConfigCopyWith<$Res>  {
   factory $FlatConfigCopyWith(FlatConfig value, $Res Function(FlatConfig) _then) = _$FlatConfigCopyWithImpl;
 @useResult
 $Res call({
- double? separatorThickness,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? separatorColor, EdgeInsetsConfig? separatorInsets, bool? topSeparatorEnabled, bool? bottomSeparatorEnabled, RadioConfig? radio, CheckmarkConfig? checkmark, ChevronConfig? chevron
+ double? separatorThickness,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? separatorColor, EdgeInsetsConfig? separatorInsets, bool? topSeparatorEnabled, bool? bottomSeparatorEnabled, RadioConfig? radio, CheckmarkConfig? checkmark, DisclosureConfig? disclosure
 });
 
 
-$EdgeInsetsConfigCopyWith<$Res>? get separatorInsets;$RadioConfigCopyWith<$Res>? get radio;$CheckmarkConfigCopyWith<$Res>? get checkmark;$ChevronConfigCopyWith<$Res>? get chevron;
+$EdgeInsetsConfigCopyWith<$Res>? get separatorInsets;$RadioConfigCopyWith<$Res>? get radio;$CheckmarkConfigCopyWith<$Res>? get checkmark;$DisclosureConfigCopyWith<$Res>? get disclosure;
 
 }
 /// @nodoc
@@ -7847,7 +7880,7 @@ class _$FlatConfigCopyWithImpl<$Res>
 
 /// Create a copy of FlatConfig
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? separatorThickness = freezed,Object? separatorColor = freezed,Object? separatorInsets = freezed,Object? topSeparatorEnabled = freezed,Object? bottomSeparatorEnabled = freezed,Object? radio = freezed,Object? checkmark = freezed,Object? chevron = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? separatorThickness = freezed,Object? separatorColor = freezed,Object? separatorInsets = freezed,Object? topSeparatorEnabled = freezed,Object? bottomSeparatorEnabled = freezed,Object? radio = freezed,Object? checkmark = freezed,Object? disclosure = freezed,}) {
   return _then(_self.copyWith(
 separatorThickness: freezed == separatorThickness ? _self.separatorThickness : separatorThickness // ignore: cast_nullable_to_non_nullable
 as double?,separatorColor: freezed == separatorColor ? _self.separatorColor : separatorColor // ignore: cast_nullable_to_non_nullable
@@ -7856,8 +7889,8 @@ as EdgeInsetsConfig?,topSeparatorEnabled: freezed == topSeparatorEnabled ? _self
 as bool?,bottomSeparatorEnabled: freezed == bottomSeparatorEnabled ? _self.bottomSeparatorEnabled : bottomSeparatorEnabled // ignore: cast_nullable_to_non_nullable
 as bool?,radio: freezed == radio ? _self.radio : radio // ignore: cast_nullable_to_non_nullable
 as RadioConfig?,checkmark: freezed == checkmark ? _self.checkmark : checkmark // ignore: cast_nullable_to_non_nullable
-as CheckmarkConfig?,chevron: freezed == chevron ? _self.chevron : chevron // ignore: cast_nullable_to_non_nullable
-as ChevronConfig?,
+as CheckmarkConfig?,disclosure: freezed == disclosure ? _self.disclosure : disclosure // ignore: cast_nullable_to_non_nullable
+as DisclosureConfig?,
   ));
 }
 /// Create a copy of FlatConfig
@@ -7900,13 +7933,13 @@ $CheckmarkConfigCopyWith<$Res>? get checkmark {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ChevronConfigCopyWith<$Res>? get chevron {
-    if (_self.chevron == null) {
+$DisclosureConfigCopyWith<$Res>? get disclosure {
+    if (_self.disclosure == null) {
     return null;
   }
 
-  return $ChevronConfigCopyWith<$Res>(_self.chevron!, (value) {
-    return _then(_self.copyWith(chevron: value));
+  return $DisclosureConfigCopyWith<$Res>(_self.disclosure!, (value) {
+    return _then(_self.copyWith(disclosure: value));
   });
 }
 }
@@ -7990,10 +8023,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double? separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? separatorColor,  EdgeInsetsConfig? separatorInsets,  bool? topSeparatorEnabled,  bool? bottomSeparatorEnabled,  RadioConfig? radio,  CheckmarkConfig? checkmark,  ChevronConfig? chevron)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double? separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? separatorColor,  EdgeInsetsConfig? separatorInsets,  bool? topSeparatorEnabled,  bool? bottomSeparatorEnabled,  RadioConfig? radio,  CheckmarkConfig? checkmark,  DisclosureConfig? disclosure)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FlatConfig() when $default != null:
-return $default(_that.separatorThickness,_that.separatorColor,_that.separatorInsets,_that.topSeparatorEnabled,_that.bottomSeparatorEnabled,_that.radio,_that.checkmark,_that.chevron);case _:
+return $default(_that.separatorThickness,_that.separatorColor,_that.separatorInsets,_that.topSeparatorEnabled,_that.bottomSeparatorEnabled,_that.radio,_that.checkmark,_that.disclosure);case _:
   return orElse();
 
 }
@@ -8011,10 +8044,10 @@ return $default(_that.separatorThickness,_that.separatorColor,_that.separatorIns
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double? separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? separatorColor,  EdgeInsetsConfig? separatorInsets,  bool? topSeparatorEnabled,  bool? bottomSeparatorEnabled,  RadioConfig? radio,  CheckmarkConfig? checkmark,  ChevronConfig? chevron)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double? separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? separatorColor,  EdgeInsetsConfig? separatorInsets,  bool? topSeparatorEnabled,  bool? bottomSeparatorEnabled,  RadioConfig? radio,  CheckmarkConfig? checkmark,  DisclosureConfig? disclosure)  $default,) {final _that = this;
 switch (_that) {
 case _FlatConfig():
-return $default(_that.separatorThickness,_that.separatorColor,_that.separatorInsets,_that.topSeparatorEnabled,_that.bottomSeparatorEnabled,_that.radio,_that.checkmark,_that.chevron);case _:
+return $default(_that.separatorThickness,_that.separatorColor,_that.separatorInsets,_that.topSeparatorEnabled,_that.bottomSeparatorEnabled,_that.radio,_that.checkmark,_that.disclosure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -8031,10 +8064,10 @@ return $default(_that.separatorThickness,_that.separatorColor,_that.separatorIns
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double? separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? separatorColor,  EdgeInsetsConfig? separatorInsets,  bool? topSeparatorEnabled,  bool? bottomSeparatorEnabled,  RadioConfig? radio,  CheckmarkConfig? checkmark,  ChevronConfig? chevron)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double? separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)  Color? separatorColor,  EdgeInsetsConfig? separatorInsets,  bool? topSeparatorEnabled,  bool? bottomSeparatorEnabled,  RadioConfig? radio,  CheckmarkConfig? checkmark,  DisclosureConfig? disclosure)?  $default,) {final _that = this;
 switch (_that) {
 case _FlatConfig() when $default != null:
-return $default(_that.separatorThickness,_that.separatorColor,_that.separatorInsets,_that.topSeparatorEnabled,_that.bottomSeparatorEnabled,_that.radio,_that.checkmark,_that.chevron);case _:
+return $default(_that.separatorThickness,_that.separatorColor,_that.separatorInsets,_that.topSeparatorEnabled,_that.bottomSeparatorEnabled,_that.radio,_that.checkmark,_that.disclosure);case _:
   return null;
 
 }
@@ -8046,7 +8079,7 @@ return $default(_that.separatorThickness,_that.separatorColor,_that.separatorIns
 @JsonSerializable()
 
 class _FlatConfig implements FlatConfig {
-  const _FlatConfig({this.separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.separatorColor, this.separatorInsets, this.topSeparatorEnabled, this.bottomSeparatorEnabled, this.radio, this.checkmark, this.chevron});
+  const _FlatConfig({this.separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.separatorColor, this.separatorInsets, this.topSeparatorEnabled, this.bottomSeparatorEnabled, this.radio, this.checkmark, this.disclosure});
   factory _FlatConfig.fromJson(Map<String, dynamic> json) => _$FlatConfigFromJson(json);
 
 /// The thickness of the separator line between rows.
@@ -8057,7 +8090,7 @@ class _FlatConfig implements FlatConfig {
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? separatorColor;
 /// The insets of the separator line between rows.
 /// @default { top: 0, left: 30, bottom: 0, right: 0 } for RowStyle.FlatWithRadio
-/// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithChevron, and RowStyle.FloatingButton
+/// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithDisclosuse, and RowStyle.FloatingButton
 @override final  EdgeInsetsConfig? separatorInsets;
 /// Determines if the top separator is visible at the top of the Element.
 /// @default true
@@ -8069,8 +8102,8 @@ class _FlatConfig implements FlatConfig {
 @override final  RadioConfig? radio;
 /// Appearance settings for the checkmark (used when RowStyle is FlatWithCheckmark)
 @override final  CheckmarkConfig? checkmark;
-/// Appearance settings for the chevron (used when RowStyle is FlatWithChevron)
-@override final  ChevronConfig? chevron;
+/// Appearance settings for the disclosure indicator (used when RowStyle is FlatWithDisclosure)
+@override final  DisclosureConfig? disclosure;
 
 /// Create a copy of FlatConfig
 /// with the given fields replaced by the non-null parameter values.
@@ -8085,16 +8118,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FlatConfig&&(identical(other.separatorThickness, separatorThickness) || other.separatorThickness == separatorThickness)&&(identical(other.separatorColor, separatorColor) || other.separatorColor == separatorColor)&&(identical(other.separatorInsets, separatorInsets) || other.separatorInsets == separatorInsets)&&(identical(other.topSeparatorEnabled, topSeparatorEnabled) || other.topSeparatorEnabled == topSeparatorEnabled)&&(identical(other.bottomSeparatorEnabled, bottomSeparatorEnabled) || other.bottomSeparatorEnabled == bottomSeparatorEnabled)&&(identical(other.radio, radio) || other.radio == radio)&&(identical(other.checkmark, checkmark) || other.checkmark == checkmark)&&(identical(other.chevron, chevron) || other.chevron == chevron));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FlatConfig&&(identical(other.separatorThickness, separatorThickness) || other.separatorThickness == separatorThickness)&&(identical(other.separatorColor, separatorColor) || other.separatorColor == separatorColor)&&(identical(other.separatorInsets, separatorInsets) || other.separatorInsets == separatorInsets)&&(identical(other.topSeparatorEnabled, topSeparatorEnabled) || other.topSeparatorEnabled == topSeparatorEnabled)&&(identical(other.bottomSeparatorEnabled, bottomSeparatorEnabled) || other.bottomSeparatorEnabled == bottomSeparatorEnabled)&&(identical(other.radio, radio) || other.radio == radio)&&(identical(other.checkmark, checkmark) || other.checkmark == checkmark)&&(identical(other.disclosure, disclosure) || other.disclosure == disclosure));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,separatorThickness,separatorColor,separatorInsets,topSeparatorEnabled,bottomSeparatorEnabled,radio,checkmark,chevron);
+int get hashCode => Object.hash(runtimeType,separatorThickness,separatorColor,separatorInsets,topSeparatorEnabled,bottomSeparatorEnabled,radio,checkmark,disclosure);
 
 @override
 String toString() {
-  return 'FlatConfig(separatorThickness: $separatorThickness, separatorColor: $separatorColor, separatorInsets: $separatorInsets, topSeparatorEnabled: $topSeparatorEnabled, bottomSeparatorEnabled: $bottomSeparatorEnabled, radio: $radio, checkmark: $checkmark, chevron: $chevron)';
+  return 'FlatConfig(separatorThickness: $separatorThickness, separatorColor: $separatorColor, separatorInsets: $separatorInsets, topSeparatorEnabled: $topSeparatorEnabled, bottomSeparatorEnabled: $bottomSeparatorEnabled, radio: $radio, checkmark: $checkmark, disclosure: $disclosure)';
 }
 
 
@@ -8105,11 +8138,11 @@ abstract mixin class _$FlatConfigCopyWith<$Res> implements $FlatConfigCopyWith<$
   factory _$FlatConfigCopyWith(_FlatConfig value, $Res Function(_FlatConfig) _then) = __$FlatConfigCopyWithImpl;
 @override @useResult
 $Res call({
- double? separatorThickness,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? separatorColor, EdgeInsetsConfig? separatorInsets, bool? topSeparatorEnabled, bool? bottomSeparatorEnabled, RadioConfig? radio, CheckmarkConfig? checkmark, ChevronConfig? chevron
+ double? separatorThickness,@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? separatorColor, EdgeInsetsConfig? separatorInsets, bool? topSeparatorEnabled, bool? bottomSeparatorEnabled, RadioConfig? radio, CheckmarkConfig? checkmark, DisclosureConfig? disclosure
 });
 
 
-@override $EdgeInsetsConfigCopyWith<$Res>? get separatorInsets;@override $RadioConfigCopyWith<$Res>? get radio;@override $CheckmarkConfigCopyWith<$Res>? get checkmark;@override $ChevronConfigCopyWith<$Res>? get chevron;
+@override $EdgeInsetsConfigCopyWith<$Res>? get separatorInsets;@override $RadioConfigCopyWith<$Res>? get radio;@override $CheckmarkConfigCopyWith<$Res>? get checkmark;@override $DisclosureConfigCopyWith<$Res>? get disclosure;
 
 }
 /// @nodoc
@@ -8122,7 +8155,7 @@ class __$FlatConfigCopyWithImpl<$Res>
 
 /// Create a copy of FlatConfig
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? separatorThickness = freezed,Object? separatorColor = freezed,Object? separatorInsets = freezed,Object? topSeparatorEnabled = freezed,Object? bottomSeparatorEnabled = freezed,Object? radio = freezed,Object? checkmark = freezed,Object? chevron = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? separatorThickness = freezed,Object? separatorColor = freezed,Object? separatorInsets = freezed,Object? topSeparatorEnabled = freezed,Object? bottomSeparatorEnabled = freezed,Object? radio = freezed,Object? checkmark = freezed,Object? disclosure = freezed,}) {
   return _then(_FlatConfig(
 separatorThickness: freezed == separatorThickness ? _self.separatorThickness : separatorThickness // ignore: cast_nullable_to_non_nullable
 as double?,separatorColor: freezed == separatorColor ? _self.separatorColor : separatorColor // ignore: cast_nullable_to_non_nullable
@@ -8131,8 +8164,8 @@ as EdgeInsetsConfig?,topSeparatorEnabled: freezed == topSeparatorEnabled ? _self
 as bool?,bottomSeparatorEnabled: freezed == bottomSeparatorEnabled ? _self.bottomSeparatorEnabled : bottomSeparatorEnabled // ignore: cast_nullable_to_non_nullable
 as bool?,radio: freezed == radio ? _self.radio : radio // ignore: cast_nullable_to_non_nullable
 as RadioConfig?,checkmark: freezed == checkmark ? _self.checkmark : checkmark // ignore: cast_nullable_to_non_nullable
-as CheckmarkConfig?,chevron: freezed == chevron ? _self.chevron : chevron // ignore: cast_nullable_to_non_nullable
-as ChevronConfig?,
+as CheckmarkConfig?,disclosure: freezed == disclosure ? _self.disclosure : disclosure // ignore: cast_nullable_to_non_nullable
+as DisclosureConfig?,
   ));
 }
 
@@ -8176,13 +8209,13 @@ $CheckmarkConfigCopyWith<$Res>? get checkmark {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ChevronConfigCopyWith<$Res>? get chevron {
-    if (_self.chevron == null) {
+$DisclosureConfigCopyWith<$Res>? get disclosure {
+    if (_self.disclosure == null) {
     return null;
   }
 
-  return $ChevronConfigCopyWith<$Res>(_self.chevron!, (value) {
-    return _then(_self.copyWith(chevron: value));
+  return $DisclosureConfigCopyWith<$Res>(_self.disclosure!, (value) {
+    return _then(_self.copyWith(disclosure: value));
   });
 }
 }

@@ -52,16 +52,23 @@ class WebStripe extends StripePlatform {
     String? merchantIdentifier,
     String? urlScheme,
     bool? setReturnUrlSchemeOnAndroid,
+    String? locale,
   }) async {
     _urlScheme = urlScheme;
 
     if (__stripe != null) {
-      // Check if the new stripeAccountId is different
-      if (__stripe!.stripeAccount != stripeAccountId) {
-        // Re-initialize with new stripeAccountId
+      // Check if the new stripeAccountId or locale is different
+      if (__stripe!.stripeAccount != stripeAccountId || __stripe!.locale != locale) {
+        // Re-initialize with new stripeAccountId or locale
         await stripe_js.loadStripe();
         var stripeOption = stripe_js.StripeOptions();
-        stripeOption.stripeAccount = stripeAccountId;
+        if (__stripe!.stripeAccount != stripeAccountId) {
+          stripeOption.stripeAccount = stripeAccountId;
+        }
+        if (locale != null && __stripe!.locale != locale) {
+          stripeOption.locale = locale;
+        }
+
         __stripe = stripe_js.Stripe(publishableKey, stripeOption);
       }
       return;
@@ -71,6 +78,9 @@ class WebStripe extends StripePlatform {
     var stripeOption = stripe_js.StripeOptions();
     if (stripeAccountId != null) {
       stripeOption.stripeAccount = stripeAccountId;
+    }
+    if (locale != null) {
+      stripeOption.locale = locale;
     }
     __stripe = stripe_js.Stripe(publishableKey, stripeOption);
   }
@@ -548,7 +558,7 @@ class WebStripe extends StripePlatform {
   @override
   Future<FinancialConnectionTokenResult> collectBankAccountToken({
     required String clientSecret,
-    CollectBankAccountTokenParams? params,
+    required CollectBankAccountTokenParams params,
   }) {
     throw WebUnsupportedError.method('collectBankAccountToken');
   }
@@ -681,8 +691,7 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<CustomerSheetResult?> initCustomerSheet(
-      CustomerSheetInitParams params) {
+  Future<void> initCustomerSheet(CustomerSheetInitParams params) {
     throw WebUnsupportedError.method('initCustomerSheet');
   }
 
@@ -707,6 +716,12 @@ class WebStripe extends StripePlatform {
   @override
   Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) {
     throw WebUnsupportedError.method('isCardInWallet');
+  }
+
+  @override
+  Future<void> confirmationTokenCreationCallback(
+      IntentCreationCallbackParams params) {
+    throw WebUnsupportedError.method('confirmationTokenCreationCallback');
   }
 }
 

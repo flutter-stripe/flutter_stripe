@@ -110,9 +110,8 @@ mixin CardFormFieldContext {
 
 class CardFormEditController extends ChangeNotifier {
   CardFormEditController({CardFieldInputDetails? initialDetails})
-      : _initalDetails = initialDetails,
-        _details =
-            initialDetails ?? const CardFieldInputDetails(complete: false);
+    : _initalDetails = initialDetails,
+      _details = initialDetails ?? const CardFieldInputDetails(complete: false);
 
   final CardFieldInputDetails? _initalDetails;
   CardFieldInputDetails _details;
@@ -151,14 +150,18 @@ class CardFormEditController extends ChangeNotifier {
   CardFormFieldContext? _context;
   CardFormFieldContext get context {
     assert(
-        _context != null, 'CardEditController is not attached to any CardView');
+      _context != null,
+      'CardEditController is not attached to any CardView',
+    );
     return _context!;
   }
 }
 
 class _CardFormFieldState extends State<CardFormField> {
-  final FocusNode _node =
-      FocusNode(debugLabel: 'CardFormField', descendantsAreFocusable: false);
+  final FocusNode _node = FocusNode(
+    debugLabel: 'CardFormField',
+    descendantsAreFocusable: false,
+  );
 
   CardFormEditController? _fallbackController;
   CardFormEditController get controller {
@@ -229,11 +232,11 @@ class _MethodChannelCardFormField extends StatefulWidget {
     this.disabled = false,
     this.preferredNetworks,
     this.countryCode,
-  })  : assert(constraints == null || constraints.debugAssertIsValid()),
-        constraints = (width != null || height != null)
-            ? constraints?.tighten(width: width, height: height) ??
-                BoxConstraints.tightFor(width: width, height: height)
-            : constraints;
+  }) : assert(constraints == null || constraints.debugAssertIsValid()),
+       constraints = (width != null || height != null)
+           ? constraints?.tighten(width: width, height: height) ??
+                 BoxConstraints.tightFor(width: width, height: height)
+           : constraints;
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
@@ -264,15 +267,14 @@ class _MethodChannelCardFormField extends StatefulWidget {
 }
 
 class _MethodChannelCardFormFieldState
-    extends State<_MethodChannelCardFormField> with CardFormFieldContext {
+    extends State<_MethodChannelCardFormField>
+    with CardFormFieldContext {
   MethodChannel? _methodChannel;
 
   CardFormStyle? _lastStyle;
 
   CardFormStyle resolveStyle(CardFormStyle? style) {
-    return CardFormStyle(
-      backgroundColor: Colors.transparent,
-    ).apply(style);
+    return CardFormStyle(backgroundColor: Colors.transparent).apply(style);
   }
 
   CardFormEditController get controller => widget.controller;
@@ -284,8 +286,10 @@ class _MethodChannelCardFormFieldState
     if (!widget.dangerouslyUpdateFullCardDetails) {
       if (kDebugMode &&
           controller.details != const CardFieldInputDetails(complete: false)) {
-        dev.log('WARNING! Initial card data value has been ignored. \n'
-            '$kDebugPCIMessage');
+        dev.log(
+          'WARNING! Initial card data value has been ignored. \n'
+          '$kDebugPCIMessage',
+        );
       }
       ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
         controller._updateDetails(const CardFieldInputDetails(complete: false));
@@ -317,21 +321,33 @@ class _MethodChannelCardFormFieldState
         'cardDetails': controller._initalDetails?.toJson(),
       'autofocus': widget.autofocus,
       if (widget.preferredNetworks != null)
-        'preferredNetworks':
-            widget.preferredNetworks?.map((e) => e.brandValue).toList(),
+        'preferredNetworks': widget.preferredNetworks
+            ?.map((e) => e.brandValue)
+            .toList(),
       'disabled': widget.disabled,
-      'defaultValues': {
-        'countryCode': widget.countryCode,
-      }
+      'defaultValues': {'countryCode': widget.countryCode},
     };
 
     Widget platform;
     if (defaultTargetPlatform == TargetPlatform.android) {
-      platform = _AndroidCardFormField(
-        key: _MethodChannelCardFormField._key,
-        viewType: _MethodChannelCardFormField._viewType,
-        creationParams: creationParams,
-        onPlatformViewCreated: onPlatformViewCreated,
+      platform = Listener(
+        onPointerDown: (_) {
+          if (!widget.focusNode.hasFocus) {
+            widget.focusNode.requestFocus();
+          }
+        },
+        child: Focus(
+          autofocus: widget.autofocus,
+          descendantsAreFocusable: true,
+          focusNode: widget.focusNode,
+          onFocusChange: _handleFrameworkFocusChanged,
+          child: _AndroidCardFormField(
+            key: _MethodChannelCardFormField._key,
+            viewType: _MethodChannelCardFormField._viewType,
+            creationParams: creationParams,
+            onPlatformViewCreated: onPlatformViewCreated,
+          ),
+        ),
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = Listener(
@@ -359,16 +375,15 @@ class _MethodChannelCardFormFieldState
     } else {
       throw UnsupportedError('Unsupported platform view');
     }
-    final constraints = widget.constraints ??
+    final constraints =
+        widget.constraints ??
         BoxConstraints.expand(
-            height: defaultTargetPlatform == TargetPlatform.iOS
-                ? kCardFormFieldDefaultIOSHeight
-                : kCardFormFieldDefaultAndroidHeight);
+          height: defaultTargetPlatform == TargetPlatform.iOS
+              ? kCardFormFieldDefaultIOSHeight
+              : kCardFormFieldDefaultAndroidHeight,
+        );
 
-    return ConstrainedBox(
-      constraints: constraints,
-      child: platform,
-    );
+    return ConstrainedBox(constraints: constraints, child: platform);
   }
 
   @override
@@ -387,8 +402,10 @@ class _MethodChannelCardFormFieldState
   @override
   void didUpdateWidget(covariant _MethodChannelCardFormField oldWidget) {
     if (widget.controller != oldWidget.controller) {
-      assert(controller._context == null,
-          'CardEditController is already attached to a CardView');
+      assert(
+        controller._context == null,
+        'CardEditController is already attached to a CardView',
+      );
       oldWidget.controller._context = this;
       controller._context = this;
     }
@@ -399,14 +416,9 @@ class _MethodChannelCardFormFieldState
     }
 
     if (widget.countryCode != oldWidget.countryCode) {
-      _methodChannel?.invokeMethod(
-        'onDefaultValuesChanged',
-        {
-          'defaultValues': {
-            'countryCode': widget.countryCode,
-          }
-        },
-      );
+      _methodChannel?.invokeMethod('onDefaultValuesChanged', {
+        'defaultValues': {'countryCode': widget.countryCode},
+      });
     }
     if (widget.dangerouslyGetFullCardDetails !=
         oldWidget.dangerouslyGetFullCardDetails) {
@@ -446,13 +458,16 @@ class _MethodChannelCardFormFieldState
         widget.onCardChanged?.call(details);
       } else {
         final details = CardFieldInputDetails.fromJson(
-            Map<String, dynamic>.from(map['card']));
+          Map<String, dynamic>.from(map['card']),
+        );
         controller._updateDetails(details);
         widget.onCardChanged?.call(details);
       }
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
-      log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
+      log(
+        'An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new',
+      );
       rethrow;
     }
   }
@@ -470,7 +485,9 @@ class _MethodChannelCardFormFieldState
       widget.onFocus?.call(field.focusedField);
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
-      log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
+      log(
+        'An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new',
+      );
       rethrow;
     }
   }
@@ -540,24 +557,25 @@ class _AndroidCardFormField extends StatelessWidget {
     return PlatformViewLink(
       viewType: viewType,
       surfaceFactory: (context, controller) => AndroidViewSurface(
-        controller: controller
-            // ignore: avoid_as
-            as AndroidViewController,
+        controller:
+            controller
+                // ignore: avoid_as
+                as AndroidViewController,
         gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
         hitTestBehavior: PlatformViewHitTestBehavior.opaque,
       ),
       onCreatePlatformView: (params) {
         onPlatformViewCreated(params.id);
         return PlatformViewsService.initExpensiveAndroidView(
-          id: params.id,
-          viewType: viewType,
-          layoutDirection: Directionality.of(context),
-          creationParams: creationParams,
-          creationParamsCodec: const StandardMessageCodec(),
-          onFocus: () {
-            params.onFocusChanged(true);
-          },
-        )
+            id: params.id,
+            viewType: viewType,
+            layoutDirection: Directionality.of(context),
+            creationParams: creationParams,
+            creationParamsCodec: const StandardMessageCodec(),
+            onFocus: () {
+              params.onFocusChanged(true);
+            },
+          )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();
       },

@@ -31,7 +31,6 @@ abstract class IdPaymentMethodDetails implements PaymentMethodDetails {
 /// It supports creating a payment method from an id or custom payment
 /// method details like [CardPaymentMethodDetails].
 @Target({TargetKind.parameter})
-@internal
 const paymentMethodDetailJsonKey = JsonKey(
   name: "payment_method",
   toJson: PaymentMethodDetails.toJsonConverter,
