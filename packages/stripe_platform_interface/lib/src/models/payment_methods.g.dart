@@ -561,6 +561,14 @@ Map<String, dynamic> _$PaymentMethodParamsBillieToJson(
   'paymentMethodType': instance.$type,
 };
 
+_PaymentMethodParamsElements _$PaymentMethodParamsElementsFromJson(
+  Map<String, dynamic> json,
+) => _PaymentMethodParamsElements($type: json['paymentMethodType'] as String?);
+
+Map<String, dynamic> _$PaymentMethodParamsElementsToJson(
+  _PaymentMethodParamsElements instance,
+) => <String, dynamic>{'paymentMethodType': instance.$type};
+
 _PaymentMethodData _$PaymentMethodDataFromJson(Map<String, dynamic> json) =>
     _PaymentMethodData(
       billingDetails: json['billingDetails'] == null
