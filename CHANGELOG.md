@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_ios` - `v12.2.0`](#stripe_ios---v1220)
+ - [`flutter_stripe` - `v12.1.2`](#flutter_stripe---v1212)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v12.1.2`
+
+---
+
+#### `stripe_ios` - `v12.2.0`
+
+ - **FIX**(ios): improve URL callback handling for Link payment method (#2290).
+
+
+## 2026-01-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_android` - `v12.2.0`](#stripe_android---v1220)
  - [`flutter_stripe` - `v12.1.2`](#flutter_stripe---v1212)
 
