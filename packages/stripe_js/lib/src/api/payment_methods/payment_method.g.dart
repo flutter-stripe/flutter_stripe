@@ -93,7 +93,6 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.customerBalance: 'customer_balance',
   PaymentMethodType.eps: 'eps',
   PaymentMethodType.fpx: 'fpx',
-  PaymentMethodType.giropay: 'giropay',
   PaymentMethodType.grabpay: 'grabpay',
   PaymentMethodType.ideal: 'ideal',
   PaymentMethodType.interacPresent: 'interac_present',

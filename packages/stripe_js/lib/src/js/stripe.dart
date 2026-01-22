@@ -20,6 +20,8 @@ extension type Stripe.__(JSObject o) {
 
   external String? get stripeAccount;
   external set stripeAccount(String? stripeAccount);
+
+  external String? get locale;
 }
 
 extension type StripeOptions._(JSObject o) implements JSObject {
