@@ -15,6 +15,29 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v7.2.0`](#flutter_stripe_web---v720)
+
+---
+
+#### `flutter_stripe_web` - `v7.2.0`
+
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FEAT**: web language (#2267)".
+ - **FEAT**: web language (#2267).
+
+
+## 2026-01-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_js` - `v7.2.0`](#stripe_js---v720)
  - [`flutter_stripe_web` - `v7.1.2`](#flutter_stripe_web---v712)
 
