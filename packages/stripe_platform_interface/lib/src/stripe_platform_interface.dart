@@ -32,7 +32,6 @@ abstract class StripePlatform extends PlatformInterface {
     String? merchantIdentifier,
     String? urlScheme,
     bool? setReturnUrlSchemeOnAndroid,
-    String? locale,
   });
 
   Future<PaymentMethod> createPaymentMethod(
