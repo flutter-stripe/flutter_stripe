@@ -15,6 +15,32 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v12.2.0`](#flutter_stripe---v1220)
+
+---
+
+#### `flutter_stripe` - `v12.2.0`
+
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FIX**(ios): improve URL callback handling for Link payment method (#2290).
+ - **FIX**(android): keyboard not appearing on first tap for CardField (#2291).
+ - **FIX**: add meta import for @internal annotation (#2269).
+ - **FEAT**: web language (#2267)".
+ - **FEAT**: web language (#2267).
+
+
+## 2026-01-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v7.2.0`](#flutter_stripe_web---v720)
 
 ---
