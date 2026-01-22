@@ -1,3 +1,19 @@
+## 12.2.0
+
+**Features**
+- Sync with Stripe React Native [0.57.1](https://github.com/stripe/stripe-react-native/releases/tag/v0.57.1)
+- Added support for Alma payments
+- Added token creation callback methods
+- Implemented new constructors for customer sheet and deprecated the old ones
+- Remove Giropay as Stripe no longer supports it
+- Improved stability of customer sheet screen
+
+**Fixes**
+ - #2064 crash collect bankaccounttoken
+ - android: keyboard not appearing on first tap for CardField @meylis1998
+ - #2137 improve URL callback handling for Link payment method @meylis1998
+ - #2283 fix: change initCustomerSheet return type to Future @meylis1998
+ 
 ## 12.1.0
 
 **Features**

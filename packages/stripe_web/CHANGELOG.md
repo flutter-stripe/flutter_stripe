@@ -1,3 +1,7 @@
+## 7.2.0
+
+ - Small fixes and maitenance improvements
+
 ## 7.1.1
 
 **Fixes**
