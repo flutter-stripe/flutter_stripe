@@ -121,10 +121,10 @@ Card form     | Medium        | Similar as the cardfield but the entry fields ar
 > **Note:** Stripe is sunsetting CardField and CardForm in favor of PaymentSheet. We recommend using PaymentSheet for all new integrations. See [Stripe's documentation](https://stripe.com/docs/payments/payment-sheet) for more details.
 
 ### Wallets
-This library fully supports native Apple Pay and [Google pay](https://docs.page/flutter-stripe/flutter_stripe/google_pay) integration.
+This library fully supports native [Apple Pay](https://docs.page/flutter-stripe/flutter_stripe/apple_pay) and [Google pay](https://docs.page/flutter-stripe/flutter_stripe/google_pay) integration.
 
-### Mobile elements [BETA]
-We also support the customer sheet mobile element. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/customer_sheet) to learn more on how to set it up.
+### Mobile elements
+We also support the [Customer Sheet](https://docs.page/flutter-stripe/flutter_stripe/customer_sheet) and the [Address sheet](https://docs.page/flutter-stripe/flutter_stripe/address_sheet) mobile elements to collect and manage customer payment methods and addresses.
 
 ### Financial connections
 We also support Financial connections in our latest sdk. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/financial_connections) to learn more on how to set it up.
