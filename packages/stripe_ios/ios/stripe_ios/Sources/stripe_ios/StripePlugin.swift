@@ -609,15 +609,16 @@ extension  StripePlugin {
     func confirmPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
-              let options = arguments["options"] as? NSDictionary,
-              let params = arguments["params"] as? NSDictionary else {
+              let options = arguments["options"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
-        
+        // params is optional - when nil, it means payment method is already attached to the intent
+        let params = arguments["params"] as? NSDictionary
+
         confirmPayment(
             paymentIntentClientSecret: paymentIntentClientSecret,
-            params: params,
+            params: params ?? NSNull(),
             options: options,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)

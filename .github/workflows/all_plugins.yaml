@@ -116,7 +116,8 @@ jobs:
 
     - name: "Start iOS Simulator"
       run: |
-        xcrun simctl boot "iPhone 16" 
+        # Try to boot iPhone 16, fallback to iPhone 15 if not available
+        xcrun simctl boot "iPhone 16" 2>/dev/null || xcrun simctl boot "iPhone 15" || xcrun simctl boot "iPhone 14" 
 
     - name: "Run Flutter Driver tests on iOS"
       working-directory: example
@@ -173,8 +174,11 @@ jobs:
         api-level: 34
         arch: x86_64
         emulator-boot-timeout: 1400
+        emulator-options: -no-snapshot-load -no-window -gpu swiftshader_indirect -verbose
         working-directory: example
-        script: | 
-          sleep 15;
-          flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart;
-          cd android && ./gradlew :app:connectedDebugAndroidTest;
+        script: |
+          echo "Emulator booted successfully, running tests..."
+          sleep 15
+          flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart
+          echo "Flutter driver tests completed, running Gradle tests..."
+          cd android && ./gradlew :app:connectedDebugAndroidTest
