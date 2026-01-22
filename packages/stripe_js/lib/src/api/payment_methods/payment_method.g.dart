@@ -50,7 +50,11 @@ _PaymentMethod _$PaymentMethodFromJson(Map json) => _PaymentMethod(
       : UsBankAccount.fromJson(
           Map<String, dynamic>.from(json['usBankAccount'] as Map),
         ),
-  type: $enumDecode(_$PaymentMethodTypeEnumMap, json['type']),
+  type: $enumDecode(
+    _$PaymentMethodTypeEnumMap,
+    json['type'],
+    unknownValue: PaymentMethodType.unknown,
+  ),
 );
 
 Map<String, dynamic> _$PaymentMethodToJson(_PaymentMethod instance) =>
@@ -89,7 +93,6 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.customerBalance: 'customer_balance',
   PaymentMethodType.eps: 'eps',
   PaymentMethodType.fpx: 'fpx',
-  PaymentMethodType.giropay: 'giropay',
   PaymentMethodType.grabpay: 'grabpay',
   PaymentMethodType.ideal: 'ideal',
   PaymentMethodType.interacPresent: 'interac_present',
