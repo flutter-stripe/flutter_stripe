@@ -15,6 +15,28 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v7.2.1`](#flutter_stripe_web---v721)
+
+---
+
+#### `flutter_stripe_web` - `v7.2.1`
+
+ - **FIX**: remove giropay payment method references from codebase (#2309).
+ - **FEAT**: web language (#2267)".
+
+
+## 2026-01-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_js` - `v7.2.1`](#stripe_js---v721)
  - [`flutter_stripe_web` - `v7.2.1`](#flutter_stripe_web---v721)
 
