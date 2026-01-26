@@ -439,7 +439,6 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
         },
         child: Focus(
           autofocus: widget.autofocus,
-          descendantsAreFocusable: true,
           focusNode: widget.focusNode,
           onFocusChange: _handleFrameworkFocusChanged,
           child: _AndroidCardField(
