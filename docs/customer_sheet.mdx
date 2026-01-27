@@ -1,15 +1,15 @@
 ---
-title: Customer sheet
+title: Customer Sheet
 description: Offer a pre-built UI for your customers to manage their saved payment methods.
 ---
 
-# Mobile elements - Customer Sheet
+# Customer Sheet
 
-### Let customers manage their own payments.
+### Let customers manage their own payment methods.
 
 <img src="https://b.stripecdn.com/docs-statics-srv/assets/ios-landing.e79179b84cd87dd1e6936fa12e283e3b.png" height="36" />
 
-Important the customer sheet is in Beta so it is not guaranteed to work under all circumstances.
+> **Note:** The Customer Sheet is in Beta, so it is not guaranteed to work under all circumstances.
 
 ## 1. Set up Stripe [Server Side] [Client Side]
 
@@ -67,120 +67,137 @@ For security reasons, your app can’t create these objects. Instead, add an end
 
 Check examples implementations for your server [here](https://stripe.com/docs/payments/accept-a-payment?platform=ios#add-server-endpoint)
 
-## 3. Collect customer details [Client Side]
+## 3. Initialize the Customer Sheet [Client Side]
 
-First initialize the customer sheet
+First initialize the customer sheet using the `CustomerSheetInitParams.adapter()` factory:
 
 ```dart
- Future<void> initCustomerSheet() async {
-    try {
-      // 1. retrieve customer from backend.
-      final data = await _createTestCustomerSheet();
+Future<void> initCustomerSheet() async {
+  try {
+    // 1. Retrieve customer data from your backend
+    final data = await _fetchCustomerSheet();
 
-      // create some billingdetails
-      final billingDetails = BillingDetails(
-        name: 'Flutter Stripe',
-        email: 'email@stripe.com',
-        phone: '+48888000888',
-        address: Address(
-          city: 'Houston',
-          country: 'US',
-          line1: '1459  Circle Drive',
-          line2: '',
-          state: 'Texas',
-          postalCode: '77063',
-        ),
-      ); // mocked data for tests
+    // 2. Create billing details (optional)
+    final billingDetails = BillingDetails(
+      name: 'Flutter Stripe',
+      email: 'email@stripe.com',
+      phone: '+48888000888',
+      address: Address(
+        city: 'Houston',
+        country: 'US',
+        line1: '1459  Circle Drive',
+        line2: '',
+        state: 'Texas',
+        postalCode: '77063',
+      ),
+    );
 
-      // 2. initialize the customer sheet
-      await Stripe.instance.initCustomerSheet(
-        customerSheetInitParams: CustomerSheetInitParams(
-          // Main params
-          setupIntentClientSecret: data['setupIntent'],
-          merchantDisplayName: 'Flutter Stripe Store Demo',
-          // Customer params
-          customerId: data['customer'],
-          customerEphemeralKeySecret: data['ephemeralKeySecret'],
-          style: ThemeMode.system,
-          defaultBillingDetails: billingDetails,
-        ),
-      );
-      setState(() {
-        step = 1;
-      });
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
-      rethrow;
-    }
+    // 3. Initialize the customer sheet
+    await Stripe.instance.initCustomerSheet(
+      customerSheetInitParams: CustomerSheetInitParams.adapter(
+        // Main params
+        setupIntentClientSecret: data['setupIntent'],
+        merchantDisplayName: 'Flutter Stripe Store Demo',
+        // Customer params
+        customerId: data['customer'],
+        customerEphemeralKeySecret: data['ephemeralKeySecret'],
+        // Optional params
+        style: ThemeMode.system,
+        defaultBillingDetails: billingDetails,
+        allowsRemovalOfLastSavedPaymentMethod: true,
+      ),
+    );
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Error: $e')),
+    );
+    rethrow;
   }
-  ```
+}
+```
 
-  Then you can show the customer sheet
+## 4. Present the Customer Sheet [Client Side]
 
-  ```dart
-   Future<void> confirmCustomerSheet() async {
-    try {
-      // 3. display the customer sheet.
-      final result = await Stripe.instance.presentCustomerSheet();
+After initialization, present the customer sheet to let users manage their payment methods:
 
-      setState(() {
-        step = 0;
-      });
+```dart
+Future<void> presentCustomerSheet() async {
+  try {
+    // Display the customer sheet
+    final result = await Stripe.instance.presentCustomerSheet();
 
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Payment preferences modified. Selected: ${result?.paymentOption?.label}',
+        ),
+      ),
+    );
+  } on Exception catch (e) {
+    if (e is StripeException) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-              'Payment successfully modified option selected: ${result?.paymentOption?.label}}'),
+          content: Text('Error from Stripe: ${e.error.localizedMessage}'),
         ),
       );
-    } on Exception catch (e) {
-      if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
-          ),
-        );
-      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Unforeseen error: $e'),
+        ),
+      );
     }
   }
-  ```
+}
+```
 
-## 3. Optional configuration
+## 5. Retrieve Payment Option Selection (Optional) [Client Side]
 
-### Change appearance
-
-It is possible to change the appearance of the customer sheet. 
+You can also retrieve the currently selected payment option without presenting the sheet:
 
 ```dart
- await Stripe.instance.initCustomerSheet(      
-  appearance: PaymentSheetAppearance(
-    colors: PaymentSheetAppearanceColors(
-      background: Colors.lightBlue,
-      primary: Colors.blue,
-      componentBorder: Colors.red,
-    ),
-    shapes: PaymentSheetShape(
-      borderWidth: 4,
-      shadow: PaymentSheetShadowParams(color: Colors.red),
-    ),
-    primaryButton: PaymentSheetPrimaryButtonAppearance(
-      shapes: PaymentSheetPrimaryButtonShape(blurRadius: 8),
-      colors: PaymentSheetPrimaryButtonTheme(
-        light: PaymentSheetPrimaryButtonThemeColors(
-          background: Color.fromARGB(255, 231, 235, 30),
-          text: Color.fromARGB(255, 235, 92, 30),
-          border: Color.fromARGB(255, 235, 92, 30),
+Future<void> getSelectedPaymentOption() async {
+  final result = await Stripe.instance.retrieveCustomerSheetPaymentOptionSelection();
+  if (result != null) {
+    print('Selected payment option: ${result.paymentOption?.label}');
+  }
+}
+```
+
+## 6. Optional configuration
+
+### Change Appearance
+
+You can customize the appearance of the customer sheet by passing an `appearance` parameter:
+
+```dart
+await Stripe.instance.initCustomerSheet(
+  customerSheetInitParams: CustomerSheetInitParams.adapter(
+    setupIntentClientSecret: data['setupIntent'],
+    merchantDisplayName: 'Flutter Stripe Store Demo',
+    customerId: data['customer'],
+    customerEphemeralKeySecret: data['ephemeralKeySecret'],
+    appearance: PaymentSheetAppearance(
+      colors: PaymentSheetAppearanceColors(
+        background: Colors.lightBlue,
+        primary: Colors.blue,
+        componentBorder: Colors.red,
+      ),
+      shapes: PaymentSheetShape(
+        borderWidth: 4,
+        shadow: PaymentSheetShadowParams(color: Colors.red),
+      ),
+      primaryButton: PaymentSheetPrimaryButtonAppearance(
+        shapes: PaymentSheetPrimaryButtonShape(blurRadius: 8),
+        colors: PaymentSheetPrimaryButtonTheme(
+          light: PaymentSheetPrimaryButtonThemeColors(
+            background: Color.fromARGB(255, 231, 235, 30),
+            text: Color.fromARGB(255, 235, 92, 30),
+            border: Color.fromARGB(255, 235, 92, 30),
+          ),
         ),
       ),
     ),
-  ),      
+  ),
 );
 ```

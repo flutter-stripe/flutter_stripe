@@ -37,7 +37,6 @@ void main() async {
 Use your [test mode](https://stripe.com/docs/keys#obtain-api-keys) keys while you test and develop, and your [live mode](https://stripe.com/docs/keys#test-live-modes) keys when you publish your app.
 
 ## 2. Enable Google Pay [client Side]
-Add the 
 
 To use Google pay you must enable the Api by adding the following to the `AndroidManifest.xml` file between the `<application>` tags.
 
@@ -48,7 +47,7 @@ To use Google pay you must enable the Api by adding the following to the `Androi
 ```
 For more details see: [Google Pay](https://developers.google.com/pay/api/android/guides/setup).
 
-## 3. Add an enpoint [Server Side]
+## 3. Add an endpoint [Server Side]
 
 #### Server-side
 
@@ -73,8 +72,6 @@ Check examples implementations for your server [here](https://stripe.com/docs/pa
 
 ## 4a. Option1: Use the Stripe native buttons
 
-Note there 
-
 First add the `PlatformPayButton` to your screen. See [docs](https://pub.dev/documentation/flutter_stripe/latest/flutter_stripe/PlatformPayButton-class.html) for all config options.
 
 ```dart
@@ -86,18 +83,21 @@ PlatformPayButton(
 ),
 ```
 
-Then add the `startGooglePay` method to your screen. 
+Then add the `startGooglePay` method to your screen.
 
 ```dart
- Future<void> startGooglePay() async {
+Future<void> startGooglePay() async {
+  final scaffoldMessenger = ScaffoldMessenger.of(context);
   final googlePaySupported = await Stripe.instance
       .isPlatformPaySupported(googlePay: IsGooglePaySupportedParams());
+
   if (googlePaySupported) {
     try {
       // 1. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
       final clientSecret = response['clientSecret'];
-      // 2.present google pay sheet
+
+      // 2. present google pay sheet
       await Stripe.instance.confirmPlatformPayPaymentIntent(
           clientSecret: clientSecret,
           confirmParams: PlatformPayConfirmParams.googlePay(
@@ -107,32 +107,37 @@ Then add the `startGooglePay` method to your screen.
               merchantCountryCode: 'Es',
               currencyCode: 'EUR',
             ),
-          )
-          // PresentGooglePayParams(clientSecret: clientSecret),
-          );
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Google Pay payment successfully completed')),
-      );
+          ));
+
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          const SnackBar(
+              content: Text('Google Pay payment successfully completed')),
+        );
+      }
     } catch (e) {
-      if (e is StripeException) {
+      if (e is StripeException && context.mounted) {
         log('Error during google pay',
             error: e.error, stackTrace: StackTrace.current);
-        ScaffoldMessenger.of(context).showSnackBar(
+        scaffoldMessenger.showSnackBar(
           SnackBar(content: Text('Error: ${e.error}')),
         );
       } else {
         log('Error during google pay',
             error: e, stackTrace: (e as Error?)?.stackTrace);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(content: Text('Error: $e')),
+          );
+        }
       }
     }
   } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Google pay is not supported on this device')),
-    );
+    if (context.mounted) {
+      scaffoldMessenger.showSnackBar(
+        SnackBar(content: Text('Google pay is not supported on this device')),
+      );
+    }
   }
 }
 ```
@@ -178,35 +183,44 @@ Add the GooglePayButton to your screen.
 In the callback generate the correct stripe token and confirm the payment.
 
 ```dart
- Future<void> onGooglePayResult(paymentResult) async {
+Future<void> onGooglePayResult(paymentResult) async {
+  final scaffoldMessenger = ScaffoldMessenger.of(context);
   try {
     debugPrint(paymentResult.toString());
-    // 2. fetch Intent Client Secret from backend
+    // 1. fetch Intent Client Secret from backend
     final response = await fetchPaymentIntentClientSecret();
     final clientSecret = response['clientSecret'];
     final token =
         paymentResult['paymentMethodData']['tokenizationData']['token'];
     final tokenJson = Map.castFrom(json.decode(token));
     debugPrint(tokenJson.toString());
+
     final params = PaymentMethodParams.cardFromToken(
       paymentMethodData: PaymentMethodDataCardFromToken(
-        token: tokenJson['id'], // TODO extract the actual token
+        token: tokenJson['id'],
       ),
     );
-    // 3. Confirm Google pay payment method
+
+    // 2. Confirm Google pay payment method
     await Stripe.instance.confirmPayment(
       paymentIntentClientSecret: clientSecret,
       data: params,
     );
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-          content: Text('Google Pay payment successfully completed')),
-    );
+
+    if (context.mounted) {
+      scaffoldMessenger.showSnackBar(
+        const SnackBar(
+            content: Text('Google Pay payment successfully completed')),
+      );
+    }
   } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: $e')),
-    );
+    if (context.mounted) {
+      scaffoldMessenger.showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+    }
   }
+}
 ```
 
 
