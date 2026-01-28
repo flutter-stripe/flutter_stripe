@@ -338,7 +338,6 @@ class _MethodChannelCardFormFieldState
         },
         child: Focus(
           autofocus: widget.autofocus,
-          descendantsAreFocusable: true,
           focusNode: widget.focusNode,
           onFocusChange: _handleFrameworkFocusChanged,
           child: _AndroidCardFormField(
