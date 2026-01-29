@@ -26,7 +26,7 @@ void main() {
       await card.waitForReady();
       expect(
         stripe.createPaymentMethod(
-          CreatePaymentMethodData(type: 'card', card: card),
+          CreatePaymentMethodData.card(type: 'card', card: card),
         ),
         completes,
       );
@@ -40,7 +40,7 @@ void main() {
 
       await card.waitForReady();
       final response = await stripe.createPaymentMethod(
-        CreatePaymentMethodData(type: 'card', card: card),
+        CreatePaymentMethodData.card(type: 'card', card: card),
       );
       expect(
         response.error?.toJson(),
