@@ -50,7 +50,7 @@ This plugin requires several changes to be able to work on Android devices. Plea
 2. Use Kotlin version 1.8.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/settings.gradle#L22)
 3. Requires Android Gradle plugin 8 and higher
 4. Using a descendant of `Theme.AppCompat` for your activity: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values/styles.xml#L15), [example night theme](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values-night/styles.xml#L16)
-5. Using an up-to-date Android gradle build tools version: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/build.gradle#L9) and an up-to-date gradle version accordingly: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/gradle/wrapper/gradle-wrapper.properties#L6) 
+5. Using an up-to-date Android gradle build tools version: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/settings.gradle#L21) and an up-to-date gradle version accordingly: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/gradle/wrapper/gradle-wrapper.properties#L4) 
 6. Using `FlutterFragmentActivity` instead of `FlutterActivity` in `MainActivity.kt`: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt#L6)
 7. Add the following rules to your `proguard-rules.pro` file: [example](https://github.com/flutter-stripe/flutter_stripe/blob/master/example/android/app/proguard-rules.pro)  
 ```proguard
@@ -108,7 +108,7 @@ To use Stripe on web, it is required to add `flutter_stripe_web` in your pubspec
 
 ## Usage
 
-### Card payments 
+### Card payments
 
 There are 3 ways of handling card payments
 
@@ -118,11 +118,13 @@ Payment sheet | Easy          | Our recommended way of handling payments. It off
 Cardfield     | Medium        | Single line cardfield. Offers more flexibility but has less built-in functionality.                              | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
 Card form     | Medium        | Similar as the cardfield but the entry fields are spread across multi lines                                      | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
 
-### Wallets
-This library fully supports native Apple Pay and [Google pay](https://docs.page/flutter-stripe/flutter_stripe/google_pay) integration.
+> **Note:** Stripe is sunsetting CardField and CardForm in favor of PaymentSheet. We recommend using PaymentSheet for all new integrations. See [Stripe's documentation](https://stripe.com/docs/payments/payment-sheet) for more details.
 
-### Mobile elements [BETA]
-We also support the customer sheet mobile element. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/customer_sheet) to learn more on how to set it up.
+### Wallets
+This library fully supports native [Apple Pay](https://docs.page/flutter-stripe/flutter_stripe/apple_pay) and [Google pay](https://docs.page/flutter-stripe/flutter_stripe/google_pay) integration.
+
+### Mobile elements
+We also support the [Customer Sheet](https://docs.page/flutter-stripe/flutter_stripe/customer_sheet) and the [Address sheet](https://docs.page/flutter-stripe/flutter_stripe/address_sheet) mobile elements to collect and manage customer payment methods and addresses.
 
 ### Financial connections
 We also support Financial connections in our latest sdk. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/financial_connections) to learn more on how to set it up.
