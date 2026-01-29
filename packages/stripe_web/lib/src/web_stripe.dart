@@ -658,6 +658,13 @@ class WebStripe extends StripePlatform {
       IntentCreationCallbackParams params) {
     throw WebUnsupportedError.method('confirmationTokenCreationCallback');
   }
+
+  @override
+  Future<IdentityVerificationResult> presentIdentityVerificationSheet(
+    IdentityVerificationSheetParams params,
+  ) {
+    throw WebUnsupportedError.method('presentIdentityVerificationSheet');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

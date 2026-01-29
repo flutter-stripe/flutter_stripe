@@ -16,6 +16,7 @@ export 'src/models/customer_sheet.dart';
 export 'src/models/errors.dart';
 export 'src/models/financial_connections.dart';
 export 'src/models/google_pay.dart';
+export 'src/models/identity_verification.dart';
 export 'src/models/intent_creation_callback_params.dart';
 export 'src/models/next_action.dart';
 export 'src/models/payment_intents.dart';

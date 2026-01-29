@@ -87,6 +87,22 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<CustomerSheetResult?> retrieveCustomerSheetPaymentOptionSelection();
 
+  /// Present the Identity Verification Sheet
+  ///
+  /// Presents the Stripe Identity Verification modal sheet to verify a user's
+  /// government-issued ID and selfie.
+  ///
+  /// [params] contains the verification session ID and ephemeral key secret
+  /// created on your server.
+  ///
+  /// Returns [IdentityVerificationResult] indicating the outcome:
+  /// - [IdentityVerificationCompleted] - User finished verification
+  /// - [IdentityVerificationCanceled] - User dismissed the sheet
+  /// - [IdentityVerificationFailed] - An error occurred
+  Future<IdentityVerificationResult> presentIdentityVerificationSheet(
+    IdentityVerificationSheetParams params,
+  );
+
   Future<void> openApplePaySetup();
 
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment);

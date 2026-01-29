@@ -302,6 +302,10 @@ If you continue to have trouble, follow this discussion to get some support http
                     promise = Promise(result)
                 )
             }
+            "presentIdentityVerificationSheet" -> stripeSdk.presentIdentityVerificationSheet(
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
             else -> result.notImplemented()
         }
     }

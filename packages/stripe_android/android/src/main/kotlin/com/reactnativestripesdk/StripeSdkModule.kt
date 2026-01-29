@@ -23,6 +23,7 @@ import com.facebook.react.module.annotations.ReactModule
 import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherManager
 import com.reactnativestripesdk.customersheet.CustomerSheetManager
+import com.reactnativestripesdk.identity.IdentityVerificationSheetManager
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.utils.ConfirmPaymentErrorType
 import com.reactnativestripesdk.utils.CreateTokenErrorType
@@ -97,6 +98,7 @@ class StripeSdkModule(
   private var financialConnectionsSheetManager: FinancialConnectionsSheetManager? = null
   private var googlePayLauncherManager: GooglePayLauncherManager? = null
   private var googlePayPaymentMethodLauncherManager: GooglePayPaymentMethodLauncherManager? = null
+  private var identityVerificationSheetManager: IdentityVerificationSheetManager? = null
 
   private var customerSheetManager: CustomerSheetManager? = null
 
@@ -1106,6 +1108,27 @@ class StripeSdkModule(
         FinancialConnectionsSheetManager.Mode.ForSession,
         publishableKey,
         stripeAccountId,
+      ).also {
+        registerStripeUIManager(it)
+        it.present(promise)
+      }
+  }
+
+  @ReactMethod
+  override fun presentIdentityVerificationSheet(
+    params: ReadableMap,
+    promise: Promise,
+  ) {
+    if (!::stripe.isInitialized) {
+      promise.resolve(createMissingInitError())
+      return
+    }
+
+    unregisterStripeUIManager(identityVerificationSheetManager)
+    identityVerificationSheetManager =
+      IdentityVerificationSheetManager(
+        reactApplicationContext,
+        params,
       ).also {
         registerStripeUIManager(it)
         it.present(promise)

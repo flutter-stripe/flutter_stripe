@@ -761,6 +761,49 @@ class Stripe {
     return _platform.retrieveCustomerSheetPaymentOptionSelection();
   }
 
+  /// Present the Identity Verification Sheet
+  ///
+  /// Before calling this method, create a VerificationSession and
+  /// ephemeral key on your server.
+  ///
+  /// Returns [IdentityVerificationResult] indicating the outcome:
+  /// - [IdentityVerificationCompleted] - User finished verification
+  /// - [IdentityVerificationCanceled] - User dismissed the sheet
+  /// - [IdentityVerificationFailed] - An error occurred
+  ///
+  /// Example:
+  /// ```dart
+  /// final result = await Stripe.instance.presentIdentityVerificationSheet(
+  ///   verificationSessionId: 'vs_xxx',
+  ///   ephemeralKeySecret: 'ek_xxx',
+  /// );
+  ///
+  /// switch (result) {
+  ///   case IdentityVerificationCompleted():
+  ///     print('Verification completed');
+  ///   case IdentityVerificationCanceled():
+  ///     print('User canceled');
+  ///   case IdentityVerificationFailed(:final error):
+  ///     print('Error: ${error.message}');
+  /// }
+  /// ```
+  ///
+  /// See https://stripe.com/docs/identity for more details.
+  Future<IdentityVerificationResult> presentIdentityVerificationSheet({
+    required String verificationSessionId,
+    required String ephemeralKeySecret,
+    String? brandLogo,
+  }) async {
+    await _awaitForSettings();
+    return _platform.presentIdentityVerificationSheet(
+      IdentityVerificationSheetParams(
+        verificationSessionId: verificationSessionId,
+        ephemeralKeySecret: ephemeralKeySecret,
+        brandLogo: brandLogo,
+      ),
+    );
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();

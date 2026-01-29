@@ -24,6 +24,7 @@ let package = Package(
                 .product(name: "StripePaymentSheet", package: "stripe-ios-spm"),
                 .product(name: "StripeApplePay", package: "stripe-ios-spm"),
                 .product(name: "StripeFinancialConnections", package: "stripe-ios-spm"),
+                .product(name: "StripeIdentity", package: "stripe-ios-spm"),
                 "stripe_objc"
             ],
             resources: []

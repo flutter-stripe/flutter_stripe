@@ -7,6 +7,7 @@ import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/customer_sheet.dart';
 import 'package:stripe_platform_interface/src/models/financial_connections.dart';
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
+import 'package:stripe_platform_interface/src/models/identity_verification.dart';
 import 'package:stripe_platform_interface/src/models/intent_creation_callback_params.dart';
 import 'package:stripe_platform_interface/src/models/platform_pay.dart';
 import 'package:stripe_platform_interface/src/models/push_provisioning.dart';
@@ -365,6 +366,36 @@ class MethodChannelStripe extends StripePlatform {
     );
 
     return _parseCustomerSheetResult(result);
+  }
+
+  @override
+  Future<IdentityVerificationResult> presentIdentityVerificationSheet(
+    IdentityVerificationSheetParams params,
+  ) async {
+    final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+      'presentIdentityVerificationSheet',
+      {'params': params.toJson()},
+    );
+
+    if (result == null) {
+      return const IdentityVerificationResult.completed();
+    }
+
+    final status = result['status'] as String?;
+    switch (status) {
+      case 'completed':
+        return const IdentityVerificationResult.completed();
+      case 'canceled':
+        return const IdentityVerificationResult.canceled();
+      case 'failed':
+        return IdentityVerificationResult.failed(
+          error: IdentityVerificationError.fromJson(
+            result['error'] as Map<String, dynamic>? ?? {'code': 'unknown'},
+          ),
+        );
+      default:
+        return const IdentityVerificationResult.completed();
+    }
   }
 
   @override

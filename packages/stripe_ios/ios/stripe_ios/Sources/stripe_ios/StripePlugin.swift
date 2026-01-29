@@ -271,6 +271,17 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             )
         case "handleNextActionForSetup":
             return handleNextActionForSetupIntent(call, result: result)
+        case "presentIdentityVerificationSheet":
+            guard let arguments = call.arguments as? FlutterMap,
+                  let params = arguments["params"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return presentIdentityVerificationSheet(
+                params: params,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
         default:
             result(FlutterMethodNotImplemented)
         }
