@@ -18,6 +18,7 @@ GeneratedPluginRegistrant.m
 *.mode1v3
 *.mode2v3
 *.perspectivev3
+.build
 
 !default.pbxuser
 !default.mode1v3
