@@ -1,0 +1,23 @@
+name: stripe_identity_example
+description: Demonstrates how to use the Stripe Identity plugin.
+version: 1.0.0
+publish_to: "none"
+
+environment:
+  sdk: ">=3.8.1 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_stripe_identity:
+    path: ../
+  http: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
