@@ -133,13 +133,15 @@ class MethodChannelStripe extends StripePlatform {
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams? params,
-    PaymentMethodOptions? options,
-  ) async {
+    PaymentMethodOptions? options, {
+    String? returnURL,
+  }) async {
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('confirmPayment', {
           'paymentIntentClientSecret': paymentIntentClientSecret,
           'params': params?.toJson(),
           'options': options?.toJson() ?? {},
+          if (_platformIsIos) 'returnURL': returnURL,
         });
 
     return ResultParser<PaymentIntent>(
