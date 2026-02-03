@@ -128,7 +128,7 @@ jobs:
 
     - name: "Start iOS Simulator"
       run: |
-        # Try to boot iPhone 16, fallback to iPhone 15 if not available
+        # Try to boot iPhone 16, fallback to iPhone 15 or iPhone 14 if not available
         xcrun simctl boot "iPhone 16" 2>/dev/null || xcrun simctl boot "iPhone 15" || xcrun simctl boot "iPhone 14" 
 
     - name: "Run Flutter Driver tests on iOS"
