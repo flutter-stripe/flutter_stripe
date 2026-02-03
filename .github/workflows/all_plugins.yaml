@@ -108,6 +108,18 @@ jobs:
       working-directory: example/server
       run: yarn install && (yarn start:dev &)
 
+    - name: "Wait for server to be ready"
+      run: |
+        echo "Waiting for server to start..."
+        for i in {1..30}; do
+          if curl -s http://localhost:4242 > /dev/null 2>&1; then
+            echo "Server is ready!"
+            break
+          fi
+          echo "Attempt $i: Server not ready yet, waiting..."
+          sleep 2
+        done
+
     - name: "Set IP address"
       working-directory: example
       run: |
@@ -161,6 +173,18 @@ jobs:
       working-directory: example/server
       run: yarn install && (yarn start:dev &)
 
+    - name: "Wait for server to be ready"
+      run: |
+        echo "Waiting for server to start..."
+        for i in {1..30}; do
+          if curl -s http://localhost:4242 > /dev/null 2>&1; then
+            echo "Server is ready!"
+            break
+          fi
+          echo "Attempt $i: Server not ready yet, waiting..."
+          sleep 2
+        done
+
     - name: "Set IP address"
       working-directory: example
       run: |
@@ -172,9 +196,12 @@ jobs:
       with:
         api-level: 34
         arch: x86_64
-        emulator-boot-timeout: 1400
+        emulator-boot-timeout: 1800
+        force-avd-creation: false
+        emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+        disable-animations: true
         working-directory: example
-        script: | 
+        script: |
           sleep 15;
           flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart;
           cd android && ./gradlew :app:connectedDebugAndroidTest;
