@@ -191,7 +191,8 @@ class CustomerSheetUtils {
             case .none:
                 break
             }
-            payload.setValue(["code": ErrorType.Canceled], forKey: "error")
+            let cancelError = Errors.createError(ErrorType.Canceled, nil as String?)
+            payload.setValue(cancelError["error"], forKey: "error")
         }
         return payload
     }
