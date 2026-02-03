@@ -52,23 +52,16 @@ class WebStripe extends StripePlatform {
     String? merchantIdentifier,
     String? urlScheme,
     bool? setReturnUrlSchemeOnAndroid,
-    String? locale,
   }) async {
     _urlScheme = urlScheme;
 
     if (__stripe != null) {
-      // Check if the new stripeAccountId or locale is different
-      if (__stripe!.stripeAccount != stripeAccountId || __stripe!.locale != locale) {
-        // Re-initialize with new stripeAccountId or locale
+      // Check if the new stripeAccountId is different
+      if (__stripe!.stripeAccount != stripeAccountId) {
+        // Re-initialize with new stripeAccountId
         await stripe_js.loadStripe();
         var stripeOption = stripe_js.StripeOptions();
-        if (__stripe!.stripeAccount != stripeAccountId) {
-          stripeOption.stripeAccount = stripeAccountId;
-        }
-        if (locale != null && __stripe!.locale != locale) {
-          stripeOption.locale = locale;
-        }
-
+        stripeOption.stripeAccount = stripeAccountId;
         __stripe = stripe_js.Stripe(publishableKey, stripeOption);
       }
       return;
@@ -78,9 +71,6 @@ class WebStripe extends StripePlatform {
     var stripeOption = stripe_js.StripeOptions();
     if (stripeAccountId != null) {
       stripeOption.stripeAccount = stripeAccountId;
-    }
-    if (locale != null) {
-      stripeOption.locale = locale;
     }
     __stripe = stripe_js.Stripe(publishableKey, stripeOption);
   }
