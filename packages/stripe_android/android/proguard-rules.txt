@@ -1,7 +1,25 @@
+# Keep all Stripe classes to prevent R8/ProGuard from stripping payment flow classes
+# This fixes crashes on 3D Secure authentication (PaymentFlowResult$Unvalidated$Companion)
+-keep class com.stripe.** { *; }
+
+# Keep Google Pay tap-and-pay classes
 -keepclassmembers class com.google.android.gms.tapandpay.** {
   public *;
 }
 
+# Keep Stripe push provisioning classes
 -keepclassmembers class com.stripe.android.pushProvisioning.** {
   public *;
 }
+
+# Suppress warnings for optional push provisioning dependency
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivity$g
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Args
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Error
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
+
+# Keep Kotlin parcelize classes used by Stripe SDK
+-dontwarn kotlinx.parcelize.Parceler$DefaultImpls
+-dontwarn kotlinx.parcelize.Parceler
+-dontwarn kotlinx.parcelize.Parcelize
