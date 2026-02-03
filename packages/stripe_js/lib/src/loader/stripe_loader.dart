@@ -3,33 +3,25 @@ import 'dart:js_interop';
 import 'package:web/web.dart';
 import 'dart:js_interop_unsafe';
 
-const String _version = "v3";
-
 /// Injects a `script` with a `src` dynamically into the head of the current
 /// document.
 Future<void> _injectSrcScript(String src, String windowVar) async {
+  Completer completer = Completer();
+
+  // Create and inject the script tag
   HTMLScriptElement script = HTMLScriptElement();
   script.type = 'text/javascript';
+  script.src = src;
   script.crossOrigin = 'anonymous';
-  script.text =
-      '''
-      window.ff_trigger_$windowVar = async (callback) => {
-        callback(await import("$src"));
-      };
-    ''';
+  script.onload = ((JSAny? _) {
+    completer.complete();
+  }).toJS;
+  script.onerror = ((JSAny? _) {
+    completer.completeError(Exception('Failed to load $src'));
+  }).toJS;
 
   assert(document.head != null);
   document.head!.append(script);
-  Completer completer = Completer();
-
-  globalContext.callMethod(
-    'ff_trigger_$windowVar'.toJS,
-    ((JSAny? module) {
-      globalContext[windowVar] = module;
-      globalContext.delete('ff_trigger_$windowVar'.toJS);
-      completer.complete();
-    }).toJS,
-  );
 
   await completer.future;
 }
@@ -43,5 +35,5 @@ Future<void> loadStripe() async {
     return;
   }
 
-  return _injectSrcScript('https://js.stripe.com/v3/', 'stripe_$_version');
+  return _injectSrcScript('https://js.stripe.com/v3/', 'Stripe');
 }

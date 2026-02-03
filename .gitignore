@@ -60,6 +60,11 @@ lcov.info
 **/server/package-lock.json
 
 **/node_modules/
+
+# Swift Package Manager
+**/.build/
+.swiftpm/
+
 /test-results/
 /playwright-report/
 /playwright/.cache/
