@@ -566,16 +566,16 @@ class _AndroidCardFormField extends StatelessWidget {
       ),
       onCreatePlatformView: (params) {
         onPlatformViewCreated(params.id);
-        return PlatformViewsService.initExpensiveAndroidView(
-            id: params.id,
-            viewType: viewType,
-            layoutDirection: Directionality.of(context),
-            creationParams: creationParams,
-            creationParamsCodec: const StandardMessageCodec(),
-            onFocus: () {
-              params.onFocusChanged(true);
-            },
-          )
+        return PlatformViewsService.initSurfaceAndroidView(
+          id: params.id,
+          viewType: viewType,
+          layoutDirection: Directionality.of(context),
+          creationParams: creationParams,
+          creationParamsCodec: const StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
+        )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();
       },
