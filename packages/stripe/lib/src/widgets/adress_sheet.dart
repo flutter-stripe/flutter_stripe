@@ -109,13 +109,13 @@ class _AddressSheetState extends State<_AddressSheet> {
               },
               onCreatePlatformView: (params) {
                 onPlatformViewCreated(params.id);
-                return PlatformViewsService.initExpensiveAndroidView(
-                    id: params.id,
-                    viewType: _viewType,
-                    layoutDirection: TextDirection.ltr,
-                    creationParams: widget.addressSheetParams.toJson(),
-                    creationParamsCodec: const StandardMessageCodec(),
-                  )
+                return PlatformViewsService.initSurfaceAndroidView(
+                  id: params.id,
+                  viewType: _viewType,
+                  layoutDirection: TextDirection.ltr,
+                  creationParams: widget.addressSheetParams.toJson(),
+                  creationParamsCodec: const StandardMessageCodec(),
+                )
                   ..addOnPlatformViewCreatedListener(
                     params.onPlatformViewCreated,
                   )
