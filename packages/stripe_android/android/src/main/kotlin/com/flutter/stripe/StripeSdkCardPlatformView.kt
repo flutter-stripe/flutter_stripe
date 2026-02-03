@@ -117,7 +117,7 @@ class StripeSdkCardPlatformView(
                     call.arguments.convertToReadable()
                 )
             }
-            "focus", "blur", "clear" -> stripeSdkCardViewManager.receiveCommand(
+            "focus", "blur", "clear" -> stripeSdkCardViewManager.delegate.receiveCommand(
                 cardView,
                 call.method,
                 null
