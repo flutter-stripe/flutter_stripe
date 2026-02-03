@@ -872,11 +872,12 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         }
     }
 
-    @objc(confirmPayment:data:options:resolver:rejecter:)
+    @objc(confirmPayment:data:options:returnURL:resolver:rejecter:)
     public func confirmPayment(
         paymentIntentClientSecret: String,
         params: NSDictionary,
         options: NSDictionary,
+        returnURL: String?,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
     ) {
@@ -892,7 +893,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             return
         }
 
-        let (error, paymentIntentParams) = createPaymentIntentParams(paymentIntentClientSecret: paymentIntentClientSecret, paymentMethodType: paymentMethodType, paymentMethodData: paymentMethodData, options: options)
+        let (error, paymentIntentParams) = createPaymentIntentParams(paymentIntentClientSecret: paymentIntentClientSecret, paymentMethodType: paymentMethodType, paymentMethodData: paymentMethodData, options: options, returnURL: returnURL)
 
         if error != nil {
             resolve(error)
@@ -919,7 +920,8 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         paymentIntentClientSecret: String,
         paymentMethodType: STPPaymentMethodType?,
         paymentMethodData: NSDictionary?,
-        options: NSDictionary
+        options: NSDictionary,
+        returnURL: String? = nil
     ) -> (NSDictionary?, STPPaymentIntentParams) {
         var err: NSDictionary?
 
@@ -957,7 +959,10 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         if let setupFutureUsage = options["setupFutureUsage"] as? String {
             paymentIntentParams.setupFutureUsage = Mappers.mapToPaymentIntentFutureUsage(usage: setupFutureUsage)
         }
-        if let urlScheme = urlScheme {
+        // Use explicit returnURL if provided, otherwise fallback to global urlScheme
+        if let returnURL = returnURL {
+            paymentIntentParams.returnURL = returnURL
+        } else if let urlScheme = urlScheme {
             paymentIntentParams.returnURL = Mappers.mapToReturnURL(urlScheme: urlScheme)
         }
         paymentIntentParams.shipping = Mappers.mapToShippingDetails(shippingDetails: paymentMethodData?["shippingDetails"] as? NSDictionary)
