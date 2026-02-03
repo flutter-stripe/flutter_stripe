@@ -511,7 +511,7 @@ class WebStripe extends StripePlatform {
   @override
   Future<FinancialConnectionTokenResult> collectBankAccountToken({
     required String clientSecret,
-    CollectBankAccountTokenParams? params,
+    required CollectBankAccountTokenParams params,
   }) {
     throw WebUnsupportedError.method('collectBankAccountToken');
   }
@@ -626,8 +626,7 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<CustomerSheetResult?> initCustomerSheet(
-      CustomerSheetInitParams params) {
+  Future<void> initCustomerSheet(CustomerSheetInitParams params) {
     throw WebUnsupportedError.method('initCustomerSheet');
   }
 
@@ -652,6 +651,12 @@ class WebStripe extends StripePlatform {
   @override
   Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) {
     throw WebUnsupportedError.method('isCardInWallet');
+  }
+
+  @override
+  Future<void> confirmationTokenCreationCallback(
+      IntentCreationCallbackParams params) {
+    throw WebUnsupportedError.method('confirmationTokenCreationCallback');
   }
 }
 

@@ -64,14 +64,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsBankContact;
 
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('Giropay')
-  /// Config parameters for giropay payment method.
-  const factory PaymentMethodParams.giroPay({
-    /// Paymentmethod data for this paymentmethod.
-    required PaymentMethodData paymentMethodData,
-  }) = _PaymentMethodParamsGiroPay;
-
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Eps')
   /// Config parameters for eps payment method.
   const factory PaymentMethodParams.eps({

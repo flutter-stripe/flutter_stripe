@@ -133,8 +133,8 @@ class _AubecsFormFieldState extends State<_AubecsFormField> {
                 return AndroidViewSurface(
                   controller: controller as AndroidViewController,
                   hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-                  gestureRecognizers: const <Factory<
-                      OneSequenceGestureRecognizer>>{},
+                  gestureRecognizers:
+                      const <Factory<OneSequenceGestureRecognizer>>{},
                 );
               },
               onCreatePlatformView: (params) {
@@ -147,7 +147,8 @@ class _AubecsFormFieldState extends State<_AubecsFormField> {
                   creationParamsCodec: const StandardMessageCodec(),
                 )
                   ..addOnPlatformViewCreatedListener(
-                      params.onPlatformViewCreated)
+                    params.onPlatformViewCreated,
+                  )
                   ..create();
               },
               viewType: _viewType,

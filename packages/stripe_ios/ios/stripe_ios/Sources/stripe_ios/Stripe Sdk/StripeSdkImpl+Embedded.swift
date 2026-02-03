@@ -6,8 +6,8 @@
 //
 
 import Foundation
-@_spi(EmbeddedPaymentElementPrivateBeta) @_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(STP) @_spi(CustomPaymentMethodsBeta) import StripePaymentSheet
 import UIKit
+@_spi(EmbeddedPaymentElementPrivateBeta) @_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(STP) @_spi(CustomPaymentMethodsBeta) import StripePaymentSheet
 
 @objc(StripeSdkImpl)
 extension StripeSdkImpl {
@@ -23,15 +23,25 @@ extension StripeSdkImpl {
       resolve(Errors.createError(ErrorType.Failed, "One of `paymentIntentClientSecret`, `setupIntentClientSecret`, or `intentConfiguration.mode` is required"))
       return
     }
-    if intentConfig.object(forKey: "confirmHandler") == nil {
-      resolve(Errors.createError(ErrorType.Failed, "You must provide `intentConfiguration.confirmHandler` if you are not passing an intent client secret"))
+    let hasConfirmHandler = intentConfig.object(forKey: "confirmHandler") != nil
+    let hasConfirmationTokenHandler = intentConfig.object(forKey: "confirmationTokenConfirmHandler") != nil
+
+    if !hasConfirmHandler && !hasConfirmationTokenHandler {
+      resolve(Errors.createError(ErrorType.Failed, "You must provide either `intentConfiguration.confirmHandler` or `intentConfiguration.confirmationTokenConfirmHandler` if you are not passing an intent client secret"))
+      return
+    }
+
+    if hasConfirmHandler && hasConfirmationTokenHandler {
+      resolve(Errors.createError(ErrorType.Failed, "You must provide either `confirmHandler` or `confirmationTokenConfirmHandler`, but not both"))
       return
     }
     let captureMethodString = intentConfig["captureMethod"] as? String
     let intentConfig = buildIntentConfiguration(
       modeParams: modeParams,
       paymentMethodTypes: intentConfig["paymentMethodTypes"] as? [String],
-      captureMethod: mapCaptureMethod(captureMethodString)
+      onBehalfOf: intentConfig["onBehalfOf"] as? String,
+      captureMethod: StripeSdkImpl.mapCaptureMethod(captureMethodString),
+      useConfirmationTokenCallback: hasConfirmationTokenHandler
     )
 
     guard let configuration = buildEmbeddedPaymentElementConfiguration(params: configuration).configuration else {
@@ -84,7 +94,7 @@ extension StripeSdkImpl {
                   // Return an object with { status: 'failed', error }
                   resolve([
                     "status": "failed",
-                    "error": error.localizedDescription
+                    "error": error.localizedDescription,
                   ])
               }
           }
@@ -104,11 +114,25 @@ extension StripeSdkImpl {
       ))
       return
     }
+    let hasConfirmHandler = intentConfig.object(forKey: "confirmHandler") != nil
+    let hasConfirmationTokenHandler = intentConfig.object(forKey: "confirmationTokenConfirmHandler") != nil
+
+    if !hasConfirmHandler && !hasConfirmationTokenHandler {
+      resolve(Errors.createError(ErrorType.Failed, "You must provide either `intentConfiguration.confirmHandler` or `intentConfiguration.confirmationTokenConfirmHandler` if you are not passing an intent client secret"))
+      return
+    }
+
+    if hasConfirmHandler && hasConfirmationTokenHandler {
+      resolve(Errors.createError(ErrorType.Failed, "You must provide either `confirmHandler` or `confirmationTokenConfirmHandler`, but not both"))
+      return
+    }
     let captureMethodString = intentConfig["captureMethod"] as? String
     let intentConfiguration = buildIntentConfiguration(
       modeParams: modeParams,
       paymentMethodTypes: intentConfig["paymentMethodTypes"] as? [String],
-      captureMethod: mapCaptureMethod(captureMethodString)
+      onBehalfOf: intentConfig["onBehalfOf"] as? String,
+      captureMethod: StripeSdkImpl.mapCaptureMethod(captureMethodString),
+      useConfirmationTokenCallback: hasConfirmationTokenHandler
     )
 
     Task {
@@ -190,7 +214,7 @@ extension StripeSdkImpl {
         configuration.applePay = try ApplePayUtils.buildPaymentSheetApplePayConfig(
           merchantIdentifier: self.merchantIdentifier,
           merchantCountryCode: applePayParams["merchantCountryCode"] as? String,
-          paymentSummaryItems: applePayParams["cartItems"] as? [[String : Any]],
+          paymentSummaryItems: applePayParams["cartItems"] as? [[String: Any]],
           buttonType: applePayParams["buttonType"] as? NSNumber,
           customHandlers: buildCustomerHandlersForPaymentSheet(applePayParams: applePayParams)
         )
@@ -266,7 +290,7 @@ extension StripeSdkImpl {
       if customerEphemeralKeySecret != nil && customerClientSecret != nil {
         return(error: Errors.createError(ErrorType.Failed, "`customerEphemeralKeySecret` and `customerSessionClientSecret cannot both be set"), configuration: nil)
       } else if let customerEphemeralKeySecret {
-        if (!Errors.isEKClientSecretValid(clientSecret: customerEphemeralKeySecret)) {
+        if !Errors.isEKClientSecretValid(clientSecret: customerEphemeralKeySecret) {
           return(error: Errors.createError(ErrorType.Failed, "`customerEphemeralKeySecret` format does not match expected client secret formatting."), configuration: nil)
         }
         configuration.customer = .init(id: customerId, ephemeralKeySecret: customerEphemeralKeySecret)
@@ -275,7 +299,7 @@ extension StripeSdkImpl {
       }
     }
 
-    if let preferredNetworksAsInts = params["preferredNetworks"] as? Array<Int> {
+    if let preferredNetworksAsInts = params["preferredNetworks"] as? [Int] {
       configuration.preferredNetworks = preferredNetworksAsInts.map(Mappers.intToCardBrand).compactMap { $0 }
     }
 
@@ -283,11 +307,11 @@ extension StripeSdkImpl {
       configuration.allowsRemovalOfLastSavedPaymentMethod = allowsRemovalOfLastSavedPaymentMethod
     }
 
-    if let paymentMethodOrder = params["paymentMethodOrder"] as? Array<String> {
+    if let paymentMethodOrder = params["paymentMethodOrder"] as? [String] {
       configuration.paymentMethodOrder = paymentMethodOrder
     }
 
-    configuration.cardBrandAcceptance = computeCardBrandAcceptance(params: params)
+    configuration.cardBrandAcceptance = StripeSdkImpl.computeCardBrandAcceptance(params: params)
 
     if let formSheetActionParams = params["formSheetAction"] as? NSDictionary,
        let actionType = formSheetActionParams["type"] as? String {
@@ -303,7 +327,7 @@ extension StripeSdkImpl {
           case .failed(let error):
             resultDict = [
               "status": "failed",
-              "error": error.localizedDescription
+              "error": error.localizedDescription,
             ]
           }
 

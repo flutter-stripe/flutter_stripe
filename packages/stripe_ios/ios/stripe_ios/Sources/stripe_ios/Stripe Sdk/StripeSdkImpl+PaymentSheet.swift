@@ -6,8 +6,7 @@
 //
 
 import Foundation
-@_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(EmbeddedPaymentElementPrivateBeta) @_spi(STP) @_spi(PaymentMethodOptionsSetupFutureUsagePreview) @_spi(CustomPaymentMethodsBeta) import StripePaymentSheet
-
+@_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(EmbeddedPaymentElementPrivateBeta) @_spi(STP) @_spi(PaymentMethodOptionsSetupFutureUsagePreview) @_spi(CustomPaymentMethodsBeta) @_spi(ConfirmationTokensPublicPreview) import StripePaymentSheet
 
 extension StripeSdkImpl {
     internal func buildPaymentSheetConfiguration(
@@ -30,7 +29,7 @@ extension StripeSdkImpl {
                 configuration.applePay = try ApplePayUtils.buildPaymentSheetApplePayConfig(
                     merchantIdentifier: self.merchantIdentifier,
                     merchantCountryCode: applePayParams["merchantCountryCode"] as? String,
-                    paymentSummaryItems: applePayParams["cartItems"] as? [[String : Any]],
+                    paymentSummaryItems: applePayParams["cartItems"] as? [[String: Any]],
                     buttonType: applePayParams["buttonType"] as? NSNumber,
                     customHandlers: buildCustomerHandlersForPaymentSheet(applePayParams: applePayParams)
                 )
@@ -106,7 +105,7 @@ extension StripeSdkImpl {
             if let customerEphemeralKeySecret, let customerClientSecret {
                 return(error: Errors.createError(ErrorType.Failed, "`customerEphemeralKeySecret` and `customerSessionClientSecret cannot both be set"), configuration: nil)
             } else if let customerEphemeralKeySecret {
-                if (!Errors.isEKClientSecretValid(clientSecret: customerEphemeralKeySecret)) {
+                if !Errors.isEKClientSecretValid(clientSecret: customerEphemeralKeySecret) {
                     return(error: Errors.createError(ErrorType.Failed, "`customerEphemeralKeySecret` format does not match expected client secret formatting."), configuration: nil)
                 }
                 configuration.customer = .init(id: customerId, ephemeralKeySecret: customerEphemeralKeySecret)
@@ -115,7 +114,7 @@ extension StripeSdkImpl {
             }
         }
 
-        if let preferredNetworksAsInts = params["preferredNetworks"] as? Array<Int> {
+        if let preferredNetworksAsInts = params["preferredNetworks"] as? [Int] {
             configuration.preferredNetworks = preferredNetworksAsInts.map(Mappers.intToCardBrand).compactMap { $0 }
         }
 
@@ -123,20 +122,20 @@ extension StripeSdkImpl {
             configuration.allowsRemovalOfLastSavedPaymentMethod = allowsRemovalOfLastSavedPaymentMethod
         }
 
-        if let paymentMethodOrder = params["paymentMethodOrder"] as? Array<String> {
+        if let paymentMethodOrder = params["paymentMethodOrder"] as? [String] {
             configuration.paymentMethodOrder = paymentMethodOrder
         }
 
         switch params["paymentMethodLayout"] as? String? {
-          case "Horizontal":
+        case "Horizontal":
             configuration.paymentMethodLayout = .horizontal
-          case "Vertical":
+        case "Vertical":
             configuration.paymentMethodLayout = .vertical
-          default:
+        default:
             configuration.paymentMethodLayout = .automatic
         }
 
-        configuration.cardBrandAcceptance = computeCardBrandAcceptance(params: params)
+        configuration.cardBrandAcceptance = StripeSdkImpl.computeCardBrandAcceptance(params: params)
 
         // Parse custom payment method configuration
         if let customPaymentMethodConfig = params["customPaymentMethodConfiguration"] as? [String: Any] {
@@ -145,7 +144,7 @@ extension StripeSdkImpl {
             sdkImpl: self
           )
         }
-        
+
         return (nil, configuration)
     }
 
@@ -162,11 +161,11 @@ extension StripeSdkImpl {
                 resolve(Errors.createError(ErrorType.Failed, error as NSError))
             case .success(let paymentSheetFlowController):
                 self.paymentSheetFlowController = paymentSheetFlowController
-                var result: NSDictionary? = nil
+                var result: NSDictionary?
                 if let paymentOption = stripeSdk?.paymentSheetFlowController?.paymentOption {
                     result = [
                         "label": paymentOption.label,
-                        "image": paymentOption.image.pngData()?.base64EncodedString() ?? ""
+                        "image": paymentOption.image.pngData()?.base64EncodedString() ?? "",
                     ]
                 }
                 resolve(Mappers.createResult("paymentOption", result))
@@ -174,7 +173,7 @@ extension StripeSdkImpl {
         }
 
         if let paymentIntentClientSecret = params["paymentIntentClientSecret"] as? String {
-            if (!Errors.isPIClientSecretValid(clientSecret: paymentIntentClientSecret)) {
+            if !Errors.isPIClientSecretValid(clientSecret: paymentIntentClientSecret) {
                 resolve(Errors.createError(ErrorType.Failed, "`secret` format does not match expected client secret formatting."))
                 return
             }
@@ -189,7 +188,7 @@ extension StripeSdkImpl {
                 resolve([])
             }
         } else if let setupIntentClientSecret = params["setupIntentClientSecret"] as? String {
-            if (!Errors.isSetiClientSecretValid(clientSecret: setupIntentClientSecret)) {
+            if !Errors.isSetiClientSecretValid(clientSecret: setupIntentClientSecret) {
                 resolve(Errors.createError(ErrorType.Failed, "`secret` format does not match expected client secret formatting."))
                 return
             }
@@ -212,15 +211,25 @@ extension StripeSdkImpl {
                 resolve(Errors.createError(ErrorType.Failed, "One of `paymentIntentClientSecret`, `setupIntentClientSecret`, or `intentConfiguration.mode` is required"))
                 return
             }
-            if (intentConfiguration.object(forKey: "confirmHandler") == nil) {
-                resolve(Errors.createError(ErrorType.Failed, "You must provide `intentConfiguration.confirmHandler` if you are not passing an intent client secret"))
+            let hasConfirmHandler = intentConfiguration.object(forKey: "confirmHandler") != nil
+            let hasConfirmationTokenHandler = intentConfiguration.object(forKey: "confirmationTokenConfirmHandler") != nil
+
+            if !hasConfirmHandler && !hasConfirmationTokenHandler {
+                resolve(Errors.createError(ErrorType.Failed, "You must provide either `intentConfiguration.confirmHandler` or `intentConfiguration.confirmationTokenConfirmHandler` if you are not passing an intent client secret"))
+                return
+            }
+
+            if hasConfirmHandler && hasConfirmationTokenHandler {
+                resolve(Errors.createError(ErrorType.Failed, "You must provide either `confirmHandler` or `confirmationTokenConfirmHandler`, but not both"))
                 return
             }
             let captureMethodString = intentConfiguration["captureMethod"] as? String
             let intentConfig = buildIntentConfiguration(
                 modeParams: modeParams,
                 paymentMethodTypes: intentConfiguration["paymentMethodTypes"] as? [String],
-                captureMethod: mapCaptureMethod(captureMethodString)
+                onBehalfOf: intentConfiguration["onBehalfOf"] as? String,
+                captureMethod: StripeSdkImpl.mapCaptureMethod(captureMethodString),
+                useConfirmationTokenCallback: hasConfirmationTokenHandler
             )
 
             if params["customFlow"] as? Bool == true {
@@ -237,7 +246,7 @@ extension StripeSdkImpl {
         }
     }
 
-    internal func computeCardBrandAcceptance(params: NSDictionary) -> PaymentSheet.CardBrandAcceptance {
+    internal static func computeCardBrandAcceptance(params: NSDictionary) -> PaymentSheet.CardBrandAcceptance {
       if let cardBrandAcceptanceParams = params["cardBrandAcceptance"] as? NSDictionary {
           if let filter = cardBrandAcceptanceParams["filter"] as? String {
               switch filter {
@@ -262,7 +271,7 @@ extension StripeSdkImpl {
       return .all
     }
 
-    private func mapToCardBrandCategory(brand: String) -> PaymentSheet.CardBrandAcceptance.BrandCategory? {
+    private static func mapToCardBrandCategory(brand: String) -> PaymentSheet.CardBrandAcceptance.BrandCategory? {
         switch brand {
         case "visa":
             return .visa
@@ -277,7 +286,7 @@ extension StripeSdkImpl {
         }
     }
 
-    func mapCaptureMethod(_ captureMethod: String?) -> PaymentSheet.IntentConfiguration.CaptureMethod {
+    static func mapCaptureMethod(_ captureMethod: String?) -> PaymentSheet.IntentConfiguration.CaptureMethod {
         if let captureMethod = captureMethod {
             switch captureMethod {
             case "Automatic": return PaymentSheet.IntentConfiguration.CaptureMethod.automatic
@@ -292,16 +301,18 @@ extension StripeSdkImpl {
     func buildIntentConfiguration(
         modeParams: NSDictionary,
         paymentMethodTypes: [String]?,
-        captureMethod: PaymentSheet.IntentConfiguration.CaptureMethod
+        onBehalfOf: String?,
+        captureMethod: PaymentSheet.IntentConfiguration.CaptureMethod,
+        useConfirmationTokenCallback: Bool
     ) -> PaymentSheet.IntentConfiguration {
         var mode: PaymentSheet.IntentConfiguration.Mode
         if let amount = modeParams["amount"] as? Int {
             mode = PaymentSheet.IntentConfiguration.Mode.payment(
                 amount: amount,
                 currency: modeParams["currencyCode"] as? String ?? "",
-                setupFutureUsage: setupFutureUsageFromString(from: modeParams["setupFutureUsage"] as? String ?? ""),
+                setupFutureUsage: StripeSdkImpl.setupFutureUsageFromString(from: modeParams["setupFutureUsage"] as? String ?? ""),
                 captureMethod: captureMethod,
-                paymentMethodOptions: buildPaymentMethodOptions(paymentMethodOptionsParams: modeParams["paymentMethodOptions"] as? NSDictionary ?? [:])
+                paymentMethodOptions: StripeSdkImpl.buildPaymentMethodOptions(paymentMethodOptionsParams: modeParams["paymentMethodOptions"] as? NSDictionary ?? [:])
             )
         } else {
             mode = PaymentSheet.IntentConfiguration.Mode.setup(
@@ -310,28 +321,51 @@ extension StripeSdkImpl {
             )
         }
 
-        return PaymentSheet.IntentConfiguration.init(
-            mode: mode,
-            paymentMethodTypes: paymentMethodTypes,
-            confirmHandler: { paymentMethod, shouldSavePaymentMethod, intentCreationCallback in
-                self.paymentSheetIntentCreationCallback = intentCreationCallback
-                self.emitter?.emitOnConfirmHandlerCallback([
-                    "paymentMethod": Mappers.mapFromPaymentMethod(paymentMethod) ?? NSNull(),
-                    "shouldSavePaymentMethod": shouldSavePaymentMethod
-                ])
-            })
+        if useConfirmationTokenCallback {
+            return PaymentSheet.IntentConfiguration.init(
+                mode: mode,
+                paymentMethodTypes: paymentMethodTypes,
+                onBehalfOf: onBehalfOf,
+                confirmationTokenConfirmHandler: { confirmationToken in
+                    return try await withCheckedThrowingContinuation { continuation in
+                        self.paymentSheetConfirmationTokenIntentCreationCallback = { result in
+                            switch result {
+                            case .success(let clientSecret):
+                                continuation.resume(returning: clientSecret)
+                            case .failure(let error):
+                                continuation.resume(throwing: error)
+                            }
+                        }
+                        self.emitter?.emitOnConfirmationTokenHandlerCallback([
+                            "confirmationToken": Mappers.mapFromConfirmationToken(confirmationToken) ?? NSNull()
+                        ])
+                    }
+                })
+        } else {
+            return PaymentSheet.IntentConfiguration.init(
+                mode: mode,
+                paymentMethodTypes: paymentMethodTypes,
+                onBehalfOf: onBehalfOf,
+                confirmHandler: { paymentMethod, shouldSavePaymentMethod, intentCreationCallback in
+                    self.paymentSheetIntentCreationCallback = intentCreationCallback
+                    self.emitter?.emitOnConfirmHandlerCallback([
+                        "paymentMethod": Mappers.mapFromPaymentMethod(paymentMethod) ?? NSNull(),
+                        "shouldSavePaymentMethod": shouldSavePaymentMethod,
+                    ])
+                })
+        }
     }
-    
-    func buildPaymentMethodOptions(paymentMethodOptionsParams: NSDictionary) -> PaymentSheet.IntentConfiguration.Mode.PaymentMethodOptions? {
+
+    static func buildPaymentMethodOptions(paymentMethodOptionsParams: NSDictionary) -> PaymentSheet.IntentConfiguration.Mode.PaymentMethodOptions? {
         if let sfuDictionary = paymentMethodOptionsParams["setupFutureUsageValues"] as? NSDictionary {
             var setupFutureUsageValues: [STPPaymentMethodType: PaymentSheet.IntentConfiguration.SetupFutureUsage] = [:]
-            
+
             for (paymentMethodCode, sfuValue) in sfuDictionary {
                 if let paymentMethodCode = paymentMethodCode as? String,
                     let sfuString = sfuValue as? String {
                     let setupFutureUsage = setupFutureUsageFromString(from: sfuString)
                     let paymentMethodType = STPPaymentMethodType.fromIdentifier(paymentMethodCode)
-                    
+
                     if let setupFutureUsage = setupFutureUsage {
                         if paymentMethodType != .unknown {
                             setupFutureUsageValues[paymentMethodType] = setupFutureUsage
@@ -339,7 +373,7 @@ extension StripeSdkImpl {
                     }
                 }
             }
-            
+
             if !setupFutureUsageValues.isEmpty {
                 return PaymentSheet.IntentConfiguration.Mode.PaymentMethodOptions(setupFutureUsageValues: setupFutureUsageValues)
             }
@@ -347,8 +381,8 @@ extension StripeSdkImpl {
 
         return nil
     }
-    
-    func setupFutureUsageFromString(from string: String) -> PaymentSheet.IntentConfiguration.SetupFutureUsage? {
+
+    static func setupFutureUsageFromString(from string: String) -> PaymentSheet.IntentConfiguration.SetupFutureUsage? {
         switch string {
         case "OnSession":
             return PaymentSheet.IntentConfiguration.SetupFutureUsage.onSession
@@ -362,9 +396,23 @@ extension StripeSdkImpl {
     }
 
     func buildCustomerHandlersForPaymentSheet(applePayParams: NSDictionary) -> PaymentSheet.ApplePayConfiguration.Handlers? {
-        if (applePayParams["request"] == nil) {
+        if applePayParams["request"] == nil {
             return nil
         }
+        let authorizationResultHandler: PaymentSheet.ApplePayConfiguration.Handlers.AuthorizationResultHandler? = {
+            guard applePayParams.object(forKey: "setOrderTracking") != nil else {
+                return nil
+            }
+            return { result in
+                await withCheckedContinuation { continuation in
+                    // Set the handler first: this will be called from JS land after we `emitOnOrderTrackingCallback()`.
+                    self.orderTrackingHandler = (result, { result in
+                        continuation.resume(returning: result)
+                    })
+                    self.emitter?.emitOnOrderTrackingCallback()
+                }
+            }
+        }()
         return PaymentSheet.ApplePayConfiguration.Handlers(paymentRequestHandler: { request in
             do {
                 try request.configureRequestType(requestParams: applePayParams)
@@ -373,14 +421,7 @@ extension StripeSdkImpl {
                 RCTMakeAndLogError(error.localizedDescription, nil, nil)
             }
             return request
-        }, authorizationResultHandler: { result, completion in
-            if applePayParams.object(forKey: "setOrderTracking") != nil {
-                self.orderTrackingHandler = (result, completion)
-                self.emitter?.emitOnOrderTrackingCallback()
-            } else {
-                completion(result)
-            }
-        })
+        }, authorizationResultHandler: authorizationResultHandler)
     }
 
     internal static func mapToCollectionMode(str: String?) -> PaymentSheet.BillingDetailsCollectionConfiguration.CollectionMode {
@@ -419,7 +460,7 @@ extension StripeSdkImpl {
             return .automatic
         }
     }
-    
+
     // MARK: - Common Custom Payment Method Helper
 
     // Simple data structure for parsed custom payment method data
@@ -507,7 +548,7 @@ extension StripeSdkImpl {
         let billingDetailsDict = Mappers.mapFromBillingDetails(billingDetails: billingDetails)
         let payload: [String: Any] = [
           "customPaymentMethod": customPaymentMethodDict,
-          "billingDetails": billingDetailsDict
+          "billingDetails": billingDetailsDict,
         ]
 
         // Use async/await with continuation instead of blocking semaphore
@@ -517,11 +558,10 @@ extension StripeSdkImpl {
             sdkImpl?.customPaymentMethodResultCallback = nil
             continuation.resume(returning: result)
           }
-          
+
           // Emit event to JavaScript
           sdkImpl?.emitter?.emitOnCustomPaymentMethodConfirmHandlerCallback(payload)
         }
       }
     }
 }
-

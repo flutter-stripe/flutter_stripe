@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:stripe_example/.env.dart';
+import '.env.example.dart';
 import 'screens/screens.dart';
 import 'widgets/dismiss_focus_overlay.dart';
 
@@ -35,7 +35,35 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+  // Deep link handling for Stripe redirect-based payment methods (Link, iDEAL, etc.)
+  //
+  // IMPORTANT: When FlutterDeepLinkingEnabled is true in Info.plist, you must
+  // handle Stripe URL callbacks manually. There are several approaches:
+  //
+  // 1. If using go_router or another Router-based navigation:
+  //    Add a redirect handler that calls Stripe.instance.handleURLCallback()
+  //    for URLs matching your Stripe URL scheme.
+  //
+  // 2. If using a deep link package (app_links, uni_links):
+  //    Listen for incoming links and forward Stripe URLs to handleURLCallback().
+  //
+  // 3. For the simplest case without Flutter deep linking:
+  //    Set FlutterDeepLinkingEnabled to false in Info.plist and the plugin
+  //    will handle URL callbacks automatically.
+  //
+  // Example for go_router:
+  // ```dart
+  // GoRouter(
+  //   redirect: (context, state) {
+  //     if (state.uri.scheme == 'flutterstripe') {
+  //       Stripe.instance.handleURLCallback(state.uri.toString());
+  //     }
+  //     return null;
+  //   },
+  // );
+  // ```
+
   @override
   void initState() {
     super.initState();

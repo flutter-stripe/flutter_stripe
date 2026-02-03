@@ -1,0 +1,15 @@
+reviews:
+  # Exclude patterns for files/folders to ignore during reviews
+  path_filters:
+    - "!**/generated/**"
+    - "!**/*.g.dart"
+    - "!**/*.freezed.dart"
+    # this is a direct sync of the react native stripe sdk Android, so we don't want to review it
+    - "!**/reactnativestripesdk/**"
+    # this is a direct sync of the react native stripe sdk iOS, so we don't want to review it
+    - "!**/Stripe Sdk/**"
+  # Auto-review pull requests targeting these branches
+  auto_review:
+    enabled: true
+    base_branches:
+      - main

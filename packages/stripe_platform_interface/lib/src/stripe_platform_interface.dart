@@ -73,8 +73,10 @@ abstract class StripePlatform extends PlatformInterface {
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
 
-  /// Configure the payment sheet using [CustomerSheetInitParams] as config.
-  Future<CustomerSheetResult?> initCustomerSheet(
+  /// Configure the customer sheet using [CustomerSheetInitParams] as config.
+  ///
+  /// Throws a [StripeException] if initialization fails.
+  Future<void> initCustomerSheet(
     CustomerSheetInitParams params,
   );
 
@@ -170,7 +172,7 @@ abstract class StripePlatform extends PlatformInterface {
   /// Methods related to financial connections
   Future<FinancialConnectionTokenResult> collectBankAccountToken({
     required String clientSecret,
-    CollectBankAccountTokenParams? params,
+    required CollectBankAccountTokenParams params,
   });
 
   Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
@@ -190,6 +192,11 @@ abstract class StripePlatform extends PlatformInterface {
   /// Method used to confirm to the user that the intent is created successfull
   /// or not successfull when using a defferred payment method.
   Future<void> intentCreationCallback(IntentCreationCallbackParams params);
+
+  /// Method Called when the customer confirms payment using confirmation tokens.
+  Future<void> confirmationTokenCreationCallback(
+    IntentCreationCallbackParams params,
+  );
 
   Widget buildCard({
     Key? key,
