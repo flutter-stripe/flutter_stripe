@@ -91,7 +91,10 @@ class StripeSdkCardFormPlatformView(
                 cardView.clearFocus()
                 result.success(null)
             }
-            "focus", "blur", "clear" -> cardFormViewManager.receiveCommand(cardView, call.method, null)
+            "focus", "blur", "clear" -> {
+                cardFormViewManager.delegate.receiveCommand(cardView, call.method, null)
+                result.success(null)
+            }
             else -> {
                 cardFormViewManager.delegate.setProperty(
                     cardView,
