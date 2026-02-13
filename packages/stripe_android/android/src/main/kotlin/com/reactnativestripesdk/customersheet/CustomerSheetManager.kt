@@ -177,7 +177,14 @@ class CustomerSheetManager(
         promiseResult = createPaymentOptionResult(result.selection)
         promiseResult.putMap(
           "error",
-          Arguments.createMap().also { it.putString("code", ErrorType.Canceled.toString()) },
+          Arguments.createMap().also {
+            it.putString("code", ErrorType.Canceled.toString())
+            it.putNull("message")
+            it.putNull("localizedMessage")
+            it.putNull("declineCode")
+            it.putNull("stripeErrorCode")
+            it.putNull("type")
+          },
         )
       }
     }
@@ -270,6 +277,11 @@ class CustomerSheetManager(
               "error",
               Arguments.createMap().also {
                 it.putString("code", ErrorType.Canceled.toString())
+                it.putNull("message")
+                it.putNull("localizedMessage")
+                it.putNull("declineCode")
+                it.putNull("stripeErrorCode")
+                it.putNull("type")
               },
             )
           }
