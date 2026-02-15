@@ -1073,6 +1073,10 @@ class StripeSdkModule(
       promise.resolve(createMissingInitError())
       return
     }
+
+    // Use connectedAccountId from params if provided, otherwise fall back to global stripeAccountId
+    val accountId = getValOr(params, "connectedAccountId", null) ?: stripeAccountId
+
     unregisterStripeUIManager(financialConnectionsSheetManager)
     financialConnectionsSheetManager =
       FinancialConnectionsSheetManager(
@@ -1080,7 +1084,7 @@ class StripeSdkModule(
         clientSecret,
         FinancialConnectionsSheetManager.Mode.ForToken,
         publishableKey,
-        stripeAccountId,
+        accountId,
       ).also {
         registerStripeUIManager(it)
         it.present(promise)
@@ -1098,6 +1102,9 @@ class StripeSdkModule(
       return
     }
 
+    // Use connectedAccountId from params if provided, otherwise fall back to global stripeAccountId
+    val accountId = getValOr(params, "connectedAccountId", null) ?: stripeAccountId
+
     unregisterStripeUIManager(financialConnectionsSheetManager)
     financialConnectionsSheetManager =
       FinancialConnectionsSheetManager(
@@ -1105,7 +1112,7 @@ class StripeSdkModule(
         clientSecret,
         FinancialConnectionsSheetManager.Mode.ForSession,
         publishableKey,
-        stripeAccountId,
+        accountId,
       ).also {
         registerStripeUIManager(it)
         it.present(promise)
