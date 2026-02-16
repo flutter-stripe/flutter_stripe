@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import '.env.example.dart';
+import 'package:stripe_example/.env.dart';
+
 import 'screens/screens.dart';
 import 'widgets/dismiss_focus_overlay.dart';
 
@@ -72,15 +73,15 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Stripe Examples'),
+      appBar: AppBar(title: const Text('Stripe Examples')),
+      body: ListView(
+        children: [
+          ...ListTile.divideTiles(
+            context: context,
+            tiles: [for (final example in Example.screens) example],
+          ),
+        ],
       ),
-      body: ListView(children: [
-        ...ListTile.divideTiles(
-          context: context,
-          tiles: [for (final example in Example.screens) example],
-        ),
-      ]),
     );
   }
 }

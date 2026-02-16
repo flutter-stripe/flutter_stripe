@@ -94,10 +94,6 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           customerId: data['customer'],
           customerEphemeralKeySecret: data['ephemeralKey'],
           returnURL: 'flutterstripe://redirect',
-          cardFundingFiltering: CardFundingFiltering(
-            allowedCardFundingTypes: [CardFundingType.debit],
-          ),
-
           // Extra params
           primaryButtonLabel: 'Pay now',
           applePay: PaymentSheetApplePay(merchantCountryCode: 'DE'),
