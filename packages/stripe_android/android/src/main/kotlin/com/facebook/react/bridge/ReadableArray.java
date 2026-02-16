@@ -20,11 +20,14 @@ public class ReadableArray extends ArrayList<Object> {
 
     public ReadableArray(JSONArray array) {
         this.array = array;
+        for (int i = 0; i < array.length(); i++) {
+            this.add(array.opt(i));
+        }
     }
 
     public ReadableArray(@NotNull List<Object> array) {
-        this.array = new JSONArray();
-        array.addAll(array);
+        this.array = new JSONArray(array);
+        this.addAll(array);
     }
 
 
