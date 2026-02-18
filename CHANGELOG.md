@@ -15,6 +15,29 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v12.3.0`](#flutter_stripe---v1230)
+
+---
+
+#### `flutter_stripe` - `v12.3.0`
+
+ - **FIX**: 2306 remove descendantsAreFocusable are focusable as it dismisses the keyboard when we do not want it (#2316).
+ - **FEAT**(android): add hint text parameters to CardFormField (#2296).
+ - **FEAT**: web language (#2267)".
+
+
+## 2026-02-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v7.3.0`](#flutter_stripe_web---v730)
 
 ---
