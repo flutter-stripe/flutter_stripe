@@ -53,6 +53,11 @@ public class ReadableArray extends ArrayList<Object> {
         return array.length();
     }
 
+    @Override
+    public Object get(int index) {
+        return array.opt(index);
+    }
+
     @NotNull
     public ReadableType getType(int i) {
         final Object value = get(i);
