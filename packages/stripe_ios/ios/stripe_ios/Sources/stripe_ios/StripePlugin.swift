@@ -609,12 +609,17 @@ extension  StripePlugin {
     func confirmPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
-              let options = arguments["options"] as? NSDictionary,
-              let params = arguments["params"] as? NSDictionary else {
+              let options = arguments["options"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
-        
+        // Warning:
+        // When using a new version of Stripe React Native SDK, the called method
+        // signature in StripeSdkImpl.swift must  be changed so 'params'  can  be
+        // nullable. Changing the method  signature  here,  making  'params'  non
+        // nullable or "guarding" it would reintroduce
+        // https://github.com/flutter-stripe/flutter_stripe/issues/2282
+        let params = arguments["params"] as? NSDictionary
         confirmPayment(
             paymentIntentClientSecret: paymentIntentClientSecret,
             params: params,
