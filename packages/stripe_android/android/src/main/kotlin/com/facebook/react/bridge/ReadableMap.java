@@ -41,6 +41,16 @@ public class ReadableMap extends Dynamic {
                 '}';
     }
 
+    @Override
+    public boolean isEmpty() {
+        return map.length() == 0;
+    }
+
+    @Override
+    public int size() {
+        return map.length();
+    }
+
     public boolean hasKey(String key) {
         return map.opt(key) != null && !map.isNull(key);
     }
