@@ -743,8 +743,10 @@ const kCardFieldDefaultFontFamily = 'Roboto';
 enum AndroidPlatformViewRenderType {
   /// Controls an Android view that is composed using the Android view hierarchy
   expensiveAndroidView,
+
   /// Like expensiveAndroidView, but Uses Texture Layer Hybrid Composition (TLHC) when possible, falling back to Hybrid Composition only when necessary.
   surfaceAndroidView,
+
   /// Use an Android view composed using a GL texture.
   ///
   /// This is more efficient but has more issues on older Android devices.

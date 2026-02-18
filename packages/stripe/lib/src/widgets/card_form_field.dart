@@ -138,7 +138,7 @@ class CardFormEditController extends ChangeNotifier {
 
   set details(CardFieldInputDetails value) {
     if (_details == value) return;
-    context.dangerouslyUpdateCardDetails(details);
+    context.dangerouslyUpdateCardDetails(value);
     _details = value;
     notifyListeners();
   }
@@ -343,9 +343,11 @@ class _MethodChannelCardFormFieldState
     // Build placeholder map for hint text (Android only)
     final placeholder = <String, dynamic>{
       if (widget.numberHintText != null) 'number': widget.numberHintText,
-      if (widget.expirationHintText != null) 'expiration': widget.expirationHintText,
+      if (widget.expirationHintText != null)
+        'expiration': widget.expirationHintText,
       if (widget.cvcHintText != null) 'cvc': widget.cvcHintText,
-      if (widget.postalCodeHintText != null) 'postalCode': widget.postalCodeHintText,
+      if (widget.postalCodeHintText != null)
+        'postalCode': widget.postalCodeHintText,
     };
 
     final creationParams = <String, dynamic>{
@@ -477,9 +479,11 @@ class _MethodChannelCardFormFieldState
         widget.postalCodeHintText != oldWidget.postalCodeHintText) {
       final placeholder = <String, dynamic>{
         if (widget.numberHintText != null) 'number': widget.numberHintText,
-        if (widget.expirationHintText != null) 'expiration': widget.expirationHintText,
+        if (widget.expirationHintText != null)
+          'expiration': widget.expirationHintText,
         if (widget.cvcHintText != null) 'cvc': widget.cvcHintText,
-        if (widget.postalCodeHintText != null) 'postalCode': widget.postalCodeHintText,
+        if (widget.postalCodeHintText != null)
+          'postalCode': widget.postalCodeHintText,
       };
       // Use 'placeholders' as method name - Android delegate uses it as property name
       _methodChannel?.invokeMethod('placeholders', placeholder);
@@ -617,15 +621,15 @@ class _AndroidCardFormField extends StatelessWidget {
       onCreatePlatformView: (params) {
         onPlatformViewCreated(params.id);
         return PlatformViewsService.initSurfaceAndroidView(
-          id: params.id,
-          viewType: viewType,
-          layoutDirection: Directionality.of(context),
-          creationParams: creationParams,
-          creationParamsCodec: const StandardMessageCodec(),
-          onFocus: () {
-            params.onFocusChanged(true);
-          },
-        )
+            id: params.id,
+            viewType: viewType,
+            layoutDirection: Directionality.of(context),
+            creationParams: creationParams,
+            creationParamsCodec: const StandardMessageCodec(),
+            onFocus: () {
+              params.onFocusChanged(true);
+            },
+          )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();
       },

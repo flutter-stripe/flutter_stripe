@@ -140,12 +140,12 @@ class _AubecsFormFieldState extends State<_AubecsFormField> {
               onCreatePlatformView: (params) {
                 onPlatformViewCreated(params.id);
                 return PlatformViewsService.initSurfaceAndroidView(
-                  id: params.id,
-                  viewType: _viewType,
-                  layoutDirection: TextDirection.ltr,
-                  creationParams: creationParams,
-                  creationParamsCodec: const StandardMessageCodec(),
-                )
+                    id: params.id,
+                    viewType: _viewType,
+                    layoutDirection: TextDirection.ltr,
+                    creationParams: creationParams,
+                    creationParamsCodec: const StandardMessageCodec(),
+                  )
                   ..addOnPlatformViewCreatedListener(
                     params.onPlatformViewCreated,
                   )
