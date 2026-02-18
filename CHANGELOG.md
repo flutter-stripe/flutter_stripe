@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-02-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v12.3.0`](#stripe_platform_interface---v1230)
+ - [`flutter_stripe_web` - `v7.2.2`](#flutter_stripe_web---v722)
+ - [`flutter_stripe` - `v12.2.1`](#flutter_stripe---v1221)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v7.2.2`
+ - `flutter_stripe` - `v12.2.1`
+
+---
+
+#### `stripe_platform_interface` - `v12.3.0`
+
+ - **FEAT**: web language (#2267)".
+
+
 ## 2026-01-26
 
 ### Changes

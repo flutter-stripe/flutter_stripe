@@ -1,3 +1,13 @@
+## 12.3.0
+
+**Features**
+- Sync with Stripe React Native [0.58.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.58.0) 
+
+**Fixes**
+- #2332 Google Pay not appear on the PaymentSheet
+- #2314 Card details not complete error when using dangerouslyUpdateCardDetails
+- #2307 Paymentsheet card not focusable when tapping middle or bottom of the field.
+
 ## 12.2.0
 
 **Features**
