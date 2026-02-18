@@ -51,6 +51,7 @@ class WebCardField extends StatefulWidget {
 
 class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
+  web.MutationObserver? _mutationObserver;
 
   @override
   void initState() {
@@ -68,31 +69,46 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
       WebStripe.element as js.CardPaymentElement?;
   set element(js.CardPaymentElement? value) => WebStripe.element = value;
 
+  void _mountCard() {
+    updateCardDetails(
+      const CardFieldInputDetails(complete: false),
+      controller,
+    );
+    element = WebStripe.js
+        .elements(createElementOptions())
+        .createCard(createOptions())
+      ..mount('#card-element'.toJS)
+      ..onBlur(requestBlur)
+      ..onFocus(requestFocus)
+      ..onChange(onCardChanged);
+  }
+
   void initStripe() {
     attachController(controller);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (!widget.dangerouslyUpdateFullCardDetails) {
-        if (kDebugMode &&
-            controller.details !=
-                const CardFieldInputDetails(complete: false)) {
-          dev.log('WARNING! Initial card data value has been ignored. \n'
-              '$kDebugPCIMessage');
-        }
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          updateCardDetails(
-            const CardFieldInputDetails(complete: false),
-            controller,
-          );
-          element = WebStripe.js
-              .elements(createElementOptions())
-              .createCard(createOptions())
-            ..mount('#card-element'.toJS)
-            ..onBlur(requestBlur)
-            ..onFocus(requestFocus)
-            ..onChange(onCardChanged);
-        });
+    if (!widget.dangerouslyUpdateFullCardDetails) {
+      if (kDebugMode &&
+          controller.details !=
+              const CardFieldInputDetails(complete: false)) {
+        dev.log('WARNING! Initial card data value has been ignored. \n'
+            '$kDebugPCIMessage');
       }
-    });
+      // Use MutationObserver to wait for the DOM element to be inserted,
+      // matching the pattern used by PaymentElement. This is necessary
+      // because postFrameCallback timing is unreliable on Safari in
+      // deployed environments.
+      _mutationObserver = web.MutationObserver(
+        ((JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
+          if (web.document.getElementById('card-element') != null) {
+            _mutationObserver?.disconnect();
+            _mountCard();
+          }
+        }.toJS),
+      );
+      _mutationObserver!.observe(
+        web.document,
+        web.MutationObserverInit(childList: true, subtree: true),
+      );
+    }
   }
 
   void requestBlur(response) {
@@ -184,6 +200,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
 
   @override
   void dispose() {
+    _mutationObserver?.disconnect();
     detachController(controller);
     element?.unmount();
     super.dispose();
