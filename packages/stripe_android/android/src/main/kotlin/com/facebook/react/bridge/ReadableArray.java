@@ -55,6 +55,9 @@ public class ReadableArray extends ArrayList<Object> {
 
     @Override
     public Object get(int index) {
+        if (index < 0 || index >= array.length()) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + array.length());
+        }
         return array.opt(index);
     }
 
