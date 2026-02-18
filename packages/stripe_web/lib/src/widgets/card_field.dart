@@ -11,6 +11,8 @@ import 'package:web/web.dart' as web;
 
 import '../../flutter_stripe_web.dart';
 
+web.HTMLDivElement? _cardElementDiv;
+
 const kCardFieldDefaultHeight = 10.0;
 const kCardFieldDefaultFontSize = 17.0;
 
@@ -56,9 +58,11 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   void initState() {
     ui.platformViewRegistry.registerViewFactory(
       'stripe_card',
-      (int viewId) => web.HTMLDivElement()
-        ..id = 'card-element'
-        ..style.border = 'none',
+      (int viewId) {
+        final element = web.HTMLDivElement()..style.border = 'none';
+        _cardElementDiv = element;
+        return element;
+      },
     );
     initStripe();
     super.initState();
@@ -83,10 +87,14 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
             const CardFieldInputDetails(complete: false),
             controller,
           );
+          final container = _cardElementDiv;
+          if (container == null) {
+            return;
+          }
           element = WebStripe.js
               .elements(createElementOptions())
               .createCard(createOptions())
-            ..mount('#card-element'.toJS)
+            ..mount(container)
             ..onBlur(requestBlur)
             ..onFocus(requestFocus)
             ..onChange(onCardChanged);
@@ -186,6 +194,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   void dispose() {
     detachController(controller);
     element?.unmount();
+    _cardElementDiv = null;
     super.dispose();
   }
 
