@@ -51,10 +51,6 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
       .emit(eventName, params);
   }
 
-  public void invalidate() {
-
-  }
-
   private void invoke(String eventName) {
     invoke(eventName, null);
   }

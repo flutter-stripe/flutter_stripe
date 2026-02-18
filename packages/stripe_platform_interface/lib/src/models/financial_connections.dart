@@ -222,6 +222,9 @@ abstract class CollectFinancialConnectionsAccountsParams
     /// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
     @JsonKey(includeFromJson: false, includeToJson: false)
     FinancialConnectionsEventHandler? onEvent,
+
+    /// Optional connected account ID to use for this Financial Connections session. Used for Stripe Connect embedded components.
+    String? connectedAccountId,
   }) = _CollectFinancialConnectionsAccountsParams;
 
   factory CollectFinancialConnectionsAccountsParams.fromJson(

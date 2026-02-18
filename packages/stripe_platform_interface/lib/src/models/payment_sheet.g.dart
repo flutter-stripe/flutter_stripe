@@ -70,6 +70,11 @@ _SetupParameters _$SetupParametersFromJson(
       : CardBrandAcceptance.fromJson(
           json['cardBrandAcceptance'] as Map<String, dynamic>,
         ),
+  cardFundingFiltering: json['cardFundingFiltering'] == null
+      ? null
+      : CardFundingFiltering.fromJson(
+          json['cardFundingFiltering'] as Map<String, dynamic>,
+        ),
   customPaymentMethodConfiguration:
       json['customPaymentMethodConfiguration'] == null
       ? null
@@ -107,6 +112,7 @@ Map<String, dynamic> _$SetupParametersToJson(
   'removeSavedPaymentMethodMessage': instance.removeSavedPaymentMethodMessage,
   'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
   'cardBrandAcceptance': instance.cardBrandAcceptance?.toJson(),
+  'cardFundingFiltering': instance.cardFundingFiltering?.toJson(),
   'customPaymentMethodConfiguration': instance.customPaymentMethodConfiguration
       ?.toJson(),
 };
@@ -787,4 +793,27 @@ Map<String, dynamic> _$CustomPaymentMethodConfigurationToJson(
   'customPaymentMethods': instance.customPaymentMethods
       .map((e) => e.toJson())
       .toList(),
+};
+
+_CardFundingFiltering _$CardFundingFilteringFromJson(
+  Map<String, dynamic> json,
+) => _CardFundingFiltering(
+  allowedCardFundingTypes: (json['allowedCardFundingTypes'] as List<dynamic>?)
+      ?.map((e) => $enumDecode(_$CardFundingTypeEnumMap, e))
+      .toList(),
+);
+
+Map<String, dynamic> _$CardFundingFilteringToJson(
+  _CardFundingFiltering instance,
+) => <String, dynamic>{
+  'allowedCardFundingTypes': instance.allowedCardFundingTypes
+      ?.map((e) => _$CardFundingTypeEnumMap[e]!)
+      .toList(),
+};
+
+const _$CardFundingTypeEnumMap = {
+  CardFundingType.debit: 'debit',
+  CardFundingType.credit: 'credit',
+  CardFundingType.prepaid: 'prepaid',
+  CardFundingType.unknown: 'unknown',
 };

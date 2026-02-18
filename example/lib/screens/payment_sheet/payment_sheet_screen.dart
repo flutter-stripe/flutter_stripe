@@ -52,12 +52,8 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
     final url = Uri.parse('$kApiUrl/payment-sheet');
     final response = await http.post(
       url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: json.encode({
-        'a': 'a',
-      }),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'a': 'a'}),
     );
     final body = json.decode(response.body);
     if (body['error'] != null) {
@@ -98,12 +94,9 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           customerId: data['customer'],
           customerEphemeralKeySecret: data['ephemeralKey'],
           returnURL: 'flutterstripe://redirect',
-
           // Extra params
           primaryButtonLabel: 'Pay now',
-          applePay: PaymentSheetApplePay(
-            merchantCountryCode: 'DE',
-          ),
+          applePay: PaymentSheetApplePay(merchantCountryCode: 'DE'),
           googlePay: PaymentSheetGooglePay(
             merchantCountryCode: 'DE',
             testEnv: true,
@@ -157,9 +150,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
 
       if (context.mounted) {
         scaffoldMessenger.showSnackBar(
-          SnackBar(
-            content: Text('Payment successfully completed'),
-          ),
+          SnackBar(content: Text('Payment successfully completed')),
         );
       }
     } on Exception catch (e) {
@@ -174,9 +165,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
       } else {
         if (context.mounted) {
           scaffoldMessenger.showSnackBar(
-            SnackBar(
-              content: Text('Unforeseen error: $e'),
-            ),
+            SnackBar(content: Text('Unforeseen error: $e')),
           );
         }
       }

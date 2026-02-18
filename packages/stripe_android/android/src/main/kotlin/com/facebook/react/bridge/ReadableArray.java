@@ -23,8 +23,7 @@ public class ReadableArray extends ArrayList<Object> {
     }
 
     public ReadableArray(@NotNull List<Object> array) {
-        this.array = new JSONArray();
-        array.addAll(array);
+        this.array = new JSONArray(array);
     }
 
 
@@ -51,7 +50,15 @@ public class ReadableArray extends ArrayList<Object> {
 
     @Override
     public int size() {
-        return super.size();
+        return array.length();
+    }
+
+    @Override
+    public Object get(int index) {
+        if (index < 0 || index >= array.length()) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + array.length());
+        }
+        return array.opt(index);
     }
 
     @NotNull
