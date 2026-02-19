@@ -418,6 +418,7 @@ class Stripe {
     required String paymentIntentClientSecret,
     PaymentMethodParams? data,
     PaymentMethodOptions? options,
+    String? returnURL,
   }) async {
     await _awaitForSettings();
     try {
@@ -425,6 +426,7 @@ class Stripe {
         paymentIntentClientSecret,
         data,
         options,
+        returnURL: returnURL,
       );
       return paymentMethod;
     } on StripeError {

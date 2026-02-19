@@ -114,9 +114,10 @@ class WebStripe extends StripePlatform {
   @override
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
-    PaymentMethodParams? params, [
-    PaymentMethodOptions? options,
-  ]) async {
+    PaymentMethodParams? params,
+    PaymentMethodOptions? options, {
+    String? returnURL,
+  }) async {
     assert(params != null, 'params are not allowed to be null on the web');
     final response =
         await params!.maybeWhen<Future<stripe_js.PaymentIntentResponse>>(

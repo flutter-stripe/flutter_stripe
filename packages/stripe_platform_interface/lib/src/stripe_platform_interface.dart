@@ -54,8 +54,9 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodParams? params,
 
     /// Paymentmethod options
-    PaymentMethodOptions? options,
-  );
+    PaymentMethodOptions? options, {
+    String? returnURL,
+  });
 
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
   Future<PaymentSheetPaymentOption?> initPaymentSheet(
