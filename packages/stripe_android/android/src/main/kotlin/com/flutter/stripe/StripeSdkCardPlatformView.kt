@@ -125,6 +125,9 @@ class StripeSdkCardPlatformView(
                 )
                 result.success(null)
             }
+            "topFocusChange", "topCardChange" -> {
+                result.success(null)
+            }
             else -> {
                 stripeSdkCardViewManager.delegate.setProperty(
                     cardView,
