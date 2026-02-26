@@ -53,14 +53,16 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
 
   late final web.HTMLDivElement _divElement;
+  late final String _viewType;
 
   @override
   void initState() {
+    _viewType = 'stripe_card_${identityHashCode(this)}';
     _divElement = web.HTMLDivElement()
       ..id = 'card-element'
       ..style.border = 'none';
     ui.platformViewRegistry.registerViewFactory(
-      'stripe_card',
+      _viewType,
       (int viewId) => _divElement,
     );
     initStripe();
@@ -140,7 +142,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
         focusNode: _effectiveNode,
         child: ConstrainedBox(
           constraints: constraints,
-          child: const HtmlElementView(viewType: 'stripe_card'),
+          child: HtmlElementView(viewType: _viewType),
         ),
       ),
     );
