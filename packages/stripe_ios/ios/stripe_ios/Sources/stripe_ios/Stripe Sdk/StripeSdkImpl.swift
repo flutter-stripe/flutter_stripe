@@ -29,8 +29,8 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
 
     @objc public weak var emitter: StripeSdkEmitter?
     @objc public weak var onrampEmitter: StripeOnrampSdkEmitter?
-    weak var cardFieldView: CardFieldView?
-    weak var cardFormView: CardFormView?
+    var cardFieldView: CardFieldView?
+    var cardFormView: CardFormView?
 
     var merchantIdentifier: String?
 
