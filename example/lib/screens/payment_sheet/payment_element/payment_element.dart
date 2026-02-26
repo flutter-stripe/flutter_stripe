@@ -7,7 +7,7 @@ import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
 import 'platforms/payment_element.dart'
-    if (dart.library.js) 'platforms/payment_element_web.dart';
+    if (dart.library.js_interop) 'platforms/payment_element_web.dart';
 
 class PaymentElementExample extends StatefulWidget {
   const PaymentElementExample({super.key});

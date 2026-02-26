@@ -52,13 +52,16 @@ class WebCardField extends StatefulWidget {
 class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
 
+  late final web.HTMLDivElement _divElement;
+
   @override
   void initState() {
+    _divElement = web.HTMLDivElement()
+      ..id = 'card-element'
+      ..style.border = 'none';
     ui.platformViewRegistry.registerViewFactory(
       'stripe_card',
-      (int viewId) => web.HTMLDivElement()
-        ..id = 'card-element'
-        ..style.border = 'none',
+      (int viewId) => _divElement,
     );
     initStripe();
     super.initState();
@@ -70,40 +73,42 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
 
   void initStripe() {
     attachController(controller);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (!widget.dangerouslyUpdateFullCardDetails) {
-        if (kDebugMode &&
-            controller.details !=
-                const CardFieldInputDetails(complete: false)) {
-          dev.log(
-            'WARNING! Initial card data value has been ignored. \n'
-            '$kDebugPCIMessage',
-          );
-        }
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          updateCardDetails(
-            const CardFieldInputDetails(complete: false),
-            controller,
-          );
-          element =
-              WebStripe.js
-                  .elements(createElementOptions())
-                  .createCard(createOptions())
-                ..mount('#card-element'.toJS)
-                ..onBlur(requestBlur)
-                ..onFocus(requestFocus)
-                ..onChange(onCardChanged);
-        });
+    if (!widget.dangerouslyUpdateFullCardDetails) {
+      if (kDebugMode &&
+          controller.details != const CardFieldInputDetails(complete: false)) {
+        dev.log(
+          'WARNING! Initial card data value has been ignored. \n'
+          '$kDebugPCIMessage',
+        );
       }
-    });
+      updateCardDetails(
+        const CardFieldInputDetails(complete: false),
+        controller,
+      );
+      _mountWhenConnected();
+    }
   }
 
-  void requestBlur(dynamic response) {
-    _effectiveNode.unfocus();
-  }
-
-  void requestFocus(dynamic response) {
-    _effectiveNode.requestFocus();
+  /// Retries mounting Stripe each frame until [_divElement] is connected to the
+  /// DOM. In WASM (skwasm) mode the platform-view embedding is asynchronous and
+  /// may take more than two frames, so we poll via [Node.isConnected] rather
+  /// than using a fixed two-frame delay.
+  void _mountWhenConnected() {
+    if (!mounted) return;
+    if (_divElement.isConnected) {
+      element =
+          WebStripe.js
+              .elements(createElementOptions())
+              .createCard(createOptions())
+            ..mount(_divElement)
+            ..onBlur((_) => _effectiveNode.unfocus())
+            ..onFocus((_) => _effectiveNode.requestFocus())
+            ..onChange(onCardChanged);
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _mountWhenConnected(),
+      );
+    }
   }
 
   void onCardChanged(js.CardElementChangeEvent response) {

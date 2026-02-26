@@ -1,13 +1,15 @@
-import 'package:stripe_js/stripe_api.dart';
 import 'dart:js_interop';
-import '../utils/utils.dart';
+
+import 'package:stripe_js/src/js/utils/utils.dart';
+import 'package:stripe_js/stripe_api.dart';
 
 typedef EventCallback<T> = void Function(T event);
 
-extension type const StripeElement(JSObject o) implements JSObject, Element {
-  /// HTMLElement keeps giving this error for some reason:
-  /// Cannot find name 'HTMLElement'
-  external void mount(JSAny domElement);
+@JS()
+extension type StripeElement(JSObject _) implements JSObject, Element {
+  /// We use JSAny here so it can accept either a String (selector)
+  /// or a web.HTMLElement (actual DOM node).
+  external void mount(JSAny domElementOrSelector);
 
   external void focus();
   external void blur();
@@ -16,13 +18,18 @@ extension type const StripeElement(JSObject o) implements JSObject, Element {
   external void destroy();
 
   @JS("on")
-  external void _on(String event, JSExportedDartFunction handler);
+  external void _on(String event, JSFunction handler);
 
+  /// In Wasm, we must explicitly convert the Dart function to a JSFunction.
+  /// Using handler.toJS requires the function signature to match interop rules.
   void on(String event, EventCallback<JSMap> handler) {
-    return _on(event, handler.toJS);
+    _on(event, ((JSMap e) => handler(e)).toJS);
   }
 
-  void onFocus(EventCallback<void> onEvent) => on("focus", onEvent);
-  void onReady(EventCallback<void> onEvent) => on("ready", onEvent);
-  void onBlur(EventCallback<void> onEvent) => on("blur", onEvent);
+  // Note: EventCallback<void> needs to handle the JS null/undefined passed by Stripe
+  void onFocus(EventCallback<void> onEvent) =>
+      on("focus", (_) => onEvent(null));
+  void onReady(EventCallback<void> onEvent) =>
+      on("ready", (_) => onEvent(null));
+  void onBlur(EventCallback<void> onEvent) => on("blur", (_) => onEvent(null));
 }
