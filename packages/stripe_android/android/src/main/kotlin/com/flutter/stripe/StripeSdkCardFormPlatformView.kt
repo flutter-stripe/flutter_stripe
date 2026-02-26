@@ -95,6 +95,9 @@ class StripeSdkCardFormPlatformView(
                 cardFormViewManager.delegate.receiveCommand(cardView, call.method, null)
                 result.success(null)
             }
+            "topFocusChange", "topCardChange" -> {
+                result.success(null)
+            }
             else -> {
                 cardFormViewManager.delegate.setProperty(
                     cardView,

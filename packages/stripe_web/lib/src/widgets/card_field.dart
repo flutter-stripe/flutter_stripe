@@ -4,12 +4,15 @@ import 'dart:ui_web' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_js/stripe_api.dart' as js;
 import 'package:stripe_js/stripe_js.dart' as js;
 import 'package:web/web.dart' as web;
 
 import '../../flutter_stripe_web.dart';
+
+web.HTMLDivElement? _cardElementDiv;
 
 const kCardFieldDefaultHeight = 10.0;
 const kCardFieldDefaultFontSize = 17.0;
@@ -51,17 +54,57 @@ class WebCardField extends StatefulWidget {
 
 class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
+  MethodChannel? _methodChannel;
 
   @override
   void initState() {
     ui.platformViewRegistry.registerViewFactory(
       'stripe_card',
-      (int viewId) => web.HTMLDivElement()
-        ..id = 'card-element'
-        ..style.border = 'none',
+      (int viewId) {
+        final element = web.HTMLDivElement()..style.border = 'none';
+        _cardElementDiv = element;
+        return element;
+      },
     );
     initStripe();
     super.initState();
+  }
+
+  void onPlatformViewCreated(int viewId) {
+    _methodChannel = MethodChannel('flutter.stripe/card_field/$viewId');
+    _methodChannel?.setMethodCallHandler((call) async {
+      if (call.method == 'topFocusChange') {
+        _handlePlatformFocusChanged(call.arguments);
+      } else if (call.method == 'topCardChange') {
+        _handleCardChanged(call.arguments);
+      }
+      return null;
+    });
+  }
+
+  void _handleCardChanged(dynamic arguments) {
+    try {
+      final map = Map<String, dynamic>.from(arguments);
+      final update = CardFieldInputDetails.fromJson(
+        Map<String, dynamic>.from(map['card']),
+      );
+      updateCardDetails(update, controller);
+      widget.onCardChanged?.call(update);
+    } catch (e) {
+      dev.log('Error parsing card arguments: $e');
+    }
+  }
+
+  void _handlePlatformFocusChanged(dynamic arguments) {
+    try {
+      final map = Map<String, dynamic>.from(arguments);
+      final field = CardFieldFocusName.fromJson(map);
+      if (field.focusedField != null) {
+        widget.onFocus?.call(field.focusedField);
+      }
+    } catch (e) {
+      dev.log('Error parsing focus arguments: $e');
+    }
   }
 
   js.CardPaymentElement? get element =>
@@ -83,10 +126,14 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
             const CardFieldInputDetails(complete: false),
             controller,
           );
+          final container = _cardElementDiv;
+          if (container == null) {
+            return;
+          }
           element = WebStripe.js
               .elements(createElementOptions())
               .createCard(createOptions())
-            ..mount('#card-element'.toJS)
+            ..mount(container)
             ..onBlur(requestBlur)
             ..onFocus(requestFocus)
             ..onChange(onCardChanged);
@@ -131,7 +178,10 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
         focusNode: _effectiveNode,
         child: ConstrainedBox(
           constraints: constraints,
-          child: const HtmlElementView(viewType: 'stripe_card'),
+          child: HtmlElementView(
+            viewType: 'stripe_card',
+            onPlatformViewCreated: onPlatformViewCreated,
+          ),
         ),
       ),
     );
@@ -186,6 +236,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   void dispose() {
     detachController(controller);
     element?.unmount();
+    _cardElementDiv = null;
     super.dispose();
   }
 
