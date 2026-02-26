@@ -2,7 +2,6 @@ import 'dart:js_interop';
 import 'dart:ui_web' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:stripe_js/stripe_api.dart' as js;
 import 'package:stripe_js/stripe_js.dart' as js;
 import 'package:web/web.dart' as web;
@@ -75,6 +74,10 @@ class PaymentElement extends StatefulWidget {
 class PaymentElementState extends State<PaymentElement> {
   web.HTMLDivElement _divElement = web.HTMLDivElement();
   double height = 300.0;
+  bool _isReady = false;
+
+  late final js.JsElementsCreateOptions _cachedCreateOptions;
+  late final js.PaymentElementOptions _cachedElementOptions;
 
   late final resizeObserver = web.ResizeObserver(
     ((JSArray<web.ResizeObserverEntry> entries, web.ResizeObserver observer) {
@@ -98,9 +101,12 @@ class PaymentElementState extends State<PaymentElement> {
       ..id = 'payment-element'
       ..style.border = 'none'
       ..style.width = '100%'
-      ..style.height = '${height}px';
+      ..style.height = '${height}px'
+      ..style.minHeight = '${height}px';
 
-    elements = WebStripe.js.elements(createOptions());
+    _cachedCreateOptions = _createOptionsOnce();
+    _cachedElementOptions = _elementOptionsOnce();
+
     ui.platformViewRegistry.registerViewFactory(
       'stripe_payment_element',
       (int viewId) => _divElement,
@@ -118,12 +124,18 @@ class PaymentElementState extends State<PaymentElement> {
   void _mountWhenConnected() {
     if (!mounted) return;
     if (_divElement.isConnected) {
-      element = elements!.createPayment(elementOptions())
+      elements = WebStripe.js.elements(_cachedCreateOptions);
+      element = elements!.createPayment(_cachedElementOptions)
         ..mount(_divElement)
         ..onReady((_) {
           final stripeEl = _divElement.firstElementChild;
           if (stripeEl != null) {
             resizeObserver.observe(stripeEl as web.HTMLElement);
+          }
+          if (mounted) {
+            setState(() {
+              _isReady = true;
+            });
           }
         })
         ..onBlur((_) => _effectiveNode.unfocus())
@@ -162,12 +174,25 @@ class PaymentElementState extends State<PaymentElement> {
           maxWidth: double.infinity,
           maxHeight: height,
         ),
-        child: const HtmlElementView(viewType: 'stripe_payment_element'),
+        child: Stack(
+          children: [
+            const HtmlElementView(viewType: 'stripe_payment_element'),
+            if (!_isReady)
+              Container(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
 
-  js.JsElementsCreateOptions createOptions() {
+  js.JsElementsCreateOptions _createOptionsOnce() {
     final appearance = widget.appearance ?? js.ElementAppearance();
     return js.JsElementsCreateOptions(
       clientSecret: widget.clientSecret,
@@ -176,7 +201,7 @@ class PaymentElementState extends State<PaymentElement> {
     );
   }
 
-  js.PaymentElementOptions elementOptions() {
+  js.PaymentElementOptions _elementOptionsOnce() {
     return js.PaymentElementOptions(
       layout: widget.layout,
       defaultValues: widget.defaultValues,

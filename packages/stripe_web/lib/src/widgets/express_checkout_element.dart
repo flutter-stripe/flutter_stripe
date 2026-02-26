@@ -36,6 +36,10 @@ class ExpressCheckoutElement extends StatefulWidget {
 class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
   web.HTMLDivElement _divElement = web.HTMLDivElement();
   double height = 60.0;
+  bool _isReady = false;
+
+  late final js.JsElementsCreateOptions _cachedCreateOptions;
+  late final js.ExpressCheckoutOptions _cachedElementOptions;
 
   late final resizeObserver = web.ResizeObserver(
     ((JSArray<web.ResizeObserverEntry> entries, web.ResizeObserver observer) {
@@ -59,9 +63,12 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
       ..id = 'express-checkout-element'
       ..style.border = 'none'
       ..style.width = '100%'
-      ..style.height = '${height}px';
+      ..style.height = '${height}px'
+      ..style.minHeight = '${height}px';
 
-    elements = WebStripe.js.elements(createOptions());
+    _cachedCreateOptions = _createOptionsOnce();
+    _cachedElementOptions = _elementOptionsOnce();
+
     ui.platformViewRegistry.registerViewFactory(
       'stripe_express_checkout_element',
       (int viewId) => _divElement,
@@ -79,12 +86,18 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
   void _mountWhenConnected() {
     if (!mounted) return;
     if (_divElement.isConnected) {
-      element = elements!.createExpressCheckout(elementOptions())
+      elements = WebStripe.js.elements(_cachedCreateOptions);
+      element = elements!.createExpressCheckout(_cachedElementOptions)
         ..mount(_divElement)
         ..onReady((_) {
           final stripeEl = _divElement.firstElementChild;
           if (stripeEl != null) {
             resizeObserver.observe(stripeEl as web.HTMLElement);
+          }
+          if (mounted) {
+            setState(() {
+              _isReady = true;
+            });
           }
         })
         ..onBlur((_) => _effectiveNode.unfocus())
@@ -131,14 +144,25 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
           maxWidth: double.infinity,
           maxHeight: height,
         ),
-        child: const HtmlElementView(
-          viewType: 'stripe_express_checkout_element',
+        child: Stack(
+          children: [
+            const HtmlElementView(viewType: 'stripe_express_checkout_element'),
+            if (!_isReady)
+              Container(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+          ],
         ),
       ),
     );
   }
 
-  js.JsElementsCreateOptions createOptions() {
+  js.JsElementsCreateOptions _createOptionsOnce() {
     final appearance = widget.appearance ?? js.ElementAppearance();
     return js.JsElementsCreateOptions(
       clientSecret: widget.clientSecret,
@@ -146,7 +170,7 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
     );
   }
 
-  js.ExpressCheckoutOptions elementOptions() {
+  js.ExpressCheckoutOptions _elementOptionsOnce() {
     return js.ExpressCheckoutOptions(layout: widget.layout);
   }
 
