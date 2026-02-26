@@ -14,28 +14,23 @@ extension PaymentRequestCreateOptionsExtension
       requestPayerEmail: requestPayerEmail,
       requestPayerPhone: requestPayerPhone,
       requestShipping: requestShipping,
-      shippingOptions:
-          shippingOptions.map((option) => option.toJS).toList().toJS,
+      shippingOptions: shippingOptions
+          .map((option) => option.toJS)
+          .toList()
+          .toJS,
       disableWallets: disableWallets.map((type) => type.toJS).toList().toJS,
     );
   }
 }
 
 extension ShippingOptionExtension on PlatformPayWebShippingOption {
-  js.ShippingOption get toJS => js.ShippingOption(
-        id: id,
-        label: label,
-        detail: detail,
-        amount: amount,
-      );
+  js.ShippingOption get toJS =>
+      js.ShippingOption(id: id, label: label, detail: detail, amount: amount);
 }
 
 extension PaymentItemExtension on PlatformPayWebPaymentItem {
-  js.PaymentItem toJS() => js.PaymentItem(
-        label: label,
-        amount: amount,
-        pending: pending,
-      );
+  js.PaymentItem toJS() =>
+      js.PaymentItem(label: label, amount: amount, pending: pending);
 }
 
 extension WalletTypeExtension on PlatformPayWebWalletType {

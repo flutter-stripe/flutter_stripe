@@ -14,8 +14,10 @@ extension PaymentIntentExtension on js.PaymentIntent {
       latestCharge: latestCharge,
       //paymentMethodId: payment_method,
       captureMethod: CaptureMethodExtension.parse(captureMethod.name),
-      confirmationMethod: ConfirmationMethodExtension.parse(confirmationMethod.name),
-//
+      confirmationMethod: ConfirmationMethodExtension.parse(
+        confirmationMethod.name,
+      ),
+      //
       description: description,
       // receiptEmail: receipt_email,
       canceledAt: canceledAt?.toString(),

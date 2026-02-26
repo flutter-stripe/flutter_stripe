@@ -12,7 +12,8 @@ extension SetupIntentExtension on js.SetupIntent {
       paymentMethodId: paymentMethod!,
       description: description,
       // LastPaymentError? lastPaymentError,
-      usage: '', paymentMethodTypes: [],
+      usage: '',
+      paymentMethodTypes: [],
     );
   }
 }

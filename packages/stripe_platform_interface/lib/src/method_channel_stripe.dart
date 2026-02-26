@@ -300,9 +300,7 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> initCustomerSheet(
-    CustomerSheetInitParams params,
-  ) async {
+  Future<void> initCustomerSheet(CustomerSheetInitParams params) async {
     // Convert deprecated constructor to adapter variant for native SDK compatibility
     final normalizedParams = params.map(
       (deprecated) => CustomerSheetInitParams.adapter(

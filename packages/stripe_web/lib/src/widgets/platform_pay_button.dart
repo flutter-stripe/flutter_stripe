@@ -10,14 +10,15 @@ import 'package:web/web.dart' as web;
 const kPlatformPayButtonDefaultHeight = 40.0;
 
 class WebPlatformPayButton extends StatefulWidget {
-  const WebPlatformPayButton(
-      {super.key,
-      this.paymentRequestCreateOptions =
-          PlatformPayWebPaymentRequestCreateOptions.defaultOptions,
-      this.constraints,
-      this.type,
-      this.style,
-      required this.onPressed});
+  const WebPlatformPayButton({
+    super.key,
+    this.paymentRequestCreateOptions =
+        PlatformPayWebPaymentRequestCreateOptions.defaultOptions,
+    this.constraints,
+    this.type,
+    this.style,
+    required this.onPressed,
+  });
 
   final PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions;
   final PlatformButtonType? type;
@@ -36,33 +37,38 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
     ..id = 'platform-pay-button';
 
   late final web.MutationObserver mutationObserver = web.MutationObserver(
-      ((JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
-    if (web.document.getElementById('platform-pay-button') != null) {
-      mutationObserver.disconnect();
+    ((JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
+      if (web.document.getElementById('platform-pay-button') != null) {
+        mutationObserver.disconnect();
 
-      final currentTheme = Theme.of(context);
+        final currentTheme = Theme.of(context);
 
-      PaymentRequest paymentRequest = WebStripe.js
-          .paymentRequest((widget.paymentRequestCreateOptions).toJS());
+        PaymentRequest paymentRequest = WebStripe.js.paymentRequest(
+          (widget.paymentRequestCreateOptions).toJS(),
+        );
 
-      paymentRequest.canMakePayment().then((value) {
-        WebStripe.js.elements().createPaymentRequestButton(
-            JsPaymentRequestButtonElementCreateOptions(
+        paymentRequest.canMakePayment().then((value) {
+          WebStripe.js.elements().createPaymentRequestButton(
+              JsPaymentRequestButtonElementCreateOptions(
                 paymentRequest: paymentRequest.js,
                 style: JsPaymentRequestButtonElementStyle(
-                    paymentRequestButton: PaymentRequestButtonStyleOptions(
-                  theme: theme(currentTheme.brightness),
-                  type: type,
-                  height: '${constraints.maxHeight}px',
-                ))))
-          ..on('click', (event) {
-            event.toDart['preventDefault']();
-            widget.onPressed();
-          })
-          ..mount('#platform-pay-button'.toJS);
-      });
-    }
-  }.toJS));
+                  paymentRequestButton: PaymentRequestButtonStyleOptions(
+                    theme: theme(currentTheme.brightness),
+                    type: type,
+                    height: '${constraints.maxHeight}px',
+                  ),
+                ),
+              ),
+            )
+            ..on('click', (event) {
+              event.toDart['preventDefault']();
+              widget.onPressed();
+            })
+            ..mount('#platform-pay-button'.toJS);
+        });
+      }
+    }.toJS),
+  );
 
   BoxConstraints get constraints =>
       widget.constraints ??
@@ -71,7 +77,9 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
   @override
   void initState() {
     ui.platformViewRegistry.registerViewFactory(
-        'stripe_platform_pay_button', (int viewId) => _divElement);
+      'stripe_platform_pay_button',
+      (int viewId) => _divElement,
+    );
 
     mutationObserver.observe(
       web.document,
@@ -121,9 +129,10 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
       PlatformButtonStyle.whiteOutline =>
         PaymentRequestButtonTheme.lightOutline,
       PlatformButtonStyle.black => PaymentRequestButtonTheme.dark,
-      PlatformButtonStyle.automatic || null => brightness == Brightness.light
-          ? PaymentRequestButtonTheme.light
-          : PaymentRequestButtonTheme.dark,
+      PlatformButtonStyle.automatic || null =>
+        brightness == Brightness.light
+            ? PaymentRequestButtonTheme.light
+            : PaymentRequestButtonTheme.dark,
     };
   }
 }

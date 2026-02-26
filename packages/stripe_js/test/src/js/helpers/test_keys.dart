@@ -1,3 +1,4 @@
+// ignore: avoid_relative_lib_imports
 import '../../../../../../example/lib/.env.dart' as env;
 
 const stripePublishableKey = env.stripePublishableKey;

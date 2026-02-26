@@ -87,16 +87,17 @@ class PaymentElementState extends State<PaymentElement> {
           ..onFocus(requestFocus)
           ..onChange(onCardChanged);
         mutationObserver = web.MutationObserver(
-            (JSArray<web.MutationRecord> entries,
-                web.MutationObserver observer) {
-          final stripeElements =
-              web.document.getElementsByClassName('__PrivateStripeElement');
-          if (stripeElements.length != 0) {
-            mutationObserver?.disconnect();
-            final element = stripeElements.item(0) as web.HTMLElement;
-            resizeObserver.observe(element);
-          }
-        }.toJS);
+          (JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
+            final stripeElements = web.document.getElementsByClassName(
+              '__PrivateStripeElement',
+            );
+            if (stripeElements.length != 0) {
+              mutationObserver?.disconnect();
+              final element = stripeElements.item(0) as web.HTMLElement;
+              resizeObserver.observe(element);
+            }
+          }.toJS,
+        );
         mutationObserver!.observe(
           web.document,
           web.MutationObserverInit(childList: true, subtree: true),
@@ -148,18 +149,16 @@ class PaymentElementState extends State<PaymentElement> {
   js.StripeElements? get elements => WebStripe.elements;
   set elements(js.StripeElements? value) => WebStripe.elements = value;
 
-  void requestBlur(response) {
+  void requestBlur(dynamic response) {
     _effectiveNode.unfocus();
   }
 
-  void requestFocus(response) {
+  void requestFocus(dynamic response) {
     _effectiveNode.requestFocus();
   }
 
   void onCardChanged(js.PaymentElementChangeEvent response) {
-    final details = CardFieldInputDetails(
-      complete: response.complete,
-    );
+    final details = CardFieldInputDetails(complete: response.complete);
     widget.onCardChanged(details);
 
     return;
