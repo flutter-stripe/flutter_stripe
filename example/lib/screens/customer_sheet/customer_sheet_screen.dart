@@ -129,7 +129,6 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
     } on Exception catch (e) {
       if (e is StripeException) {
         if (context.mounted) {
-          print('StripeException: ${e.error}');
           scaffoldMessenger.showSnackBar(
             SnackBar(
               content: Text('Error from Stripe: ${e.error.localizedMessage}'),

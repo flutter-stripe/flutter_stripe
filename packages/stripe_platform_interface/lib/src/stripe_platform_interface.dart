@@ -76,9 +76,7 @@ abstract class StripePlatform extends PlatformInterface {
   /// Configure the customer sheet using [CustomerSheetInitParams] as config.
   ///
   /// Throws a [StripeException] if initialization fails.
-  Future<void> initCustomerSheet(
-    CustomerSheetInitParams params,
-  );
+  Future<void> initCustomerSheet(CustomerSheetInitParams params);
 
   /// Display the customersheet sheet.
   Future<CustomerSheetResult?> presentCustomerSheet({

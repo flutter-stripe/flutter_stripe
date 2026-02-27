@@ -6,38 +6,52 @@ import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 void main() {
   group('PaymentIntentsStatusExtension', () {
     test('parses canceled status', () {
-      expect(_parsedPaymentIntentStatus('canceled'),
-          PaymentIntentsStatus.Canceled);
+      expect(
+        _parsedPaymentIntentStatus('canceled'),
+        PaymentIntentsStatus.Canceled,
+      );
     });
 
     test('parses processing status', () {
-      expect(_parsedPaymentIntentStatus('processing'),
-          PaymentIntentsStatus.Processing);
+      expect(
+        _parsedPaymentIntentStatus('processing'),
+        PaymentIntentsStatus.Processing,
+      );
     });
 
     test('parses requires_action status', () {
-      expect(_parsedPaymentIntentStatus('requires_action'),
-          PaymentIntentsStatus.RequiresAction);
+      expect(
+        _parsedPaymentIntentStatus('requires_action'),
+        PaymentIntentsStatus.RequiresAction,
+      );
     });
 
     test('parses requires_capture status', () {
-      expect(_parsedPaymentIntentStatus('requires_capture'),
-          PaymentIntentsStatus.RequiresCapture);
+      expect(
+        _parsedPaymentIntentStatus('requires_capture'),
+        PaymentIntentsStatus.RequiresCapture,
+      );
     });
 
     test('parses requires_payment_method status', () {
-      expect(_parsedPaymentIntentStatus('requires_payment_method'),
-          PaymentIntentsStatus.RequiresPaymentMethod);
+      expect(
+        _parsedPaymentIntentStatus('requires_payment_method'),
+        PaymentIntentsStatus.RequiresPaymentMethod,
+      );
     });
 
     test('parses requires_confirmation status', () {
-      expect(_parsedPaymentIntentStatus('requires_confirmation'),
-          PaymentIntentsStatus.RequiresConfirmation);
+      expect(
+        _parsedPaymentIntentStatus('requires_confirmation'),
+        PaymentIntentsStatus.RequiresConfirmation,
+      );
     });
 
     test('parses succeeded status', () {
-      expect(_parsedPaymentIntentStatus('succeeded'),
-          PaymentIntentsStatus.Succeeded);
+      expect(
+        _parsedPaymentIntentStatus('succeeded'),
+        PaymentIntentsStatus.Succeeded,
+      );
     });
   });
 }
@@ -92,6 +106,6 @@ Map<String, dynamic> _paymentIntentWithStatusJson(String status) {
     "statement_descriptor_suffix": null,
     "status": status,
     "transfer_data": null,
-    "transfer_group": null
+    "transfer_group": null,
   };
 }
