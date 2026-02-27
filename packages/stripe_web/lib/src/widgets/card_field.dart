@@ -87,8 +87,8 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
         const CardFieldInputDetails(complete: false),
         controller,
       );
-      _mountWhenConnected();
     }
+    _mountWhenConnected();
   }
 
   /// Retries mounting Stripe each frame until [_divElement] is connected to the
