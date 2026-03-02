@@ -614,11 +614,12 @@ extension  StripePlugin {
             result(FlutterError.invalidParams)
             return
         }
-        
+
         confirmPayment(
             paymentIntentClientSecret: paymentIntentClientSecret,
             params: params,
             options: options,
+            returnURL: arguments["returnURL"] as? String,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
         )
