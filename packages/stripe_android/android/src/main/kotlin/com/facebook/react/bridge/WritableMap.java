@@ -26,11 +26,6 @@ public class WritableMap extends ReadableMap {
         return entrySet().size();
     }
 
-    @Override
-    public boolean isEmpty() {
-        return entrySet().isEmpty();
-    }
-
     public WritableMap(JSONObject map) {
         super(map);
     }
