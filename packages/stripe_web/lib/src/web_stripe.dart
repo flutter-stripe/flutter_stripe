@@ -1,6 +1,7 @@
 //@dart=2.12
 import 'dart:async';
 import 'dart:developer' as dev;
+import 'dart:ui' as dart_ui;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
@@ -27,6 +28,12 @@ class WebStripe extends StripePlatform {
   }
 
   static void registerWith(Registrar registrar) {
+    // Increase the flutter/lifecycle channel buffer to prevent "message
+    // discarded" warnings. The Stripe Payment Element renders in an iframe,
+    // which triggers rapid browser focus/blur events that Flutter web translates
+    // into lifecycle messages. The default buffer of 1 is too small to hold all
+    // of them before the framework listener processes them.
+    dart_ui.channelBuffers.resize('flutter/lifecycle', 8);
     StripePlatform.instance = WebStripe.instance;
   }
 
