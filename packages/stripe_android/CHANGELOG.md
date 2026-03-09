@@ -1,3 +1,9 @@
+## 12.4.0
+
+**Fixes**
+- #2347: Fix card details not complete for dangerously update card details
+- #2350: Fix invalid methodcall on Android for cardfield
+
 ## 12.3.0
 
 **Features**
