@@ -149,14 +149,19 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   js.JsElementsCreateOptions createElementOptions() {
-    final textColor = widget.style?.textColor;
+    final textColor = widget.style?.textColor == null
+        ? null
+        : colorToCssString(widget.style!.textColor!);
+    final backgroundColor = widget.style?.backgroundColor == null
+        ? null
+        : colorToCssString(widget.style!.backgroundColor!);
     return js.JsElementsCreateOptions(
       appearance:
           js.ElementAppearance(
                 theme: js.ElementTheme.stripe,
                 variables: {
-                  if (textColor != null)
-                    'colorText': colorToCssString(textColor),
+                  'colorText': ?textColor,
+                  'colorBackground': ?backgroundColor,
                 },
               ).toJson().jsify()
               as js.JsElementAppearance,
@@ -164,14 +169,30 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   String colorToCssString(Color color) {
-    return 'rgb(${color.r}, ${color.g}, ${color.b})';
+    final int argb = color.toARGB32();
+    final int red = (argb >> 16) & 0xFF;
+    final int green = (argb >> 8) & 0xFF;
+    final int blue = argb & 0xFF;
+    return 'rgb($red, $green, $blue)';
   }
 
   js.CardElementOptions createOptions() {
-    final textColor = widget.style?.textColor;
+    final textColor = widget.style?.textColor == null
+        ? null
+        : colorToCssString(widget.style!.textColor!);
+    final backgroundColor = widget.style?.backgroundColor == null
+        ? null
+        : colorToCssString(widget.style!.backgroundColor!);
+    final placeholderColor = widget.style?.placeholderColor == null
+        ? null
+        : colorToCssString(widget.style!.placeholderColor!);
     return js.CardElementOptions(
       style: {
-        'base': {if (textColor != null) 'color': colorToCssString(textColor)},
+        'base': {
+          'color': ?textColor,
+          'backgroundColor': ?backgroundColor,
+          '::placeholder': {'color': ?placeholderColor},
+        },
       },
       hidePostalCode: !widget.enablePostalCode,
     );
