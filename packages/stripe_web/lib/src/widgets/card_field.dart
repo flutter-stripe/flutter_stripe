@@ -191,7 +191,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
         'base': {
           'color': ?textColor,
           'backgroundColor': ?backgroundColor,
-          '::placeholder': {'color': ?placeholderColor},
+          if (placeholderColor != null) '::placeholder': {'color': placeholderColor},
         },
       },
       hidePostalCode: !widget.enablePostalCode,
