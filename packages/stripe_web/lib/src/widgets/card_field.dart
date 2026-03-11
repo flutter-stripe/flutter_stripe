@@ -29,11 +29,11 @@ class WebCardField extends StatefulWidget {
     this.focusNode,
     this.autofocus = false,
     this.dangerouslyUpdateFullCardDetails = false,
-  })  : assert(constraints == null || constraints.debugAssertIsValid()),
-        constraints = (width != null || height != null)
-            ? constraints?.tighten(width: width, height: height) ??
-                BoxConstraints.tightFor(width: width, height: height)
-            : constraints;
+  }) : assert(constraints == null || constraints.debugAssertIsValid()),
+       constraints = (width != null || height != null)
+           ? constraints?.tighten(width: width, height: height) ??
+                 BoxConstraints.tightFor(width: width, height: height)
+           : constraints;
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
@@ -52,13 +52,18 @@ class WebCardField extends StatefulWidget {
 class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
 
+  late final web.HTMLDivElement _divElement;
+  late final String _viewType;
+
   @override
   void initState() {
+    _viewType = 'stripe_card_${identityHashCode(this)}';
+    _divElement = web.HTMLDivElement()
+      ..id = 'card-element'
+      ..style.border = 'none';
     ui.platformViewRegistry.registerViewFactory(
-      'stripe_card',
-      (int viewId) => web.HTMLDivElement()
-        ..id = 'card-element'
-        ..style.border = 'none',
+      _viewType,
+      (int viewId) => _divElement,
     );
     initStripe();
     super.initState();
@@ -70,37 +75,42 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
 
   void initStripe() {
     attachController(controller);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (!widget.dangerouslyUpdateFullCardDetails) {
-        if (kDebugMode &&
-            controller.details !=
-                const CardFieldInputDetails(complete: false)) {
-          dev.log('WARNING! Initial card data value has been ignored. \n'
-              '$kDebugPCIMessage');
-        }
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          updateCardDetails(
-            const CardFieldInputDetails(complete: false),
-            controller,
-          );
-          element = WebStripe.js
+    if (!widget.dangerouslyUpdateFullCardDetails) {
+      if (kDebugMode &&
+          controller.details != const CardFieldInputDetails(complete: false)) {
+        dev.log(
+          'WARNING! Initial card data value has been ignored. \n'
+          '$kDebugPCIMessage',
+        );
+      }
+      updateCardDetails(
+        const CardFieldInputDetails(complete: false),
+        controller,
+      );
+    }
+    _mountWhenConnected();
+  }
+
+  /// Retries mounting Stripe each frame until [_divElement] is connected to the
+  /// DOM. In WASM (skwasm) mode the platform-view embedding is asynchronous and
+  /// may take more than two frames, so we poll via [Node.isConnected] rather
+  /// than using a fixed two-frame delay.
+  void _mountWhenConnected() {
+    if (!mounted) return;
+    if (_divElement.isConnected) {
+      element =
+          WebStripe.js
               .elements(createElementOptions())
               .createCard(createOptions())
-            ..mount('#card-element'.toJS)
-            ..onBlur(requestBlur)
-            ..onFocus(requestFocus)
+            ..mount(_divElement)
+            ..onBlur((_) => _effectiveNode.unfocus())
+            ..onFocus((_) => _effectiveNode.requestFocus())
             ..onChange(onCardChanged);
-        });
-      }
-    });
-  }
-
-  void requestBlur(response) {
-    _effectiveNode.unfocus();
-  }
-
-  void requestFocus(response) {
-    _effectiveNode.requestFocus();
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _mountWhenConnected(),
+      );
+    }
   }
 
   void onCardChanged(js.CardElementChangeEvent response) {
@@ -122,7 +132,8 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
 
   @override
   Widget build(BuildContext context) {
-    final constraints = widget.constraints ??
+    final constraints =
+        widget.constraints ??
         const BoxConstraints.expand(height: kCardFieldDefaultHeight);
 
     return Padding(
@@ -131,7 +142,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
         focusNode: _effectiveNode,
         child: ConstrainedBox(
           constraints: constraints,
-          child: const HtmlElementView(viewType: 'stripe_card'),
+          child: HtmlElementView(viewType: _viewType),
         ),
       ),
     );
@@ -140,12 +151,15 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   js.JsElementsCreateOptions createElementOptions() {
     final textColor = widget.style?.textColor;
     return js.JsElementsCreateOptions(
-      appearance: js.ElementAppearance(
-        theme: js.ElementTheme.stripe,
-        variables: {
-          if (textColor != null) 'colorText': colorToCssString(textColor),
-        },
-      ).toJson().jsify() as js.JsElementAppearance,
+      appearance:
+          js.ElementAppearance(
+                theme: js.ElementTheme.stripe,
+                variables: {
+                  if (textColor != null)
+                    'colorText': colorToCssString(textColor),
+                },
+              ).toJson().jsify()
+              as js.JsElementAppearance,
     );
   }
 
@@ -157,9 +171,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
     final textColor = widget.style?.textColor;
     return js.CardElementOptions(
       style: {
-        'base': {
-          if (textColor != null) 'color': colorToCssString(textColor)
-        }
+        'base': {if (textColor != null) 'color': colorToCssString(textColor)},
       },
       hidePostalCode: !widget.enablePostalCode,
     );
@@ -168,8 +180,10 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   @override
   void didUpdateWidget(covariant WebCardField oldWidget) {
     if (widget.controller != oldWidget.controller) {
-      assert(!controller.hasCardField,
-          'CardEditController is already attached to a CardView');
+      assert(
+        !controller.hasCardField,
+        'CardEditController is already attached to a CardView',
+      );
       detachController(oldWidget.controller);
       attachController(oldWidget.controller);
     }

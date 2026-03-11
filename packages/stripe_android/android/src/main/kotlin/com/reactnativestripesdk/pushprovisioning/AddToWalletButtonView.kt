@@ -126,8 +126,8 @@ class AddToWalletButtonView(
           try {
             val image = imageRef.get()
             if (image is CloseableBitmap) {
-              //val drawable = image.underlyingBitmap.toDrawable(resources)
-              //setImageWithRipple(drawable)
+              val drawable = image.underlyingBitmap.toDrawable(resources)
+              setImageWithRipple(drawable)
             }
           } finally {
             CloseableReference.closeSafely(imageRef)

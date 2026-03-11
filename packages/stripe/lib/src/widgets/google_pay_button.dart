@@ -66,7 +66,7 @@ class _GooglePayButtonState extends State<GooglePayButton> {
       },
       onCreatePlatformView: (params) {
         onPlatformViewCreated(params.id);
-        return PlatformViewsService.initExpensiveAndroidView(
+        return PlatformViewsService.initSurfaceAndroidView(
             id: params.id,
             viewType: GooglePayButton._viewType,
             layoutDirection: TextDirection.ltr,

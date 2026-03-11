@@ -121,6 +121,12 @@ abstract class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     ///Note: Card brand filtering is not currently supported in Link.
     CardBrandAcceptance? cardBrandAcceptance,
 
+    ///
+    ///Configuration for filtering cards by funding type.
+    /// @note This is a private preview API and will have no effect unless your Stripe account is enrolled in the private preview.
+    ///
+    CardFundingFiltering? cardFundingFiltering,
+
     /// Configuration for custom payment methods in PaymentSheet
     CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,
   }) = _SetupParameters;
@@ -146,7 +152,7 @@ abstract class IntentConfiguration with _$IntentConfiguration {
     @JsonKey(includeFromJson: false, includeToJson: false)
     ConfirmHandler? confirmHandler,
 
-    /// Called when the customer confirms token payment. 
+    /// Called when the customer confirms token payment.
     @JsonKey(includeFromJson: false, includeToJson: false)
     ConfirmTokenHandler? confirmTokenHandler,
 
@@ -938,4 +944,35 @@ abstract class CustomPaymentMethodConfiguration
   factory CustomPaymentMethodConfiguration.fromJson(
     Map<String, dynamic> json,
   ) => _$CustomPaymentMethodConfigurationFromJson(json);
+}
+
+/// Card funding types that can be filtered.
+/// Note: This is a private preview API and will have no effect unless your Stripe account is enrolled in the private preview.
+enum CardFundingType {
+  /// Debit cards
+  debit,
+
+  /// Credit cards
+  credit,
+
+  /// Prepaid cards
+  prepaid,
+
+  /// Unknown or undetermined funding type.
+  /// Include this if you want to accept cards where the funding type cannot be determined from card metadata.
+  unknown,
+}
+
+/// Configuration for filtering cards by funding type.
+/// Note: This is a private preview API and will have no effect unless your Stripe account is enrolled in the private preview.
+@freezed
+abstract class CardFundingFiltering with _$CardFundingFiltering {
+  @JsonSerializable(explicitToJson: true)
+  const factory CardFundingFiltering({
+    /// List of allowed card funding types. If not set, all types are accepted.
+    List<CardFundingType>? allowedCardFundingTypes,
+  }) = _CardFundingFiltering;
+
+  factory CardFundingFiltering.fromJson(Map<String, dynamic> json) =>
+      _$CardFundingFilteringFromJson(json);
 }

@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '2.1.0'
-    ext.stripe_version = '22.2.+'
+    ext.stripe_version = '22.7.+'
 
     repositories {
         google()
@@ -56,7 +56,8 @@ android {
 
 dependencies {
 
-    implementation 'com.facebook.fresco:fresco:3.5.0'
+    implementation 'com.facebook.fresco:fresco:3.6.0'
+    implementation 'com.facebook.fresco:middleware:3.6.0'
     implementation "androidx.browser:browser:1.8.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
     implementation "com.stripe:stripe-android:$stripe_version"

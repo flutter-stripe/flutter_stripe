@@ -49,7 +49,7 @@ class CardEditController extends ChangeNotifier {
 
   set details(CardFieldInputDetails value) {
     if (_details == value) return;
-    context.dangerouslyUpdateCardDetails(details);
+    context.dangerouslyUpdateCardDetails(value);
     _details = value;
     notifyListeners();
   }

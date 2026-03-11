@@ -7,7 +7,7 @@ import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
 import 'platforms/express_checkout_element.dart'
-    if (dart.library.js) 'platforms/express_checkout_element_web.dart';
+    if (dart.library.js_interop) 'platforms/express_checkout_element_web.dart';
 
 class ExpressCheckoutElementExample extends StatefulWidget {
   const ExpressCheckoutElementExample({super.key});

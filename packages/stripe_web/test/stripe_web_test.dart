@@ -7,17 +7,17 @@ void main() {
       const idealPaymentData = PaymentMethodDataIdeal(bankName: null);
       expect(idealPaymentData.bankName, isNull);
     });
-    
+
     test('PaymentMethodDataIdeal should handle empty bankName correctly', () {
       const idealPaymentData = PaymentMethodDataIdeal(bankName: '');
       expect(idealPaymentData.bankName, isEmpty);
     });
-    
+
     test('PaymentMethodDataIdeal default constructor has null bankName', () {
       const idealPaymentData = PaymentMethodDataIdeal();
       expect(idealPaymentData.bankName, isNull);
     });
-    
+
     test('PaymentMethodDataIdeal should preserve provided bankName', () {
       const idealPaymentData = PaymentMethodDataIdeal(bankName: 'abn_amro');
       expect(idealPaymentData.bankName, equals('abn_amro'));

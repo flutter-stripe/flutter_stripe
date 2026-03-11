@@ -40,11 +40,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
       tags: ['No Webhook'],
       padding: EdgeInsets.symmetric(horizontal: 16),
       children: [
-        CardField(
-          preferredNetworks: [CardBrand.Amex],
-          controller: controller,
-          numberHintText: '34556689232',
-        ),
+        CardField(controller: controller, numberHintText: '34556689232'),
         SizedBox(height: 20),
         LoadingButton(
           text: 'Pay',

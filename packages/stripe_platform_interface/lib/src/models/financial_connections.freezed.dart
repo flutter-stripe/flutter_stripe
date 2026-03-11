@@ -2197,7 +2197,8 @@ mixin _$CollectFinancialConnectionsAccountsParams {
 
 /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
  UserInterfaceStyle? get style;/// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
-@JsonKey(includeFromJson: false, includeToJson: false) FinancialConnectionsEventHandler? get onEvent;
+@JsonKey(includeFromJson: false, includeToJson: false) FinancialConnectionsEventHandler? get onEvent;/// Optional connected account ID to use for this Financial Connections session. Used for Stripe Connect embedded components.
+ String? get connectedAccountId;
 /// Create a copy of CollectFinancialConnectionsAccountsParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2210,16 +2211,16 @@ $CollectFinancialConnectionsAccountsParamsCopyWith<CollectFinancialConnectionsAc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectFinancialConnectionsAccountsParams&&(identical(other.style, style) || other.style == style)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectFinancialConnectionsAccountsParams&&(identical(other.style, style) || other.style == style)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent)&&(identical(other.connectedAccountId, connectedAccountId) || other.connectedAccountId == connectedAccountId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,style,onEvent);
+int get hashCode => Object.hash(runtimeType,style,onEvent,connectedAccountId);
 
 @override
 String toString() {
-  return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent)';
+  return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent, connectedAccountId: $connectedAccountId)';
 }
 
 
@@ -2230,7 +2231,7 @@ abstract mixin class $CollectFinancialConnectionsAccountsParamsCopyWith<$Res>  {
   factory $CollectFinancialConnectionsAccountsParamsCopyWith(CollectFinancialConnectionsAccountsParams value, $Res Function(CollectFinancialConnectionsAccountsParams) _then) = _$CollectFinancialConnectionsAccountsParamsCopyWithImpl;
 @useResult
 $Res call({
- UserInterfaceStyle? style,@JsonKey(includeFromJson: false, includeToJson: false) FinancialConnectionsEventHandler? onEvent
+ UserInterfaceStyle? style,@JsonKey(includeFromJson: false, includeToJson: false) FinancialConnectionsEventHandler? onEvent, String? connectedAccountId
 });
 
 
@@ -2247,11 +2248,12 @@ class _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res>
 
 /// Create a copy of CollectFinancialConnectionsAccountsParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? style = freezed,Object? onEvent = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? style = freezed,Object? onEvent = freezed,Object? connectedAccountId = freezed,}) {
   return _then(_self.copyWith(
 style: freezed == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
 as UserInterfaceStyle?,onEvent: freezed == onEvent ? _self.onEvent : onEvent // ignore: cast_nullable_to_non_nullable
-as FinancialConnectionsEventHandler?,
+as FinancialConnectionsEventHandler?,connectedAccountId: freezed == connectedAccountId ? _self.connectedAccountId : connectedAccountId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -2336,10 +2338,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserInterfaceStyle? style, @JsonKey(includeFromJson: false, includeToJson: false)  FinancialConnectionsEventHandler? onEvent)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserInterfaceStyle? style, @JsonKey(includeFromJson: false, includeToJson: false)  FinancialConnectionsEventHandler? onEvent,  String? connectedAccountId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CollectFinancialConnectionsAccountsParams() when $default != null:
-return $default(_that.style,_that.onEvent);case _:
+return $default(_that.style,_that.onEvent,_that.connectedAccountId);case _:
   return orElse();
 
 }
@@ -2357,10 +2359,10 @@ return $default(_that.style,_that.onEvent);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserInterfaceStyle? style, @JsonKey(includeFromJson: false, includeToJson: false)  FinancialConnectionsEventHandler? onEvent)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserInterfaceStyle? style, @JsonKey(includeFromJson: false, includeToJson: false)  FinancialConnectionsEventHandler? onEvent,  String? connectedAccountId)  $default,) {final _that = this;
 switch (_that) {
 case _CollectFinancialConnectionsAccountsParams():
-return $default(_that.style,_that.onEvent);case _:
+return $default(_that.style,_that.onEvent,_that.connectedAccountId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -2377,10 +2379,10 @@ return $default(_that.style,_that.onEvent);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserInterfaceStyle? style, @JsonKey(includeFromJson: false, includeToJson: false)  FinancialConnectionsEventHandler? onEvent)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserInterfaceStyle? style, @JsonKey(includeFromJson: false, includeToJson: false)  FinancialConnectionsEventHandler? onEvent,  String? connectedAccountId)?  $default,) {final _that = this;
 switch (_that) {
 case _CollectFinancialConnectionsAccountsParams() when $default != null:
-return $default(_that.style,_that.onEvent);case _:
+return $default(_that.style,_that.onEvent,_that.connectedAccountId);case _:
   return null;
 
 }
@@ -2392,13 +2394,15 @@ return $default(_that.style,_that.onEvent);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _CollectFinancialConnectionsAccountsParams implements CollectFinancialConnectionsAccountsParams {
-  const _CollectFinancialConnectionsAccountsParams({this.style, @JsonKey(includeFromJson: false, includeToJson: false) this.onEvent});
+  const _CollectFinancialConnectionsAccountsParams({this.style, @JsonKey(includeFromJson: false, includeToJson: false) this.onEvent, this.connectedAccountId});
   factory _CollectFinancialConnectionsAccountsParams.fromJson(Map<String, dynamic> json) => _$CollectFinancialConnectionsAccountsParamsFromJson(json);
 
 /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
 @override final  UserInterfaceStyle? style;
 /// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
 @override@JsonKey(includeFromJson: false, includeToJson: false) final  FinancialConnectionsEventHandler? onEvent;
+/// Optional connected account ID to use for this Financial Connections session. Used for Stripe Connect embedded components.
+@override final  String? connectedAccountId;
 
 /// Create a copy of CollectFinancialConnectionsAccountsParams
 /// with the given fields replaced by the non-null parameter values.
@@ -2413,16 +2417,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectFinancialConnectionsAccountsParams&&(identical(other.style, style) || other.style == style)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectFinancialConnectionsAccountsParams&&(identical(other.style, style) || other.style == style)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent)&&(identical(other.connectedAccountId, connectedAccountId) || other.connectedAccountId == connectedAccountId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,style,onEvent);
+int get hashCode => Object.hash(runtimeType,style,onEvent,connectedAccountId);
 
 @override
 String toString() {
-  return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent)';
+  return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent, connectedAccountId: $connectedAccountId)';
 }
 
 
@@ -2433,7 +2437,7 @@ abstract mixin class _$CollectFinancialConnectionsAccountsParamsCopyWith<$Res> i
   factory _$CollectFinancialConnectionsAccountsParamsCopyWith(_CollectFinancialConnectionsAccountsParams value, $Res Function(_CollectFinancialConnectionsAccountsParams) _then) = __$CollectFinancialConnectionsAccountsParamsCopyWithImpl;
 @override @useResult
 $Res call({
- UserInterfaceStyle? style,@JsonKey(includeFromJson: false, includeToJson: false) FinancialConnectionsEventHandler? onEvent
+ UserInterfaceStyle? style,@JsonKey(includeFromJson: false, includeToJson: false) FinancialConnectionsEventHandler? onEvent, String? connectedAccountId
 });
 
 
@@ -2450,11 +2454,12 @@ class __$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res>
 
 /// Create a copy of CollectFinancialConnectionsAccountsParams
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? style = freezed,Object? onEvent = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? style = freezed,Object? onEvent = freezed,Object? connectedAccountId = freezed,}) {
   return _then(_CollectFinancialConnectionsAccountsParams(
 style: freezed == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
 as UserInterfaceStyle?,onEvent: freezed == onEvent ? _self.onEvent : onEvent // ignore: cast_nullable_to_non_nullable
-as FinancialConnectionsEventHandler?,
+as FinancialConnectionsEventHandler?,connectedAccountId: freezed == connectedAccountId ? _self.connectedAccountId : connectedAccountId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

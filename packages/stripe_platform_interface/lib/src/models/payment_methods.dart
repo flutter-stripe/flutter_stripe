@@ -276,6 +276,7 @@ enum PaymentMethodType {
   USBankAccount,
   RevolutPay,
   Klarna,
+  Link,
   // WeChatPay,
   Unknown,
 }
