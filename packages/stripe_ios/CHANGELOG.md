@@ -1,3 +1,6 @@
+## 12.4.0
+- Small fixes and improvements
+
 ## 12.3.0
 **Features**
 - Sync with Stripe React Native [0.58.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.58.0) 
