@@ -17,6 +17,7 @@ class IdentityVerificationScreen extends StatefulWidget {
 class _IdentityVerificationScreenState
     extends State<IdentityVerificationScreen> {
   String? _status;
+  IdentityVerificationResult? _lastResult;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _IdentityVerificationScreenState
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -36,15 +37,15 @@ class _IdentityVerificationScreenState
                 'allows users to verify their government-issued ID and selfie.',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               LoadingButton(
                 onPressed: _startVerification,
                 text: 'Start Verification',
               ),
               if (_status != null) ...[
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: _getStatusColor().withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
@@ -65,10 +66,12 @@ class _IdentityVerificationScreenState
   }
 
   Color _getStatusColor() {
-    if (_status == null) return Colors.grey;
-    if (_status!.contains('completed')) return Colors.green;
-    if (_status!.contains('canceled')) return Colors.orange;
-    return Colors.red;
+    return switch (_lastResult) {
+      IdentityVerificationCompleted() => Colors.green,
+      IdentityVerificationCanceled() => Colors.orange,
+      IdentityVerificationFailed() => Colors.red,
+      null => Colors.grey,
+    };
   }
 
   Future<void> _startVerification() async {
@@ -98,6 +101,7 @@ class _IdentityVerificationScreenState
 
       // 3. Handle result
       setState(() {
+        _lastResult = result;
         _status = switch (result) {
           IdentityVerificationCompleted() =>
             'Verification completed successfully!',
@@ -114,6 +118,7 @@ class _IdentityVerificationScreenState
       }
     } catch (e) {
       setState(() {
+        _lastResult = null;
         _status = 'Error: $e';
       });
 

@@ -8,10 +8,17 @@ public typealias PromiseResolveBlock = (Any?) -> Void
 /// Closure that bridge modules use to reject the JS promise waiting for a result.
 public typealias PromiseRejectBlock = (_ code: String, _ message: String, _ error: Error?) -> Void
 
+/// Maximum allowed size for brand logo image data (5 MB).
+private let kMaxBrandLogoBytes = 5 * 1024 * 1024
+
 @objc(StripeIdentityPlugin)
 public class StripeIdentityPlugin: NSObject, FlutterPlugin {
 
     private var channel: FlutterMethodChannel
+
+    /// Retains the verification sheet to prevent ARC deallocation before
+    /// the completion callback fires.
+    private var currentSheet: IdentityVerificationSheet?
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(
@@ -69,46 +76,46 @@ public class StripeIdentityPlugin: NSObject, FlutterPlugin {
         rejecter reject: @escaping PromiseRejectBlock
     ) {
         guard let verificationSessionId = params["verificationSessionId"] as? String else {
-            resolve([
-                "status": "failed",
-                "error": [
-                    "code": "failed",
-                    "message": "verificationSessionId is required"
-                ]
-            ])
+            reject("invalid_params", "verificationSessionId is required", nil)
             return
         }
 
         guard let ephemeralKeySecret = params["ephemeralKeySecret"] as? String else {
-            resolve([
-                "status": "failed",
-                "error": [
-                    "code": "failed",
-                    "message": "ephemeralKeySecret is required"
-                ]
-            ])
+            reject("invalid_params", "ephemeralKeySecret is required", nil)
             return
         }
 
         // Build configuration
         var configuration = IdentityVerificationSheet.Configuration()
 
-        // Handle optional brand logo (base64 encoded image)
+        // Handle optional brand logo (base64 encoded image) with size validation
         if let brandLogoBase64 = params["brandLogo"] as? String,
-           let imageData = Data(base64Encoded: brandLogoBase64),
-           let image = UIImage(data: imageData) {
-            configuration = IdentityVerificationSheet.Configuration(brandLogo: image)
+           let imageData = Data(base64Encoded: brandLogoBase64) {
+            if imageData.count > kMaxBrandLogoBytes {
+                reject(
+                    "invalid_params",
+                    "brandLogo image data exceeds maximum size of \(kMaxBrandLogoBytes / (1024 * 1024)) MB",
+                    nil
+                )
+                return
+            }
+            if let image = UIImage(data: imageData) {
+                configuration = IdentityVerificationSheet.Configuration(brandLogo: image)
+            }
         }
 
-        // Create the verification sheet
+        // Create the verification sheet and retain as instance property
+        // to prevent deallocation before the completion callback fires.
         let sheet = IdentityVerificationSheet(
             verificationSessionId: verificationSessionId,
             ephemeralKeySecret: ephemeralKeySecret,
             configuration: configuration
         )
+        self.currentSheet = sheet
 
         DispatchQueue.main.async {
             guard let presentingVC = self.findPresentingViewController() else {
+                self.currentSheet = nil
                 resolve([
                     "status": "failed",
                     "error": [
@@ -119,21 +126,25 @@ public class StripeIdentityPlugin: NSObject, FlutterPlugin {
                 return
             }
 
-            sheet.present(from: presentingVC) { result in
-                switch result {
-                case .flowCompleted:
-                    resolve(["status": "completed"])
-                case .flowCanceled:
-                    resolve(["status": "canceled"])
-                case .flowFailed(let error):
-                    resolve([
-                        "status": "failed",
-                        "error": [
-                            "code": "failed",
-                            "message": error.localizedDescription,
-                            "localizedMessage": error.localizedDescription
-                        ]
-                    ])
+            sheet.present(from: presentingVC) { [weak self] result in
+                // Dispatch to main thread to ensure safe UIKit/FlutterResult usage.
+                DispatchQueue.main.async {
+                    self?.currentSheet = nil
+                    switch result {
+                    case .flowCompleted:
+                        resolve(["status": "completed"])
+                    case .flowCanceled:
+                        resolve(["status": "canceled"])
+                    case .flowFailed(let error):
+                        resolve([
+                            "status": "failed",
+                            "error": [
+                                "code": "failed",
+                                "message": error.localizedDescription,
+                                "localizedMessage": error.localizedDescription
+                            ]
+                        ])
+                    }
                 }
             }
         }

@@ -50,6 +50,16 @@ class StripeIdentityAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAw
                     return
                 }
 
+                // Prevent concurrent invocations
+                if (identityManager != null) {
+                    result.error(
+                        "already_presenting",
+                        "An identity verification sheet is already being presented",
+                        null
+                    )
+                    return
+                }
+
                 val arguments = call.arguments as? JSONObject
                 val params = arguments?.optJSONObject("params")
 
@@ -58,7 +68,10 @@ class StripeIdentityAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAw
                     return
                 }
 
-                identityManager = IdentityVerificationSheetManager(activity, params, result)
+                identityManager = IdentityVerificationSheetManager(activity, params, result) {
+                    // Clear the reference after result delivery to prevent memory leaks.
+                    identityManager = null
+                }
                 identityManager?.present()
             }
             else -> result.notImplemented()
@@ -83,5 +96,6 @@ class StripeIdentityAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAw
 
     override fun onDetachedFromActivity() {
         activity = null
+        identityManager = null
     }
 }

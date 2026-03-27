@@ -9,22 +9,30 @@ import org.json.JSONObject
 class IdentityVerificationSheetManager(
     private val activity: FragmentActivity,
     private val params: JSONObject,
-    private val result: Result
+    private val result: Result,
+    private val onComplete: () -> Unit
 ) {
     private var identitySheet: IdentityVerificationSheet? = null
 
+    // The @SuppressLint("RestrictedApi") annotation is required because
+    // IdentityVerificationSheet.create() and Configuration.Builder in the
+    // Stripe Identity SDK (version 22.x) use @RestrictTo annotations.
+    // This is safe to suppress as we use the documented public API for
+    // Identity Verification integration.
     @SuppressLint("RestrictedApi")
     fun present() {
         val verificationSessionId = params.optString("verificationSessionId", null)
         val ephemeralKeySecret = params.optString("ephemeralKeySecret", null)
 
         if (verificationSessionId.isNullOrEmpty()) {
-            result.success(createErrorResult("verificationSessionId is required"))
+            result.error("invalid_params", "verificationSessionId is required", null)
+            onComplete()
             return
         }
 
         if (ephemeralKeySecret.isNullOrEmpty()) {
-            result.success(createErrorResult("ephemeralKeySecret is required"))
+            result.error("invalid_params", "ephemeralKeySecret is required", null)
+            onComplete()
             return
         }
 
@@ -58,22 +66,13 @@ class IdentityVerificationSheetManager(
                     "status" to "failed",
                     "error" to mapOf(
                         "code" to "failed",
-                        "message" to verificationResult.throwable.message,
-                        "localizedMessage" to verificationResult.throwable.localizedMessage
+                        "message" to (verificationResult.throwable.message ?: "Unknown error"),
+                        "localizedMessage" to (verificationResult.throwable.localizedMessage ?: "Unknown error")
                     )
                 )
             }
         }
         result.success(resultMap)
-    }
-
-    private fun createErrorResult(message: String): Map<String, Any?> {
-        return mapOf(
-            "status" to "failed",
-            "error" to mapOf(
-                "code" to "failed",
-                "message" to message
-            )
-        )
+        onComplete()
     }
 }

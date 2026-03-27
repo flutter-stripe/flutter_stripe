@@ -13,12 +13,12 @@ class StripeIdentityExampleApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stripe Identity Example',
       theme: ThemeData(
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: Color(0xff6058F7),
           secondary: Color(0xff6058F7),
         ),
         useMaterial3: false,
-        appBarTheme: AppBarTheme(elevation: 1),
+        appBarTheme: const AppBarTheme(elevation: 1),
       ),
       home: const IdentityVerificationScreen(),
     );

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:stripe_identity_platform_interface/stripe_identity_platform_interface.dart';
 
 /// [StripeIdentity] provides access to Stripe Identity Verification functionality.
@@ -80,6 +81,12 @@ class StripeIdentity {
     required String ephemeralKeySecret,
     String? brandLogo,
   }) {
+    if (kIsWeb) {
+      throw UnsupportedError(
+        'Stripe Identity Verification is not supported on web. '
+        'This feature is only available on iOS and Android.',
+      );
+    }
     return _platform.presentIdentityVerificationSheet(
       IdentityVerificationSheetParams(
         verificationSessionId: verificationSessionId,

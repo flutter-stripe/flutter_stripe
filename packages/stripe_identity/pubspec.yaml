@@ -1,6 +1,6 @@
 name: flutter_stripe_identity
 description: Flutter plugin for Stripe Identity Verification. Allows users to verify their identity using Stripe Identity.
-version: 1.0.0
+version: 0.1.0
 homepage: https://github.com/flutter-stripe/flutter_stripe
 repository: https://github.com/flutter-stripe/flutter_stripe
 
@@ -15,8 +15,6 @@ flutter:
         default_package: stripe_identity_android
       ios:
         default_package: stripe_identity_ios
-      web:
-        default_package: stripe_identity_web
 
 dependencies:
   flutter:
@@ -27,8 +25,6 @@ dependencies:
     path: ../stripe_identity_ios
   stripe_identity_platform_interface:
     path: ../stripe_identity_platform_interface
-  stripe_identity_web:
-    path: ../stripe_identity_web
 
 dev_dependencies:
   flutter_test:
