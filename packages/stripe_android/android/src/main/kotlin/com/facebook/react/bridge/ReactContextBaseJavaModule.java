@@ -41,6 +41,11 @@ public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResult
         return new HashMap<String, Object>();
     }
 
+
+    public void invalidate() {
+
+    }
+
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
         for (ActivityEventListener eventListener : eventListeners) {

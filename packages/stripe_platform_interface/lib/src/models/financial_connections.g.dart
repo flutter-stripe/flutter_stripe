@@ -219,11 +219,15 @@ _$CollectFinancialConnectionsAccountsParamsFromJson(
   Map<String, dynamic> json,
 ) => _CollectFinancialConnectionsAccountsParams(
   style: $enumDecodeNullable(_$UserInterfaceStyleEnumMap, json['style']),
+  connectedAccountId: json['connectedAccountId'] as String?,
 );
 
 Map<String, dynamic> _$CollectFinancialConnectionsAccountsParamsToJson(
   _CollectFinancialConnectionsAccountsParams instance,
-) => <String, dynamic>{'style': _$UserInterfaceStyleEnumMap[instance.style]};
+) => <String, dynamic>{
+  'style': _$UserInterfaceStyleEnumMap[instance.style],
+  'connectedAccountId': instance.connectedAccountId,
+};
 
 const _$UserInterfaceStyleEnumMap = {
   UserInterfaceStyle.alwaysLight: 'alwaysLight',

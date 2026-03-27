@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/confirmation_token.dart';
@@ -300,9 +299,7 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> initCustomerSheet(
-    CustomerSheetInitParams params,
-  ) async {
+  Future<void> initCustomerSheet(CustomerSheetInitParams params) async {
     // Convert deprecated constructor to adapter variant for native SDK compatibility
     final normalizedParams = params.map(
       (deprecated) => CustomerSheetInitParams.adapter(
@@ -787,7 +784,7 @@ class MethodChannelStripeFactory {
       'flutter.stripe/payments',
       JSONMethodCodec(),
     ),
-    platformIsIos: Platform.isIOS,
-    platformIsAndroid: Platform.isAndroid,
+    platformIsIos: defaultTargetPlatform == TargetPlatform.iOS,
+    platformIsAndroid: defaultTargetPlatform == TargetPlatform.android,
   );
 }

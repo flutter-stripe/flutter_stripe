@@ -1,3 +1,10 @@
+## 7.4.0
+**Features**
+- Add WASM support
+
+## 7.3.0
+ - Small fixes and maitenance improvements
+
 ## 7.2.1
 
 **Fixes**

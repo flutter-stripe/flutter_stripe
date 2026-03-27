@@ -23,7 +23,7 @@ class PaymentRequest {
   Future<CanMakePaymentResponse?> canMakePayment() =>
       _js.canMakePayment().toDart;
 
-  show() {
+  void show() {
     _js.show();
   }
 
