@@ -72,6 +72,9 @@ class PaymentElement extends StatefulWidget {
 }
 
 class PaymentElementState extends State<PaymentElement> {
+  static int _nextId = 0;
+  final String _viewType = 'stripe_payment_element_${_nextId++}';
+
   web.HTMLDivElement _divElement = web.HTMLDivElement();
   double height = 300.0;
   bool _isReady = false;
@@ -108,7 +111,7 @@ class PaymentElementState extends State<PaymentElement> {
     _cachedElementOptions = _elementOptionsOnce();
 
     ui.platformViewRegistry.registerViewFactory(
-      'stripe_payment_element',
+      _viewType,
       (int viewId) => _divElement,
     );
 
@@ -176,7 +179,7 @@ class PaymentElementState extends State<PaymentElement> {
         ),
         child: Stack(
           children: [
-            const HtmlElementView(viewType: 'stripe_payment_element'),
+            HtmlElementView(viewType: _viewType),
             if (!_isReady)
               Container(
                 color: Theme.of(context).scaffoldBackgroundColor,
