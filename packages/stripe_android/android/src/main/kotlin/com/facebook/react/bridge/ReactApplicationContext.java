@@ -1,5 +1,6 @@
 package com.facebook.react.bridge;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import com.reactnativestripesdk.StripeSdkModule;
@@ -29,5 +30,4 @@ public class ReactApplicationContext extends ReactContext {
     public FragmentActivity getActivity() {
         return (FragmentActivity) binding.getActivity();
     }
-
 }

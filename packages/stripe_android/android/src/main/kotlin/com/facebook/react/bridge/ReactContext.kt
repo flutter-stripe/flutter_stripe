@@ -8,10 +8,14 @@ import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.plugin.common.MethodChannel
 
 open class ReactContext(
-    val currentActivity: FragmentActivity,
+    private val currentAct: FragmentActivity,
     private val channel: MethodChannel,
     private val sdkAccessor: () -> StripeSdkModule
-): ContextThemeWrapper(currentActivity, androidx.appcompat.R.style.Theme_AppCompat_Light_NoActionBar) {
+): ContextThemeWrapper(currentAct, androidx.appcompat.R.style.Theme_AppCompat_Light_NoActionBar) {
+
+
+    open val currentActivity: FragmentActivity
+        get() = currentAct
 
     val reactApplicationContext: ReactApplicationContext by lazy {
         sdkAccessor().reactApplicationContext
