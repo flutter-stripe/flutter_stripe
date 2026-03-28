@@ -2,10 +2,13 @@ import AuthenticationServices
 import Foundation
 import PassKit
 @_spi(DashboardOnly) @_spi(STP) import Stripe
+@_spi(STP) import StripeCore
 import StripeFinancialConnections
 @_spi(STP) @_spi(ConfirmationTokensPublicPreview) import StripePayments
+import StripePaymentsUI
+import UIKit
 #if canImport(StripeCryptoOnramp)
-@_spi(STP) import StripeCryptoOnramp
+@_spi(CryptoOnrampAlpha) import StripeCryptoOnramp
 
 @_spi(STP)
 @_spi(EmbeddedPaymentElementPrivateBeta)
@@ -23,14 +26,26 @@ class ASWebAuthenticationPresentationContextProvider: NSObject, ASWebAuthenticat
     }
 }
 
+// Helper to get device type identifier
+private func getDeviceType() -> String {
+    var systemInfo = utsname()
+    uname(&systemInfo)
+    let machineMirror = Mirror(reflecting: systemInfo.machine)
+    let identifier = machineMirror.children.reduce("") { identifier, element in
+        guard let value = element.value as? Int8, value != 0 else { return identifier }
+        return identifier + String(UnicodeScalar(UInt8(value)))
+    }
+    return identifier.isEmpty ? UIDevice.current.model : identifier
+}
+
 @objc(StripeSdkImpl)
 public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     @objc public static let shared = StripeSdkImpl()
 
     @objc public weak var emitter: StripeSdkEmitter?
     @objc public weak var onrampEmitter: StripeOnrampSdkEmitter?
-    var cardFieldView: CardFieldView?
-    var cardFormView: CardFormView?
+    weak var cardFieldView: CardFieldView?
+    weak var cardFormView: CardFormView?
 
     var merchantIdentifier: String?
 
@@ -103,6 +118,13 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             "API_VERSIONS": [
                 "CORE": STPAPIClient.apiVersion,
                 "ISSUING": STPAPIClient.apiVersion,
+            ],
+            "SYSTEM_INFO": [
+                "sdkVersion": StripeAPIConfiguration.STPSDKVersion,
+                "osVersion": UIDevice.current.systemVersion,
+                "deviceType": getDeviceType(),
+                "appName": Bundle.stp_applicationName() ?? "",
+                "appVersion": Bundle.stp_applicationVersion() ?? "",
             ],
         ]
     }
@@ -433,34 +455,17 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     @objc(handleURLCallback:resolver:rejecter:)
     public func handleURLCallback(url: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
         guard let url = url else {
-            #if DEBUG
-            print("[flutter_stripe] handleURLCallback called with nil URL")
-            #endif
             resolve(false)
             return
         }
         let urlObj = URL(string: url)
-        if (urlObj == nil) {
-            #if DEBUG
-            print("[flutter_stripe] handleURLCallback called with invalid URL: \(url)")
-            #endif
+        if urlObj == nil {
             resolve(false)
-            return
-        }
-        DispatchQueue.main.async {
-            let stripeHandled = StripeAPI.handleURLCallback(with: urlObj!)
-            #if DEBUG
-            if stripeHandled {
-                print("[flutter_stripe] URL callback successfully handled by Stripe SDK: \(url)")
-            } else {
-                print("[flutter_stripe] URL callback not handled by Stripe SDK: \(url)")
-                print("[flutter_stripe] This may occur if:")
-                print("[flutter_stripe]   - No active PaymentSheet or payment flow is waiting for a callback")
-                print("[flutter_stripe]   - The URL does not match the expected returnURL format")
-                print("[flutter_stripe]   - The app was terminated while the user was in an external authentication flow")
+        } else {
+            DispatchQueue.main.async {
+                let stripeHandled = StripeAPI.handleURLCallback(with: urlObj!)
+                resolve(stripeHandled)
             }
-            #endif
-            resolve(stripeHandled)
         }
     }
 
@@ -1230,6 +1235,26 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         #endif
     }
 
+    @objc(createRadarSession:rejecter:)
+    public func createRadarSession(
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        STPAPIClient.shared.createRadarSession { (session, error) in
+            if let error = error as NSError? {
+                resolve(Errors.createError(ErrorType.Failed, error))
+                return
+            }
+
+            guard let session else {
+                resolve(Errors.createError(ErrorType.Unknown, "Radar session not available"))
+                return
+            }
+
+            resolve(["id": session.id])
+        }
+    }
+
 #if canImport(StripeCryptoOnramp)
     @objc(configureOnramp:resolver:rejecter:)
     public func configureOnramp(
@@ -1307,35 +1332,6 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         }
     }
 
-    @objc(authenticateUser:rejecter:)
-    public func authenticateUser(
-        resolver resolve: @escaping RCTPromiseResolveBlock,
-        rejecter reject: @escaping RCTPromiseRejectBlock
-    ) {
-        guard isPublishableKeyAvailable(resolve), let coordinator = requireOnrampCoordinator(resolve) else {
-            return
-        }
-
-        Task {
-            do {
-                let presentingViewController = await MainActor.run {
-                    findViewControllerPresenter(from: RCTKeyWindow()?.rootViewController ?? UIViewController())
-                }
-                let result = try await coordinator.authenticateUser(from: presentingViewController)
-                switch result {
-                case let .completed(customerId):
-                    resolve(["customerId": customerId])
-                case .canceled:
-                    let errorResult = Errors.createError(ErrorType.Canceled, "Authentication was cancelled")
-                    resolve(["error": errorResult["error"]!])
-                }
-            } catch {
-                let errorResult = Errors.createError(ErrorType.Failed, error)
-                resolve(["error": errorResult["error"]!])
-            }
-        }
-    }
-
     @objc(authenticateUserWithToken:resolver:rejecter:)
     public func authenticateUserWithToken(
         _ linkAuthTokenClientSecret: String,
@@ -1351,6 +1347,13 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                 try await coordinator.authenticateUserWithToken(linkAuthTokenClientSecret)
                 resolve([:])  // Return empty object on success
             } catch {
+                if let onrampError = error as? CryptoOnrampCoordinator.Error,
+                   case let .seamlessSignInTokenInvalid(reason) = onrampError {
+                    let errorResult = Errors.createError(ErrorType.Failed, reason ?? onrampError.localizedDescription)
+                    resolve(["error": errorResult["error"]!])
+                    return
+                }
+
                 let errorResult = Errors.createError(ErrorType.Failed, error)
                 resolve(["error": errorResult["error"]!])
             }
@@ -1395,7 +1398,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             return
         }
 
-        guard let kycInfoDictionary = info as? [String: Any?] else {
+        guard let kycInfoDictionary = info as? [String: Any] else {
             let errorResult = Errors.createError(ErrorType.Failed, "Unexpected format of KYC info dictionary. Expected String keys.")
             resolve(["error": errorResult["error"]!])
             return
@@ -1407,8 +1410,8 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                 try await coordinator.attachKYCInfo(info: kycInfo)
                 resolve([:])  // Return empty object on success
             } catch {
-                if let missingFieldError = error as? Mappers.KycInfoError, case let .missingRequiredField(field) = missingFieldError {
-                    let errorResult = Errors.createError(ErrorType.Unknown, "Missing required field: \(field)")
+                if let kycInfoError = error as? Mappers.KycInfoError, case let .invalidField(field) = kycInfoError {
+                    let errorResult = Errors.createError(ErrorType.Unknown, "Invalid format for field: \(field)")
                     resolve(["error": errorResult["error"]!])
                 } else {
                     let errorResult = Errors.createError(ErrorType.Failed, error)
@@ -1549,11 +1552,13 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             paymentMethodType = .card
         case "BankAccount":
             paymentMethodType = .bankAccount
+        case "CardAndBankAccount":
+            paymentMethodType = .cardAndBankAccount
         case "PlatformPay":
             guard let applePayParams = platformPayParams["applePay"] as? NSDictionary else {
                 resolve(Errors.createError(ErrorType.Failed, "You must provide the `applePay` parameter."))
                 return
-            }
+        }
 
             let (error, paymentRequest) = ApplePayUtils.createPaymentRequest(merchantIdentifier: merchantIdentifier, params: applePayParams)
             if let paymentRequest {
@@ -1714,7 +1719,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             let formattedBrandName = String(format: mappedFunding.displayNameWithBrand, brandName ?? "")
             let sublabel = "\(formattedBrandName) •••• \(last4)"
 
-            let result = PaymentMethodDisplayData(icon: icon, label: label, sublabel: sublabel)
+            let result = PaymentMethodDisplayData(paymentMethodType: .card, icon: icon, label: label, sublabel: sublabel)
             let displayData = Mappers.paymentMethodDisplayDataToMap(result)
 
             resolve(["displayData": displayData])
@@ -1726,7 +1731,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             let icon = PaymentSheetImageLibrary.bankIcon(for: iconCode, iconStyle: .filled)
             let sublabel = "\(bankName) •••• \(last4)"
 
-            let result = PaymentMethodDisplayData(icon: icon, label: label, sublabel: sublabel)
+            let result = PaymentMethodDisplayData(paymentMethodType: .bankAccount, icon: icon, label: label, sublabel: sublabel)
             let displayData = Mappers.paymentMethodDisplayDataToMap(result)
 
             resolve(["displayData": displayData])
@@ -1773,11 +1778,6 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
 
     @objc(registerLinkUser:resolver:rejecter:)
     public func registerLinkUser(info: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
-        resolveWithCryptoOnrampNotAvailableError(resolve)
-    }
-
-    @objc(authenticateUser:rejecter:)
-    public func authenticateUser(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
         resolveWithCryptoOnrampNotAvailableError(resolve)
     }
 
@@ -1930,6 +1930,96 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                 return
             }
         }
+    }
+
+    @objc(downloadAndShareFile:filename:resolver:rejecter:)
+    public func downloadAndShareFile(
+        url: String,
+        filename: String?,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard let url = URL(string: url) else {
+            resolve(["success": false, "error": "InvalidURL"])
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            if let error = error {
+                resolve(["success": false, "error": "NetworkError", "message": error.localizedDescription])
+                return
+            }
+
+            guard let data = data else {
+                resolve(["success": false, "error": "NoData"])
+                return
+            }
+
+            // Save to temp directory
+            let tempDir = FileManager.default.temporaryDirectory
+            let fileName = filename ?? "export.csv"
+            let fileURL = tempDir
+                .appendingPathComponent(fileName.replacingOccurrences(of: " ", with: "-"))
+                .deletingPathExtension()
+                .appendingPathExtension("csv")
+
+            do {
+                try data.write(to: fileURL)
+
+                // Present share sheet on main thread
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else {
+                        // Avoid leaving temp files behind if module is gone
+                        try? FileManager.default.removeItem(at: fileURL)
+                        resolve(["success": false, "error": "ModuleDeallocated"])
+                        return
+                    }
+
+                    self.presentShareSheet(fileURL: fileURL) { success in
+                        resolve([
+                            "success": success
+                        ])
+                    }
+                }
+            } catch {
+                resolve(["success": false, "error": "FileSystemError", "message": error.localizedDescription])
+            }
+        }
+        task.resume()
+    }
+
+    private func presentShareSheet(fileURL: URL, completion: @escaping (Bool) -> Void) {
+        guard let rootViewController = RCTKeyWindow()?.rootViewController else {
+            // Clean up temp file
+            try? FileManager.default.removeItem(at: fileURL)
+            completion(false)
+            return
+        }
+
+        let activityVC = UIActivityViewController(
+            activityItems: [fileURL],
+            applicationActivities: nil
+        )
+
+        // iPad support
+        if let popover = activityVC.popoverPresentationController {
+            popover.sourceView = rootViewController.view
+            popover.sourceRect = CGRect(
+                x: rootViewController.view.bounds.midX,
+                y: rootViewController.view.bounds.midY,
+                width: 0,
+                height: 0
+            )
+            popover.permittedArrowDirections = []
+        }
+
+        activityVC.completionWithItemsHandler = { _, completed, _, _ in
+            // Clean up temp file after sharing is complete
+            try? FileManager.default.removeItem(at: fileURL)
+            completion(completed)
+        }
+
+        rootViewController.present(activityVC, animated: true)
     }
 
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {

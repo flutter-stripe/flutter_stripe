@@ -24,9 +24,9 @@
 - (void)emitEmbeddedPaymentElementLoadingFailed:(NSDictionary *)value;
 - (void)emitOnCustomPaymentMethodConfirmHandlerCallback:(NSDictionary *)value;
 - (void)emitOnCheckoutClientSecretRequested:(NSDictionary *)value;
-
+- (void)emitPaymentMethodMessagingElementDidUpdateHeight:(NSDictionary *)value;
+- (void)emitPaymentMethodMessagingElementConfigureResult:(NSDictionary *)value;
 
 - (void)sendEventWithName:(NSString *)name body:(NSDictionary<NSString *, id> *)body;
-
 @end
 

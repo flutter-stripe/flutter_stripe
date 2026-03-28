@@ -89,7 +89,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           // Main params
           paymentIntentClientSecret: data['paymentIntent'],
           merchantDisplayName: 'Flutter Stripe Store Demo',
-          preferredNetworks: [CardBrand.Amex],
+          preferredNetworks: [CardBrand.Visa],
           // Customer params
           customerId: data['customer'],
           customerEphemeralKeySecret: data['ephemeralKey'],
