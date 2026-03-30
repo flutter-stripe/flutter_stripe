@@ -13,8 +13,8 @@ part 'payment_sheet.g.dart';
 ///
 /// For more info about the payment sheet see: https://stripe.com/docs/payments/accept-a-payment.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
-  @JsonSerializable(explicitToJson: true)
   const factory SetupPaymentSheetParameters({
     /// Whether or not to use a custom flow.
     ///
@@ -136,8 +136,8 @@ abstract class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class IntentConfiguration with _$IntentConfiguration {
-  @JsonSerializable(explicitToJson: true)
   const factory IntentConfiguration({
     /// Data related to the future payment intent
     required IntentMode mode,
@@ -164,8 +164,8 @@ abstract class IntentConfiguration with _$IntentConfiguration {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 sealed class IntentMode with _$IntentMode {
-  @JsonSerializable(explicitToJson: true, includeIfNull: false)
   const factory IntentMode.paymentMode({
     required String currencyCode,
     required int amount,
@@ -180,7 +180,6 @@ sealed class IntentMode with _$IntentMode {
     PaymentMethodOptions? paymentMethodOptions,
   }) = _PaymentMode;
 
-  @JsonSerializable(explicitToJson: true)
   const factory IntentMode.setupMode({
     String? currencyCode,
 
@@ -194,8 +193,8 @@ sealed class IntentMode with _$IntentMode {
 
 /// Parameters related to the Payment sheet Apple Pay config.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetApplePay with _$PaymentSheetApplePay {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetApplePay({
     ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
     required String merchantCountryCode,
@@ -224,8 +223,8 @@ abstract class PaymentSheetApplePay with _$PaymentSheetApplePay {
 
 /// Parameters related to the Payment sheet Google Pay config.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetGooglePay({
     ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
     required String merchantCountryCode,
@@ -255,8 +254,8 @@ abstract class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
 
 /// Parameters that change the appearance of the payment sheet.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetAppearance with _$PaymentSheetAppearance {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetAppearance({
     /// Color parameters
     PaymentSheetAppearanceColors? colors,
@@ -346,8 +345,8 @@ abstract class PaymentSheetAppearanceColors
 
 /// Parameters that change the appearance of the payment sheet.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetShape with _$PaymentSheetShape {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShape({
     /// Borderradius for the paymentsheet corners
     double? borderRadius,
@@ -365,8 +364,8 @@ abstract class PaymentSheetShape with _$PaymentSheetShape {
 
 /// Shadow config parameters
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShadowParams({
     /// Shadow color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? color,
@@ -384,8 +383,8 @@ abstract class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
 
 /// Shadow config parameters
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShadowOffset({
     /// X value
     double? x,
@@ -399,9 +398,9 @@ abstract class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetPrimaryButtonAppearance
     with _$PaymentSheetPrimaryButtonAppearance {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonAppearance({
     /// color theme of the primary button
     PaymentSheetPrimaryButtonTheme? colors,
@@ -416,9 +415,9 @@ abstract class PaymentSheetPrimaryButtonAppearance
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetPrimaryButtonShape
     with _$PaymentSheetPrimaryButtonShape {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonShape({
     /// Configuration of the primary button's shadow.
     PaymentSheetShadowParams? shadow,
@@ -435,9 +434,9 @@ abstract class PaymentSheetPrimaryButtonShape
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetPrimaryButtonTheme
     with _$PaymentSheetPrimaryButtonTheme {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonTheme({
     /// Colors when displaying button in dark theme
     PaymentSheetPrimaryButtonThemeColors? dark,
@@ -523,8 +522,8 @@ abstract class PresentPaymentSheetParameters
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPresentOptions({
     /// The number of milliseconds (after presenting) before the Payment Sheet
     /// closes automatically.
@@ -538,8 +537,8 @@ abstract class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPaymentOption({
     /// The label of the payment option
     required String label,
@@ -553,9 +552,9 @@ abstract class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class BillingDetailsCollectionConfiguration
     with _$BillingDetailsCollectionConfiguration {
-  @JsonSerializable(explicitToJson: true)
   const factory BillingDetailsCollectionConfiguration({
     /// How to collect the name field.
     ///
@@ -886,8 +885,8 @@ abstract class EmbeddedPaymentElementAppearance
 ///Configuration for a custom payment method.
 ///
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class CustomPaymentMethod with _$CustomPaymentMethod {
-  @JsonSerializable(explicitToJson: true)
   const factory CustomPaymentMethod({
     /// The custom payment method ID (beginning with `cpmt_`) as created in your Stripe Dashboard.
     required String id,
@@ -928,9 +927,9 @@ typedef ConfirmCustomPaymentMethodCallback =
 
 /// Configuration for custom payment methods in PaymentSheet.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class CustomPaymentMethodConfiguration
     with _$CustomPaymentMethodConfiguration {
-  @JsonSerializable(explicitToJson: true)
   const factory CustomPaymentMethodConfiguration({
     /// Array of custom payment methods to display in the Payment Sheet
     @JsonKey(name: 'customPaymentMethods')
@@ -966,8 +965,8 @@ enum CardFundingType {
 /// Configuration for filtering cards by funding type.
 /// Note: This is a private preview API and will have no effect unless your Stripe account is enrolled in the private preview.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class CardFundingFiltering with _$CardFundingFiltering {
-  @JsonSerializable(explicitToJson: true)
   const factory CardFundingFiltering({
     /// List of allowed card funding types. If not set, all types are accepted.
     List<CardFundingType>? allowedCardFundingTypes,

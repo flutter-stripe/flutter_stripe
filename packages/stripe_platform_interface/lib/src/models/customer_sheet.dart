@@ -9,6 +9,7 @@ part 'customer_sheet.g.dart';
 ///
 /// For more info see https://stripe.com/docs/elements/customer-sheet?platform=react-native
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
   @Deprecated(
     "Use CustomerSheetInitParams.adapter or CustomerSheetInitParams.session instead",
@@ -73,7 +74,6 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
     CardBrandAcceptance? cardBrandAcceptance,
   }) = _CustomerSheetInitParamsDeprecated;
 
-  @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetInitParams.adapter({
     /// Optional but recommended for cards, required for other payment methods. The SetupIntent client secret that will be used to confirm a new payment method. If this is missing, you will only be able to add cards without authentication steps.
     String? setupIntentClientSecret,
@@ -137,7 +137,6 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
     CardBrandAcceptance? cardBrandAcceptance,
   }) = _CustomerSheetInitParamsAdapter;
 
-  @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetInitParams.session({
     /** An object that configures the intent used to display saved payment methods to a customer.*/
     /// Optional but recommended for cards, required for other payment methods. The SetupIntent client secret that will be used to confirm a new payment method. If this is missing, you will only be able to add cards without authentication steps.
@@ -207,8 +206,8 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
-  @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetPresentParams({
     /// Controls how the modal is presented (after animation). iOS only. Defaults to `popover`.
     /// See https://developer.apple.com/documentation/uikit/uimodalpresentationstyle for more info.
@@ -226,8 +225,8 @@ abstract class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class CustomerSheetResult with _$CustomerSheetResult {
-  @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetResult({
     /// The users selected payment option, if one exists.
     PaymentSheetPaymentOption? paymentOption,

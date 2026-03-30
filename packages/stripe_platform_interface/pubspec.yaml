@@ -1,5 +1,5 @@
 name: stripe_platform_interface
-description: Platform interface for stripe sdk
+description: Platform interface bindings for the Stripe sdk. This package is used by the other stripe packages to provide a common interface.
 version: 12.4.0
 repository: https://github.com/flutter-stripe/flutter_stripe
 homepage: https://pub.dev/packages/flutter_stripe

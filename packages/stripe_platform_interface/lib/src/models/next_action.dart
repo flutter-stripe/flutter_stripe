@@ -4,6 +4,7 @@ part 'next_action.freezed.dart';
 part 'next_action.g.dart';
 
 @Freezed(unionKey: 'type')
+@JsonSerializable(explicitToJson: true)
 /// Description of the possible next action that must be handled to complete
 /// the [PaymentIntent].
 ///
@@ -12,7 +13,6 @@ part 'next_action.g.dart';
 abstract class NextAction with _$NextAction {
   /// Contains instructions for redirecting the customer to a certain url
   /// in order to authorise the payment.
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('urlRedirect')
   const factory NextAction.redirectToUrl({
     /// Url to redirect to
@@ -20,7 +20,6 @@ abstract class NextAction with _$NextAction {
   }) = _NextActionRedirect;
 
   /// Contains details necessary for the customer to complete the payment.
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('oxxoVoucher')
   const factory NextAction.displayOxxoDetails({
     /// expiration date of the voucher in UTC
@@ -34,7 +33,6 @@ abstract class NextAction with _$NextAction {
   }) = _NextActionOxxo;
 
   /// Contains the url for the wechat redirect QR code
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('weChatRedirect')
   const factory NextAction.wechatPayRedirect({
     /// Url to the Qr code.
@@ -42,7 +40,6 @@ abstract class NextAction with _$NextAction {
   }) = _NextActionWeChatRedirect;
 
   /// Contains details describing microdeposits verification flow.
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('verifyWithMicrodeposits')
   const factory NextAction.verifyWithMicroDeposits({
     /// The timestamp of when the microdeposits are expended to land
@@ -59,7 +56,6 @@ abstract class NextAction with _$NextAction {
       _$NextActionFromJson(json);
 
   /// Contains details necessary for the customer to complete the payment.
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('multibanco')
   const factory NextAction.multibanco({
     /// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.

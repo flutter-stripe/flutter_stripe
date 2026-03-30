@@ -7,9 +7,9 @@ part 'financial_connections.freezed.dart';
 part 'financial_connections.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class FinancialConnectionSessionResult
     with _$FinancialConnectionSessionResult {
-  @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionSessionResult({
     required FinancialConnectionSession session,
   }) = _FinancialConnectionSessionResult;
@@ -20,9 +20,9 @@ abstract class FinancialConnectionSessionResult
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class FinancialConnectionTokenResult
     with _$FinancialConnectionTokenResult {
-  @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionTokenResult({
     required FinancialConnectionSession session,
     required FinancialConnectionBankAccountToken token,
@@ -33,9 +33,9 @@ abstract class FinancialConnectionTokenResult
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Data related to the session retrieved from the financial connection.
 abstract class FinancialConnectionSession with _$FinancialConnectionSession {
-  @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionSession({
     /// Unique id for this session
     required String id,
@@ -55,10 +55,10 @@ abstract class FinancialConnectionSession with _$FinancialConnectionSession {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Data related to the session retrieved from the financial connection.
 abstract class FinancialConnectionBankAccountToken
     with _$FinancialConnectionBankAccountToken {
-  @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionBankAccountToken({
     /// Bamkaccount details
     BankAccount? bankAccount,
@@ -83,8 +83,8 @@ abstract class FinancialConnectionBankAccountToken
 
 /// Data linked to an account
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class FinancialConnectionAccount with _$FinancialConnectionAccount {
-  @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionAccount({
     /// Unique id for this Financial connection account.
     required String id,
@@ -132,8 +132,8 @@ abstract class FinancialConnectionAccount with _$FinancialConnectionAccount {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class BalanceRefresh with _$BalanceRefresh {
-  @JsonSerializable(explicitToJson: true)
   const factory BalanceRefresh({
     /// Status of the balance refresh attempt
     required BalanceRefreshStatus status,
@@ -148,8 +148,8 @@ abstract class BalanceRefresh with _$BalanceRefresh {
 
 /// information related to the bank account
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class AccountBalance with _$AccountBalance {
-  @JsonSerializable(explicitToJson: true)
   const factory AccountBalance({
     /// Unix timestamp in milliseconds of time the external instition calculated this balance.
     required int asOf,
@@ -212,9 +212,9 @@ enum FinancialConnectSheetError { Failed, Canceled }
 
 /// Parameters associated with the `collectFinancialConnectionsAccounts` method.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class CollectFinancialConnectionsAccountsParams
     with _$CollectFinancialConnectionsAccountsParams {
-  @JsonSerializable(explicitToJson: true)
   const factory CollectFinancialConnectionsAccountsParams({
     /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
     UserInterfaceStyle? style,
@@ -249,8 +249,8 @@ enum UserInterfaceStyle {
 
 /// The event that occurred during the Financial Connections process.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class FinancialConnectionsEvent with _$FinancialConnectionsEvent {
-  @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionsEvent({
     /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
     required FinancialConnectionsEventName name,
@@ -265,9 +265,9 @@ abstract class FinancialConnectionsEvent with _$FinancialConnectionsEvent {
 
 /// The metadata of the financial connections event
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class FinancialConnectionsEventMetadata
     with _$FinancialConnectionsEventMetadata {
-  @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionsEventMetadata({
     /// A Boolean value that indicates if the user completed the process through the manual entry flow.
     bool? manualEntry,

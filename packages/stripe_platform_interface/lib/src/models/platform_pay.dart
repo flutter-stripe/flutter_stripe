@@ -10,9 +10,9 @@ part 'platform_pay.freezed.dart';
 part 'platform_pay.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Result object when creating a payment method through apple pay or google pay.
 abstract class PlatformPayPaymentMethod with _$PlatformPayPaymentMethod {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayPaymentMethod({
     /// The payment method
     required PaymentMethod paymentMethod,
@@ -26,12 +26,12 @@ abstract class PlatformPayPaymentMethod with _$PlatformPayPaymentMethod {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 ///Parameters related to updating the platform pay sheet
 ///
 /// At this moment only Apple pay is supported
 abstract class PlatformPaySheetUpdateParams
     with _$PlatformPaySheetUpdateParams {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPaySheetUpdateParams.applePay({
     /// list of updated summary items
     required List<ApplePayCartSummaryItem> summaryItems,
@@ -48,9 +48,9 @@ abstract class PlatformPaySheetUpdateParams
 }
 
 @Freezed(unionKey: 'errorType')
+@JsonSerializable(explicitToJson: true)
 abstract class ApplePaySheetError with _$ApplePaySheetError {
   @FreezedUnionValue('InvalidShippingAddress')
-  @JsonSerializable(explicitToJson: true)
   /// Use this in case the shipping address is invalid
   const factory ApplePaySheetError.invalidShippingField({
     // Field that will be marked as invalid
@@ -60,7 +60,6 @@ abstract class ApplePaySheetError with _$ApplePaySheetError {
   }) = _ApplePaySheetErrorInvalidShipping;
 
   @FreezedUnionValue('UnserviceableShippingAddress')
-  @JsonSerializable(explicitToJson: true)
   /// Use this in case you cannot deliver to the shipping address
   const factory ApplePaySheetError.unserviceableShippingAddress({
     // message that needs to be displayed on the sheet
@@ -75,7 +74,6 @@ abstract class ApplePaySheetError with _$ApplePaySheetError {
   }) = _ApplePaySheetErrorInvalidCouponCode;
 
   @FreezedUnionValue('ExpiredCouponCode')
-  @JsonSerializable(explicitToJson: true)
   /// Use this in case the entered coupon code has expired
   const factory ApplePaySheetError.expiredCouponCode({
     // message that needs to be displayed on the sheet
@@ -99,38 +97,34 @@ enum InvalidShippingField {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 sealed class PlatformPayPaymentMethodParams
     with _$PlatformPayPaymentMethodParams {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayPaymentMethodParams.googlePay({
     required GooglePayParams googlePayParams,
     required GooglePayPaymentMethodParams googlePayPaymentMethodParams,
   }) = PlatformPayPaymentMethodParamsGooglePay;
 
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayPaymentMethodParams.applePay({
     required ApplePayParams applePayParams,
   }) = PlatformPayPaymentMethodParamsApplePay;
 
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayPaymentMethodParams.web({
     required PlatformPayWebPaymentRequestCreateOptions options,
   }) = PlatformPayPaymentMethodParamsWeb;
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayConfirmParams.googlePay({
     required GooglePayParams googlePay,
   }) = PlatformPayConfirmParamsGooglePay;
 
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayConfirmParams.applePay({
     required ApplePayParams applePay,
   }) = PlatformPayConfirmParamsApplePay;
 
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayConfirmParams.web({
     required PlatformPayWebPaymentRequestCreateOptions options,
   }) = PlatformPayConfirmParamsWeb;
@@ -140,9 +134,9 @@ abstract class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Entered Shipping contact data
 abstract class PlatformPayShippingContact with _$PlatformPayShippingContact {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayShippingContact({
     /// Email address of the shipping contact
     String? emailAddress,
@@ -162,8 +156,8 @@ abstract class PlatformPayShippingContact with _$PlatformPayShippingContact {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class ApplePayParams with _$ApplePayParams {
-  @JsonSerializable(explicitToJson: true)
   const factory ApplePayParams({
     /// ISO 3166-1 alpha-2 country code where the transaction is processed.
     required String merchantCountryCode,
@@ -216,8 +210,8 @@ abstract class ApplePayParams with _$ApplePayParams {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class GooglePayParams with _$GooglePayParams {
-  @JsonSerializable(explicitToJson: true)
   const factory GooglePayParams({
     /**
    * Set to true to run in a test environment with relaxed application / merchant requirements. This environment is suggested for early development and for easily testing SDK.
@@ -256,10 +250,10 @@ abstract class GooglePayParams with _$GooglePayParams {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method parameters for google pay
 abstract class GooglePayPaymentMethodParams
     with _$GooglePayPaymentMethodParams {
-  @JsonSerializable(explicitToJson: true)
   const factory GooglePayPaymentMethodParams({
     /// If true, Google Pay is considered "available" if the customer's Google Pay wallet has an existing payment method.
     ///
@@ -282,9 +276,9 @@ abstract class GooglePayPaymentMethodParams
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class GooglePayBillingAddressConfig
     with _$GooglePayBillingAddressConfig {
-  @JsonSerializable(explicitToJson: true)
   const factory GooglePayBillingAddressConfig({
     /// Set to true if billing address is required for payment.
     ///
@@ -307,9 +301,9 @@ abstract class GooglePayBillingAddressConfig
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class GooglePayShippingAddressConfig
     with _$GooglePayShippingAddressConfig {
-  @JsonSerializable(explicitToJson: true)
   const factory GooglePayShippingAddressConfig({
     /// Set to true if shipping address is required for payment.
     ///
@@ -336,8 +330,8 @@ abstract class GooglePayShippingAddressConfig
 /// To support different types of payments request include a payment request type.
 ///Only supported on iOS 16 and higher.
 @Freezed(unionKey: 'type')
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentRequestType with _$PaymentRequestType {
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Recurring')
   /// Use this for a recurring payment
   ///
@@ -408,9 +402,9 @@ abstract class PaymentRequestType with _$PaymentRequestType {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Data record for multimerchant payment
 abstract class ApplePayMultiMerchant with _$ApplePayMultiMerchant {
-  @JsonSerializable(explicitToJson: true)
   const factory ApplePayMultiMerchant({
     /// The apple pay merchant identifier
     required String merchantIdentifier,
@@ -433,13 +427,13 @@ abstract class ApplePayMultiMerchant with _$ApplePayMultiMerchant {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Parameters related to order details with Apple pay
 ///
 /// At this moment only Apple pay is supported.
 /// Similar to [KPaymentOrderDetails]
 /// See https://stripe.com/docs/apple-pay?platform=ios&locale=es-ES#order-tracking
 abstract class PlatformPayOrderDetails with _$PlatformPayOrderDetails {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayOrderDetails.applePay({
     /// eg: "com.myapp.order"
     required String orderTypeIdentifier,
@@ -461,9 +455,9 @@ abstract class PlatformPayOrderDetails with _$PlatformPayOrderDetails {
 enum PlatformPayWebWalletType { applePay, googlePay, link, browserCard }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PlatformPayWebPaymentRequestCreateOptions
     with _$PlatformPayWebPaymentRequestCreateOptions {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayWebPaymentRequestCreateOptions({
     /// The two-letter country code of your Stripe account (e.g., US).
     required String country,
@@ -518,9 +512,9 @@ abstract class PlatformPayWebPaymentRequestCreateOptions
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PlatformPayWebShippingOption
     with _$PlatformPayWebShippingOption {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayWebShippingOption({
     /// A unique ID you create to keep track of this shipping option. You’ll be told the ID of the selected option
     /// on changes and on completion.
@@ -542,8 +536,8 @@ abstract class PlatformPayWebShippingOption
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PlatformPayWebPaymentItem with _$PlatformPayWebPaymentItem {
-  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayWebPaymentItem({
     /// The amount in the currency's subunit (e.g. cents, yen, etc.)
     required num amount,

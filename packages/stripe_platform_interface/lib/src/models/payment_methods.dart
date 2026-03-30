@@ -9,8 +9,8 @@ part 'payment_methods.g.dart';
 /// Representation of the payment instruments. See
 /// https://stripe.com/docs/payments/payment-methods for more info.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentMethod with _$PaymentMethod {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethod({
     /// Unique identifier.
     required String id,
@@ -58,8 +58,8 @@ abstract class PaymentMethod with _$PaymentMethod {
 
 /// Billing information associated with the payment method.
 @freezed
+@JsonSerializable()
 abstract class BillingDetails with _$BillingDetails {
-  @JsonSerializable()
   const factory BillingDetails({
     /// Email address.
     String? email,
@@ -79,9 +79,9 @@ abstract class BillingDetails with _$BillingDetails {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// AubecsDebit data associated with the payment method
 abstract class AuBecsDebit with _$AuBecsDebit {
-  @JsonSerializable(explicitToJson: true)
   const factory AuBecsDebit({
     /// Unique identifier for the bankaccount.
     String? fingerprint,
@@ -98,9 +98,9 @@ abstract class AuBecsDebit with _$AuBecsDebit {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// BacsDebit data associated with the payment method
 abstract class BacsDebit with _$BacsDebit {
-  @JsonSerializable(explicitToJson: true)
   const factory BacsDebit({
     /// Sort code of the bankaccount.
     String? sortCode,
@@ -116,9 +116,9 @@ abstract class BacsDebit with _$BacsDebit {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Card data associated with the payment method
 abstract class Card with _$Card {
-  @JsonSerializable(explicitToJson: true)
   const factory Card({
     /// The brand associated to the card e.g. (visa, amex).
     String? brand,
@@ -152,10 +152,10 @@ abstract class Card with _$Card {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class Fpx with _$Fpx {
   /// Fpx data associated with the payment method
 
-  @JsonSerializable(explicitToJson: true)
   const factory Fpx({
     /// the customer bank
     String? bank,
@@ -168,9 +168,9 @@ abstract class Fpx with _$Fpx {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Ideal data associated with the payment method
 abstract class Ideal with _$Ideal {
-  @JsonSerializable(explicitToJson: true)
   const factory Ideal({
     /// The BIC code of the bank
     String? bankIdentifierCode,
@@ -182,9 +182,9 @@ abstract class Ideal with _$Ideal {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// SepaDebit data associated with the payment method
 abstract class SepaDebit with _$SepaDebit {
-  @JsonSerializable(explicitToJson: true)
   const factory SepaDebit({
     /// Two letter ISO code representing the country of the bank account.
     String? country,
@@ -204,9 +204,9 @@ abstract class SepaDebit with _$SepaDebit {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Upi data associated with the payment method.
 abstract class Upi with _$Upi {
-  @JsonSerializable(explicitToJson: true)
   const factory Upi({
     /// The customer's vpa.
     String? vpa,
@@ -217,8 +217,8 @@ abstract class Upi with _$Upi {
 
 /// Data associated with the payment method Us bank account.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class UsBankAccount with _$UsBankAccount {
-  @JsonSerializable(explicitToJson: true)
   const factory UsBankAccount({
     /// Routing number of the bank account
     String? routingNumber,
@@ -282,9 +282,9 @@ enum PaymentMethodType {
 }
 
 @Freezed(unionKey: 'paymentMethodType')
+@JsonSerializable(explicitToJson: true)
 /// Parameters that specify the desired configuration of a specific payment method.
 abstract class PaymentMethodParams with _$PaymentMethodParams {
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
   /// Config parameters for card payment method.
   const factory PaymentMethodParams.card({
@@ -292,7 +292,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsCard;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
   /// Config parameters for card with token payment method.
   const factory PaymentMethodParams.cardFromToken({
@@ -300,7 +299,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodDataCardFromToken paymentMethodData,
   }) = _PaymentMethodParamsCardWithToken;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
   /// Config parameters for card from method id payment method.
   const factory PaymentMethodParams.cardFromMethodId({
@@ -308,7 +306,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodDataCardFromMethod paymentMethodData,
   }) = _PaymentMethodParamsCardWithMethodId;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Alipay')
   /// Config parameters for Alipay card payment method.
   const factory PaymentMethodParams.alipay({
@@ -316,7 +313,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsAlipay;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('CashApp')
   /// Config parameters for cashapp payment method.
   const factory PaymentMethodParams.cashAppPay({
@@ -324,7 +320,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsCashAppPay;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Ideal')
   /// Config parameters for ideal payment method.
   const factory PaymentMethodParams.ideal({
@@ -332,7 +327,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodDataIdeal paymentMethodData,
   }) = _PaymentMethodParamsIdeal;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('AuBecsDebit')
   /// Config parameters for aubecs debit payment method.
   const factory PaymentMethodParams.aubecs({
@@ -340,7 +334,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodDataAubecs paymentMethodData,
   }) = _PaymentMethodParamsAubecs;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Bancontact')
   /// Config parameters for bankcontact payment method.
   const factory PaymentMethodParams.bancontact({
@@ -348,7 +341,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsBankContact;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Eps')
   /// Config parameters for eps payment method.
   const factory PaymentMethodParams.eps({
@@ -356,7 +348,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsEps;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Affirm')
   /// Config parameters for affirm payment method.
   /// Shipping details are required most of the time.
@@ -365,7 +356,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsAffirm;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('GrabPay')
   /// Config parameters for GrabPay payment method.
   const factory PaymentMethodParams.grabPay({
@@ -373,7 +363,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsPay;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('P24')
   /// Config parameters for P24 payment method.
   const factory PaymentMethodParams.p24({
@@ -381,34 +370,29 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsP24;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Fpx')
   const factory PaymentMethodParams.fpx({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataFpx paymentMethodData,
   }) = _PaymentMethodParamsFpx;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('SepaDebit')
   const factory PaymentMethodParams.sepaDebit({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataSepa paymentMethodData,
   }) = _PaymentMethodParamsSepaDebit;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('AfterpayClearpay')
   const factory PaymentMethodParams.afterpayClearpay({
     required PaymentMethodDataAfterPay paymentMethodData,
   }) = _PaymentMethodParamsAfterpayClearpay;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Oxxo')
   const factory PaymentMethodParams.oxxo({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsOxxo;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Klarna')
   const factory PaymentMethodParams.klarna({
     /// Paymentmethod data for this paymentmethod.
@@ -416,7 +400,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsKlarna;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('PayPal')
   /// Paypal is in private beta make sure to request access at Stripe to try it out.
   const factory PaymentMethodParams.payPal({
@@ -424,7 +407,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsPayPal;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('RevolutPay')
   /// RevolutPay params.
   const factory PaymentMethodParams.revolutPay({
@@ -432,7 +414,6 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsRevolutPay;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Alma')
   /// Alma params.
   const factory PaymentMethodParams.alma({
@@ -440,14 +421,12 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsAlmaPay;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('USBankAccount')
   const factory PaymentMethodParams.usBankAccount({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataUsBank paymentMethodData,
   }) = _PaymentMethodParamsUsBankAccount;
 
-  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Billie')
   factory PaymentMethodParams.billie({
     required PaymentMethodData paymentMethodData,
@@ -465,9 +444,9 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Generic payment method data object that holds the billingdetails.
 abstract class PaymentMethodData with _$PaymentMethodData {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodData({
     /// Billing information.
     BillingDetails? billingDetails,
@@ -487,10 +466,10 @@ abstract class PaymentMethodData with _$PaymentMethodData {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method data object for card with token payment method.
 abstract class PaymentMethodDataCardFromToken
     with _$PaymentMethodDataCardFromToken {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataCardFromToken({
     /// Token.
     required String token,
@@ -513,10 +492,10 @@ abstract class PaymentMethodDataCardFromToken
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method data object for card from payment method.
 abstract class PaymentMethodDataCardFromMethod
     with _$PaymentMethodDataCardFromMethod {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataCardFromMethod({
     /// Payment method id.
     required String paymentMethodId,
@@ -542,9 +521,9 @@ abstract class PaymentMethodDataCardFromMethod
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method data object for ideal payment method.
 abstract class PaymentMethodDataIdeal with _$PaymentMethodDataIdeal {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataIdeal({
     /// The bank identifier code of the bank.
     String? bankIdentifierCode,
@@ -570,9 +549,9 @@ abstract class PaymentMethodDataIdeal with _$PaymentMethodDataIdeal {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method data object for Aubecs payment method.
 abstract class PaymentMethodDataAubecs with _$PaymentMethodDataAubecs {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataAubecs({
     /// form input details
     required AubecsFormInputDetails formDetails,
@@ -595,9 +574,9 @@ abstract class PaymentMethodDataAubecs with _$PaymentMethodDataAubecs {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method data object for Fpx payment method.
 abstract class PaymentMethodDataFpx with _$PaymentMethodDataFpx {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataFpx({
     /// When set to true you can test offline payment.
     @Default(false) bool testOfflineBank,
@@ -620,9 +599,9 @@ abstract class PaymentMethodDataFpx with _$PaymentMethodDataFpx {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method data object for Sofort payment method.
 abstract class PaymentMethodDataSofort with _$PaymentMethodDataSofort {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataSofort({
     /// Country of the accountholder
     required String country,
@@ -645,9 +624,9 @@ abstract class PaymentMethodDataSofort with _$PaymentMethodDataSofort {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method data object for Sepa debit payment method.
 abstract class PaymentMethodDataSepa with _$PaymentMethodDataSepa {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataSepa({
     /// Iban number of the accountholder
     required String iban,
@@ -670,9 +649,9 @@ abstract class PaymentMethodDataSepa with _$PaymentMethodDataSepa {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Payment method data object for Afterpay / clearpay  payment method.
 abstract class PaymentMethodDataAfterPay with _$PaymentMethodDataAfterPay {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataAfterPay({
     /// Billing information.
     required BillingDetails billingDetails,
@@ -693,8 +672,8 @@ abstract class PaymentMethodDataAfterPay with _$PaymentMethodDataAfterPay {
 
 /// Payment method data object forUsbankaccount  payment method.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class PaymentMethodDataUsBank with _$PaymentMethodDataUsBank {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataUsBank({
     /// The account number of the bank account.
     required String accountNumber,
@@ -727,9 +706,9 @@ abstract class PaymentMethodDataUsBank with _$PaymentMethodDataUsBank {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Data object that holds the payment options for a payment method.
 abstract class PaymentMethodOptions with _$PaymentMethodOptions {
-  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodOptions({
     /// Indicates whether or not you want to reuse this method for future payments.
     PaymentIntentsFutureUsage? setupFutureUsage,
@@ -745,9 +724,9 @@ abstract class PaymentMethodOptions with _$PaymentMethodOptions {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 ///A Mandate is a record of the permission a customer has given you to debit their payment method.
 abstract class MandateData with _$MandateData {
-  @JsonSerializable(explicitToJson: true)
   const factory MandateData({
     /// The type of mandate to create.
     MandateDataCustomerAcceptance? customerAcceptance,
@@ -792,9 +771,9 @@ abstract class MandateDataCustomerAcceptance
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 ///Information about the online mandate
 abstract class MandateDataOnlineData with _$MandateDataOnlineData {
-  @JsonSerializable(explicitToJson: true)
   const factory MandateDataOnlineData({
     /// The ip address of the user.
     String? ipAddress,
@@ -808,10 +787,10 @@ abstract class MandateDataOnlineData with _$MandateDataOnlineData {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class ThreeDSecureUsage with _$ThreeDSecureUsage {
   /// Data associated with the 3ds usage.
 
-  @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureUsage({
     /// Whether 3ds is supported or not.
     bool? isSupported,

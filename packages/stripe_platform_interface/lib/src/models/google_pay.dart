@@ -6,9 +6,9 @@ part 'google_pay.freezed.dart';
 part 'google_pay.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Parameters needed for presenting Google Pay.
 abstract class PresentGooglePayParams with _$PresentGooglePayParams {
-  @JsonSerializable(explicitToJson: true)
   const factory PresentGooglePayParams({
     /// The client is secret is used for handling the payment from the Client side.
     required String clientSecret,

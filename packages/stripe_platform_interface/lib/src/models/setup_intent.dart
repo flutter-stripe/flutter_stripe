@@ -8,12 +8,12 @@ part 'setup_intent.g.dart';
 // ignore_for_file: constant_identifier_names
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// SetupIntent information.
 ///
 /// A setup intent is used to setup and save customer payment information for
 /// future payments.
 abstract class SetupIntent with _$SetupIntent {
-  @JsonSerializable(explicitToJson: true)
   const factory SetupIntent({
     /// Unique identifier.
     required String id,
@@ -60,9 +60,9 @@ abstract class SetupIntent with _$SetupIntent {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Incormation about the error that has occured since last payment confirmation.
 abstract class LastSetupError with _$LastSetupError {
-  @JsonSerializable(explicitToJson: true)
   const factory LastSetupError({
     /// Code.
     required String code,

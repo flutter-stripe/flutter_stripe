@@ -6,9 +6,9 @@ part 'push_provisioning.freezed.dart';
 part 'push_provisioning.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Tokenized token for Google Pay.
 abstract class GooglePayCardToken with _$GooglePayCardToken {
-  @JsonSerializable(explicitToJson: true)
   const factory GooglePayCardToken({
     /// The token reference ID.,
     required String id,
@@ -40,9 +40,9 @@ abstract class GooglePayCardToken with _$GooglePayCardToken {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// The result of checking if a card is in the wallet.
 abstract class IsCardInWalletResult with _$IsCardInWalletResult {
-  @JsonSerializable(explicitToJson: true)
   const factory IsCardInWalletResult({
     required bool isInWallet,
     GooglePayCardToken? token,
@@ -53,9 +53,9 @@ abstract class IsCardInWalletResult with _$IsCardInWalletResult {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// The result of checking if a card can be added to the wallet.
 abstract class CanAddCardToWalletResult with _$CanAddCardToWalletResult {
-  @JsonSerializable(explicitToJson: true)
   const factory CanAddCardToWalletResult({
     required bool canAddCard,
     CanAddCardToDetails? details,
@@ -66,9 +66,9 @@ abstract class CanAddCardToWalletResult with _$CanAddCardToWalletResult {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// The details if card can be added.
 abstract class CanAddCardToDetails with _$CanAddCardToDetails {
-  @JsonSerializable(explicitToJson: true)
   const factory CanAddCardToDetails({
     GooglePayCardToken? token,
     CanAddCardToWalletStatus? status,
@@ -79,9 +79,9 @@ abstract class CanAddCardToDetails with _$CanAddCardToDetails {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// The params for checking if a card is in the wallet.
 abstract class CanAddCardToWalletParams with _$CanAddCardToWalletParams {
-  @JsonSerializable(explicitToJson: true)
   const factory CanAddCardToWalletParams({
     ///The `primary_account_identifier` value from the issued card. Can be an empty string.
     String? primaryAccountIdentifier,

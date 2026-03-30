@@ -5,8 +5,8 @@ part 'confirmation_token.freezed.dart';
 part 'confirmation_token.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class ConfirmationTokenResult with _$ConfirmationTokenResult {
-  @JsonSerializable(explicitToJson: true)
   const factory ConfirmationTokenResult({
     /// Unique identifier for the object (e.g. `ctoken_...`).
     required String id,

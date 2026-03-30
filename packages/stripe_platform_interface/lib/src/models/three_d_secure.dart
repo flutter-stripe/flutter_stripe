@@ -5,9 +5,9 @@ part 'three_d_secure.g.dart';
 
 /// Parameters to configure the 3d secure screen.
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class ThreeDSecureConfigurationParams
     with _$ThreeDSecureConfigurationParams {
-  @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureConfigurationParams({
     /// Styling for the 3d secure navigation bar.
     required ThreeDSecureNavigationBarThemeData navigationBar,
@@ -42,10 +42,10 @@ abstract class ThreeDSecureConfigurationParams
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Styling info related to the 3d secure navigation bar.
 abstract class ThreeDSecureNavigationBarThemeData
     with _$ThreeDSecureNavigationBarThemeData {
-  @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureNavigationBarThemeData({
     /// Localised text of the header.
     String? headerText,
@@ -72,9 +72,9 @@ abstract class ThreeDSecureNavigationBarThemeData
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Styling info related to the 3d secure label.
 abstract class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
-  @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureLabelThemeData({
     /// Color in hex for header text.
     String? headingTextColor,
@@ -94,10 +94,10 @@ abstract class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Styling info related to the 3d secure text field.
 abstract class ThreeDSecureTextFieldThemeData
     with _$ThreeDSecureTextFieldThemeData {
-  @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureTextFieldThemeData({
     /// Color in hex for the border
     String? borderColor,
@@ -120,9 +120,9 @@ abstract class ThreeDSecureTextFieldThemeData
 }
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 /// Styling info related to the 3d secure button.
 abstract class ThreeDSecureButtonThemeData with _$ThreeDSecureButtonThemeData {
-  @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureButtonThemeData({
     /// Color in hex for button background
     String? backgroundColor,
