@@ -71,6 +71,12 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
     /// Note: This is only a client-side solution.
     ///Note: Card brand filtering is not currently supported in Link.
     CardBrandAcceptance? cardBrandAcceptance,
+
+    /// By default, CustomerSheet offers a card scan button within the new card entry form.
+    /// When opensCardScannerAutomatically is set to true,
+    /// the card entry form will initialize with the card scanner already open.
+    /// Defaults to false.
+    bool? opensCardScannerAutomatically,
   }) = _CustomerSheetInitParamsDeprecated;
 
   @JsonSerializable(explicitToJson: true)

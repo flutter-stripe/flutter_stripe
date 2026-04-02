@@ -326,6 +326,14 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
 }
 
 extension StripePlugin: StripeSdkEmitter {
+    func emitPaymentMethodMessagingElementDidUpdateHeight(_ value: [String : Any]) {
+        self.sendEvent(withName: "paymentMethodMessagingElementDidUpdateHeight", body: value)
+    }
+    
+    func emitPaymentMethodMessagingElementConfigureResult(_ value: [String : Any]) {
+        self.sendEvent(withName: "paymentMethodMessagingElementConfigureResult", body: value)
+    }
+    
     func emitOnConfirmationTokenHandlerCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onConfirmationTokenHandlerCallback", body: value)
     }

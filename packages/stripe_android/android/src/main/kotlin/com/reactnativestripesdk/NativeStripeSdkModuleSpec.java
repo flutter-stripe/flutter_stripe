@@ -143,7 +143,8 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
     Map<String, Object> constants = getTypedExportedConstants();
     if (ReactBuildConfig.DEBUG || ReactBuildConfig.IS_INTERNAL_BUILD) {
       Set<String> obligatoryFlowConstants = new HashSet<>(Arrays.asList(
-          "API_VERSIONS"
+          "API_VERSIONS",
+          "SYSTEM_INFO"
       ));
       Set<String> optionalFlowConstants = new HashSet<>();
       Set<String> undeclaredConstants = new HashSet<>(constants.keySet());
@@ -267,11 +268,31 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
 
   @ReactMethod
   @DoNotStrip
+  public abstract void createRadarSession(Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
   public abstract void setFinancialConnectionsForceNativeFlow(boolean enabled, Promise promise);
 
   @ReactMethod
   @DoNotStrip
   public abstract void openAuthenticatedWebView(String id, String url, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void downloadAndShareFile(String url, @Nullable String filename, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void authWebViewDeepLinkHandled(String id, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void storeStripeConnectDeepLink(String url, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void pollAndClearPendingStripeConnectUrls(Promise promise);
 
   @ReactMethod
   @DoNotStrip

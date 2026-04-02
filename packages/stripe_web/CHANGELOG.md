@@ -1,3 +1,6 @@
+## 7.5.0
+- Update bindings
+
 ## 7.4.0
 **Features**
 - Add WASM support

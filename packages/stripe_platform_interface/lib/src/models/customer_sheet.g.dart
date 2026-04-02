@@ -46,6 +46,7 @@ _CustomerSheetInitParamsDeprecated _$CustomerSheetInitParamsDeprecatedFromJson(
       : CardBrandAcceptance.fromJson(
           json['cardBrandAcceptance'] as Map<String, dynamic>,
         ),
+  opensCardScannerAutomatically: json['opensCardScannerAutomatically'] as bool?,
   $type: json['runtimeType'] as String?,
 );
 
@@ -70,6 +71,7 @@ Map<String, dynamic> _$CustomerSheetInitParamsDeprecatedToJson(
   'googlePayEnabled': instance.googlePayEnabled,
   'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
   'cardBrandAcceptance': instance.cardBrandAcceptance,
+  'opensCardScannerAutomatically': instance.opensCardScannerAutomatically,
   'runtimeType': instance.$type,
 };
 

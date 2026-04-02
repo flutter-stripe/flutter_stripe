@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '2.1.0'
-    ext.stripe_version = '22.7.+'
+    ext.stripe_version = '23.1.+'
 
     repositories {
         google()
@@ -47,10 +47,12 @@ android {
     buildFeatures {
         viewBinding true
         compose true
+        buildConfig true
     }
     defaultConfig {
         minSdkVersion 21
         consumerProguardFiles 'proguard-rules.txt'
+        buildConfigField "String", "STRIPE_ANDROID_SDK_VERSION", "\"$stripe_version\""
     }
 }
 
@@ -64,6 +66,7 @@ dependencies {
     implementation "com.stripe:financial-connections:$stripe_version"
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.squareup.okhttp3:okhttp:5.3.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
 

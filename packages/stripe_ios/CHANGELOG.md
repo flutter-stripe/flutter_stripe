@@ -1,9 +1,23 @@
+## 12.5.0
+**Features**:
+- Sync with Stripe React Native [0.61.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.61.0)
+
 ## 12.4.0
-- Small fixes and improvements
+**Fixes**
+- #2347: Fix card details not complete for dangerously update card details
+- #2350: Fix invalid methodcall on Android for cardfield
 
 ## 12.3.0
+
 **Features**
 - Sync with Stripe React Native [0.58.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.58.0) 
+
+**Fixes**
+- #2332 Android: Google Pay not appear on the PaymentSheet
+- #2321 Android: Wrap context with AppCompat theme for Google Pay button.
+- #2320 Android: add ProGuard rules to prevent 3D Secure crash.
+- #2314 Android: Card details not complete error when using dangerouslyUpdateCardDetails
+- #2307 Android: Paymentsheet card not focusable when tapping middle or bottom of the field.
 
 ## 12.2.0
 
@@ -18,9 +32,15 @@
 
 **Fixes**
  - #2064 crash collect bankaccounttoken
+ - android: keyboard not appearing on first tap for CardField @meylis1998
  - #2137 improve URL callback handling for Link payment method @meylis1998
  - #2283 fix: change initCustomerSheet return type to Future @meylis1998
 
+## 12.1.1
+
+**Fixes**
+ - 2064 crash collect bankaccounttoken
+ 
 ## 12.1.0
 
 **Features**
@@ -28,8 +48,11 @@
 - Add support for billie payment
 - Add config params paymentsheet
 
-## 12.0.1
+## 12.0.2
 - fix compilation issue with the stripe_ios package when using SPM
+
+## 12.0.1
+- fix compilation issue with the stripe_android package
 
 ## 12.0.0
 
@@ -48,6 +71,9 @@
  - #2176 support Klarna on the web
  - #2005 card details not supported on android
  - #2180 collect bank account token failing due to missing parameter
+
+## 11.5.1
+- retain compatibility with older Flutter versions #2132
 
 ## 11.5.0
 Align with Stripe React Native [0.43.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.43.0):
