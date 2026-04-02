@@ -1,3 +1,7 @@
+## 12.5.0
+**Features**:
+- Sync with Stripe React Native [0.61.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.61.0)
+
 ## 12.4.0
 **Fixes**
 - #2347: Fix card details not complete for dangerously update card details
