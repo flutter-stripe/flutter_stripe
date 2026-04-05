@@ -354,6 +354,17 @@ class _AndroidEmbeddedPaymentElement extends StatelessWidget {
                 )
                 ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
                 ..create();
+            case AndroidPlatformViewRenderType.surfaceAndroidView:
+              return PlatformViewsService.initSurfaceAndroidView(
+                  id: params.id,
+                  viewType: viewType,
+                  layoutDirection: Directionality.of(context),
+                  creationParams: creationParams,
+                  creationParamsCodec: const StandardMessageCodec(),
+                  onFocus: () => params.onFocusChanged(true),
+                )
+                ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+                ..create();
           }
         },
       ),

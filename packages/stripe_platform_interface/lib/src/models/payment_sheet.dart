@@ -653,11 +653,7 @@ enum IntentFutureUsage {
 }
 
 typedef ConfirmHandler =
-    void Function(
-      PaymentMethod result,
-      bool shouldSavePaymentMethod,
-      void Function(IntentCreationCallbackParams) intentCreationCallback,
-    );
+    void Function(PaymentMethod result, bool shouldSavePaymentMethod);
 
 typedef ConfirmTokenHandler = void Function(ConfirmationTokenResult result);
 
