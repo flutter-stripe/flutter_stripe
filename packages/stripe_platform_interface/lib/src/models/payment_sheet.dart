@@ -670,7 +670,7 @@ Map<String, TermsDisplay>? _termsDisplayFromJson(Map<String, dynamic>? json) {
   return json.map((key, value) => MapEntry(
         key,
         TermsDisplay.values.firstWhere(
-          (e) => e.name == value,
+          (e) => value is String && e.name == value,
           orElse: () => TermsDisplay.automatic,
         ),
       ));
