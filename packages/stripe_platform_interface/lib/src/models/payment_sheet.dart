@@ -140,9 +140,10 @@ abstract class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// Controls whether legal agreements (e.g. card mandate disclaimers) are shown for each payment method type.
     /// Keys are snake_case payment method type strings (e.g. "card", "us_bank_account").
     /// See https://docs.stripe.com/api/payment_methods/object#payment_method_object-type for the full list of values.
-    /// Values are `TermsDisplay.AUTOMATIC` or `TermsDisplay.NEVER`.
-    /// If not set, defaults to `TermsDisplay.AUTOMATIC` for all payment method types.
-    TermsDisplay? termsDisplay,
+    /// Values are `TermsDisplay.automatic` or `TermsDisplay.never`.
+    /// If not set, defaults to `TermsDisplay.automatic` for all payment method types.
+    @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)
+    Map<String, TermsDisplay>? termsDisplay,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
@@ -657,6 +658,22 @@ List<int> _cardBrandListToJson(List<CardBrand>? list) {
     return [];
   }
   return list.map((e) => e.brandValue).toList();
+}
+
+Map<String, String>? _termsDisplayToJson(Map<String, TermsDisplay>? map) {
+  if (map == null) return null;
+  return map.map((key, value) => MapEntry(key, value.name));
+}
+
+Map<String, TermsDisplay>? _termsDisplayFromJson(Map<String, dynamic>? json) {
+  if (json == null) return null;
+  return json.map((key, value) => MapEntry(
+        key,
+        TermsDisplay.values.firstWhere(
+          (e) => e.name == value,
+          orElse: () => TermsDisplay.automatic,
+        ),
+      ));
 }
 
 /// Card brand categories that can be allowed or disallowed
