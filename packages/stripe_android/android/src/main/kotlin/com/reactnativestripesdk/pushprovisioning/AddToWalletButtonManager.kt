@@ -1,13 +1,13 @@
 package com.reactnativestripesdk.pushprovisioning
 
-import com.facebook.react.bridge.Dynamic
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.module.annotations.ReactModule
-import com.facebook.react.uimanager.SimpleViewManager
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.annotations.ReactProp
-import com.facebook.react.viewmanagers.AddToWalletButtonManagerDelegate
-import com.facebook.react.viewmanagers.AddToWalletButtonManagerInterface
+import com.reactnativestripesdk.compat.react.bridge.Dynamic
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.module.annotations.ReactModule
+import com.reactnativestripesdk.compat.react.uimanager.SimpleViewManager
+import com.reactnativestripesdk.compat.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.compat.react.uimanager.annotations.ReactProp
+import com.reactnativestripesdk.compat.react.viewmanagers.AddToWalletButtonManagerDelegate
+import com.reactnativestripesdk.compat.react.viewmanagers.AddToWalletButtonManagerInterface
 import com.reactnativestripesdk.utils.asMapOrNull
 
 @ReactModule(name = AddToWalletButtonManager.REACT_CLASS)

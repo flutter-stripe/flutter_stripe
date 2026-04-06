@@ -1,0 +1,25 @@
+package com.reactnativestripesdk.compat.react.modules.core;
+
+import android.os.Handler;
+import android.os.Looper;
+
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap;
+import com.reactnativestripesdk.compat.react.bridge.WritableMap;
+
+import io.flutter.plugin.common.MethodChannel;
+
+public class DeviceEventManagerModule {
+    public static class RCTDeviceEventEmitter {
+        private Handler uiThreadHandler = new Handler(Looper.getMainLooper());
+
+        private final MethodChannel channel;
+
+        public RCTDeviceEventEmitter(MethodChannel channel) {
+            this.channel = channel;
+        }
+
+        public void emit(String eventName, Object params) {
+            uiThreadHandler.post(() -> channel.invokeMethod(eventName, params));
+        }
+    }
+}

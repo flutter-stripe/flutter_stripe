@@ -6,9 +6,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.nfc.NfcAdapter
 import android.util.Log
-import com.facebook.react.bridge.BaseActivityEventListener
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.bridge.BaseActivityEventListener
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
 import com.reactnativestripesdk.utils.createError
 import com.reactnativestripesdk.utils.mapError
 import com.stripe.android.pushProvisioning.PushProvisioningActivity

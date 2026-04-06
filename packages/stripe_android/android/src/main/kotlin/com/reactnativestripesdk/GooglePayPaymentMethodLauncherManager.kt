@@ -1,7 +1,7 @@
 package com.reactnativestripesdk
 
 import android.annotation.SuppressLint
-import com.facebook.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
 import com.reactnativestripesdk.utils.StripeUIManager
 import com.stripe.android.core.reactnative.ReactNativeSdkInternal
 import com.stripe.android.googlepaylauncher.GooglePayEnvironment

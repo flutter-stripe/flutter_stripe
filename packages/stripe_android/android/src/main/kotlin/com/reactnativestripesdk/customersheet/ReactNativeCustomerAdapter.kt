@@ -1,8 +1,8 @@
 // This needs to be in the same package as StripeSdkModule to access protected methods.
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
 import com.stripe.android.customersheet.CustomerAdapter
 import com.stripe.android.model.PaymentMethod
 import kotlinx.coroutines.CompletableDeferred

@@ -1,7 +1,7 @@
 package com.reactnativestripesdk.utils
 
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
 import com.stripe.android.core.exception.APIException
 import com.stripe.android.core.exception.AuthenticationException
 import com.stripe.android.core.exception.InvalidRequestException

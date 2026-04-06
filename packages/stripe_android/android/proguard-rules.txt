@@ -2,6 +2,9 @@
 # This fixes crashes on 3D Secure authentication (PaymentFlowResult$Unvalidated$Companion)
 -keep class com.stripe.** { *; }
 
+# Keep React Native compat stubs used by the Stripe SDK bridge layer
+-keep class com.reactnativestripesdk.compat.** { *; }
+
 # Keep Google Pay tap-and-pay classes
 -keepclassmembers class com.google.android.gms.tapandpay.** {
   public *;

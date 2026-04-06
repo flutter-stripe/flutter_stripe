@@ -1,6 +1,6 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
 import com.reactnativestripesdk.utils.PaymentSheetException
 import com.reactnativestripesdk.utils.forEachKey
 import com.reactnativestripesdk.utils.getBooleanOr

@@ -1,8 +1,8 @@
 package com.reactnativestripesdk.addresssheet
 
 import android.annotation.SuppressLint
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.StripeUIManager
 import com.reactnativestripesdk.utils.createError

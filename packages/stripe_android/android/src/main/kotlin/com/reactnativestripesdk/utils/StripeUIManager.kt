@@ -2,9 +2,9 @@ package com.reactnativestripesdk.utils
 
 import android.annotation.SuppressLint
 import androidx.fragment.app.FragmentActivity
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.UiThreadUtil
+import com.reactnativestripesdk.compat.react.bridge.Promise
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.UiThreadUtil
 import com.stripe.android.core.reactnative.ReactNativeSdkInternal
 import com.stripe.android.core.reactnative.UnregisterSignal
 

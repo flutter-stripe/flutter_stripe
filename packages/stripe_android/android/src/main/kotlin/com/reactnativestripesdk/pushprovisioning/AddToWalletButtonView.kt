@@ -18,11 +18,11 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.image.CloseableBitmap
 import com.facebook.imagepipeline.image.CloseableImage
 import com.facebook.imagepipeline.request.ImageRequestBuilder
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerHelper
-import com.facebook.react.views.imagehelper.ResourceDrawableIdHelper
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.compat.react.uimanager.UIManagerHelper
+import com.reactnativestripesdk.compat.react.views.imagehelper.ResourceDrawableIdHelper
 import com.reactnativestripesdk.utils.createError
 
 @SuppressLint("ViewConstructor")

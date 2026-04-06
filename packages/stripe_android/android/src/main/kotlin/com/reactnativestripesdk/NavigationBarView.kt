@@ -11,10 +11,10 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerHelper
-import com.facebook.react.uimanager.events.Event
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.compat.react.uimanager.UIManagerHelper
+import com.reactnativestripesdk.compat.react.uimanager.events.Event
 
 @SuppressLint("ViewConstructor")
 class NavigationBarView(

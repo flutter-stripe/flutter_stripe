@@ -1,8 +1,8 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.events.Event
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.uimanager.events.Event
 
 internal class CardFocusEvent(
   surfaceId: Int,

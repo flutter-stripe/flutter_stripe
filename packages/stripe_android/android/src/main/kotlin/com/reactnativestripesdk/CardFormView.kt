@@ -8,11 +8,11 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.core.graphics.toColorInt
 import androidx.core.view.setMargins
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.PixelUtil
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerHelper
-import com.facebook.react.views.text.ReactTypefaceUtils
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.uimanager.PixelUtil
+import com.reactnativestripesdk.compat.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.compat.react.uimanager.UIManagerHelper
+import com.reactnativestripesdk.compat.react.views.text.ReactTypefaceUtils
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel

@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.widget.FrameLayout
 import androidx.core.graphics.toColorInt
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerHelper
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.compat.react.uimanager.UIManagerHelper
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel

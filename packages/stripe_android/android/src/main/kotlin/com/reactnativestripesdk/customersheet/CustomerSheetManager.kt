@@ -7,11 +7,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.bridge.Promise
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
 import com.reactnativestripesdk.ReactNativeCustomerAdapter
 import com.reactnativestripesdk.ReactNativeCustomerSessionProvider
 import com.reactnativestripesdk.buildBillingDetails

@@ -15,7 +15,7 @@ import androidx.lifecycle.setViewTreeLifecycleOwner
 import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
-import com.facebook.react.bridge.ReactContext
+import com.reactnativestripesdk.compat.react.bridge.ReactContext
 
 /**
  * A wrapper around Compose views that safely handles React Native's layout system.

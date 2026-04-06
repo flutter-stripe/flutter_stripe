@@ -2,7 +2,7 @@ package com.reactnativestripesdk
 
 import android.annotation.SuppressLint
 import androidx.activity.ComponentActivity
-import com.facebook.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.StripeUIManager
 import com.reactnativestripesdk.utils.createError

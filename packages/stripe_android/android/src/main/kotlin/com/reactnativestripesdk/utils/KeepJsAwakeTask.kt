@@ -1,11 +1,11 @@
 package com.reactnativestripesdk.utils
 
 import android.util.Log
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.UiThreadUtil
-import com.facebook.react.jstasks.HeadlessJsTaskConfig
-import com.facebook.react.jstasks.HeadlessJsTaskContext
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.UiThreadUtil
+import com.reactnativestripesdk.compat.react.jstasks.HeadlessJsTaskConfig
+import com.reactnativestripesdk.compat.react.jstasks.HeadlessJsTaskContext
 
 /**
  * When Stripe UI is presented, React Native pauses timers. This will cause issues if we need

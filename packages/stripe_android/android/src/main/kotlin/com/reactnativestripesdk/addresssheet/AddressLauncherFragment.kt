@@ -1,8 +1,8 @@
 package com.reactnativestripesdk.addresssheet
 
 import androidx.fragment.app.FragmentActivity
-import com.facebook.react.bridge.ReactContext
-import com.facebook.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.bridge.ReactContext
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.StripeFragment
 import com.reactnativestripesdk.utils.createError

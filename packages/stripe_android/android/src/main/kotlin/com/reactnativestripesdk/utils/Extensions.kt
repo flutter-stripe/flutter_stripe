@@ -3,10 +3,10 @@ package com.reactnativestripesdk.utils
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.facebook.react.bridge.Dynamic
-import com.facebook.react.bridge.ReadableArray
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.ReadableType
+import com.reactnativestripesdk.compat.react.bridge.Dynamic
+import com.reactnativestripesdk.compat.react.bridge.ReadableArray
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.bridge.ReadableType
 import com.flutter.stripe.invoke
 
 fun View.showSoftKeyboard() {

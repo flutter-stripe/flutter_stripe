@@ -1,7 +1,7 @@
 package com.reactnativestripesdk.addresssheet
 
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.events.Event
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.uimanager.events.Event
 
 internal class AddressSheetEvent(
   surfaceId: Int,

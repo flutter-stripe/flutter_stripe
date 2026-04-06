@@ -9,8 +9,8 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.TextUnit
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
 import com.reactnativestripesdk.utils.mapFromPaymentSheetBillingDetails
 import com.stripe.android.paymentelement.EmbeddedPaymentElement
 import kotlinx.coroutines.Dispatchers

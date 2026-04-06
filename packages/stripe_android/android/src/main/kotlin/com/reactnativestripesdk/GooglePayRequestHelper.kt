@@ -3,9 +3,9 @@ package com.reactnativestripesdk
 import android.app.Activity
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.bridge.Promise
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.wallet.AutoResolveHelper
 import com.google.android.gms.wallet.PaymentData

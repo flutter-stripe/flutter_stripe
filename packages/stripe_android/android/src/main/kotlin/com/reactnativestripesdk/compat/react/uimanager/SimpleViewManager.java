@@ -1,0 +1,31 @@
+package com.reactnativestripesdk.compat.react.uimanager;
+
+import android.view.View;
+
+import androidx.annotation.NonNull;
+
+import com.reactnativestripesdk.compat.react.bridge.ReadableArray;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public abstract class SimpleViewManager<T extends View> extends BaseViewManager<T, LayoutShadowNode> {
+
+    public abstract String getName();
+
+    public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
+        return new HashMap<>();
+    }
+
+    public abstract T createViewInstance(ThemedReactContext reactContext);
+
+    public void onDropViewInstance(@NonNull T view) {};
+
+    public void receiveCommand(T root, String commandId, ReadableArray args) {}
+
+    public void onAfterUpdateTransaction(@NonNull T view) {}
+
+    public ViewManagerDelegate<T> getDelegate() {
+        return null;
+    }
+}

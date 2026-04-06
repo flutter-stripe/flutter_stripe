@@ -1,6 +1,6 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
 import com.stripe.android.customersheet.CustomerSheet
 import kotlinx.coroutines.CompletableDeferred
 

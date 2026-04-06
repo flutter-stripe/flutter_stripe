@@ -1,12 +1,12 @@
 package com.reactnativestripesdk.utils
 
 import android.annotation.SuppressLint
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.ReadableArray
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.WritableArray
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.bridge.WritableNativeMap
+import com.reactnativestripesdk.compat.react.bridge.Arguments
+import com.reactnativestripesdk.compat.react.bridge.ReadableArray
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.bridge.WritableArray
+import com.reactnativestripesdk.compat.react.bridge.WritableMap
+import com.reactnativestripesdk.compat.react.bridge.WritableNativeMap
 import com.stripe.android.PaymentAuthConfig
 import com.stripe.android.financialconnections.analytics.FinancialConnectionsEvent
 import com.stripe.android.model.Address

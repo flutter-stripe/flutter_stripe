@@ -1,13 +1,13 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.Dynamic
-import com.facebook.react.bridge.ReadableArray
-import com.facebook.react.module.annotations.ReactModule
-import com.facebook.react.uimanager.SimpleViewManager
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.annotations.ReactProp
-import com.facebook.react.viewmanagers.CardFormManagerDelegate
-import com.facebook.react.viewmanagers.CardFormManagerInterface
+import com.reactnativestripesdk.compat.react.bridge.Dynamic
+import com.reactnativestripesdk.compat.react.bridge.ReadableArray
+import com.reactnativestripesdk.compat.react.module.annotations.ReactModule
+import com.reactnativestripesdk.compat.react.uimanager.SimpleViewManager
+import com.reactnativestripesdk.compat.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.compat.react.uimanager.annotations.ReactProp
+import com.reactnativestripesdk.compat.react.viewmanagers.CardFormManagerDelegate
+import com.reactnativestripesdk.compat.react.viewmanagers.CardFormManagerInterface
 import com.reactnativestripesdk.utils.asMapOrNull
 
 @ReactModule(name = CardFormViewManager.REACT_CLASS)

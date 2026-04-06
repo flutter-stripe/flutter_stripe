@@ -1,9 +1,9 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.module.annotations.ReactModule
-import com.facebook.react.uimanager.SimpleViewManager
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.annotations.ReactProp
+import com.reactnativestripesdk.compat.react.module.annotations.ReactModule
+import com.reactnativestripesdk.compat.react.uimanager.SimpleViewManager
+import com.reactnativestripesdk.compat.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.compat.react.uimanager.annotations.ReactProp
 
 @ReactModule(name = NavigationBarManager.REACT_CLASS)
 class NavigationBarManager : SimpleViewManager<NavigationBarView>() {

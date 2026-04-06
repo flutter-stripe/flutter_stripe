@@ -1,0 +1,35 @@
+package com.reactnativestripesdk.compat.react.bridge
+
+import androidx.appcompat.view.ContextThemeWrapper
+import androidx.fragment.app.FragmentActivity
+import com.reactnativestripesdk.compat.react.modules.core.DeviceEventManagerModule
+import com.reactnativestripesdk.compat.react.uimanager.UIManagerModule
+import com.reactnativestripesdk.StripeSdkModule
+import io.flutter.plugin.common.MethodChannel
+
+open class ReactContext(
+    private val currentAct: FragmentActivity,
+    private val channel: MethodChannel,
+    private val sdkAccessor: () -> StripeSdkModule
+): ContextThemeWrapper(currentAct, androidx.appcompat.R.style.Theme_AppCompat_Light_NoActionBar) {
+
+
+    open val currentActivity: FragmentActivity
+        get() = currentAct
+
+    val reactApplicationContext: ReactApplicationContext by lazy {
+        sdkAccessor().reactApplicationContext
+    }
+
+    fun getNativeModule(clazz: Class<UIManagerModule>): UIManagerModule {
+        return UIManagerModule(channel)
+    }
+
+    fun getNativeModule(clazz: Class<StripeSdkModule>): StripeSdkModule {
+        return sdkAccessor()
+    }
+
+    fun getJSModule(clazz: Any): DeviceEventManagerModule.RCTDeviceEventEmitter {
+        return DeviceEventManagerModule.RCTDeviceEventEmitter(channel)
+    }
+}

@@ -3,9 +3,9 @@
 // Remove this layer once we drop support for RN < 0.80.
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.reactnativestripesdk.compat.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.compat.react.bridge.ReadableMap
+import com.reactnativestripesdk.compat.react.modules.core.DeviceEventManagerModule
 
 class EventEmitterCompat(
   private val reactApplicationContext: ReactApplicationContext,
