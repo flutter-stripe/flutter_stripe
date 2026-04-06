@@ -271,6 +271,8 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             )
         case "handleNextActionForSetup":
             return handleNextActionForSetupIntent(call, result: result)
+        case "createRadarSession":
+            createRadarSession(resolver: resolver(for: result), rejecter: rejecter(for: result))
         default:
             result(FlutterMethodNotImplemented)
         }
