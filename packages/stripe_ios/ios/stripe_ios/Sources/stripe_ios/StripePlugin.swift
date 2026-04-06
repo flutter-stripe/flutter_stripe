@@ -271,6 +271,12 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             )
         case "handleNextActionForSetup":
             return handleNextActionForSetupIntent(call, result: result)
+        case "storeStripeConnectDeepLink":
+            // No-op on iOS — deep link interception is Android-specific
+            result(nil)
+        case "pollAndClearPendingStripeConnectUrls":
+            // No-op on iOS — returns empty list
+            result([String]())
         default:
             result(FlutterMethodNotImplemented)
         }

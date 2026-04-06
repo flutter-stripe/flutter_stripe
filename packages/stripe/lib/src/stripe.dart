@@ -734,6 +734,22 @@ class Stripe {
     }
   }
 
+  /// Store a Stripe Connect deep link URL for later retrieval.
+  ///
+  /// Used on Android to intercept stripe-connect:// deep links.
+  Future<void> storeStripeConnectDeepLink(String url) async {
+    await _awaitForSettings();
+    return _platform.storeStripeConnectDeepLink(url);
+  }
+
+  /// Retrieve and clear any pending Stripe Connect deep link URLs.
+  ///
+  /// Returns a list of URLs that were stored via [storeStripeConnectDeepLink].
+  Future<List<String>> pollAndClearPendingStripeConnectUrls() async {
+    await _awaitForSettings();
+    return _platform.pollAndClearPendingStripeConnectUrls();
+  }
+
   /// Initializes the customer sheet with the provided [parameters].
   ///
   /// Throws a [StripeException] if initialization fails.
