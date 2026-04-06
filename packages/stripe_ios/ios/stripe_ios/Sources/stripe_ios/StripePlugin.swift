@@ -72,6 +72,10 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         let addressSheetFactory = AddressSheetViewFactory(messenger: registrar.messenger(), delegate: instance)
         registrar.register(addressSheetFactory, withId: "flutter.stripe/address_sheet")
 
+        // Payment Method Messaging
+        let messagingFactory = PaymentMethodMessagingViewFactory(messenger: registrar.messenger())
+        registrar.register(messagingFactory, withId: "flutter.stripe/payment_method_messaging")
+
     }
 
     init(channel : FlutterMethodChannel) {
