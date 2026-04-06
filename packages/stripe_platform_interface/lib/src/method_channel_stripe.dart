@@ -766,7 +766,10 @@ class MethodChannelStripe extends StripePlatform {
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
       'createRadarSession',
     );
-    return RadarSession.fromJson(result!);
+    if (result!['error'] != null) {
+      throw StripeException.fromJson(result);
+    }
+    return RadarSession.fromJson(result);
   }
 
   @override
