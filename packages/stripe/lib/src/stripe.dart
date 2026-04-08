@@ -286,6 +286,14 @@ class Stripe {
     }
   }
 
+  /// Creates a Radar session.
+  ///
+  /// Returns a [RadarSession] containing the session ID.
+  Future<RadarSession> createRadarSession() async {
+    await _awaitForSettings();
+    return await _platform.createRadarSession();
+  }
+
   /// Creates a single-use token that represents a credit card’s details.
   ///
   /// Tokens are considered legacy, use [PaymentMethod] and [PaymentIntent]

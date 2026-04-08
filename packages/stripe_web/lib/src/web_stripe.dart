@@ -681,6 +681,11 @@ class WebStripe extends StripePlatform {
   }
 
   @override
+  Future<RadarSession> createRadarSession() {
+    throw WebUnsupportedError.method('createRadarSession');
+  }
+
+  @override
   Future<void> storeStripeConnectDeepLink(String url) {
     throw WebUnsupportedError.method('storeStripeConnectDeepLink');
   }

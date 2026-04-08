@@ -9,6 +9,7 @@ import 'package:stripe_platform_interface/src/models/google_pay.dart';
 import 'package:stripe_platform_interface/src/models/intent_creation_callback_params.dart';
 import 'package:stripe_platform_interface/src/models/platform_pay.dart';
 import 'package:stripe_platform_interface/src/models/push_provisioning.dart';
+import 'package:stripe_platform_interface/src/models/radar_session.dart';
 import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
@@ -758,6 +759,17 @@ class MethodChannelStripe extends StripePlatform {
     }
 
     return CanAddCardToWalletResult.fromJson(result);
+  }
+
+  @override
+  Future<RadarSession> createRadarSession() async {
+    final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+      'createRadarSession',
+    );
+    if (result!['error'] != null) {
+      throw StripeException.fromJson(result);
+    }
+    return RadarSession.fromJson(result);
   }
 
   @override
