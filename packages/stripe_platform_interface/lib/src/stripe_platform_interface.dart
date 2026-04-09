@@ -198,14 +198,10 @@ abstract class StripePlatform extends PlatformInterface {
     IntentCreationCallbackParams params,
   );
 
-  /// Store a Stripe Connect deep link URL for later retrieval.
-  ///
-  /// Used on Android to intercept stripe-connect:// deep links.
-  Future<void> storeStripeConnectDeepLink(String url);
-
   /// Retrieve and clear any pending Stripe Connect deep link URLs.
   ///
-  /// Returns a list of URLs that were stored via [storeStripeConnectDeepLink].
+  /// Returns stripe-connect:// URLs captured natively on Android since the
+  /// last poll.
   Future<List<String>> pollAndClearPendingStripeConnectUrls();
 
   Widget buildCard({

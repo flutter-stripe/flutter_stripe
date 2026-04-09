@@ -686,11 +686,6 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> storeStripeConnectDeepLink(String url) {
-    throw WebUnsupportedError.method('storeStripeConnectDeepLink');
-  }
-
-  @override
   Future<List<String>> pollAndClearPendingStripeConnectUrls() {
     throw WebUnsupportedError.method('pollAndClearPendingStripeConnectUrls');
   }

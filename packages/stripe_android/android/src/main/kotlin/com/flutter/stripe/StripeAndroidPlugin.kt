@@ -305,10 +305,6 @@ If you continue to have trouble, follow this discussion to get some support http
             "createRadarSession" -> stripeSdk.createRadarSession(
                 promise = Promise(result)
             )
-            "storeStripeConnectDeepLink" -> stripeSdk.storeStripeConnectDeepLink(
-                url = call.requiredArgument("url"),
-                promise = Promise(result)
-            )
             "pollAndClearPendingStripeConnectUrls" -> stripeSdk.pollAndClearPendingStripeConnectUrls(
                 promise = Promise(result)
             )

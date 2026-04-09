@@ -773,13 +773,6 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> storeStripeConnectDeepLink(String url) async {
-    await _methodChannel.invokeMethod('storeStripeConnectDeepLink', {
-      'url': url,
-    });
-  }
-
-  @override
   Future<List<String>> pollAndClearPendingStripeConnectUrls() async {
     final result = await _methodChannel.invokeMethod<List<dynamic>>(
       'pollAndClearPendingStripeConnectUrls',

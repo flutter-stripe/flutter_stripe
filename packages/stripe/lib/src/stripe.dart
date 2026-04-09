@@ -742,20 +742,11 @@ class Stripe {
     }
   }
 
-  /// Store a Stripe Connect deep link URL for later retrieval.
-  ///
-  /// **Android-only.** Used to intercept `stripe-connect://` deep links.
-  /// On iOS this is a no-op and on Web it throws [WebUnsupportedError].
-  Future<void> storeStripeConnectDeepLink(String url) async {
-    await _awaitForSettings();
-    return _platform.storeStripeConnectDeepLink(url);
-  }
-
   /// Retrieve and clear any pending Stripe Connect deep link URLs.
   ///
-  /// **Android-only.** Returns a list of URLs that were stored via
-  /// [storeStripeConnectDeepLink]. On iOS this always returns an empty list
-  /// and on Web it throws [WebUnsupportedError].
+  /// **Android-only.** Returns any `stripe-connect://` URLs captured by the
+  /// native deep link interceptor since the last poll. On iOS this always
+  /// returns an empty list and on Web it throws [WebUnsupportedError].
   Future<List<String>> pollAndClearPendingStripeConnectUrls() async {
     await _awaitForSettings();
     return _platform.pollAndClearPendingStripeConnectUrls();

@@ -273,9 +273,6 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             return handleNextActionForSetupIntent(call, result: result)
         case "createRadarSession":
             createRadarSession(resolver: resolver(for: result), rejecter: rejecter(for: result))
-        case "storeStripeConnectDeepLink":
-            // No-op on iOS — deep link interception is Android-specific
-            result(nil)
         case "pollAndClearPendingStripeConnectUrls":
             // No-op on iOS — returns empty list
             result([String]())
