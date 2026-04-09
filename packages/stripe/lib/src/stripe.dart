@@ -742,6 +742,16 @@ class Stripe {
     }
   }
 
+  /// Retrieve and clear any pending Stripe Connect deep link URLs.
+  ///
+  /// **Android-only.** Returns any `stripe-connect://` URLs captured by the
+  /// native deep link interceptor since the last poll. On iOS this always
+  /// returns an empty list and on Web it throws [WebUnsupportedError].
+  Future<List<String>> pollAndClearPendingStripeConnectUrls() async {
+    await _awaitForSettings();
+    return _platform.pollAndClearPendingStripeConnectUrls();
+  }
+
   /// Initializes the customer sheet with the provided [parameters].
   ///
   /// Throws a [StripeException] if initialization fails.

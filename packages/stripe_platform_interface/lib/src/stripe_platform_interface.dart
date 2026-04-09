@@ -198,6 +198,12 @@ abstract class StripePlatform extends PlatformInterface {
     IntentCreationCallbackParams params,
   );
 
+  /// Retrieve and clear any pending Stripe Connect deep link URLs.
+  ///
+  /// Returns stripe-connect:// URLs captured natively on Android since the
+  /// last poll.
+  Future<List<String>> pollAndClearPendingStripeConnectUrls();
+
   Widget buildCard({
     Key? key,
     required CardEditController controller,

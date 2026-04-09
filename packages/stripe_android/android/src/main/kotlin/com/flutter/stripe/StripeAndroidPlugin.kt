@@ -305,6 +305,9 @@ If you continue to have trouble, follow this discussion to get some support http
             "createRadarSession" -> stripeSdk.createRadarSession(
                 promise = Promise(result)
             )
+            "pollAndClearPendingStripeConnectUrls" -> stripeSdk.pollAndClearPendingStripeConnectUrls(
+                promise = Promise(result)
+            )
             else -> result.notImplemented()
         }
     }

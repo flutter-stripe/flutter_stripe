@@ -684,6 +684,11 @@ class WebStripe extends StripePlatform {
   Future<RadarSession> createRadarSession() {
     throw WebUnsupportedError.method('createRadarSession');
   }
+
+  @override
+  Future<List<String>> pollAndClearPendingStripeConnectUrls() {
+    throw WebUnsupportedError.method('pollAndClearPendingStripeConnectUrls');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

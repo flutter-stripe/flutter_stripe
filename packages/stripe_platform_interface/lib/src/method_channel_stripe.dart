@@ -773,6 +773,14 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  Future<List<String>> pollAndClearPendingStripeConnectUrls() async {
+    final result = await _methodChannel.invokeMethod<List<dynamic>>(
+      'pollAndClearPendingStripeConnectUrls',
+    );
+    return result?.cast<String>() ?? [];
+  }
+
+  @override
   Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) async {
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
       'isCardInWallet',
