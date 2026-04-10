@@ -1,3 +1,7 @@
+## 7.6.0
+
+ - stability improvements
+
 ## 7.4.0
 **Features**
 - Add WASM support
