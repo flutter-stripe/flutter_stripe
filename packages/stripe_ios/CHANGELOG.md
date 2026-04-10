@@ -1,3 +1,12 @@
+## 12.6.0
+
+**Features**:
+- added createRadarSession to support stripe radar sessions
+
+**Fixes**:
+- iOS card details not complete issue on cardfield
+- #2385: correct termsDisplay type to Map<String, TermsDisplay>
+
 ## 12.5.0
 **Features**:
 - Sync with Stripe React Native [0.61.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.61.0)
