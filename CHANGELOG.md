@@ -15,6 +15,30 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v7.6.0`](#flutter_stripe_web---v760)
+
+---
+
+#### `flutter_stripe_web` - `v7.6.0`
+
+ - **FIX**(web): unique view type per PaymentElement instance to fix infinite spinner on remount (#2368) (#2372).
+ - **FIX**: correct CardField web color rendering and apply all style colors (#2365).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
+## 2026-04-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_js` - `v7.5.0`](#stripe_js---v750)
  - [`flutter_stripe_web` - `v7.5.1`](#flutter_stripe_web---v751)
 
