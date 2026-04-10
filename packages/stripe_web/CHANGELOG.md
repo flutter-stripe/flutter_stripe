@@ -1,3 +1,6 @@
+## 7.6.0
+- stability improvements
+
 ## 7.5.0
 - Update bindings
 

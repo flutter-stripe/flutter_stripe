@@ -3,6 +3,196 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-04-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v12.6.0`](#flutter_stripe---v1260)
+
+---
+
+#### `flutter_stripe` - `v12.6.0`
+
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
+## 2026-04-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v7.6.0`](#flutter_stripe_web---v760)
+
+---
+
+#### `flutter_stripe_web` - `v7.6.0`
+
+ - **FIX**(web): unique view type per PaymentElement instance to fix infinite spinner on remount (#2368) (#2372).
+ - **FIX**: correct CardField web color rendering and apply all style colors (#2365).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
+## 2026-04-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v7.5.0`](#stripe_js---v750)
+ - [`flutter_stripe_web` - `v7.5.1`](#flutter_stripe_web---v751)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v7.5.1`
+
+---
+
+#### `stripe_js` - `v7.5.0`
+
+
+## 2026-04-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v7.6.0`](#stripe_js---v760)
+ - [`flutter_stripe_web` - `v7.5.1`](#flutter_stripe_web---v751)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v7.5.1`
+
+---
+
+#### `stripe_js` - `v7.6.0`
+
+ - a
+
+
+## 2026-04-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_ios` - `v12.6.0`](#stripe_ios---v1260)
+ - [`flutter_stripe` - `v12.5.1`](#flutter_stripe---v1251)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v12.5.1`
+
+---
+
+#### `stripe_ios` - `v12.6.0`
+
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
+## 2026-04-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v12.6.0`](#stripe_android---v1260)
+ - [`flutter_stripe` - `v12.5.1`](#flutter_stripe---v1251)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v12.5.1`
+
+---
+
+#### `stripe_android` - `v12.6.0`
+
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
+## 2026-04-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v12.6.0`](#stripe_platform_interface---v1260)
+ - [`flutter_stripe_web` - `v7.5.1`](#flutter_stripe_web---v751)
+ - [`flutter_stripe` - `v12.5.1`](#flutter_stripe---v1251)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v7.5.1`
+ - `flutter_stripe` - `v12.5.1`
+
+---
+
+#### `stripe_platform_interface` - `v12.6.0`
+
+ - **FIX**: correct termsDisplay type to Map<String, TermsDisplay> (#2385).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
 ## 2026-03-09
 
 ### Changes
