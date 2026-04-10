@@ -146,11 +146,19 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
             cardField.preferredNetworks = preferredNetworks
         }
         
-        if let cardDetails = arguments["cardDetails"] as? NSDictionary {
+        let pendingCardDetails = arguments["cardDetails"] as? NSDictionary
+        if let cardDetails = pendingCardDetails {
             cardField.dangerouslyUpdateCardDetails(params: cardDetails)
         }
-        
+
         cardField.didSetProps([])
+
+        // Re-apply after didSetProps: STPPaymentCardTextField may fire
+        // paymentCardTextFieldDidChange during didSetProps with isValid=false
+        // (common for test/prepopulated cards), which clears cardParams.
+        if let cardDetails = pendingCardDetails {
+            cardField.dangerouslyUpdateCardDetails(params: cardDetails)
+        }
     }
     
 }
