@@ -1,3 +1,4 @@
+export 'collect_bank_account_for_payment_params.dart';
 export 'confirm_acss_debit_payment_data.dart';
 export 'confirm_acss_debit_payment_options.dart';
 export 'confirm_alipay_payment_data.dart';
@@ -13,3 +14,4 @@ export 'confirm_sepa_debit_payment_data.dart';
 export 'payment_intent.dart';
 export 'payment_intent_response.dart';
 export 'payment_intent_status.dart';
+export 'verify_microdeposits_for_payment_data.dart';
