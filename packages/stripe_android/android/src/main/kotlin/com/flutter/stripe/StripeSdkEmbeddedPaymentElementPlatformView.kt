@@ -2,6 +2,7 @@ package com.flutter.stripe
 
 import android.content.Context
 import android.view.View
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.EmbeddedPaymentElementLoadingError
 import com.reactnativestripesdk.EmbeddedPaymentElementView
@@ -52,17 +53,19 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
 
             if (configMap != null) {
                 @Suppress("UNCHECKED_CAST")
-                val configBundle = mapToBundle(configMap as Map<String?, Any?>)
-                val rowSelectionBehaviorType = viewManager.parseRowSelectionBehavior(configBundle)
+                val configReadableMap =
+                    ReadableMap(configMap as Map<String, Any>)
+                val rowSelectionBehaviorType = viewManager.parseRowSelectionBehavior(configReadableMap)
                 embeddedView.rowSelectionBehaviorType.value = rowSelectionBehaviorType
-                val elementConfig = viewManager.parseElementConfiguration(configBundle, context)
+                val elementConfig = viewManager.parseElementConfiguration(configReadableMap, context)
                 embeddedView.latestElementConfig = elementConfig
             }
 
             if (intentConfigMap != null) {
                 @Suppress("UNCHECKED_CAST")
-                val intentConfigBundle = mapToBundle(intentConfigMap as Map<String?, Any?>)
-                val intentConfig = viewManager.parseIntentConfiguration(intentConfigBundle)
+                val intentConfigReadableMap =
+                    ReadableMap(intentConfigMap as Map<String, Any>)
+                val intentConfig = viewManager.parseIntentConfiguration(intentConfigReadableMap)
                 embeddedView.latestIntentConfig = intentConfig
             }
 
