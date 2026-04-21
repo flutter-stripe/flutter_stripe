@@ -509,19 +509,95 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<CollectBankAccountResult> collectBankAccount(
-      {required bool isPaymentIntent,
-      required String clientSecret,
-      required CollectBankAccountParams params}) {
-    throw UnimplementedError();
+  Future<CollectBankAccountResult> collectBankAccount({
+    required bool isPaymentIntent,
+    required String clientSecret,
+    required CollectBankAccountParams params,
+  }) async {
+    final billingDetails = params.paymentMethodData.billingDetails.toJs();
+
+    if (isPaymentIntent) {
+      final response = await js.collectBankAccountForPayment(
+        clientSecret,
+        params: stripe_js.CollectBankAccountForPaymentParams(
+          paymentMethodType: 'us_bank_account',
+          paymentMethodData: stripe_js.CollectBankAccountForPaymentMethodData(
+            billingDetails: billingDetails,
+          ),
+        ),
+      );
+      if (response.error != null) {
+        throw StripeError(
+          message: response.error?.message ?? '',
+          code: response.error!.code,
+        );
+      }
+      return CollectBankAccountResult.paymentIntent(
+        response.paymentIntent!.parse(),
+      );
+    }
+
+    final response = await js.collectBankAccountForSetup(
+      clientSecret,
+      params: stripe_js.CollectBankAccountForSetupParams(
+        paymentMethodType: 'us_bank_account',
+        paymentMethodData: stripe_js.CollectBankAccountForSetupMethodData(
+          billingDetails: billingDetails,
+        ),
+      ),
+    );
+    if (response.error != null) {
+      throw StripeError(
+        message: response.error?.message ?? '',
+        code: response.error!.code,
+      );
+    }
+    return CollectBankAccountResult.setupIntent(
+      response.setupIntent!.parse(),
+    );
   }
 
   @override
-  Future<CollectBankAccountResult> verifyPaymentIntentWithMicrodeposits(
-      {required bool isPaymentIntent,
-      required String clientSecret,
-      required VerifyMicroDepositsParams params}) {
-    throw UnimplementedError();
+  Future<CollectBankAccountResult> verifyPaymentIntentWithMicrodeposits({
+    required bool isPaymentIntent,
+    required String clientSecret,
+    required VerifyMicroDepositsParams params,
+  }) async {
+    if (isPaymentIntent) {
+      final response = await js.verifyMicrodepositsForPayment(
+        clientSecret,
+        data: stripe_js.VerifyMicrodepositsForPaymentData(
+          amounts: params.amounts,
+          descriptorCode: params.descriptorCode,
+        ),
+      );
+      if (response.error != null) {
+        throw StripeError(
+          message: response.error?.message ?? '',
+          code: response.error!.code,
+        );
+      }
+      return CollectBankAccountResult.paymentIntent(
+        response.paymentIntent!.parse(),
+      );
+    }
+
+    final response = await js.verifyMicrodepositsForSetup(
+      clientSecret,
+      data: stripe_js.VerifyMicrodepositsForSetupData(
+        amounts: params.amounts,
+        descriptorCode: params.descriptorCode,
+      ),
+    );
+    if (response.error != null) {
+      throw StripeError(
+        message: response.error?.message ?? '',
+        code: response.error!.code,
+      );
+    }
+    return CollectBankAccountResult.setupIntent(
+      response.setupIntent!.parse(),
+    );
   }
 
   @override
