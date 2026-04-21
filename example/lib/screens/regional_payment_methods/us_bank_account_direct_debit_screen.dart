@@ -134,10 +134,15 @@ class _UsBankAccountDirectDebitScreenState
           ),
         );
 
-        if (result.status == PaymentIntentsStatus.RequiresConfirmation) {
+        final paymentIntent = switch (result) {
+          CollectBankAccountPaymentIntentResult(:final paymentIntent) =>
+            paymentIntent,
+          CollectBankAccountSetupIntentResult() => null,
+        };
+        if (paymentIntent?.status == PaymentIntentsStatus.RequiresConfirmation) {
           setState(() {
             canConfirm = true;
-            clientSecretForConfirm = result.clientSecret;
+            clientSecretForConfirm = paymentIntent!.clientSecret;
           });
           if (context.mounted) {
             scaffoldMessenger.showSnackBar(

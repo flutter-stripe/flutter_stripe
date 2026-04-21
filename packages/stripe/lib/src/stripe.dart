@@ -632,8 +632,10 @@ class Stripe {
 
   /// Collect the bankaccount details for the payment intent.
   ///
-  /// Only US bank accounts are supported.
-  Future<PaymentIntent> collectBankAccount({
+  /// Only US bank accounts are supported. The returned
+  /// [CollectBankAccountResult] is a sealed union containing either a
+  /// [PaymentIntent] or a [SetupIntent] depending on [isPaymentIntent].
+  Future<CollectBankAccountResult> collectBankAccount({
     /// Whether the clientsecret is associated with setup or paymentintent
     required bool isPaymentIntent,
 
@@ -655,8 +657,10 @@ class Stripe {
   /// Verify the bank account with microtransactions
   ///
   /// Only US bank accounts are supported.This method is only implemented for
-  /// iOS at the moment.
-  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
+  /// iOS at the moment. The returned [CollectBankAccountResult] is a sealed
+  /// union containing either a [PaymentIntent] or a [SetupIntent] depending on
+  /// [isPaymentIntent].
+  Future<CollectBankAccountResult> verifyPaymentIntentWithMicrodeposits({
     /// Whether the clientsecret is associated with setup or paymentintent
     required bool isPaymentIntent,
 

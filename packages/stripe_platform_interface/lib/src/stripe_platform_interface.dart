@@ -157,13 +157,13 @@ abstract class StripePlatform extends PlatformInterface {
   Future<RadarSession> createRadarSession();
 
   /// Methods related to ACH payments
-  Future<PaymentIntent> collectBankAccount({
+  Future<CollectBankAccountResult> collectBankAccount({
     required bool isPaymentIntent,
     required String clientSecret,
     required CollectBankAccountParams params,
   });
 
-  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
+  Future<CollectBankAccountResult> verifyPaymentIntentWithMicrodeposits({
     required bool isPaymentIntent,
     required String clientSecret,
     required VerifyMicroDepositsParams params,
