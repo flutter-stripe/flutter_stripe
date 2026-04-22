@@ -44,43 +44,67 @@ class _PaymentMethodMessagingState extends State<PaymentMethodMessaging> {
   }
 
   @override
+  void didUpdateWidget(covariant PaymentMethodMessaging oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.configuration != oldWidget.configuration) {
+      _methodChannel?.invokeMethod(
+        'updateConfiguration',
+        widget.configuration.toJson(),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _methodChannel?.setMethodCallHandler(null);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final creationParams = widget.configuration.toJson();
 
+    Widget platform;
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      platform = UiKitView(
+        viewType: _viewType,
+        creationParamsCodec: const StandardMessageCodec(),
+        creationParams: creationParams,
+        onPlatformViewCreated: onPlatformViewCreated,
+      );
+    } else if (defaultTargetPlatform == TargetPlatform.android) {
+      platform = PlatformViewLink(
+        viewType: _viewType,
+        surfaceFactory: (context, controller) {
+          return AndroidViewSurface(
+            controller: controller as AndroidViewController,
+            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+            gestureRecognizers:
+                const <Factory<OneSequenceGestureRecognizer>>{},
+          );
+        },
+        onCreatePlatformView: (params) {
+          onPlatformViewCreated(params.id);
+          return PlatformViewsService.initSurfaceAndroidView(
+              id: params.id,
+              viewType: _viewType,
+              layoutDirection: TextDirection.ltr,
+              creationParams: creationParams,
+              creationParamsCodec: const StandardMessageCodec(),
+            )
+            ..addOnPlatformViewCreatedListener(
+              params.onPlatformViewCreated,
+            )
+            ..create();
+        },
+      );
+    } else {
+      throw UnsupportedError('Unsupported platform view');
+    }
+
     return SizedBox(
       height: _height,
-      child: defaultTargetPlatform == TargetPlatform.iOS
-          ? UiKitView(
-              viewType: _viewType,
-              creationParamsCodec: const StandardMessageCodec(),
-              creationParams: creationParams,
-              onPlatformViewCreated: onPlatformViewCreated,
-            )
-          : PlatformViewLink(
-              surfaceFactory: (context, controller) {
-                return AndroidViewSurface(
-                  controller: controller as AndroidViewController,
-                  hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-                  gestureRecognizers:
-                      const <Factory<OneSequenceGestureRecognizer>>{},
-                );
-              },
-              onCreatePlatformView: (params) {
-                onPlatformViewCreated(params.id);
-                return PlatformViewsService.initSurfaceAndroidView(
-                    id: params.id,
-                    viewType: _viewType,
-                    layoutDirection: TextDirection.ltr,
-                    creationParams: creationParams,
-                    creationParamsCodec: const StandardMessageCodec(),
-                  )
-                  ..addOnPlatformViewCreatedListener(
-                    params.onPlatformViewCreated,
-                  )
-                  ..create();
-              },
-              viewType: _viewType,
-            ),
+      child: platform,
     );
   }
 }

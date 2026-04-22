@@ -4,25 +4,41 @@ import android.content.Context
 import android.view.View
 import android.widget.FrameLayout
 import com.stripe.android.paymentsheet.paymentmethodmessaging.PaymentMethodMessagingView
+import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 
 class StripePaymentMethodMessagingPlatformView(
     private val context: Context,
     private val channel: MethodChannel,
-    private val creationParams: Map<String?, Any?>?,
+    creationParams: Map<String?, Any?>?,
 ) : PlatformView {
     private val containerView: FrameLayout = FrameLayout(context)
+    private var messagingView: PaymentMethodMessagingView? = null
 
-    init { configureView() }
+    init {
+        channel.setMethodCallHandler { call, result -> handleMethodCall(call, result) }
+        applyConfiguration(creationParams)
+    }
 
-    private fun configureView() {
-        val params = creationParams ?: return
+    private fun handleMethodCall(call: MethodCall, result: MethodChannel.Result) {
+        when (call.method) {
+            "updateConfiguration" -> {
+                @Suppress("UNCHECKED_CAST")
+                applyConfiguration(call.arguments as? Map<String?, Any?>)
+                result.success(null)
+            }
+            else -> result.notImplemented()
+        }
+    }
+
+    private fun applyConfiguration(params: Map<String?, Any?>?) {
+        val p = params ?: return
         @Suppress("UNCHECKED_CAST")
-        val paymentMethodStrings = params["paymentMethods"] as? List<String> ?: return
-        val currency = params["currency"] as? String ?: return
-        val amount = (params["amount"] as? Number)?.toLong() ?: return
-        val countryCode = params["countryCode"] as? String
+        val paymentMethodStrings = p["paymentMethods"] as? List<String> ?: return
+        val currency = p["currency"] as? String ?: return
+        val amount = (p["amount"] as? Number)?.toLong() ?: return
+        val countryCode = p["countryCode"] as? String
 
         val paymentMethods = paymentMethodStrings.mapNotNull { methodString ->
             when (methodString) {
@@ -39,19 +55,36 @@ class StripePaymentMethodMessagingPlatformView(
             amount = amount,
         )
         countryCode?.let { configBuilder.countryCode(it) }
+        val configuration = configBuilder.build()
 
-        val messagingView = PaymentMethodMessagingView(context)
-        messagingView.configuration = configBuilder.build()
-        messagingView.addOnLayoutChangeListener { _, _, top, _, bottom, _, _, _, _ ->
-            val height = (bottom - top).toFloat()
-            val density = context.resources.displayMetrics.density
-            channel.invokeMethod("onHeightChange", mapOf("height" to (height / density).toDouble()))
+        val existing = messagingView
+        if (existing != null) {
+            existing.configuration = configuration
+        } else {
+            val view = PaymentMethodMessagingView(context)
+            view.configuration = configuration
+            view.addOnLayoutChangeListener { _, _, top, _, bottom, _, _, _, _ ->
+                val height = (bottom - top).toFloat()
+                val density = context.resources.displayMetrics.density
+                channel.invokeMethod(
+                    "onHeightChange",
+                    mapOf("height" to (height / density).toDouble()),
+                )
+            }
+            containerView.addView(
+                view,
+                FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                ),
+            )
+            messagingView = view
         }
-        containerView.addView(messagingView, FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT
-        ))
     }
 
     override fun getView(): View = containerView
-    override fun dispose() {}
+
+    override fun dispose() {
+        channel.setMethodCallHandler(null)
+    }
 }
