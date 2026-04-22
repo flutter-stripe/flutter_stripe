@@ -82,9 +82,8 @@ _SetupParameters _$SetupParametersFromJson(
           json['customPaymentMethodConfiguration'] as Map<String, dynamic>,
         ),
   opensCardScannerAutomatically: json['opensCardScannerAutomatically'] as bool?,
-  termsDisplay: $enumDecodeNullable(
-    _$TermsDisplayEnumMap,
-    json['termsDisplay'],
+  termsDisplay: _termsDisplayFromJson(
+    json['termsDisplay'] as Map<String, dynamic>?,
   ),
 );
 
@@ -121,7 +120,7 @@ Map<String, dynamic> _$SetupParametersToJson(
   'customPaymentMethodConfiguration': instance.customPaymentMethodConfiguration
       ?.toJson(),
   'opensCardScannerAutomatically': instance.opensCardScannerAutomatically,
-  'termsDisplay': _$TermsDisplayEnumMap[instance.termsDisplay],
+  'termsDisplay': _termsDisplayToJson(instance.termsDisplay),
 };
 
 const _$ThemeModeEnumMap = {
@@ -140,11 +139,6 @@ const _$CardBrandEnumMap = {
   CardBrand.UnionPay: 'UnionPay',
   CardBrand.Visa: 'Visa',
   CardBrand.Unknown: 'Unknown',
-};
-
-const _$TermsDisplayEnumMap = {
-  TermsDisplay.automatic: 'automatic',
-  TermsDisplay.never: 'never',
 };
 
 _IntentConfiguration _$IntentConfigurationFromJson(Map<String, dynamic> json) =>

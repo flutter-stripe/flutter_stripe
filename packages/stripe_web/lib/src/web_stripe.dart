@@ -679,6 +679,16 @@ class WebStripe extends StripePlatform {
       IntentCreationCallbackParams params) {
     throw WebUnsupportedError.method('confirmationTokenCreationCallback');
   }
+
+  @override
+  Future<RadarSession> createRadarSession() {
+    throw WebUnsupportedError.method('createRadarSession');
+  }
+
+  @override
+  Future<List<String>> pollAndClearPendingStripeConnectUrls() {
+    throw WebUnsupportedError.method('pollAndClearPendingStripeConnectUrls');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

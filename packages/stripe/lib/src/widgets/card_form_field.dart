@@ -1,6 +1,5 @@
 import 'dart:developer' as dev;
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -569,7 +568,7 @@ class _MethodChannelCardFormFieldState
 
   @override
   void clear() {
-    if (Platform.isIOS) {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
       throw UnimplementedError('This method is not supported for iOS');
     }
     _methodChannel?.invokeMethod('clear');

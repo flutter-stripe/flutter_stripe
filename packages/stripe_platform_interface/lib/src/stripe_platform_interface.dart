@@ -154,6 +154,8 @@ abstract class StripePlatform extends PlatformInterface {
   Future<SetupIntent> retrieveSetupIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 
+  Future<RadarSession> createRadarSession();
+
   /// Methods related to ACH payments
   Future<PaymentIntent> collectBankAccount({
     required bool isPaymentIntent,
@@ -195,6 +197,12 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> confirmationTokenCreationCallback(
     IntentCreationCallbackParams params,
   );
+
+  /// Retrieve and clear any pending Stripe Connect deep link URLs.
+  ///
+  /// Returns stripe-connect:// URLs captured natively on Android since the
+  /// last poll.
+  Future<List<String>> pollAndClearPendingStripeConnectUrls();
 
   Widget buildCard({
     Key? key,

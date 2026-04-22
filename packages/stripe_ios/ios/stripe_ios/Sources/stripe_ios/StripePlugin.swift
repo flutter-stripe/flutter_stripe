@@ -40,6 +40,21 @@ func RCTMakeAndLogError(_ error: String, _ something: String?, _ anotherSomethin
 @objc(StripePlugin)
 class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
 
+    // Override with strong-backed computed properties so that the card field/form views
+    // are retained even when StripeSdkImpl declares them as `weak var` after a React Native
+    // sync. Without this, the views can be ARC-collected when the widget is unmounted
+    // (e.g. loading state), causing "Card details not complete" errors.
+    private var _cardFieldView: CardFieldView?
+    override var cardFieldView: CardFieldView? {
+        get { _cardFieldView }
+        set { _cardFieldView = newValue }
+    }
+
+    private var _cardFormView: CardFormView?
+    override var cardFormView: CardFormView? {
+        get { _cardFormView }
+        set { _cardFormView = newValue }
+    }
 
     private var channel: FlutterMethodChannel
 
@@ -275,6 +290,11 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             )
         case "handleNextActionForSetup":
             return handleNextActionForSetupIntent(call, result: result)
+        case "createRadarSession":
+            createRadarSession(resolver: resolver(for: result), rejecter: rejecter(for: result))
+        case "pollAndClearPendingStripeConnectUrls":
+            // No-op on iOS — returns empty list
+            result([String]())
         default:
             result(FlutterMethodNotImplemented)
         }
