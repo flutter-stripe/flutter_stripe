@@ -16,6 +16,16 @@ class StripePaymentMethodMessagingPlatformView(
     private val containerView: FrameLayout = FrameLayout(context)
     private var messagingView: PaymentMethodMessagingView? = null
 
+    private val layoutChangeListener =
+        View.OnLayoutChangeListener { _, _, top, _, bottom, _, _, _, _ ->
+            val height = (bottom - top).toFloat()
+            val density = context.resources.displayMetrics.density
+            channel.invokeMethod(
+                "onHeightChange",
+                mapOf("height" to (height / density).toDouble()),
+            )
+        }
+
     init {
         channel.setMethodCallHandler { call, result -> handleMethodCall(call, result) }
         applyConfiguration(creationParams)
@@ -32,13 +42,28 @@ class StripePaymentMethodMessagingPlatformView(
         }
     }
 
+    private fun clearMessagingView() {
+        messagingView?.removeOnLayoutChangeListener(layoutChangeListener)
+        messagingView = null
+        containerView.removeAllViews()
+        channel.invokeMethod("onHeightChange", mapOf("height" to 0.0))
+    }
+
     private fun applyConfiguration(params: Map<String?, Any?>?) {
-        val p = params ?: return
+        if (params == null) {
+            clearMessagingView()
+            return
+        }
+
         @Suppress("UNCHECKED_CAST")
-        val paymentMethodStrings = p["paymentMethods"] as? List<String> ?: return
-        val currency = p["currency"] as? String ?: return
-        val amount = (p["amount"] as? Number)?.toLong() ?: return
-        val countryCode = p["countryCode"] as? String
+        val paymentMethodStrings = params["paymentMethods"] as? List<String>
+        val currency = params["currency"] as? String
+        val amount = (params["amount"] as? Number)?.toLong()
+        if (paymentMethodStrings == null || currency == null || amount == null) {
+            clearMessagingView()
+            return
+        }
+        val countryCode = params["countryCode"] as? String
 
         val paymentMethods = paymentMethodStrings.mapNotNull { methodString ->
             when (methodString) {
@@ -47,7 +72,10 @@ class StripePaymentMethodMessagingPlatformView(
                 else -> null
             }
         }
-        if (paymentMethods.isEmpty()) return
+        if (paymentMethods.isEmpty()) {
+            clearMessagingView()
+            return
+        }
 
         val configBuilder = PaymentMethodMessagingView.Configuration.Builder(
             paymentMethods = paymentMethods,
@@ -63,14 +91,7 @@ class StripePaymentMethodMessagingPlatformView(
         } else {
             val view = PaymentMethodMessagingView(context)
             view.configuration = configuration
-            view.addOnLayoutChangeListener { _, _, top, _, bottom, _, _, _, _ ->
-                val height = (bottom - top).toFloat()
-                val density = context.resources.displayMetrics.density
-                channel.invokeMethod(
-                    "onHeightChange",
-                    mapOf("height" to (height / density).toDouble()),
-                )
-            }
+            view.addOnLayoutChangeListener(layoutChangeListener)
             containerView.addView(
                 view,
                 FrameLayout.LayoutParams(
@@ -85,6 +106,9 @@ class StripePaymentMethodMessagingPlatformView(
     override fun getView(): View = containerView
 
     override fun dispose() {
+        messagingView?.removeOnLayoutChangeListener(layoutChangeListener)
+        messagingView = null
+        containerView.removeAllViews()
         channel.setMethodCallHandler(null)
     }
 }

@@ -17,6 +17,7 @@ public class PaymentMethodMessagingView: UIView, StripePaymentSheet.PaymentMetho
     ) {
         messagingView?.removeFromSuperview()
         messagingView = nil
+        onHeightChange?(["height": 0.0])
 
         let methods: [StripePaymentSheet.PaymentMethodMessagingView.Configuration.PaymentMethod] =
             paymentMethods.compactMap { str in
@@ -27,6 +28,7 @@ public class PaymentMethodMessagingView: UIView, StripePaymentSheet.PaymentMetho
                 }
             }
         guard !methods.isEmpty else { return }
+        guard STPAPIClient.shared.publishableKey != nil else { return }
 
         var configuration = StripePaymentSheet.PaymentMethodMessagingView.Configuration(
             apiClient: STPAPIClient.shared,

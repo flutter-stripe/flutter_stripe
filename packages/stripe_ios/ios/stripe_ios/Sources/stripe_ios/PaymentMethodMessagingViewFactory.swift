@@ -69,7 +69,13 @@ class PaymentMethodMessagingPlatformView: NSObject, FlutterPlatformView {
         guard let arguments = args as? [String: Any],
               let paymentMethods = arguments["paymentMethods"] as? [String],
               let currency = arguments["currency"] as? String,
-              let amount = (arguments["amount"] as? NSNumber)?.intValue else {
+              let amount = (arguments["amount"] as? NSNumber)?.integerValue else {
+            messagingView.applyConfiguration(
+                paymentMethods: [],
+                currency: "",
+                amount: 0,
+                countryCode: nil
+            )
             return
         }
         let countryCode = arguments["countryCode"] as? String
