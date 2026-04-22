@@ -9,8 +9,8 @@ import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 /// Compose-based API (`PaymentMethodMessagingElement` in the
 /// `com.stripe:payment-method-messaging` artifact) which has not yet been
 /// adapted to a Flutter platform view. On Android this widget throws
-/// [UnsupportedError]; track Android support in the follow-up issue linked
-/// from the PR that introduced this widget.
+/// [UnsupportedError]; Android support is tracked in
+/// https://github.com/flutter-stripe/flutter_stripe/issues/2402.
 class PaymentMethodMessaging extends StatefulWidget {
   const PaymentMethodMessaging({
     required this.configuration,
