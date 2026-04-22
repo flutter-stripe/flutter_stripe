@@ -1,10 +1,16 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
+/// Renders Stripe's Klarna / Afterpay promotional messaging element.
+///
+/// **iOS-only.** The Stripe Android SDK exposes this element via a separate
+/// Compose-based API (`PaymentMethodMessagingElement` in the
+/// `com.stripe:payment-method-messaging` artifact) which has not yet been
+/// adapted to a Flutter platform view. On Android this widget throws
+/// [UnsupportedError]; track Android support in the follow-up issue linked
+/// from the PR that introduced this widget.
 class PaymentMethodMessaging extends StatefulWidget {
   const PaymentMethodMessaging({
     required this.configuration,
@@ -62,49 +68,23 @@ class _PaymentMethodMessagingState extends State<PaymentMethodMessaging> {
 
   @override
   Widget build(BuildContext context) {
+    if (defaultTargetPlatform != TargetPlatform.iOS) {
+      throw UnsupportedError(
+        'PaymentMethodMessaging is only supported on iOS. '
+        'Android support is tracked as a follow-up.',
+      );
+    }
+
     final creationParams = widget.configuration.toJson();
 
-    Widget platform;
-    if (defaultTargetPlatform == TargetPlatform.iOS) {
-      platform = UiKitView(
+    return SizedBox(
+      height: _height,
+      child: UiKitView(
         viewType: _viewType,
         creationParamsCodec: const StandardMessageCodec(),
         creationParams: creationParams,
         onPlatformViewCreated: onPlatformViewCreated,
-      );
-    } else if (defaultTargetPlatform == TargetPlatform.android) {
-      platform = PlatformViewLink(
-        viewType: _viewType,
-        surfaceFactory: (context, controller) {
-          return AndroidViewSurface(
-            controller: controller as AndroidViewController,
-            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-            gestureRecognizers:
-                const <Factory<OneSequenceGestureRecognizer>>{},
-          );
-        },
-        onCreatePlatformView: (params) {
-          onPlatformViewCreated(params.id);
-          return PlatformViewsService.initSurfaceAndroidView(
-              id: params.id,
-              viewType: _viewType,
-              layoutDirection: TextDirection.ltr,
-              creationParams: creationParams,
-              creationParamsCodec: const StandardMessageCodec(),
-            )
-            ..addOnPlatformViewCreatedListener(
-              params.onPlatformViewCreated,
-            )
-            ..create();
-        },
-      );
-    } else {
-      throw UnsupportedError('Unsupported platform view');
-    }
-
-    return SizedBox(
-      height: _height,
-      child: platform,
+      ),
     );
   }
 }
