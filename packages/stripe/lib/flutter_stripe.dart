@@ -8,4 +8,5 @@ export 'src/widgets/aubecs_debit_form.dart';
 export 'src/widgets/card_field.dart';
 export 'src/widgets/card_form_field.dart';
 // export 'src/widgets/google_pay_button.dart';
+export 'src/widgets/payment_method_messaging.dart';
 export 'src/widgets/platform_pay_button.dart';

@@ -77,6 +77,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             .platformViewRegistry
             .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager()){stripeSdk})
         flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/address_sheet", StripeAddressSheetPlatformViewFactory(flutterPluginBinding, addressSheetFormViewManager ){stripeSdk})
+        flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/payment_method_messaging", StripePaymentMethodMessagingPlatformViewFactory(flutterPluginBinding))
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
