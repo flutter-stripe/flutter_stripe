@@ -1,6 +1,6 @@
 package com.facebook.react.bridge
 
-import android.content.ContextWrapper
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.fragment.app.FragmentActivity
 import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.facebook.react.uimanager.UIManagerModule
@@ -8,10 +8,14 @@ import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.plugin.common.MethodChannel
 
 open class ReactContext(
-    val currentActivity: FragmentActivity,
+    private val currentAct: FragmentActivity,
     private val channel: MethodChannel,
     private val sdkAccessor: () -> StripeSdkModule
-): ContextWrapper(currentActivity) {
+): ContextThemeWrapper(currentAct, androidx.appcompat.R.style.Theme_AppCompat_Light_NoActionBar) {
+
+
+    open val currentActivity: FragmentActivity
+        get() = currentAct
 
     val reactApplicationContext: ReactApplicationContext by lazy {
         sdkAccessor().reactApplicationContext

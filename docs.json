@@ -11,17 +11,18 @@
           ["CardFormField", "/card_field"]
           ]      
         ],
-        ["Mobile elements",
+        ["Mobile elements", [
           ["Address Sheet", "/address_sheet"],
           ["Customer Sheet", "/customer_sheet"]
-        ],
+        ]],
         ["Regional payments", [
             ["ACH direct debit", "/ach"],
             ["Ideal", "/ideal"]
           ]
         ],
         ["Wallets", [
-          ["Google pay", "/google_pay"]
+          ["Apple Pay", "/apple_pay"],
+          ["Google Pay", "/google_pay"]
         ]],
         ["Financial connections", "/financial_connections" ],
         ["Troubleshooting", "/troubleshooting"],

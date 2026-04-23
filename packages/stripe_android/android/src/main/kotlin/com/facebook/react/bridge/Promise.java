@@ -42,6 +42,15 @@ public class Promise {
         });
     }
 
+    public void reject(String errorCode, String message, Throwable e) {
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                methodResult.error(errorCode, message, e);
+            }
+        });
+    }
+
     public void reject(String errorCode) {
         this.reject(errorCode, null);
     }

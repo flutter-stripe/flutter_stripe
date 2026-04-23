@@ -73,10 +73,10 @@ abstract class StripePlatform extends PlatformInterface {
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
 
-  /// Configure the payment sheet using [CustomerSheetInitParams] as config.
-  Future<CustomerSheetResult?> initCustomerSheet(
-    CustomerSheetInitParams params,
-  );
+  /// Configure the customer sheet using [CustomerSheetInitParams] as config.
+  ///
+  /// Throws a [StripeException] if initialization fails.
+  Future<void> initCustomerSheet(CustomerSheetInitParams params);
 
   /// Display the customersheet sheet.
   Future<CustomerSheetResult?> presentCustomerSheet({
@@ -154,6 +154,8 @@ abstract class StripePlatform extends PlatformInterface {
   Future<SetupIntent> retrieveSetupIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 
+  Future<RadarSession> createRadarSession();
+
   /// Methods related to ACH payments
   Future<PaymentIntent> collectBankAccount({
     required bool isPaymentIntent,
@@ -190,6 +192,17 @@ abstract class StripePlatform extends PlatformInterface {
   /// Method used to confirm to the user that the intent is created successfull
   /// or not successfull when using a defferred payment method.
   Future<void> intentCreationCallback(IntentCreationCallbackParams params);
+
+  /// Method Called when the customer confirms payment using confirmation tokens.
+  Future<void> confirmationTokenCreationCallback(
+    IntentCreationCallbackParams params,
+  );
+
+  /// Retrieve and clear any pending Stripe Connect deep link URLs.
+  ///
+  /// Returns stripe-connect:// URLs captured natively on Android since the
+  /// last poll.
+  Future<List<String>> pollAndClearPendingStripeConnectUrls();
 
   Widget buildCard({
     Key? key,

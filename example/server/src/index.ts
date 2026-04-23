@@ -564,7 +564,6 @@ app.post('/payment-sheet', async (_, res) => {
       // 'sofort',
       // 'bancontact',
       // 'p24',
-      // 'giropay',
       // 'eps',
       // 'afterpay_clearpay',
       // 'klarna',

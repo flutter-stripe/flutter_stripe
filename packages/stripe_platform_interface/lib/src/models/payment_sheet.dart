@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/color.dart';
+import 'package:stripe_platform_interface/src/models/confirmation_token.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 part 'payment_sheet.freezed.dart';
@@ -120,8 +121,29 @@ abstract class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     ///Note: Card brand filtering is not currently supported in Link.
     CardBrandAcceptance? cardBrandAcceptance,
 
+    ///
+    ///Configuration for filtering cards by funding type.
+    /// @note This is a private preview API and will have no effect unless your Stripe account is enrolled in the private preview.
+    ///
+    CardFundingFiltering? cardFundingFiltering,
+
     /// Configuration for custom payment methods in PaymentSheet
     CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,
+
+    ///By default, PaymentSheet offers a card scan button within the new card entry form.
+    /// When opensCardScannerAutomatically is set to true,
+    /// the card entry form will initialize with the card scanner already open.
+    /// Defaults to false.
+    bool? opensCardScannerAutomatically,
+
+    /// A map of payment method types to their terms display configuration.
+    /// Controls whether legal agreements (e.g. card mandate disclaimers) are shown for each payment method type.
+    /// Keys are snake_case payment method type strings (e.g. "card", "us_bank_account").
+    /// See https://docs.stripe.com/api/payment_methods/object#payment_method_object-type for the full list of values.
+    /// Values are `TermsDisplay.automatic` or `TermsDisplay.never`.
+    /// If not set, defaults to `TermsDisplay.automatic` for all payment method types.
+    @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)
+    Map<String, TermsDisplay>? termsDisplay,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
@@ -144,6 +166,10 @@ abstract class IntentConfiguration with _$IntentConfiguration {
     /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
     @JsonKey(includeFromJson: false, includeToJson: false)
     ConfirmHandler? confirmHandler,
+
+    /// Called when the customer confirms token payment.
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    ConfirmTokenHandler? confirmTokenHandler,
 
     /// Confirm handler
   }) = _IntentConfiguration;
@@ -261,6 +287,16 @@ abstract class PaymentSheetAppearance with _$PaymentSheetAppearance {
 
     /// Describes the inset values applied to Mobile Payment Element forms
     EdgeInsetsConfig? formInsetValues,
+
+    /// Setting this boolean to `true` will call the iOS applyLiquidGlass() method
+    /// (https://stripe.dev/stripe-ios/stripepaymentsheet/documentation/stripepaymentsheet/paymentsheet/appearance/applyliquidglass())
+    /// on the Appearance object prior to applying other appearance customizations set on AppearanceParams.
+    /// Requires iOS26 and Xcode 26, and will be ignored if these requirements are not met.
+    /// @default false
+    bool? applyLiquidGlass,
+
+    /// Describes the navigation bar style (iOS only)
+    NavigationBarStyle? navigationBarStyle,
   }) = _PaymentSheetAppearance;
 
   factory PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
@@ -595,6 +631,14 @@ enum AddressCollectionMode {
   full,
 }
 
+enum NavigationBarStyle {
+  /// Default style
+  Plain,
+
+  /// Style to match iOS 26 Liquid Glass. Requires: iOS26 and Xcode 26, and will be ignored if these requirements are not met. */
+  Glass,
+}
+
 /// The type of payment method to attach to a Customer.
 enum IntentFutureUsage {
   /// The payment method will be used for future off-session payments.
@@ -607,11 +651,29 @@ enum IntentFutureUsage {
 typedef ConfirmHandler =
     void Function(PaymentMethod result, bool shouldSavePaymentMethod);
 
+typedef ConfirmTokenHandler = void Function(ConfirmationTokenResult result);
+
 List<int> _cardBrandListToJson(List<CardBrand>? list) {
   if (list == null) {
     return [];
   }
   return list.map((e) => e.brandValue).toList();
+}
+
+Map<String, String>? _termsDisplayToJson(Map<String, TermsDisplay>? map) {
+  if (map == null) return null;
+  return map.map((key, value) => MapEntry(key, value.name));
+}
+
+Map<String, TermsDisplay>? _termsDisplayFromJson(Map<String, dynamic>? json) {
+  if (json == null) return null;
+  return json.map((key, value) => MapEntry(
+        key,
+        TermsDisplay.values.firstWhere(
+          (e) => value is String && e.name == value,
+          orElse: () => TermsDisplay.automatic,
+        ),
+      ));
 }
 
 /// Card brand categories that can be allowed or disallowed
@@ -640,6 +702,15 @@ enum CardBrandAcceptanceFilter {
 
   /// Accept all card brands except the specified ones
   disallowed,
+}
+
+///Controls whether legal terms (e.g. mandate disclaimers) are displayed for a payment method.
+enum TermsDisplay {
+  /// Show legal agreements only when necessary.
+  automatic,
+
+  /// Never show legal agreements.
+  never,
 }
 
 @freezed
@@ -687,8 +758,8 @@ enum LinkDisplay {
   /// Link will be displayed when available
   automatic,
 
-  /// Link will be displayed when available
-  manual,
+  /// Link will never be displayed
+  never,
 }
 
 @freezed
@@ -913,4 +984,35 @@ abstract class CustomPaymentMethodConfiguration
   factory CustomPaymentMethodConfiguration.fromJson(
     Map<String, dynamic> json,
   ) => _$CustomPaymentMethodConfigurationFromJson(json);
+}
+
+/// Card funding types that can be filtered.
+/// Note: This is a private preview API and will have no effect unless your Stripe account is enrolled in the private preview.
+enum CardFundingType {
+  /// Debit cards
+  debit,
+
+  /// Credit cards
+  credit,
+
+  /// Prepaid cards
+  prepaid,
+
+  /// Unknown or undetermined funding type.
+  /// Include this if you want to accept cards where the funding type cannot be determined from card metadata.
+  unknown,
+}
+
+/// Configuration for filtering cards by funding type.
+/// Note: This is a private preview API and will have no effect unless your Stripe account is enrolled in the private preview.
+@freezed
+abstract class CardFundingFiltering with _$CardFundingFiltering {
+  @JsonSerializable(explicitToJson: true)
+  const factory CardFundingFiltering({
+    /// List of allowed card funding types. If not set, all types are accepted.
+    List<CardFundingType>? allowedCardFundingTypes,
+  }) = _CardFundingFiltering;
+
+  factory CardFundingFiltering.fromJson(Map<String, dynamic> json) =>
+      _$CardFundingFilteringFromJson(json);
 }

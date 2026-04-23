@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' hide internal;
+import 'package:meta/meta.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 /// [Stripe] is the facade of the library and exposes the operations that can be
@@ -286,6 +287,14 @@ class Stripe {
     }
   }
 
+  /// Creates a Radar session.
+  ///
+  /// Returns a [RadarSession] containing the session ID.
+  Future<RadarSession> createRadarSession() async {
+    await _awaitForSettings();
+    return await _platform.createRadarSession();
+  }
+
   /// Creates a single-use token that represents a credit card’s details.
   ///
   /// Tokens are considered legacy, use [PaymentMethod] and [PaymentIntent]
@@ -333,7 +342,71 @@ class Stripe {
     await _platform.openApplePaySetup();
   }
 
-  /// Handle URL callback from iDeal payment returnUrl to close iOS in-app webview
+  /// Handles URL callbacks for redirect-based payment methods on iOS.
+  ///
+  /// Call this method when your app receives a deep link that matches your
+  /// Stripe `returnURL`. This is essential for payment methods that require
+  /// external authentication, including:
+  /// - Link
+  /// - iDEAL
+  /// - Bancontact
+  /// - Other redirect-based payment methods
+  ///
+  /// ## When to use this method
+  ///
+  /// If your app uses Flutter's deep linking (`FlutterDeepLinkingEnabled: true`
+  /// in Info.plist), you must manually forward Stripe URLs to this method.
+  ///
+  /// Example with `go_router`:
+  /// ```dart
+  /// GoRouter(
+  ///   redirect: (context, state) {
+  ///     final uri = state.uri;
+  ///     // Check if this is a Stripe callback URL
+  ///     if (uri.scheme == 'yourappscheme' &&
+  ///         (uri.host == 'safepay' || uri.host == 'stripe-redirect')) {
+  ///       Stripe.instance.handleURLCallback(uri.toString());
+  ///       return '/'; // Navigate to your payment result screen
+  ///     }
+  ///     return null;
+  ///   },
+  ///   // ... rest of your router configuration
+  /// );
+  /// ```
+  ///
+  /// ## Setup requirements
+  ///
+  /// 1. Configure your URL scheme in `Info.plist`:
+  ///    ```xml
+  ///    <key>CFBundleURLTypes</key>
+  ///    <array>
+  ///      <dict>
+  ///        <key>CFBundleURLSchemes</key>
+  ///        <array>
+  ///          <string>yourappscheme</string>
+  ///        </array>
+  ///      </dict>
+  ///    </array>
+  ///    ```
+  ///
+  /// 2. Set the same URL scheme when initializing Stripe:
+  ///    ```dart
+  ///    Stripe.urlScheme = 'yourappscheme';
+  ///    ```
+  ///
+  /// 3. Use a matching `returnURL` in PaymentSheet:
+  ///    ```dart
+  ///    await Stripe.instance.initPaymentSheet(
+  ///      paymentSheetParameters: SetupPaymentSheetParameters(
+  ///        returnURL: 'yourappscheme://stripe-redirect',
+  ///        // ... other parameters
+  ///      ),
+  ///    );
+  ///    ```
+  ///
+  /// Returns `true` if the URL was successfully handled by the Stripe SDK,
+  /// `false` otherwise. A `false` return may indicate that no active payment
+  /// flow was waiting for a callback.
   Future<bool> handleURLCallback(String url) async {
     try {
       return await _platform.handleURLCallback(url);
@@ -485,6 +558,14 @@ class Stripe {
   ) async {
     await _awaitForSettings();
     return await _platform.intentCreationCallback(params);
+  }
+
+  ///Called when the customer confirms payment using confirmation tokens.
+  Future<void> confirmationTokenCreationCallback(
+    IntentCreationCallbackParams params,
+  ) async {
+    await _awaitForSettings();
+    return await _platform.confirmationTokenCreationCallback(params);
   }
 
   /// Call this method when the user logs out from your app.
@@ -662,12 +743,24 @@ class Stripe {
     }
   }
 
+  /// Retrieve and clear any pending Stripe Connect deep link URLs.
+  ///
+  /// **Android-only.** Returns any `stripe-connect://` URLs captured by the
+  /// native deep link interceptor since the last poll. On iOS this always
+  /// returns an empty list and on Web it throws [WebUnsupportedError].
+  Future<List<String>> pollAndClearPendingStripeConnectUrls() async {
+    await _awaitForSettings();
+    return _platform.pollAndClearPendingStripeConnectUrls();
+  }
+
   /// Initializes the customer sheet with the provided [parameters].
-  Future<CustomerSheetResult?> initCustomerSheet({
+  ///
+  /// Throws a [StripeException] if initialization fails.
+  Future<void> initCustomerSheet({
     required CustomerSheetInitParams customerSheetInitParams,
   }) async {
     await _awaitForSettings();
-    return _platform.initCustomerSheet(customerSheetInitParams);
+    await _platform.initCustomerSheet(customerSheetInitParams);
   }
 
   /// Display the customersheet sheet. With the provided [options].

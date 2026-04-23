@@ -1765,7 +1765,6 @@ declare namespace stripe {
             | 'bancontact'
             | 'card'
             | 'eps'
-            | 'giropay'
             | 'ideal'
             | 'multibanco'
             | 'p24'
@@ -1780,7 +1779,6 @@ declare namespace stripe {
             bancontact?: BanContactDetails | null;
             card?: PaymentMethodCard | null;
             eps?: EpsDetails | null;
-            giropay?: GiropayDetails | null;
             ideal?: IdealDetails | null;
             multibanco?: MultibancoDetails | null;
             p24?: P24Details | null;
@@ -1816,13 +1814,6 @@ declare namespace stripe {
         }
 
         interface EpsDetails {
-            verified_name: string;
-        }
-
-        interface GiropayDetails {
-            bank_code: string;
-            bank_name: string;
-            bic: string;
             verified_name: string;
         }
 

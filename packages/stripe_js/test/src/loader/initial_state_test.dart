@@ -2,14 +2,13 @@
 
 @TestOn('browser')
 @Tags(["browser"])
-import 'dart:js';
-
+import 'package:stripe_js/stripe_js.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('StripeLoader', () {
     test('Stripe is not loaded by default', () {
-      expect(context['Stripe'], isNull);
+      expect(stripe, isNull);
     });
   });
 }

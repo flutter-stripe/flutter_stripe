@@ -1,6 +1,5 @@
 import 'dart:developer' as dev;
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -30,6 +29,10 @@ class CardFormField extends StatefulWidget {
     this.disabled = false,
     this.controller,
     this.preferredNetworks,
+    this.numberHintText,
+    this.expirationHintText,
+    this.cvcHintText,
+    this.postalCodeHintText,
     super.key,
   });
 
@@ -93,6 +96,18 @@ class CardFormField extends StatefulWidget {
   /// This value will only be used if your user hasn't selected a network themselves.
   final List<CardBrand>? preferredNetworks;
 
+  /// Android only: Hint text for the card number field.
+  final String? numberHintText;
+
+  /// Android only: Hint text for the expiration date field.
+  final String? expirationHintText;
+
+  /// Android only: Hint text for the cvc field.
+  final String? cvcHintText;
+
+  /// Android only: Hint text for the postal code field.
+  final String? postalCodeHintText;
+
   @override
   // ignore: library_private_types_in_public_api
   _CardFormFieldState createState() => _CardFormFieldState();
@@ -122,7 +137,7 @@ class CardFormEditController extends ChangeNotifier {
 
   set details(CardFieldInputDetails value) {
     if (_details == value) return;
-    context.dangerouslyUpdateCardDetails(details);
+    context.dangerouslyUpdateCardDetails(value);
     _details = value;
     notifyListeners();
   }
@@ -207,6 +222,10 @@ class _CardFormFieldState extends State<CardFormField> {
       onFocus: widget.onFocus,
       countryCode: widget.countryCode,
       preferredNetworks: widget.preferredNetworks,
+      numberHintText: widget.numberHintText,
+      expirationHintText: widget.expirationHintText,
+      cvcHintText: widget.cvcHintText,
+      postalCodeHintText: widget.postalCodeHintText,
     );
   }
 
@@ -232,6 +251,10 @@ class _MethodChannelCardFormField extends StatefulWidget {
     this.disabled = false,
     this.preferredNetworks,
     this.countryCode,
+    this.numberHintText,
+    this.expirationHintText,
+    this.cvcHintText,
+    this.postalCodeHintText,
   }) : assert(constraints == null || constraints.debugAssertIsValid()),
        constraints = (width != null || height != null)
            ? constraints?.tighten(width: width, height: height) ??
@@ -251,6 +274,10 @@ class _MethodChannelCardFormField extends StatefulWidget {
   final bool dangerouslyUpdateFullCardDetails;
   final String? countryCode;
   final List<CardBrand>? preferredNetworks;
+  final String? numberHintText;
+  final String? expirationHintText;
+  final String? cvcHintText;
+  final String? postalCodeHintText;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_form_field';
@@ -312,6 +339,16 @@ class _MethodChannelCardFormFieldState
   Widget build(BuildContext context) {
     final style = resolveStyle(widget.style);
     // Pass parameters to the platform side.
+    // Build placeholder map for hint text (Android only)
+    final placeholder = <String, dynamic>{
+      if (widget.numberHintText != null) 'number': widget.numberHintText,
+      if (widget.expirationHintText != null)
+        'expiration': widget.expirationHintText,
+      if (widget.cvcHintText != null) 'cvc': widget.cvcHintText,
+      if (widget.postalCodeHintText != null)
+        'postalCode': widget.postalCodeHintText,
+    };
+
     final creationParams = <String, dynamic>{
       'cardStyle': style.toJson(),
       'postalCodeEnabled': widget.enablePostalCode,
@@ -326,15 +363,28 @@ class _MethodChannelCardFormFieldState
             .toList(),
       'disabled': widget.disabled,
       'defaultValues': {'countryCode': widget.countryCode},
+      if (placeholder.isNotEmpty) 'placeholders': placeholder,
     };
 
     Widget platform;
     if (defaultTargetPlatform == TargetPlatform.android) {
-      platform = _AndroidCardFormField(
-        key: _MethodChannelCardFormField._key,
-        viewType: _MethodChannelCardFormField._viewType,
-        creationParams: creationParams,
-        onPlatformViewCreated: onPlatformViewCreated,
+      platform = Listener(
+        onPointerDown: (_) {
+          if (!widget.focusNode.hasFocus) {
+            widget.focusNode.requestFocus();
+          }
+        },
+        child: Focus(
+          autofocus: widget.autofocus,
+          focusNode: widget.focusNode,
+          onFocusChange: _handleFrameworkFocusChanged,
+          child: _AndroidCardFormField(
+            key: _MethodChannelCardFormField._key,
+            viewType: _MethodChannelCardFormField._viewType,
+            creationParams: creationParams,
+            onPlatformViewCreated: onPlatformViewCreated,
+          ),
+        ),
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = Listener(
@@ -421,6 +471,22 @@ class _MethodChannelCardFormFieldState
       });
     }
     _lastStyle = style;
+    // Handle placeholder/hint text changes (Android only)
+    if (widget.numberHintText != oldWidget.numberHintText ||
+        widget.expirationHintText != oldWidget.expirationHintText ||
+        widget.cvcHintText != oldWidget.cvcHintText ||
+        widget.postalCodeHintText != oldWidget.postalCodeHintText) {
+      final placeholder = <String, dynamic>{
+        if (widget.numberHintText != null) 'number': widget.numberHintText,
+        if (widget.expirationHintText != null)
+          'expiration': widget.expirationHintText,
+        if (widget.cvcHintText != null) 'cvc': widget.cvcHintText,
+        if (widget.postalCodeHintText != null)
+          'postalCode': widget.postalCodeHintText,
+      };
+      // Use 'placeholders' as method name - Android delegate uses it as property name
+      _methodChannel?.invokeMethod('placeholders', placeholder);
+    }
     super.didUpdateWidget(oldWidget);
   }
 
@@ -502,7 +568,7 @@ class _MethodChannelCardFormFieldState
 
   @override
   void clear() {
-    if (Platform.isIOS) {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
       throw UnimplementedError('This method is not supported for iOS');
     }
     _methodChannel?.invokeMethod('clear');
@@ -553,7 +619,7 @@ class _AndroidCardFormField extends StatelessWidget {
       ),
       onCreatePlatformView: (params) {
         onPlatformViewCreated(params.id);
-        return PlatformViewsService.initExpensiveAndroidView(
+        return PlatformViewsService.initSurfaceAndroidView(
             id: params.id,
             viewType: viewType,
             layoutDirection: Directionality.of(context),

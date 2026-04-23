@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -82,14 +80,14 @@ class PlatformPayButton extends StatelessWidget {
         style: appearance,
       );
     }
-    if (Platform.isAndroid) {
+    if (defaultTargetPlatform == TargetPlatform.android) {
       return GooglePayButton(
         onTap: onPressed,
         buttonType: type,
         borderRadius: borderRadius,
         appearance: appearance,
       );
-    } else if (Platform.isIOS) {
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return ApplePayButton(
         onPressed: onPressed,
         style: appearance,

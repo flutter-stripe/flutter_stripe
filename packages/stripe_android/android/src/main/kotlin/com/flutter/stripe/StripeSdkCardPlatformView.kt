@@ -56,8 +56,8 @@ class StripeSdkCardPlatformView(
 
             val binding = StripeCardInputWidgetBinding.bind(cardView.mCardWidget)
             val number = getValOr(value, "number", null)
-            val expirationYear = getIntOrNull(value, "expiryYear")
-            val expirationMonth = getIntOrNull(value, "expiryMonth")
+            val expirationYear = value.getIntOrNull("expiryYear")
+            val expirationMonth = value.getIntOrNull("expiryMonth")
             val cvc = getValOr(value, "cvc", null)
             number?.let {
                 binding.cardNumberEditText.setText(it)
@@ -117,18 +117,21 @@ class StripeSdkCardPlatformView(
                     call.arguments.convertToReadable()
                 )
             }
-            "focus", "blur", "clear" -> stripeSdkCardViewManager.receiveCommand(
-                cardView,
-                call.method,
-                null
-            )
-
+            "focus", "blur", "clear" -> {
+                stripeSdkCardViewManager.delegate.receiveCommand(
+                    cardView,
+                    call.method,
+                    null
+                )
+                result.success(null)
+            }
             else -> {
                 stripeSdkCardViewManager.delegate.setProperty(
                     cardView,
                     call.method,
                     call.arguments.convertToReadable()
                 )
+                result.success(null)
             }
         }
     }

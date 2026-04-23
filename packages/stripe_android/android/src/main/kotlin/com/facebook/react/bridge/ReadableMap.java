@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Created by FFuF, Jonas Bark on 2019-10-02.
  */
-public class ReadableMap extends Dynamic implements Map<String, Object> {
+public class ReadableMap extends Dynamic {
 
     private JSONObject map;
 
@@ -39,6 +39,16 @@ public class ReadableMap extends Dynamic implements Map<String, Object> {
         return "ReadableMap{" +
                 "map=" + map +
                 '}';
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
+    @Override
+    public int size() {
+        return map.length();
     }
 
     public boolean hasKey(String key) {

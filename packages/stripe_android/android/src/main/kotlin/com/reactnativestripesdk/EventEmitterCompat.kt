@@ -12,7 +12,7 @@ class EventEmitterCompat(
 ) {
   private fun invoke(
     eventName: String,
-    params: ReadableMap? = null,
+    params: Any? = null,
   ) {
     reactApplicationContext
       .getJSModule(
@@ -24,12 +24,12 @@ class EventEmitterCompat(
     invoke("onConfirmHandlerCallback", value)
   }
 
-  fun emitOnFinancialConnectionsEvent(value: ReadableMap?) {
-    invoke("onFinancialConnectionsEvent", value)
+  fun emitOnConfirmationTokenHandlerCallback(value: ReadableMap?) {
+    invoke("onConfirmationTokenHandlerCallback", value)
   }
 
-  fun emitOnOrderTrackingCallback() {
-    invoke("onOrderTrackingCallback")
+  fun emitOnFinancialConnectionsEvent(value: ReadableMap?) {
+    invoke("onFinancialConnectionsEvent", value)
   }
 
   fun emitOnCustomerAdapterFetchPaymentMethodsCallback() {
@@ -56,12 +56,16 @@ class EventEmitterCompat(
     invoke("onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback")
   }
 
-  fun emitEmbeddedPaymentElementDidUpdateHeight(value: ReadableMap?) {
-    invoke("embeddedPaymentElementDidUpdateHeight", value)
+  fun emitOnCustomerSessionProviderSetupIntentClientSecret() {
+    invoke("onCustomerSessionProviderSetupIntentClientSecret")
   }
 
-  fun emitEmbeddedPaymentElementWillPresent() {
-    invoke("embeddedPaymentElementWillPresent")
+  fun emitOnCustomerSessionProviderCustomerSessionClientSecret() {
+    invoke("onCustomerSessionProviderCustomerSessionClientSecret")
+  }
+
+  fun emitEmbeddedPaymentElementDidUpdateHeight(value: ReadableMap?) {
+    invoke("embeddedPaymentElementDidUpdateHeight", value)
   }
 
   fun emitEmbeddedPaymentElementDidUpdatePaymentOption(value: ReadableMap?) {
@@ -80,7 +84,19 @@ class EventEmitterCompat(
     invoke("embeddedPaymentElementLoadingFailed", value)
   }
 
+  fun emitEmbeddedPaymentElementUpdateComplete(value: ReadableMap?) {
+    invoke("embeddedPaymentElementUpdateComplete", value)
+  }
+
   fun emitOnCustomPaymentMethodConfirmHandlerCallback(value: ReadableMap?) {
     invoke("onCustomPaymentMethodConfirmHandlerCallback", value)
+  }
+
+  fun emitPaymentMethodMessagingElementDidUpdateHeight(value: ReadableMap?) {
+    invoke("paymentMethodMessagingElementDidUpdateHeight", value)
+  }
+
+  fun emitPaymentMethodMessagingElementConfigureResult(value: ReadableMap?) {
+    invoke("paymentMethodMessagingElementConfigureResult", value)
   }
 }

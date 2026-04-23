@@ -16,6 +16,16 @@ public class WritableMap extends ReadableMap {
         super();
     }
 
+    /**
+     * WritableMap stores its data in the inherited HashMap via put(), not in the JSONObject field.
+     * ReadableMap.size() checks the JSONObject (always 0 for WritableMap), so we must override
+     * it here to check the HashMap, which is where our data actually lives.
+     */
+    @Override
+    public int size() {
+        return entrySet().size();
+    }
+
     public WritableMap(JSONObject map) {
         super(map);
     }
@@ -29,6 +39,10 @@ public class WritableMap extends ReadableMap {
     }
 
     public void putInt(String key, Integer value) {
+        put(key, value);
+    }
+
+    public void putLong(String key, Long value) {
         put(key, value);
     }
 
@@ -58,5 +72,11 @@ public class WritableMap extends ReadableMap {
 
     public void putNull(@NotNull String key) {
         put(key, null);
+    }
+
+    public void merge(ReadableMap source) {
+        for (String key : source.keySet()) {
+            this.put(key, source.get(key));
+        }
     }
 }

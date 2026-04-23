@@ -1,13 +1,15 @@
 ---
 title: Financial Connections
-description: Handling financial connections operations
+description: Connect to your users' bank accounts to access financial data.
 ---
 
-# Stripe Financial connections (only available for us bank accounts)
+# Financial Connections
 
-### Route payments between multiple parties
+### Connect to your users' bank accounts (US bank accounts only)
 
-To learn more about how it works read: [Official Stripe connect docs](https://stripe.com/docs/connect).
+Financial Connections allows you to connect to your users' bank accounts to access financial data for various use cases like account verification, balance checks, and transaction history.
+
+To learn more about how it works read: [Official Stripe Financial Connections docs](https://stripe.com/docs/financial-connections).
 
 
 ## 1. Create 
@@ -52,63 +54,191 @@ Before you can retrieve data from a user's bank account through Stripe financial
 
 [Click here to learn more how to setup a session](https://stripe.com/docs/financial-connections/other-data-powered-products?platform=react-native#create-a-session).
 
-## 4. Collect a financials account  [Client Side]
+## 4. Collect Financial Accounts [Client Side]
 
-On the client side you need to receive the sessionsecret in order to start the authorisation flow on the mobile. The example code looks like this:
+On the client side you need to receive the session client secret in order to start the authorization flow on mobile.
+
+### Option A: Collect Financial Connections Accounts
+
+Use `collectFinancialConnectionsAccounts` to connect to a user's bank account and retrieve account information:
 
 ```dart
- Future<void> _collectAccount(BuildContext context) async {
-    // Precondition:
-    // 1. Make sure to create a financial connection session on the backend and
-    // forward the client secret of the session to the app.
-    final result = await retrieveSessionClientSecret();
-    final clientSecret = await result['clientSecret'];
+Future<void> _collectAccount(BuildContext context) async {
+  // 1. Retrieve the session client secret from your backend
+  final data = await _fetchFinancialConnectionsSession();
+  final clientSecret = data['clientSecret'];
 
-    // 2. use the client secret to confirm the payment and handle the result.
+  // 2. Use the client secret to start the financial connections flow
+  try {
+    final result = await Stripe.instance.collectFinancialConnectionsAccounts(
+      clientSecret: clientSecret,
+    );
+
+    // Handle successful result
+    setState(() {
+      response = result.toString();
+    });
+  } on Exception catch (e) {
+    if (e is StripeException) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Unforeseen error: $e'),
+        ),
+      );
+    }
+  }
+}
+```
+
+The `collectFinancialConnectionsAccounts` method returns a `FinancialConnectionSessionResult` when the user completes the modal authentication flow, or throws a `StripeException` on failure or cancellation.
+
+### Option B: Collect Bank Account Token
+
+Use `collectBankAccountToken` to collect a bank account token that can be used for payments:
+
+```dart
+Future<void> _collectBankToken(BuildContext context) async {
+  // 1. Retrieve the session client secret from your backend
+  final data = await _fetchFinancialConnectionsSession();
+  final clientSecret = data['clientSecret'];
+
+  // 2. Use the client secret to collect a bank token
+  try {
+    final result = await Stripe.instance.collectBankAccountToken(
+      clientSecret: clientSecret,
+    );
+
+    // Handle successful result
+    setState(() {
+      response = result.toString();
+    });
+  } on Exception catch (e) {
+    if (e is StripeException) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Unforeseen error: $e'),
+        ),
+      );
+    }
+  }
+}
+```
+
+The `collectBankAccountToken` method returns a `FinancialConnectionTokenResult` containing a bank account token.
+
+## 5. Complete Example [Client Side]
+
+Here's a complete example showing both methods:
+
+```dart
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http;
+
+class FinancialConnectionsScreen extends StatefulWidget {
+  const FinancialConnectionsScreen({super.key});
+
+  @override
+  State<FinancialConnectionsScreen> createState() =>
+      _FinancialConnectionsScreenState();
+}
+
+class _FinancialConnectionsScreenState
+    extends State<FinancialConnectionsScreen> {
+  String response = '';
+
+  Future<Map<String, dynamic>> _fetchFinancialConnectionsSession() async {
+    final url = Uri.parse('$kApiUrl/financial-connections-sheet');
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+    );
+    return json.decode(response.body);
+  }
+
+  Future<void> _collectAccount(BuildContext context) async {
+    final data = await _fetchFinancialConnectionsSession();
+    final clientSecret = data['clientSecret'];
+
     try {
       final result = await Stripe.instance.collectFinancialConnectionsAccounts(
         clientSecret: clientSecret,
       );
 
+      if (!mounted) return;
       setState(() {
         response = result.toString();
       });
-    } on Exception catch (e) {
-      if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
-          ),
-        );
-      }
+    } on StripeException catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.error.localizedMessage}')),
+      );
     }
   }
-  
+
+  Future<void> _collectBankToken(BuildContext context) async {
+    final data = await _fetchFinancialConnectionsSession();
+    final clientSecret = data['clientSecret'];
+
+    try {
+      final result = await Stripe.instance.collectBankAccountToken(
+        clientSecret: clientSecret,
+      );
+
+      if (!mounted) return;
+      setState(() {
+        response = result.toString();
+      });
+    } on StripeException catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.error.localizedMessage}')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(
-      title: 'Financial connections',
-      tags: ['Financial connections'],
-      padding: EdgeInsets.all(16),
-      children: [
-        LoadingButton(
-          onPressed: () async {
-            await _collectAccount(context);
-          },
-          text: 'Collect financial account',
+    return Scaffold(
+      appBar: AppBar(title: Text('Financial Connections')),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () => _collectAccount(context),
+              child: Text('Collect Financial Account'),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () => _collectBankToken(context),
+              child: Text('Collect Bank Token'),
+            ),
+            SizedBox(height: 20),
+            Text(response),
+          ],
         ),
-        Divider(),
-        SizedBox(height: 20),
-        ResponseCard(response: response),
-      ],
+      ),
     );
   }
+}
 ```
 
-The `collectFinancialConnectionsAccounts` method from the Flutter Stripe sdk returns a future that completes when the users completes the modal authentication flow. The result is in case if success a `FinancialConnectionSessionResult` or in case of failure (or cancellation) a `StripeException`.
+## Related Resources
+
+- [Stripe Financial Connections Documentation](https://stripe.com/docs/financial-connections)
+- [Flutter Stripe Package](https://pub.dev/packages/flutter_stripe)

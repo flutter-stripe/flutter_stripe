@@ -3,6 +3,7 @@ package com.flutter.stripe
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
 import com.reactnativestripesdk.StripeSdkModule
@@ -11,6 +12,11 @@ import com.reactnativestripesdk.utils.createMissingActivityError
 
 operator fun Int.invoke(): Int {
     return this
+}
+
+
+fun ReactApplicationContext.getCurrentActivity(): FragmentActivity? {
+    return currentActivity
 }
 
 /**

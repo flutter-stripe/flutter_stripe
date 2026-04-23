@@ -70,12 +70,21 @@ _SetupParameters _$SetupParametersFromJson(
       : CardBrandAcceptance.fromJson(
           json['cardBrandAcceptance'] as Map<String, dynamic>,
         ),
+  cardFundingFiltering: json['cardFundingFiltering'] == null
+      ? null
+      : CardFundingFiltering.fromJson(
+          json['cardFundingFiltering'] as Map<String, dynamic>,
+        ),
   customPaymentMethodConfiguration:
       json['customPaymentMethodConfiguration'] == null
       ? null
       : CustomPaymentMethodConfiguration.fromJson(
           json['customPaymentMethodConfiguration'] as Map<String, dynamic>,
         ),
+  opensCardScannerAutomatically: json['opensCardScannerAutomatically'] as bool?,
+  termsDisplay: _termsDisplayFromJson(
+    json['termsDisplay'] as Map<String, dynamic>?,
+  ),
 );
 
 Map<String, dynamic> _$SetupParametersToJson(
@@ -107,8 +116,11 @@ Map<String, dynamic> _$SetupParametersToJson(
   'removeSavedPaymentMethodMessage': instance.removeSavedPaymentMethodMessage,
   'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
   'cardBrandAcceptance': instance.cardBrandAcceptance?.toJson(),
+  'cardFundingFiltering': instance.cardFundingFiltering?.toJson(),
   'customPaymentMethodConfiguration': instance.customPaymentMethodConfiguration
       ?.toJson(),
+  'opensCardScannerAutomatically': instance.opensCardScannerAutomatically,
+  'termsDisplay': _termsDisplayToJson(instance.termsDisplay),
 };
 
 const _$ThemeModeEnumMap = {
@@ -303,6 +315,11 @@ _PaymentSheetAppearance _$PaymentSheetAppearanceFromJson(
       : EdgeInsetsConfig.fromJson(
           json['formInsetValues'] as Map<String, dynamic>,
         ),
+  applyLiquidGlass: json['applyLiquidGlass'] as bool?,
+  navigationBarStyle: $enumDecodeNullable(
+    _$NavigationBarStyleEnumMap,
+    json['navigationBarStyle'],
+  ),
 );
 
 Map<String, dynamic> _$PaymentSheetAppearanceToJson(
@@ -313,6 +330,14 @@ Map<String, dynamic> _$PaymentSheetAppearanceToJson(
   'primaryButton': instance.primaryButton?.toJson(),
   'embeddedPaymentElement': instance.embeddedPaymentElement?.toJson(),
   'formInsetValues': instance.formInsetValues?.toJson(),
+  'applyLiquidGlass': instance.applyLiquidGlass,
+  'navigationBarStyle':
+      _$NavigationBarStyleEnumMap[instance.navigationBarStyle],
+};
+
+const _$NavigationBarStyleEnumMap = {
+  NavigationBarStyle.Plain: 'Plain',
+  NavigationBarStyle.Glass: 'Glass',
 };
 
 _PaymentSheetAppearanceColors _$PaymentSheetAppearanceColorsFromJson(
@@ -625,7 +650,7 @@ Map<String, dynamic> _$LinkDisplayParamsToJson(_LinkDisplayParams instance) =>
 
 const _$LinkDisplayEnumMap = {
   LinkDisplay.automatic: 'automatic',
-  LinkDisplay.manual: 'manual',
+  LinkDisplay.never: 'never',
 };
 
 _EdgeInsetsConfig _$EdgeInsetsConfigFromJson(Map<String, dynamic> json) =>
@@ -774,4 +799,27 @@ Map<String, dynamic> _$CustomPaymentMethodConfigurationToJson(
   'customPaymentMethods': instance.customPaymentMethods
       .map((e) => e.toJson())
       .toList(),
+};
+
+_CardFundingFiltering _$CardFundingFilteringFromJson(
+  Map<String, dynamic> json,
+) => _CardFundingFiltering(
+  allowedCardFundingTypes: (json['allowedCardFundingTypes'] as List<dynamic>?)
+      ?.map((e) => $enumDecode(_$CardFundingTypeEnumMap, e))
+      .toList(),
+);
+
+Map<String, dynamic> _$CardFundingFilteringToJson(
+  _CardFundingFiltering instance,
+) => <String, dynamic>{
+  'allowedCardFundingTypes': instance.allowedCardFundingTypes
+      ?.map((e) => _$CardFundingTypeEnumMap[e]!)
+      .toList(),
+};
+
+const _$CardFundingTypeEnumMap = {
+  CardFundingType.debit: 'debit',
+  CardFundingType.credit: 'credit',
+  CardFundingType.prepaid: 'prepaid',
+  CardFundingType.unknown: 'unknown',
 };

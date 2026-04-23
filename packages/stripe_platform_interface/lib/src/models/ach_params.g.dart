@@ -45,7 +45,6 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.SepaDebit: 'SepaDebit',
   PaymentMethodType.AuBecsDebit: 'AuBecsDebit',
   PaymentMethodType.BacsDebit: 'BacsDebit',
-  PaymentMethodType.Giropay: 'Giropay',
   PaymentMethodType.P24: 'P24',
   PaymentMethodType.Eps: 'Eps',
   PaymentMethodType.Bancontact: 'Bancontact',
@@ -55,6 +54,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.USBankAccount: 'USBankAccount',
   PaymentMethodType.RevolutPay: 'RevolutPay',
   PaymentMethodType.Klarna: 'Klarna',
+  PaymentMethodType.Link: 'Link',
   PaymentMethodType.Unknown: 'Unknown',
 };
 

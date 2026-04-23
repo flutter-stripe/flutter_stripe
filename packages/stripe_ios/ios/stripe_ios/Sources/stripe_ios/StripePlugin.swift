@@ -40,6 +40,21 @@ func RCTMakeAndLogError(_ error: String, _ something: String?, _ anotherSomethin
 @objc(StripePlugin)
 class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
 
+    // Override with strong-backed computed properties so that the card field/form views
+    // are retained even when StripeSdkImpl declares them as `weak var` after a React Native
+    // sync. Without this, the views can be ARC-collected when the widget is unmounted
+    // (e.g. loading state), causing "Card details not complete" errors.
+    private var _cardFieldView: CardFieldView?
+    override var cardFieldView: CardFieldView? {
+        get { _cardFieldView }
+        set { _cardFieldView = newValue }
+    }
+
+    private var _cardFormView: CardFormView?
+    override var cardFormView: CardFormView? {
+        get { _cardFormView }
+        set { _cardFormView = newValue }
+    }
 
     private var channel: FlutterMethodChannel
 
@@ -173,6 +188,39 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
                 resolver: resolver(for: result),
                 rejecter: rejecter(for: result)
             )
+        case "clientSecretProviderSetupIntentClientSecretCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+            let setupIntentClientSecret = arguments["setupIntentClientSecret"] as? String else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return clientSecretProviderSetupIntentClientSecretCallback(
+                setupIntentClientSecret: setupIntentClientSecret,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "confirmationTokenCreationCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+                  let res = arguments["result"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return confirmationTokenCreationCallback(
+                result: res,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "clientSecretProviderCustomerSessionClientSecretCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+                  let customerSessionClientSecretDict = arguments["customerSessionClientSecretJson"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return clientSecretProviderCustomerSessionClientSecretCallback(
+                customerSessionClientSecretDict: customerSessionClientSecretDict,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
         case "retrieveCustomerSheetPaymentOptionSelection":
             return retrieveCustomerSheetPaymentOptionSelection(
                 resolver: resolver(for: result),
@@ -238,6 +286,11 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             )
         case "handleNextActionForSetup":
             return handleNextActionForSetupIntent(call, result: result)
+        case "createRadarSession":
+            createRadarSession(resolver: resolver(for: result), rejecter: rejecter(for: result))
+        case "pollAndClearPendingStripeConnectUrls":
+            // No-op on iOS — returns empty list
+            result([String]())
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -268,7 +321,17 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return StripeAPI.handleURLCallback(with: url)
+        let handled = StripeAPI.handleURLCallback(with: url)
+        #if DEBUG
+        if !handled {
+            print("[flutter_stripe] URL callback received but not handled by Stripe SDK: \(url.absoluteString)")
+            print("[flutter_stripe] If using Link or other redirect-based payment methods, ensure:")
+            print("[flutter_stripe]   1. The returnURL in PaymentSheet matches your app's URL scheme")
+            print("[flutter_stripe]   2. CFBundleURLSchemes in Info.plist includes your URL scheme")
+            print("[flutter_stripe]   3. If using FlutterDeepLinkingEnabled, call Stripe.handleURLCallback() manually from your Flutter deep link handler")
+        }
+        #endif
+        return handled
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]) -> Void) -> Bool {
@@ -283,6 +346,26 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
 }
 
 extension StripePlugin: StripeSdkEmitter {
+    func emitPaymentMethodMessagingElementDidUpdateHeight(_ value: [String : Any]) {
+        self.sendEvent(withName: "paymentMethodMessagingElementDidUpdateHeight", body: value)
+    }
+    
+    func emitPaymentMethodMessagingElementConfigureResult(_ value: [String : Any]) {
+        self.sendEvent(withName: "paymentMethodMessagingElementConfigureResult", body: value)
+    }
+    
+    func emitOnConfirmationTokenHandlerCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onConfirmationTokenHandlerCallback", body: value)
+    }
+    
+    func emitOnCustomerSessionProviderSetupIntentClientSecret() {
+        self.sendEvent(withName: "onCustomerSessionProviderSetupIntentClientSecret", body: [:])
+    }
+    
+    func emitOnCustomerSessionProviderCustomerSessionClientSecret() {
+        self.sendEvent(withName: "onCustomerSessionProviderCustomerSessionClientSecret", body: [:])
+    }
+    
     func emitOnCustomPaymentMethodConfirmHandlerCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onCustomPaymentMethodConfirmHandlerCallback", body: value)
     }
@@ -491,6 +574,16 @@ extension  StripePlugin {
             result(FlutterError.init(code: ErrorType.Failed, message: "Invalid parametes", details: nil))
             return
         }
+
+        // Validate URL format before passing to StripeSdkImpl
+        guard URL(string: url) != nil else {
+            #if DEBUG
+            print("[flutter_stripe] handleURLCallback called with invalid URL: \(url)")
+            #endif
+            result(false)
+            return
+        }
+
         handleURLCallback(
             url: url,
             resolver: resolver(for: result),
@@ -787,4 +880,12 @@ extension  StripePlugin {
         cardFieldView?.dangerouslyUpdateCardDetails(params: params)
         result(nil)
     }
+}
+
+func RCTKeyWindow() -> UIWindow? {
+    return UIApplication.shared
+        .connectedScenes
+        .compactMap { $0 as? UIWindowScene }
+        .flatMap { $0.windows }
+        .first { $0.isKeyWindow }
 }
