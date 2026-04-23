@@ -14,18 +14,16 @@ extension ExtensionVerifyMicrodepositsForPayment on Stripe {
   Future<PaymentIntentResponse> verifyMicrodepositsForPayment(
     String clientSecret, {
     VerifyMicrodepositsForPaymentData? data,
-  }) async {
-    final jsOptions = <String, dynamic>{
-      'clientSecret': clientSecret,
-      ...?data?.toJson(),
-    }.jsify();
-    return _verifyMicrodepositsForPayment(jsOptions)
+  }) {
+    final jsData = data?.toJson().jsify();
+    return _verifyMicrodepositsForPayment(clientSecret, jsData)
         .toDart
         .then((response) => response.toDart);
   }
 
   @JS('verifyMicrodepositsForPayment')
   external JSPromise<JSIntentResponse> _verifyMicrodepositsForPayment(
-    JSAny? options,
-  );
+    String clientSecret, [
+    JSAny? data,
+  ]);
 }
