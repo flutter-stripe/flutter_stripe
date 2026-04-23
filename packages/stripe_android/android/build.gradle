@@ -64,6 +64,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
     implementation "com.stripe:stripe-android:$stripe_version"
     implementation "com.stripe:financial-connections:$stripe_version"
+    implementation "com.stripe:payment-method-messaging:$stripe_version"
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.squareup.okhttp3:okhttp:5.3.2'
