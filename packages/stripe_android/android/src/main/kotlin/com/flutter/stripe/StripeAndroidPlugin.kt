@@ -85,6 +85,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         flutterPluginBinding
             .platformViewRegistry
             .registerViewFactory("flutter.stripe/embedded_payment_element", StripeSdkEmbeddedPaymentElementPlatformViewFactory(flutterPluginBinding, embeddedPaymentElementViewManager){stripeSdk})
+        flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/payment_method_messaging", StripePaymentMethodMessagingPlatformViewFactory(flutterPluginBinding))
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
