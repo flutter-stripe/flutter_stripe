@@ -226,22 +226,4 @@ Future<void> onGooglePayResult(paymentResult) async {
 
 ## Contributing
 
-You can help us make this project better, feel free to open an new issue or a pull request.
-
-##### Setup
-
-This project uses [melos](https://github.com/invertase/melos) to manage all the packages inside this repo.
-
-- Install melos: `dart pub global activate melos`
-- Setup melos in your local folder: `melos bootstrap`
-
-##### Useful commands
-
-- Format `melos run format`
-- Analyze `melos run analyze`
-- Test `melos run unittest`
-- Pub get `melos run get`
-
-##### Publishing
-
-- Use `melos version` and `melos publish` to keep all the repositories in sync
+You can help us make this project better, feel free to open an new issue or a pull request. Make sure to follow our [contribution guidelines](https://github.com/flutter-stripe/flutter_stripe/blob/HEAD/CONTRIBUTING.md).
