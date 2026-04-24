@@ -509,7 +509,7 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentIntent> collectBankAccount(
+  Future<CollectBankAccountResult> collectBankAccount(
       {required bool isPaymentIntent,
       required String clientSecret,
       required CollectBankAccountParams params}) {
@@ -517,7 +517,7 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits(
+  Future<CollectBankAccountResult> verifyPaymentIntentWithMicrodeposits(
       {required bool isPaymentIntent,
       required String clientSecret,
       required VerifyMicroDepositsParams params}) {
