@@ -16,9 +16,10 @@ extension ExtensionVerifyMicrodepositsForPayment on Stripe {
     VerifyMicrodepositsForPaymentData? data,
   }) {
     final jsData = data?.toJson().jsify();
-    return _verifyMicrodepositsForPayment(clientSecret, jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _verifyMicrodepositsForPayment(
+      clientSecret,
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('verifyMicrodepositsForPayment')

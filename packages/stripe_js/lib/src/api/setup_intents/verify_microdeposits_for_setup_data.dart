@@ -17,7 +17,6 @@ abstract class VerifyMicrodepositsForSetupData
     @JsonKey(name: 'descriptor_code') String? descriptorCode,
   }) = _VerifyMicrodepositsForSetupData;
 
-  factory VerifyMicrodepositsForSetupData.fromJson(
-    Map<String, dynamic> json,
-  ) => _$VerifyMicrodepositsForSetupDataFromJson(json);
+  factory VerifyMicrodepositsForSetupData.fromJson(Map<String, dynamic> json) =>
+      _$VerifyMicrodepositsForSetupDataFromJson(json);
 }

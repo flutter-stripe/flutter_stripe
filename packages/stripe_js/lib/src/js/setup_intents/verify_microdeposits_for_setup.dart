@@ -16,9 +16,10 @@ extension ExtensionVerifyMicrodepositsForSetup on Stripe {
     VerifyMicrodepositsForSetupData? data,
   }) {
     final jsData = data?.toJson().jsify();
-    return _verifyMicrodepositsForSetup(clientSecret, jsData)
-        .toDart
-        .then((response) => response.toDart);
+    return _verifyMicrodepositsForSetup(
+      clientSecret,
+      jsData,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('verifyMicrodepositsForSetup')

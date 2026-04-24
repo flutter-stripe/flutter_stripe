@@ -20,9 +20,9 @@ extension ExtensionCollectBankAccountForSetup on Stripe {
       'clientSecret': clientSecret,
       if (params != null) 'params': params.toJson(),
     }.jsify();
-    return _collectBankAccountForSetup(jsOptions)
-        .toDart
-        .then((response) => response.toDart);
+    return _collectBankAccountForSetup(
+      jsOptions,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('collectBankAccountForSetup')
