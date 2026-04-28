@@ -306,7 +306,7 @@ class PaymentSheetManager(
     }
     val primaryButtonLabel = args.getString("primaryButtonLabel")
     val googlePayConfig = buildGooglePayConfig(args.getMap("googlePay"))
-    val linkConfig = buildLinkConfig(args.getMap("link"))
+    val linkConfig = buildLinkConfig(args.getMap("linkDisplayParams"))
     val allowsDelayedPaymentMethods = args.getBooleanOr("allowsDelayedPaymentMethods", false)
     val billingDetailsMap = args.getMap("defaultBillingDetails")
     val billingConfigParams = args.getMap("billingDetailsCollectionConfiguration")

@@ -223,8 +223,8 @@ extension StripeSdkImpl {
       }
     }
 
-    if let linkParams = params["link"] as? NSDictionary {
-      let display = StripeSdkImpl.mapToLinkDisplay(value: linkParams["display"] as? String)
+    if let linkParams = params["linkDisplayParams"] as? NSDictionary {
+      let display = StripeSdkImpl.mapToLinkDisplay(value: linkParams["linkDisplay"] as? String)
       configuration.link = PaymentSheet.LinkConfiguration(display: display)
     }
 

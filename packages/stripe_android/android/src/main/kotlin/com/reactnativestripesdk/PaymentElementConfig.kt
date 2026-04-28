@@ -65,7 +65,7 @@ internal fun buildLinkConfig(params: ReadableMap?): PaymentSheet.LinkConfigurati
     return PaymentSheet.LinkConfiguration()
   }
 
-  val display = mapStringToLinkDisplay(params.getString("display"))
+  val display = mapStringToLinkDisplay(params.getString("linkDisplay"))
 
   return PaymentSheet.LinkConfiguration(
     display = display,
