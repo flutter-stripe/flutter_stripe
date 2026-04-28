@@ -790,7 +790,9 @@ mixin _$IntentConfiguration {
  IntentMode get mode;/// The list of payment method types that the customer can use in the payment sheet.
 ///
 /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
- List<String>? get paymentMethodTypes;/// Called when the customer confirms payment. Your implementation should create
+ List<String>? get paymentMethodTypes;/// Configuration ID for the selected payment method configuration.
+/// See https://stripe.com/docs/payments/multiple-payment-method-configs
+ String? get paymentMethodConfigurationId;/// Called when the customer confirms payment. Your implementation should create
 /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
 @JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? get confirmHandler;/// Called when the customer confirms token payment.
 @JsonKey(includeFromJson: false, includeToJson: false) ConfirmTokenHandler? get confirmTokenHandler;
@@ -806,16 +808,16 @@ $IntentConfigurationCopyWith<IntentConfiguration> get copyWith => _$IntentConfig
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, paymentMethodTypes)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, paymentMethodTypes)&&(identical(other.paymentMethodConfigurationId, paymentMethodConfigurationId) || other.paymentMethodConfigurationId == paymentMethodConfigurationId)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(paymentMethodTypes),confirmHandler,confirmTokenHandler);
+int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(paymentMethodTypes),paymentMethodConfigurationId,confirmHandler,confirmTokenHandler);
 
 @override
 String toString() {
-  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
+  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, paymentMethodConfigurationId: $paymentMethodConfigurationId, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
 }
 
 
@@ -826,7 +828,7 @@ abstract mixin class $IntentConfigurationCopyWith<$Res>  {
   factory $IntentConfigurationCopyWith(IntentConfiguration value, $Res Function(IntentConfiguration) _then) = _$IntentConfigurationCopyWithImpl;
 @useResult
 $Res call({
- IntentMode mode, List<String>? paymentMethodTypes,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? confirmHandler,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmTokenHandler? confirmTokenHandler
+ IntentMode mode, List<String>? paymentMethodTypes, String? paymentMethodConfigurationId,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? confirmHandler,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmTokenHandler? confirmTokenHandler
 });
 
 
@@ -843,11 +845,12 @@ class _$IntentConfigurationCopyWithImpl<$Res>
 
 /// Create a copy of IntentConfiguration
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? confirmHandler = freezed,Object? confirmTokenHandler = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? paymentMethodConfigurationId = freezed,Object? confirmHandler = freezed,Object? confirmTokenHandler = freezed,}) {
   return _then(_self.copyWith(
 mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
 as IntentMode,paymentMethodTypes: freezed == paymentMethodTypes ? _self.paymentMethodTypes : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
-as List<String>?,confirmHandler: freezed == confirmHandler ? _self.confirmHandler : confirmHandler // ignore: cast_nullable_to_non_nullable
+as List<String>?,paymentMethodConfigurationId: freezed == paymentMethodConfigurationId ? _self.paymentMethodConfigurationId : paymentMethodConfigurationId // ignore: cast_nullable_to_non_nullable
+as String?,confirmHandler: freezed == confirmHandler ? _self.confirmHandler : confirmHandler // ignore: cast_nullable_to_non_nullable
 as ConfirmHandler?,confirmTokenHandler: freezed == confirmTokenHandler ? _self.confirmTokenHandler : confirmTokenHandler // ignore: cast_nullable_to_non_nullable
 as ConfirmTokenHandler?,
   ));
@@ -943,10 +946,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( IntentMode mode,  List<String>? paymentMethodTypes,  String? paymentMethodConfigurationId, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntentConfiguration() when $default != null:
-return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.confirmTokenHandler);case _:
+return $default(_that.mode,_that.paymentMethodTypes,_that.paymentMethodConfigurationId,_that.confirmHandler,_that.confirmTokenHandler);case _:
   return orElse();
 
 }
@@ -964,10 +967,10 @@ return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.c
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( IntentMode mode,  List<String>? paymentMethodTypes,  String? paymentMethodConfigurationId, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)  $default,) {final _that = this;
 switch (_that) {
 case _IntentConfiguration():
-return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.confirmTokenHandler);case _:
+return $default(_that.mode,_that.paymentMethodTypes,_that.paymentMethodConfigurationId,_that.confirmHandler,_that.confirmTokenHandler);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -984,10 +987,10 @@ return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.c
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( IntentMode mode,  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( IntentMode mode,  List<String>? paymentMethodTypes,  String? paymentMethodConfigurationId, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmHandler? confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false)  ConfirmTokenHandler? confirmTokenHandler)?  $default,) {final _that = this;
 switch (_that) {
 case _IntentConfiguration() when $default != null:
-return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.confirmTokenHandler);case _:
+return $default(_that.mode,_that.paymentMethodTypes,_that.paymentMethodConfigurationId,_that.confirmHandler,_that.confirmTokenHandler);case _:
   return null;
 
 }
@@ -999,7 +1002,7 @@ return $default(_that.mode,_that.paymentMethodTypes,_that.confirmHandler,_that.c
 
 @JsonSerializable(explicitToJson: true)
 class _IntentConfiguration implements IntentConfiguration {
-  const _IntentConfiguration({required this.mode, final  List<String>? paymentMethodTypes, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmTokenHandler}): _paymentMethodTypes = paymentMethodTypes;
+  const _IntentConfiguration({required this.mode, final  List<String>? paymentMethodTypes, this.paymentMethodConfigurationId, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmTokenHandler}): _paymentMethodTypes = paymentMethodTypes;
   factory _IntentConfiguration.fromJson(Map<String, dynamic> json) => _$IntentConfigurationFromJson(json);
 
 /// Data related to the future payment intent
@@ -1019,6 +1022,9 @@ class _IntentConfiguration implements IntentConfiguration {
   return EqualUnmodifiableListView(value);
 }
 
+/// Configuration ID for the selected payment method configuration.
+/// See https://stripe.com/docs/payments/multiple-payment-method-configs
+@override final  String? paymentMethodConfigurationId;
 /// Called when the customer confirms payment. Your implementation should create
 /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
 @override@JsonKey(includeFromJson: false, includeToJson: false) final  ConfirmHandler? confirmHandler;
@@ -1038,16 +1044,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other._paymentMethodTypes, _paymentMethodTypes)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other._paymentMethodTypes, _paymentMethodTypes)&&(identical(other.paymentMethodConfigurationId, paymentMethodConfigurationId) || other.paymentMethodConfigurationId == paymentMethodConfigurationId)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(_paymentMethodTypes),confirmHandler,confirmTokenHandler);
+int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(_paymentMethodTypes),paymentMethodConfigurationId,confirmHandler,confirmTokenHandler);
 
 @override
 String toString() {
-  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
+  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, paymentMethodConfigurationId: $paymentMethodConfigurationId, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
 }
 
 
@@ -1058,7 +1064,7 @@ abstract mixin class _$IntentConfigurationCopyWith<$Res> implements $IntentConfi
   factory _$IntentConfigurationCopyWith(_IntentConfiguration value, $Res Function(_IntentConfiguration) _then) = __$IntentConfigurationCopyWithImpl;
 @override @useResult
 $Res call({
- IntentMode mode, List<String>? paymentMethodTypes,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? confirmHandler,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmTokenHandler? confirmTokenHandler
+ IntentMode mode, List<String>? paymentMethodTypes, String? paymentMethodConfigurationId,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmHandler? confirmHandler,@JsonKey(includeFromJson: false, includeToJson: false) ConfirmTokenHandler? confirmTokenHandler
 });
 
 
@@ -1075,11 +1081,12 @@ class __$IntentConfigurationCopyWithImpl<$Res>
 
 /// Create a copy of IntentConfiguration
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? confirmHandler = freezed,Object? confirmTokenHandler = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? paymentMethodConfigurationId = freezed,Object? confirmHandler = freezed,Object? confirmTokenHandler = freezed,}) {
   return _then(_IntentConfiguration(
 mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
 as IntentMode,paymentMethodTypes: freezed == paymentMethodTypes ? _self._paymentMethodTypes : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
-as List<String>?,confirmHandler: freezed == confirmHandler ? _self.confirmHandler : confirmHandler // ignore: cast_nullable_to_non_nullable
+as List<String>?,paymentMethodConfigurationId: freezed == paymentMethodConfigurationId ? _self.paymentMethodConfigurationId : paymentMethodConfigurationId // ignore: cast_nullable_to_non_nullable
+as String?,confirmHandler: freezed == confirmHandler ? _self.confirmHandler : confirmHandler // ignore: cast_nullable_to_non_nullable
 as ConfirmHandler?,confirmTokenHandler: freezed == confirmTokenHandler ? _self.confirmTokenHandler : confirmTokenHandler // ignore: cast_nullable_to_non_nullable
 as ConfirmTokenHandler?,
   ));
@@ -8491,8 +8498,8 @@ return $default(_that.spacing);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _FloatingConfig implements FloatingConfig {
   const _FloatingConfig({this.spacing});
   factory _FloatingConfig.fromJson(Map<String, dynamic> json) => _$FloatingConfigFromJson(json);
@@ -8788,8 +8795,8 @@ return $default(_that.style,_that.additionalInsets,_that.flat,_that.floating);ca
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _RowConfig implements RowConfig {
   const _RowConfig({this.style, this.additionalInsets, this.flat, this.floating});
   factory _RowConfig.fromJson(Map<String, dynamic> json) => _$RowConfigFromJson(json);
@@ -9099,8 +9106,8 @@ return $default(_that.row);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _EmbeddedPaymentElementAppearance implements EmbeddedPaymentElementAppearance {
   const _EmbeddedPaymentElementAppearance({this.row});
   factory _EmbeddedPaymentElementAppearance.fromJson(Map<String, dynamic> json) => _$EmbeddedPaymentElementAppearanceFromJson(json);

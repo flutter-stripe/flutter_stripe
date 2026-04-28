@@ -239,6 +239,7 @@ extension StripeSdkImpl {
                 modeParams: modeParams,
                 paymentMethodTypes: intentConfiguration["paymentMethodTypes"] as? [String],
                 onBehalfOf: intentConfiguration["onBehalfOf"] as? String,
+                paymentMethodConfigurationId: intentConfiguration["paymentMethodConfigurationId"] as? String,
                 captureMethod: StripeSdkImpl.mapCaptureMethod(captureMethodString),
                 useConfirmationTokenCallback: hasConfirmationTokenHandler
             )
@@ -337,6 +338,7 @@ extension StripeSdkImpl {
         modeParams: NSDictionary,
         paymentMethodTypes: [String]?,
         onBehalfOf: String?,
+        paymentMethodConfigurationId: String?,
         captureMethod: PaymentSheet.IntentConfiguration.CaptureMethod,
         useConfirmationTokenCallback: Bool
     ) -> PaymentSheet.IntentConfiguration {
@@ -361,6 +363,7 @@ extension StripeSdkImpl {
                 mode: mode,
                 paymentMethodTypes: paymentMethodTypes,
                 onBehalfOf: onBehalfOf,
+                paymentMethodConfigurationId: paymentMethodConfigurationId,
                 confirmationTokenConfirmHandler: { confirmationToken in
                     return try await withCheckedThrowingContinuation { continuation in
                         self.paymentSheetConfirmationTokenIntentCreationCallback = { result in
@@ -381,6 +384,7 @@ extension StripeSdkImpl {
                 mode: mode,
                 paymentMethodTypes: paymentMethodTypes,
                 onBehalfOf: onBehalfOf,
+                paymentMethodConfigurationId: paymentMethodConfigurationId,
                 confirmHandler: { paymentMethod, shouldSavePaymentMethod, intentCreationCallback in
                     self.paymentSheetIntentCreationCallback = intentCreationCallback
                     self.emitter?.emitOnConfirmHandlerCallback([

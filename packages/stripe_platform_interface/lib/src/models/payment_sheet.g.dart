@@ -147,6 +147,8 @@ _IntentConfiguration _$IntentConfigurationFromJson(Map<String, dynamic> json) =>
       paymentMethodTypes: (json['paymentMethodTypes'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      paymentMethodConfigurationId:
+          json['paymentMethodConfigurationId'] as String?,
     );
 
 Map<String, dynamic> _$IntentConfigurationToJson(
@@ -154,6 +156,7 @@ Map<String, dynamic> _$IntentConfigurationToJson(
 ) => <String, dynamic>{
   'mode': instance.mode.toJson(),
   'paymentMethodTypes': instance.paymentMethodTypes,
+  'paymentMethodConfigurationId': instance.paymentMethodConfigurationId,
 };
 
 _PaymentMode _$PaymentModeFromJson(Map<String, dynamic> json) => _PaymentMode(
@@ -746,8 +749,8 @@ Map<String, dynamic> _$RowConfigToJson(_RowConfig instance) =>
     <String, dynamic>{
       'style': _$RowStyleEnumMap[instance.style],
       'additionalInsets': instance.additionalInsets,
-      'flat': instance.flat,
-      'floating': instance.floating,
+      'flat': instance.flat?.toJson(),
+      'floating': instance.floating?.toJson(),
     };
 
 const _$RowStyleEnumMap = {
@@ -767,7 +770,7 @@ _EmbeddedPaymentElementAppearance _$EmbeddedPaymentElementAppearanceFromJson(
 
 Map<String, dynamic> _$EmbeddedPaymentElementAppearanceToJson(
   _EmbeddedPaymentElementAppearance instance,
-) => <String, dynamic>{'row': instance.row};
+) => <String, dynamic>{'row': instance.row?.toJson()};
 
 _CustomPaymentMethod _$CustomPaymentMethodFromJson(Map<String, dynamic> json) =>
     _CustomPaymentMethod(

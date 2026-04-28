@@ -744,6 +744,11 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  void setConfirmHandler(ConfirmHandler? handler) {
+    _confirmHandler = handler;
+  }
+
+  @override
   Future<CanAddCardToWalletResult> canAddCardToWallet(
     CanAddCardToWalletParams params,
   ) async {
