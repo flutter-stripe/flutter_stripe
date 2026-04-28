@@ -447,16 +447,9 @@ extension  StripePlugin {
 
     func initPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
-              var params = arguments["params"] as? NSDictionary else {
+              let params = arguments["params"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
-        }
-        if (params.object(forKey: "intentConfiguration") != nil && params.object(forKey: "intentConfiguration") is NSDictionary) {
-            let mutable = (params["intentConfiguration"] as! NSDictionary).mutableCopy() as! NSMutableDictionary
-            mutable["confirmHandler"] = true;
-            let adjusted = params.mutableCopy() as! NSMutableDictionary
-            adjusted["intentConfiguration"] = mutable
-            params = adjusted
         }
         initPaymentSheet(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
