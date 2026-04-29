@@ -31,11 +31,9 @@ _SetupParameters _$SetupParametersFromJson(
       : PaymentSheetGooglePay.fromJson(
           json['googlePay'] as Map<String, dynamic>,
         ),
-  linkDisplayParams: json['linkDisplayParams'] == null
+  linkDisplayParams: json['link'] == null
       ? null
-      : LinkDisplayParams.fromJson(
-          json['linkDisplayParams'] as Map<String, dynamic>,
-        ),
+      : LinkDisplayParams.fromJson(json['link'] as Map<String, dynamic>),
   allowsDelayedPaymentMethods:
       json['allowsDelayedPaymentMethods'] as bool? ?? false,
   appearance: json['appearance'] == null
@@ -102,7 +100,7 @@ Map<String, dynamic> _$SetupParametersToJson(
   'applePay': instance.applePay?.toJson(),
   'style': UserInterfaceStyleKey.toJson(instance.style),
   'googlePay': instance.googlePay?.toJson(),
-  'linkDisplayParams': instance.linkDisplayParams?.toJson(),
+  'link': instance.linkDisplayParams?.toJson(),
   'allowsDelayedPaymentMethods': instance.allowsDelayedPaymentMethods,
   'appearance': instance.appearance?.toJson(),
   'defaultBillingDetails': instance.billingDetails?.toJson(),
@@ -643,13 +641,11 @@ Map<String, dynamic> _$CardBrandAcceptanceDisallowedToJson(
 
 _LinkDisplayParams _$LinkDisplayParamsFromJson(Map<String, dynamic> json) =>
     _LinkDisplayParams(
-      linkDisplay: $enumDecode(_$LinkDisplayEnumMap, json['linkDisplay']),
+      linkDisplay: $enumDecode(_$LinkDisplayEnumMap, json['display']),
     );
 
 Map<String, dynamic> _$LinkDisplayParamsToJson(_LinkDisplayParams instance) =>
-    <String, dynamic>{
-      'linkDisplay': _$LinkDisplayEnumMap[instance.linkDisplay]!,
-    };
+    <String, dynamic>{'display': _$LinkDisplayEnumMap[instance.linkDisplay]!};
 
 const _$LinkDisplayEnumMap = {
   LinkDisplay.automatic: 'automatic',

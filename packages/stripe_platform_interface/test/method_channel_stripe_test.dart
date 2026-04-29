@@ -327,21 +327,26 @@ void main() {
 
     group('initPaymentSheet', () {
       late Completer<void> completer;
+      late MethodChannelMock methodChannelMock;
       setUp(() async {
         completer = Completer();
+        methodChannelMock = MethodChannelMock(
+          channelName: methodChannelName,
+          method: 'initPaymentSheet',
+          result: {},
+        );
         sut = MethodChannelStripe(
           platformIsIos: false,
           platformIsAndroid: true,
-          methodChannel: MethodChannelMock(
-            channelName: methodChannelName,
-            method: 'initPaymentSheet',
-            result: {},
-          ).methodChannel,
+          methodChannel: methodChannelMock.methodChannel,
         );
         await sut
             .initPaymentSheet(
               const SetupPaymentSheetParameters(
                 paymentIntentClientSecret: 'paymentIntentClientSecret',
+                linkDisplayParams: LinkDisplayParams(
+                  linkDisplay: LinkDisplay.never,
+                ),
               ),
             )
             .then((_) => completer.complete());
@@ -349,6 +354,11 @@ void main() {
 
       test('It completes operation', () {
         expect(completer.isCompleted, true);
+      });
+
+      test('It serializes Link display params using native field names', () {
+        final arguments = methodChannelMock.log.single.arguments as Map;
+        expect(arguments['params'], containsPair('link', {'display': 'never'}));
       });
     });
 
