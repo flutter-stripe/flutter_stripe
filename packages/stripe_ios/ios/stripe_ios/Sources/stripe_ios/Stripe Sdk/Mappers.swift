@@ -560,6 +560,9 @@ class Mappers {
         }
 
         let shipping = STPPaymentIntentShippingDetailsParams(address: shippingAddress, name: shippingDetails["name"] as? String ?? "")
+        shipping.phone = shippingDetails["phone"] as? String
+        shipping.carrier = shippingDetails["carrier"] as? String
+        shipping.trackingNumber = shippingDetails["trackingNumber"] as? String
 
         return shipping
     }
