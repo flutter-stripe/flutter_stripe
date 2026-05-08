@@ -50,7 +50,7 @@ mixin _$SetupPaymentSheetParameters {
 @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? get style;/// Configuration related to Google Pay
 /// If set, PaymentSheet displays Google Pay as a payment option
  PaymentSheetGooglePay? get googlePay;/// Configuration related to Link
- LinkDisplayParams? get linkDisplayParams;/// Flag that allows payment methods that do not move money at the send of the checkout.
+@JsonKey(name: 'link') LinkDisplayParams? get linkDisplayParams;/// Flag that allows payment methods that do not move money at the send of the checkout.
 ///
 /// Defaul value is false.
  bool get allowsDelayedPaymentMethods;/// Appearance of the paymentsheet.
@@ -128,7 +128,7 @@ abstract mixin class $SetupPaymentSheetParametersCopyWith<$Res>  {
   factory $SetupPaymentSheetParametersCopyWith(SetupPaymentSheetParameters value, $Res Function(SetupPaymentSheetParameters) _then) = _$SetupPaymentSheetParametersCopyWithImpl;
 @useResult
 $Res call({
- bool customFlow, String? customerId, String? primaryButtonLabel, String? customerEphemeralKeySecret, String? customerSessionClientSecret, String? paymentIntentClientSecret, String? setupIntentClientSecret, IntentConfiguration? intentConfiguration, String? merchantDisplayName, PaymentSheetApplePay? applePay,@JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style, PaymentSheetGooglePay? googlePay, LinkDisplayParams? linkDisplayParams, bool allowsDelayedPaymentMethods, PaymentSheetAppearance? appearance,@JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails, bool? allowsRemovalOfLastSavedPaymentMethod, List<String>? paymentMethodOrder, String? returnURL, BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration, String? removeSavedPaymentMethodMessage,@JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks, CardBrandAcceptance? cardBrandAcceptance, CardFundingFiltering? cardFundingFiltering, CustomPaymentMethodConfiguration? customPaymentMethodConfiguration, bool? opensCardScannerAutomatically,@JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson) Map<String, TermsDisplay>? termsDisplay
+ bool customFlow, String? customerId, String? primaryButtonLabel, String? customerEphemeralKeySecret, String? customerSessionClientSecret, String? paymentIntentClientSecret, String? setupIntentClientSecret, IntentConfiguration? intentConfiguration, String? merchantDisplayName, PaymentSheetApplePay? applePay,@JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style, PaymentSheetGooglePay? googlePay,@JsonKey(name: 'link') LinkDisplayParams? linkDisplayParams, bool allowsDelayedPaymentMethods, PaymentSheetAppearance? appearance,@JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails, bool? allowsRemovalOfLastSavedPaymentMethod, List<String>? paymentMethodOrder, String? returnURL, BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration, String? removeSavedPaymentMethodMessage,@JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks, CardBrandAcceptance? cardBrandAcceptance, CardFundingFiltering? cardFundingFiltering, CustomPaymentMethodConfiguration? customPaymentMethodConfiguration, bool? opensCardScannerAutomatically,@JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson) Map<String, TermsDisplay>? termsDisplay
 });
 
 
@@ -379,7 +379,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool customFlow,  String? customerId,  String? primaryButtonLabel,  String? customerEphemeralKeySecret,  String? customerSessionClientSecret,  String? paymentIntentClientSecret,  String? setupIntentClientSecret,  IntentConfiguration? intentConfiguration,  String? merchantDisplayName,  PaymentSheetApplePay? applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetGooglePay? googlePay,  LinkDisplayParams? linkDisplayParams,  bool allowsDelayedPaymentMethods,  PaymentSheetAppearance? appearance, @JsonKey(name: 'defaultBillingDetails')  BillingDetails? billingDetails,  bool? allowsRemovalOfLastSavedPaymentMethod,  List<String>? paymentMethodOrder,  String? returnURL,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance,  CardFundingFiltering? cardFundingFiltering,  CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,  bool? opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)  Map<String, TermsDisplay>? termsDisplay)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool customFlow,  String? customerId,  String? primaryButtonLabel,  String? customerEphemeralKeySecret,  String? customerSessionClientSecret,  String? paymentIntentClientSecret,  String? setupIntentClientSecret,  IntentConfiguration? intentConfiguration,  String? merchantDisplayName,  PaymentSheetApplePay? applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetGooglePay? googlePay, @JsonKey(name: 'link')  LinkDisplayParams? linkDisplayParams,  bool allowsDelayedPaymentMethods,  PaymentSheetAppearance? appearance, @JsonKey(name: 'defaultBillingDetails')  BillingDetails? billingDetails,  bool? allowsRemovalOfLastSavedPaymentMethod,  List<String>? paymentMethodOrder,  String? returnURL,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance,  CardFundingFiltering? cardFundingFiltering,  CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,  bool? opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)  Map<String, TermsDisplay>? termsDisplay)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SetupParameters() when $default != null:
 return $default(_that.customFlow,_that.customerId,_that.primaryButtonLabel,_that.customerEphemeralKeySecret,_that.customerSessionClientSecret,_that.paymentIntentClientSecret,_that.setupIntentClientSecret,_that.intentConfiguration,_that.merchantDisplayName,_that.applePay,_that.style,_that.googlePay,_that.linkDisplayParams,_that.allowsDelayedPaymentMethods,_that.appearance,_that.billingDetails,_that.allowsRemovalOfLastSavedPaymentMethod,_that.paymentMethodOrder,_that.returnURL,_that.billingDetailsCollectionConfiguration,_that.removeSavedPaymentMethodMessage,_that.preferredNetworks,_that.cardBrandAcceptance,_that.cardFundingFiltering,_that.customPaymentMethodConfiguration,_that.opensCardScannerAutomatically,_that.termsDisplay);case _:
@@ -400,7 +400,7 @@ return $default(_that.customFlow,_that.customerId,_that.primaryButtonLabel,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool customFlow,  String? customerId,  String? primaryButtonLabel,  String? customerEphemeralKeySecret,  String? customerSessionClientSecret,  String? paymentIntentClientSecret,  String? setupIntentClientSecret,  IntentConfiguration? intentConfiguration,  String? merchantDisplayName,  PaymentSheetApplePay? applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetGooglePay? googlePay,  LinkDisplayParams? linkDisplayParams,  bool allowsDelayedPaymentMethods,  PaymentSheetAppearance? appearance, @JsonKey(name: 'defaultBillingDetails')  BillingDetails? billingDetails,  bool? allowsRemovalOfLastSavedPaymentMethod,  List<String>? paymentMethodOrder,  String? returnURL,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance,  CardFundingFiltering? cardFundingFiltering,  CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,  bool? opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)  Map<String, TermsDisplay>? termsDisplay)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool customFlow,  String? customerId,  String? primaryButtonLabel,  String? customerEphemeralKeySecret,  String? customerSessionClientSecret,  String? paymentIntentClientSecret,  String? setupIntentClientSecret,  IntentConfiguration? intentConfiguration,  String? merchantDisplayName,  PaymentSheetApplePay? applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetGooglePay? googlePay, @JsonKey(name: 'link')  LinkDisplayParams? linkDisplayParams,  bool allowsDelayedPaymentMethods,  PaymentSheetAppearance? appearance, @JsonKey(name: 'defaultBillingDetails')  BillingDetails? billingDetails,  bool? allowsRemovalOfLastSavedPaymentMethod,  List<String>? paymentMethodOrder,  String? returnURL,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance,  CardFundingFiltering? cardFundingFiltering,  CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,  bool? opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)  Map<String, TermsDisplay>? termsDisplay)  $default,) {final _that = this;
 switch (_that) {
 case _SetupParameters():
 return $default(_that.customFlow,_that.customerId,_that.primaryButtonLabel,_that.customerEphemeralKeySecret,_that.customerSessionClientSecret,_that.paymentIntentClientSecret,_that.setupIntentClientSecret,_that.intentConfiguration,_that.merchantDisplayName,_that.applePay,_that.style,_that.googlePay,_that.linkDisplayParams,_that.allowsDelayedPaymentMethods,_that.appearance,_that.billingDetails,_that.allowsRemovalOfLastSavedPaymentMethod,_that.paymentMethodOrder,_that.returnURL,_that.billingDetailsCollectionConfiguration,_that.removeSavedPaymentMethodMessage,_that.preferredNetworks,_that.cardBrandAcceptance,_that.cardFundingFiltering,_that.customPaymentMethodConfiguration,_that.opensCardScannerAutomatically,_that.termsDisplay);case _:
@@ -420,7 +420,7 @@ return $default(_that.customFlow,_that.customerId,_that.primaryButtonLabel,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool customFlow,  String? customerId,  String? primaryButtonLabel,  String? customerEphemeralKeySecret,  String? customerSessionClientSecret,  String? paymentIntentClientSecret,  String? setupIntentClientSecret,  IntentConfiguration? intentConfiguration,  String? merchantDisplayName,  PaymentSheetApplePay? applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetGooglePay? googlePay,  LinkDisplayParams? linkDisplayParams,  bool allowsDelayedPaymentMethods,  PaymentSheetAppearance? appearance, @JsonKey(name: 'defaultBillingDetails')  BillingDetails? billingDetails,  bool? allowsRemovalOfLastSavedPaymentMethod,  List<String>? paymentMethodOrder,  String? returnURL,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance,  CardFundingFiltering? cardFundingFiltering,  CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,  bool? opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)  Map<String, TermsDisplay>? termsDisplay)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool customFlow,  String? customerId,  String? primaryButtonLabel,  String? customerEphemeralKeySecret,  String? customerSessionClientSecret,  String? paymentIntentClientSecret,  String? setupIntentClientSecret,  IntentConfiguration? intentConfiguration,  String? merchantDisplayName,  PaymentSheetApplePay? applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson)  ThemeMode? style,  PaymentSheetGooglePay? googlePay, @JsonKey(name: 'link')  LinkDisplayParams? linkDisplayParams,  bool allowsDelayedPaymentMethods,  PaymentSheetAppearance? appearance, @JsonKey(name: 'defaultBillingDetails')  BillingDetails? billingDetails,  bool? allowsRemovalOfLastSavedPaymentMethod,  List<String>? paymentMethodOrder,  String? returnURL,  BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration,  String? removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks,  CardBrandAcceptance? cardBrandAcceptance,  CardFundingFiltering? cardFundingFiltering,  CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,  bool? opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)  Map<String, TermsDisplay>? termsDisplay)?  $default,) {final _that = this;
 switch (_that) {
 case _SetupParameters() when $default != null:
 return $default(_that.customFlow,_that.customerId,_that.primaryButtonLabel,_that.customerEphemeralKeySecret,_that.customerSessionClientSecret,_that.paymentIntentClientSecret,_that.setupIntentClientSecret,_that.intentConfiguration,_that.merchantDisplayName,_that.applePay,_that.style,_that.googlePay,_that.linkDisplayParams,_that.allowsDelayedPaymentMethods,_that.appearance,_that.billingDetails,_that.allowsRemovalOfLastSavedPaymentMethod,_that.paymentMethodOrder,_that.returnURL,_that.billingDetailsCollectionConfiguration,_that.removeSavedPaymentMethodMessage,_that.preferredNetworks,_that.cardBrandAcceptance,_that.cardFundingFiltering,_that.customPaymentMethodConfiguration,_that.opensCardScannerAutomatically,_that.termsDisplay);case _:
@@ -435,7 +435,7 @@ return $default(_that.customFlow,_that.customerId,_that.primaryButtonLabel,_that
 
 @JsonSerializable(explicitToJson: true)
 class _SetupParameters implements SetupPaymentSheetParameters {
-  const _SetupParameters({this.customFlow = false, this.customerId, this.primaryButtonLabel, this.customerEphemeralKeySecret, this.customerSessionClientSecret, this.paymentIntentClientSecret, this.setupIntentClientSecret, this.intentConfiguration, this.merchantDisplayName, this.applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style, this.googlePay, this.linkDisplayParams, this.allowsDelayedPaymentMethods = false, this.appearance, @JsonKey(name: 'defaultBillingDetails') this.billingDetails, this.allowsRemovalOfLastSavedPaymentMethod, final  List<String>? paymentMethodOrder, this.returnURL, this.billingDetailsCollectionConfiguration, this.removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson) final  List<CardBrand>? preferredNetworks, this.cardBrandAcceptance, this.cardFundingFiltering, this.customPaymentMethodConfiguration, this.opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson) final  Map<String, TermsDisplay>? termsDisplay}): _paymentMethodOrder = paymentMethodOrder,_preferredNetworks = preferredNetworks,_termsDisplay = termsDisplay;
+  const _SetupParameters({this.customFlow = false, this.customerId, this.primaryButtonLabel, this.customerEphemeralKeySecret, this.customerSessionClientSecret, this.paymentIntentClientSecret, this.setupIntentClientSecret, this.intentConfiguration, this.merchantDisplayName, this.applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style, this.googlePay, @JsonKey(name: 'link') this.linkDisplayParams, this.allowsDelayedPaymentMethods = false, this.appearance, @JsonKey(name: 'defaultBillingDetails') this.billingDetails, this.allowsRemovalOfLastSavedPaymentMethod, final  List<String>? paymentMethodOrder, this.returnURL, this.billingDetailsCollectionConfiguration, this.removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson) final  List<CardBrand>? preferredNetworks, this.cardBrandAcceptance, this.cardFundingFiltering, this.customPaymentMethodConfiguration, this.opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson) final  Map<String, TermsDisplay>? termsDisplay}): _paymentMethodOrder = paymentMethodOrder,_preferredNetworks = preferredNetworks,_termsDisplay = termsDisplay;
   factory _SetupParameters.fromJson(Map<String, dynamic> json) => _$SetupParametersFromJson(json);
 
 /// Whether or not to use a custom flow.
@@ -478,7 +478,7 @@ class _SetupParameters implements SetupPaymentSheetParameters {
 /// If set, PaymentSheet displays Google Pay as a payment option
 @override final  PaymentSheetGooglePay? googlePay;
 /// Configuration related to Link
-@override final  LinkDisplayParams? linkDisplayParams;
+@override@JsonKey(name: 'link') final  LinkDisplayParams? linkDisplayParams;
 /// Flag that allows payment methods that do not move money at the send of the checkout.
 ///
 /// Defaul value is false.
@@ -609,7 +609,7 @@ abstract mixin class _$SetupParametersCopyWith<$Res> implements $SetupPaymentShe
   factory _$SetupParametersCopyWith(_SetupParameters value, $Res Function(_SetupParameters) _then) = __$SetupParametersCopyWithImpl;
 @override @useResult
 $Res call({
- bool customFlow, String? customerId, String? primaryButtonLabel, String? customerEphemeralKeySecret, String? customerSessionClientSecret, String? paymentIntentClientSecret, String? setupIntentClientSecret, IntentConfiguration? intentConfiguration, String? merchantDisplayName, PaymentSheetApplePay? applePay,@JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style, PaymentSheetGooglePay? googlePay, LinkDisplayParams? linkDisplayParams, bool allowsDelayedPaymentMethods, PaymentSheetAppearance? appearance,@JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails, bool? allowsRemovalOfLastSavedPaymentMethod, List<String>? paymentMethodOrder, String? returnURL, BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration, String? removeSavedPaymentMethodMessage,@JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks, CardBrandAcceptance? cardBrandAcceptance, CardFundingFiltering? cardFundingFiltering, CustomPaymentMethodConfiguration? customPaymentMethodConfiguration, bool? opensCardScannerAutomatically,@JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson) Map<String, TermsDisplay>? termsDisplay
+ bool customFlow, String? customerId, String? primaryButtonLabel, String? customerEphemeralKeySecret, String? customerSessionClientSecret, String? paymentIntentClientSecret, String? setupIntentClientSecret, IntentConfiguration? intentConfiguration, String? merchantDisplayName, PaymentSheetApplePay? applePay,@JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style, PaymentSheetGooglePay? googlePay,@JsonKey(name: 'link') LinkDisplayParams? linkDisplayParams, bool allowsDelayedPaymentMethods, PaymentSheetAppearance? appearance,@JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails, bool? allowsRemovalOfLastSavedPaymentMethod, List<String>? paymentMethodOrder, String? returnURL, BillingDetailsCollectionConfiguration? billingDetailsCollectionConfiguration, String? removeSavedPaymentMethodMessage,@JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks, CardBrandAcceptance? cardBrandAcceptance, CardFundingFiltering? cardFundingFiltering, CustomPaymentMethodConfiguration? customPaymentMethodConfiguration, bool? opensCardScannerAutomatically,@JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson) Map<String, TermsDisplay>? termsDisplay
 });
 
 
@@ -6554,7 +6554,7 @@ as List<CardBrandCategory>,
 mixin _$LinkDisplayParams {
 
 /// Display configuration for Link
- LinkDisplay get linkDisplay;
+@JsonKey(name: 'display') LinkDisplay get linkDisplay;
 /// Create a copy of LinkDisplayParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -6587,7 +6587,7 @@ abstract mixin class $LinkDisplayParamsCopyWith<$Res>  {
   factory $LinkDisplayParamsCopyWith(LinkDisplayParams value, $Res Function(LinkDisplayParams) _then) = _$LinkDisplayParamsCopyWithImpl;
 @useResult
 $Res call({
- LinkDisplay linkDisplay
+@JsonKey(name: 'display') LinkDisplay linkDisplay
 });
 
 
@@ -6692,7 +6692,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LinkDisplay linkDisplay)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'display')  LinkDisplay linkDisplay)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LinkDisplayParams() when $default != null:
 return $default(_that.linkDisplay);case _:
@@ -6713,7 +6713,7 @@ return $default(_that.linkDisplay);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LinkDisplay linkDisplay)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'display')  LinkDisplay linkDisplay)  $default,) {final _that = this;
 switch (_that) {
 case _LinkDisplayParams():
 return $default(_that.linkDisplay);case _:
@@ -6733,7 +6733,7 @@ return $default(_that.linkDisplay);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LinkDisplay linkDisplay)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'display')  LinkDisplay linkDisplay)?  $default,) {final _that = this;
 switch (_that) {
 case _LinkDisplayParams() when $default != null:
 return $default(_that.linkDisplay);case _:
@@ -6748,11 +6748,11 @@ return $default(_that.linkDisplay);case _:
 @JsonSerializable()
 
 class _LinkDisplayParams implements LinkDisplayParams {
-  const _LinkDisplayParams({required this.linkDisplay});
+  const _LinkDisplayParams({@JsonKey(name: 'display') required this.linkDisplay});
   factory _LinkDisplayParams.fromJson(Map<String, dynamic> json) => _$LinkDisplayParamsFromJson(json);
 
 /// Display configuration for Link
-@override final  LinkDisplay linkDisplay;
+@override@JsonKey(name: 'display') final  LinkDisplay linkDisplay;
 
 /// Create a copy of LinkDisplayParams
 /// with the given fields replaced by the non-null parameter values.
@@ -6787,7 +6787,7 @@ abstract mixin class _$LinkDisplayParamsCopyWith<$Res> implements $LinkDisplayPa
   factory _$LinkDisplayParamsCopyWith(_LinkDisplayParams value, $Res Function(_LinkDisplayParams) _then) = __$LinkDisplayParamsCopyWithImpl;
 @override @useResult
 $Res call({
- LinkDisplay linkDisplay
+@JsonKey(name: 'display') LinkDisplay linkDisplay
 });
 
 

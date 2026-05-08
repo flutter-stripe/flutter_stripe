@@ -68,7 +68,7 @@ abstract class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     PaymentSheetGooglePay? googlePay,
 
     /// Configuration related to Link
-    LinkDisplayParams? linkDisplayParams,
+    @JsonKey(name: 'link') LinkDisplayParams? linkDisplayParams,
 
     /// Flag that allows payment methods that do not move money at the send of the checkout.
     ///
@@ -751,7 +751,7 @@ abstract class CardBrandAcceptance with _$CardBrandAcceptance {
 abstract class LinkDisplayParams with _$LinkDisplayParams {
   const factory LinkDisplayParams({
     /// Display configuration for Link
-    required LinkDisplay linkDisplay,
+    @JsonKey(name: 'display') required LinkDisplay linkDisplay,
   }) = _LinkDisplayParams;
 
   factory LinkDisplayParams.fromJson(Map<String, Object?> json) =>
