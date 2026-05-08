@@ -81,7 +81,7 @@ class MethodChannelStripe extends StripePlatform {
           _confirmTokenHandler != null) {
         final method = ResultParser<ConfirmationTokenResult>(
           parseJson: (json) => ConfirmationTokenResult.fromJson(json),
-        ).parse(result: call.arguments!, successResultKey: 'paymentMethod');
+        ).parse(result: call.arguments!, successResultKey: 'confirmationToken');
         _confirmTokenHandler!(method);
       } else if (call.method == 'onCustomPaymentMethodConfirmHandlerCallback' &&
           _confirmCustomPaymentMethodCallback != null) {
@@ -244,8 +244,18 @@ class MethodChannelStripe extends StripePlatform {
   Future<PaymentSheetPaymentOption?> initPaymentSheet(
     SetupPaymentSheetParameters params,
   ) async {
+    final paramsJson = params.toJson();
+    final intentConfig = paramsJson['intentConfiguration'];
+    if (intentConfig is Map<String, dynamic>) {
+      if (params.intentConfiguration?.confirmHandler != null) {
+        intentConfig['confirmHandler'] = true;
+      }
+      if (params.intentConfiguration?.confirmTokenHandler != null) {
+        intentConfig['confirmationTokenConfirmHandler'] = true;
+      }
+    }
     final result = await _methodChannel.invokeMethod('initPaymentSheet', {
-      'params': params.toJson(),
+      'params': paramsJson,
     });
     if (params.intentConfiguration?.confirmHandler != null) {
       _confirmHandler = params.intentConfiguration?.confirmHandler;
