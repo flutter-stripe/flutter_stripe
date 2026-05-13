@@ -4,6 +4,7 @@
 //
 //  Created by Charles Cruzan on 5/11/22.
 //
+import UIKit
 @_spi(EmbeddedPaymentElementPrivateBeta) import StripePaymentSheet
 
 internal class PaymentSheetAppearance {

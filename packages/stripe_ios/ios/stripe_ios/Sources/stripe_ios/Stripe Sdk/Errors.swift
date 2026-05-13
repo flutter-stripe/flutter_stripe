@@ -1,3 +1,4 @@
+import UIKit
 import Stripe
 @_spi(STP) import StripeCore
 

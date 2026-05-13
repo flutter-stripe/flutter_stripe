@@ -12,8 +12,8 @@ let package = Package(
         .library(name: "stripe-ios", targets: ["stripe_ios"])
     ],
     dependencies: [
+        .package(url: "https://github.com/stripe/stripe-ios-spm", exact: "25.12.0")
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
-        .package(url: "https://github.com/stripe/stripe-ios-spm", exact: "25.9.0")
     ],
     targets: [
         .target(
