@@ -7,7 +7,6 @@ import com.facebook.react.bridge.Dynamic
 import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.bridge.ReadableType
-import com.flutter.stripe.invoke
 
 fun View.showSoftKeyboard() {
   post {
@@ -28,7 +27,11 @@ fun View.hideSoftKeyboard() {
 fun ReadableMap?.getBooleanOr(
   key: String,
   default: Boolean,
-): Boolean = if (this?.hasKey(key) == true && this.getType(key) == ReadableType.Boolean) this.getBoolean(key) else default
+): Boolean = if (this?.hasKey(key) == true && this.getType(key) == ReadableType.Boolean) {
+  this.getBoolean(key)
+} else {
+  default
+}
 
 fun ReadableMap?.getIntOrNull(key: String): Int? =
   if (this?.hasKey(key) == true && this.getType(key) == ReadableType.Number) this.getInt(key) else null

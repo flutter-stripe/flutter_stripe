@@ -40,7 +40,7 @@ import com.stripe.android.view.StripeEditText
 class CardFieldView(
   private val context: ThemedReactContext,
 ) : FrameLayout(context) {
-  var mCardWidget: CardInputWidget = CardInputWidget(context)
+  private var mCardWidget: CardInputWidget = CardInputWidget(context)
   private val cardInputWidgetBinding = StripeCardInputWidgetBinding.bind(mCardWidget)
   val cardDetails: MutableMap<String, Any?> =
     mutableMapOf(
@@ -169,7 +169,7 @@ class CardFieldView(
       }
     }
 
-    mCardWidget.setPadding(20, 0, 20, 0)
+    mCardWidget.setPadding(CARD_WIDGET_HORIZONTAL_PADDING, 0, CARD_WIDGET_HORIZONTAL_PADDING, 0)
     mCardWidget.background =
       MaterialShapeDrawable(
         ShapeAppearanceModel()
@@ -530,4 +530,8 @@ class CardFieldView(
       )
       layout(left, top, right, bottom)
     }
+
+  private companion object {
+    const val CARD_WIDGET_HORIZONTAL_PADDING = 20
+  }
 }
