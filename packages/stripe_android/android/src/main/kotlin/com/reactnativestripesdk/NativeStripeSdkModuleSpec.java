@@ -15,9 +15,6 @@
 
 package com.reactnativestripesdk;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.facebook.proguard.annotations.DoNotStrip;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -32,6 +29,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModule implements TurboModule {
   public static final String NAME = "StripeSdk";
@@ -41,7 +40,7 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
   }
 
   @Override
-  public @NonNull String getName() {
+  public @Nonnull String getName() {
     return NAME;
   }
 
@@ -256,11 +255,19 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
 
   @ReactMethod
   @DoNotStrip
+  public abstract void createEmbeddedPaymentElementWithCheckout(String sessionKey, ReadableMap configuration, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
   public abstract void confirmEmbeddedPaymentElement(double viewTag, Promise promise);
 
   @ReactMethod
   @DoNotStrip
   public abstract void updateEmbeddedPaymentElement(ReadableMap intentConfig, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void updateEmbeddedPaymentElementWithCheckout(String sessionKey, Promise promise);
 
   @ReactMethod
   @DoNotStrip
@@ -293,6 +300,42 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
   @ReactMethod
   @DoNotStrip
   public abstract void pollAndClearPendingStripeConnectUrls(Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void initCheckoutSession(String clientSecret, ReadableMap configuration, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void checkoutUpdateShippingAddress(String sessionKey, ReadableMap address, @Nullable String name, @Nullable String phone, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void checkoutUpdateBillingAddress(String sessionKey, ReadableMap address, @Nullable String name, @Nullable String phone, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void checkoutApplyPromotionCode(String sessionKey, String code, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void checkoutRemovePromotionCode(String sessionKey, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void checkoutUpdateLineItemQuantity(String sessionKey, String lineItemId, double quantity, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void checkoutSelectShippingOption(String sessionKey, String id, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void checkoutUpdateTaxId(String sessionKey, String type, String value, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void checkoutRefresh(String sessionKey, Promise promise);
 
   @ReactMethod
   @DoNotStrip
