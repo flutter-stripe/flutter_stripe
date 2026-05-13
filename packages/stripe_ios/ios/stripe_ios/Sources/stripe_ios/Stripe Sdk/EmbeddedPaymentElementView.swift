@@ -1,14 +1,33 @@
+//
+//  EmbeddedPaymentElementView.swift
+//  stripe-react-native
+//
+//  Created by Nick Porter on 4/16/25.
+//
+
 import Foundation
 @_spi(EmbeddedPaymentElementPrivateBeta) import StripePaymentSheet
 import UIKit
 
-public class EmbeddedPaymentElementContainerView: UIView {
+@objc(EmbeddedPaymentElementView)
+class EmbeddedPaymentElementView: RCTViewManager {
+
+    override static func requiresMainQueueSetup() -> Bool {
+        return true
+    }
+
+    override func view() -> UIView! {
+        return EmbeddedPaymentElementContainerView(frame: .zero)
+    }
+}
+
+@objc(EmbeddedPaymentElementContainerView)
+public class EmbeddedPaymentElementContainerView: UIView, UIGestureRecognizerDelegate {
     private var embeddedPaymentElementView: UIView?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
-        clipsToBounds = true
     }
 
     required init?(coder: NSCoder) {
@@ -18,6 +37,7 @@ public class EmbeddedPaymentElementContainerView: UIView {
     public override func didMoveToWindow() {
         super.didMoveToWindow()
         if window != nil {
+            // Only attach when we have a valid window
             attachPaymentElementIfAvailable()
         }
     }
@@ -25,11 +45,13 @@ public class EmbeddedPaymentElementContainerView: UIView {
     public override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         if newWindow == nil {
+            // Remove the embedded view when moving away from window
             removePaymentElement()
         }
     }
 
     private func attachPaymentElementIfAvailable() {
+        // Don't attach if already attached
         guard embeddedPaymentElementView == nil,
               let embeddedElement = StripeSdkImpl.shared.embeddedInstance else {
             return
@@ -47,6 +69,8 @@ public class EmbeddedPaymentElementContainerView: UIView {
         ])
 
         self.embeddedPaymentElementView = paymentElementView
+
+        // Update the presenting view controller whenever we attach
         updatePresentingViewController()
     }
 
@@ -58,9 +82,7 @@ public class EmbeddedPaymentElementContainerView: UIView {
     private func updatePresentingViewController() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            if let viewController = self.window?.rootViewController {
-                StripeSdkImpl.shared.embeddedInstance?.presentingViewController = viewController
-            }
+            StripeSdkImpl.shared.embeddedInstance?.presentingViewController = RCTPresentedViewController()
         }
     }
 }
