@@ -880,7 +880,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     @objc(confirmPayment:data:options:resolver:rejecter:)
     public func confirmPayment(
         paymentIntentClientSecret: String,
-        params: NSDictionary,
+        params: NSDictionary?,
         options: NSDictionary,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
@@ -888,10 +888,8 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         self.confirmPaymentResolver = resolve
         self.confirmPaymentClientSecret = paymentIntentClientSecret
 
-        // Handle React Native null values - when null is passed from JS, it becomes NSNull
-        let actualParams = (params == NSNull()) ? nil : params
-        let paymentMethodData = actualParams?["paymentMethodData"] as? NSDictionary
-        let (missingPaymentMethodError, paymentMethodType) = getPaymentMethodType(params: actualParams)
+        let paymentMethodData = params?["paymentMethodData"] as? NSDictionary
+        let (missingPaymentMethodError, paymentMethodType) = getPaymentMethodType(params: params)
         if missingPaymentMethodError != nil {
             resolve(missingPaymentMethodError)
             return
