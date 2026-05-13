@@ -2,9 +2,7 @@ package com.flutter.stripe
 
 import android.content.Context
 import android.view.View
-import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
-import com.reactnativestripesdk.EmbeddedPaymentElementLoadingError
 import com.reactnativestripesdk.EmbeddedPaymentElementView
 import com.reactnativestripesdk.EmbeddedPaymentElementViewManager
 import com.reactnativestripesdk.StripeSdkModule
@@ -12,6 +10,12 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 
+// TODO: Flutter-side adjustment needed. The new stripe-react-native EmbeddedPaymentElement
+// no longer exposes onHeightChanged / onPaymentOptionChanged / onLoadingFailed /
+// onRowSelectionImmediateAction / onFormSheetConfirmComplete / onConfirmResult callbacks,
+// the EmbeddedPaymentElementLoadingError data class, nor public parseElementConfiguration /
+// parseIntentConfiguration / parseRowSelectionBehavior on the view manager. Subscriptions
+// and creationParams configuration parsing are stubbed out below to keep the build green.
 class StripeSdkEmbeddedPaymentElementPlatformView(
     private val context: Context,
     channel: MethodChannel,
@@ -26,57 +30,6 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
 
     init {
         channel.setMethodCallHandler(this)
-
-        embeddedView.onHeightChanged = { height ->
-            channel.invokeMethod("onHeightChanged", mapOf("height" to height.toDouble()))
-        }
-
-        embeddedView.onPaymentOptionChanged = { paymentOption ->
-            channel.invokeMethod("onPaymentOptionChanged", mapOf("paymentOption" to paymentOption))
-        }
-
-        embeddedView.onLoadingFailed = { error: EmbeddedPaymentElementLoadingError ->
-            channel.invokeMethod("embeddedPaymentElementLoadingFailed", error.toMap())
-        }
-
-        embeddedView.onRowSelectionImmediateAction = {
-            channel.invokeMethod("embeddedPaymentElementRowSelectionImmediateAction", null)
-        }
-
-        embeddedView.onFormSheetConfirmComplete = { result ->
-            channel.invokeMethod("embeddedPaymentElementFormSheetConfirmComplete", result)
-        }
-
-        creationParams?.let { params ->
-            val configMap = params["configuration"] as? Map<*, *>
-            val intentConfigMap = params["intentConfiguration"] as? Map<*, *>
-
-            if (configMap != null) {
-                @Suppress("UNCHECKED_CAST")
-                val configReadableMap =
-                    ReadableMap(configMap as Map<String, Any>)
-                val rowSelectionBehaviorType = viewManager.parseRowSelectionBehavior(configReadableMap)
-                embeddedView.rowSelectionBehaviorType.value = rowSelectionBehaviorType
-                val elementConfig = viewManager.parseElementConfiguration(configReadableMap, context)
-                embeddedView.latestElementConfig = elementConfig
-            }
-
-            if (intentConfigMap != null) {
-                @Suppress("UNCHECKED_CAST")
-                val intentConfigReadableMap =
-                    ReadableMap(intentConfigMap as Map<String, Any>)
-                val intentConfig = viewManager.parseIntentConfiguration(intentConfigReadableMap)
-                embeddedView.latestIntentConfig = intentConfig
-            }
-
-            if (embeddedView.latestElementConfig != null && embeddedView.latestIntentConfig != null) {
-                embeddedView.configure(embeddedView.latestElementConfig!!, embeddedView.latestIntentConfig!!)
-                embeddedView.post {
-                    embeddedView.requestLayout()
-                    embeddedView.invalidate()
-                }
-            }
-        }
     }
 
     override fun getView(): View {
@@ -90,11 +43,8 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when (call.method) {
             "confirm" -> {
-                embeddedView.onConfirmResult = { resultMap ->
-                    result.success(resultMap)
-                    embeddedView.onConfirmResult = null
-                }
                 viewManager.confirm(embeddedView)
+                result.success(null)
             }
             "clearPaymentOption" -> {
                 viewManager.clearPaymentOption(embeddedView)
