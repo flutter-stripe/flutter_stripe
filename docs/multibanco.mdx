@@ -1,0 +1,96 @@
+---
+title: Multibanco payment
+description: Accept a Multibanco payment
+---
+
+# Accept a payment - Multibanco
+
+### Securely handling multibanco payments
+
+Multibanco is a voucher-based payment method commonly used in Portugal.
+
+This integration combines the steps for creating a PaymentIntent with Multibanco and confirming the payment from your Flutter app.
+
+## 1. Create
+
+First, you need a Stripe account. [Register now](https://dashboard.stripe.com/register).
+
+#### Server-side
+
+This integration requires endpoints on your server that talk to the Stripe API. Use one of the official Stripe server libraries and follow the Multibanco setup in the Stripe docs:
+
+[Accept a payment with Multibanco](https://stripe.com/docs/payments/multibanco/accept-a-payment?platform=react-native#react-native-setup-server-side)
+
+#### Client-side
+
+Install the SDK:
+
+- Run `flutter pub add flutter_stripe`
+- Configure Stripe with your publishable key
+
+```dart
+void main() async {
+  Stripe.publishableKey = stripePublishableKey;
+  runApp(const App());
+}
+```
+
+Use test mode keys while integrating and live mode keys when you go to production.
+
+## 2. Add an endpoint [Server Side]
+
+Create a `PaymentIntent` on your backend and include `multibanco` in `payment_method_types`.
+
+Return the PaymentIntent client secret to your app.
+
+Example request payload:
+
+```json
+{
+  "amount": 1099,
+  "currency": "eur",
+  "payment_method_types": ["multibanco"]
+}
+```
+
+## 3. Collect and confirm payment details [Client Side]
+
+Use the client secret returned by your backend, then call `confirmPayment` with `PaymentMethodParams.multibanco`.
+
+Multibanco requires an email in billing details.
+
+```dart
+Future<void> _pay(BuildContext context) async {
+  final result = await _createPaymentIntent();
+  final clientSecret = result['clientSecret'];
+
+  await Stripe.instance.confirmPayment(
+    paymentIntentClientSecret: clientSecret,
+    data: PaymentMethodParams.multibanco(
+      paymentMethodData: PaymentMethodData(
+        billingDetails: BillingDetails(
+          email: 'multibanco@example.com',
+        ),
+      ),
+    ),
+  );
+}
+```
+
+You can find the full runnable implementation in the example app screen:
+`example/lib/screens/regional_payment_methods/multibanco_screen.dart`.
+
+## 4. Handle post-payment events
+
+Listen for asynchronous webhook events like `payment_intent.succeeded` to confirm fulfillment.
+
+Do not rely only on client callbacks for final order state.
+
+## 5. Test the integration
+
+Use Stripe test keys and follow the Multibanco testing section in Stripe’s docs:
+
+[Test your integration](https://stripe.com/docs/payments/multibanco/accept-a-payment?platform=ios#test-your-integration)
+
+For more details about end-to-end integration, see:
+[Multibanco payments](https://docs.stripe.com/payments/multibanco)
