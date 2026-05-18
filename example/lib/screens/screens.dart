@@ -15,6 +15,7 @@ import 'package:stripe_example/screens/regional_payment_methods/cash_app_screen.
 import 'package:stripe_example/screens/regional_payment_methods/fpx_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/multibanco_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/p24_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/revolutpay_screen.dart';
@@ -275,6 +276,12 @@ class Example extends StatelessWidget {
           title: 'Ideal',
           leading: Image.asset('assets/ideal_pay.png', width: 48),
           builder: (context) => IdealScreen(),
+        ),
+        Example(
+          title: 'Multibanco',
+          leading: SizedBox(),
+          builder: (context) => MultibancoScreen(),
+          platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
         ),
         Example(
           title: 'Aubecs',

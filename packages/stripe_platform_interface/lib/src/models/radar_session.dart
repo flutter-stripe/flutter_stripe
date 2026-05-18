@@ -6,9 +6,7 @@ part 'radar_session.g.dart';
 @freezed
 abstract class RadarSession with _$RadarSession {
   @JsonSerializable(explicitToJson: true)
-  const factory RadarSession({
-    required String id,
-  }) = _RadarSession;
+  const factory RadarSession({required String id}) = _RadarSession;
 
   factory RadarSession.fromJson(Map<String, dynamic> json) =>
       _$RadarSessionFromJson(json);

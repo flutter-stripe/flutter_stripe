@@ -12,7 +12,7 @@ extension PaymentMethodTestInstance on PaymentMethod {
     auBecsDebit: const AuBecsDebit(),
     ideal: const Ideal(),
     fpx: const Fpx(),
-    upi: const Upi(),
+    multibanco: const Multibanco(),
     usBankAccount: const UsBankAccount(
       accountHolderType: BankAccountHolderType.Individual,
       accountType: UsBankAccountType.Checking,
@@ -67,7 +67,10 @@ extension PaymentMethodTestInstance on PaymentMethod {
       'bank': ideal.bank,
     },
     'Fpx': {'bank': fpx.bank, 'accountHolderType': fpx.accountHolderType},
-    'Upi': {'vpa': upi.vpa},
+    'Multibanco': {
+      'email': multibanco.email,
+      'billingDetails': multibanco.billingDetails,
+    },
     'customerId': customerId,
   };
 }

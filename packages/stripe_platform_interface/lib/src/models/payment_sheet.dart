@@ -671,13 +671,15 @@ Map<String, String>? _termsDisplayToJson(Map<String, TermsDisplay>? map) {
 
 Map<String, TermsDisplay>? _termsDisplayFromJson(Map<String, dynamic>? json) {
   if (json == null) return null;
-  return json.map((key, value) => MapEntry(
-        key,
-        TermsDisplay.values.firstWhere(
-          (e) => value is String && e.name == value,
-          orElse: () => TermsDisplay.automatic,
-        ),
-      ));
+  return json.map(
+    (key, value) => MapEntry(
+      key,
+      TermsDisplay.values.firstWhere(
+        (e) => value is String && e.name == value,
+        orElse: () => TermsDisplay.automatic,
+      ),
+    ),
+  );
 }
 
 /// Card brand categories that can be allowed or disallowed
