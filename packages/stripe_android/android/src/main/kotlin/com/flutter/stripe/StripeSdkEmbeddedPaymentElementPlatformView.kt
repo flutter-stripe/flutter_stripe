@@ -2,6 +2,8 @@ package com.flutter.stripe
 
 import android.content.Context
 import android.view.View
+import com.facebook.react.bridge.DynamicFromObject
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.EmbeddedPaymentElementView
 import com.reactnativestripesdk.EmbeddedPaymentElementViewManager
@@ -10,12 +12,6 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 
-// TODO: Flutter-side adjustment needed. The new stripe-react-native EmbeddedPaymentElement
-// no longer exposes onHeightChanged / onPaymentOptionChanged / onLoadingFailed /
-// onRowSelectionImmediateAction / onFormSheetConfirmComplete / onConfirmResult callbacks,
-// the EmbeddedPaymentElementLoadingError data class, nor public parseElementConfiguration /
-// parseIntentConfiguration / parseRowSelectionBehavior on the view manager. Subscriptions
-// and creationParams configuration parsing are stubbed out below to keep the build green.
 class StripeSdkEmbeddedPaymentElementPlatformView(
     private val context: Context,
     channel: MethodChannel,
@@ -30,6 +26,7 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
 
     init {
         channel.setMethodCallHandler(this)
+        applyCreationParams(creationParams)
     }
 
     override fun getView(): View {
@@ -60,6 +57,46 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
         embeddedView.post {
             embeddedView.requestLayout()
             embeddedView.invalidate()
+        }
+    }
+
+    private fun applyCreationParams(creationParams: Map<String?, Any?>?) {
+        val config = asReadableMap(creationParams?.get("configuration"))
+        if (config != null) {
+            viewManager.setConfiguration(embeddedView, DynamicFromObject(config))
+        }
+
+        val intentConfig = asReadableMap(creationParams?.get("intentConfiguration"))
+        if (intentConfig != null) {
+            viewManager.setIntentConfiguration(embeddedView, DynamicFromObject(intentConfig))
+        }
+
+        val checkout = asReadableMap(creationParams?.get("checkout"))
+        if (checkout != null) {
+            viewManager.setCheckout(embeddedView, DynamicFromObject(checkout))
+        }
+    }
+
+    private fun asReadableMap(value: Any?): ReadableMap? {
+        if (value !is Map<*, *>) return null
+        val normalized = normalizeMap(value)
+        @Suppress("UNCHECKED_CAST")
+        return ReadableMap(normalized as Map<String, Any>)
+    }
+
+    private fun normalizeMap(value: Map<*, *>): Map<String, Any?> {
+        return value.entries
+            .filter { it.key is String }
+            .associate { (key, entryValue) ->
+                key as String to normalizeValue(entryValue)
+            }
+    }
+
+    private fun normalizeValue(value: Any?): Any? {
+        return when (value) {
+            is Map<*, *> -> normalizeMap(value)
+            is List<*> -> value.map { normalizeValue(it) }
+            else -> value
         }
     }
 }
