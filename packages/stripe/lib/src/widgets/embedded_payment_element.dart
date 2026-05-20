@@ -176,6 +176,7 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
     try {
       switch (call.method) {
         case 'onPaymentOptionChanged':
+        case 'embeddedPaymentElementDidUpdatePaymentOption':
           final arguments = call.arguments as Map?;
           if (arguments != null) {
             final paymentOptionMap = Map<String, dynamic>.from(
@@ -192,6 +193,7 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
           }
           break;
         case 'onHeightChanged':
+        case 'embeddedPaymentElementDidUpdateHeight':
           final arguments = call.arguments as Map?;
           if (arguments != null) {
             final height = (arguments['height'] as num?)?.toDouble() ?? 0;
