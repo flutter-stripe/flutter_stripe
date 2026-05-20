@@ -389,6 +389,7 @@ void main() {
         );
         expect(params.containsKey('defaultBillingDetails'), isTrue);
         expect(params.containsKey('billingDetails'), isFalse);
+        expect((params['defaultBillingDetails'] as Map)['email'], 'a@b.com');
       });
 
       test(
@@ -409,6 +410,9 @@ void main() {
               params['customPaymentMethodConfiguration']
                   as Map<dynamic, dynamic>;
           expect(config.containsKey('customPaymentMethods'), isTrue);
+          final methods = config['customPaymentMethods'] as List;
+          expect(methods, isNotEmpty);
+          expect((methods.first as Map)['id'], 'cpmt_test');
         },
       );
     });
