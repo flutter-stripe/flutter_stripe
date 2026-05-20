@@ -397,13 +397,17 @@ void main() {
           final params = await serialize(
             const SetupPaymentSheetParameters(
               paymentIntentClientSecret: 'pi_test',
-              customPaymentMethodConfiguration: CustomPaymentMethodConfiguration(
-                customPaymentMethods: [CustomPaymentMethod(id: 'cpmt_test')],
-              ),
+              customPaymentMethodConfiguration:
+                  CustomPaymentMethodConfiguration(
+                    customPaymentMethods: [
+                      CustomPaymentMethod(id: 'cpmt_test'),
+                    ],
+                  ),
             ),
           );
           final config =
-              params['customPaymentMethodConfiguration'] as Map<dynamic, dynamic>;
+              params['customPaymentMethodConfiguration']
+                  as Map<dynamic, dynamic>;
           expect(config.containsKey('customPaymentMethods'), isTrue);
         },
       );
