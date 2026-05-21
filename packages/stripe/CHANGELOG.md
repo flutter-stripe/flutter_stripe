@@ -1,3 +1,15 @@
+## Unreleased
+
+**Features**:
+- #2236: Embedded Payment Element support for iOS and Android (PR #2239).
+  Use the new `EmbeddedPaymentElement` widget and `EmbeddedPaymentElementController`.
+  See `example/lib/screens/payment_sheet/embedded/` for a working demo.
+
+**Fixes**:
+- Embedded Payment Element no longer reserves a 400pt blank area while the
+  native element is loading; a small placeholder with a progress indicator is
+  shown until the first height update arrives.
+
 ## 12.6.0
 
 **Features**:
