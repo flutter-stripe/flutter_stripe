@@ -25,6 +25,7 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
+// Required by EmbeddedPaymentElement; pairs with kotlin_version above.
 apply plugin: "org.jetbrains.kotlin.plugin.compose"
 apply plugin: 'kotlin-android'
 
@@ -39,14 +40,6 @@ android {
 
     kotlinOptions {
         jvmTarget = '17'
-    }
-
-    buildFeatures {
-        compose true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = '1.5.1'
     }
 
     sourceSets {

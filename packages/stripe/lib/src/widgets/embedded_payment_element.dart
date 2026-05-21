@@ -52,7 +52,8 @@ class EmbeddedPaymentElementLoadingException implements Exception {
 /// Allows users to select and configure payment methods inline within your app.
 /// Supports saved payment methods, new cards, Apple Pay, Google Pay, and more.
 ///
-/// Only supported on iOS and Android platforms.
+/// Throws [UnsupportedError] on web and desktop — only iOS and Android are
+/// supported.
 class EmbeddedPaymentElement extends StatefulWidget {
   /// Creates an embedded payment element.
   const EmbeddedPaymentElement({
@@ -294,13 +295,29 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
       );
     }
 
+    // Use a small placeholder height until the native element reports its
+    // measured height. Picking 400 here used to leave a large blank area
+    // before onHeightChanged fired.
+    final displayedHeight = _currentHeight > 0 ? _currentHeight : 60.0;
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
       alignment: Alignment.topCenter,
       child: SizedBox(
-        height: _currentHeight > 0 ? _currentHeight : 400,
-        child: platformView,
+        height: displayedHeight,
+        child: Stack(
+          children: [
+            Positioned.fill(child: platformView),
+            if (_currentHeight == 0)
+              const Center(
+                child: SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
