@@ -4,8 +4,7 @@
 //
 //  Created by Charles Cruzan on 5/11/22.
 //
-import UIKit
-@_spi(EmbeddedPaymentElementPrivateBeta) import StripePaymentSheet
+import StripePaymentSheet
 
 internal class PaymentSheetAppearance {
     class func buildAppearanceFromParams(userParams: NSDictionary?) throws -> PaymentSheet.Appearance {

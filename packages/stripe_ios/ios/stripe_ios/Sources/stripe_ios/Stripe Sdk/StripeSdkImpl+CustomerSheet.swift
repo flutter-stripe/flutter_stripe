@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import UIKit
-@_spi(PrivateBetaCustomerSheet) @_spi(CustomerSessionBetaAccess) @_spi(STP) import StripePaymentSheet
+@_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
 extension StripeSdkImpl {
     @objc(initCustomerSheet:customerAdapterOverrides:resolver:rejecter:)
     public func initCustomerSheet(params: NSDictionary,

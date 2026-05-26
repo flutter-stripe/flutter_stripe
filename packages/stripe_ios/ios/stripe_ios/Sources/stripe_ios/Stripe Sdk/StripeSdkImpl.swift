@@ -1,4 +1,5 @@
 import AuthenticationServices
+import Combine
 import Foundation
 import PassKit
 @_spi(DashboardOnly) @_spi(STP) import Stripe
@@ -9,15 +10,9 @@ import StripePaymentsUI
 import UIKit
 #if canImport(StripeCryptoOnramp)
 @_spi(CryptoOnrampAlpha) import StripeCryptoOnramp
-
-@_spi(STP)
-@_spi(EmbeddedPaymentElementPrivateBeta)
-@_spi(CustomerSessionBetaAccess)
-@_spi(AppearanceAPIAdditionsPreview)
-@_spi(CheckoutSessionsPreview)
-import StripePaymentSheet
+@_spi(CryptoOnrampAlpha) @_spi(ReactNativeSDK) @_spi(AppearanceAPIAdditionsPreview) import StripePaymentSheet
 #else
-@_spi(EmbeddedPaymentElementPrivateBeta) @_spi(CustomerSessionBetaAccess) @_spi(CheckoutSessionsPreview) import StripePaymentSheet
+@_spi(ReactNativeSDK) import StripePaymentSheet
 #endif
 
 @available(iOS 13.0, *)
@@ -69,6 +64,8 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     internal var paymentSheet: PaymentSheet?
     internal var paymentSheetFlowController: PaymentSheet.FlowController?
     internal var checkoutInstances: [String: Checkout] = [:]
+    internal var checkoutStateCancellables: [String: AnyCancellable] = [:]
+    internal var serverUpdateContinuations: [String: CheckedContinuation<Void, Error>] = [:]
     var paymentSheetIntentCreationCallback: ((Result<String, Error>) -> Void)?
     var paymentSheetConfirmationTokenIntentCreationCallback: ((Result<String, Error>) -> Void)?
 
@@ -1437,6 +1434,89 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                     let errorResult = Errors.createError(ErrorType.Failed, error)
                     resolve(["error": errorResult["error"]!])
                 }
+            }
+        }
+    }
+
+    @objc(retrieveMissingIdentifiers:rejecter:)
+    public func retrieveMissingIdentifiers(
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard isPublishableKeyAvailable(resolve), let coordinator = requireOnrampCoordinator(resolve) else {
+            return
+        }
+
+        Task {
+            do {
+                let requirements = try await coordinator.retrieveMissingIdentifiers()
+                resolve(Mappers.mapFromComplianceIdentifierRequirements(requirements))
+            } catch {
+                let errorResult = Errors.createError(ErrorType.Failed, error)
+                resolve(["error": errorResult["error"]!])
+            }
+        }
+    }
+
+    @objc(submitIdentifiers:resolver:rejecter:)
+    public func submitIdentifiers(
+        identifiers: NSArray,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard isPublishableKeyAvailable(resolve), let coordinator = requireOnrampCoordinator(resolve) else {
+            return
+        }
+
+        guard let identifierDictionaries = identifiers as? [[String: Any]] else {
+            let errorResult = Errors.createError(ErrorType.Failed, "Unexpected format of identifiers array. Expected dictionaries with String keys.")
+            resolve(["error": errorResult["error"]!])
+            return
+        }
+
+        Task {
+            do {
+                let complianceIdentifiers = try identifierDictionaries.map(Mappers.mapToComplianceIdentifier)
+                let result = try await coordinator.submitIdentifiers(complianceIdentifiers)
+                resolve(Mappers.mapFromSubmitIdentifiersResult(result))
+            } catch {
+                if let identifierError = error as? Mappers.ComplianceIdentifierError,
+                   case let .invalidField(field) = identifierError {
+                    let errorResult = Errors.createError(ErrorType.Unknown, "Invalid format for field: \(field)")
+                    resolve(["error": errorResult["error"]!])
+                } else {
+                    let errorResult = Errors.createError(ErrorType.Failed, error)
+                    resolve(["error": errorResult["error"]!])
+                }
+            }
+        }
+    }
+
+    @objc(presentCRSCARFDeclaration:rejecter:)
+    public func presentCRSCARFDeclaration(
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard isPublishableKeyAvailable(resolve), let coordinator = requireOnrampCoordinator(resolve) else {
+            return
+        }
+
+        Task {
+            do {
+                let presentingViewController = await MainActor.run {
+                    findViewControllerPresenter(from: RCTKeyWindow()?.rootViewController ?? UIViewController())
+                }
+                let result = try await coordinator.presentCRSCARFDeclaration(from: presentingViewController)
+                switch result {
+                case .confirmed:
+                    resolve(["status": "Confirmed"])
+                case .canceled:
+                    let errorResult = Errors.createError(ErrorType.Canceled, "CRS/CARF declaration was cancelled")
+                    resolve(["error": errorResult["error"]!])
+                }
+            } catch {
+                let errorResult = Errors.createError(ErrorType.Failed, error)
+                resolve(["error": errorResult["error"]!])
             }
         }
     }

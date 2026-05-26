@@ -8,7 +8,7 @@ public class CardFieldView: UIView, STPPaymentCardTextFieldDelegate {
     @objc public var onFocusChange: RCTDirectEventBlock?
     @objc public var dangerouslyGetFullCardDetails: Bool = false
 
-    public var cardField = STPPaymentCardTextField()
+    private var cardField = STPPaymentCardTextField()
 
     public var cardParams: STPPaymentMethodParams?
     public var cardPostalCode: String?

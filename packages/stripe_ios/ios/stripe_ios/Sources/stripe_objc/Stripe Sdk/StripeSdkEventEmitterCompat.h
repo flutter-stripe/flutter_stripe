@@ -1,9 +1,9 @@
 // This is a compat layer for NativeStripeSdkModuleSpecBase which is generated with codegen
 // for the new arch. This implements the same methods, but using old arch apis.
 
-#import <Foundation/Foundation.h>
+#import <React/RCTEventEmitter.h>
 
-@interface StripeSdkEventEmitterCompat : NSObject
+@interface StripeSdkEventEmitterCompat : RCTEventEmitter
 - (void)emitOnConfirmHandlerCallback:(NSDictionary *)value;
 - (void)emitOnConfirmationTokenHandlerCallback:(NSDictionary *)value;
 - (void)emitOnFinancialConnectionsEvent:(NSDictionary *)value;
@@ -26,7 +26,6 @@
 - (void)emitOnCheckoutClientSecretRequested:(NSDictionary *)value;
 - (void)emitPaymentMethodMessagingElementDidUpdateHeight:(NSDictionary *)value;
 - (void)emitPaymentMethodMessagingElementConfigureResult:(NSDictionary *)value;
-
-- (void)sendEventWithName:(NSString *)name body:(NSDictionary<NSString *, id> *)body;
+- (void)emitCheckoutSessionDidChangeState:(NSDictionary *)value;
 @end
 
