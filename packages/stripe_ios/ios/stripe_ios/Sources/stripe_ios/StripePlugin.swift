@@ -436,6 +436,10 @@ extension StripePlugin: StripeSdkEmitter {
         self.sendEvent(withName: "embeddedPaymentElementLoadingFailed", body:value)
     }
 
+    func emitCheckoutSessionDidChangeState(_ value: [String : Any]) {
+        self.sendEvent(withName: "checkoutSessionDidChangeState", body: value)
+    }
+
 }
 
 
