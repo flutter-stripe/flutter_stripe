@@ -2,7 +2,6 @@ package com.reactnativestripesdk
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -10,7 +9,6 @@ import android.os.Looper
 import android.util.Log
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
 import androidx.fragment.app.FragmentActivity
 import com.facebook.react.ReactActivity
@@ -26,14 +24,12 @@ import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.modules.systeminfo.ReactNativeVersion
-import com.flutter.stripe.BuildConfig
-import com.flutter.stripe.getCurrentActivity
-import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherManager
 import com.reactnativestripesdk.customersheet.CustomerSheetManager
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.utils.ConfirmPaymentErrorType
 import com.reactnativestripesdk.utils.CreateTokenErrorType
+import com.reactnativestripesdk.utils.DefaultActivityLifecycleCallbacks
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.GooglePayErrorType
 import com.reactnativestripesdk.utils.RetrievePaymentIntentErrorType
@@ -85,17 +81,22 @@ import com.stripe.android.model.Token
 import com.stripe.android.paymentelement.CheckoutSessionPreview
 import com.stripe.android.payments.bankaccount.CollectBankAccountConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
+import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import org.json.JSONObject
 import java.util.UUID
 
 @ReactModule(name = StripeSdkModule.NAME)
 @OptIn(ReactNativeSdkInternal::class, CheckoutSessionPreview::class)
 class StripeSdkModule(
-  val reactContext: ReactApplicationContext,
+  reactContext: ReactApplicationContext,
 ) : NativeStripeSdkModuleSpec(reactContext) {
   var cardFieldView: CardFieldView? = null
   var cardFormView: CardFormView? = null
@@ -116,6 +117,13 @@ class StripeSdkModule(
   private var googlePayLauncherManager: GooglePayLauncherManager? = null
   private var googlePayPaymentMethodLauncherManager: GooglePayPaymentMethodLauncherManager? = null
   internal val checkoutInstances = mutableMapOf<String, Checkout>()
+  private val serverUpdateContinuations =
+    mutableMapOf<String, CancellableContinuation<Result<Unit>>>()
+
+  // / Tracks the long-running coroutine that observes each Checkout's
+  // / `checkoutSession` + `isLoading` flows and forwards transitions to JS as
+  // / `checkoutSessionDidChangeState` events.
+  private val checkoutStateObservers = mutableMapOf<String, Job>()
 
   private var customerSheetManager: CustomerSheetManager? = null
 
@@ -168,6 +176,8 @@ class StripeSdkModule(
 
     stripeUIManagers.forEach { it.destroy() }
     stripeUIManagers.clear()
+    checkoutStateObservers.values.forEach { it.cancel() }
+    checkoutStateObservers.clear()
     checkoutInstances.clear()
   }
 
@@ -1746,6 +1756,7 @@ class StripeSdkModule(
         onSuccess = { checkout ->
           val sessionKey = UUID.randomUUID().toString()
           checkoutInstances[sessionKey] = checkout
+          observeCheckoutState(sessionKey, checkout)
 
           promise.resolve(
             Arguments.createMap().apply {
@@ -1869,13 +1880,48 @@ class StripeSdkModule(
     }
   }
 
-  override fun checkoutRefresh(
+  override fun checkoutRunServerUpdateStart(
     sessionKey: String,
     promise: Promise,
   ) {
-    performCheckoutMutation(sessionKey, promise) { checkout ->
-      checkout.refresh()
+    val checkout = checkoutInstances[sessionKey] ?: run {
+      promise.reject(ErrorType.Failed.toString(), "Checkout session not found.")
+      return
     }
+
+    if (serverUpdateContinuations.containsKey(sessionKey)) {
+      promise.reject(ErrorType.Failed.toString(), "A server update is already in progress for this session.")
+      return
+    }
+
+    CoroutineScope(Dispatchers.Main).launch {
+      checkout.runServerUpdate {
+        suspendCancellableCoroutine { continuation ->
+          serverUpdateContinuations[sessionKey] = continuation
+        }
+      }.fold(
+        onSuccess = { promise.resolve(mapFromCheckoutState(checkout)) },
+        onFailure = { promise.reject(ErrorType.Failed.toString(), it.message, it) },
+      )
+    }
+  }
+
+  override fun checkoutRunServerUpdateComplete(
+    sessionKey: String,
+    error: String?,
+    promise: Promise,
+  ) {
+    val continuation = serverUpdateContinuations.remove(sessionKey) ?: run {
+      promise.reject(ErrorType.Failed.toString(), "No pending server update for this session.")
+      return
+    }
+
+    if (error != null) {
+      continuation.resume(Result.failure(Exception(error))) {}
+    } else {
+      continuation.resume(Result.success(Unit)) {}
+    }
+    promise.resolve(null)
   }
 
   private fun buildCheckoutConfiguration(configuration: ReadableMap): Checkout.Configuration {
@@ -1885,6 +1931,41 @@ class StripeSdkModule(
       checkoutConfiguration.adaptivePricingAllowed(adaptivePricing.getBooleanOr("allowed", false))
     }
     return checkoutConfiguration
+  }
+
+  /**
+   * Forwards the checkout's `(checkoutSession, isLoading)` flow to JS as
+   * `checkoutSessionDidChangeState` events. Equivalent to the iOS
+   * `CheckoutDelegate` bridge — every native-side mutation (currency selection,
+   * promo code, refresh, etc.) goes through one canonical channel that
+   * `useCheckout` listens to.
+   */
+  private fun observeCheckoutState(
+    sessionKey: String,
+    checkout: Checkout,
+  ) {
+    checkoutStateObservers[sessionKey]?.cancel()
+
+    val job = CoroutineScope(Dispatchers.Main).launch {
+      // `combine` re-emits on every upstream tick. `distinctUntilChanged`
+      // collapses runs where neither field actually moved — both flows are
+      // StateFlows so we'd otherwise see a redundant initial replay when
+      // wiring up.
+      combine(
+        checkout.checkoutSession,
+        checkout.isLoading,
+      ) { session, isLoading -> session to isLoading }
+        .distinctUntilChanged()
+        .collect {
+          eventEmitter.emitCheckoutSessionDidChangeState(
+            Arguments.createMap().apply {
+              putString("sessionKey", sessionKey)
+              putMap("state", mapFromCheckoutState(checkout))
+            },
+          )
+        }
+    }
+    checkoutStateObservers[sessionKey] = job
   }
 
   private fun performCheckoutMutation(
@@ -1928,14 +2009,14 @@ class StripeSdkModule(
   private var isRecreatingReactActivity = false
   private var isAuthWebViewActive = false
   private val activityLifecycleCallbacks =
-    object : Application.ActivityLifecycleCallbacks {
+    object : DefaultActivityLifecycleCallbacks() {
       override fun onActivityCreated(
         activity: Activity,
-        bundle: Bundle?,
+        savedInstanceState: Bundle?,
       ) {
-        // Only set flag when ReactActivity is actually being recreated (bundle != null)
-        // bundle != null means this is a recreation, not first creation
-        if (activity is ReactActivity && bundle != null) {
+        // Only set flag when ReactActivity is actually being recreated (savedInstanceState != null)
+        // savedInstanceState != null means this is a recreation, not first creation
+        if (activity is ReactActivity && savedInstanceState != null) {
           isRecreatingReactActivity = true
         }
 
@@ -1954,21 +2035,6 @@ class StripeSdkModule(
           }
         }
       }
-
-      override fun onActivityStarted(activity: Activity) {}
-
-      override fun onActivityResumed(activity: Activity) {}
-
-      override fun onActivityPaused(activity: Activity) {}
-
-      override fun onActivityStopped(activity: Activity) {}
-
-      override fun onActivitySaveInstanceState(
-        activity: Activity,
-        bundle: Bundle,
-      ) {}
-
-      override fun onActivityDestroyed(activity: Activity) {}
     }
 
   /**
@@ -2009,7 +2075,7 @@ class StripeSdkModule(
     // Timeout for auth webview fallback (if JavaScript doesn't call authWebViewDeepLinkHandled)
     private const val AUTH_WEBVIEW_FALLBACK_TIMEOUT_MS = 60_000L
 
-    private const val FILE_CLEANUP_DELAY_MS = 3000L
+    private const val FILE_CLEANUP_DELAY_MS = 3_000L
 
     // SDK-managed storage for pending stripe-connect:// URLs
     // This is static because deep links can arrive before ReactContext is available
