@@ -22,6 +22,7 @@ class _EmbeddedPaymentElementScreenState
   String? _loadingError;
   double _height = 0;
   bool _confirming = false;
+  String? _confirmResultStatus;
 
   @override
   void dispose() {
@@ -29,26 +30,24 @@ class _EmbeddedPaymentElementScreenState
     super.dispose();
   }
 
-  Future<void> _createPaymentIntentAndConfirmToUser(
-    String paymentMethodId,
-  ) async {
+  Future<void> _createPaymentIntentAndConfirmToUser() async {
     try {
       final url = Uri.parse('$kApiUrl/payment-intent-for-payment-sheet');
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
-        body: json.encode({'paymentMethodId': paymentMethodId}),
-      );
+        body: json.encode(<String, dynamic>{}),
+      ).timeout(const Duration(seconds: 20));
       final body = json.decode(response.body);
       if (body['error'] != null) {
         throw Exception(body['error']);
       }
 
-      await Stripe.instance.intentCreationCallback(
+      await Stripe.instance.confirmationTokenCreationCallback(
         IntentCreationCallbackParams(clientSecret: body['clientSecret']),
       );
     } catch (e) {
-      await Stripe.instance.intentCreationCallback(
+      await Stripe.instance.confirmationTokenCreationCallback(
         IntentCreationCallbackParams(
           error: StripeException(
             error: LocalizedErrorMessage(
@@ -62,9 +61,25 @@ class _EmbeddedPaymentElementScreenState
   }
 
   Future<void> _confirm() async {
+    if (_selectedPaymentOption == null) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Select a payment method first')),
+      );
+      return;
+    }
+
     setState(() => _confirming = true);
     try {
-      await _controller.confirm();
+      final result = await _controller.confirm();
+      if (!mounted) return;
+      final status = result?['status']?.toString() ?? 'unknown';
+      setState(() {
+        _confirmResultStatus = status;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Confirm result: $status')),
+      );
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -91,8 +106,8 @@ class _EmbeddedPaymentElementScreenState
               amount: 1099,
               currencyCode: 'USD',
             ),
-            confirmHandler: (paymentMethod, _) {
-              _createPaymentIntentAndConfirmToUser(paymentMethod.id);
+            confirmTokenHandler: (_) {
+              _createPaymentIntentAndConfirmToUser();
             },
           ),
           configuration: const SetupPaymentSheetParameters(
@@ -135,6 +150,10 @@ class _EmbeddedPaymentElementScreenState
         Text(
           'Selected payment option: ${_selectedPaymentOption?.label ?? 'none'}',
         ),
+        if (_confirmResultStatus != null) ...[
+          const SizedBox(height: 8),
+          Text('Confirm status: $_confirmResultStatus'),
+        ],
         if (_loadingError != null) ...[
           const SizedBox(height: 8),
           Text(
@@ -145,7 +164,8 @@ class _EmbeddedPaymentElementScreenState
         const SizedBox(height: 16),
         LoadingButton(
           text: 'Confirm',
-          onPressed: _confirming ? null : _confirm,
+          onPressed:
+              (_confirming || _selectedPaymentOption == null) ? null : _confirm,
         ),
         const SizedBox(height: 8),
         OutlinedButton(

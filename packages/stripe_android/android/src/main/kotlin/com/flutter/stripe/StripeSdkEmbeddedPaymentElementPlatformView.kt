@@ -5,6 +5,7 @@ import android.view.View
 import com.facebook.react.bridge.DynamicFromObject
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.reactnativestripesdk.EmbeddedPaymentElementView
 import com.reactnativestripesdk.EmbeddedPaymentElementViewManager
 import com.reactnativestripesdk.StripeSdkModule
@@ -27,6 +28,9 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
     init {
         channel.setMethodCallHandler(this)
         applyCreationParams(creationParams)
+        DeviceEventManagerModule.RCTDeviceEventEmitter.registerChannelForPrefix(
+            "embeddedPaymentElement", channel
+        )
     }
 
     override fun getView(): View {
@@ -35,6 +39,9 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
 
     override fun dispose() {
         viewManager.onDropViewInstance(embeddedView)
+        DeviceEventManagerModule.RCTDeviceEventEmitter.unregisterChannelForPrefix(
+            "embeddedPaymentElement"
+        )
     }
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
