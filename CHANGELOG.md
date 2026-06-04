@@ -3,6 +3,229 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v13.0.0`](#flutter_stripe---v1300)
+
+---
+
+#### `flutter_stripe` - `v13.0.0`
+
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+ - **FIX**: 2306 remove descendantsAreFocusable are focusable as it dismisses the keyboard when we do not want it (#2316).
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FIX**(ios): improve URL callback handling for Link payment method (#2290).
+ - **FIX**(android): keyboard not appearing on first tap for CardField (#2291).
+ - **FIX**: add meta import for @internal annotation (#2269).
+ - **FIX**: add new proguard rules to prevent release build from building (#2213).
+ - **FIX**: add missing param to method channel (#2181).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+ - **FEAT**(android): add hint text parameters to CardFormField (#2296).
+ - **FEAT**: web language (#2267).
+
+
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v8.0.0`](#flutter_stripe_web---v800)
+
+---
+
+#### `flutter_stripe_web` - `v8.0.0`
+
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+ - **FIX**(web): unique view type per PaymentElement instance to fix infinite spinner on remount (#2368) (#2372).
+ - **FIX**: correct CardField web color rendering and apply all style colors (#2365).
+ - **FIX**: remove giropay payment method references from codebase (#2309).
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FIX**: Remove empty bank parameter from iDEAL payments to comply with Stripe API changes (#2186).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+ - **FEAT**: web language (#2267).
+
+
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v13.0.0`](#stripe_android---v1300)
+ - [`flutter_stripe` - `v12.6.1`](#flutter_stripe---v1261)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v12.6.1`
+
+---
+
+#### `stripe_android` - `v13.0.0`
+
+ - **FIX**(android): wrap context with AppCompat theme for Google Pay button (#2321).
+ - **FIX**: add ProGuard rules to prevent 3D Secure crash (#2320).
+ - **FIX**: hinttext android (#2215).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_ios` - `v13.0.0`](#stripe_ios---v1300)
+ - [`flutter_stripe` - `v12.6.1`](#flutter_stripe---v1261)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v12.6.1`
+
+---
+
+#### `stripe_ios` - `v13.0.0`
+
+ - **FIX**: #2383 confirm token handler on payment sheet (#2400).
+ - **FIX**(ios): improve URL callback handling for Link payment method (#2290).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v8.0.0`](#stripe_js---v800)
+ - [`flutter_stripe_web` - `v7.6.1`](#flutter_stripe_web---v761)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v7.6.1`
+
+---
+
+#### `stripe_js` - `v8.0.0`
+
+ - n
+
+ - **FIX**: remove giropay payment method references from codebase (#2309).
+ - **FIX**(android): keyboard not appearing on first tap for CardField (#2291).
+ - **FIX**: Remove empty bank parameter from iDEAL payments to comply with Stripe API changes (#2186).
+
+
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v13.0.0`](#stripe_platform_interface---v1300)
+ - [`flutter_stripe_web` - `v7.6.1`](#flutter_stripe_web---v761)
+ - [`flutter_stripe` - `v12.6.1`](#flutter_stripe---v1261)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v7.6.1`
+ - `flutter_stripe` - `v12.6.1`
+
+---
+
+#### `stripe_platform_interface` - `v13.0.0`
+
+ - Bump "stripe_platform_interface" to `13.0.0`.
+
+
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v12.7.0`](#stripe_platform_interface---v1270)
+ - [`flutter_stripe_web` - `v7.6.1`](#flutter_stripe_web---v761)
+ - [`flutter_stripe` - `v12.6.1`](#flutter_stripe---v1261)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v7.6.1`
+ - `flutter_stripe` - `v12.6.1`
+
+---
+
+#### `stripe_platform_interface` - `v12.7.0`
+
+ - **FIX**: #2383 confirm token handler on payment sheet (#2400).
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+ - **FIX**: correct termsDisplay type to Map<String, TermsDisplay> (#2385).
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FIX**: #2173 add billing address config to google pay (#2192).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+ - **FEAT**: web language (#2267).
+
+
 ## 2026-04-10
 
 ### Changes

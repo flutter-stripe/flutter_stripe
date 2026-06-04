@@ -1,3 +1,20 @@
+## 8.0.0
+
+ **Breaking Changes**
+
+  - `collectBankAccountForPayment` and `verifyPaymentIntentWithMicrodeposits` now return `CollectBankAccountResult` (a sealed class) instead of `PaymentIntent`. Update any code that assigns or pattern-matches the return value. (#2395)
+
+  **Features**
+  - **Sync with Stripe React Native v0.66.0** — Aligned iOS and Android native bridges with the upstream React Native SDK v0.66.0. (#2421)
+
+  **Fixes**
+  - Fixed crash in `_handleCardChanged` when the native layer sends a wrapped `{card: {...}}` payload instead of flat card fields. Both shapes are now handled. (#2265)
+  - Fixed `confirmPaymentSheetPayment` not triggering the token creation handler registered via `onCreatePaymentMethod`. (#2400)
+
+  **Removed**
+
+  - UPI payment method has been removed following its removal from the Stripe React Native SDK.
+
 ## 7.6.0
 - stability improvements
 
