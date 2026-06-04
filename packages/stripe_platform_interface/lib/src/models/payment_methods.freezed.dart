@@ -27,7 +27,7 @@ mixin _$PaymentMethod {
 @JsonKey(name: 'Ideal') Ideal get ideal;/// Containing additional data in case paymentmethod type is FPX.
 @JsonKey(name: 'Fpx') Fpx get fpx;/// Containing additional data in case paymentmethod type is Us bank account.
 @JsonKey(name: 'USBankAccount') UsBankAccount get usBankAccount;/// Containing additional data in case paymentmethod type is Multibanco.
-@JsonKey(name: 'Multibanco') Multibanco get multibanco;/// Id related to the customer to which this paymentmethod has been saved.
+@JsonKey(name: 'Multibanco') Multibanco? get multibanco;/// Id related to the customer to which this paymentmethod has been saved.
  String? get customerId;
 /// Create a copy of PaymentMethod
 /// with the given fields replaced by the non-null parameter values.
@@ -61,11 +61,11 @@ abstract mixin class $PaymentMethodCopyWith<$Res>  {
   factory $PaymentMethodCopyWith(PaymentMethod value, $Res Function(PaymentMethod) _then) = _$PaymentMethodCopyWithImpl;
 @useResult
 $Res call({
- String id, bool livemode, String paymentMethodType, BillingDetails billingDetails,@JsonKey(name: 'Card') Card card,@JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,@JsonKey(name: 'BacsDebit') BacsDebit bacsDebit,@JsonKey(name: 'AuBecsDebit') AuBecsDebit auBecsDebit,@JsonKey(name: 'Ideal') Ideal ideal,@JsonKey(name: 'Fpx') Fpx fpx,@JsonKey(name: 'USBankAccount') UsBankAccount usBankAccount,@JsonKey(name: 'Multibanco') Multibanco multibanco, String? customerId
+ String id, bool livemode, String paymentMethodType, BillingDetails billingDetails,@JsonKey(name: 'Card') Card card,@JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,@JsonKey(name: 'BacsDebit') BacsDebit bacsDebit,@JsonKey(name: 'AuBecsDebit') AuBecsDebit auBecsDebit,@JsonKey(name: 'Ideal') Ideal ideal,@JsonKey(name: 'Fpx') Fpx fpx,@JsonKey(name: 'USBankAccount') UsBankAccount usBankAccount,@JsonKey(name: 'Multibanco') Multibanco? multibanco, String? customerId
 });
 
 
-$BillingDetailsCopyWith<$Res> get billingDetails;$CardCopyWith<$Res> get card;$SepaDebitCopyWith<$Res> get sepaDebit;$BacsDebitCopyWith<$Res> get bacsDebit;$AuBecsDebitCopyWith<$Res> get auBecsDebit;$IdealCopyWith<$Res> get ideal;$FpxCopyWith<$Res> get fpx;$UsBankAccountCopyWith<$Res> get usBankAccount;$MultibancoCopyWith<$Res> get multibanco;
+$BillingDetailsCopyWith<$Res> get billingDetails;$CardCopyWith<$Res> get card;$SepaDebitCopyWith<$Res> get sepaDebit;$BacsDebitCopyWith<$Res> get bacsDebit;$AuBecsDebitCopyWith<$Res> get auBecsDebit;$IdealCopyWith<$Res> get ideal;$FpxCopyWith<$Res> get fpx;$UsBankAccountCopyWith<$Res> get usBankAccount;$MultibancoCopyWith<$Res>? get multibanco;
 
 }
 /// @nodoc
@@ -78,7 +78,7 @@ class _$PaymentMethodCopyWithImpl<$Res>
 
 /// Create a copy of PaymentMethod
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? livemode = null,Object? paymentMethodType = null,Object? billingDetails = null,Object? card = null,Object? sepaDebit = null,Object? bacsDebit = null,Object? auBecsDebit = null,Object? ideal = null,Object? fpx = null,Object? usBankAccount = null,Object? multibanco = null,Object? customerId = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? livemode = null,Object? paymentMethodType = null,Object? billingDetails = null,Object? card = null,Object? sepaDebit = null,Object? bacsDebit = null,Object? auBecsDebit = null,Object? ideal = null,Object? fpx = null,Object? usBankAccount = null,Object? multibanco = freezed,Object? customerId = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,livemode: null == livemode ? _self.livemode : livemode // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ as BacsDebit,auBecsDebit: null == auBecsDebit ? _self.auBecsDebit : auBecsDebit 
 as AuBecsDebit,ideal: null == ideal ? _self.ideal : ideal // ignore: cast_nullable_to_non_nullable
 as Ideal,fpx: null == fpx ? _self.fpx : fpx // ignore: cast_nullable_to_non_nullable
 as Fpx,usBankAccount: null == usBankAccount ? _self.usBankAccount : usBankAccount // ignore: cast_nullable_to_non_nullable
-as UsBankAccount,multibanco: null == multibanco ? _self.multibanco : multibanco // ignore: cast_nullable_to_non_nullable
-as Multibanco,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
+as UsBankAccount,multibanco: freezed == multibanco ? _self.multibanco : multibanco // ignore: cast_nullable_to_non_nullable
+as Multibanco?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -172,9 +172,12 @@ $UsBankAccountCopyWith<$Res> get usBankAccount {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MultibancoCopyWith<$Res> get multibanco {
-  
-  return $MultibancoCopyWith<$Res>(_self.multibanco, (value) {
+$MultibancoCopyWith<$Res>? get multibanco {
+    if (_self.multibanco == null) {
+    return null;
+  }
+
+  return $MultibancoCopyWith<$Res>(_self.multibanco!, (value) {
     return _then(_self.copyWith(multibanco: value));
   });
 }
@@ -259,7 +262,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  bool livemode,  String paymentMethodType,  BillingDetails billingDetails, @JsonKey(name: 'Card')  Card card, @JsonKey(name: 'SepaDebit')  SepaDebit sepaDebit, @JsonKey(name: 'BacsDebit')  BacsDebit bacsDebit, @JsonKey(name: 'AuBecsDebit')  AuBecsDebit auBecsDebit, @JsonKey(name: 'Ideal')  Ideal ideal, @JsonKey(name: 'Fpx')  Fpx fpx, @JsonKey(name: 'USBankAccount')  UsBankAccount usBankAccount, @JsonKey(name: 'Multibanco')  Multibanco multibanco,  String? customerId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  bool livemode,  String paymentMethodType,  BillingDetails billingDetails, @JsonKey(name: 'Card')  Card card, @JsonKey(name: 'SepaDebit')  SepaDebit sepaDebit, @JsonKey(name: 'BacsDebit')  BacsDebit bacsDebit, @JsonKey(name: 'AuBecsDebit')  AuBecsDebit auBecsDebit, @JsonKey(name: 'Ideal')  Ideal ideal, @JsonKey(name: 'Fpx')  Fpx fpx, @JsonKey(name: 'USBankAccount')  UsBankAccount usBankAccount, @JsonKey(name: 'Multibanco')  Multibanco? multibanco,  String? customerId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaymentMethod() when $default != null:
 return $default(_that.id,_that.livemode,_that.paymentMethodType,_that.billingDetails,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.usBankAccount,_that.multibanco,_that.customerId);case _:
@@ -280,7 +283,7 @@ return $default(_that.id,_that.livemode,_that.paymentMethodType,_that.billingDet
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  bool livemode,  String paymentMethodType,  BillingDetails billingDetails, @JsonKey(name: 'Card')  Card card, @JsonKey(name: 'SepaDebit')  SepaDebit sepaDebit, @JsonKey(name: 'BacsDebit')  BacsDebit bacsDebit, @JsonKey(name: 'AuBecsDebit')  AuBecsDebit auBecsDebit, @JsonKey(name: 'Ideal')  Ideal ideal, @JsonKey(name: 'Fpx')  Fpx fpx, @JsonKey(name: 'USBankAccount')  UsBankAccount usBankAccount, @JsonKey(name: 'Multibanco')  Multibanco multibanco,  String? customerId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  bool livemode,  String paymentMethodType,  BillingDetails billingDetails, @JsonKey(name: 'Card')  Card card, @JsonKey(name: 'SepaDebit')  SepaDebit sepaDebit, @JsonKey(name: 'BacsDebit')  BacsDebit bacsDebit, @JsonKey(name: 'AuBecsDebit')  AuBecsDebit auBecsDebit, @JsonKey(name: 'Ideal')  Ideal ideal, @JsonKey(name: 'Fpx')  Fpx fpx, @JsonKey(name: 'USBankAccount')  UsBankAccount usBankAccount, @JsonKey(name: 'Multibanco')  Multibanco? multibanco,  String? customerId)  $default,) {final _that = this;
 switch (_that) {
 case _PaymentMethod():
 return $default(_that.id,_that.livemode,_that.paymentMethodType,_that.billingDetails,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.usBankAccount,_that.multibanco,_that.customerId);case _:
@@ -300,7 +303,7 @@ return $default(_that.id,_that.livemode,_that.paymentMethodType,_that.billingDet
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  bool livemode,  String paymentMethodType,  BillingDetails billingDetails, @JsonKey(name: 'Card')  Card card, @JsonKey(name: 'SepaDebit')  SepaDebit sepaDebit, @JsonKey(name: 'BacsDebit')  BacsDebit bacsDebit, @JsonKey(name: 'AuBecsDebit')  AuBecsDebit auBecsDebit, @JsonKey(name: 'Ideal')  Ideal ideal, @JsonKey(name: 'Fpx')  Fpx fpx, @JsonKey(name: 'USBankAccount')  UsBankAccount usBankAccount, @JsonKey(name: 'Multibanco')  Multibanco multibanco,  String? customerId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  bool livemode,  String paymentMethodType,  BillingDetails billingDetails, @JsonKey(name: 'Card')  Card card, @JsonKey(name: 'SepaDebit')  SepaDebit sepaDebit, @JsonKey(name: 'BacsDebit')  BacsDebit bacsDebit, @JsonKey(name: 'AuBecsDebit')  AuBecsDebit auBecsDebit, @JsonKey(name: 'Ideal')  Ideal ideal, @JsonKey(name: 'Fpx')  Fpx fpx, @JsonKey(name: 'USBankAccount')  UsBankAccount usBankAccount, @JsonKey(name: 'Multibanco')  Multibanco? multibanco,  String? customerId)?  $default,) {final _that = this;
 switch (_that) {
 case _PaymentMethod() when $default != null:
 return $default(_that.id,_that.livemode,_that.paymentMethodType,_that.billingDetails,_that.card,_that.sepaDebit,_that.bacsDebit,_that.auBecsDebit,_that.ideal,_that.fpx,_that.usBankAccount,_that.multibanco,_that.customerId);case _:
@@ -315,7 +318,7 @@ return $default(_that.id,_that.livemode,_that.paymentMethodType,_that.billingDet
 
 @JsonSerializable(explicitToJson: true)
 class _PaymentMethod implements PaymentMethod {
-  const _PaymentMethod({required this.id, required this.livemode, required this.paymentMethodType, required this.billingDetails, @JsonKey(name: 'Card') required this.card, @JsonKey(name: 'SepaDebit') required this.sepaDebit, @JsonKey(name: 'BacsDebit') required this.bacsDebit, @JsonKey(name: 'AuBecsDebit') required this.auBecsDebit, @JsonKey(name: 'Ideal') required this.ideal, @JsonKey(name: 'Fpx') required this.fpx, @JsonKey(name: 'USBankAccount') required this.usBankAccount, @JsonKey(name: 'Multibanco') required this.multibanco, this.customerId});
+  const _PaymentMethod({required this.id, required this.livemode, required this.paymentMethodType, required this.billingDetails, @JsonKey(name: 'Card') required this.card, @JsonKey(name: 'SepaDebit') required this.sepaDebit, @JsonKey(name: 'BacsDebit') required this.bacsDebit, @JsonKey(name: 'AuBecsDebit') required this.auBecsDebit, @JsonKey(name: 'Ideal') required this.ideal, @JsonKey(name: 'Fpx') required this.fpx, @JsonKey(name: 'USBankAccount') required this.usBankAccount, @JsonKey(name: 'Multibanco') this.multibanco, this.customerId});
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) => _$PaymentMethodFromJson(json);
 
 /// Unique identifier.
@@ -341,7 +344,7 @@ class _PaymentMethod implements PaymentMethod {
 /// Containing additional data in case paymentmethod type is Us bank account.
 @override@JsonKey(name: 'USBankAccount') final  UsBankAccount usBankAccount;
 /// Containing additional data in case paymentmethod type is Multibanco.
-@override@JsonKey(name: 'Multibanco') final  Multibanco multibanco;
+@override@JsonKey(name: 'Multibanco') final  Multibanco? multibanco;
 /// Id related to the customer to which this paymentmethod has been saved.
 @override final  String? customerId;
 
@@ -378,11 +381,11 @@ abstract mixin class _$PaymentMethodCopyWith<$Res> implements $PaymentMethodCopy
   factory _$PaymentMethodCopyWith(_PaymentMethod value, $Res Function(_PaymentMethod) _then) = __$PaymentMethodCopyWithImpl;
 @override @useResult
 $Res call({
- String id, bool livemode, String paymentMethodType, BillingDetails billingDetails,@JsonKey(name: 'Card') Card card,@JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,@JsonKey(name: 'BacsDebit') BacsDebit bacsDebit,@JsonKey(name: 'AuBecsDebit') AuBecsDebit auBecsDebit,@JsonKey(name: 'Ideal') Ideal ideal,@JsonKey(name: 'Fpx') Fpx fpx,@JsonKey(name: 'USBankAccount') UsBankAccount usBankAccount,@JsonKey(name: 'Multibanco') Multibanco multibanco, String? customerId
+ String id, bool livemode, String paymentMethodType, BillingDetails billingDetails,@JsonKey(name: 'Card') Card card,@JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,@JsonKey(name: 'BacsDebit') BacsDebit bacsDebit,@JsonKey(name: 'AuBecsDebit') AuBecsDebit auBecsDebit,@JsonKey(name: 'Ideal') Ideal ideal,@JsonKey(name: 'Fpx') Fpx fpx,@JsonKey(name: 'USBankAccount') UsBankAccount usBankAccount,@JsonKey(name: 'Multibanco') Multibanco? multibanco, String? customerId
 });
 
 
-@override $BillingDetailsCopyWith<$Res> get billingDetails;@override $CardCopyWith<$Res> get card;@override $SepaDebitCopyWith<$Res> get sepaDebit;@override $BacsDebitCopyWith<$Res> get bacsDebit;@override $AuBecsDebitCopyWith<$Res> get auBecsDebit;@override $IdealCopyWith<$Res> get ideal;@override $FpxCopyWith<$Res> get fpx;@override $UsBankAccountCopyWith<$Res> get usBankAccount;@override $MultibancoCopyWith<$Res> get multibanco;
+@override $BillingDetailsCopyWith<$Res> get billingDetails;@override $CardCopyWith<$Res> get card;@override $SepaDebitCopyWith<$Res> get sepaDebit;@override $BacsDebitCopyWith<$Res> get bacsDebit;@override $AuBecsDebitCopyWith<$Res> get auBecsDebit;@override $IdealCopyWith<$Res> get ideal;@override $FpxCopyWith<$Res> get fpx;@override $UsBankAccountCopyWith<$Res> get usBankAccount;@override $MultibancoCopyWith<$Res>? get multibanco;
 
 }
 /// @nodoc
@@ -395,7 +398,7 @@ class __$PaymentMethodCopyWithImpl<$Res>
 
 /// Create a copy of PaymentMethod
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? livemode = null,Object? paymentMethodType = null,Object? billingDetails = null,Object? card = null,Object? sepaDebit = null,Object? bacsDebit = null,Object? auBecsDebit = null,Object? ideal = null,Object? fpx = null,Object? usBankAccount = null,Object? multibanco = null,Object? customerId = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? livemode = null,Object? paymentMethodType = null,Object? billingDetails = null,Object? card = null,Object? sepaDebit = null,Object? bacsDebit = null,Object? auBecsDebit = null,Object? ideal = null,Object? fpx = null,Object? usBankAccount = null,Object? multibanco = freezed,Object? customerId = freezed,}) {
   return _then(_PaymentMethod(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,livemode: null == livemode ? _self.livemode : livemode // ignore: cast_nullable_to_non_nullable
@@ -408,8 +411,8 @@ as BacsDebit,auBecsDebit: null == auBecsDebit ? _self.auBecsDebit : auBecsDebit 
 as AuBecsDebit,ideal: null == ideal ? _self.ideal : ideal // ignore: cast_nullable_to_non_nullable
 as Ideal,fpx: null == fpx ? _self.fpx : fpx // ignore: cast_nullable_to_non_nullable
 as Fpx,usBankAccount: null == usBankAccount ? _self.usBankAccount : usBankAccount // ignore: cast_nullable_to_non_nullable
-as UsBankAccount,multibanco: null == multibanco ? _self.multibanco : multibanco // ignore: cast_nullable_to_non_nullable
-as Multibanco,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
+as UsBankAccount,multibanco: freezed == multibanco ? _self.multibanco : multibanco // ignore: cast_nullable_to_non_nullable
+as Multibanco?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -490,9 +493,12 @@ $UsBankAccountCopyWith<$Res> get usBankAccount {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MultibancoCopyWith<$Res> get multibanco {
-  
-  return $MultibancoCopyWith<$Res>(_self.multibanco, (value) {
+$MultibancoCopyWith<$Res>? get multibanco {
+    if (_self.multibanco == null) {
+    return null;
+  }
+
+  return $MultibancoCopyWith<$Res>(_self.multibanco!, (value) {
     return _then(_self.copyWith(multibanco: value));
   });
 }

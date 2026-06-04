@@ -14,7 +14,7 @@ dependencies:
   flutter_stripe_web: ^7.0.0
   pay: ^3.2.1
   http: ^1.1.0
-  font_awesome_flutter: ^10.6.0
+  font_awesome_flutter: ^11.0.0
   platform: ^3.0.0
   web: ^1.0.0
 

@@ -25,9 +25,9 @@ _PaymentMethod _$PaymentMethodFromJson(Map<String, dynamic> json) =>
       usBankAccount: UsBankAccount.fromJson(
         json['USBankAccount'] as Map<String, dynamic>,
       ),
-      multibanco: Multibanco.fromJson(
-        json['Multibanco'] as Map<String, dynamic>,
-      ),
+      multibanco: json['Multibanco'] == null
+          ? null
+          : Multibanco.fromJson(json['Multibanco'] as Map<String, dynamic>),
       customerId: json['customerId'] as String?,
     );
 
@@ -44,7 +44,7 @@ Map<String, dynamic> _$PaymentMethodToJson(_PaymentMethod instance) =>
       'Ideal': instance.ideal.toJson(),
       'Fpx': instance.fpx.toJson(),
       'USBankAccount': instance.usBankAccount.toJson(),
-      'Multibanco': instance.multibanco.toJson(),
+      'Multibanco': instance.multibanco?.toJson(),
       'customerId': instance.customerId,
     };
 

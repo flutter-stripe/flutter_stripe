@@ -46,7 +46,7 @@ abstract class PaymentMethod with _$PaymentMethod {
     @JsonKey(name: 'USBankAccount') required UsBankAccount usBankAccount,
 
     /// Containing additional data in case paymentmethod type is Multibanco.
-    @JsonKey(name: 'Multibanco') required Multibanco multibanco,
+    @JsonKey(name: 'Multibanco') Multibanco? multibanco,
 
     /// Id related to the customer to which this paymentmethod has been saved.
     String? customerId,
