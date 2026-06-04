@@ -15,6 +15,38 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_android` - `v13.0.0`](#stripe_android---v1300)
+ - [`flutter_stripe` - `v12.6.1`](#flutter_stripe---v1261)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v12.6.1`
+
+---
+
+#### `stripe_android` - `v13.0.0`
+
+ - **FIX**(android): wrap context with AppCompat theme for Google Pay button (#2321).
+ - **FIX**: add ProGuard rules to prevent 3D Secure crash (#2320).
+ - **FIX**: hinttext android (#2215).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
+
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_ios` - `v13.0.0`](#stripe_ios---v1300)
  - [`flutter_stripe` - `v12.6.1`](#flutter_stripe---v1261)
 
