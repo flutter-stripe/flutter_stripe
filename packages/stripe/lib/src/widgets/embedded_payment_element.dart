@@ -122,6 +122,11 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
         widget.intentConfiguration.confirmHandler!,
       );
     }
+    if (widget.intentConfiguration.confirmTokenHandler != null) {
+      Stripe.instance.setConfirmTokenHandler(
+        widget.intentConfiguration.confirmTokenHandler!,
+      );
+    }
   }
 
   @override
@@ -131,12 +136,27 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
     if (widget.intentConfiguration.confirmHandler != null) {
       Stripe.instance.setConfirmHandler(null);
     }
+    if (widget.intentConfiguration.confirmTokenHandler != null) {
+      Stripe.instance.setConfirmTokenHandler(null);
+    }
     super.dispose();
   }
 
   @override
   void didUpdateWidget(EmbeddedPaymentElement oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.intentConfiguration.confirmHandler !=
+        widget.intentConfiguration.confirmHandler) {
+      Stripe.instance.setConfirmHandler(
+        widget.intentConfiguration.confirmHandler,
+      );
+    }
+    if (oldWidget.intentConfiguration.confirmTokenHandler !=
+        widget.intentConfiguration.confirmTokenHandler) {
+      Stripe.instance.setConfirmTokenHandler(
+        widget.intentConfiguration.confirmTokenHandler,
+      );
+    }
     if (widget.controller != oldWidget.controller) {
       oldWidget.controller?.detach(this);
       controller.attach(this);
@@ -145,6 +165,14 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
 
   @override
   Future<Map<String, dynamic>?> confirm() async {
+    if (widget.intentConfiguration.confirmHandler != null) {
+      Stripe.instance.setConfirmHandler(widget.intentConfiguration.confirmHandler);
+    }
+    if (widget.intentConfiguration.confirmTokenHandler != null) {
+      Stripe.instance.setConfirmTokenHandler(
+        widget.intentConfiguration.confirmTokenHandler,
+      );
+    }
     final result = await _methodChannel?.invokeMethod('confirm');
     if (result is Map) {
       return Map<String, dynamic>.from(result);
@@ -176,6 +204,7 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
     try {
       switch (call.method) {
         case 'onPaymentOptionChanged':
+        case 'embeddedPaymentElementDidUpdatePaymentOption':
           final arguments = call.arguments as Map?;
           if (arguments != null) {
             final paymentOptionMap = Map<String, dynamic>.from(
@@ -192,6 +221,7 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
           }
           break;
         case 'onHeightChanged':
+        case 'embeddedPaymentElementDidUpdateHeight':
           final arguments = call.arguments as Map?;
           if (arguments != null) {
             final height = (arguments['height'] as num?)?.toDouble() ?? 0;
@@ -207,13 +237,16 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
           final error = _parseLoadingError(call.arguments);
           widget.onLoadingFailed?.call(error);
           break;
+        case 'onFormSheetConfirmComplete':
         case 'embeddedPaymentElementFormSheetConfirmComplete':
+        case 'onConfirmComplete':
           final arguments = call.arguments as Map?;
           if (arguments != null) {
             final result = Map<String, dynamic>.from(arguments);
             widget.onFormSheetConfirmComplete?.call(result);
           }
           break;
+        case 'onRowSelectionImmediateAction':
         case 'embeddedPaymentElementRowSelectionImmediateAction':
           widget.onRowSelectionImmediateAction?.call();
           break;
@@ -269,8 +302,16 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
   Widget build(BuildContext context) {
     if (!_showPlatformView) return const SizedBox.shrink();
 
+    final intentConfiguration = widget.intentConfiguration.toJson();
+    if (widget.intentConfiguration.confirmHandler != null) {
+      intentConfiguration['confirmHandler'] = true;
+    }
+    if (widget.intentConfiguration.confirmTokenHandler != null) {
+      intentConfiguration['confirmationTokenConfirmHandler'] = true;
+    }
+
     final creationParams = <String, dynamic>{
-      'intentConfiguration': widget.intentConfiguration.toJson(),
+      'intentConfiguration': intentConfiguration,
       'configuration': widget.configuration.toJson(),
     };
 

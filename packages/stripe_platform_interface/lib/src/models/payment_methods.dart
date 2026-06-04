@@ -42,11 +42,11 @@ abstract class PaymentMethod with _$PaymentMethod {
     /// Containing additional data in case paymentmethod type is FPX.
     @JsonKey(name: 'Fpx') required Fpx fpx,
 
-    /// Containing additional data in case paymentmethod type is UPI.
-    @JsonKey(name: 'Upi') required Upi upi,
-
     /// Containing additional data in case paymentmethod type is Us bank account.
     @JsonKey(name: 'USBankAccount') required UsBankAccount usBankAccount,
+
+    /// Containing additional data in case paymentmethod type is Multibanco.
+    @JsonKey(name: 'Multibanco') Multibanco? multibanco,
 
     /// Id related to the customer to which this paymentmethod has been saved.
     String? customerId,
@@ -182,6 +182,21 @@ abstract class Ideal with _$Ideal {
 }
 
 @freezed
+/// Multibanco data associated with the payment method
+abstract class Multibanco with _$Multibanco {
+  @JsonSerializable(explicitToJson: true)
+  const factory Multibanco({
+    /// The email of the customer
+    String? email,
+
+    /// The billing details of the customer
+    BillingDetails? billingDetails,
+  }) = _Multibanco;
+  factory Multibanco.fromJson(Map<String, dynamic> json) =>
+      _$MultibancoFromJson(json);
+}
+
+@freezed
 /// SepaDebit data associated with the payment method
 abstract class SepaDebit with _$SepaDebit {
   @JsonSerializable(explicitToJson: true)
@@ -201,18 +216,6 @@ abstract class SepaDebit with _$SepaDebit {
 
   factory SepaDebit.fromJson(Map<String, dynamic> json) =>
       _$SepaDebitFromJson(json);
-}
-
-@freezed
-/// Upi data associated with the payment method.
-abstract class Upi with _$Upi {
-  @JsonSerializable(explicitToJson: true)
-  const factory Upi({
-    /// The customer's vpa.
-    String? vpa,
-  }) = _Upi;
-
-  factory Upi.fromJson(Map<String, dynamic> json) => _$UpiFromJson(json);
 }
 
 /// Data associated with the payment method Us bank account.
@@ -272,11 +275,11 @@ enum PaymentMethodType {
   Bancontact,
   Oxxo,
   PayPal,
-  Upi,
   USBankAccount,
   RevolutPay,
   Klarna,
   Link,
+  Multibanco,
   // WeChatPay,
   Unknown,
 }
@@ -453,6 +456,14 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsBillie;
 
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Multibanco')
+  /// Config parameters for Multibanco payment method.
+  const factory PaymentMethodParams.multibanco({
+    /// Paymentmethod data for this paymentmethod.
+    required PaymentMethodData paymentMethodData,
+  }) = _PaymentMethodParamsMultibanco;
+
   // TODO uncomment and regenerate when we can re-enable wechat pay
   // @JsonSerializable(explicitToJson: true)
   // @FreezedUnionValue('WeChatPay')
@@ -484,6 +495,28 @@ abstract class PaymentMethodData with _$PaymentMethodData {
 
   factory PaymentMethodData.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodDataFromJson(json);
+}
+
+@freezed
+/// Multi banco payment method data
+abstract class PaymentMethodDataMultibanco with _$PaymentMethodDataMultibanco {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentMethodDataMultibanco({
+    /// Billing information.
+    BillingDetails? billingDetails,
+
+    /// Shipping details
+    ShippingDetails? shippingDetails,
+
+    /// Mandata data for this paymentmethod.
+    MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
+  }) = _PaymentMethodDataMultibanco;
+
+  factory PaymentMethodDataMultibanco.fromJson(Map<String, dynamic> json) =>
+      _$PaymentMethodDataMultibancoFromJson(json);
 }
 
 @freezed

@@ -2,9 +2,10 @@ package com.flutter.stripe
 
 import android.content.Context
 import android.view.View
+import com.facebook.react.bridge.DynamicFromObject
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
-import com.reactnativestripesdk.EmbeddedPaymentElementLoadingError
+import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.reactnativestripesdk.EmbeddedPaymentElementView
 import com.reactnativestripesdk.EmbeddedPaymentElementViewManager
 import com.reactnativestripesdk.StripeSdkModule
@@ -26,57 +27,10 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
 
     init {
         channel.setMethodCallHandler(this)
-
-        embeddedView.onHeightChanged = { height ->
-            channel.invokeMethod("onHeightChanged", mapOf("height" to height.toDouble()))
-        }
-
-        embeddedView.onPaymentOptionChanged = { paymentOption ->
-            channel.invokeMethod("onPaymentOptionChanged", mapOf("paymentOption" to paymentOption))
-        }
-
-        embeddedView.onLoadingFailed = { error: EmbeddedPaymentElementLoadingError ->
-            channel.invokeMethod("embeddedPaymentElementLoadingFailed", error.toMap())
-        }
-
-        embeddedView.onRowSelectionImmediateAction = {
-            channel.invokeMethod("embeddedPaymentElementRowSelectionImmediateAction", null)
-        }
-
-        embeddedView.onFormSheetConfirmComplete = { result ->
-            channel.invokeMethod("embeddedPaymentElementFormSheetConfirmComplete", result)
-        }
-
-        creationParams?.let { params ->
-            val configMap = params["configuration"] as? Map<*, *>
-            val intentConfigMap = params["intentConfiguration"] as? Map<*, *>
-
-            if (configMap != null) {
-                @Suppress("UNCHECKED_CAST")
-                val configReadableMap =
-                    ReadableMap(configMap as Map<String, Any>)
-                val rowSelectionBehaviorType = viewManager.parseRowSelectionBehavior(configReadableMap)
-                embeddedView.rowSelectionBehaviorType.value = rowSelectionBehaviorType
-                val elementConfig = viewManager.parseElementConfiguration(configReadableMap, context)
-                embeddedView.latestElementConfig = elementConfig
-            }
-
-            if (intentConfigMap != null) {
-                @Suppress("UNCHECKED_CAST")
-                val intentConfigReadableMap =
-                    ReadableMap(intentConfigMap as Map<String, Any>)
-                val intentConfig = viewManager.parseIntentConfiguration(intentConfigReadableMap)
-                embeddedView.latestIntentConfig = intentConfig
-            }
-
-            if (embeddedView.latestElementConfig != null && embeddedView.latestIntentConfig != null) {
-                embeddedView.configure(embeddedView.latestElementConfig!!, embeddedView.latestIntentConfig!!)
-                embeddedView.post {
-                    embeddedView.requestLayout()
-                    embeddedView.invalidate()
-                }
-            }
-        }
+        applyCreationParams(creationParams)
+        DeviceEventManagerModule.RCTDeviceEventEmitter.registerChannelForPrefix(
+            "embeddedPaymentElement", channel
+        )
     }
 
     override fun getView(): View {
@@ -85,16 +39,16 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
 
     override fun dispose() {
         viewManager.onDropViewInstance(embeddedView)
+        DeviceEventManagerModule.RCTDeviceEventEmitter.unregisterChannelForPrefix(
+            "embeddedPaymentElement"
+        )
     }
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when (call.method) {
             "confirm" -> {
-                embeddedView.onConfirmResult = { resultMap ->
-                    result.success(resultMap)
-                    embeddedView.onConfirmResult = null
-                }
                 viewManager.confirm(embeddedView)
+                result.success(null)
             }
             "clearPaymentOption" -> {
                 viewManager.clearPaymentOption(embeddedView)
@@ -110,6 +64,46 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
         embeddedView.post {
             embeddedView.requestLayout()
             embeddedView.invalidate()
+        }
+    }
+
+    private fun applyCreationParams(creationParams: Map<String?, Any?>?) {
+        val config = asReadableMap(creationParams?.get("configuration"))
+        if (config != null) {
+            viewManager.setConfiguration(embeddedView, DynamicFromObject(config))
+        }
+
+        val intentConfig = asReadableMap(creationParams?.get("intentConfiguration"))
+        if (intentConfig != null) {
+            viewManager.setIntentConfiguration(embeddedView, DynamicFromObject(intentConfig))
+        }
+
+        val checkout = asReadableMap(creationParams?.get("checkout"))
+        if (checkout != null) {
+            viewManager.setCheckout(embeddedView, DynamicFromObject(checkout))
+        }
+    }
+
+    private fun asReadableMap(value: Any?): ReadableMap? {
+        if (value !is Map<*, *>) return null
+        val normalized = normalizeMap(value)
+        @Suppress("UNCHECKED_CAST")
+        return ReadableMap(normalized as Map<String, Any>)
+    }
+
+    private fun normalizeMap(value: Map<*, *>): Map<String, Any?> {
+        return value.entries
+            .filter { it.key is String }
+            .associate { (key, entryValue) ->
+                key as String to normalizeValue(entryValue)
+            }
+    }
+
+    private fun normalizeValue(value: Any?): Any? {
+        return when (value) {
+            is Map<*, *> -> normalizeMap(value)
+            is List<*> -> value.map { normalizeValue(it) }
+            else -> value
         }
     }
 }

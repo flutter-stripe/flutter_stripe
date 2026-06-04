@@ -29,8 +29,6 @@ internal fun buildIntentConfiguration(intentConfigurationParams: ReadableMap?): 
     paymentMethodTypes =
       intentConfigurationParams.getStringList("paymentMethodTypes")?.toList()
         ?: emptyList(),
-    paymentMethodConfigurationId =
-      intentConfigurationParams.getString("paymentMethodConfigurationId"),
     onBehalfOf = intentConfigurationParams.getString("onBehalfOf"),
   )
 }
@@ -188,7 +186,9 @@ internal fun buildBillingDetails(map: ReadableMap?): PaymentSheet.BillingDetails
   )
 }
 
-internal fun buildBillingDetailsCollectionConfiguration(map: ReadableMap?): PaymentSheet.BillingDetailsCollectionConfiguration =
+internal fun buildBillingDetailsCollectionConfiguration(
+  map: ReadableMap?
+): PaymentSheet.BillingDetailsCollectionConfiguration =
   PaymentSheet.BillingDetailsCollectionConfiguration(
     name = mapToCollectionMode(map?.getString("name")),
     phone = mapToCollectionMode(map?.getString("phone")),
@@ -205,7 +205,9 @@ internal fun mapToCollectionMode(str: String?): PaymentSheet.BillingDetailsColle
     else -> PaymentSheet.BillingDetailsCollectionConfiguration.CollectionMode.Automatic
   }
 
-internal fun mapToAddressCollectionMode(str: String?): PaymentSheet.BillingDetailsCollectionConfiguration.AddressCollectionMode =
+internal fun mapToAddressCollectionMode(
+  str: String?
+): PaymentSheet.BillingDetailsCollectionConfiguration.AddressCollectionMode =
   when (str) {
     "automatic" ->
       PaymentSheet.BillingDetailsCollectionConfiguration.AddressCollectionMode.Automatic

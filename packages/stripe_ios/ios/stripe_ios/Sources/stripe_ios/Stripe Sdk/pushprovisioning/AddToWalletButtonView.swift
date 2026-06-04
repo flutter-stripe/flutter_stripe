@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Stripe
 import PassKit
+import Stripe
 
 @objc(AddToWalletButtonView)
 public class AddToWalletButtonView: UIView {

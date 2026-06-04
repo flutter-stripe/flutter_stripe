@@ -50,11 +50,11 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.Bancontact: 'Bancontact',
   PaymentMethodType.Oxxo: 'Oxxo',
   PaymentMethodType.PayPal: 'PayPal',
-  PaymentMethodType.Upi: 'Upi',
   PaymentMethodType.USBankAccount: 'USBankAccount',
   PaymentMethodType.RevolutPay: 'RevolutPay',
   PaymentMethodType.Klarna: 'Klarna',
   PaymentMethodType.Link: 'Link',
+  PaymentMethodType.Multibanco: 'Multibanco',
   PaymentMethodType.Unknown: 'Unknown',
 };
 

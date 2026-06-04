@@ -22,10 +22,12 @@ _PaymentMethod _$PaymentMethodFromJson(Map<String, dynamic> json) =>
       ),
       ideal: Ideal.fromJson(json['Ideal'] as Map<String, dynamic>),
       fpx: Fpx.fromJson(json['Fpx'] as Map<String, dynamic>),
-      upi: Upi.fromJson(json['Upi'] as Map<String, dynamic>),
       usBankAccount: UsBankAccount.fromJson(
         json['USBankAccount'] as Map<String, dynamic>,
       ),
+      multibanco: json['Multibanco'] == null
+          ? null
+          : Multibanco.fromJson(json['Multibanco'] as Map<String, dynamic>),
       customerId: json['customerId'] as String?,
     );
 
@@ -41,8 +43,8 @@ Map<String, dynamic> _$PaymentMethodToJson(_PaymentMethod instance) =>
       'AuBecsDebit': instance.auBecsDebit.toJson(),
       'Ideal': instance.ideal.toJson(),
       'Fpx': instance.fpx.toJson(),
-      'Upi': instance.upi.toJson(),
       'USBankAccount': instance.usBankAccount.toJson(),
+      'Multibanco': instance.multibanco?.toJson(),
       'customerId': instance.customerId,
     };
 
@@ -140,6 +142,19 @@ Map<String, dynamic> _$IdealToJson(_Ideal instance) => <String, dynamic>{
   'bank': instance.bank,
 };
 
+_Multibanco _$MultibancoFromJson(Map<String, dynamic> json) => _Multibanco(
+  email: json['email'] as String?,
+  billingDetails: json['billingDetails'] == null
+      ? null
+      : BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+);
+
+Map<String, dynamic> _$MultibancoToJson(_Multibanco instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'billingDetails': instance.billingDetails?.toJson(),
+    };
+
 _SepaDebit _$SepaDebitFromJson(Map<String, dynamic> json) => _SepaDebit(
   country: json['country'] as String?,
   bankCode: json['bankCode'] as String?,
@@ -154,13 +169,6 @@ Map<String, dynamic> _$SepaDebitToJson(_SepaDebit instance) =>
       'fingerprint': instance.fingerprint,
       'last4': instance.last4,
     };
-
-_Upi _$UpiFromJson(Map<String, dynamic> json) =>
-    _Upi(vpa: json['vpa'] as String?);
-
-Map<String, dynamic> _$UpiToJson(_Upi instance) => <String, dynamic>{
-  'vpa': instance.vpa,
-};
 
 _UsBankAccount _$UsBankAccountFromJson(Map<String, dynamic> json) =>
     _UsBankAccount(
@@ -561,6 +569,22 @@ Map<String, dynamic> _$PaymentMethodParamsBillieToJson(
   'paymentMethodType': instance.$type,
 };
 
+_PaymentMethodParamsMultibanco _$PaymentMethodParamsMultibancoFromJson(
+  Map<String, dynamic> json,
+) => _PaymentMethodParamsMultibanco(
+  paymentMethodData: PaymentMethodData.fromJson(
+    json['paymentMethodData'] as Map<String, dynamic>,
+  ),
+  $type: json['paymentMethodType'] as String?,
+);
+
+Map<String, dynamic> _$PaymentMethodParamsMultibancoToJson(
+  _PaymentMethodParamsMultibanco instance,
+) => <String, dynamic>{
+  'paymentMethodData': instance.paymentMethodData.toJson(),
+  'paymentMethodType': instance.$type,
+};
+
 _PaymentMethodData _$PaymentMethodDataFromJson(Map<String, dynamic> json) =>
     _PaymentMethodData(
       billingDetails: json['billingDetails'] == null
@@ -588,6 +612,34 @@ Map<String, dynamic> _$PaymentMethodDataToJson(_PaymentMethodData instance) =>
       'mandateData': instance.mandateData?.toJson(),
       'metadata': instance.metadata,
     };
+
+_PaymentMethodDataMultibanco _$PaymentMethodDataMultibancoFromJson(
+  Map<String, dynamic> json,
+) => _PaymentMethodDataMultibanco(
+  billingDetails: json['billingDetails'] == null
+      ? null
+      : BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+  shippingDetails: json['shippingDetails'] == null
+      ? null
+      : ShippingDetails.fromJson(
+          json['shippingDetails'] as Map<String, dynamic>,
+        ),
+  mandateData: json['mandateData'] == null
+      ? null
+      : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+  metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(k, e as String),
+  ),
+);
+
+Map<String, dynamic> _$PaymentMethodDataMultibancoToJson(
+  _PaymentMethodDataMultibanco instance,
+) => <String, dynamic>{
+  'billingDetails': instance.billingDetails?.toJson(),
+  'shippingDetails': instance.shippingDetails?.toJson(),
+  'mandateData': instance.mandateData?.toJson(),
+  'metadata': instance.metadata,
+};
 
 _PaymentMethodDataCardFromToken _$PaymentMethodDataCardFromTokenFromJson(
   Map<String, dynamic> json,
