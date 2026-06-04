@@ -19,11 +19,14 @@ export 'package:stripe_js/stripe_api.dart'
 
 typedef PaymentElementTheme = js.ElementTheme;
 
+const _defaultPaymentElementHeight = 300.0;
+
 class PaymentElement extends StatefulWidget {
   final String clientSecret;
   final String? customerSessionClientSecret;
   final double? width;
   final double? height;
+  final double? maxHeight;
   final CardStyle? style;
   final CardPlaceholder? placeholder;
   final bool enablePostalCode;
@@ -48,6 +51,7 @@ class PaymentElement extends StatefulWidget {
     this.customerSessionClientSecret,
     this.width,
     this.height,
+    this.maxHeight,
     this.style,
     this.placeholder,
     this.enablePostalCode = false,
@@ -65,7 +69,7 @@ class PaymentElement extends StatefulWidget {
     this.terms,
     this.wallets,
     this.applePay,
-  });
+  }) : assert(maxHeight == null || maxHeight > 0);
 
   @override
   State<PaymentElement> createState() => PaymentElementState();
@@ -76,7 +80,8 @@ class PaymentElementState extends State<PaymentElement> {
   final String _viewType = 'stripe_payment_element_${_nextId++}';
 
   web.HTMLDivElement _divElement = web.HTMLDivElement();
-  double height = 300.0;
+  double _effectiveHeight = _defaultPaymentElementHeight;
+  double _measuredContentHeight = _defaultPaymentElementHeight;
   bool _isReady = false;
 
   late final js.JsElementsCreateOptions _cachedCreateOptions;
@@ -86,11 +91,17 @@ class PaymentElementState extends State<PaymentElement> {
     ((JSArray<web.ResizeObserverEntry> entries, web.ResizeObserver observer) {
       if (widget.height == null) {
         for (final entry in entries.toDart) {
-          final cr = entry.contentRect;
-          setState(() {
-            height = cr.height.toDouble();
-            _divElement.style.height = '${height}px';
-          });
+          final observedHeight = entry.contentRect.height.toDouble();
+          // Once the host is capped, ResizeObserver may report the capped
+          // layout height instead of Stripe's natural content height. Keep the
+          // previous natural measurement unless Stripe reports a larger height,
+          // otherwise the element can repeatedly cap and uncap while resizing.
+          if (!_isHeightCapped ||
+              widget.maxHeight == null ||
+              observedHeight > widget.maxHeight!) {
+            _measuredContentHeight = observedHeight;
+          }
+          setState(_applyHostHeight);
         }
       }
     }).toJS,
@@ -98,14 +109,16 @@ class PaymentElementState extends State<PaymentElement> {
 
   @override
   void initState() {
-    height = widget.height ?? height;
+    _measuredContentHeight = widget.height ?? _defaultPaymentElementHeight;
+    _effectiveHeight = _resolvedHeight;
 
     _divElement = web.HTMLDivElement()
       ..id = 'payment-element'
       ..style.border = 'none'
       ..style.width = '100%'
-      ..style.height = '${height}px'
-      ..style.minHeight = '${height}px';
+      ..style.height = '${_effectiveHeight}px'
+      ..style.minHeight = '${_effectiveHeight}px';
+    _applyHostHeight();
 
     _cachedCreateOptions = _createOptionsOnce();
     _cachedElementOptions = _elementOptionsOnce();
@@ -135,6 +148,7 @@ class PaymentElementState extends State<PaymentElement> {
           if (stripeEl != null) {
             resizeObserver.observe(stripeEl as web.HTMLElement);
           }
+          _applyHostHeight();
           if (mounted) {
             setState(() {
               _isReady = true;
@@ -149,6 +163,35 @@ class PaymentElementState extends State<PaymentElement> {
         (_) => _mountWhenConnected(),
       );
     }
+  }
+
+  double get _resolvedHeight {
+    if (widget.height != null) {
+      return widget.height!;
+    }
+    if (widget.maxHeight != null &&
+        _measuredContentHeight > widget.maxHeight!) {
+      return widget.maxHeight!;
+    }
+    return _measuredContentHeight;
+  }
+
+  bool get _isHeightCapped {
+    return widget.height == null &&
+        widget.maxHeight != null &&
+        _measuredContentHeight > widget.maxHeight!;
+  }
+
+  void _applyHostHeight() {
+    _effectiveHeight = _resolvedHeight;
+    final heightCss = '${_effectiveHeight}px';
+
+    _divElement.style
+      ..height = heightCss
+      ..minHeight = heightCss
+      ..maxHeight = _isHeightCapped ? heightCss : ''
+      ..overflowX = _isHeightCapped ? 'hidden' : ''
+      ..overflowY = _isHeightCapped ? 'auto' : '';
   }
 
   js.PaymentElement? get element => WebStripe.element as js.PaymentElement?;
@@ -175,7 +218,7 @@ class PaymentElementState extends State<PaymentElement> {
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: double.infinity,
-          maxHeight: height,
+          maxHeight: _effectiveHeight,
         ),
         child: Stack(
           children: [
@@ -223,6 +266,11 @@ class PaymentElementState extends State<PaymentElement> {
     if (widget.enablePostalCode != oldWidget.enablePostalCode ||
         widget.placeholder != oldWidget.placeholder ||
         widget.style != oldWidget.style) {}
+    if (widget.height != oldWidget.height ||
+        widget.maxHeight != oldWidget.maxHeight) {
+      _measuredContentHeight = widget.height ?? _measuredContentHeight;
+      setState(_applyHostHeight);
+    }
     super.didUpdateWidget(oldWidget);
   }
 
