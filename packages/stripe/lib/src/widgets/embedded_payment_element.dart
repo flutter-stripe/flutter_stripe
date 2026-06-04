@@ -13,9 +13,8 @@ typedef PaymentOptionChangedCallback =
 typedef HeightChangedCallback = void Function(double height);
 
 /// Called when the embedded payment element fails to load.
-typedef LoadingFailedCallback = void Function(
-  EmbeddedPaymentElementLoadingException error,
-);
+typedef LoadingFailedCallback =
+    void Function(EmbeddedPaymentElementLoadingException error);
 
 /// Called when form sheet confirmation completes.
 typedef FormSheetConfirmCompleteCallback =
@@ -166,7 +165,9 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
   @override
   Future<Map<String, dynamic>?> confirm() async {
     if (widget.intentConfiguration.confirmHandler != null) {
-      Stripe.instance.setConfirmHandler(widget.intentConfiguration.confirmHandler);
+      Stripe.instance.setConfirmHandler(
+        widget.intentConfiguration.confirmHandler,
+      );
     }
     if (widget.intentConfiguration.confirmTokenHandler != null) {
       Stripe.instance.setConfirmTokenHandler(
@@ -267,8 +268,8 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
         }
       }
 
-      var message = (map['localizedMessage'] as String?) ??
-          (map['message'] as String?);
+      var message =
+          (map['localizedMessage'] as String?) ?? (map['message'] as String?);
       final code = map['code'] as String?;
       final detailsRaw = map['details'];
       Map<String, dynamic>? details;
@@ -276,13 +277,14 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
         details = <String, dynamic>{};
         for (final entry in detailsRaw.entries) {
           if (entry.key is String) {
-            details![entry.key as String] = entry.value;
+            details[entry.key as String] = entry.value;
           } else {
-            details!['${entry.key}'] = entry.value;
+            details['${entry.key}'] = entry.value;
           }
         }
-        message ??= (details?['localizedMessage'] as String?) ??
-            (details?['message'] as String?);
+        message ??=
+            (details['localizedMessage'] as String?) ??
+            (details['message'] as String?);
       }
       message ??= 'Unknown error';
       return EmbeddedPaymentElementLoadingException(
