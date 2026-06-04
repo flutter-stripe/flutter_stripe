@@ -1,3 +1,14 @@
+## 12.7.0
+
+ - **FIX**: #2383 confirm token handler on payment sheet (#2400).
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+ - **FIX**: correct termsDisplay type to Map<String, TermsDisplay> (#2385).
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FIX**: #2173 add billing address config to google pay (#2192).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+ - **FEAT**: web language (#2267).
+
 ## 12.6.0
 
 **Features**:

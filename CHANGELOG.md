@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v12.7.0`](#stripe_platform_interface---v1270)
+ - [`flutter_stripe_web` - `v7.6.1`](#flutter_stripe_web---v761)
+ - [`flutter_stripe` - `v12.6.1`](#flutter_stripe---v1261)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v7.6.1`
+ - `flutter_stripe` - `v12.6.1`
+
+---
+
+#### `stripe_platform_interface` - `v12.7.0`
+
+ - **FIX**: #2383 confirm token handler on payment sheet (#2400).
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+ - **FIX**: correct termsDisplay type to Map<String, TermsDisplay> (#2385).
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FIX**: #2173 add billing address config to google pay (#2192).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+ - **FEAT**: web language (#2267).
+
+
 ## 2026-04-10
 
 ### Changes
