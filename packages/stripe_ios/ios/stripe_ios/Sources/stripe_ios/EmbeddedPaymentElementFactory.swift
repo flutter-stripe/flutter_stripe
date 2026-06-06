@@ -247,6 +247,24 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
                 StripeSdkImpl.shared.embeddedInstance?.clearPaymentOption()
             }
             result(nil)
+        case "update":
+            guard let args = call.arguments as? [String: Any],
+                  let intentConfiguration = args["intentConfiguration"] as? NSDictionary else {
+                result(FlutterError(code: "Failed", message: "Invalid configuration", details: nil ))
+                return
+            }
+            let mutableIntentConfig = intentConfiguration.mutableCopy() as! NSMutableDictionary
+            let hasConfirmHandler = mutableIntentConfig["confirmHandler"] != nil
+            let hasConfirmationTokenHandler = mutableIntentConfig["confirmationTokenConfirmHandler"] != nil
+            if !hasConfirmHandler && !hasConfirmationTokenHandler {
+                mutableIntentConfig["confirmHandler"] = true
+            }
+            StripeSdkImpl.shared.updateEmbeddedPaymentElement(intentConfig: mutableIntentConfig) { payload in
+                result(payload)
+            } reject: { code, message, error in
+                result(FlutterError(code: code, message: message, details: nil))
+            }
+
         default:
             result(FlutterMethodNotImplemented)
         }

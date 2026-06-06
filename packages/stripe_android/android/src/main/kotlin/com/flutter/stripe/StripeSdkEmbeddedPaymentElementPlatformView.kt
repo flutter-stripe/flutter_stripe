@@ -12,6 +12,7 @@ import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
+import org.json.JSONObject
 
 class StripeSdkEmbeddedPaymentElementPlatformView(
     private val context: Context,
@@ -52,6 +53,17 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
             }
             "clearPaymentOption" -> {
                 viewManager.clearPaymentOption(embeddedView)
+                result.success(null)
+            }
+            "update" -> {
+                val intentConfiguration = call.argument<Map<*, *>>("intentConfiguration")
+                if (intentConfiguration == null) {
+                    result.error("Failed", "Invalid configuration", null)
+                    return
+                }
+                val intentConfigurationJson =
+                    JSONObject(normalizeMap(intentConfiguration)).toString()
+                viewManager.update(embeddedView, intentConfigurationJson)
                 result.success(null)
             }
             else -> {

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -109,6 +111,7 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
   }
 
   MethodChannel? _methodChannel;
+  Completer<Map<String, dynamic>?>? _pendingUpdate;
   double _currentHeight = 0;
   bool _showPlatformView = true;
 
@@ -138,6 +141,8 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
     if (widget.intentConfiguration.confirmTokenHandler != null) {
       Stripe.instance.setConfirmTokenHandler(null);
     }
+    _pendingUpdate?.complete(null);
+    _pendingUpdate = null;
     super.dispose();
   }
 
@@ -238,6 +243,9 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
           final error = _parseLoadingError(call.arguments);
           widget.onLoadingFailed?.call(error);
           break;
+        case 'embeddedPaymentElementUpdateComplete':
+          _completePendingUpdate(call.arguments);
+          break;
         case 'onFormSheetConfirmComplete':
         case 'embeddedPaymentElementFormSheetConfirmComplete':
         case 'onConfirmComplete':
@@ -255,6 +263,29 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
     } catch (e) {
       debugPrint('Error handling method call ${call.method}: $e');
     }
+  }
+
+  void _completePendingUpdate(dynamic payload) {
+    final completer = _pendingUpdate;
+    _pendingUpdate = null;
+    if (completer == null || completer.isCompleted) return;
+
+    completer.complete(
+      payload is Map ? Map<String, dynamic>.from(payload) : null,
+    );
+  }
+
+  Map<String, dynamic> _intentConfigurationToJson(
+    IntentConfiguration intentConfiguration,
+  ) {
+    final intentConfigurationJson = intentConfiguration.toJson();
+    if (intentConfiguration.confirmHandler != null) {
+      intentConfigurationJson['confirmHandler'] = true;
+    }
+    if (intentConfiguration.confirmTokenHandler != null) {
+      intentConfigurationJson['confirmationTokenConfirmHandler'] = true;
+    }
+    return intentConfigurationJson;
   }
 
   EmbeddedPaymentElementLoadingException _parseLoadingError(dynamic payload) {
@@ -304,13 +335,9 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
   Widget build(BuildContext context) {
     if (!_showPlatformView) return const SizedBox.shrink();
 
-    final intentConfiguration = widget.intentConfiguration.toJson();
-    if (widget.intentConfiguration.confirmHandler != null) {
-      intentConfiguration['confirmHandler'] = true;
-    }
-    if (widget.intentConfiguration.confirmTokenHandler != null) {
-      intentConfiguration['confirmationTokenConfirmHandler'] = true;
-    }
+    final intentConfiguration = _intentConfigurationToJson(
+      widget.intentConfiguration,
+    );
 
     final creationParams = <String, dynamic>{
       'intentConfiguration': intentConfiguration,
@@ -346,6 +373,28 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
         child: platformView,
       ),
     );
+  }
+
+  @override
+  Future<Map<String, dynamic>?> update(
+    IntentConfiguration configuration,
+  ) async {
+    final channel = _methodChannel;
+    if (channel == null) {
+      return null;
+    }
+    final map = _intentConfigurationToJson(configuration);
+    if (defaultTargetPlatform != TargetPlatform.android) {
+      final result = await channel.invokeMethod('update', {
+        'intentConfiguration': map,
+      });
+      return result is Map ? Map<String, dynamic>.from(result) : null;
+    }
+    _completePendingUpdate({'status': 'canceled'});
+    final completer = Completer<Map<String, dynamic>?>();
+    _pendingUpdate = completer;
+    await channel.invokeMethod('update', {'intentConfiguration': map});
+    return completer.future;
   }
 }
 
