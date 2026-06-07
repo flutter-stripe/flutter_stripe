@@ -60,9 +60,11 @@ class FlutterEmbeddedPaymentElementContainerView: UIView {
 
 public class EmbeddedPaymentElementViewFactory: NSObject, FlutterPlatformViewFactory {
     private var messenger: FlutterBinaryMessenger
+    private var stripeSdk: StripeSdkImpl
 
-    init(messenger: FlutterBinaryMessenger) {
+    init(messenger: FlutterBinaryMessenger, stripeSdk: StripeSdkImpl) {
         self.messenger = messenger
+        self.stripeSdk = stripeSdk
         super.init()
     }
 
@@ -75,7 +77,8 @@ public class EmbeddedPaymentElementViewFactory: NSObject, FlutterPlatformViewFac
             frame: frame,
             viewIdentifier: viewId,
             arguments: args,
-            binaryMessenger: messenger
+            binaryMessenger: messenger,
+            stripeSdk: stripeSdk
         )
     }
 
@@ -88,20 +91,22 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
 
     private let embeddedView: FlutterEmbeddedPaymentElementContainerView
     private let channel: FlutterMethodChannel
+    private let stripeSdk: StripeSdkImpl
     private var delegate: FlutterEmbeddedPaymentElementDelegate?
 
     init(
         frame: CGRect,
         viewIdentifier viewId: Int64,
         arguments args: Any?,
-        binaryMessenger messenger: FlutterBinaryMessenger
+        binaryMessenger messenger: FlutterBinaryMessenger,
+        stripeSdk: StripeSdkImpl
     ) {
         embeddedView = FlutterEmbeddedPaymentElementContainerView(frame: frame)
         channel = FlutterMethodChannel(
             name: "flutter.stripe/embedded_payment_element/\(viewId)",
             binaryMessenger: messenger
         )
-
+        self.stripeSdk = stripeSdk
         super.init()
         channel.setMethodCallHandler(handle)
         StripePlugin.registerChannel(channel, forPrefix: "embeddedPaymentElement")
@@ -133,7 +138,7 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
             mutableIntentConfig["confirmHandler"] = true
         }
 
-        StripeSdkImpl.shared.createEmbeddedPaymentElement(
+        stripeSdk.createEmbeddedPaymentElement(
             intentConfig: mutableIntentConfig,
             configuration: configuration,
             resolve: { [weak self] result in
@@ -153,7 +158,7 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
                         return
                     }
 
-                    if let embeddedElement = StripeSdkImpl.shared.embeddedInstance {
+                    if let embeddedElement = self.stripeSdk.embeddedInstance {
                         self.attachEmbeddedView(embeddedElement)
                     } else {
                         self.channel.invokeMethod("embeddedPaymentElementLoadingFailed", arguments: ["message": "Failed to create embedded payment element"])
@@ -213,7 +218,7 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "confirm":
-            guard let embeddedElement = StripeSdkImpl.shared.embeddedInstance else {
+            guard let embeddedElement = stripeSdk.embeddedInstance else {
                 result(FlutterError(
                     code: "Failed",
                     message: "Embedded payment element not available",
@@ -244,7 +249,7 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
             }
         case "clearPaymentOption":
             DispatchQueue.main.async {
-                StripeSdkImpl.shared.embeddedInstance?.clearPaymentOption()
+                self.stripeSdk.embeddedInstance?.clearPaymentOption()
             }
             result(nil)
         case "update":
@@ -259,7 +264,7 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
             if !hasConfirmHandler && !hasConfirmationTokenHandler {
                 mutableIntentConfig["confirmHandler"] = true
             }
-            StripeSdkImpl.shared.updateEmbeddedPaymentElement(intentConfig: mutableIntentConfig) { payload in
+            stripeSdk.updateEmbeddedPaymentElement(intentConfig: mutableIntentConfig) { payload in
                 result(payload)
             } reject: { code, message, error in
                 result(FlutterError(code: code, message: message, details: nil))

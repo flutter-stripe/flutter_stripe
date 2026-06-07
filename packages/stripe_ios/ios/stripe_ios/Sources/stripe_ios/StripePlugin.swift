@@ -89,7 +89,7 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         registrar.register(addressSheetFactory, withId: "flutter.stripe/address_sheet")
 
         // Embedded Payment Element
-        let embeddedPaymentElementFactory = EmbeddedPaymentElementViewFactory(messenger: registrar.messenger())
+        let embeddedPaymentElementFactory = EmbeddedPaymentElementViewFactory(messenger: registrar.messenger(), stripeSdk: instance)
         registrar.register(embeddedPaymentElementFactory, withId: "flutter.stripe/embedded_payment_element")
 
     }
@@ -890,7 +890,7 @@ extension  StripePlugin {
             return
         }
 
-        StripeSdkImpl.shared.intentCreationCallback(
+        intentCreationCallback(
             result: params,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
