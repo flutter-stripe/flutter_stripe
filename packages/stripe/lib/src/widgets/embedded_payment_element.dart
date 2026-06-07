@@ -112,6 +112,7 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
 
   MethodChannel? _methodChannel;
   Completer<Map<String, dynamic>?>? _pendingUpdate;
+  Completer<Map<String, dynamic>?>? _pendingConfirm;
   double _currentHeight = 0;
   bool _showPlatformView = true;
 
@@ -143,6 +144,8 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
     }
     _pendingUpdate?.complete(null);
     _pendingUpdate = null;
+    _pendingConfirm?.complete(null);
+    _pendingConfirm = null;
     super.dispose();
   }
 
@@ -169,6 +172,8 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
 
   @override
   Future<Map<String, dynamic>?> confirm() async {
+    final channel = _methodChannel;
+    if (channel == null) return null;
     if (widget.intentConfiguration.confirmHandler != null) {
       Stripe.instance.setConfirmHandler(
         widget.intentConfiguration.confirmHandler,
@@ -179,7 +184,14 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
         widget.intentConfiguration.confirmTokenHandler,
       );
     }
-    final result = await _methodChannel?.invokeMethod('confirm');
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      _completePendingConfirm({'status': 'canceled'});
+      final completer = Completer<Map<String, dynamic>?>();
+      _pendingConfirm = completer;
+      await channel.invokeMethod('confirm');
+      return completer.future;
+    }
+    final result = await channel.invokeMethod('confirm');
     if (result is Map) {
       return Map<String, dynamic>.from(result);
     }
@@ -252,6 +264,7 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
           final arguments = call.arguments as Map?;
           if (arguments != null) {
             final result = Map<String, dynamic>.from(arguments);
+            _completePendingConfirm(result);
             widget.onFormSheetConfirmComplete?.call(result);
           }
           break;
@@ -268,6 +281,16 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
   void _completePendingUpdate(dynamic payload) {
     final completer = _pendingUpdate;
     _pendingUpdate = null;
+    if (completer == null || completer.isCompleted) return;
+
+    completer.complete(
+      payload is Map ? Map<String, dynamic>.from(payload) : null,
+    );
+  }
+
+  void _completePendingConfirm(dynamic payload) {
+    final completer = _pendingConfirm;
+    _pendingConfirm = null;
     if (completer == null || completer.isCompleted) return;
 
     completer.complete(
