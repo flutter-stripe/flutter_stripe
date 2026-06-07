@@ -416,7 +416,14 @@ class _EmbeddedPaymentElementState extends State<EmbeddedPaymentElement>
     _completePendingUpdate({'status': 'canceled'});
     final completer = Completer<Map<String, dynamic>?>();
     _pendingUpdate = completer;
-    await channel.invokeMethod('update', {'intentConfiguration': map});
+    try {
+      await channel.invokeMethod('update', {'intentConfiguration': map});
+    } catch (_) {
+      if (identical(_pendingUpdate, completer)) {
+        _pendingUpdate = null;
+      }
+      rethrow;
+    }
     return completer.future;
   }
 }
