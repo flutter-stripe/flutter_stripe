@@ -1,5 +1,4 @@
 import Stripe
-import UIKit
 @_spi(STP) import StripeCore
 
 enum ErrorType {

@@ -1,5 +1,4 @@
 import Contacts
-import PassKit
 import Stripe
 @_spi(ConfirmationTokensPublicPreview) import StripePayments
 #if canImport(StripeCryptoOnramp)
@@ -1226,11 +1225,11 @@ class Mappers {
             nil
         }
 
-        let primaryButtonConfiguration: LinkAppearance.PrimaryButtonConfiguration? =
-            if let primaryButton = params["primaryButton"] as? [String: CGFloat],
-                let cornerRadius = primaryButton["cornerRadius"],
-                let height = primaryButton["height"] {
-                    .init(cornerRadius: cornerRadius, height: height)
+        let primaryButtonConfiguration: LinkAppearance.PrimaryButtonConfiguration? = if let primaryButton = params["primaryButton"] as? [String: CGFloat] {
+            .init(
+                cornerRadius: primaryButton["cornerRadius"],
+                height: primaryButton["height"]
+            )
         } else {
             nil
         }
@@ -1372,14 +1371,16 @@ class Mappers {
         [
             "identifiers": requirements.identifiers.map(mapFromComplianceIdentifierRequirement),
             "alternatives": requirements.alternatives.map(mapFromComplianceIdentifierAlternativeGroup),
+            "carfTinRequired": requirements.carfTinRequired,
         ]
     }
 
     class func mapFromSubmitIdentifiersResult(_ result: SubmitIdentifiersResult) -> [String: Any] {
         [
-            "valid": result.valid,
+            "completed": result.completed,
             "identifiers": result.identifiers.map(mapFromComplianceIdentifierRequirement),
             "alternatives": result.alternatives.map(mapFromComplianceIdentifierAlternativeGroup),
+            "carfTinRequired": result.carfTinRequired,
             "invalidIdentifiers": result.invalidIdentifiers.map(\.rawValue),
         ]
     }
