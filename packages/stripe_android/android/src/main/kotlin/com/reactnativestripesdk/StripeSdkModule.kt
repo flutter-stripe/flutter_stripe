@@ -24,6 +24,9 @@ import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.modules.systeminfo.ReactNativeVersion
+import com.flutter.stripe.BuildConfig
+import com.flutter.stripe.getCurrentActivity
+import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherManager
 import com.reactnativestripesdk.customersheet.CustomerSheetManager
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
@@ -96,7 +99,7 @@ import java.util.UUID
 @ReactModule(name = StripeSdkModule.NAME)
 @OptIn(ReactNativeSdkInternal::class, CheckoutSessionPreview::class)
 class StripeSdkModule(
-  reactContext: ReactApplicationContext,
+  val reactContext: ReactApplicationContext,
 ) : NativeStripeSdkModuleSpec(reactContext) {
   var cardFieldView: CardFieldView? = null
   var cardFormView: CardFormView? = null
