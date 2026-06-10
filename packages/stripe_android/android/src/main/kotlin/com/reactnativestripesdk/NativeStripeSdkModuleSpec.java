@@ -29,8 +29,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModule implements TurboModule {
   public static final String NAME = "StripeSdk";
@@ -40,7 +40,7 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
   }
 
   @Override
-  public @NonNull String getName() {
+  public @Nonnull String getName() {
     return NAME;
   }
 
@@ -328,10 +328,6 @@ public abstract class NativeStripeSdkModuleSpec extends ReactContextBaseJavaModu
   @ReactMethod
   @DoNotStrip
   public abstract void checkoutSelectShippingOption(String sessionKey, String id, Promise promise);
-
-  @ReactMethod
-  @DoNotStrip
-  public abstract void checkoutUpdateTaxId(String sessionKey, String type, String value, Promise promise);
 
   @ReactMethod
   @DoNotStrip
