@@ -67,6 +67,10 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         StripeSdkImpl.shared.emitter = instance
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
+        // Also register as a scene-lifecycle delegate so Stripe redirect callbacks
+        // (Link/iDEAL/PayPal/etc.) are delivered on apps that adopt UISceneDelegate
+        // (default since Flutter 3.41), not only via the engine's app-delegate fallback.
+        registrar.addSceneDelegate(instance)
 
         // Card Field
         let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger(), delegate:instance)
@@ -385,6 +389,31 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             if let url = userActivity.webpageURL {
                 return StripeAPI.handleURLCallback(with: url)
             }
+        }
+        return false
+    }
+}
+
+// MARK: - Scene lifecycle parity
+//
+// Mirrors the `application(_:open:options:)` / `application(_:continue:…)` handlers above for
+// apps that adopt UISceneDelegate (default since Flutter 3.41). Without this, a running
+// scene-based app delivers redirect URLs via `scene(_:openURLContexts:)`, and flutter_stripe
+// (being app-delegate-only) would only be reached through the engine's app-delegate fallback —
+// which a custom UISceneDelegate may bypass, breaking Stripe redirect payments. Like the
+// app-delegate handlers, these return `false` for non-Stripe URLs so other plugins still run.
+extension StripePlugin: FlutterSceneLifeCycleDelegate {
+    @objc func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) -> Bool {
+        var handled = false
+        for context in URLContexts {
+            handled = StripeAPI.handleURLCallback(with: context.url) || handled
+        }
+        return handled
+    }
+
+    @objc func scene(_ scene: UIScene, continueUserActivity userActivity: NSUserActivity) -> Bool {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
+            return StripeAPI.handleURLCallback(with: url)
         }
         return false
     }
