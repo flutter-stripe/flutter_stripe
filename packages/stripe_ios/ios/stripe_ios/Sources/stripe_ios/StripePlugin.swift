@@ -363,12 +363,17 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled = StripeAPI.handleURLCallback(with: url)
         #if DEBUG
-        if !handled {
-            print("[flutter_stripe] URL callback received but not handled by Stripe SDK: \(url.absoluteString)")
-            print("[flutter_stripe] If using Link or other redirect-based payment methods, ensure:")
-            print("[flutter_stripe]   1. The returnURL in PaymentSheet matches your app's URL scheme")
-            print("[flutter_stripe]   2. CFBundleURLSchemes in Info.plist includes your URL scheme")
-            print("[flutter_stripe]   3. If using FlutterDeepLinkingEnabled, call Stripe.handleURLCallback() manually from your Flutter deep link handler")
+        // Only surface a diagnostic when the URL uses the scheme the app configured for
+        // Stripe redirects but Stripe did not recognize it — i.e. a likely returnURL/scheme
+        // mismatch. We stay silent for every other scheme so flutter_stripe does not appear
+        // to "intercept" unrelated deep links. Returning `false` here does NOT block other
+        // URL handlers or plugins: the iOS/Flutter delegate chain continues past a `false`.
+        if !handled,
+           let scheme = url.scheme?.lowercased(),
+           let configured = urlScheme?.lowercased(),
+           scheme == configured {
+            print("[flutter_stripe] Received a '\(scheme)://' URL that didn't match a pending Stripe redirect; ignoring it (returning false). flutter_stripe is NOT blocking other URL handlers or plugins.")
+            print("[flutter_stripe] If a Stripe redirect payment (Link/iDEAL/PayPal/etc.) isn't completing, verify your returnURL/urlScheme and CFBundleURLSchemes — see the \"Deep linking\" section of the flutter_stripe README.")
         }
         #endif
         return handled

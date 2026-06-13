@@ -1,3 +1,9 @@
+## Unreleased
+
+  **Fixes**
+
+  - Scope-gate and reword the unhandled-URL debug log so it no longer mis-attributes unrelated deep-link breakage to flutter_stripe. (#2422)
+
 ## 13.0.0
 
  **Breaking Changes**

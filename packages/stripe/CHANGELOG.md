@@ -1,3 +1,9 @@
+## Unreleased
+
+  **Fixes**
+
+  - iOS: the debug log for unhandled URL callbacks no longer fires for unrelated deep links and no longer implies flutter_stripe intercepted them; it now only warns when a URL using your configured Stripe `urlScheme` didn't match a pending redirect, and clarifies that flutter_stripe returns `false` and does not block other URL handlers/plugins. Added a "Deep linking & coexistence" README section. (#2422)
+
 ## 13.0.0
 
  **Breaking Changes**
