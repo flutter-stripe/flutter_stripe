@@ -148,6 +148,27 @@ We also support the [Customer Sheet](https://docs.page/flutter-stripe/flutter_st
 ### Financial connections
 We also support Financial connections in our latest sdk. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/financial_connections) to learn more on how to set it up.
 
+### Deep linking & coexistence with other deep-link plugins
+
+Redirect-based payment methods (Link, iDEAL, Bancontact, PayPal, etc.) send the user out to a browser and back to your app via a `returnURL`. On iOS, flutter_stripe registers an app- and scene-delegate and forwards incoming URLs to the Stripe SDK. **For URLs that are not a pending Stripe redirect it returns `false` and does not consume them** — it does not block `app_links`, `uni_links`, `go_router`, or any other URL handler.
+
+If a deep-link plugin stops receiving links after adding flutter_stripe, it is almost always one of the following (none of which is flutter_stripe consuming the URL):
+
+- **`app_links` version.** On apps using `UISceneDelegate` (the Flutter default since 3.41), use **`app_links` >= 7.0.0**, which registers a scene delegate. Older versions only register an app delegate and never receive `scene:openURLContexts:`.
+- **`FlutterDeepLinkingEnabled`.** If it is `true` in `Info.plist`, Flutter's own router may handle the URL. Either set it to `false`, or forward only your Stripe URLs from your router/deep-link handler (see below) and let everything else flow to your routes.
+- **Scheme/returnURL mismatch.** Make sure `CFBundleURLSchemes`, `Stripe.urlScheme`, and your PaymentSheet `returnURL` all use the same scheme.
+
+To complete a Stripe redirect while your app owns deep linking, forward matching URLs to `Stripe.instance.handleURLCallback()`:
+
+```dart
+// e.g. from your app_links / go_router listener
+if (uri.scheme == 'yourappscheme' && uri.host == 'safepay') {
+  await Stripe.instance.handleURLCallback(uri.toString());
+}
+```
+
+A full example (router-based, deep-link-package-based, and the `FlutterDeepLinkingEnabled=false` approach) is in [`example/lib/main.dart`](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/lib/main.dart). See also `Stripe.instance.handleURLCallback` in the [Dart API](#dart-api).
+
 ## Stripe initialization
 
 To initialize Stripe in your Flutter app, use the `Stripe` base class.

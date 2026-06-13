@@ -1,3 +1,17 @@
+## Unreleased
+
+  **Breaking Changes**
+
+  - Minimum Flutter version is now **3.38** (was 3.0). Required for the iOS scene-lifecycle plugin APIs used to deliver Stripe redirect callbacks under `UISceneDelegate`. (#2422)
+
+  **Features**
+
+  - iOS: flutter_stripe now also registers as a `UISceneDelegate` (`FlutterSceneLifeCycleDelegate`), so Stripe redirect payments (Link/iDEAL/PayPal/etc.) are delivered on scene-based apps without relying on the engine's app-delegate fallback. (#2422)
+
+  **Fixes**
+
+  - iOS: the debug log for unhandled URL callbacks no longer fires for unrelated deep links and no longer implies flutter_stripe intercepted them; it now only warns when a URL using your configured Stripe `urlScheme` didn't match a pending redirect, and clarifies that flutter_stripe returns `false` and does not block other URL handlers/plugins. Added a "Deep linking & coexistence" README section. (#2422)
+
 ## 13.0.0
 
  **Breaking Changes**

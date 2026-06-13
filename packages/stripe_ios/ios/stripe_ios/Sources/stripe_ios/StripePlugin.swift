@@ -67,6 +67,10 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         StripeSdkImpl.shared.emitter = instance
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
+        // Also register as a scene-lifecycle delegate so Stripe redirect callbacks
+        // (Link/iDEAL/PayPal/etc.) are delivered on apps that adopt UISceneDelegate
+        // (default since Flutter 3.41), not only via the engine's app-delegate fallback.
+        registrar.addSceneDelegate(instance)
 
         // Card Field
         let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger(), delegate:instance)
@@ -363,12 +367,17 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled = StripeAPI.handleURLCallback(with: url)
         #if DEBUG
-        if !handled {
-            print("[flutter_stripe] URL callback received but not handled by Stripe SDK: \(url.absoluteString)")
-            print("[flutter_stripe] If using Link or other redirect-based payment methods, ensure:")
-            print("[flutter_stripe]   1. The returnURL in PaymentSheet matches your app's URL scheme")
-            print("[flutter_stripe]   2. CFBundleURLSchemes in Info.plist includes your URL scheme")
-            print("[flutter_stripe]   3. If using FlutterDeepLinkingEnabled, call Stripe.handleURLCallback() manually from your Flutter deep link handler")
+        // Only surface a diagnostic when the URL uses the scheme the app configured for
+        // Stripe redirects but Stripe did not recognize it — i.e. a likely returnURL/scheme
+        // mismatch. We stay silent for every other scheme so flutter_stripe does not appear
+        // to "intercept" unrelated deep links. Returning `false` here does NOT block other
+        // URL handlers or plugins: the iOS/Flutter delegate chain continues past a `false`.
+        if !handled,
+           let scheme = url.scheme?.lowercased(),
+           let configured = urlScheme?.lowercased(),
+           scheme == configured {
+            print("[flutter_stripe] Received a '\(scheme)://' URL that didn't match a pending Stripe redirect; ignoring it (returning false). flutter_stripe is NOT blocking other URL handlers or plugins.")
+            print("[flutter_stripe] If a Stripe redirect payment (Link/iDEAL/PayPal/etc.) isn't completing, verify your returnURL/urlScheme and CFBundleURLSchemes — see the \"Deep linking\" section of the flutter_stripe README.")
         }
         #endif
         return handled
@@ -380,6 +389,34 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             if let url = userActivity.webpageURL {
                 return StripeAPI.handleURLCallback(with: url)
             }
+        }
+        return false
+    }
+}
+
+// MARK: - Scene lifecycle parity
+//
+// Mirrors the `application(_:open:options:)` / `application(_:continue:…)` handlers above for
+// apps that adopt UISceneDelegate (default since Flutter 3.41). Without this, a running
+// scene-based app delivers redirect URLs via `scene(_:openURLContexts:)`, and flutter_stripe
+// (being app-delegate-only) would only be reached through the engine's app-delegate fallback —
+// which a custom UISceneDelegate may bypass, breaking Stripe redirect payments. Like the
+// app-delegate handlers, these return `false` for non-Stripe URLs so other plugins still run.
+extension StripePlugin: FlutterSceneLifeCycleDelegate {
+    @objc func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) -> Bool {
+        var handled = false
+        for context in URLContexts {
+            handled = StripeAPI.handleURLCallback(with: context.url) || handled
+        }
+        return handled
+    }
+
+    // The protocol requirement is imported under the Swift name `scene(_:continue:)`
+    // (UIKit renames the `scene:continueUserActivity:` selector), so implement it under
+    // exactly that name and let Swift wire the selector as the protocol witness.
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) -> Bool {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
+            return StripeAPI.handleURLCallback(with: url)
         }
         return false
     }

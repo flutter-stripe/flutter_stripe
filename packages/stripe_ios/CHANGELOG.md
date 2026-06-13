@@ -1,3 +1,17 @@
+## Unreleased
+
+  **Breaking Changes**
+
+  - Minimum Flutter version is now **3.38** (was 3.0), required for the iOS scene-lifecycle plugin APIs (`FlutterSceneLifeCycleDelegate` / `addSceneDelegate`). (#2422)
+
+  **Features**
+
+  - Register `StripePlugin` as a `FlutterSceneLifeCycleDelegate` (`scene:openURLContexts:` / `scene:continueUserActivity:`) so redirect callbacks are delivered under `UISceneDelegate`. (#2422)
+
+  **Fixes**
+
+  - Scope-gate and reword the unhandled-URL debug log so it no longer mis-attributes unrelated deep-link breakage to flutter_stripe. (#2422)
+
 ## 13.0.0
 
  **Breaking Changes**

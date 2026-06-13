@@ -404,6 +404,17 @@ class Stripe {
   ///    );
   ///    ```
   ///
+  /// ## Coexisting with other deep-link plugins
+  ///
+  /// On iOS, flutter_stripe also registers an app- and scene-delegate and
+  /// forwards incoming URLs to the Stripe SDK automatically. For URLs that are
+  /// not a pending Stripe redirect it returns `false` and does **not** consume
+  /// them, so it does not block `app_links`, `uni_links`, `go_router`, or other
+  /// URL handlers. If a deep-link plugin stops receiving links, check your
+  /// `app_links` version (>= 7.0.0 for scene-based apps), `FlutterDeepLinkingEnabled`,
+  /// and that your scheme/`returnURL` match. See the "Deep linking & coexistence"
+  /// section of the README.
+  ///
   /// Returns `true` if the URL was successfully handled by the Stripe SDK,
   /// `false` otherwise. A `false` return may indicate that no active payment
   /// flow was waiting for a callback.
