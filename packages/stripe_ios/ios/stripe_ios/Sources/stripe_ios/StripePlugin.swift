@@ -411,7 +411,10 @@ extension StripePlugin: FlutterSceneLifeCycleDelegate {
         return handled
     }
 
-    @objc func scene(_ scene: UIScene, continueUserActivity userActivity: NSUserActivity) -> Bool {
+    // The protocol requirement is imported under the Swift name `scene(_:continue:)`
+    // (UIKit renames the `scene:continueUserActivity:` selector), so implement it under
+    // exactly that name and let Swift wire the selector as the protocol witness.
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
             return StripeAPI.handleURLCallback(with: url)
         }
