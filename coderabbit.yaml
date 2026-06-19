@@ -1,0 +1,175 @@
+# Enables IDE autocompletion for this config file
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+# Language for CodeRabbit's review comments
+language: en
+
+# Enable experimental features (currently not using any specific early_access features)
+early_access: true
+
+chat:
+  # CodeRabbit will automatically respond to @coderabbitai mentions in PR comments
+  auto_reply: true
+
+reviews:
+  auto_review:
+    # Automatically trigger reviews when PRs are opened or updated
+    enabled: true
+    # Skip auto-review if PR title contains these keywords
+    ignore_title_keywords:
+      - "WIP"
+    # Don't auto-review draft PRs
+    drafts: false
+    # Only auto-review PRs targeting these branches
+    base_branches:
+      - main
+
+  # Include a high-level summary at the start of each review
+  high_level_summary: true
+
+  # Don't include poems in reviews (fun feature, but keeping it professional)
+  poem: false
+
+  # Show review completion status
+  review_status: true
+
+  # Keep the walkthrough section expanded by default
+  collapse_walkthrough: false
+
+  # Include summary of all changed files
+  changed_files_summary: true
+
+  # Don't automatically request changes on the PR (just leave comments)
+  request_changes_workflow: false
+
+  # Pre-merge checks to enforce before merging PRs
+  pre_merge_checks:
+    description:
+      # Validate that PR has a proper description
+      mode: warning # Options: off, warning, error
+    docstrings:
+      # Disable docstring coverage checks (let's assume we don't need them)
+      mode: off
+
+  # Exclude these paths from reviews (generated code, build artifacts,
+  # vendored copies and dependencies)
+  path_filters:
+    # Vendored Stripe SDK copies — these are 1:1 copies of the React Native
+    # SDK and are not maintained in this repo, so don't review them.
+    - "!packages/stripe_android/android/src/main/kotlin/com/reactnativestripesdk/**"
+    - "!packages/stripe_ios/ios/stripe_ios/Sources/stripe_ios/Stripe Sdk/**"
+    # Dart code generation output (json_serializable, freezed)
+    - "!**/*.g.dart"
+    - "!**/*.freezed.dart"
+    - "!**/*.mocks.dart"
+    # Flutter/Dart tooling and build output
+    - "!**/.dart_tool/**"
+    - "!**/.fvm/**"
+    - "!**/.melos_tool/**"
+    - "!**/build/**"
+    - "!**/generated_plugin_registrant.*"
+    - "!**/GeneratedPluginRegistrant.*"
+    # Native build files
+    - "!**/android/**" # Native Android build files
+    - "!**/ios/**" # Native iOS build files
+    - "!**/macos/**" # Native macOS build files
+    - "!**/windows/**" # Native Windows build files
+    - "!**/linux/**" # Native Linux build files
+    # Dependencies and lockfiles
+    - "!**/node_modules/**" # npm dependencies (server/types tooling)
+    - "!**/pubspec.lock"
+    - "!**/package-lock.json"
+
+  # Custom review instructions for specific file patterns
+  path_instructions:
+    # Dart files - the plugin and example app code
+    - path: "**/*.dart"
+      instructions: |
+        Flutter & Dart best practices:
+        - Follow the rules in the nearest analysis_options.yaml (flutter_lints).
+        - Prefer 'const' constructors and immutable widgets where possible.
+        - Dispose controllers, streams and listeners in dispose(); avoid leaks
+          in StatefulWidget and async gaps after 'await' (check 'mounted').
+        - Use 'ListView.builder'/'SliverList' for long lists, not a Column with
+          a mapped list.
+        - Handle platform differences explicitly (iOS / Android / web) and guard
+          web-only or native-only APIs.
+
+        Plugin architecture (federated plugin):
+        - Public API lives in 'stripe', shared contracts in
+          'stripe_platform_interface'; platform behavior in 'stripe_android',
+          'stripe_ios' and 'stripe_web'. Keep changes on the correct layer and
+          keep the platform interface and implementations in sync.
+        - Models are immutable and generated with json_serializable/freezed.
+          Edit the source '*.dart' model, never the generated '*.g.dart' or
+          '*.freezed.dart'; regenerate with build_runner instead.
+
+        Types & null-safety:
+        - Avoid 'dynamic'; use explicit types and sound null-safety.
+        - Don't expose nullable fields without a reason; document nullability.
+
+        Security:
+        - No hard-coded Stripe secret keys, publishable keys or tokens.
+        - Never log full card data, PII or payment credentials.
+
+    # Pub package / app manifests
+    - path: "**/pubspec.yaml"
+      instructions: |
+        Review pubspec.yaml for:
+        - Version bumps are intentional and consistent across the federated
+          packages and their CHANGELOG entries.
+        - Dependency constraints are sensible (avoid 'any'; pin or range
+          appropriately) and the Dart/Flutter SDK constraints are correct.
+        - New dependencies are justified, maintained and compatible with the
+          plugin's supported platforms.
+        - Plugin platform declarations (flutter: plugin: platforms) stay in sync
+          with the actual implementations.
+
+    # Melos workspace configuration
+    - path: "melos.yaml"
+      instructions: |
+        Review the Melos workspace config for:
+        - Package globs and scripts (analyze, format, get, unittest) remain
+          correct for the package layout.
+        - Bootstrap and pubspec override settings are consistent across packages.
+
+    # Static analysis configuration
+    - path: "**/analysis_options.yaml"
+      instructions: |
+        Review analyzer config for:
+        - Lint rules are not loosened without justification.
+        - Excludes don't accidentally hide first-party (non-generated) code.
+
+    # Dart code-generation configuration
+    - path: "**/build.yaml"
+      instructions: |
+        Review build_runner / json_serializable config for:
+        - Serialization options (explicit_to_json, include_if_null, any_map) are
+          consistent with how models are produced and consumed across platforms.
+
+    # Test files
+    - path: "**/*_test.dart"
+      instructions: |
+        Review test files for:
+        - Coverage of widget behavior and platform-channel interactions.
+        - Proper use of flutter_test and mocked platform interface / method
+          channels (no real network or native calls).
+        - Async behavior is awaited and pumped correctly (pumpAndSettle, fakeAsync).
+        - Edge cases for payment flows and error handling are tested.
+
+    # TypeScript type definitions (stripe_js / stripe_web interop)
+    - path: "**/types/**/*.ts"
+      instructions: |
+        Review TypeScript Stripe.js interop typings for:
+        - Types accurately reflect the Stripe.js API surface used by the Dart
+          interop layer.
+        - Avoid 'any'; prefer precise types and 'import type' for type-only
+          imports.
+
+    # GitHub Actions / CI
+    - path: ".github/**"
+      instructions: |
+        Review CI/workflow changes for:
+        - Pinned action versions and no exposed secrets in workflow files.
+        - Matrix and steps stay aligned with the Melos scripts (analyze, format,
+          test) and the supported Flutter versions.
