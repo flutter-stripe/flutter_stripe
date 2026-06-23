@@ -5,6 +5,7 @@ import com.facebook.react.bridge.WritableMap
 import com.stripe.android.core.exception.APIException
 import com.stripe.android.core.exception.AuthenticationException
 import com.stripe.android.core.exception.InvalidRequestException
+import com.stripe.android.core.exception.StripeException
 import com.stripe.android.exception.CardException
 import com.stripe.android.model.PaymentIntent
 import com.stripe.android.model.SetupIntent
@@ -173,6 +174,16 @@ internal fun createError(
         error.stripeError?.code,
       )
     }
+    is StripeException -> {
+      mapError(
+        code,
+        error.message,
+        error.localizedMessage,
+        error.stripeError?.declineCode,
+        error.stripeError?.type,
+        error.stripeError?.code
+      )
+    }
     else -> mapError(code, error.message, error.localizedMessage.orEmpty(), null, null, null)
   }
 
@@ -196,10 +207,4 @@ internal fun createMissingInitError(): WritableMap =
     ErrorType.Failed.toString(),
     "Stripe has not been initialized. Initialize Stripe in your app with the StripeProvider component " +
       "or the initStripe method.",
-  )
-
-internal fun createOnrampNotConfiguredError(): WritableMap =
-  createError(
-    ErrorType.Failed.toString(),
-    "Onramp is not configured.",
   )

@@ -526,7 +526,9 @@ class MethodChannelStripe extends StripePlatform {
     } else {
       isSupported = await _methodChannel.invokeMethod(
         'isPlatformPaySupported',
-        {'params': params.toJson()},
+        {
+          'params': {'googlePay': params.toJson()},
+        },
       );
     }
 
