@@ -2,7 +2,7 @@ name: packages (all)
 
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths-ignore:
       - "docs/**"
       - "website/**"
@@ -14,6 +14,30 @@ on:
       - "website/**"
       - "**.md"
 jobs:
+  # Determine whether the Stripe secrets are available to this run. They are not
+  # exposed to pull requests from forks (and may be unset on some branches), in
+  # which case the example server and integration tests cannot run. The value is
+  # a plain "true"/"false" boolean, never the secret itself.
+  preflight:
+    name: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      has_secrets: ${{ steps.check.outputs.has_secrets }}
+    steps:
+      - name: "Check Stripe secrets"
+        id: check
+        env:
+          STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        run: |
+          if [ -n "$STRIPE_PUBLISHABLE_KEY" ] && [ -n "$STRIPE_SECRET_KEY" ]; then
+            echo "has_secrets=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_secrets=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Stripe secrets unavailable::Stripe secrets are not available (expected for pull requests from forks). Integration tests are skipped."
+          fi
+
   analyze:
     name: analyze
     timeout-minutes: 15
@@ -74,7 +98,10 @@ jobs:
 
   ios_integration_test:
     name: integration test (iOS)
-    needs: [analyze, test]
+    needs: [preflight, analyze, test]
+    # Skip when the Stripe secrets are unavailable (e.g. pull requests from forks),
+    # since the example server and integration tests require them.
+    if: ${{ needs.preflight.outputs.has_secrets == 'true' }}
     timeout-minutes: 60
     runs-on: macos-15
     steps:
@@ -136,7 +163,10 @@ jobs:
 
   android_integration_test:
     name: integration test (Android)
-    needs: [analyze, test]
+    needs: [preflight, analyze, test]
+    # Skip when the Stripe secrets are unavailable (e.g. pull requests from forks),
+    # since the example server and integration tests require them.
+    if: ${{ needs.preflight.outputs.has_secrets == 'true' }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
