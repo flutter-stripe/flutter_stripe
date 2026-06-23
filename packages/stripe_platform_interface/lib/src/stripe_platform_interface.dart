@@ -207,6 +207,9 @@ abstract class StripePlatform extends PlatformInterface {
   /// Set the confirm handler for embedded payment elements
   void setConfirmHandler(ConfirmHandler? handler);
 
+  /// Set the confirmation token handler for embedded payment elements
+  void setConfirmTokenHandler(ConfirmTokenHandler? handler);
+
   Widget buildCard({
     Key? key,
     required CardEditController controller,

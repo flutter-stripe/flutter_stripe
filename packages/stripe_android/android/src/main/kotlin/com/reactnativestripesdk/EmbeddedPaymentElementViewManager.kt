@@ -2,8 +2,11 @@ package com.reactnativestripesdk
 
 import android.annotation.SuppressLint
 import android.content.Context
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Dynamic
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.WritableArray
+import com.facebook.react.bridge.WritableMap
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.ViewGroupManager
@@ -13,16 +16,23 @@ import com.facebook.react.viewmanagers.EmbeddedPaymentElementViewManagerInterfac
 import com.reactnativestripesdk.addresssheet.AddressSheetView
 import com.reactnativestripesdk.utils.PaymentSheetAppearanceException
 import com.reactnativestripesdk.utils.PaymentSheetException
+import com.reactnativestripesdk.utils.asMapOrNull
 import com.reactnativestripesdk.utils.getBooleanOr
 import com.reactnativestripesdk.utils.getIntegerList
 import com.reactnativestripesdk.utils.getStringList
 import com.reactnativestripesdk.utils.mapToPreferredNetworks
 import com.reactnativestripesdk.utils.parseCustomPaymentMethods
 import com.stripe.android.ExperimentalAllowsRemovalOfLastSavedPaymentMethodApi
+import com.stripe.android.paymentelement.CheckoutSessionPreview
 import com.stripe.android.paymentelement.EmbeddedPaymentElement
+import com.stripe.android.paymentsheet.CardFundingFilteringPrivatePreview
 import com.stripe.android.paymentsheet.PaymentSheet
+import org.json.JSONArray
+import org.json.JSONObject
 
 @ReactModule(name = EmbeddedPaymentElementViewManager.NAME)
+@OptIn(CheckoutSessionPreview::class)
+@Suppress("TooManyFunctions")
 class EmbeddedPaymentElementViewManager :
   ViewGroupManager<EmbeddedPaymentElementView>(),
   EmbeddedPaymentElementViewManagerInterface<EmbeddedPaymentElementView> {
@@ -51,16 +61,15 @@ class EmbeddedPaymentElementViewManager :
     view: EmbeddedPaymentElementView,
     cfg: Dynamic,
   ) {
-    val readableMap = cfg.asMap()
+    val readableMap = cfg.asMapOrNull()
     if (readableMap == null) return
 
-    val rowSelectionBehaviorType = parseRowSelectionBehavior(readableMap)
+    val rowSelectionBehaviorType = mapToRowSelectionBehaviorType(readableMap)
     view.rowSelectionBehaviorType.value = rowSelectionBehaviorType
 
     val elementConfig = parseElementConfiguration(readableMap, view.context)
     view.latestElementConfig = elementConfig
-    view.latestIntentConfig?.let { intentCfg ->
-      view.configure(elementConfig, intentCfg)
+    if (configureIfReady(view, elementConfig)) {
       view.post {
         view.requestLayout()
         view.invalidate()
@@ -73,66 +82,99 @@ class EmbeddedPaymentElementViewManager :
     view: EmbeddedPaymentElementView,
     cfg: Dynamic,
   ) {
-    val readableMap = cfg.asMap()
-    if (readableMap == null) return
-    val intentConfig = parseIntentConfiguration(readableMap)
-    view.latestIntentConfig = intentConfig
-    view.latestElementConfig?.let { elemCfg ->
-      view.configure(elemCfg, intentConfig)
+    val readableMap = cfg.asMapOrNull() ?: return
+
+    view.setUseConfirmationTokenCallback(readableMap.hasKey("confirmationTokenConfirmHandler"))
+
+    view.latestIntentConfig = parseIntentConfiguration(readableMap)
+    view.latestElementConfig?.let { configureIfReady(view, it) }
+  }
+
+  @ReactProp(name = "checkout")
+  override fun setCheckout(
+    view: EmbeddedPaymentElementView,
+    cfg: Dynamic,
+  ) {
+    val sessionKey = cfg.asMapOrNull()?.getString("sessionKey") ?: return
+
+    val stripeSdkModule =
+      (view.context as ThemedReactContext).getNativeModule(StripeSdkModule::class.java)
+    val checkout = stripeSdkModule?.checkoutInstances?.get(sessionKey)
+    if (checkout == null) {
+      val payload =
+        Arguments.createMap().apply {
+          putString("message", "Checkout session not found.")
+        }
+      stripeSdkModule?.eventEmitter?.emitEmbeddedPaymentElementLoadingFailed(payload)
+      return
     }
+
+    view.latestCheckout = checkout
+    view.latestElementConfig?.let { configureIfReady(view, it) }
+  }
+
+  /**
+   * Configures the embedded element once both the element config and an
+   * intent source (intent configuration or checkout) have arrived. Returns
+   * `true` when a configure was dispatched.
+   */
+  private fun configureIfReady(
+    view: EmbeddedPaymentElementView,
+    elementConfig: EmbeddedPaymentElement.Configuration,
+  ): Boolean {
+    view.latestCheckout?.let { checkout ->
+      view.configureWithCheckout(elementConfig, checkout)
+      return true
+    }
+    view.latestIntentConfig?.let { intentCfg ->
+      view.configure(elementConfig, intentCfg)
+      return true
+    }
+    return false
   }
 
   @SuppressLint("RestrictedApi")
   @OptIn(
     ExperimentalAllowsRemovalOfLastSavedPaymentMethodApi::class,
+    CardFundingFilteringPrivatePreview::class,
   )
-  internal fun parseElementConfiguration(
-    readableMap: ReadableMap?,
+  private fun parseElementConfiguration(
+    map: ReadableMap,
     context: Context,
   ): EmbeddedPaymentElement.Configuration {
-    val merchantDisplayName = readableMap?.getString("merchantDisplayName").orEmpty()
-    val allowsDelayedPaymentMethods = readableMap.getBooleanOr("allowsDelayedPaymentMethods", false)
-    val defaultBillingDetails = buildBillingDetails(readableMap?.getMap("defaultBillingDetails"))
+    val merchantDisplayName = map.getString("merchantDisplayName").orEmpty()
+    val allowsDelayedPaymentMethods = map.getBooleanOr("allowsDelayedPaymentMethods", false)
+    val defaultBillingDetails = buildBillingDetails(map.getMap("defaultBillingDetails"))
 
     val customerConfiguration =
       try {
-        buildCustomerConfiguration(readableMap)
-      } catch (error: PaymentSheetException) {
-        throw Error()
+        buildCustomerConfiguration(map)
+      } catch (_: PaymentSheetException) {
+        throw Error() // TODO handle error
       }
 
-    val googlePayConfig = buildGooglePayConfig(readableMap?.getMap("googlePay"))
-    val linkConfig = buildLinkConfig(readableMap?.getMap("link"))
+    val googlePayConfig = buildGooglePayConfig(map.getMap("googlePay"))
+    val linkConfig = buildLinkConfig(map.getMap("link"))
     val shippingDetails =
-      readableMap?.getMap("defaultShippingDetails")?.let {
+      map.getMap("defaultShippingDetails")?.let {
         AddressSheetView.buildAddressDetails(it)
       }
     val appearance =
       try {
-        buildPaymentSheetAppearance(readableMap?.getMap("appearance"), context)
-      } catch (error: PaymentSheetAppearanceException) {
-        throw Error()
+        buildPaymentSheetAppearance(map.getMap("appearance"), context)
+      } catch (_: PaymentSheetAppearanceException) {
+        throw Error() // TODO handle error
       }
     val billingDetailsConfig =
       buildBillingDetailsCollectionConfiguration(
-        readableMap?.getMap("billingDetailsCollectionConfiguration"),
+        map.getMap("billingDetailsCollectionConfiguration"),
       )
-    val allowsRemovalOfLastSavedPaymentMethod =
-      readableMap.getBooleanOr("allowsRemovalOfLastSavedPaymentMethod", true)
-    val primaryButtonLabel = readableMap?.getString("primaryButtonLabel")
-    val paymentMethodOrder = readableMap?.getStringList("paymentMethodOrder")
+    val allowsRemovalOfLastSavedPaymentMethod = map.getBooleanOr("allowsRemovalOfLastSavedPaymentMethod", true)
+    val opensCardScannerAutomatically = map.getBooleanOr("opensCardScannerAutomatically", false)
+    val primaryButtonLabel = map.getString("primaryButtonLabel")
+    val paymentMethodOrder = map.getStringList("paymentMethodOrder")
 
-    val formSheetAction =
-      readableMap
-        ?.getMap("formSheetAction")
-        ?.getString("type")
-        ?.let { type ->
-          when (type) {
-            "confirm" -> EmbeddedPaymentElement.FormSheetAction.Confirm
-            else -> EmbeddedPaymentElement.FormSheetAction.Continue
-          }
-        }
-        ?: EmbeddedPaymentElement.FormSheetAction.Continue
+    val formSheetAction = mapToFormSheetAction(map)
 
     val configurationBuilder =
       EmbeddedPaymentElement.Configuration
@@ -148,16 +190,20 @@ class EmbeddedPaymentElementViewManager :
         .billingDetailsCollectionConfiguration(billingDetailsConfig)
         .preferredNetworks(
           mapToPreferredNetworks(
-            readableMap?.getIntegerList("preferredNetworks"),
+            map
+              .getIntegerList("preferredNetworks")
+              ?.let { ArrayList(it) },
           ),
         ).allowsRemovalOfLastSavedPaymentMethod(allowsRemovalOfLastSavedPaymentMethod)
-        .cardBrandAcceptance(mapToCardBrandAcceptance(readableMap))
-        .embeddedViewDisplaysMandateText(
-          readableMap.getBooleanOr("embeddedViewDisplaysMandateText", true),
-        )
-        .customPaymentMethods(
+        .opensCardScannerAutomatically(opensCardScannerAutomatically)
+        .cardBrandAcceptance(mapToCardBrandAcceptance(map))
+        .apply {
+          mapToAllowedCardFundingTypes(map)?.let { allowedCardFundingTypes(it) }
+        }.embeddedViewDisplaysMandateText(
+          map.getBooleanOr("embeddedViewDisplaysMandateText", true),
+        ).customPaymentMethods(
           parseCustomPaymentMethods(
-            readableMap?.getMap("customPaymentMethodConfiguration"),
+            map.getMap("customPaymentMethodConfiguration"),
           ),
         )
 
@@ -167,23 +213,8 @@ class EmbeddedPaymentElementViewManager :
     return configurationBuilder.build()
   }
 
-  internal fun parseRowSelectionBehavior(readableMap: ReadableMap?): RowSelectionBehaviorType {
-    val rowSelectionBehavior =
-      readableMap
-        ?.getMap("rowSelectionBehavior")
-        ?.getString("type")
-        ?.let { type ->
-          when (type) {
-            "immediateAction" -> RowSelectionBehaviorType.ImmediateAction
-            else -> RowSelectionBehaviorType.Default
-          }
-        }
-        ?: RowSelectionBehaviorType.Default
-    return rowSelectionBehavior
-  }
-
-  internal fun parseIntentConfiguration(readableMap: ReadableMap?): PaymentSheet.IntentConfiguration {
-    val intentConfig = buildIntentConfiguration(readableMap)
+  private fun parseIntentConfiguration(map: ReadableMap): PaymentSheet.IntentConfiguration {
+    val intentConfig = buildIntentConfiguration(map)
     return intentConfig ?: throw IllegalArgumentException("IntentConfiguration is null")
   }
 
@@ -194,4 +225,112 @@ class EmbeddedPaymentElementViewManager :
   override fun clearPaymentOption(view: EmbeddedPaymentElementView) {
     view.clearPaymentOption()
   }
+
+  override fun update(
+    view: EmbeddedPaymentElementView,
+    intentConfigurationJson: String?,
+  ) {
+    intentConfigurationJson?.let { json ->
+      try {
+        val jsonObject = JSONObject(json)
+        val cfg = jsonToWritableMap(jsonObject)
+        val intentConfig = buildIntentConfiguration(cfg)
+        if (intentConfig != null) {
+          view.update(intentConfig)
+        }
+      } catch (e: Exception) {
+        android.util.Log.e("EmbeddedPaymentElement", "Failed to parse intent config JSON", e)
+      }
+    }
+  }
+
+  override fun updateWithCheckout(
+    view: EmbeddedPaymentElementView,
+    sessionKey: String?,
+  ) {
+    if (sessionKey == null) return
+
+    val stripeSdkModule =
+      (view.context as ThemedReactContext).getNativeModule(StripeSdkModule::class.java)
+    val checkout = stripeSdkModule?.checkoutInstances?.get(sessionKey)
+    if (checkout == null) {
+      val payload =
+        Arguments.createMap().apply {
+          putString("message", "Checkout session not found.")
+        }
+      stripeSdkModule?.eventEmitter?.emitEmbeddedPaymentElementLoadingFailed(payload)
+      stripeSdkModule?.eventEmitter?.emitEmbeddedPaymentElementUpdateComplete(null)
+      return
+    }
+
+    view.updateWithCheckout(checkout)
+  }
+
+  private fun jsonToWritableMap(json: JSONObject): WritableMap {
+    val map = Arguments.createMap()
+    val keys = json.keys()
+    while (keys.hasNext()) {
+      val key = keys.next()
+      when (val value = json.get(key)) {
+        is Boolean -> map.putBoolean(key, value)
+        is Int -> map.putInt(key, value)
+        is Double -> map.putDouble(key, value)
+        is Long -> map.putDouble(key, value.toDouble())
+        is String -> map.putString(key, value)
+        is JSONObject -> map.putMap(key, jsonToWritableMap(value))
+        is JSONArray -> map.putArray(key, jsonToWritableArray(value))
+        JSONObject.NULL -> map.putNull(key)
+        else -> map.putString(key, value.toString())
+      }
+    }
+    return map
+  }
+
+  private fun jsonToWritableArray(json: JSONArray): WritableArray {
+    val array = Arguments.createArray()
+    for (i in 0 until json.length()) {
+      when (val value = json.get(i)) {
+        is Boolean -> array.pushBoolean(value)
+        is Int -> array.pushInt(value)
+        is Double -> array.pushDouble(value)
+        is Long -> array.pushDouble(value.toDouble())
+        is String -> array.pushString(value)
+        is JSONObject -> array.pushMap(jsonToWritableMap(value))
+        is JSONArray -> array.pushArray(jsonToWritableArray(value))
+        JSONObject.NULL -> array.pushNull()
+        else -> array.pushString(value.toString())
+      }
+    }
+    return array
+  }
+}
+
+internal fun mapToRowSelectionBehaviorType(map: ReadableMap?): RowSelectionBehaviorType {
+  val rowSelectionBehavior =
+    map
+      ?.getMap("rowSelectionBehavior")
+      ?.getString("type")
+      ?.let { type ->
+        when (type) {
+          "immediateAction" -> RowSelectionBehaviorType.ImmediateAction
+          else -> RowSelectionBehaviorType.Default
+        }
+      }
+      ?: RowSelectionBehaviorType.Default
+  return rowSelectionBehavior
+}
+
+internal fun mapToFormSheetAction(map: ReadableMap?): EmbeddedPaymentElement.FormSheetAction {
+  val formSheetAction =
+    map
+      ?.getMap("formSheetAction")
+      ?.getString("type")
+      ?.let { type ->
+        when (type) {
+          "confirm" -> EmbeddedPaymentElement.FormSheetAction.Confirm
+          else -> EmbeddedPaymentElement.FormSheetAction.Continue
+        }
+      }
+      ?: EmbeddedPaymentElement.FormSheetAction.Continue
+  return formSheetAction
 }

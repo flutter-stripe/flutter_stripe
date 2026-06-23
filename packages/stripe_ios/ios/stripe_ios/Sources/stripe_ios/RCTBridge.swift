@@ -113,8 +113,12 @@ class RCTViewManager: NSObject {
     func view() -> UIView! {
         return UIView()
     }
-    
+
     func requiresMainQueueSetup() -> Bool {
         return true
     }
+}
+
+func RCTGetReactNativeVersion() -> [String: Any]? {
+    return ["major": 0, "minor": 0, "patch": 0]
 }

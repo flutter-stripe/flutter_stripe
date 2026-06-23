@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '2.1.0'
-    ext.stripe_version = '23.1.+'
+    ext.stripe_version = '23.10.+'
 
     repositories {
         google()
@@ -61,6 +61,7 @@ android {
         minSdkVersion 21
         consumerProguardFiles 'proguard-rules.txt'
         buildConfigField "String", "STRIPE_ANDROID_SDK_VERSION", "\"$stripe_version\""
+        buildConfigField "Boolean", "IS_NEW_ARCHITECTURE_ENABLED", "false"
     }
 }
 

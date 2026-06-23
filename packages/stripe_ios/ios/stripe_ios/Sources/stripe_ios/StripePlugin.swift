@@ -206,15 +206,16 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             )
         case "confirmationTokenCreationCallback":
             guard let arguments = call.arguments as? FlutterMap,
-                  let res = arguments["result"] as? NSDictionary else {
+                  let res = arguments["params"] as? NSDictionary else {
                 result(FlutterError.invalidParams)
                 return
             }
-            return confirmationTokenCreationCallback(
+            confirmationTokenCreationCallback(
                 result: res,
                 resolver: resolver(for: result),
                 rejecter: rejecter(for: result)
             )
+            result(nil)
         case "clientSecretProviderCustomerSessionClientSecretCallback":
             guard let arguments = call.arguments as? FlutterMap,
                   let customerSessionClientSecretDict = arguments["customerSessionClientSecretJson"] as? NSDictionary else {
@@ -321,8 +322,42 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         }
     }
 
+    // Per-view channel overrides: events whose name starts with a registered
+    // prefix are redirected to the per-view channel instead of the global one.
+    // Guarded by `prefixChannelLock`; the value is a (prefix, channel) pair.
+    private static var prefixChannelLock = NSLock()
+    private static var prefixChannelMap: [String: FlutterMethodChannel] = [:]
+
+    static func registerChannel(_ channel: FlutterMethodChannel, forPrefix prefix: String) {
+        prefixChannelLock.lock()
+        defer { prefixChannelLock.unlock() }
+        prefixChannelMap[prefix] = channel
+    }
+
+    static func unregisterChannel(forPrefix prefix: String) {
+        prefixChannelLock.lock()
+        defer { prefixChannelLock.unlock() }
+        prefixChannelMap.removeValue(forKey: prefix)
+    }
+
     func sendEvent(withName name: String, body: [String:  Any]) {
-        channel.invokeMethod(name, arguments: body)
+        // Check for a per-view override before falling back to the global channel.
+        StripePlugin.prefixChannelLock.lock()
+        let overrideChannel: FlutterMethodChannel? = StripePlugin.prefixChannelMap.first(where: { name.hasPrefix($0.key) })?.value
+        StripePlugin.prefixChannelLock.unlock()
+
+        let target = overrideChannel ?? channel
+
+        // channel.invokeMethod must be called from the main thread. The
+        // confirmationTokenConfirmHandler (and similar async closures) run
+        // on Swift's cooperative thread pool, so we always hop to main here.
+        if Thread.isMainThread {
+            target.invokeMethod(name, arguments: body)
+        } else {
+            DispatchQueue.main.async {
+                target.invokeMethod(name, arguments: body)
+            }
+        }
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -434,6 +469,10 @@ extension StripePlugin: StripeSdkEmitter {
 
     func emitEmbeddedPaymentElementLoadingFailed(_ value: [String : Any]) {
         self.sendEvent(withName: "embeddedPaymentElementLoadingFailed", body:value)
+    }
+
+    func emitCheckoutSessionDidChangeState(_ value: [String : Any]) {
+        self.sendEvent(withName: "checkoutSessionDidChangeState", body: value)
     }
 
 }

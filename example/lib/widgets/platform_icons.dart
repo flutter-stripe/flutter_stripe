@@ -55,7 +55,7 @@ class _PlatformIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       padding: EdgeInsets.all(8),
-      child: Icon(
+      child: FaIcon(
         platform.icon,
         size: 16,
         color: isCurrent ? Colors.white60 : color,
@@ -65,7 +65,7 @@ class _PlatformIcon extends StatelessWidget {
 }
 
 extension on DevicePlatform {
-  IconData get icon {
+  FaIconData get icon {
     switch (this) {
       case DevicePlatform.ios:
         return FontAwesomeIcons.apple;

@@ -66,3 +66,6 @@ lcov.info
 
 # claude AI
 .claude/
+
+# FVM Version Cache
+.fvm/

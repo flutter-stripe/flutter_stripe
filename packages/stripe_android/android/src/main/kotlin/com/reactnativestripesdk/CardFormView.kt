@@ -36,6 +36,7 @@ import com.stripe.android.view.CardInputListener
 class CardFormView(
   private val context: ThemedReactContext,
 ) : FrameLayout(context) {
+  @SuppressLint("PrivateResource")
   var cardForm: CardFormView =
     CardFormView(context, null, com.stripe.android.R.style.StripeCardFormView_Borderless)
   private var dangerouslyGetFullCardDetails: Boolean = false

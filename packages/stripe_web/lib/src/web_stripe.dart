@@ -553,6 +553,16 @@ class WebStripe extends StripePlatform {
   }
 
   @override
+  void setConfirmHandler(ConfirmHandler? handler) {
+    // Embedded payment elements are not supported on web.
+  }
+
+  @override
+  void setConfirmTokenHandler(ConfirmTokenHandler? handler) {
+    // Embedded payment elements are not supported on web.
+  }
+
+  @override
   Future<void> resetPaymentSheetCustomer() {
     throw WebUnsupportedError.method('resetPaymentSheet');
   }

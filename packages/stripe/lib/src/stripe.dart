@@ -574,6 +574,12 @@ class Stripe {
     _platform.setConfirmHandler(handler);
   }
 
+  /// Registers a callback that the native embedded element invokes when it
+  /// needs the app to create an intent client secret from a confirmation token.
+  void setConfirmTokenHandler(ConfirmTokenHandler? handler) {
+    _platform.setConfirmTokenHandler(handler);
+  }
+
   /// Call this method when the user logs out from your app.
   ///
   /// This will ensure that any persisted authentication state in the

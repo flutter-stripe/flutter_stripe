@@ -1,7 +1,6 @@
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-
 import 'package:stripe_js/stripe_api.dart' as js;
+import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 extension PaymentMethodParser on js.PaymentMethod {
   PaymentMethod parse() {
@@ -16,7 +15,6 @@ extension PaymentMethodParser on js.PaymentMethod {
       fpx: const Fpx(),
       ideal: const Ideal(),
       sepaDebit: const SepaDebit(),
-      upi: const Upi(),
       usBankAccount: const UsBankAccount(
         accountHolderType: BankAccountHolderType.Unknown,
         accountType: UsBankAccountType.Unknown,
