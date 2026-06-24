@@ -130,7 +130,7 @@ jobs:
     - uses: subosito/flutter-action@v2
     - uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: 22
         cache: 'yarn'
         cache-dependency-path: example/server/yarn.lock
 
@@ -204,7 +204,7 @@ jobs:
 
     - uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: 22
         cache: 'yarn'
         cache-dependency-path: example/server/yarn.lock
 
