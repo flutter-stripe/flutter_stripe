@@ -24,6 +24,7 @@ jobs:
     timeout-minutes: 2
     outputs:
       has_secrets: ${{ steps.check.outputs.has_secrets }}
+      native_changed: ${{ steps.filter.outputs.native }}
     steps:
       - name: "Check Stripe secrets"
         id: check
@@ -37,6 +38,25 @@ jobs:
             echo "has_secrets=false" >> "$GITHUB_OUTPUT"
             echo "::warning title=Stripe secrets unavailable::Stripe secrets are not available (expected for pull requests from forks). Integration tests are skipped."
           fi
+
+      - uses: actions/checkout@v4
+
+      # Detect whether any of the native-facing packages changed. The Android and
+      # iOS integration tests only need to run when one of these packages (or the
+      # example app that exercises them) is touched. On push events (no base ref to
+      # diff against) the filter defaults to "true" so main always runs them.
+      - name: "Detect native package changes"
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            native:
+              - 'packages/stripe/**'
+              - 'packages/stripe_platform_interface/**'
+              - 'packages/stripe_android/**'
+              - 'packages/stripe_ios/**'
+              - 'example/**'
+              - '.github/workflows/all_plugins.yaml'
 
   analyze:
     name: analyze
@@ -100,8 +120,9 @@ jobs:
     name: integration test (iOS)
     needs: [preflight, analyze, test]
     # Skip when the Stripe secrets are unavailable (e.g. pull requests from forks),
-    # since the example server and integration tests require them.
-    if: ${{ needs.preflight.outputs.has_secrets == 'true' }}
+    # since the example server and integration tests require them. Also skip when
+    # none of the native packages (or the example app) changed.
+    if: ${{ needs.preflight.outputs.has_secrets == 'true' && needs.preflight.outputs.native_changed == 'true' }}
     timeout-minutes: 60
     runs-on: macos-15
     steps:
@@ -165,8 +186,9 @@ jobs:
     name: integration test (Android)
     needs: [preflight, analyze, test]
     # Skip when the Stripe secrets are unavailable (e.g. pull requests from forks),
-    # since the example server and integration tests require them.
-    if: ${{ needs.preflight.outputs.has_secrets == 'true' }}
+    # since the example server and integration tests require them. Also skip when
+    # none of the native packages (or the example app) changed.
+    if: ${{ needs.preflight.outputs.has_secrets == 'true' && needs.preflight.outputs.native_changed == 'true' }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
