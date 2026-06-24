@@ -1,3 +1,4 @@
+export 'collect_bank_account_for_payment.dart';
 export 'confirm_acss_debit_payment.dart';
 export 'confirm_alipay_payment.dart';
 export 'confirm_card_payment.dart';
@@ -7,3 +8,4 @@ export 'confirm_payment.dart';
 export 'confirm_sepa_debit_payment.dart';
 export 'handle_card_action.dart';
 export 'retrieve_payment_intent.dart';
+export 'verify_microdeposits_for_payment.dart';
