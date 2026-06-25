@@ -526,7 +526,9 @@ class MethodChannelStripe extends StripePlatform {
     } else {
       isSupported = await _methodChannel.invokeMethod(
         'isPlatformPaySupported',
-        {'params': params.toJson()},
+        {
+          'params': {'googlePay': params.toJson()},
+        },
       );
     }
 
@@ -756,6 +758,11 @@ class MethodChannelStripe extends StripePlatform {
   @override
   void setConfirmHandler(ConfirmHandler? handler) {
     _confirmHandler = handler;
+  }
+
+  @override
+  void setConfirmTokenHandler(ConfirmTokenHandler? handler) {
+    _confirmTokenHandler = handler;
   }
 
   @override

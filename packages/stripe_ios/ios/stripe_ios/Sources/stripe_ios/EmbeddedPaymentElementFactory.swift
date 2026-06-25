@@ -104,10 +104,15 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
 
         super.init()
         channel.setMethodCallHandler(handle)
+        StripePlugin.registerChannel(channel, forPrefix: "embeddedPaymentElement")
 
         if let arguments = args as? [String: Any] {
             initializeEmbeddedPaymentElement(arguments)
         }
+    }
+
+    deinit {
+        StripePlugin.unregisterChannel(forPrefix: "embeddedPaymentElement")
     }
 
     private func initializeEmbeddedPaymentElement(_ arguments: [String: Any]) {
@@ -118,7 +123,15 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
         }
 
         let mutableIntentConfig = intentConfiguration.mutableCopy() as! NSMutableDictionary
-        mutableIntentConfig["confirmHandler"] = true
+        // The Dart side already sets `confirmHandler` or `confirmationTokenConfirmHandler`
+        // based on which callback the app provided. Only default to `confirmHandler`
+        // when neither is present, otherwise we'd create a both-handlers conflict and
+        // force the wrong confirmation path.
+        let hasConfirmHandler = mutableIntentConfig["confirmHandler"] != nil
+        let hasConfirmationTokenHandler = mutableIntentConfig["confirmationTokenConfirmHandler"] != nil
+        if !hasConfirmHandler && !hasConfirmationTokenHandler {
+            mutableIntentConfig["confirmHandler"] = true
+        }
 
         StripeSdkImpl.shared.createEmbeddedPaymentElement(
             intentConfig: mutableIntentConfig,
@@ -200,16 +213,39 @@ class EmbeddedPaymentElementPlatformView: NSObject, FlutterPlatformView {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "confirm":
-            StripeSdkImpl.shared.confirmEmbeddedPaymentElement(
-                resolve: { confirmResult in
-                    result(confirmResult)
-                },
-                reject: { code, message, error in
-                    result(FlutterError(code: code ?? "Failed", message: message, details: error))
+            guard let embeddedElement = StripeSdkImpl.shared.embeddedInstance else {
+                result(FlutterError(
+                    code: "Failed",
+                    message: "Embedded payment element not available",
+                    details: nil
+                ))
+                return
+            }
+            DispatchQueue.main.async {
+                if let viewController = self.embeddedView.window?.rootViewController {
+                    embeddedElement.presentingViewController = viewController
                 }
-            )
+                embeddedElement.confirm { confirmResult in
+                    let payload: [String: Any]
+                    switch confirmResult {
+                    case .completed:
+                        payload = ["status": "completed"]
+                    case .canceled:
+                        payload = ["status": "canceled"]
+                    case .failed(let error):
+                        payload = [
+                            "status": "failed",
+                            "error": error.localizedDescription,
+                        ]
+                    }
+                    self.channel.invokeMethod("onConfirmComplete", arguments: payload)
+                    result(payload)
+                }
+            }
         case "clearPaymentOption":
-            StripeSdkImpl.shared.clearEmbeddedPaymentOption()
+            DispatchQueue.main.async {
+                StripeSdkImpl.shared.embeddedInstance?.clearPaymentOption()
+            }
             result(nil)
         default:
             result(FlutterMethodNotImplemented)

@@ -17,7 +17,8 @@
         ]],
         ["Regional payments", [
             ["ACH direct debit", "/ach"],
-            ["Ideal", "/ideal"]
+            ["Ideal", "/ideal"],
+            ["Multibanco", "/multibanco"]
           ]
         ],
         ["Wallets", [

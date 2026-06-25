@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(EmbeddedPaymentElementPrivateBeta) @_spi(STP) @_spi(PaymentMethodOptionsSetupFutureUsagePreview) @_spi(CustomPaymentMethodsBeta) @_spi(ConfirmationTokensPublicPreview) @_spi(CardFundingFilteringPrivatePreview) import StripePaymentSheet
+@_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(STP) @_spi(PaymentMethodOptionsSetupFutureUsagePreview) @_spi(CustomPaymentMethodsBeta) @_spi(ConfirmationTokensPublicPreview) @_spi(CardFundingFilteringPrivatePreview) import StripePaymentSheet
 
 extension StripeSdkImpl {
     internal func buildPaymentSheetConfiguration(
@@ -183,7 +183,23 @@ extension StripeSdkImpl {
             }
         }
 
-        if let paymentIntentClientSecret = params["paymentIntentClientSecret"] as? String {
+        if let checkout = params["checkout"] as? NSDictionary,
+          let sessionKey = checkout["sessionKey"] as? String {
+            guard let checkout = checkoutInstances[sessionKey] else {
+                resolve(Errors.createError(ErrorType.Failed, "Checkout session not found"))
+                return
+            }
+
+            if params["customFlow"] as? Bool == true {
+                PaymentSheet.FlowController.create(checkout: checkout,
+                                                   configuration: configuration) { [weak self] result in
+                    handlePaymentSheetFlowControllerResult(result: result, stripeSdk: self)
+                }
+            } else {
+                self.paymentSheet = PaymentSheet(checkout: checkout, configuration: configuration)
+                resolve([])
+            }
+        } else if let paymentIntentClientSecret = params["paymentIntentClientSecret"] as? String {
             if !Errors.isPIClientSecretValid(clientSecret: paymentIntentClientSecret) {
                 resolve(Errors.createError(ErrorType.Failed, "`secret` format does not match expected client secret formatting."))
                 return
@@ -239,7 +255,6 @@ extension StripeSdkImpl {
                 modeParams: modeParams,
                 paymentMethodTypes: intentConfiguration["paymentMethodTypes"] as? [String],
                 onBehalfOf: intentConfiguration["onBehalfOf"] as? String,
-                paymentMethodConfigurationId: intentConfiguration["paymentMethodConfigurationId"] as? String,
                 captureMethod: StripeSdkImpl.mapCaptureMethod(captureMethodString),
                 useConfirmationTokenCallback: hasConfirmationTokenHandler
             )
@@ -338,7 +353,6 @@ extension StripeSdkImpl {
         modeParams: NSDictionary,
         paymentMethodTypes: [String]?,
         onBehalfOf: String?,
-        paymentMethodConfigurationId: String?,
         captureMethod: PaymentSheet.IntentConfiguration.CaptureMethod,
         useConfirmationTokenCallback: Bool
     ) -> PaymentSheet.IntentConfiguration {
@@ -363,7 +377,6 @@ extension StripeSdkImpl {
                 mode: mode,
                 paymentMethodTypes: paymentMethodTypes,
                 onBehalfOf: onBehalfOf,
-                paymentMethodConfigurationId: paymentMethodConfigurationId,
                 confirmationTokenConfirmHandler: { confirmationToken in
                     return try await withCheckedThrowingContinuation { continuation in
                         self.paymentSheetConfirmationTokenIntentCreationCallback = { result in
@@ -384,7 +397,6 @@ extension StripeSdkImpl {
                 mode: mode,
                 paymentMethodTypes: paymentMethodTypes,
                 onBehalfOf: onBehalfOf,
-                paymentMethodConfigurationId: paymentMethodConfigurationId,
                 confirmHandler: { paymentMethod, shouldSavePaymentMethod, intentCreationCallback in
                     self.paymentSheetIntentCreationCallback = intentCreationCallback
                     self.emitter?.emitOnConfirmHandlerCallback([

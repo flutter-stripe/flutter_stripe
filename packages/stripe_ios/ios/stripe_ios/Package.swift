@@ -12,12 +12,14 @@ let package = Package(
         .library(name: "stripe-ios", targets: ["stripe_ios"])
     ],
     dependencies: [
-        .package(url: "https://github.com/stripe/stripe-ios-spm", exact: "25.9.0")
+        .package(url: "https://github.com/stripe/stripe-ios-spm", exact: "25.17.0"),
+        .package(name: "FlutterFramework", path: "../FlutterFramework"),
     ],
     targets: [
         .target(
             name: "stripe_ios",
             dependencies: [
+                .product(name: "FlutterFramework", package: "FlutterFramework"),
                 .product(name: "Stripe", package: "stripe-ios-spm"),
                 .product(name: "StripePayments", package: "stripe-ios-spm"),
                 .product(name: "StripePaymentsUI", package: "stripe-ios-spm"),

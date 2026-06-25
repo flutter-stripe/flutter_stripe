@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Stripe
 import PassKit
+import Stripe
 
 internal class PushProvisioningUtils {
     class func canAddCardToWallet(

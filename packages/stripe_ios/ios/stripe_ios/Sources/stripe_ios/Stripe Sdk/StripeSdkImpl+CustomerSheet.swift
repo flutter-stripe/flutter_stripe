@@ -4,9 +4,10 @@
 //
 //  Created by Charles Cruzan on 08/28/23.
 //
-import UIKit
+
 import Foundation
-@_spi(PrivateBetaCustomerSheet) @_spi(CustomerSessionBetaAccess) @_spi(STP) import StripePaymentSheet
+import UIKit
+@_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
 extension StripeSdkImpl {
     @objc(initCustomerSheet:customerAdapterOverrides:resolver:rejecter:)
     public func initCustomerSheet(params: NSDictionary,
