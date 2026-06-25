@@ -362,6 +362,61 @@ void main() {
       });
     });
 
+    group('initPaymentSheet wire-format contract', () {
+      Future<Map<dynamic, dynamic>> serialize(
+        SetupPaymentSheetParameters params,
+      ) async {
+        final methodChannelMock = MethodChannelMock(
+          channelName: methodChannelName,
+          method: 'initPaymentSheet',
+          result: {},
+        );
+        final localSut = MethodChannelStripe(
+          platformIsIos: false,
+          platformIsAndroid: true,
+          methodChannel: methodChannelMock.methodChannel,
+        );
+        await localSut.initPaymentSheet(params);
+        return (methodChannelMock.log.single.arguments as Map)['params'] as Map;
+      }
+
+      test('billingDetails is sent as "defaultBillingDetails"', () async {
+        final params = await serialize(
+          const SetupPaymentSheetParameters(
+            paymentIntentClientSecret: 'pi_test',
+            billingDetails: BillingDetails(email: 'a@b.com'),
+          ),
+        );
+        expect(params.containsKey('defaultBillingDetails'), isTrue);
+        expect(params.containsKey('billingDetails'), isFalse);
+        expect((params['defaultBillingDetails'] as Map)['email'], 'a@b.com');
+      });
+
+      test(
+        'customPaymentMethodConfiguration nests customPaymentMethods array',
+        () async {
+          final params = await serialize(
+            const SetupPaymentSheetParameters(
+              paymentIntentClientSecret: 'pi_test',
+              customPaymentMethodConfiguration:
+                  CustomPaymentMethodConfiguration(
+                    customPaymentMethods: [
+                      CustomPaymentMethod(id: 'cpmt_test'),
+                    ],
+                  ),
+            ),
+          );
+          final config =
+              params['customPaymentMethodConfiguration']
+                  as Map<dynamic, dynamic>;
+          expect(config.containsKey('customPaymentMethods'), isTrue);
+          final methods = config['customPaymentMethods'] as List;
+          expect(methods, isNotEmpty);
+          expect((methods.first as Map)['id'], 'cpmt_test');
+        },
+      );
+    });
+
     group('Reset payment sheet', () {
       late Completer<void> completer;
 
