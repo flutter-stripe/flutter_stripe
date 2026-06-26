@@ -1,0 +1,137 @@
+name: Check issues
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+      - reopened
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -euo pipefail {0}
+
+concurrency:
+  group: "check-issue-${{ github.event.issue.number }}"
+  cancel-in-progress: true
+
+jobs:
+  manage:
+    # Only run on the canonical repository, and never on bot-authored issues.
+    if: >-
+      github.repository == 'flutter-stripe/flutter_stripe' &&
+      github.event.issue.user.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      # Read the issue templates and checker from the repository; write only the
+      # issue state and comments needed to enforce the template.
+      contents: read
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+    steps:
+      - name: Check out templates and checker
+        uses: actions/checkout@v4
+        with:
+          # Issue events run against the default branch, so this is the trusted,
+          # unmodified template/checker source.
+          sparse-checkout: .github
+          persist-credentials: false
+
+      - name: Write issue body
+        env:
+          # Bind the issue-controlled body as an environment variable instead of
+          # interpolating it into shell code.
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          mkdir -p "${RUNNER_TEMP:?}/check-issues"
+          printf "%s" "${ISSUE_BODY}" >"${RUNNER_TEMP}/check-issues/body"
+
+      - name: Check issue template
+        id: template
+        run: |
+          complete_template="$(
+            ruby .github/scripts/check_template.rb issue \
+              "${RUNNER_TEMP:?}/check-issues/body" \
+              .github/ISSUE_TEMPLATE \
+              2>"${RUNNER_TEMP}/check-issues/missing-sections"
+          )"
+          case "${complete_template}" in
+            true | false) ;;
+            *)
+              echo "Unexpected template completion result: ${complete_template}" >&2
+              exit 1
+              ;;
+          esac
+
+          echo "complete_template=${complete_template}" >>"${GITHUB_OUTPUT:?}"
+
+      - name: Find incomplete template comment
+        id: comments
+        if: >-
+          (github.event.issue.state == 'closed' &&
+          steps.template.outputs.complete_template == 'true') ||
+          (github.event.issue.state != 'closed' &&
+          steps.template.outputs.complete_template == 'false')
+        run: |
+          comment_ids="$(
+            gh api --paginate "repos/${GITHUB_REPOSITORY:?}/issues/${ISSUE_NUMBER:?}/comments" \
+              --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | contains("<!-- incomplete-issue-template -->"))) | .id'
+          )"
+          if [[ -n "${comment_ids}" ]]
+          then
+            echo "has_incomplete_template_comment=true" >>"${GITHUB_OUTPUT:?}"
+          else
+            echo "has_incomplete_template_comment=false" >>"${GITHUB_OUTPUT:?}"
+          fi
+
+      - name: Find issue closer
+        id: closer
+        if: >-
+          github.event.issue.state == 'closed' &&
+          steps.template.outputs.complete_template == 'true'
+        run: |
+          closed_by="$(gh api "repos/${GITHUB_REPOSITORY:?}/issues/${ISSUE_NUMBER:?}" --jq ".closed_by.login // \"\"")"
+          echo "closed_by=${closed_by}" >>"${GITHUB_OUTPUT:?}"
+
+      - name: Reopen completed issue
+        if: >-
+          github.event.issue.state == 'closed' &&
+          steps.template.outputs.complete_template == 'true' &&
+          steps.closer.outputs.closed_by == 'github-actions[bot]' &&
+          steps.comments.outputs.has_incomplete_template_comment == 'true'
+        run: |
+          gh api --method PATCH "repos/${GITHUB_REPOSITORY:?}/issues/${ISSUE_NUMBER:?}" \
+            -f state=open
+
+      - name: Comment on incomplete issue
+        if: >-
+          github.event.issue.state != 'closed' &&
+          steps.template.outputs.complete_template == 'false' &&
+          steps.comments.outputs.has_incomplete_template_comment != 'true'
+        run: |
+          gh api --method POST "repos/${GITHUB_REPOSITORY:?}/issues/${ISSUE_NUMBER:?}/comments" \
+            --raw-field body="$(
+              cat <<COMMENT
+          <!-- incomplete-issue-template -->
+          Thanks for your issue. This has been closed because it appears to use an incomplete or outdated issue template.
+
+          Please edit this issue to restore the following sections from the current issue template:
+
+          $(cat "${RUNNER_TEMP:?}/check-issues/missing-sections")
+
+          This workflow will reopen this issue automatically once they are present. **Do not create a new issue for this.**
+          COMMENT
+            )"
+
+      - name: Close incomplete issue
+        if: >-
+          github.event.issue.state != 'closed' &&
+          steps.template.outputs.complete_template == 'false'
+        run: |
+          gh api --method PATCH "repos/${GITHUB_REPOSITORY:?}/issues/${ISSUE_NUMBER:?}" \
+            -f state=closed \
+            -f state_reason=not_planned

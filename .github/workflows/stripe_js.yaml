@@ -2,7 +2,7 @@ name: stripe_js
 
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths-ignore:
       - "docs/**"
       - "website/**"
@@ -33,10 +33,20 @@ jobs:
         run: dart pub get
 
       - name: "Set env keys"
+        id: stripe_key
         env:
           STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
         run: |
-          cd ../../  
+          # Secrets are not exposed to workflows triggered by pull requests from
+          # forks, so external contributors run with an empty key. Detect that and
+          # skip the steps that require a real Stripe test account further down.
+          if [ -z "$STRIPE_PUBLISHABLE_KEY" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Stripe key unavailable::STRIPE_PUBLISHABLE_KEY is not available (expected for pull requests from forks). Tests that require a Stripe test account are skipped; formatting and analysis still run."
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+          cd ../../
           ./.github/workflows/scripts/env-files.sh
 
       - name: ✨ Check Formatting
@@ -46,11 +56,13 @@ jobs:
         run: dart analyze --fatal-infos --fatal-warnings lib test
 
       - name: 🧪 Run Tests
+        if: steps.stripe_key.outputs.available == 'true'
         run: |
           dart pub global activate coverage
           dart test -j 4 --coverage=coverage --platform=chrome && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.dart_tool/package_config.json --report-on=lib
-      
+
       - name: 📊 Check Code Coverage
+        if: steps.stripe_key.outputs.available == 'true'
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
           path: packages/stripe_js/coverage/lcov.info
