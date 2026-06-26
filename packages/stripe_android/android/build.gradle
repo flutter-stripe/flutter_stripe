@@ -11,7 +11,9 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.9.1'
+        classpath 'com.android.tools.build:gradle:9.0.1'
+        // The external Kotlin Gradle Plugin is only applied on AGP < 9 (Flutter < 3.44).
+        // On AGP >= 9 Flutter's built-in Kotlin provides it (see the conditional apply below).
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlin_version"
     }
@@ -26,7 +28,14 @@ rootProject.allprojects {
 
 apply plugin: 'com.android.library'
 apply plugin: "org.jetbrains.kotlin.plugin.compose"
-apply plugin: 'kotlin-android'
+
+// Apply the external Kotlin Gradle Plugin only on AGP < 9 (Flutter < 3.44).
+// On AGP >= 9 (Flutter >= 3.44) Kotlin is applied automatically by Flutter's
+// built-in Kotlin support, so applying it here would conflict.
+def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0] as int
+if (agpMajor < 9) {
+    apply plugin: 'kotlin-android'
+}
 
 android {
     namespace 'com.flutter.stripe'
@@ -37,10 +46,6 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = '17'
-    }
-
     buildFeatures {
         compose true
     }
@@ -49,8 +54,10 @@ android {
         kotlinCompilerExtensionVersion = '1.5.1'
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+    if (agpMajor < 9) {
+        sourceSets {
+            main.java.srcDirs += 'src/main/kotlin'
+        }
     }
     buildFeatures {
         viewBinding true
@@ -62,6 +69,16 @@ android {
         consumerProguardFiles 'proguard-rules.txt'
         buildConfigField "String", "STRIPE_ANDROID_SDK_VERSION", "\"$stripe_version\""
         buildConfigField "Boolean", "IS_NEW_ARCHITECTURE_ENABLED", "false"
+    }
+}
+
+// On AGP < 9, jvmTarget must be set explicitly via the Kotlin extension.
+// On AGP >= 9, built-in Kotlin already derives it from compileOptions.targetCompatibility above.
+if (agpMajor < 9) {
+    kotlin {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+        }
     }
 }
 
