@@ -13,7 +13,8 @@
         ],
         ["Mobile elements", [
           ["Address Sheet", "/address_sheet"],
-          ["Customer Sheet", "/customer_sheet"]
+          ["Customer Sheet", "/customer_sheet"],
+          ["Payment Method Messaging", "/payment_method_messaging"]
         ]],
         ["Regional payments", [
             ["ACH direct debit", "/ach"],
