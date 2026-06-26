@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class EmbeddedPaymentElementController extends ChangeNotifier {
   EmbeddedPaymentElementController();
@@ -29,6 +30,17 @@ class EmbeddedPaymentElementController extends ChangeNotifier {
     return await _context?.confirm();
   }
 
+  /// Updates the embedded element to use the new configuration without recreating the platform view.
+  Future<Map<String, dynamic>?> update(
+    IntentConfiguration configuration,
+  ) async {
+    assert(
+      hasEmbeddedPaymentElement,
+      'Controller must be attached to an EmbeddedPaymentElement',
+    );
+    return await _context?.update(configuration);
+  }
+
   Future<void> clearPaymentOption() async {
     assert(
       hasEmbeddedPaymentElement,
@@ -54,6 +66,7 @@ class EmbeddedPaymentElementController extends ChangeNotifier {
 
 abstract class EmbeddedPaymentElementContext {
   Future<Map<String, dynamic>?> confirm();
+  Future<Map<String, dynamic>?> update(IntentConfiguration configuration);
   Future<void> clearPaymentOption();
   Future<void> disposeView();
 }

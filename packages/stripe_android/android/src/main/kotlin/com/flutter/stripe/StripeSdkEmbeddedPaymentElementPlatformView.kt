@@ -9,6 +9,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.reactnativestripesdk.EmbeddedPaymentElementView
 import com.reactnativestripesdk.EmbeddedPaymentElementViewManager
 import com.reactnativestripesdk.StripeSdkModule
+import com.reactnativestripesdk.buildIntentConfiguration
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
@@ -53,6 +54,27 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
             "clearPaymentOption" -> {
                 viewManager.clearPaymentOption(embeddedView)
                 result.success(null)
+            }
+            "update" -> {
+                val intentConfiguration = asReadableMap(call.argument<Map<*, *>>("intentConfiguration"))
+                if (intentConfiguration == null) {
+                    result.error("Failed", "Invalid configuration", null)
+                    return
+                }
+                try {
+                    val intentConfig = buildIntentConfiguration(intentConfiguration)
+                    if (intentConfig == null) {
+                        result.error("Failed", "Invalid configuration", null)
+                        return
+                    }
+                    embeddedView.setUseConfirmationTokenCallback(
+                        intentConfiguration.hasKey("confirmationTokenConfirmHandler")
+                    )
+                    embeddedView.update(intentConfig)
+                    result.success(null)
+                } catch (e: Exception) {
+                    result.error("Failed", e.localizedMessage ?: "Invalid configuration", null)
+                }
             }
             else -> {
                 result.notImplemented()
