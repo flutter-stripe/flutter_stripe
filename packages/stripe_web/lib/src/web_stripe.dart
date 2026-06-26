@@ -767,6 +767,11 @@ class WebStripe extends StripePlatform {
   }
 
   @override
+  void setConfirmHandler(ConfirmHandler? handler) {
+    throw WebUnsupportedError.method('setConfirmHandler');
+  }
+
+  @override
   Future<RadarSession> createRadarSession() {
     throw WebUnsupportedError.method('createRadarSession');
   }
