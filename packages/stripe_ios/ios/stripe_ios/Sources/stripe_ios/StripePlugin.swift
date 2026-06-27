@@ -92,6 +92,9 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         let embeddedPaymentElementFactory = EmbeddedPaymentElementViewFactory(messenger: registrar.messenger(), stripeSdk: instance)
         registrar.register(embeddedPaymentElementFactory, withId: "flutter.stripe/embedded_payment_element")
 
+        // Payment Method Messaging
+        let messagingFactory = PaymentMethodMessagingElementFactory(messenger: registrar.messenger())
+        registrar.register(messagingFactory, withId: "flutter.stripe/payment_method_messaging")
     }
 
     init(channel : FlutterMethodChannel) {
