@@ -61,6 +61,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         EmbeddedPaymentElementViewManager()
     }
 
+    private val paymentMethodMessagingManager: PaymentMethodMessagingElementViewManager by lazy {
+        PaymentMethodMessagingElementViewManager()
+    }
+
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(flutterPluginBinding.applicationContext)
 
@@ -85,7 +89,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         flutterPluginBinding
             .platformViewRegistry
             .registerViewFactory("flutter.stripe/embedded_payment_element", StripeSdkEmbeddedPaymentElementPlatformViewFactory(flutterPluginBinding, embeddedPaymentElementViewManager){stripeSdk})
-        flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/payment_method_messaging", StripePaymentMethodMessagingPlatformViewFactory(flutterPluginBinding))
+        flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/payment_method_messaging", StripePaymentMethodMessagingPlatformViewFactory(flutterPluginBinding, paymentMethodMessagingManager) { stripeSdk })
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {

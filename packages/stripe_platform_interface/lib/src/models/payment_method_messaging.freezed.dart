@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PaymentMethodMessagingConfiguration {
 
- List<PaymentMethodMessagingPaymentMethod> get paymentMethods; String get currency; int get amount; String? get countryCode; String? get locale;
+@JsonKey(name: 'paymentMethodTypes') List<PaymentMethodMessagingPaymentMethod> get paymentMethods; String get currency; int get amount;@JsonKey(name: 'country') String? get countryCode; String? get locale;
 /// Create a copy of PaymentMethodMessagingConfiguration
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $PaymentMethodMessagingConfigurationCopyWith<$Res>  {
   factory $PaymentMethodMessagingConfigurationCopyWith(PaymentMethodMessagingConfiguration value, $Res Function(PaymentMethodMessagingConfiguration) _then) = _$PaymentMethodMessagingConfigurationCopyWithImpl;
 @useResult
 $Res call({
- List<PaymentMethodMessagingPaymentMethod> paymentMethods, String currency, int amount, String? countryCode, String? locale
+@JsonKey(name: 'paymentMethodTypes') List<PaymentMethodMessagingPaymentMethod> paymentMethods, String currency, int amount,@JsonKey(name: 'country') String? countryCode, String? locale
 });
 
 
@@ -157,7 +157,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<PaymentMethodMessagingPaymentMethod> paymentMethods,  String currency,  int amount,  String? countryCode,  String? locale)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'paymentMethodTypes')  List<PaymentMethodMessagingPaymentMethod> paymentMethods,  String currency,  int amount, @JsonKey(name: 'country')  String? countryCode,  String? locale)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaymentMethodMessagingConfiguration() when $default != null:
 return $default(_that.paymentMethods,_that.currency,_that.amount,_that.countryCode,_that.locale);case _:
@@ -178,7 +178,7 @@ return $default(_that.paymentMethods,_that.currency,_that.amount,_that.countryCo
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<PaymentMethodMessagingPaymentMethod> paymentMethods,  String currency,  int amount,  String? countryCode,  String? locale)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'paymentMethodTypes')  List<PaymentMethodMessagingPaymentMethod> paymentMethods,  String currency,  int amount, @JsonKey(name: 'country')  String? countryCode,  String? locale)  $default,) {final _that = this;
 switch (_that) {
 case _PaymentMethodMessagingConfiguration():
 return $default(_that.paymentMethods,_that.currency,_that.amount,_that.countryCode,_that.locale);case _:
@@ -198,7 +198,7 @@ return $default(_that.paymentMethods,_that.currency,_that.amount,_that.countryCo
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<PaymentMethodMessagingPaymentMethod> paymentMethods,  String currency,  int amount,  String? countryCode,  String? locale)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'paymentMethodTypes')  List<PaymentMethodMessagingPaymentMethod> paymentMethods,  String currency,  int amount, @JsonKey(name: 'country')  String? countryCode,  String? locale)?  $default,) {final _that = this;
 switch (_that) {
 case _PaymentMethodMessagingConfiguration() when $default != null:
 return $default(_that.paymentMethods,_that.currency,_that.amount,_that.countryCode,_that.locale);case _:
@@ -213,11 +213,11 @@ return $default(_that.paymentMethods,_that.currency,_that.amount,_that.countryCo
 
 @JsonSerializable(explicitToJson: true)
 class _PaymentMethodMessagingConfiguration implements PaymentMethodMessagingConfiguration {
-  const _PaymentMethodMessagingConfiguration({required final  List<PaymentMethodMessagingPaymentMethod> paymentMethods, required this.currency, required this.amount, this.countryCode, this.locale}): _paymentMethods = paymentMethods;
+  const _PaymentMethodMessagingConfiguration({@JsonKey(name: 'paymentMethodTypes') required final  List<PaymentMethodMessagingPaymentMethod> paymentMethods, required this.currency, required this.amount, @JsonKey(name: 'country') this.countryCode, this.locale}): _paymentMethods = paymentMethods;
   factory _PaymentMethodMessagingConfiguration.fromJson(Map<String, dynamic> json) => _$PaymentMethodMessagingConfigurationFromJson(json);
 
  final  List<PaymentMethodMessagingPaymentMethod> _paymentMethods;
-@override List<PaymentMethodMessagingPaymentMethod> get paymentMethods {
+@override@JsonKey(name: 'paymentMethodTypes') List<PaymentMethodMessagingPaymentMethod> get paymentMethods {
   if (_paymentMethods is EqualUnmodifiableListView) return _paymentMethods;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_paymentMethods);
@@ -225,7 +225,7 @@ class _PaymentMethodMessagingConfiguration implements PaymentMethodMessagingConf
 
 @override final  String currency;
 @override final  int amount;
-@override final  String? countryCode;
+@override@JsonKey(name: 'country') final  String? countryCode;
 @override final  String? locale;
 
 /// Create a copy of PaymentMethodMessagingConfiguration
@@ -261,7 +261,7 @@ abstract mixin class _$PaymentMethodMessagingConfigurationCopyWith<$Res> impleme
   factory _$PaymentMethodMessagingConfigurationCopyWith(_PaymentMethodMessagingConfiguration value, $Res Function(_PaymentMethodMessagingConfiguration) _then) = __$PaymentMethodMessagingConfigurationCopyWithImpl;
 @override @useResult
 $Res call({
- List<PaymentMethodMessagingPaymentMethod> paymentMethods, String currency, int amount, String? countryCode, String? locale
+@JsonKey(name: 'paymentMethodTypes') List<PaymentMethodMessagingPaymentMethod> paymentMethods, String currency, int amount,@JsonKey(name: 'country') String? countryCode, String? locale
 });
 
 

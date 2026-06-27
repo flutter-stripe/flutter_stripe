@@ -1,6 +1,8 @@
 package com.flutter.stripe
 
 import android.content.Context
+import com.reactnativestripesdk.PaymentMethodMessagingElementViewManager
+import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.StandardMessageCodec
@@ -9,6 +11,8 @@ import io.flutter.plugin.platform.PlatformViewFactory
 
 class StripePaymentMethodMessagingPlatformViewFactory(
     private val flutterPluginBinding: FlutterPlugin.FlutterPluginBinding,
+    private val viewManager: PaymentMethodMessagingElementViewManager,
+    private val sdkAccessor: () -> StripeSdkModule,
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
     override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
         if (context == null) {
@@ -20,6 +24,13 @@ class StripePaymentMethodMessagingPlatformViewFactory(
         )
         @Suppress("UNCHECKED_CAST")
         val creationParams = args as? Map<String?, Any?>?
-        return StripePaymentMethodMessagingPlatformView(context, channel, creationParams)
+        return StripePaymentMethodMessagingPlatformView(
+            context,
+            channel,
+            viewId,
+            creationParams,
+            viewManager,
+            sdkAccessor,
+        )
     }
 }

@@ -33,6 +33,9 @@ class _PaymentMethodMessagingScreenState
     PaymentMethodMessagingPaymentMethod.affirm,
   };
 
+  /// Selected theme for the optional [PaymentMethodMessagingAppearance].
+  PaymentMethodMessagingStyle _style = PaymentMethodMessagingStyle.automatic;
+
   double _lastHeight = 0;
 
   /// Whether the native element is still rendering. The element reports its
@@ -72,6 +75,11 @@ class _PaymentMethodMessagingScreenState
                   amount: _amount,
                   currency: currency,
                   countryCode: countryCode,
+                ),
+                appearance: PaymentMethodMessagingAppearance(
+                  style: _style,
+                  font: const PaymentMethodMessagingFont(size: 14),
+                  linkTextColor: const PaymentMethodMessagingColor('#635BFF'),
                 ),
                 onHeightChange: (height) {
                   setState(() {
@@ -121,6 +129,25 @@ class _PaymentMethodMessagingScreenState
                 selected: _market == market,
                 onSelected: (_) => setState(() {
                   _market = market;
+                  _isLoading = true;
+                }),
+              ),
+          ],
+        ),
+        const SizedBox(height: 16),
+
+        // Appearance style control.
+        Text('Style', style: Theme.of(context).textTheme.titleSmall),
+        const SizedBox(height: 8),
+        Wrap(
+          spacing: 8,
+          children: [
+            for (final style in PaymentMethodMessagingStyle.values)
+              ChoiceChip(
+                label: Text(style.value),
+                selected: _style == style,
+                onSelected: (_) => setState(() {
+                  _style = style;
                   _isLoading = true;
                 }),
               ),

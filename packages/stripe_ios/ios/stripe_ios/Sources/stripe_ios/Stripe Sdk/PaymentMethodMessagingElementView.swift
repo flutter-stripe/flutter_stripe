@@ -1,113 +1,158 @@
 import Foundation
 @_spi(PaymentMethodMessagingElementPreview) @_spi(STP) import StripePaymentSheet
-import Stripe
 import UIKit
 
-/// Wraps Stripe's `PaymentMethodMessagingElement` (iOS SDK preview API) in a
-/// plain `UIView` so that the Flutter platform-view adapter can be a thin
-/// wrapper. Mirrors the shape of `CardFieldView` / `AuBECSDebitFormView`.
 @objc(PaymentMethodMessagingElementView)
-public class PaymentMethodMessagingElementView: UIView {
-    public var onHeightChange: ((CGFloat) -> Void)?
+class PaymentMethodMessagingElementView: RCTViewManager {
 
-    private var messagingInstance: PaymentMethodMessagingElement?
+    override static func requiresMainQueueSetup() -> Bool {
+        return true
+    }
+
+    override func view() -> UIView! {
+        return PaymentMethodMessagingElementContainerView(frame: .zero)
+    }
+}
+
+@objc(PaymentMethodMessagingElementContainerView)
+public class PaymentMethodMessagingElementContainerView: UIView, UIGestureRecognizerDelegate {
     private var paymentMethodMessagingElementView: UIView?
+    private var messagingInstance: PaymentMethodMessagingElement?
+    private var appearanceConfig: PaymentMethodMessagingElement.Appearance?
+    private var lastConfig: NSDictionary?
+
+    // Used to track height updates
     private var previousHeight: CGFloat?
-    private var pendingTask: Task<Void, Never>?
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .clear
-    }
-
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) is not supported")
-    }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        let desiredHeight = systemLayoutSizeFitting(
-            CGSize(width: frame.width, height: UIView.layoutFittingCompressedSize.height)
-        ).height
-        if desiredHeight != previousHeight {
-            previousHeight = desiredHeight
-            onHeightChange?(desiredHeight)
-        }
-    }
-
-    public func applyConfiguration(
-        paymentMethods: [String],
-        currency: String,
-        amount: Int,
-        countryCode: String?,
-        locale: String?
-    ) {
-        pendingTask?.cancel()
-        pendingTask = nil
-        removeMessagingSubview()
-        emitHeight(0)
-
-        guard STPAPIClient.shared.publishableKey != nil else { return }
-
-        let types: [STPPaymentMethodType] = paymentMethods.compactMap { id in
-            let type = STPPaymentMethodType.fromIdentifier(id)
-            return type == .unknown ? nil : type
-        }
-
-        var configuration = PaymentMethodMessagingElement.Configuration(
-            amount: amount,
-            currency: currency
-        )
-        if let countryCode = countryCode { configuration.countryCode = countryCode }
-        if let locale = locale { configuration.locale = locale }
-        if !types.isEmpty { configuration.paymentMethodTypes = types }
-
-        pendingTask = Task { @MainActor [weak self] in
-            let result = await PaymentMethodMessagingElement.create(configuration: configuration)
-            guard let self = self, !Task.isCancelled else { return }
-            switch result {
-            case .success(let element):
-                self.messagingInstance = element
-                self.attachMessagingSubview()
-            case .noContent, .failed:
-                self.messagingInstance = nil
-                self.emitHeight(0)
+    @objc var appearance: NSDictionary? {
+        didSet {
+            if let appearance = appearance {
+                appearanceConfig = PaymentMethodMessagingElementConfig.buildAppearanceFromParams(params: appearance)
+                // Re-initialize if configuration already exists
+                if let config = lastConfig {
+                    initMessagingElement(config: config)
+                }
             }
         }
     }
 
-    public func teardown() {
-        pendingTask?.cancel()
-        pendingTask = nil
-        removeMessagingSubview()
-        messagingInstance = nil
+    @objc var configuration: NSDictionary? {
+        didSet {
+            if let configuration = configuration {
+                lastConfig = configuration
+                initMessagingElement(config: configuration)
+            }
+        }
     }
 
-    private func attachMessagingSubview() {
-        removeMessagingSubview()
-        guard let element = messagingInstance else { return }
-        let subview = element.view
-        subview.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(subview)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .clear
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window != nil {
+            // Only attach when we have a valid window
+            attachPaymentElementIfAvailable()
+        }
+    }
+
+    public override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        if newWindow == nil {
+            // Remove the view when moving away from window
+            removePaymentMethodMessagingElement()
+        }
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        // Calculate our natural height
+        let desiredHeight = systemLayoutSizeFitting(CGSize(width: frame.width, height: UIView.layoutFittingCompressedSize.height)).height
+
+        // Notify if changed
+        if desiredHeight != previousHeight {
+            StripeSdkImpl.shared.emitter?.emitPaymentMethodMessagingElementDidUpdateHeight(["height": desiredHeight])
+            self.previousHeight = desiredHeight
+        }
+    }
+
+    private func attachPaymentElementIfAvailable() {
+        removePaymentMethodMessagingElement()
+        guard let messagingElement = messagingInstance else {
+            return
+        }
+
+        let messagingElementView = messagingElement.view
+        addSubview(messagingElementView)
+        messagingElementView.translatesAutoresizingMaskIntoConstraints = false
+        let height = self.messagingInstance?.view.systemLayoutSizeFitting(CGSize(width: self.messagingInstance?.view.bounds.width ?? 0, height: UIView.layoutFittingCompressedSize.height)).height
+        self.previousHeight = height ?? 0
+
+        StripeSdkImpl.shared.emitter?.emitPaymentMethodMessagingElementDidUpdateHeight(["height": height ?? 0])
         NSLayoutConstraint.activate([
-            subview.leadingAnchor.constraint(equalTo: leadingAnchor),
-            subview.trailingAnchor.constraint(equalTo: trailingAnchor),
-            subview.topAnchor.constraint(equalTo: topAnchor),
-            subview.bottomAnchor.constraint(equalTo: bottomAnchor),
+            messagingElementView.topAnchor.constraint(equalTo: topAnchor),
+            messagingElementView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            messagingElementView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            messagingElementView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
-        paymentMethodMessagingElementView = subview
-        setNeedsLayout()
+
+        self.paymentMethodMessagingElementView = messagingElementView
     }
 
-    private func removeMessagingSubview() {
+    private func removePaymentMethodMessagingElement() {
         paymentMethodMessagingElementView?.removeFromSuperview()
         paymentMethodMessagingElementView = nil
     }
 
-    private func emitHeight(_ height: CGFloat) {
-        if previousHeight != height {
-            previousHeight = height
-            onHeightChange?(height)
+    private func initMessagingElement(config: NSDictionary) {
+        let configResult = PaymentMethodMessagingElementConfig.buildPaymentMethodMessagingElementConfiguration(params: config)
+
+        if let error = configResult.error {
+            StripeSdkImpl.shared.emitter?.emitPaymentMethodMessagingElementConfigureResult([
+                "status": "failed",
+                "error": error,
+            ])
+            return
+        }
+
+        guard var configuration = configResult.configuration else {
+            return
+        }
+
+        // Add appearance if available
+        if let appearance = appearanceConfig {
+            configuration.appearance = appearance
+        }
+
+        var resultMap: [String: String] = [:]
+        var height: CGFloat? = 0
+
+        Task { @MainActor in
+            StripeSdkImpl.shared.emitter?.emitPaymentMethodMessagingElementConfigureResult(["status": "loading"])
+            switch await PaymentMethodMessagingElement.create(configuration: configuration) {
+            case .success(let paymentMethodMessagingElement):
+                self.messagingInstance = paymentMethodMessagingElement
+                height = self.messagingInstance?.view.systemLayoutSizeFitting(CGSize(width: paymentMethodMessagingElement.view.bounds.width, height: UIView.layoutFittingCompressedSize.height)).height
+                resultMap["status"] = "loaded"
+            case .noContent:
+                resultMap["status"] = "no_content"
+                self.messagingInstance = nil
+            case .failed(let error):
+                self.messagingInstance = nil
+                resultMap["status"] = "failed"
+                resultMap["message"] = error.localizedDescription
+            }
+
+            StripeSdkImpl.shared.emitter?.emitPaymentMethodMessagingElementDidUpdateHeight(["height": height ?? 0])
+            StripeSdkImpl.shared.emitter?.emitPaymentMethodMessagingElementConfigureResult(resultMap)
+            attachPaymentElementIfAvailable()
         }
     }
 }

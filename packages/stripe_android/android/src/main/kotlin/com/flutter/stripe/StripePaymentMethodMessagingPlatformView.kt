@@ -1,157 +1,104 @@
 package com.flutter.stripe
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
-import android.content.ContextWrapper
 import android.view.View
-import android.widget.FrameLayout
-import androidx.compose.foundation.layout.Box
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.onSizeChanged
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.ViewCompositionStrategy
-import com.stripe.android.paymentmethodmessaging.element.PaymentMethodMessagingElement
-import com.stripe.android.paymentmethodmessaging.element.PaymentMethodMessagingElementPreview
-import com.stripe.android.model.PaymentMethod
+import com.facebook.react.bridge.DynamicFromObject
+import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.facebook.react.uimanager.ThemedReactContext
+import com.reactnativestripesdk.PaymentMethodMessagingElementView
+import com.reactnativestripesdk.PaymentMethodMessagingElementViewManager
+import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 
-@OptIn(PaymentMethodMessagingElementPreview::class)
+/**
+ * Thin wrapper around the Stripe SDK's React Native messaging view + its
+ * [PaymentMethodMessagingElementViewManager] (vendored from stripe-react-native).
+ *
+ * Props (`configuration`, optional `appearance`) are pushed through the view manager,
+ * exactly like the other native-SDK-backed views (see [StripeAubecsDebitPlatformView]).
+ * The RN view reports its height and configure result through the shared module event
+ * emitter; we register this view's per-view channel for the `paymentMethodMessagingElement`
+ * event prefix so those events reach the matching Dart widget — the same mechanism
+ * [StripeSdkEmbeddedPaymentElementPlatformView] uses.
+ *
+ * Nested creation params (the `paymentMethodTypes` array inside `configuration`) are
+ * converted via [asReadableMap] rather than the flat `convertToReadables()` helper, so the
+ * backing JSONObject auto-wraps inner lists/maps correctly.
+ */
 class StripePaymentMethodMessagingPlatformView(
-    private val context: Context,
+    context: Context,
     private val channel: MethodChannel,
+    id: Int,
     creationParams: Map<String?, Any?>?,
-) : PlatformView {
+    private val viewManager: PaymentMethodMessagingElementViewManager,
+    sdkAccessor: () -> StripeSdkModule,
+) : PlatformView, MethodChannel.MethodCallHandler {
 
-    private val container: FrameLayout = FrameLayout(context)
-    private val composeView: ComposeView = ComposeView(context).apply {
-        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-    }
-    private val scope: CoroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-    private var configureJob: Job? = null
-    private var elementState: ((PaymentMethodMessagingElement?) -> Unit)? = null
-    private var lastReportedHeightPx: Int = -1
+    private val messagingView: PaymentMethodMessagingElementView =
+        viewManager.createViewInstance(
+            ThemedReactContext(sdkAccessor().reactContext, channel, sdkAccessor),
+        )
 
     init {
-        container.addView(
-            composeView,
-            FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT,
-            ),
-        )
-        composeView.setContent {
-            var element by remember { mutableStateOf<PaymentMethodMessagingElement?>(null) }
-            elementState = { element = it }
-            val density = LocalDensity.current
-            Box(
-                modifier = Modifier.onSizeChanged { size ->
-                    if (size.height != lastReportedHeightPx) {
-                        lastReportedHeightPx = size.height
-                        val heightDp = with(density) { size.height.toDp().value }
-                        channel.invokeMethod(
-                            "onHeightChange",
-                            mapOf("height" to heightDp.toDouble()),
-                        )
-                    }
-                },
-            ) {
-                element?.Content(PaymentMethodMessagingElement.Appearance())
-            }
-        }
-
-        channel.setMethodCallHandler { call, result -> handleMethodCall(call, result) }
-        applyConfiguration(creationParams)
+        channel.setMethodCallHandler(this)
+        DeviceEventManagerModule.RCTDeviceEventEmitter.registerChannelForPrefix(EVENT_PREFIX, channel)
+        applyProps(creationParams)
     }
 
-    private fun handleMethodCall(call: MethodCall, result: MethodChannel.Result) {
+    override fun getView(): View = messagingView
+
+    override fun onFlutterViewAttached(flutterView: View) {
+        viewManager.onAfterUpdateTransaction(messagingView)
+    }
+
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when (call.method) {
             "updateConfiguration" -> {
                 @Suppress("UNCHECKED_CAST")
-                applyConfiguration(call.arguments as? Map<String?, Any?>)
+                applyProps(call.arguments as? Map<String?, Any?>)
                 result.success(null)
             }
             else -> result.notImplemented()
         }
     }
 
-    private fun applyConfiguration(params: Map<String?, Any?>?) {
-        configureJob?.cancel()
-        elementState?.invoke(null)
-        emitCollapsedHeight()
-
-        if (params == null) return
-
-        @Suppress("UNCHECKED_CAST")
-        val methodStrings = params["paymentMethods"] as? List<String> ?: return
-        val currency = params["currency"] as? String ?: return
-        val amount = (params["amount"] as? Number)?.toLong() ?: return
-        val countryCode = params["countryCode"] as? String
-        val locale = params["locale"] as? String
-
-        val types = methodStrings.mapNotNull { PaymentMethod.Type.fromCode(it) }
-        val application = context.findApplication() ?: return
-
-        val configuration = PaymentMethodMessagingElement.Configuration().apply {
-            amount(amount)
-            currency(currency)
-            locale?.let { locale(it) }
-            countryCode?.let { countryCode(it) }
-            if (types.isNotEmpty()) paymentMethodTypes(types)
-        }
-
-        configureJob = scope.launch {
-            val element = PaymentMethodMessagingElement.create(application)
-            val result = element.configure(configuration)
-            when (result) {
-                is PaymentMethodMessagingElement.ConfigureResult.Succeeded -> {
-                    elementState?.invoke(element)
-                }
-                is PaymentMethodMessagingElement.ConfigureResult.NoContent,
-                is PaymentMethodMessagingElement.ConfigureResult.Failed -> {
-                    elementState?.invoke(null)
-                    emitCollapsedHeight()
-                }
-            }
-        }
-    }
-
-    private fun emitCollapsedHeight() {
-        if (lastReportedHeightPx != 0) {
-            lastReportedHeightPx = 0
-            channel.invokeMethod("onHeightChange", mapOf("height" to 0.0))
-        }
-    }
-
-    override fun getView(): View = container
-
     override fun dispose() {
-        configureJob?.cancel()
-        scope.cancel()
-        composeView.disposeComposition()
+        DeviceEventManagerModule.RCTDeviceEventEmitter.unregisterChannelForPrefix(EVENT_PREFIX)
+        viewManager.onDropViewInstance(messagingView)
         channel.setMethodCallHandler(null)
     }
-}
 
-private fun Context.findApplication(): Application? {
-    var ctx: Context = this
-    while (ctx is ContextWrapper) {
-        if (ctx is Application) return ctx
-        if (ctx is Activity) return ctx.application
-        ctx = ctx.baseContext
+    private fun applyProps(params: Map<String?, Any?>?) {
+        asReadableMap(params?.get("appearance"))?.let {
+            viewManager.setAppearance(messagingView, DynamicFromObject(it))
+        }
+        asReadableMap(params?.get("configuration"))?.let {
+            viewManager.setConfiguration(messagingView, DynamicFromObject(it))
+        }
     }
-    return applicationContext as? Application
+
+    private fun asReadableMap(value: Any?): ReadableMap? {
+        if (value !is Map<*, *>) return null
+        @Suppress("UNCHECKED_CAST")
+        return ReadableMap(normalizeMap(value) as Map<String, Any>)
+    }
+
+    private fun normalizeMap(value: Map<*, *>): Map<String, Any?> =
+        value.entries
+            .filter { it.key is String }
+            .associate { (key, entryValue) -> key as String to normalizeValue(entryValue) }
+
+    private fun normalizeValue(value: Any?): Any? =
+        when (value) {
+            is Map<*, *> -> normalizeMap(value)
+            is List<*> -> value.map { normalizeValue(it) }
+            else -> value
+        }
+
+    private companion object {
+        const val EVENT_PREFIX = "paymentMethodMessagingElement"
+    }
 }

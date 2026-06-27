@@ -67,7 +67,52 @@ The widget reacts to configuration changes: updating `amount`, `currency` or `pa
 | `countryCode` | `String?` | No | The two-letter country code of the customer's location. If omitted, the country is determined from the IP address. |
 | `locale` | `String?` | No | The locale used to localize the messaging. Defaults to the device locale. See [supported locales](https://docs.stripe.com/js/appendix/supported_locales). Not all device locales are supported; English is used as a fallback. |
 
-## 4. React to the rendered height (Optional)
+## 4. Customize the appearance (Optional)
+
+Pass an optional `PaymentMethodMessagingAppearance` to style the element. Every field is optional and falls back to the SDK default when omitted. Updating the appearance and rebuilding the widget restyles the element in place.
+
+```dart
+PaymentMethodMessaging(
+  configuration: configuration,
+  appearance: PaymentMethodMessagingAppearance(
+    style: PaymentMethodMessagingStyle.flat,
+    font: PaymentMethodMessagingFont(family: 'Roboto', size: 14),
+    textColor: PaymentMethodMessagingColor.adaptive(
+      light: '#111111',
+      dark: '#EEEEEE',
+    ),
+    linkTextColor: PaymentMethodMessagingColor('#635BFF'),
+  ),
+);
+```
+
+`PaymentMethodMessagingAppearance` accepts:
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `style` | `PaymentMethodMessagingStyle?` | Theme of the element: `automatic` (iOS only — follows the system light/dark setting), `light`, `dark` or `flat`. Android renders anything other than `dark`/`flat` as light. |
+| `font` | `PaymentMethodMessagingFont?` | Font applied to the messaging text. |
+| `textColor` | `PaymentMethodMessagingColor?` | Color of the body text. |
+| `linkTextColor` | `PaymentMethodMessagingColor?` | Color of the inline "Learn more" link text. |
+
+`PaymentMethodMessagingFont` accepts:
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `family` | `String?` | Font family. On iOS this is a `UIFont` name; on Android a font resource name. |
+| `size` | `double?` | Font size. Points on iOS, scale-independent pixels (sp) on Android. |
+
+`PaymentMethodMessagingColor` takes a hex string (`#RRGGBB` or `#AARRGGBB`). Use the default constructor for a single color, or `.adaptive` to vary it between light and dark mode:
+
+```dart
+// Same color in light and dark mode.
+PaymentMethodMessagingColor('#635BFF');
+
+// Different colors per mode.
+PaymentMethodMessagingColor.adaptive(light: '#111111', dark: '#EEEEEE');
+```
+
+## 5. React to the rendered height (Optional)
 
 The widget manages its own height, but you can observe height changes — for example to animate surrounding layout or hide an empty placeholder — via the `onHeightChange` callback. A reported height of `0` means there is no messaging to display for the current configuration.
 
@@ -80,7 +125,7 @@ PaymentMethodMessaging(
 );
 ```
 
-## 5. Platform support
+## 6. Platform support
 
 | Platform | Supported |
 | --- | --- |

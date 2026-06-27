@@ -29,12 +29,24 @@ public class PaymentMethodMessagingElementFactory: NSObject, FlutterPlatformView
     }
 }
 
+/// Thin wrapper around the Stripe SDK's `PaymentMethodMessagingElementContainerView`
+/// (vendored from stripe-react-native). It owns a per-view method channel, forwards
+/// configuration/appearance props into the container, and routes the container's
+/// height / configure-result events back to Dart.
+///
+/// The container reports its events through the shared `StripeSdkImpl.shared.emitter`
+/// (the `StripePlugin` instance), which sends them on the global channel unless a
+/// per-view override is registered. We register this view's channel for the
+/// `paymentMethodMessagingElement` prefix so its events land on the matching Dart
+/// widget — the same mechanism `EmbeddedPaymentElement` uses.
 class PaymentMethodMessagingElementPlatformView: NSObject, FlutterPlatformView {
 
-    let messagingView = PaymentMethodMessagingElementView()
+    private static let eventPrefix = "paymentMethodMessagingElement"
+
+    private let containerView = PaymentMethodMessagingElementContainerView(frame: .zero)
     private let channel: FlutterMethodChannel
 
-    func view() -> UIView { return messagingView }
+    func view() -> UIView { return containerView }
 
     init(
         frame: CGRect,
@@ -48,15 +60,13 @@ class PaymentMethodMessagingElementPlatformView: NSObject, FlutterPlatformView {
         )
         super.init()
         channel.setMethodCallHandler(handle)
-        messagingView.onHeightChange = { [weak self] height in
-            self?.channel.invokeMethod("onHeightChange", arguments: ["height": height])
-        }
+        StripePlugin.registerChannel(channel, forPrefix: PaymentMethodMessagingElementPlatformView.eventPrefix)
         updateProps(args)
     }
 
     deinit {
         channel.setMethodCallHandler(nil)
-        messagingView.teardown()
+        StripePlugin.unregisterChannel(forPrefix: PaymentMethodMessagingElementPlatformView.eventPrefix)
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -70,25 +80,12 @@ class PaymentMethodMessagingElementPlatformView: NSObject, FlutterPlatformView {
     }
 
     private func updateProps(_ args: Any?) {
-        guard let arguments = args as? [String: Any],
-              let paymentMethods = arguments["paymentMethods"] as? [String],
-              let currency = arguments["currency"] as? String,
-              let amount = (arguments["amount"] as? NSNumber)?.intValue else {
-            messagingView.applyConfiguration(
-                paymentMethods: [],
-                currency: "",
-                amount: 0,
-                countryCode: nil,
-                locale: nil
-            )
-            return
+        guard let arguments = args as? [String: Any] else { return }
+        if let appearance = arguments["appearance"] as? NSDictionary {
+            containerView.appearance = appearance
         }
-        messagingView.applyConfiguration(
-            paymentMethods: paymentMethods,
-            currency: currency,
-            amount: amount,
-            countryCode: arguments["countryCode"] as? String,
-            locale: arguments["locale"] as? String
-        )
+        if let configuration = arguments["configuration"] as? NSDictionary {
+            containerView.configuration = configuration
+        }
     }
 }

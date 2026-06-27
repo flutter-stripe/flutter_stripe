@@ -20,11 +20,17 @@ import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 class PaymentMethodMessaging extends StatefulWidget {
   const PaymentMethodMessaging({
     required this.configuration,
+    this.appearance,
     this.onHeightChange,
     super.key,
   });
 
   final PaymentMethodMessagingConfiguration configuration;
+
+  /// Optional visual styling forwarded to the native element. When omitted the
+  /// SDK's default appearance is used.
+  final PaymentMethodMessagingAppearance? appearance;
+
   final ValueChanged<double>? onHeightChange;
 
   @override
@@ -42,15 +48,22 @@ class _PaymentMethodMessagingState extends State<PaymentMethodMessaging> {
     _methodChannel =
         MethodChannel('flutter.stripe/payment_method_messaging/$viewId');
     _methodChannel!.setMethodCallHandler((call) async {
-      if (call.method == 'onHeightChange') {
-        final args = Map<String, dynamic>.from(call.arguments);
-        final height = (args['height'] as num).toDouble();
-        if (mounted) {
-          setState(() {
-            _height = height;
-          });
-        }
-        widget.onHeightChange?.call(height);
+      switch (call.method) {
+        case 'paymentMethodMessagingElementDidUpdateHeight':
+          final args = Map<String, dynamic>.from(call.arguments);
+          final height = (args['height'] as num).toDouble();
+          if (mounted) {
+            setState(() {
+              _height = height;
+            });
+          }
+          widget.onHeightChange?.call(height);
+          break;
+        case 'paymentMethodMessagingElementConfigureResult':
+          // The native element reports its configure status (loading / loaded /
+          // no_content / failed). Not surfaced to Dart yet; handled here so the
+          // channel doesn't log a MissingPluginException.
+          break;
       }
     });
   }
@@ -58,13 +71,16 @@ class _PaymentMethodMessagingState extends State<PaymentMethodMessaging> {
   @override
   void didUpdateWidget(covariant PaymentMethodMessaging oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.configuration != oldWidget.configuration) {
-      _methodChannel?.invokeMethod(
-        'updateConfiguration',
-        widget.configuration.toJson(),
-      );
+    if (widget.configuration != oldWidget.configuration ||
+        widget.appearance != oldWidget.appearance) {
+      _methodChannel?.invokeMethod('updateConfiguration', _creationParams());
     }
   }
+
+  Map<String, dynamic> _creationParams() => {
+        'configuration': widget.configuration.toJson(),
+        if (widget.appearance != null) 'appearance': widget.appearance!.toJson(),
+      };
 
   @override
   void dispose() {
@@ -74,7 +90,7 @@ class _PaymentMethodMessagingState extends State<PaymentMethodMessaging> {
 
   @override
   Widget build(BuildContext context) {
-    final creationParams = widget.configuration.toJson();
+    final creationParams = _creationParams();
 
     Widget platform;
     if (defaultTargetPlatform == TargetPlatform.iOS) {
