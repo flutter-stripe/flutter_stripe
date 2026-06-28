@@ -6,8 +6,7 @@ repository: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
   sdk: ">=3.8.1 <4.0.0"
-  # iOS scene-lifecycle plugin APIs used by stripe_ios require Flutter >= 3.38.
-  flutter: ">=3.38.0"
+  flutter: ">=3.0.0"
 
 flutter:
   plugin:
