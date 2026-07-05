@@ -33,6 +33,9 @@ class ExpressCheckoutElement extends StatefulWidget {
 }
 
 class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
+  static int _nextId = 0;
+  final String _viewType = 'stripe_express_checkout_element_${_nextId++}';
+
   web.HTMLDivElement _divElement = web.HTMLDivElement();
   double height = 60.0;
   bool _isReady = false;
@@ -69,7 +72,7 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
     _cachedElementOptions = _elementOptionsOnce();
 
     ui.platformViewRegistry.registerViewFactory(
-      'stripe_express_checkout_element',
+      _viewType,
       (int viewId) => _divElement,
     );
 
@@ -145,7 +148,7 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
         ),
         child: Stack(
           children: [
-            const HtmlElementView(viewType: 'stripe_express_checkout_element'),
+            HtmlElementView(viewType: _viewType),
             if (!_isReady)
               Container(
                 color: Theme.of(context).scaffoldBackgroundColor,
