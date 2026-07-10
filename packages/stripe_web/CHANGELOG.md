@@ -1,3 +1,8 @@
+## 8.1.0
+
+**Fixes**:
+- Element Remounting Fix: Resolved an issue causing an infinite spinner when an ExpressCheckoutElement instance remounted by ensuring a unique view type per instance. (#2405, #2439)
+
 ## 8.0.0
 
  **Breaking Changes**

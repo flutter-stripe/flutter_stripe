@@ -15,6 +15,29 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v8.1.0`](#flutter_stripe_web---v810)
+
+---
+
+#### `flutter_stripe_web` - `v8.1.0`
+
+ - **FIX**(web): unique view type per ExpressCheckoutElement instance to fix infinite spinner on remount (#2405) (#2439).
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+ - **FEAT**(web): add web support for collectBankAccount and verifyMicrodeposits (#2396).
+
+
+## 2026-07-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_ios` - `v13.1.0`](#stripe_ios---v1310)
  - [`flutter_stripe` - `v13.0.1`](#flutter_stripe---v1301)
 
