@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v13.1.0`](#flutter_stripe---v1310)
+
+---
+
+#### `flutter_stripe` - `v13.1.0`
+
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+
+
+## 2026-07-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v8.1.0`](#flutter_stripe_web---v810)
 
 ---
