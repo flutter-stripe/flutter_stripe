@@ -1,3 +1,10 @@
+## 13.1.0
+**Features**:
+- Embedded Payment Element: Added official support for updating the EmbeddedPaymentElement. (#2427)
+
+**Fixes**:
+- Google Pay Fix: Fixed an issue where isPlatformPaySupported would not work properly when used with existingPaymentMethodRequired. (#2245)
+
 ## 13.0.0
 
  **Breaking Changes**
