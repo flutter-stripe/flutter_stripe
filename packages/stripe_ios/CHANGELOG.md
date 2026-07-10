@@ -1,3 +1,12 @@
+## 13.1.0
+
+**Features**:
+- Embedded Payment Element: Added official support for updating the EmbeddedPaymentElement. (#2427)
+
+**Fixes**:
+- Fixed Build Failures: Resolved an issue where iOS builds would fail on Flutter versions earlier than 3.41.0 due to a missing FlutterFramework dependency. (#2425)
+- Embedded Payment Element Fix: Fixed an issue where the EmbeddedPaymentElement failed to load on iOS because the merchantIdentifier could not be found. (#2426)
+
 ## 13.0.0
 
  **Breaking Changes**
