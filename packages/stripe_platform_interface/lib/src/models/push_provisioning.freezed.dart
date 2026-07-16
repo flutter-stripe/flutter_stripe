@@ -1187,7 +1187,8 @@ mixin _$CanAddCardToWalletParams {
 
 ///The `primary_account_identifier` value from the issued card. Can be an empty string.
  String? get primaryAccountIdentifier;/// Last 4 digits of the card number. Required for Android.
- String get cardLastFour;/// iOS only. Set this to `true` until shipping through TestFlight || App Store. If false, you must be using live cards, and have the proper iOS entitlement set up. See https://stripe.com/docs/issuing/cards/digital-wallets?platform=react-native#requesting-access-for-ios
+ String get cardLastFour;/// The card brand (e.g. "visa", "mastercard"). Required for Android.
+ String get cardBrand;/// iOS only. Set this to `true` until shipping through TestFlight || App Store. If false, you must be using live cards, and have the proper iOS entitlement set up. See https://stripe.com/docs/issuing/cards/digital-wallets?platform=react-native#requesting-access-for-ios
  bool? get testEnv;/// iOS only. Set this to `true` if: your user has an Apple Watch device currently paired, and you want to check that device for the presence of the specified card.
  bool? get hasPairedAppleWatch;/// Android only, defaults to `true`. Set this to `false` if you'd like to allow users without NFC-enabled devices to add cards to the wallet. NFC is required for paying in stores.
  bool? get supportsTapToPay;
@@ -1203,16 +1204,16 @@ $CanAddCardToWalletParamsCopyWith<CanAddCardToWalletParams> get copyWith => _$Ca
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CanAddCardToWalletParams&&(identical(other.primaryAccountIdentifier, primaryAccountIdentifier) || other.primaryAccountIdentifier == primaryAccountIdentifier)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.hasPairedAppleWatch, hasPairedAppleWatch) || other.hasPairedAppleWatch == hasPairedAppleWatch)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CanAddCardToWalletParams&&(identical(other.primaryAccountIdentifier, primaryAccountIdentifier) || other.primaryAccountIdentifier == primaryAccountIdentifier)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour)&&(identical(other.cardBrand, cardBrand) || other.cardBrand == cardBrand)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.hasPairedAppleWatch, hasPairedAppleWatch) || other.hasPairedAppleWatch == hasPairedAppleWatch)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,primaryAccountIdentifier,cardLastFour,testEnv,hasPairedAppleWatch,supportsTapToPay);
+int get hashCode => Object.hash(runtimeType,primaryAccountIdentifier,cardLastFour,cardBrand,testEnv,hasPairedAppleWatch,supportsTapToPay);
 
 @override
 String toString() {
-  return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
+  return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, cardBrand: $cardBrand, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
 }
 
 
@@ -1223,7 +1224,7 @@ abstract mixin class $CanAddCardToWalletParamsCopyWith<$Res>  {
   factory $CanAddCardToWalletParamsCopyWith(CanAddCardToWalletParams value, $Res Function(CanAddCardToWalletParams) _then) = _$CanAddCardToWalletParamsCopyWithImpl;
 @useResult
 $Res call({
- String? primaryAccountIdentifier, String cardLastFour, bool? testEnv, bool? hasPairedAppleWatch, bool? supportsTapToPay
+ String? primaryAccountIdentifier, String cardLastFour, String cardBrand, bool? testEnv, bool? hasPairedAppleWatch, bool? supportsTapToPay
 });
 
 
@@ -1240,10 +1241,11 @@ class _$CanAddCardToWalletParamsCopyWithImpl<$Res>
 
 /// Create a copy of CanAddCardToWalletParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? primaryAccountIdentifier = freezed,Object? cardLastFour = null,Object? testEnv = freezed,Object? hasPairedAppleWatch = freezed,Object? supportsTapToPay = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? primaryAccountIdentifier = freezed,Object? cardLastFour = null,Object? cardBrand = null,Object? testEnv = freezed,Object? hasPairedAppleWatch = freezed,Object? supportsTapToPay = freezed,}) {
   return _then(_self.copyWith(
 primaryAccountIdentifier: freezed == primaryAccountIdentifier ? _self.primaryAccountIdentifier : primaryAccountIdentifier // ignore: cast_nullable_to_non_nullable
 as String?,cardLastFour: null == cardLastFour ? _self.cardLastFour : cardLastFour // ignore: cast_nullable_to_non_nullable
+as String,cardBrand: null == cardBrand ? _self.cardBrand : cardBrand // ignore: cast_nullable_to_non_nullable
 as String,testEnv: freezed == testEnv ? _self.testEnv : testEnv // ignore: cast_nullable_to_non_nullable
 as bool?,hasPairedAppleWatch: freezed == hasPairedAppleWatch ? _self.hasPairedAppleWatch : hasPairedAppleWatch // ignore: cast_nullable_to_non_nullable
 as bool?,supportsTapToPay: freezed == supportsTapToPay ? _self.supportsTapToPay : supportsTapToPay // ignore: cast_nullable_to_non_nullable
@@ -1332,10 +1334,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? primaryAccountIdentifier,  String cardLastFour,  bool? testEnv,  bool? hasPairedAppleWatch,  bool? supportsTapToPay)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? primaryAccountIdentifier,  String cardLastFour,  String cardBrand,  bool? testEnv,  bool? hasPairedAppleWatch,  bool? supportsTapToPay)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CanAddCardToWalletParams() when $default != null:
-return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.testEnv,_that.hasPairedAppleWatch,_that.supportsTapToPay);case _:
+return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.cardBrand,_that.testEnv,_that.hasPairedAppleWatch,_that.supportsTapToPay);case _:
   return orElse();
 
 }
@@ -1353,10 +1355,10 @@ return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.testEnv,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? primaryAccountIdentifier,  String cardLastFour,  bool? testEnv,  bool? hasPairedAppleWatch,  bool? supportsTapToPay)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? primaryAccountIdentifier,  String cardLastFour,  String cardBrand,  bool? testEnv,  bool? hasPairedAppleWatch,  bool? supportsTapToPay)  $default,) {final _that = this;
 switch (_that) {
 case _CanAddCardToWalletParams():
-return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.testEnv,_that.hasPairedAppleWatch,_that.supportsTapToPay);case _:
+return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.cardBrand,_that.testEnv,_that.hasPairedAppleWatch,_that.supportsTapToPay);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1373,10 +1375,10 @@ return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.testEnv,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? primaryAccountIdentifier,  String cardLastFour,  bool? testEnv,  bool? hasPairedAppleWatch,  bool? supportsTapToPay)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? primaryAccountIdentifier,  String cardLastFour,  String cardBrand,  bool? testEnv,  bool? hasPairedAppleWatch,  bool? supportsTapToPay)?  $default,) {final _that = this;
 switch (_that) {
 case _CanAddCardToWalletParams() when $default != null:
-return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.testEnv,_that.hasPairedAppleWatch,_that.supportsTapToPay);case _:
+return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.cardBrand,_that.testEnv,_that.hasPairedAppleWatch,_that.supportsTapToPay);case _:
   return null;
 
 }
@@ -1388,13 +1390,15 @@ return $default(_that.primaryAccountIdentifier,_that.cardLastFour,_that.testEnv,
 
 @JsonSerializable(explicitToJson: true)
 class _CanAddCardToWalletParams implements CanAddCardToWalletParams {
-  const _CanAddCardToWalletParams({this.primaryAccountIdentifier, required this.cardLastFour, this.testEnv, this.hasPairedAppleWatch, this.supportsTapToPay});
+  const _CanAddCardToWalletParams({this.primaryAccountIdentifier, required this.cardLastFour, required this.cardBrand, this.testEnv, this.hasPairedAppleWatch, this.supportsTapToPay});
   factory _CanAddCardToWalletParams.fromJson(Map<String, dynamic> json) => _$CanAddCardToWalletParamsFromJson(json);
 
 ///The `primary_account_identifier` value from the issued card. Can be an empty string.
 @override final  String? primaryAccountIdentifier;
 /// Last 4 digits of the card number. Required for Android.
 @override final  String cardLastFour;
+/// The card brand (e.g. "visa", "mastercard"). Required for Android.
+@override final  String cardBrand;
 /// iOS only. Set this to `true` until shipping through TestFlight || App Store. If false, you must be using live cards, and have the proper iOS entitlement set up. See https://stripe.com/docs/issuing/cards/digital-wallets?platform=react-native#requesting-access-for-ios
 @override final  bool? testEnv;
 /// iOS only. Set this to `true` if: your user has an Apple Watch device currently paired, and you want to check that device for the presence of the specified card.
@@ -1415,16 +1419,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CanAddCardToWalletParams&&(identical(other.primaryAccountIdentifier, primaryAccountIdentifier) || other.primaryAccountIdentifier == primaryAccountIdentifier)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.hasPairedAppleWatch, hasPairedAppleWatch) || other.hasPairedAppleWatch == hasPairedAppleWatch)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CanAddCardToWalletParams&&(identical(other.primaryAccountIdentifier, primaryAccountIdentifier) || other.primaryAccountIdentifier == primaryAccountIdentifier)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour)&&(identical(other.cardBrand, cardBrand) || other.cardBrand == cardBrand)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.hasPairedAppleWatch, hasPairedAppleWatch) || other.hasPairedAppleWatch == hasPairedAppleWatch)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,primaryAccountIdentifier,cardLastFour,testEnv,hasPairedAppleWatch,supportsTapToPay);
+int get hashCode => Object.hash(runtimeType,primaryAccountIdentifier,cardLastFour,cardBrand,testEnv,hasPairedAppleWatch,supportsTapToPay);
 
 @override
 String toString() {
-  return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
+  return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, cardBrand: $cardBrand, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
 }
 
 
@@ -1435,7 +1439,7 @@ abstract mixin class _$CanAddCardToWalletParamsCopyWith<$Res> implements $CanAdd
   factory _$CanAddCardToWalletParamsCopyWith(_CanAddCardToWalletParams value, $Res Function(_CanAddCardToWalletParams) _then) = __$CanAddCardToWalletParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String? primaryAccountIdentifier, String cardLastFour, bool? testEnv, bool? hasPairedAppleWatch, bool? supportsTapToPay
+ String? primaryAccountIdentifier, String cardLastFour, String cardBrand, bool? testEnv, bool? hasPairedAppleWatch, bool? supportsTapToPay
 });
 
 
@@ -1452,10 +1456,11 @@ class __$CanAddCardToWalletParamsCopyWithImpl<$Res>
 
 /// Create a copy of CanAddCardToWalletParams
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? primaryAccountIdentifier = freezed,Object? cardLastFour = null,Object? testEnv = freezed,Object? hasPairedAppleWatch = freezed,Object? supportsTapToPay = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? primaryAccountIdentifier = freezed,Object? cardLastFour = null,Object? cardBrand = null,Object? testEnv = freezed,Object? hasPairedAppleWatch = freezed,Object? supportsTapToPay = freezed,}) {
   return _then(_CanAddCardToWalletParams(
 primaryAccountIdentifier: freezed == primaryAccountIdentifier ? _self.primaryAccountIdentifier : primaryAccountIdentifier // ignore: cast_nullable_to_non_nullable
 as String?,cardLastFour: null == cardLastFour ? _self.cardLastFour : cardLastFour // ignore: cast_nullable_to_non_nullable
+as String,cardBrand: null == cardBrand ? _self.cardBrand : cardBrand // ignore: cast_nullable_to_non_nullable
 as String,testEnv: freezed == testEnv ? _self.testEnv : testEnv // ignore: cast_nullable_to_non_nullable
 as bool?,hasPairedAppleWatch: freezed == hasPairedAppleWatch ? _self.hasPairedAppleWatch : hasPairedAppleWatch // ignore: cast_nullable_to_non_nullable
 as bool?,supportsTapToPay: freezed == supportsTapToPay ? _self.supportsTapToPay : supportsTapToPay // ignore: cast_nullable_to_non_nullable

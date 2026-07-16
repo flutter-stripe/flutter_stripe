@@ -71,6 +71,7 @@ _CollectBankAccountTokenParams _$CollectBankAccountTokenParamsFromJson(
     _$UserInterfaceStyleEnumMap,
     json['userInterfaceStyle'],
   ),
+  connectedAccountId: json['connectedAccountId'] as String?,
 );
 
 Map<String, dynamic> _$CollectBankAccountTokenParamsToJson(
@@ -78,6 +79,7 @@ Map<String, dynamic> _$CollectBankAccountTokenParamsToJson(
 ) => <String, dynamic>{
   'userInterfaceStyle':
       _$UserInterfaceStyleEnumMap[instance.userInterfaceStyle],
+  'connectedAccountId': instance.connectedAccountId,
 };
 
 _CollectBankAccountPaymentMethodData

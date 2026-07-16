@@ -89,6 +89,9 @@ abstract class CanAddCardToWalletParams with _$CanAddCardToWalletParams {
     /// Last 4 digits of the card number. Required for Android.
     required String cardLastFour,
 
+    /// The card brand (e.g. "visa", "mastercard"). Required for Android.
+    required String cardBrand,
+
     /// iOS only. Set this to `true` until shipping through TestFlight || App Store. If false, you must be using live cards, and have the proper iOS entitlement set up. See https://stripe.com/docs/issuing/cards/digital-wallets?platform=react-native#requesting-access-for-ios
     bool? testEnv,
 

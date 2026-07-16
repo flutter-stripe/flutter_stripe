@@ -81,6 +81,7 @@ class CanAddToWalletScreenState extends State<CanAddToWalletScreen> {
       final result = await Stripe.instance.canAddCardToWallet(
         CanAddCardToWalletParams(
           cardLastFour: last4,
+          cardBrand: 'visa',
         ),
       );
       if (mounted) {

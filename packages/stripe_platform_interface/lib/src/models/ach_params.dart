@@ -53,6 +53,9 @@ abstract class CollectBankAccountTokenParams
     /// specific events during the process of a user connecting their financial accounts.
     @JsonKey(includeFromJson: false, includeToJson: false)
     FinancialConnectionsEventHandler? onEvent,
+
+    /// Optional connected account ID. Used for Stripe Connect embedded components.
+    String? connectedAccountId,
   }) = _CollectBankAccountTokenParams;
 
   factory CollectBankAccountTokenParams.fromJson(Map<String, dynamic> json) =>

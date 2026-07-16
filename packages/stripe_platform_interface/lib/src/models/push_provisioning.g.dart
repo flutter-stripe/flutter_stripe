@@ -106,6 +106,7 @@ _CanAddCardToWalletParams _$CanAddCardToWalletParamsFromJson(
 ) => _CanAddCardToWalletParams(
   primaryAccountIdentifier: json['primaryAccountIdentifier'] as String?,
   cardLastFour: json['cardLastFour'] as String,
+  cardBrand: json['cardBrand'] as String,
   testEnv: json['testEnv'] as bool?,
   hasPairedAppleWatch: json['hasPairedAppleWatch'] as bool?,
   supportsTapToPay: json['supportsTapToPay'] as bool?,
@@ -116,6 +117,7 @@ Map<String, dynamic> _$CanAddCardToWalletParamsToJson(
 ) => <String, dynamic>{
   'primaryAccountIdentifier': instance.primaryAccountIdentifier,
   'cardLastFour': instance.cardLastFour,
+  'cardBrand': instance.cardBrand,
   'testEnv': instance.testEnv,
   'hasPairedAppleWatch': instance.hasPairedAppleWatch,
   'supportsTapToPay': instance.supportsTapToPay,
