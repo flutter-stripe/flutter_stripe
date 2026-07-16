@@ -24,12 +24,10 @@ import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.modules.systeminfo.ReactNativeVersion
-import com.flutter.stripe.BuildConfig
-import com.flutter.stripe.getCurrentActivity
-import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherManager
 import com.reactnativestripesdk.customersheet.CustomerSheetManager
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
+import com.reactnativestripesdk.pushprovisioning.TapAndPayProxy
 import com.reactnativestripesdk.utils.ConfirmPaymentErrorType
 import com.reactnativestripesdk.utils.CreateTokenErrorType
 import com.reactnativestripesdk.utils.DefaultActivityLifecycleCallbacks
@@ -99,7 +97,7 @@ import java.util.UUID
 @ReactModule(name = StripeSdkModule.NAME)
 @OptIn(ReactNativeSdkInternal::class, CheckoutSessionPreview::class)
 class StripeSdkModule(
-  val reactContext: ReactApplicationContext,
+  reactContext: ReactApplicationContext,
 ) : NativeStripeSdkModuleSpec(reactContext) {
   var cardFieldView: CardFieldView? = null
   var cardFormView: CardFormView? = null
@@ -129,6 +127,7 @@ class StripeSdkModule(
   private val checkoutStateObservers = mutableMapOf<String, Job>()
 
   private var customerSheetManager: CustomerSheetManager? = null
+  private var linkControllerManager: LinkControllerManager? = null
 
   internal var embeddedIntentCreationCallback = CompletableDeferred<ReadableMap>()
   internal var embeddedConfirmationTokenCreationCallback = CompletableDeferred<ReadableMap>()
@@ -182,6 +181,8 @@ class StripeSdkModule(
     checkoutStateObservers.values.forEach { it.cancel() }
     checkoutStateObservers.clear()
     checkoutInstances.clear()
+    linkControllerManager?.destroy()
+    linkControllerManager = null
   }
 
   private fun registerStripeUIManager(uiManager: StripeUIManager) {
@@ -958,6 +959,12 @@ class StripeSdkModule(
         return
       }
 
+    val cardBrand =
+      getValOr(params, "cardBrand", null) ?: run {
+        promise.resolve(createError("Failed", "You must provide cardBrand"))
+        return
+      }
+
     if (params.getBooleanOr("supportsTapToPay", true) &&
       !PushProvisioningProxy.isNFCEnabled(
         reactApplicationContext,
@@ -967,14 +974,14 @@ class StripeSdkModule(
       return
     }
 
-    getCurrentActivityOrResolveWithError(promise)?.let {
-      PushProvisioningProxy.isCardInWallet(it, last4) { isCardInWallet, token, error ->
+    getCurrentActivityOrResolveWithError(promise)?.let { activity ->
+      TapAndPayProxy.checkEligibility(activity, last4, cardBrand) { canAdd, token, error ->
         val result =
           error?.let {
-            createCanAddCardResult(false, "MISSING_CONFIGURATION", null)
+            createCanAddCardResult(false, "MISSING_CONFIGURATION")
           } ?: run {
-            val status = if (isCardInWallet) "CARD_ALREADY_EXISTS" else null
-            createCanAddCardResult(!isCardInWallet, status, token)
+            val status = if (!canAdd) "CARD_ALREADY_EXISTS" else null
+            createCanAddCardResult(canAdd, status, token)
           }
         promise.resolve(result)
       }
@@ -1447,15 +1454,6 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  override fun updateEmbeddedPaymentElementWithCheckout(
-    sessionKey: String,
-    promise: Promise,
-  ) {
-    // No-op on Android. JS dispatches Checkout updates through the view command instead.
-    promise.resolve(null)
-  }
-
-  @ReactMethod
   override fun clearEmbeddedPaymentOption(
     viewTag: Double,
     promise: Promise,
@@ -1803,30 +1801,6 @@ class StripeSdkModule(
     }
   }
 
-  override fun checkoutUpdateBillingAddress(
-    sessionKey: String,
-    address: ReadableMap,
-    name: String?,
-    phone: String?,
-    promise: Promise,
-  ) {
-    val addressUpdate = buildCheckoutAddressUpdate(name, phone, address) ?: run {
-      promise.reject(ErrorType.Failed.toString(), "A billing address country is required.")
-      return
-    }
-
-    performCheckoutMutation(
-      sessionKey = sessionKey,
-      promise = promise,
-    ) { checkout ->
-      checkout.updateBillingAddress(
-        name = addressUpdate.name,
-        phoneNumber = addressUpdate.phone,
-        address = addressUpdate.toCheckoutAddress(),
-      )
-    }
-  }
-
   override fun checkoutApplyPromotionCode(
     sessionKey: String,
     code: String,
@@ -2028,6 +2002,34 @@ class StripeSdkModule(
         }
       }
     }
+
+  // LinkController - Private Preview
+
+  @ReactMethod
+  override fun initLinkController(
+    params: ReadableMap,
+    promise: Promise,
+  ) {
+    linkControllerManager?.destroy()
+    linkControllerManager = LinkControllerManager(
+      context = reactApplicationContext,
+      publishableKey = publishableKey,
+      stripeAccountId = stripeAccountId,
+    )
+    linkControllerManager?.configure(params, promise)
+  }
+
+  @ReactMethod
+  override fun presentLinkController(promise: Promise) {
+    val manager = linkControllerManager
+    if (manager == null) {
+      promise.resolve(createError(ErrorType.Failed.toString(), LINK_CONTROLLER_NOT_INITIALIZED_ERROR))
+      return
+    }
+    UiThreadUtil.runOnUiThread {
+      manager.present(promise)
+    }
+  }
 
   /**
    * React native apps do not properly handle activity re-creation so make
