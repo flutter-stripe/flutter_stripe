@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '2.1.0'
-    ext.stripe_version = '23.10.+'
+    ext.stripe_version = '23.12.0'
 
     repositories {
         google()
@@ -90,5 +90,5 @@ dependencies {
     compileOnly "com.google.android.gms:play-services-wallet:19.3.0"
 
     // Users need to declare this dependency on their own, otherwise all methods are a no-op
-    compileOnly 'com.stripe:stripe-android-issuing-push-provisioning:1.1.0'
+    compileOnly 'com.stripe:stripe-android-issuing-push-provisioning:1.3.0'
 }

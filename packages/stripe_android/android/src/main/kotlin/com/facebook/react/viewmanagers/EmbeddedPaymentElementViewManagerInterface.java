@@ -21,5 +21,4 @@ public interface EmbeddedPaymentElementViewManagerInterface<T extends View> exte
   void confirm(T view);
   void clearPaymentOption(T view);
   void update(T view, String intentConfigurationJson);
-  void updateWithCheckout(T view, String sessionKey);
 }

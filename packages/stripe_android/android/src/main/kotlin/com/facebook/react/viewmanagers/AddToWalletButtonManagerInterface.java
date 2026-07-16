@@ -20,6 +20,7 @@ import com.facebook.react.uimanager.ViewManagerWithGeneratedInterface;
 public interface AddToWalletButtonManagerInterface<T extends View> extends ViewManagerWithGeneratedInterface {
   void setIOSButtonStyle(T view, @Nullable String value);
   void setAndroidAssetSource(T view, @Nullable ReadableMap value);
+  void setIsBounceProvisioned(T view, boolean value);
   void setTestEnv(T view, boolean value);
   void setCardDetails(T view, Dynamic value);
   void setToken(T view, Dynamic value);
