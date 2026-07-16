@@ -61,10 +61,6 @@ enum OnrampErrors {
             stripeErrorCode: error.code,
             additionalFields: commonOnrampFields(error: error, onrampErrorType: onrampErrorType).merging([
                 "reason": error.reason,
-                "operation": error.operation,
-                "appPackageName": error.appIdentifier,
-                "mode": error.mode,
-                "sdkVersions": mapSDKVersions(error.sdkVersions),
                 "requestId": error.requestID,
                 "apiErrorCode": error.code,
                 "apiErrorType": error.type,
@@ -86,18 +82,9 @@ enum OnrampErrors {
         ]
     }
 
-    private static func mapSDKVersions(_ sdkVersions: [SDKVersion]) -> [[String: String]] {
-        return sdkVersions.map { sdkVersion in
-            [
-                "name": sdkVersion.name,
-                "version": sdkVersion.version,
-            ]
-        }
-    }
-
     private static func onrampErrorType(for error: StripeCryptoOnrampAPIError) -> String {
         switch error {
-        case is AppAttestationAPIError:
+        case is AppAttestationError:
             return "AppAttestationError"
         default:
             return "UncategorizedApiError"

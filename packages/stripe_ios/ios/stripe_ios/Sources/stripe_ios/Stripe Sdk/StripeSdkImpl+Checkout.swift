@@ -11,7 +11,7 @@ import Foundation
 
 extension StripeSdkImpl {
     internal func currentCheckoutStateResult(checkout: Checkout) -> NSDictionary {
-        Mappers.mapFromCheckoutState(checkout.state)
+        Mappers.mapFromCheckoutState(isLoading: checkout.isLoading, session: checkout.session)
     }
 
     @objc(initCheckoutSession:configuration:resolver:rejecter:)
@@ -21,7 +21,10 @@ extension StripeSdkImpl {
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
     ) {
-        let checkoutConfiguration = buildCheckoutConfiguration(params: configuration)
+        let checkoutConfiguration = buildCheckoutConfiguration(
+            clientSecret: clientSecret,
+            params: configuration
+        )
 
         Task { @MainActor [weak self] in
             guard let self else {
@@ -30,18 +33,16 @@ extension StripeSdkImpl {
             }
 
             do {
-                let checkout = try await Checkout(
-                    clientSecret: clientSecret,
-                    configuration: checkoutConfiguration
-                )
+                let checkout = try await Checkout(configuration: checkoutConfiguration)
                 let sessionKey = UUID().uuidString
 
-                let cancellable = checkout.$state
+                let cancellable = checkout.$isLoading
+                    .combineLatest(checkout.$session)
                     .dropFirst()
-                    .sink { [weak self] state in
+                    .sink { [weak self] isLoading, session in
                         self?.emitter?.emitCheckoutSessionDidChangeState([
                             "sessionKey": sessionKey,
-                            "state": Mappers.mapFromCheckoutState(state),
+                            "state": Mappers.mapFromCheckoutState(isLoading: isLoading, session: session),
                         ])
                     }
 
@@ -77,32 +78,6 @@ extension StripeSdkImpl {
             rejecter: reject
         ) { checkout, addressUpdate in
             try await checkout.updateShippingAddress(
-                name: addressUpdate.name,
-                phone: addressUpdate.phone,
-                address: addressUpdate.address
-            )
-        }
-    }
-
-    @objc(checkoutUpdateBillingAddress:address:name:phone:resolver:rejecter:)
-    public func checkoutUpdateBillingAddress(
-        sessionKey: String,
-        address: NSDictionary,
-        name: String?,
-        phone: String?,
-        resolver resolve: @escaping RCTPromiseResolveBlock,
-        rejecter reject: @escaping RCTPromiseRejectBlock
-    ) {
-        performCheckoutAddressMutation(
-            sessionKey: sessionKey,
-            address: address,
-            name: name,
-            phone: phone,
-            missingCountryMessage: "A billing address country is required.",
-            resolver: resolve,
-            rejecter: reject
-        ) { checkout, addressUpdate in
-            try await checkout.updateBillingAddress(
                 name: addressUpdate.name,
                 phone: addressUpdate.phone,
                 address: addressUpdate.address
@@ -234,8 +209,11 @@ extension StripeSdkImpl {
         resolve(nil)
     }
 
-    internal func buildCheckoutConfiguration(params: NSDictionary) -> Checkout.Configuration {
-        var configuration = Checkout.Configuration()
+    internal func buildCheckoutConfiguration(
+        clientSecret: String,
+        params: NSDictionary
+    ) -> Checkout.Configuration {
+        var configuration = Checkout.Configuration(clientSecret: clientSecret)
 
         if let adaptivePricing = params["adaptivePricing"] as? NSDictionary,
            let allowed = adaptivePricing["allowed"] as? Bool {
@@ -329,8 +307,6 @@ extension StripeSdkImpl {
             switch checkoutError {
             case .invalidClientSecret:
                 return "InvalidClientSecret"
-            case .sessionNotOpen:
-                return "SessionNotOpen"
             case .sheetCurrentlyPresented:
                 return "SheetCurrentlyPresented"
             default:

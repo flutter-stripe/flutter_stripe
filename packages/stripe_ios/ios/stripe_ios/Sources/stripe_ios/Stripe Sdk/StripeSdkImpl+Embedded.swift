@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 @_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(STP) @_spi(CustomPaymentMethodsBeta) @_spi(CardFundingFilteringPrivatePreview) import StripePaymentSheet
 
 @objc(StripeSdkImpl)
@@ -203,30 +202,6 @@ extension StripeSdkImpl {
 
     Task {
       guard let updateResult = await self.embeddedInstance?.update(intentConfiguration: intentConfiguration) else {
-        resolve(Errors.createError(
-          ErrorType.Failed,
-          "No EmbeddedPaymentElement instance — did you call create first?"
-        ))
-        return
-      }
-
-      self.resolveEmbeddedUpdateResult(updateResult, resolve: resolve)
-    }
-  }
-
-  @objc(updateEmbeddedPaymentElementWithCheckout:resolve:reject:)
-  public func updateEmbeddedPaymentElementWithCheckout(
-    sessionKey: String,
-    resolve: @escaping RCTPromiseResolveBlock,
-    reject: @escaping RCTPromiseRejectBlock
-  ) {
-    guard let checkout = checkoutInstances[sessionKey] else {
-      resolve(Errors.createError(ErrorType.Failed, "Checkout session not found"))
-      return
-    }
-
-    Task {
-      guard let updateResult = await self.embeddedInstance?.update(checkout: checkout) else {
         resolve(Errors.createError(
           ErrorType.Failed,
           "No EmbeddedPaymentElement instance — did you call create first?"
