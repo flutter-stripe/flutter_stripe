@@ -6,13 +6,13 @@ import PackageDescription
 let package = Package(
     name: "stripe_ios",
     platforms: [
-        .iOS("13.0")
+        .iOS("15.0")
     ],
     products: [
         .library(name: "stripe-ios", targets: ["stripe_ios"])
     ],
     dependencies: [
-        .package(url: "https://github.com/stripe/stripe-ios-spm", exact: "25.17.0"),
+        .package(url: "https://github.com/stripe/stripe-ios-spm", exact: "26.3.0"),
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
     ],
     targets: [

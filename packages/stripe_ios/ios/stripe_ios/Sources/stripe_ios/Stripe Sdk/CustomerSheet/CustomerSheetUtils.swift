@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 @_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
 
 class CustomerSheetUtils {
