@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 import Stripe
 import StripeFinancialConnections
 

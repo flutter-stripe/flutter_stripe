@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import PassKit
 import Stripe
 
 extension StripeSdkImpl: PKPaymentAuthorizationViewControllerDelegate, STPApplePayContextDelegate {

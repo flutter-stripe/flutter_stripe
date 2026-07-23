@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import UIKit
 
 @objc(NavigationBarManager)
 class NavigationBarManager: RCTViewManager {
