@@ -277,6 +277,7 @@ enum PaymentMethodType {
   PayPal,
   USBankAccount,
   RevolutPay,
+  PayByBank,
   Klarna,
   Link,
   Multibanco,
@@ -434,6 +435,14 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsRevolutPay;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('PayByBank')
+  /// PayByBank params.
+  const factory PaymentMethodParams.payByBank({
+    /// Paymentmethod data for this paymentmethod.
+    required PaymentMethodData paymentMethodData,
+  }) = _PaymentMethodParamsPayByBank;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Alma')

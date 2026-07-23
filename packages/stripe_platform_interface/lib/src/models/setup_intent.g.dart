@@ -66,6 +66,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.PayPal: 'PayPal',
   PaymentMethodType.USBankAccount: 'USBankAccount',
   PaymentMethodType.RevolutPay: 'RevolutPay',
+  PaymentMethodType.PayByBank: 'PayByBank',
   PaymentMethodType.Klarna: 'Klarna',
   PaymentMethodType.Link: 'Link',
   PaymentMethodType.Multibanco: 'Multibanco',
