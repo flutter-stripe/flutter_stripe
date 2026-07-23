@@ -151,6 +151,7 @@ internal fun mapPaymentMethodType(type: PaymentMethod.Type?): String =
     PaymentMethod.Type.Affirm -> "Affirm"
     PaymentMethod.Type.CashAppPay -> "CashApp"
     PaymentMethod.Type.RevolutPay -> "RevolutPay"
+    PaymentMethod.Type.PayByBank -> "PayByBank"
     PaymentMethod.Type.Link -> "Link"
     else -> "Unknown"
   }
@@ -182,6 +183,7 @@ internal fun mapToPaymentMethodType(type: String?): PaymentMethod.Type? =
     "Affirm" -> PaymentMethod.Type.Affirm
     "CashApp" -> PaymentMethod.Type.CashAppPay
     "RevolutPay" -> PaymentMethod.Type.RevolutPay
+    "PayByBank" -> PaymentMethod.Type.PayByBank
     "Link" -> PaymentMethod.Type.Link
     else -> null
   }
@@ -360,6 +362,11 @@ internal fun mapFromToken(token: Token): WritableMap {
   return tokenMap
 }
 
+private fun mapFromStringList(list: Collection<String>?): WritableArray? =
+  list?.let { networks ->
+    Arguments.createArray().also { arr -> networks.forEach { arr.pushString(it) } }
+  }
+
 internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
   val pm: WritableMap = Arguments.createMap()
 
@@ -379,13 +386,7 @@ internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
       it.putString("last4", paymentMethod.card?.last4)
       it.putString("fingerprint", paymentMethod.card?.fingerprint)
       it.putString("preferredNetwork", paymentMethod.card?.networks?.preferred)
-      it.putArray(
-        "availableNetworks",
-        paymentMethod.card
-          ?.networks
-          ?.available
-          ?.toList() as? ReadableArray,
-      )
+      it.putArray("availableNetworks", mapFromStringList(paymentMethod.card?.networks?.available))
       it.putMap(
         "threeDSecureUsage",
         Arguments.createMap().also { threeDSecureUsageMap ->
@@ -455,7 +456,7 @@ internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
       it.putString("preferredNetworks", paymentMethod.usBankAccount?.networks?.preferred)
       it.putArray(
         "supportedNetworks",
-        paymentMethod.usBankAccount?.networks?.supported as? ReadableArray,
+        mapFromStringList(paymentMethod.usBankAccount?.networks?.supported),
       )
     },
   )
