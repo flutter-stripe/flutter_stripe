@@ -844,6 +844,7 @@ abstract class DisclosureConfig with _$DisclosureConfig {
 /// Describes the appearance of the flat style row
 @freezed
 abstract class FlatConfig with _$FlatConfig {
+  @JsonSerializable(explicitToJson: true)
   const factory FlatConfig({
     /// The thickness of the separator line between rows.
     /// @default 1.0

@@ -8158,8 +8158,8 @@ return $default(_that.separatorThickness,_that.separatorColor,_that.separatorIns
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _FlatConfig implements FlatConfig {
   const _FlatConfig({this.separatorThickness, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.separatorColor, this.separatorInsets, this.topSeparatorEnabled, this.bottomSeparatorEnabled, this.radio, this.checkmark, this.disclosure});
   factory _FlatConfig.fromJson(Map<String, dynamic> json) => _$FlatConfigFromJson(json);

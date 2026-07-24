@@ -716,12 +716,12 @@ Map<String, dynamic> _$FlatConfigToJson(_FlatConfig instance) =>
     <String, dynamic>{
       'separatorThickness': instance.separatorThickness,
       'separatorColor': ColorKey.toJson(instance.separatorColor),
-      'separatorInsets': instance.separatorInsets,
+      'separatorInsets': instance.separatorInsets?.toJson(),
       'topSeparatorEnabled': instance.topSeparatorEnabled,
       'bottomSeparatorEnabled': instance.bottomSeparatorEnabled,
-      'radio': instance.radio,
-      'checkmark': instance.checkmark,
-      'disclosure': instance.disclosure,
+      'radio': instance.radio?.toJson(),
+      'checkmark': instance.checkmark?.toJson(),
+      'disclosure': instance.disclosure?.toJson(),
     };
 
 _FloatingConfig _$FloatingConfigFromJson(Map<String, dynamic> json) =>
