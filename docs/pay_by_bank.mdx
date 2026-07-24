@@ -1,0 +1,90 @@
+---
+title: Pay by Bank payment
+description: Accept a Pay by Bank payment
+---
+
+# Accept a payment - Pay by Bank
+
+### Securely handling Pay by Bank payments
+
+Pay by Bank is an instant bank redirect payment method that lets customers pay directly from their bank account.
+
+This integration combines the steps for creating a PaymentIntent with Pay by Bank and confirming the payment from your Flutter app.
+
+## 1. Create
+
+First, you need a Stripe account. [Register now](https://dashboard.stripe.com/register).
+
+#### Server-side
+
+This integration requires endpoints on your server that talk to the Stripe API. Use one of the official Stripe server libraries and follow the Pay by Bank setup in the Stripe docs:
+
+[Accept a payment with Pay by Bank](https://stripe.com/docs/payments/pay-by-bank)
+
+#### Client-side
+
+Install the SDK:
+
+- Run `flutter pub add flutter_stripe`
+- Configure Stripe with your publishable key
+
+```dart
+void main() async {
+  Stripe.publishableKey = stripePublishableKey;
+  runApp(const App());
+}
+```
+
+Use test mode keys while integrating and live mode keys when you go to production.
+
+## 2. Add an endpoint [Server Side]
+
+Create a `PaymentIntent` on your backend and include `pay_by_bank` in `payment_method_types`.
+
+Return the PaymentIntent client secret to your app.
+
+Example request payload:
+
+```json
+{
+  "amount": 1099,
+  "currency": "usd",
+  "payment_method_types": ["pay_by_bank"]
+}
+```
+
+## 3. Collect and confirm payment details [Client Side]
+
+Use the client secret returned by your backend, then call `confirmPayment` with `PaymentMethodParams.payByBank`.
+
+```dart
+Future<void> _pay(BuildContext context) async {
+  final result = await _createPaymentIntent();
+  final clientSecret = result['clientSecret'];
+
+  await Stripe.instance.confirmPayment(
+    paymentIntentClientSecret: clientSecret,
+    data: PaymentMethodParams.payByBank(
+      paymentMethodData: PaymentMethodData(),
+    ),
+  );
+}
+```
+
+You can find the full runnable implementation in the example app screen:
+`example/lib/screens/regional_payment_methods/pay_by_bank_screen.dart`.
+
+## 4. Handle post-payment events
+
+Listen for asynchronous webhook events like `payment_intent.succeeded` to confirm fulfillment.
+
+Do not rely only on client callbacks for final order state.
+
+## 5. Test the integration
+
+Use Stripe test keys and follow the Pay by Bank testing section in Stripe's docs:
+
+[Test your integration](https://stripe.com/docs/payments/pay-by-bank#test-your-integration)
+
+For more details about end-to-end integration, see:
+[Pay by Bank payments](https://docs.stripe.com/payments/pay-by-bank)

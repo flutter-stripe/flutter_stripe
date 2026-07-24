@@ -18,6 +18,7 @@ import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dar
 import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/multibanco_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/p24_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/pay_by_bank_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/revolutpay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_direct_debit_screen.dart';
@@ -322,6 +323,12 @@ class Example extends StatelessWidget {
           title: 'RevolutPay',
           leading: Image.asset('assets/revolut.png', width: 48),
           builder: (context) => RevolutPayScreen(),
+          platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+        ),
+        Example(
+          title: 'Pay by Bank',
+          leading: SizedBox(),
+          builder: (context) => PayByBankScreen(),
           platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
         ),
         Example(
