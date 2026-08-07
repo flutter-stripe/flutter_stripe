@@ -174,6 +174,13 @@ abstract class ApplePayParams with _$ApplePayParams {
     /// The SDK accepts Amex, Mastercard, Visa, and Discover for Apple Pay by default. Set this property to enable other card networks, for example: ["JCB", "barcode", "chinaUnionPay"]. A full list of possible networks can be found at https://developer.apple.com/documentation/passkit/pkpaymentnetwork.
     List<String>? additionalEnabledNetworks,
 
+    /// Restricts the Apple Pay sheet to the given card networks, replacing the
+    /// default set entirely: cards on any other network are not selectable.
+    /// Use the raw values of PKPaymentNetwork, for example: ["Visa", "MasterCard"].
+    /// A full list of possible networks can be found at https://developer.apple.com/documentation/passkit/pkpaymentnetwork.
+    /// When omitted, the SDK's default networks (plus [additionalEnabledNetworks]) apply.
+    List<String>? supportedNetworks,
+
     /// The list of items that describe a purchase. For example: total, tax, discount, and grand total.
     required List<ApplePayCartSummaryItem> cartItems,
 

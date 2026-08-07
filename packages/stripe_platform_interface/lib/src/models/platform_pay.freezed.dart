@@ -2337,7 +2337,12 @@ mixin _$ApplePayParams {
 /// ISO 3166-1 alpha-2 country code where the transaction is processed.
  String get merchantCountryCode;/// ISO 4217 alphabetic currency code.
  String get currencyCode;/// The SDK accepts Amex, Mastercard, Visa, and Discover for Apple Pay by default. Set this property to enable other card networks, for example: ["JCB", "barcode", "chinaUnionPay"]. A full list of possible networks can be found at https://developer.apple.com/documentation/passkit/pkpaymentnetwork.
- List<String>? get additionalEnabledNetworks;/// The list of items that describe a purchase. For example: total, tax, discount, and grand total.
+ List<String>? get additionalEnabledNetworks;/// Restricts the Apple Pay sheet to the given card networks, replacing the
+/// default set entirely: cards on any other network are not selectable.
+/// Use the raw values of PKPaymentNetwork, for example: ["Visa", "MasterCard"].
+/// A full list of possible networks can be found at https://developer.apple.com/documentation/passkit/pkpaymentnetwork.
+/// When omitted, the SDK's default networks (plus [additionalEnabledNetworks]) apply.
+ List<String>? get supportedNetworks;/// The list of items that describe a purchase. For example: total, tax, discount, and grand total.
  List<ApplePayCartSummaryItem> get cartItems;/// The list of fields that you need for a shipping contact in order to process the transaction. If provided, you must implement the PlatformPayButton component's `onShippingContactSelected` callback and call `updatePlatformPaySheet` from there.
  List<ApplePayContactFieldsType>? get requiredShippingAddressFields;/// The list of fields that you need for a billing contact in order to process the transaction.
  List<ApplePayContactFieldsType>? get requiredBillingContactFields;/// An array of shipping method objects that describe the supported shipping methods. If provided, you must implement the PlatformPayButton component's `onShippingMethodSelected` callback and call `updatePlatformPaySheet` from there.
@@ -2366,16 +2371,16 @@ $ApplePayParamsCopyWith<ApplePayParams> get copyWith => _$ApplePayParamsCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplePayParams&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&const DeepCollectionEquality().equals(other.additionalEnabledNetworks, additionalEnabledNetworks)&&const DeepCollectionEquality().equals(other.cartItems, cartItems)&&const DeepCollectionEquality().equals(other.requiredShippingAddressFields, requiredShippingAddressFields)&&const DeepCollectionEquality().equals(other.requiredBillingContactFields, requiredBillingContactFields)&&const DeepCollectionEquality().equals(other.shippingMethods, shippingMethods)&&const DeepCollectionEquality().equals(other.merchantCapabilities, merchantCapabilities)&&(identical(other.shippingType, shippingType) || other.shippingType == shippingType)&&const DeepCollectionEquality().equals(other.supportedCountries, supportedCountries)&&(identical(other.supportsCouponCode, supportsCouponCode) || other.supportsCouponCode == supportsCouponCode)&&(identical(other.couponCode, couponCode) || other.couponCode == couponCode)&&(identical(other.request, request) || other.request == request));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplePayParams&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&const DeepCollectionEquality().equals(other.additionalEnabledNetworks, additionalEnabledNetworks)&&const DeepCollectionEquality().equals(other.supportedNetworks, supportedNetworks)&&const DeepCollectionEquality().equals(other.cartItems, cartItems)&&const DeepCollectionEquality().equals(other.requiredShippingAddressFields, requiredShippingAddressFields)&&const DeepCollectionEquality().equals(other.requiredBillingContactFields, requiredBillingContactFields)&&const DeepCollectionEquality().equals(other.shippingMethods, shippingMethods)&&const DeepCollectionEquality().equals(other.merchantCapabilities, merchantCapabilities)&&(identical(other.shippingType, shippingType) || other.shippingType == shippingType)&&const DeepCollectionEquality().equals(other.supportedCountries, supportedCountries)&&(identical(other.supportsCouponCode, supportsCouponCode) || other.supportsCouponCode == supportsCouponCode)&&(identical(other.couponCode, couponCode) || other.couponCode == couponCode)&&(identical(other.request, request) || other.request == request));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,merchantCountryCode,currencyCode,const DeepCollectionEquality().hash(additionalEnabledNetworks),const DeepCollectionEquality().hash(cartItems),const DeepCollectionEquality().hash(requiredShippingAddressFields),const DeepCollectionEquality().hash(requiredBillingContactFields),const DeepCollectionEquality().hash(shippingMethods),const DeepCollectionEquality().hash(merchantCapabilities),shippingType,const DeepCollectionEquality().hash(supportedCountries),supportsCouponCode,couponCode,request);
+int get hashCode => Object.hash(runtimeType,merchantCountryCode,currencyCode,const DeepCollectionEquality().hash(additionalEnabledNetworks),const DeepCollectionEquality().hash(supportedNetworks),const DeepCollectionEquality().hash(cartItems),const DeepCollectionEquality().hash(requiredShippingAddressFields),const DeepCollectionEquality().hash(requiredBillingContactFields),const DeepCollectionEquality().hash(shippingMethods),const DeepCollectionEquality().hash(merchantCapabilities),shippingType,const DeepCollectionEquality().hash(supportedCountries),supportsCouponCode,couponCode,request);
 
 @override
 String toString() {
-  return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, supportsCouponCode: $supportsCouponCode, couponCode: $couponCode, request: $request)';
+  return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, supportedNetworks: $supportedNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, supportsCouponCode: $supportsCouponCode, couponCode: $couponCode, request: $request)';
 }
 
 
@@ -2386,7 +2391,7 @@ abstract mixin class $ApplePayParamsCopyWith<$Res>  {
   factory $ApplePayParamsCopyWith(ApplePayParams value, $Res Function(ApplePayParams) _then) = _$ApplePayParamsCopyWithImpl;
 @useResult
 $Res call({
- String merchantCountryCode, String currencyCode, List<String>? additionalEnabledNetworks, List<ApplePayCartSummaryItem> cartItems, List<ApplePayContactFieldsType>? requiredShippingAddressFields, List<ApplePayContactFieldsType>? requiredBillingContactFields, List<ApplePayShippingMethod>? shippingMethods, List<ApplePayMerchantCapability>? merchantCapabilities, ApplePayShippingType? shippingType, List<String>? supportedCountries, bool? supportsCouponCode, String? couponCode, PaymentRequestType? request
+ String merchantCountryCode, String currencyCode, List<String>? additionalEnabledNetworks, List<String>? supportedNetworks, List<ApplePayCartSummaryItem> cartItems, List<ApplePayContactFieldsType>? requiredShippingAddressFields, List<ApplePayContactFieldsType>? requiredBillingContactFields, List<ApplePayShippingMethod>? shippingMethods, List<ApplePayMerchantCapability>? merchantCapabilities, ApplePayShippingType? shippingType, List<String>? supportedCountries, bool? supportsCouponCode, String? couponCode, PaymentRequestType? request
 });
 
 
@@ -2403,11 +2408,12 @@ class _$ApplePayParamsCopyWithImpl<$Res>
 
 /// Create a copy of ApplePayParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? merchantCountryCode = null,Object? currencyCode = null,Object? additionalEnabledNetworks = freezed,Object? cartItems = null,Object? requiredShippingAddressFields = freezed,Object? requiredBillingContactFields = freezed,Object? shippingMethods = freezed,Object? merchantCapabilities = freezed,Object? shippingType = freezed,Object? supportedCountries = freezed,Object? supportsCouponCode = freezed,Object? couponCode = freezed,Object? request = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? merchantCountryCode = null,Object? currencyCode = null,Object? additionalEnabledNetworks = freezed,Object? supportedNetworks = freezed,Object? cartItems = null,Object? requiredShippingAddressFields = freezed,Object? requiredBillingContactFields = freezed,Object? shippingMethods = freezed,Object? merchantCapabilities = freezed,Object? shippingType = freezed,Object? supportedCountries = freezed,Object? supportsCouponCode = freezed,Object? couponCode = freezed,Object? request = freezed,}) {
   return _then(_self.copyWith(
 merchantCountryCode: null == merchantCountryCode ? _self.merchantCountryCode : merchantCountryCode // ignore: cast_nullable_to_non_nullable
 as String,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
 as String,additionalEnabledNetworks: freezed == additionalEnabledNetworks ? _self.additionalEnabledNetworks : additionalEnabledNetworks // ignore: cast_nullable_to_non_nullable
+as List<String>?,supportedNetworks: freezed == supportedNetworks ? _self.supportedNetworks : supportedNetworks // ignore: cast_nullable_to_non_nullable
 as List<String>?,cartItems: null == cartItems ? _self.cartItems : cartItems // ignore: cast_nullable_to_non_nullable
 as List<ApplePayCartSummaryItem>,requiredShippingAddressFields: freezed == requiredShippingAddressFields ? _self.requiredShippingAddressFields : requiredShippingAddressFields // ignore: cast_nullable_to_non_nullable
 as List<ApplePayContactFieldsType>?,requiredBillingContactFields: freezed == requiredBillingContactFields ? _self.requiredBillingContactFields : requiredBillingContactFields // ignore: cast_nullable_to_non_nullable
@@ -2515,10 +2521,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String merchantCountryCode,  String currencyCode,  List<String>? additionalEnabledNetworks,  List<ApplePayCartSummaryItem> cartItems,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  List<ApplePayMerchantCapability>? merchantCapabilities,  ApplePayShippingType? shippingType,  List<String>? supportedCountries,  bool? supportsCouponCode,  String? couponCode,  PaymentRequestType? request)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String merchantCountryCode,  String currencyCode,  List<String>? additionalEnabledNetworks,  List<String>? supportedNetworks,  List<ApplePayCartSummaryItem> cartItems,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  List<ApplePayMerchantCapability>? merchantCapabilities,  ApplePayShippingType? shippingType,  List<String>? supportedCountries,  bool? supportsCouponCode,  String? couponCode,  PaymentRequestType? request)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ApplePayParams() when $default != null:
-return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEnabledNetworks,_that.cartItems,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.merchantCapabilities,_that.shippingType,_that.supportedCountries,_that.supportsCouponCode,_that.couponCode,_that.request);case _:
+return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEnabledNetworks,_that.supportedNetworks,_that.cartItems,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.merchantCapabilities,_that.shippingType,_that.supportedCountries,_that.supportsCouponCode,_that.couponCode,_that.request);case _:
   return orElse();
 
 }
@@ -2536,10 +2542,10 @@ return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEna
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String merchantCountryCode,  String currencyCode,  List<String>? additionalEnabledNetworks,  List<ApplePayCartSummaryItem> cartItems,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  List<ApplePayMerchantCapability>? merchantCapabilities,  ApplePayShippingType? shippingType,  List<String>? supportedCountries,  bool? supportsCouponCode,  String? couponCode,  PaymentRequestType? request)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String merchantCountryCode,  String currencyCode,  List<String>? additionalEnabledNetworks,  List<String>? supportedNetworks,  List<ApplePayCartSummaryItem> cartItems,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  List<ApplePayMerchantCapability>? merchantCapabilities,  ApplePayShippingType? shippingType,  List<String>? supportedCountries,  bool? supportsCouponCode,  String? couponCode,  PaymentRequestType? request)  $default,) {final _that = this;
 switch (_that) {
 case _ApplePayParams():
-return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEnabledNetworks,_that.cartItems,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.merchantCapabilities,_that.shippingType,_that.supportedCountries,_that.supportsCouponCode,_that.couponCode,_that.request);case _:
+return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEnabledNetworks,_that.supportedNetworks,_that.cartItems,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.merchantCapabilities,_that.shippingType,_that.supportedCountries,_that.supportsCouponCode,_that.couponCode,_that.request);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -2556,10 +2562,10 @@ return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEna
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String merchantCountryCode,  String currencyCode,  List<String>? additionalEnabledNetworks,  List<ApplePayCartSummaryItem> cartItems,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  List<ApplePayMerchantCapability>? merchantCapabilities,  ApplePayShippingType? shippingType,  List<String>? supportedCountries,  bool? supportsCouponCode,  String? couponCode,  PaymentRequestType? request)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String merchantCountryCode,  String currencyCode,  List<String>? additionalEnabledNetworks,  List<String>? supportedNetworks,  List<ApplePayCartSummaryItem> cartItems,  List<ApplePayContactFieldsType>? requiredShippingAddressFields,  List<ApplePayContactFieldsType>? requiredBillingContactFields,  List<ApplePayShippingMethod>? shippingMethods,  List<ApplePayMerchantCapability>? merchantCapabilities,  ApplePayShippingType? shippingType,  List<String>? supportedCountries,  bool? supportsCouponCode,  String? couponCode,  PaymentRequestType? request)?  $default,) {final _that = this;
 switch (_that) {
 case _ApplePayParams() when $default != null:
-return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEnabledNetworks,_that.cartItems,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.merchantCapabilities,_that.shippingType,_that.supportedCountries,_that.supportsCouponCode,_that.couponCode,_that.request);case _:
+return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEnabledNetworks,_that.supportedNetworks,_that.cartItems,_that.requiredShippingAddressFields,_that.requiredBillingContactFields,_that.shippingMethods,_that.merchantCapabilities,_that.shippingType,_that.supportedCountries,_that.supportsCouponCode,_that.couponCode,_that.request);case _:
   return null;
 
 }
@@ -2571,7 +2577,7 @@ return $default(_that.merchantCountryCode,_that.currencyCode,_that.additionalEna
 
 @JsonSerializable(explicitToJson: true)
 class _ApplePayParams implements ApplePayParams {
-  const _ApplePayParams({required this.merchantCountryCode, required this.currencyCode, final  List<String>? additionalEnabledNetworks, required final  List<ApplePayCartSummaryItem> cartItems, final  List<ApplePayContactFieldsType>? requiredShippingAddressFields, final  List<ApplePayContactFieldsType>? requiredBillingContactFields, final  List<ApplePayShippingMethod>? shippingMethods, final  List<ApplePayMerchantCapability>? merchantCapabilities, this.shippingType, final  List<String>? supportedCountries, this.supportsCouponCode, this.couponCode, this.request}): _additionalEnabledNetworks = additionalEnabledNetworks,_cartItems = cartItems,_requiredShippingAddressFields = requiredShippingAddressFields,_requiredBillingContactFields = requiredBillingContactFields,_shippingMethods = shippingMethods,_merchantCapabilities = merchantCapabilities,_supportedCountries = supportedCountries;
+  const _ApplePayParams({required this.merchantCountryCode, required this.currencyCode, final  List<String>? additionalEnabledNetworks, final  List<String>? supportedNetworks, required final  List<ApplePayCartSummaryItem> cartItems, final  List<ApplePayContactFieldsType>? requiredShippingAddressFields, final  List<ApplePayContactFieldsType>? requiredBillingContactFields, final  List<ApplePayShippingMethod>? shippingMethods, final  List<ApplePayMerchantCapability>? merchantCapabilities, this.shippingType, final  List<String>? supportedCountries, this.supportsCouponCode, this.couponCode, this.request}): _additionalEnabledNetworks = additionalEnabledNetworks,_supportedNetworks = supportedNetworks,_cartItems = cartItems,_requiredShippingAddressFields = requiredShippingAddressFields,_requiredBillingContactFields = requiredBillingContactFields,_shippingMethods = shippingMethods,_merchantCapabilities = merchantCapabilities,_supportedCountries = supportedCountries;
   factory _ApplePayParams.fromJson(Map<String, dynamic> json) => _$ApplePayParamsFromJson(json);
 
 /// ISO 3166-1 alpha-2 country code where the transaction is processed.
@@ -2585,6 +2591,25 @@ class _ApplePayParams implements ApplePayParams {
   final value = _additionalEnabledNetworks;
   if (value == null) return null;
   if (_additionalEnabledNetworks is EqualUnmodifiableListView) return _additionalEnabledNetworks;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+/// Restricts the Apple Pay sheet to the given card networks, replacing the
+/// default set entirely: cards on any other network are not selectable.
+/// Use the raw values of PKPaymentNetwork, for example: ["Visa", "MasterCard"].
+/// A full list of possible networks can be found at https://developer.apple.com/documentation/passkit/pkpaymentnetwork.
+/// When omitted, the SDK's default networks (plus [additionalEnabledNetworks]) apply.
+ final  List<String>? _supportedNetworks;
+/// Restricts the Apple Pay sheet to the given card networks, replacing the
+/// default set entirely: cards on any other network are not selectable.
+/// Use the raw values of PKPaymentNetwork, for example: ["Visa", "MasterCard"].
+/// A full list of possible networks can be found at https://developer.apple.com/documentation/passkit/pkpaymentnetwork.
+/// When omitted, the SDK's default networks (plus [additionalEnabledNetworks]) apply.
+@override List<String>? get supportedNetworks {
+  final value = _supportedNetworks;
+  if (value == null) return null;
+  if (_supportedNetworks is EqualUnmodifiableListView) return _supportedNetworks;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(value);
 }
@@ -2681,16 +2706,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplePayParams&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&const DeepCollectionEquality().equals(other._additionalEnabledNetworks, _additionalEnabledNetworks)&&const DeepCollectionEquality().equals(other._cartItems, _cartItems)&&const DeepCollectionEquality().equals(other._requiredShippingAddressFields, _requiredShippingAddressFields)&&const DeepCollectionEquality().equals(other._requiredBillingContactFields, _requiredBillingContactFields)&&const DeepCollectionEquality().equals(other._shippingMethods, _shippingMethods)&&const DeepCollectionEquality().equals(other._merchantCapabilities, _merchantCapabilities)&&(identical(other.shippingType, shippingType) || other.shippingType == shippingType)&&const DeepCollectionEquality().equals(other._supportedCountries, _supportedCountries)&&(identical(other.supportsCouponCode, supportsCouponCode) || other.supportsCouponCode == supportsCouponCode)&&(identical(other.couponCode, couponCode) || other.couponCode == couponCode)&&(identical(other.request, request) || other.request == request));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplePayParams&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&const DeepCollectionEquality().equals(other._additionalEnabledNetworks, _additionalEnabledNetworks)&&const DeepCollectionEquality().equals(other._supportedNetworks, _supportedNetworks)&&const DeepCollectionEquality().equals(other._cartItems, _cartItems)&&const DeepCollectionEquality().equals(other._requiredShippingAddressFields, _requiredShippingAddressFields)&&const DeepCollectionEquality().equals(other._requiredBillingContactFields, _requiredBillingContactFields)&&const DeepCollectionEquality().equals(other._shippingMethods, _shippingMethods)&&const DeepCollectionEquality().equals(other._merchantCapabilities, _merchantCapabilities)&&(identical(other.shippingType, shippingType) || other.shippingType == shippingType)&&const DeepCollectionEquality().equals(other._supportedCountries, _supportedCountries)&&(identical(other.supportsCouponCode, supportsCouponCode) || other.supportsCouponCode == supportsCouponCode)&&(identical(other.couponCode, couponCode) || other.couponCode == couponCode)&&(identical(other.request, request) || other.request == request));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,merchantCountryCode,currencyCode,const DeepCollectionEquality().hash(_additionalEnabledNetworks),const DeepCollectionEquality().hash(_cartItems),const DeepCollectionEquality().hash(_requiredShippingAddressFields),const DeepCollectionEquality().hash(_requiredBillingContactFields),const DeepCollectionEquality().hash(_shippingMethods),const DeepCollectionEquality().hash(_merchantCapabilities),shippingType,const DeepCollectionEquality().hash(_supportedCountries),supportsCouponCode,couponCode,request);
+int get hashCode => Object.hash(runtimeType,merchantCountryCode,currencyCode,const DeepCollectionEquality().hash(_additionalEnabledNetworks),const DeepCollectionEquality().hash(_supportedNetworks),const DeepCollectionEquality().hash(_cartItems),const DeepCollectionEquality().hash(_requiredShippingAddressFields),const DeepCollectionEquality().hash(_requiredBillingContactFields),const DeepCollectionEquality().hash(_shippingMethods),const DeepCollectionEquality().hash(_merchantCapabilities),shippingType,const DeepCollectionEquality().hash(_supportedCountries),supportsCouponCode,couponCode,request);
 
 @override
 String toString() {
-  return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, supportsCouponCode: $supportsCouponCode, couponCode: $couponCode, request: $request)';
+  return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, supportedNetworks: $supportedNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, supportsCouponCode: $supportsCouponCode, couponCode: $couponCode, request: $request)';
 }
 
 
@@ -2701,7 +2726,7 @@ abstract mixin class _$ApplePayParamsCopyWith<$Res> implements $ApplePayParamsCo
   factory _$ApplePayParamsCopyWith(_ApplePayParams value, $Res Function(_ApplePayParams) _then) = __$ApplePayParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String merchantCountryCode, String currencyCode, List<String>? additionalEnabledNetworks, List<ApplePayCartSummaryItem> cartItems, List<ApplePayContactFieldsType>? requiredShippingAddressFields, List<ApplePayContactFieldsType>? requiredBillingContactFields, List<ApplePayShippingMethod>? shippingMethods, List<ApplePayMerchantCapability>? merchantCapabilities, ApplePayShippingType? shippingType, List<String>? supportedCountries, bool? supportsCouponCode, String? couponCode, PaymentRequestType? request
+ String merchantCountryCode, String currencyCode, List<String>? additionalEnabledNetworks, List<String>? supportedNetworks, List<ApplePayCartSummaryItem> cartItems, List<ApplePayContactFieldsType>? requiredShippingAddressFields, List<ApplePayContactFieldsType>? requiredBillingContactFields, List<ApplePayShippingMethod>? shippingMethods, List<ApplePayMerchantCapability>? merchantCapabilities, ApplePayShippingType? shippingType, List<String>? supportedCountries, bool? supportsCouponCode, String? couponCode, PaymentRequestType? request
 });
 
 
@@ -2718,11 +2743,12 @@ class __$ApplePayParamsCopyWithImpl<$Res>
 
 /// Create a copy of ApplePayParams
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? merchantCountryCode = null,Object? currencyCode = null,Object? additionalEnabledNetworks = freezed,Object? cartItems = null,Object? requiredShippingAddressFields = freezed,Object? requiredBillingContactFields = freezed,Object? shippingMethods = freezed,Object? merchantCapabilities = freezed,Object? shippingType = freezed,Object? supportedCountries = freezed,Object? supportsCouponCode = freezed,Object? couponCode = freezed,Object? request = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? merchantCountryCode = null,Object? currencyCode = null,Object? additionalEnabledNetworks = freezed,Object? supportedNetworks = freezed,Object? cartItems = null,Object? requiredShippingAddressFields = freezed,Object? requiredBillingContactFields = freezed,Object? shippingMethods = freezed,Object? merchantCapabilities = freezed,Object? shippingType = freezed,Object? supportedCountries = freezed,Object? supportsCouponCode = freezed,Object? couponCode = freezed,Object? request = freezed,}) {
   return _then(_ApplePayParams(
 merchantCountryCode: null == merchantCountryCode ? _self.merchantCountryCode : merchantCountryCode // ignore: cast_nullable_to_non_nullable
 as String,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
 as String,additionalEnabledNetworks: freezed == additionalEnabledNetworks ? _self._additionalEnabledNetworks : additionalEnabledNetworks // ignore: cast_nullable_to_non_nullable
+as List<String>?,supportedNetworks: freezed == supportedNetworks ? _self._supportedNetworks : supportedNetworks // ignore: cast_nullable_to_non_nullable
 as List<String>?,cartItems: null == cartItems ? _self._cartItems : cartItems // ignore: cast_nullable_to_non_nullable
 as List<ApplePayCartSummaryItem>,requiredShippingAddressFields: freezed == requiredShippingAddressFields ? _self._requiredShippingAddressFields : requiredShippingAddressFields // ignore: cast_nullable_to_non_nullable
 as List<ApplePayContactFieldsType>?,requiredBillingContactFields: freezed == requiredBillingContactFields ? _self._requiredBillingContactFields : requiredBillingContactFields // ignore: cast_nullable_to_non_nullable
