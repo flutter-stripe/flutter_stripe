@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v8.2.0`](#flutter_stripe_web---v820)
+
+---
+
+#### `flutter_stripe_web` - `v8.2.0`
+
+ - **FIX**(web): constrain PaymentElement height in scrollable layouts (#2423).
+
+
+## 2026-08-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_js` - `v8.2.0`](#stripe_js---v820)
  - [`flutter_stripe_web` - `v8.1.1`](#flutter_stripe_web---v811)
 
