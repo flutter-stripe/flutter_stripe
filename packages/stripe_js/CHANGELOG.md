@@ -1,3 +1,10 @@
+## 8.2.0
+**Features**:
+- Add support for Flutter 3.47.0
+
+**Bugs**
+- Fixed scrolling issue for the cardfield in web (#2045)
+
 ## 8.1.0
 
 **Fixes**
