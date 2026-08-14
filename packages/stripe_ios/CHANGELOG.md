@@ -1,3 +1,10 @@
+## 14.0.0
+
+**Features**:
+- Sync with Stripe React Native [0.71.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.71.0)
+- Add support for Flutter 3.47.0
+- Add support for scene delegates
+
 ## 13.1.0
 
 **Features**:

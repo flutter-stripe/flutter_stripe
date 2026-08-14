@@ -15,6 +15,36 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_ios` - `v14.0.0`](#stripe_ios---v1400)
+ - [`flutter_stripe` - `v13.1.1`](#flutter_stripe---v1311)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v13.1.1`
+
+---
+
+#### `stripe_ios` - `v14.0.0`
+
+ - 
+
+ - **FIX**(ios): stop the unhandled-URL log mis-attributing deep-link breakage + add scene-delegate support (#2422) (#2429).
+
+
+## 2026-08-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_android` - `v14.0.0`](#stripe_android---v1400)
  - [`flutter_stripe` - `v13.1.1`](#flutter_stripe---v1311)
 
