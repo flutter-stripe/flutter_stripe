@@ -178,7 +178,7 @@ class Stripe {
     try {
       await _awaitForSettings();
 
-      return _platform.platformPayConfirmSetupIntent(
+      return await _platform.platformPayConfirmSetupIntent(
         clientSecret: clientSecret,
         params: confirmParams,
       );
@@ -201,7 +201,7 @@ class Stripe {
     try {
       await _awaitForSettings();
 
-      return _platform.platformPayConfirmPaymentIntent(
+      return await _platform.platformPayConfirmPaymentIntent(
         clientSecret: clientSecret,
         params: confirmParams,
       );
@@ -739,7 +739,7 @@ class Stripe {
         const CollectBankAccountTokenParams(),
   }) async {
     try {
-      return _platform.collectBankAccountToken(
+      return await _platform.collectBankAccountToken(
         clientSecret: clientSecret,
         params: params,
       );
@@ -761,7 +761,7 @@ class Stripe {
         const CollectFinancialConnectionsAccountsParams(),
   }) async {
     try {
-      return _platform.collectFinancialConnectionsAccounts(
+      return await _platform.collectFinancialConnectionsAccounts(
         clientSecret: clientSecret,
         params: params,
       );

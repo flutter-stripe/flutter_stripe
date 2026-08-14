@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v14.0.0`](#flutter_stripe---v1400)
+
+---
+
+#### `flutter_stripe` - `v14.0.0`
+
+ - **FIX**(ios): stop the unhandled-URL log mis-attributing deep-link breakage + add scene-delegate support (#2422) (#2429).
+
+
+## 2026-08-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v8.2.0`](#flutter_stripe_web---v820)
 
 ---

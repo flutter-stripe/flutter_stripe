@@ -1,3 +1,17 @@
+## 14.0.0
+
+**Breaking Changes**
+- Breaking: add support for AGP 9
+
+**Features**:
+- Sync with Stripe React Native [0.71.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.71.0)
+- Add support for Flutter 3.47.0
+- Add support for scene delegates
+
+**Bugs**
+- Fixed scrolling issue for the cardfield in web (#2045)
+- Fixed serialisation issue in EmbeddedPAymentElement RadioConfig (2431)
+
 ## 13.1.0
 
 **Features**:
