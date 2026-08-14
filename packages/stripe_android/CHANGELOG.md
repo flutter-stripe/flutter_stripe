@@ -1,3 +1,12 @@
+## 14.0.0
+
+**Breaking Changes**
+- Breaking: add support for AGP 9
+
+**Features**:
+- Sync with Stripe React Native [0.71.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.71.0)
+- Add support for Flutter 3.47.0
+
 ## 13.1.0
 **Features**:
 - Embedded Payment Element: Added official support for updating the EmbeddedPaymentElement. (#2427)
