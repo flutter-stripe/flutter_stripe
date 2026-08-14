@@ -167,7 +167,7 @@ if (uri.scheme == 'yourappscheme' && uri.host == 'safepay') {
 }
 ```
 
-A full example (router-based, deep-link-package-based, and the `FlutterDeepLinkingEnabled=false` approach) is in [`example/lib/main.dart`](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/lib/main.dart). See also `Stripe.instance.handleURLCallback` in the [Dart API](#dart-api).
+A full example (router-based, deep-link-package-based, and the `FlutterDeepLinkingEnabled=false` approach) is in [`example/lib/main.dart`](example/lib/main.dart). See also `Stripe.instance.handleURLCallback` in the [Dart API](#dart-api).
 
 ## Stripe initialization
 

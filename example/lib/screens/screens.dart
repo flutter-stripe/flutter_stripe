@@ -25,8 +25,9 @@ import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_screen.dart';
 import 'package:stripe_example/screens/setup_future_payments/setup_future_payments_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
-import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
-import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
+// Disabled along with the `pay` dependency (see the screens themselves for why).
+// import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
+// import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
 import 'package:stripe_example/screens/wallets/mobile_pay_create_payment_method_screen.dart';
 import 'package:stripe_example/screens/wallets/open_apple_pay_setup_screen.dart';
@@ -210,12 +211,13 @@ class Example extends StatelessWidget {
           builder: (c) => ApplePayScreen(),
           platformsSupported: [DevicePlatform.ios],
         ),
-        Example(
-          title: 'Apple Pay - Pay Plugin',
-          leading: Image.asset('assets/apple_pay.png', width: 48),
-          builder: (c) => ApplePayExternalPluginScreen(),
-          platformsSupported: [DevicePlatform.ios],
-        ),
+        // Disabled along with the `pay` dependency (see apple_pay_screen_plugin.dart).
+        // Example(
+        //   title: 'Apple Pay - Pay Plugin',
+        //   leading: Image.asset('assets/apple_pay.png', width: 48),
+        //   builder: (c) => ApplePayExternalPluginScreen(),
+        //   platformsSupported: [DevicePlatform.ios],
+        // ),
         Example(
           title: 'Apple Pay - Create payment method',
           leading: Image.asset('assets/apple_pay.png', width: 48),
@@ -240,12 +242,13 @@ class Example extends StatelessWidget {
           builder: (c) => GooglePayStripeScreen(),
           platformsSupported: [DevicePlatform.android],
         ),
-        Example(
-          leading: Image.asset('assets/google_play.png', width: 48),
-          title: 'Google Pay - Pay Plugin',
-          builder: (c) => GooglePayScreen(),
-          platformsSupported: [DevicePlatform.android],
-        ),
+        // Disabled along with the `pay` dependency (see google_pay_screen.dart).
+        // Example(
+        //   leading: Image.asset('assets/google_play.png', width: 48),
+        //   title: 'Google Pay - Pay Plugin',
+        //   builder: (c) => GooglePayScreen(),
+        //   platformsSupported: [DevicePlatform.android],
+        // ),
         Example(
           title: 'Google/Apple Pay - Create payment method',
           builder: (c) => MobilePayCreatePaymentMethodScreen(),

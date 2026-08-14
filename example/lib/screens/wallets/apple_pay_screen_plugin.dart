@@ -1,3 +1,14 @@
+// TEMPORARILY DISABLED
+//
+// This screen depends on the `pay` plugin, which was removed from the example's
+// pubspec because `pay_android` applies the Kotlin Gradle Plugin. That is
+// incompatible with Flutter's Built-in Kotlin (AGP 9) and fails the Android build
+// with an "Inconsistent JVM-target compatibility" error.
+//
+// Restore the `pay` dependency and uncomment this file once `pay` ships a
+// Built-in Kotlin compatible release.
+
+/*
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -163,3 +174,4 @@ final _paymentProfile = """{
   }
 }
 """;
+*/

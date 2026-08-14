@@ -1,6 +1,7 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+    // No "kotlin-android" here: Kotlin is compiled by AGP's Built-in Kotlin
+    // (see android.builtInKotlin in gradle.properties).
     id "dev.flutter.flutter-gradle-plugin"
 }
 
@@ -33,12 +34,10 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
-    }
+    // Built-in Kotlin picks up src/main/kotlin by default and derives the Kotlin
+    // jvmTarget from compileOptions.targetCompatibility above, so neither the
+    // extra sourceSet nor a kotlinOptions block is needed.
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.flutter.stripe.example"
@@ -55,7 +54,7 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
 
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
 
         }
     }
