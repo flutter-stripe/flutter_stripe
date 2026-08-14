@@ -68,8 +68,8 @@ extension PaymentMethodTestInstance on PaymentMethod {
     },
     'Fpx': {'bank': fpx.bank, 'accountHolderType': fpx.accountHolderType},
     'Multibanco': {
-      'email': multibanco.email,
-      'billingDetails': multibanco.billingDetails,
+      'email': multibanco?.email,
+      'billingDetails': multibanco?.billingDetails,
     },
     'customerId': customerId,
   };
