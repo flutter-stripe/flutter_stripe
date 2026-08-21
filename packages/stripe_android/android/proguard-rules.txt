@@ -12,12 +12,12 @@
   public *;
 }
 
-# Suppress warnings for optional push provisioning dependency
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivity$g
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Args
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Error
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
+# Suppress warnings for the optional push provisioning dependency.
+# Wildcards on purpose: the SDK ships obfuscated, so its inner-class names
+# (PushProvisioningActivity$f, $g, ...) change between releases and pinning
+# them breaks R8 on upgrade.
+-dontwarn com.stripe.android.pushProvisioning.**
+-dontwarn com.google.android.gms.tapandpay.**
 
 # Keep Kotlin parcelize classes used by Stripe SDK
 -dontwarn kotlinx.parcelize.Parceler$DefaultImpls

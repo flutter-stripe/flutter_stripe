@@ -54,11 +54,8 @@ This plugin requires several changes to be able to work on Android devices. Plea
 6. Using `FlutterFragmentActivity` instead of `FlutterActivity` in `MainActivity.kt`: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt#L6)
 7. Add the following rules to your `proguard-rules.pro` file: [example](https://github.com/flutter-stripe/flutter_stripe/blob/master/example/android/app/proguard-rules.pro)  
 ```proguard
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivity$g
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Args
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Error
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
--dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
+-dontwarn com.stripe.android.pushProvisioning.**
+-dontwarn com.google.android.gms.tapandpay.**
 -dontwarn kotlinx.parcelize.Parceler$DefaultImpls
 -dontwarn kotlinx.parcelize.Parceler
 -dontwarn kotlinx.parcelize.Parcelize
