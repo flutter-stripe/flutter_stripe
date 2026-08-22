@@ -39,6 +39,11 @@ abstract class ConfirmPaymentParams with _$ConfirmPaymentParams {
     /// The url your customer will be directed to after they complete payment.
     // ignore: non_constant_identifier_names
     required String return_url,
+
+    /// Payment method data, such as billing details the Payment Element is
+    /// configured not to collect.
+    @JsonKey(name: 'payment_method_data')
+    ConfirmPaymentMethodData? paymentMethodData,
   }) = _ConfirmPaymentParams;
 
   factory ConfirmPaymentParams.fromJson(Map<String, dynamic> json) =>

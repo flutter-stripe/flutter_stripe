@@ -47,6 +47,11 @@ abstract class ConfirmSetupParams with _$ConfirmSetupParams {
     /// If collected previously, the ID of the ConfirmationToken to use to confirm this SetupIntent.
     /// This is mutually exclusive with the elements parameter.
     String? confirmation_token,
+
+    /// Payment method data, such as billing details the Payment Element is
+    /// configured not to collect.
+    @JsonKey(name: 'payment_method_data')
+    ConfirmPaymentMethodData? paymentMethodData,
   }) = _ConfirmSetupParams;
 
   factory ConfirmSetupParams.fromJson(Map<String, dynamic> json) =>

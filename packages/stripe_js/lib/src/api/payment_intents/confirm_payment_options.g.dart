@@ -32,8 +32,18 @@ const _$PaymentConfirmationRedirectEnumMap = {
 };
 
 _ConfirmPaymentParams _$ConfirmPaymentParamsFromJson(Map json) =>
-    _ConfirmPaymentParams(return_url: json['return_url'] as String);
+    _ConfirmPaymentParams(
+      return_url: json['return_url'] as String,
+      paymentMethodData: json['payment_method_data'] == null
+          ? null
+          : ConfirmPaymentMethodData.fromJson(
+              Map<String, dynamic>.from(json['payment_method_data'] as Map),
+            ),
+    );
 
 Map<String, dynamic> _$ConfirmPaymentParamsToJson(
   _ConfirmPaymentParams instance,
-) => <String, dynamic>{'return_url': instance.return_url};
+) => <String, dynamic>{
+  'return_url': instance.return_url,
+  'payment_method_data': ?instance.paymentMethodData?.toJson(),
+};

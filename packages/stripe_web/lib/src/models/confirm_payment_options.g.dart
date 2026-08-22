@@ -16,6 +16,11 @@ _ConfirmPaymentElementOptions _$ConfirmPaymentElementOptionsFromJson(
     _$PaymentConfirmationRedirectEnumMap,
     json['redirect'],
   ),
+  billingDetails: json['billingDetails'] == null
+      ? null
+      : BillingDetails.fromJson(
+          Map<String, dynamic>.from(json['billingDetails'] as Map),
+        ),
 );
 
 Map<String, dynamic> _$ConfirmPaymentElementOptionsToJson(
@@ -23,6 +28,7 @@ Map<String, dynamic> _$ConfirmPaymentElementOptionsToJson(
 ) => <String, dynamic>{
   'confirmParams': instance.confirmParams.toJson(),
   'redirect': ?_$PaymentConfirmationRedirectEnumMap[instance.redirect],
+  'billingDetails': ?instance.billingDetails?.toJson(),
 };
 
 const _$PaymentConfirmationRedirectEnumMap = {

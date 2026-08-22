@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:stripe_js/stripe_api.dart';
+import 'package:stripe_js/stripe_api.dart'
+    hide BillingDetails, $BillingDetailsCopyWith;
+import 'package:stripe_platform_interface/stripe_platform_interface.dart'
+    show BillingDetails, $BillingDetailsCopyWith;
 export 'package:stripe_js/stripe_api.dart'
     show SetupConfirmationRedirect, ConfirmSetupParams;
 
@@ -18,6 +21,10 @@ abstract class ConfirmSetupElementOptions with _$ConfirmSetupElementOptions {
     /// If you set redirect: "if_required", then stripe.confirmPayment
     /// will only redirect if your user chooses a redirect-based payment method.
     SetupConfirmationRedirect? redirect,
+
+    /// Billing details for the payment method. Values collected by the Payment
+    /// Element win; ignored when [confirmParams] already sets paymentMethodData.
+    BillingDetails? billingDetails,
   }) = _SetupPaymentElementOptions;
 
   factory ConfirmSetupElementOptions.fromJson(Map<String, dynamic> json) =>

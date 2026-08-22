@@ -51,6 +51,20 @@ class _AddPaymentMethodScreenPlatformState
       await WebStripe.instance.confirmSetupElement(
         ConfirmSetupElementOptions(
           confirmParams: ConfirmSetupParams(return_url: Uri.base.toString()),
+          // Required: the Payment Element below does not collect these.
+          billingDetails: const BillingDetails(
+            name: 'Jenny Rosen',
+            email: 'jenny.rosen@example.com',
+            phone: '+15555555555',
+            address: Address(
+              city: 'San Francisco',
+              country: 'US',
+              line1: '510 Townsend St',
+              line2: null,
+              postalCode: '94103',
+              state: 'CA',
+            ),
+          ),
         ),
       );
     } finally {
@@ -79,6 +93,13 @@ class _AddPaymentMethodScreenPlatformState
               },
               layout: PaymentElementLayout.tabs,
               appearance: buildAppearance(context),
+              // Supplied in confirmSetupElement instead.
+              fields: const PaymentElementFields(
+                billingDetails: BillingDetailsFields(
+                  name: PaymentElementFieldRequired.never,
+                  email: PaymentElementFieldRequired.never,
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 8),

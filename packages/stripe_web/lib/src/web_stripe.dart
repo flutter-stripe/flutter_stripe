@@ -429,7 +429,10 @@ class WebStripe extends StripePlatform {
     final response = await js.confirmPayment(
       stripe_js.ConfirmPaymentOptions(
         elements: elements!,
-        confirmParams: options.confirmParams,
+        confirmParams: _confirmParamsWithBillingDetails(
+          options.confirmParams,
+          options.billingDetails,
+        ),
         redirect: options.redirect,
       ),
     );
@@ -446,7 +449,10 @@ class WebStripe extends StripePlatform {
     final response = await js.confirmSetup(
       stripe_js.ConfirmSetupOptions(
         elements: elements!,
-        confirmParams: options.confirmParams,
+        confirmParams: _setupParamsWithBillingDetails(
+          options.confirmParams,
+          options.billingDetails,
+        ),
         redirect: options.redirect,
       ),
     );
@@ -799,4 +805,31 @@ extension CanMakePayment on stripe_js.PaymentRequest {
       value?.applePay == true ||
       value?.googlePay == true ||
       value?.link == true);
+}
+
+/// Folds [billingDetails] into `confirmParams.payment_method_data`, leaving an
+/// explicitly set `paymentMethodData` untouched.
+stripe_js.ConfirmPaymentParams _confirmParamsWithBillingDetails(
+  stripe_js.ConfirmPaymentParams params,
+  BillingDetails? billingDetails,
+) {
+  if (billingDetails == null || params.paymentMethodData != null) return params;
+  return params.copyWith(
+    paymentMethodData: stripe_js.ConfirmPaymentMethodData(
+      billingDetails: billingDetails.toJs(),
+    ),
+  );
+}
+
+/// Setup intent counterpart of [_confirmParamsWithBillingDetails].
+stripe_js.ConfirmSetupParams _setupParamsWithBillingDetails(
+  stripe_js.ConfirmSetupParams params,
+  BillingDetails? billingDetails,
+) {
+  if (billingDetails == null || params.paymentMethodData != null) return params;
+  return params.copyWith(
+    paymentMethodData: stripe_js.ConfirmPaymentMethodData(
+      billingDetails: billingDetails.toJs(),
+    ),
+  );
 }
