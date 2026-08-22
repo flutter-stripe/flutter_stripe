@@ -129,11 +129,46 @@ jobs:
           gh api --method PATCH "repos/${GITHUB_REPOSITORY:?}/pulls/${PR_NUMBER:?}" \
             -f state=open
 
+      - name: Find maintainer reopen
+        id: reopen
+        if: >-
+          github.event.pull_request.state != 'closed' &&
+          steps.template.outputs.complete_template == 'false'
+        env:
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          AUTHOR_ASSOCIATION: ${{ github.event.pull_request.author_association }}
+        run: |
+          # A maintainer reopening an incomplete pull request overrides this workflow, so
+          # look at the most recent reopen rather than only at this event. That keeps the
+          # override in place for later `edited` events as well.
+          reopened_by="$(
+            gh api --paginate "repos/${GITHUB_REPOSITORY:?}/issues/${PR_NUMBER:?}/events" \
+              --jq '.[] | select(.event == "reopened") | .actor.login' |
+              tail -n 1
+          )"
+
+          # Only the author and users with write access can reopen a pull request, so a
+          # reopen by anyone else is a maintainer. When the author reopened their own
+          # pull request, fall back to their association with the repository.
+          maintainer_reopened=false
+          case "${reopened_by}" in
+            '' | 'github-actions[bot]') ;;
+            "${PR_AUTHOR}")
+              case "${AUTHOR_ASSOCIATION}" in
+                OWNER | MEMBER | COLLABORATOR) maintainer_reopened=true ;;
+              esac
+              ;;
+            *) maintainer_reopened=true ;;
+          esac
+
+          echo "maintainer_reopened=${maintainer_reopened}" >>"${GITHUB_OUTPUT:?}"
+
       - name: Comment on incomplete pull request
         if: >-
           github.event.pull_request.state != 'closed' &&
           steps.template.outputs.complete_template == 'false' &&
-          steps.comments.outputs.has_incomplete_template_comment != 'true'
+          steps.comments.outputs.has_incomplete_template_comment != 'true' &&
+          steps.reopen.outputs.maintainer_reopened != 'true'
         run: |
           gh api --method POST "repos/${GITHUB_REPOSITORY:?}/issues/${PR_NUMBER:?}/comments" \
             --raw-field body="$(
@@ -148,7 +183,8 @@ jobs:
       - name: Close incomplete pull request
         if: >-
           github.event.pull_request.state != 'closed' &&
-          steps.template.outputs.complete_template == 'false'
+          steps.template.outputs.complete_template == 'false' &&
+          steps.reopen.outputs.maintainer_reopened != 'true'
         run: |
           gh api --method PATCH "repos/${GITHUB_REPOSITORY:?}/pulls/${PR_NUMBER:?}" \
             -f state=closed
