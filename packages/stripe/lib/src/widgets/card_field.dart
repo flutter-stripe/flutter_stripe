@@ -342,6 +342,10 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     with CardFieldContext {
   MethodChannel? _methodChannel;
 
+  /// Calls made before the native view - and with it the method call handler -
+  /// existed. Flushed by [onPlatformViewCreated].
+  final List<({String method, Object? arguments})> _pendingCalls = [];
+
   CardStyle? _lastStyle;
   CardStyle resolveStyle(CardStyle? style) {
     final theme = Theme.of(context);
@@ -404,6 +408,21 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     detachController(controller);
 
     super.dispose();
+  }
+
+  /// Sends [method] to the platform view, buffering it while the view does not
+  /// exist yet.
+  Future<void> _invokeMethod(String method, [Object? arguments]) async {
+    final methodChannel = _methodChannel;
+    if (methodChannel == null) {
+      _pendingCalls.add((method: method, arguments: arguments));
+      return;
+    }
+    try {
+      await methodChannel.invokeMethod<void>(method, arguments);
+    } on MissingPluginException {
+      // The view was disposed while the call was in flight.
+    }
   }
 
   @override
@@ -485,9 +504,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     _lastStyle ??= resolveStyle(widget.style);
     final style = resolveStyle(widget.style);
     if (style != _lastStyle) {
-      _methodChannel?.invokeMethod('onStyleChanged', {
-        'cardStyle': style.toJson(),
-      });
+      _invokeMethod('onStyleChanged', {'cardStyle': style.toJson()});
     }
     _lastStyle = style;
     super.didChangeDependencies();
@@ -504,33 +521,32 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       attachController(oldWidget.controller);
     }
     if (widget.enablePostalCode != oldWidget.enablePostalCode) {
-      _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
+      _invokeMethod('onPostalCodeEnabledChanged', {
         'postalCodeEnabled': widget.enablePostalCode,
       });
     }
 
     if (widget.countryCode != oldWidget.countryCode) {
-      _methodChannel?.invokeMethod('onCountryCodeChangedEvent', {
+      _invokeMethod('onCountryCodeChangedEvent', {
         'countryCode': widget.countryCode,
       });
     }
     if (widget.dangerouslyGetFullCardDetails !=
         oldWidget.dangerouslyGetFullCardDetails) {
-      _methodChannel?.invokeMethod('dangerouslyGetFullCardDetails', {
+      _invokeMethod('dangerouslyGetFullCardDetails', {
         'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       });
     }
     _lastStyle ??= resolveStyle(oldWidget.style);
     final style = resolveStyle(widget.style);
     if (style != _lastStyle) {
-      _methodChannel?.invokeMethod('onStyleChanged', {
-        'cardStyle': style.toJson(),
-      });
+      _invokeMethod('onStyleChanged', {'cardStyle': style.toJson()});
     }
     _lastStyle = style;
+    _lastPlaceholder ??= resolvePlaceholder(oldWidget.placeholder);
     final placeholder = resolvePlaceholder(widget.placeholder);
     if (placeholder != _lastPlaceholder) {
-      _methodChannel?.invokeMethod('onPlaceholderChanged', {
+      _invokeMethod('onPlaceholderChanged', {
         'placeholder': placeholder.toJson(),
       });
     }
@@ -540,14 +556,20 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   void onPlatformViewCreated(int viewId) {
     widget.focusNode.debugLabel = 'CardField(id: $viewId)';
-    _methodChannel = MethodChannel('flutter.stripe/card_field/$viewId');
-    _methodChannel?.setMethodCallHandler((call) async {
+    final methodChannel = MethodChannel('flutter.stripe/card_field/$viewId');
+    _methodChannel = methodChannel;
+    methodChannel.setMethodCallHandler((call) async {
       if (call.method == 'topFocusChange') {
         _handlePlatformFocusChanged(call.arguments);
       } else if (call.method == 'topCardChange') {
         _handleCardChanged(call.arguments);
       }
     });
+
+    for (final call in _pendingCalls) {
+      _invokeMethod(call.method, call.arguments);
+    }
+    _pendingCalls.clear();
   }
 
   void _handleCardChanged(dynamic arguments) {
@@ -593,10 +615,6 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   /// Handler called when the focus changes in the node attached to the platform
   /// view. This updates the correspondant platform view to keep it in sync.
   void _handleFrameworkFocusChanged(bool isFocused) async {
-    final methodChannel = _methodChannel;
-    if (methodChannel == null) {
-      return;
-    }
     if (mounted) {
       setState(() {});
     }
@@ -611,17 +629,17 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   @override
   void blur() {
-    _methodChannel?.invokeMethod('blur');
+    _invokeMethod('blur');
   }
 
   @override
   void clear() {
-    _methodChannel?.invokeMethod('clear');
+    _invokeMethod('clear');
   }
 
   @override
   void focus() {
-    _methodChannel?.invokeMethod('focus');
+    _invokeMethod('focus');
   }
 
   @override
@@ -666,7 +684,9 @@ class _AndroidCardField extends StatelessWidget {
         hitTestBehavior: PlatformViewHitTestBehavior.opaque,
       ),
       onCreatePlatformView: (params) {
-        onPlatformViewCreated(params.id);
+        // `create()` does not necessarily create the view: `initSurfaceAndroidView`
+        // defers that until the first layout. Hence the listener - arming the
+        // method channel earlier throws `MissingPluginException` on every call.
         switch (androidPlatformViewRenderType) {
           case AndroidPlatformViewRenderType.expensiveAndroidView:
             return PlatformViewsService.initExpensiveAndroidView(
@@ -680,6 +700,7 @@ class _AndroidCardField extends StatelessWidget {
                 },
               )
               ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+              ..addOnPlatformViewCreatedListener(onPlatformViewCreated)
               ..create();
           case AndroidPlatformViewRenderType.surfaceAndroidView:
             return PlatformViewsService.initSurfaceAndroidView(
@@ -693,6 +714,7 @@ class _AndroidCardField extends StatelessWidget {
                 },
               )
               ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+              ..addOnPlatformViewCreatedListener(onPlatformViewCreated)
               ..create();
           case AndroidPlatformViewRenderType.androidView:
             return PlatformViewsService.initAndroidView(
@@ -706,6 +728,7 @@ class _AndroidCardField extends StatelessWidget {
                 },
               )
               ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+              ..addOnPlatformViewCreatedListener(onPlatformViewCreated)
               ..create();
         }
       },
