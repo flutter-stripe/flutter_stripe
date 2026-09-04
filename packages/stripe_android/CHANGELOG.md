@@ -1,3 +1,7 @@
+## 14.0.1
+
+ - Fix issue with building on agp 9
+
 ## 14.0.0
 
 **Breaking Changes**
