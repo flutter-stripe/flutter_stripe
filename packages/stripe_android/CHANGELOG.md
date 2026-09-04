@@ -1,3 +1,13 @@
+## 14.0.1
+
+ - Fix issue with building on agp 9
+
+ - **FIX**(android): wrap context with AppCompat theme for Google Pay button (#2321).
+ - **FIX**: add ProGuard rules to prevent 3D Secure crash (#2320).
+ - **FIX**: hinttext android (#2215).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
 ## 14.0.0
 
 **Breaking Changes**
