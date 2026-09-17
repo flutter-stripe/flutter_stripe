@@ -99,11 +99,6 @@ class StripeSdkEmbeddedPaymentElementPlatformView(
         if (intentConfig != null) {
             viewManager.setIntentConfiguration(embeddedView, DynamicFromObject(intentConfig))
         }
-
-        val checkout = asReadableMap(creationParams?.get("checkout"))
-        if (checkout != null) {
-            viewManager.setCheckout(embeddedView, DynamicFromObject(checkout))
-        }
     }
 
     private fun asReadableMap(value: Any?): ReadableMap? {

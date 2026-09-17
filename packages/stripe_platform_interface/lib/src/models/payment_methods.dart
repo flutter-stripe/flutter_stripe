@@ -278,6 +278,7 @@ enum PaymentMethodType {
   USBankAccount,
   RevolutPay,
   PayByBank,
+  Twint,
   Klarna,
   Link,
   Multibanco,
@@ -443,6 +444,14 @@ abstract class PaymentMethodParams with _$PaymentMethodParams {
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsPayByBank;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Twint')
+  /// Twint params.
+  const factory PaymentMethodParams.twint({
+    /// Paymentmethod data for this paymentmethod.
+    required PaymentMethodData paymentMethodData,
+  }) = _PaymentMethodParamsTwint;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Alma')

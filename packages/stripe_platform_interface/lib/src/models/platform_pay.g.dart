@@ -235,6 +235,9 @@ _ApplePayParams _$ApplePayParamsFromJson(
       (json['additionalEnabledNetworks'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+  supportedNetworks: (json['supportedNetworks'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   cartItems: (json['cartItems'] as List<dynamic>)
       .map((e) => ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -272,6 +275,7 @@ Map<String, dynamic> _$ApplePayParamsToJson(
   'merchantCountryCode': instance.merchantCountryCode,
   'currencyCode': instance.currencyCode,
   'additionalEnabledNetworks': instance.additionalEnabledNetworks,
+  'supportedNetworks': instance.supportedNetworks,
   'cartItems': instance.cartItems.map((e) => e.toJson()).toList(),
   'requiredShippingAddressFields': instance.requiredShippingAddressFields
       ?.map((e) => _$ApplePayContactFieldsTypeEnumMap[e]!)

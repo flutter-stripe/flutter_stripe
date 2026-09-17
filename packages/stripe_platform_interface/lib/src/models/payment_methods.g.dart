@@ -537,6 +537,22 @@ Map<String, dynamic> _$PaymentMethodParamsPayByBankToJson(
   'paymentMethodType': instance.$type,
 };
 
+_PaymentMethodParamsTwint _$PaymentMethodParamsTwintFromJson(
+  Map<String, dynamic> json,
+) => _PaymentMethodParamsTwint(
+  paymentMethodData: PaymentMethodData.fromJson(
+    json['paymentMethodData'] as Map<String, dynamic>,
+  ),
+  $type: json['paymentMethodType'] as String?,
+);
+
+Map<String, dynamic> _$PaymentMethodParamsTwintToJson(
+  _PaymentMethodParamsTwint instance,
+) => <String, dynamic>{
+  'paymentMethodData': instance.paymentMethodData.toJson(),
+  'paymentMethodType': instance.$type,
+};
+
 _PaymentMethodParamsAlmaPay _$PaymentMethodParamsAlmaPayFromJson(
   Map<String, dynamic> json,
 ) => _PaymentMethodParamsAlmaPay(
