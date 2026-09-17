@@ -133,7 +133,10 @@ class PaymentElementState extends State<PaymentElement> {
     if (!mounted) return;
     if (_divElement.isConnected) {
       elements = WebStripe.js.elements(_cachedCreateOptions);
-      element = elements!.createPayment(_cachedElementOptions)
+      // Same instance discipline as CardField: focus/measure the element this
+      // widget created, not whatever WebStripe.element points at later.
+      final payment = elements!.createPayment(_cachedElementOptions);
+      payment
         ..mount(_divElement)
         ..onReady((_) {
           final stripeEl = _divElement.firstElementChild;
@@ -147,11 +150,13 @@ class PaymentElementState extends State<PaymentElement> {
             setState(() {
               _isReady = true;
             });
+            // [autofocus] used to be a no-op here as well; honour it once
+            // Stripe reports the iframe ready (see card_field.dart).
+            if (widget.autofocus) payment.focus();
           }
         })
-        ..onBlur((_) => _effectiveNode.unfocus())
-        ..onFocus((_) => _effectiveNode.requestFocus())
         ..onChange(onCardChanged);
+      element = payment;
     } else {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => _mountWhenConnected(),
@@ -206,8 +211,12 @@ class PaymentElementState extends State<PaymentElement> {
   @override
   Widget build(BuildContext context) {
     return Focus(
-      autofocus: true,
       focusNode: _effectiveNode,
+      // Never take framework focus for the Stripe iframe: with semantics
+      // enabled the engine would move DOM focus to the flt-semantics element,
+      // blurring the iframe as soon as it is tapped (see card_field.dart).
+      canRequestFocus: false,
+      skipTraversal: true,
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: double.infinity,

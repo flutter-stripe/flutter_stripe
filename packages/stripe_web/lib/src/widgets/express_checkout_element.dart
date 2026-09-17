@@ -102,8 +102,6 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
             });
           }
         })
-        ..onBlur((_) => _effectiveNode.unfocus())
-        ..onFocus((_) => _effectiveNode.requestFocus())
         ..onConfirm(confirm);
     } else {
       WidgetsBinding.instance.addPostFrameCallback(
@@ -141,6 +139,11 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
   Widget build(BuildContext context) {
     return Focus(
       focusNode: _effectiveNode,
+      // Never take framework focus for the Stripe iframe: with semantics
+      // enabled the engine would move DOM focus to the flt-semantics element,
+      // blurring the iframe as soon as it is tapped (see card_field.dart).
+      canRequestFocus: false,
+      skipTraversal: true,
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: double.infinity,

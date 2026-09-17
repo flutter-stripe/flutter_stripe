@@ -98,14 +98,24 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   void _mountWhenConnected() {
     if (!mounted) return;
     if (_divElement.isConnected) {
-      element =
-          WebStripe.js
-              .elements(createElementOptions())
-              .createCard(createOptions())
-            ..mount(_divElement)
-            ..onBlur((_) => _effectiveNode.unfocus())
-            ..onFocus((_) => _effectiveNode.requestFocus())
-            ..onChange(onCardChanged);
+      // Keep a handle on the element THIS widget created: [element] is the
+      // shared WebStripe.element, which another Stripe widget mounted or
+      // disposed later may have replaced by the time the ready event fires.
+      final card = WebStripe.js
+          .elements(createElementOptions())
+          .createCard(createOptions());
+      card
+        ..mount(_divElement)
+        ..onChange(onCardChanged)
+        // Upstream declares [autofocus] but never acts on it. The iframe
+        // cannot take focus until Stripe reports it ready, so honour the
+        // flag from the ready event rather than straight after mount.
+        // Mobile browsers still refuse to raise the keyboard without a
+        // user gesture, so this places the caret and nothing more.
+        ..onReady((_) {
+          if (mounted && widget.autofocus) card.focus();
+        });
+      element = card;
     } else {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => _mountWhenConnected(),
@@ -140,6 +150,14 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Focus(
         focusNode: _effectiveNode,
+        // The Stripe iframe owns its own DOM focus; it must never be mirrored
+        // into the framework. When semantics are enabled (screen readers, or
+        // SemanticsBinding.ensureSemantics), focusing this node makes the
+        // engine move DOM focus to the node's flt-semantics element, which
+        // blurs the iframe the moment it is tapped and makes the field
+        // untypeable.
+        canRequestFocus: false,
+        skipTraversal: true,
         child: ConstrainedBox(
           constraints: constraints,
           child: HtmlElementView(viewType: _viewType),
