@@ -84,11 +84,11 @@ class StripeSdkCardFormPlatformView(
                 result.success(null)
             }
             "clearFocus" -> {
-                // Hide keyboard
-                val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(cardView.windowToken, 0)
-                // Clear focus
-                cardView.clearFocus()
+                CardInputKeyboard.hideAndClearFocus(context, cardView)
+                result.success(null)
+            }
+            "showKeyboard" -> {
+                CardInputKeyboard.showForFocusedField(context, cardView)
                 result.success(null)
             }
             "focus", "blur", "clear" -> {
