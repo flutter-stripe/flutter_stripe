@@ -101,6 +101,25 @@ class StripeSdkCardPlatformView(
                 result.success(null)
             }
 
+            "showKeyboard" -> {
+                // Raise the IME for the subfield the native view already
+                // focused, WITHOUT moving that focus.
+                //
+                // The card widget calls requestFocus() but not
+                // showSoftKeyboard() when a touch lands somewhere that is not
+                // one of its EditTexts — the gap between the number and the
+                // expiry, for instance. The caret appears and no keyboard
+                // does, so the user has to tap a second time. "focus" would
+                // show a keyboard but also drags focus onto the card number,
+                // which is exactly what we must not do for a tap.
+                cardView.findFocus()?.let { focused ->
+                    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE)
+                        as InputMethodManager
+                    imm.showSoftInput(focused, 0)
+                }
+                result.success(null)
+            }
+
             "clearFocus" -> {
                 // Hide keyboard
                 val imm =
