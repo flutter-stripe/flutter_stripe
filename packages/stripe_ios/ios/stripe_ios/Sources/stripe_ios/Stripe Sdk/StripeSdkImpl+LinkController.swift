@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 @_spi(LinkControllerPreview) import StripePaymentSheet
 
 extension StripeSdkImpl {
