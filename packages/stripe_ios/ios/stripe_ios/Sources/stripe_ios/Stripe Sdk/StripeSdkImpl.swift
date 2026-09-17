@@ -1,7 +1,7 @@
 import AuthenticationServices
-import Combine
 import Foundation
 import PassKit
+import SafariServices
 @_spi(DashboardOnly) @_spi(STP) import Stripe
 @_spi(STP) @_spi(ReactNativeSDK) import StripeCore
 import StripeFinancialConnections
@@ -59,13 +59,12 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
     weak var cardFieldView: CardFieldView?
     weak var cardFormView: CardFormView?
 
+    @MainActor lazy var checkoutControllerRegistry = CheckoutControllerRegistry()
+
     var merchantIdentifier: String?
 
     internal var paymentSheet: PaymentSheet?
     internal var paymentSheetFlowController: PaymentSheet.FlowController?
-    internal var checkoutInstances: [String: Checkout] = [:]
-    internal var checkoutStateCancellables: [String: AnyCancellable] = [:]
-    internal var serverUpdateContinuations: [String: CheckedContinuation<Void, Error>] = [:]
     var paymentSheetIntentCreationCallback: ((Result<String, Error>) -> Void)?
     var paymentSheetConfirmationTokenIntentCreationCallback: ((Result<String, Error>) -> Void)?
 
@@ -140,6 +139,14 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
 
     var authenticationSession: ASWebAuthenticationSession?
     var authenticationContextProvider: Any?
+
+    @objc public func invalidateCheckoutControllers() {
+        DispatchQueue.main.async { [weak self] in
+            self?.checkoutControllerRegistry.removeAll()
+        }
+    }
+
+    static let authenticatedWebViewReturnURLScheme = "stripe-connect"
 
     @objc public func getConstants() -> [AnyHashable: Any] {
         return [
@@ -1422,6 +1429,27 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         }
     }
 
+    @objc(deleteWalletAddress:resolver:rejecter:)
+    public func deleteWalletAddress(
+        walletId: String,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard isPublishableKeyAvailable(resolve), let coordinator = requireOnrampCoordinator(resolve) else {
+            return
+        }
+
+        Task {
+            do {
+                try await coordinator.deleteWalletAddress(walletId: walletId)
+                resolve([:])  // Return empty object on success
+            } catch {
+                let errorResult = OnrampErrors.createFailedError(error)
+                resolve(["error": errorResult["error"]!])
+            }
+        }
+    }
+
     @objc(getWalletOwnershipChallenge:network:resolver:rejecter:)
     public func getWalletOwnershipChallenge(
         walletAddress: String,
@@ -1981,7 +2009,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             // Create the authentication session with the configured URL scheme
             self.authenticationSession = ASWebAuthenticationSession(
                 url: url,
-                callbackURLScheme: nil
+                callbackURLScheme: StripeSdkImpl.authenticatedWebViewReturnURLScheme
             ) { callbackURL, error in
                 if let error = error {
                     // User canceled or an error occurred
@@ -2019,6 +2047,33 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                 self.authenticationSession = nil
                 self.authenticationContextProvider = nil
                 return
+            }
+        }
+    }
+
+    @objc(presentExternalWebPage:resolver:rejecter:)
+    public func presentExternalWebPage(
+        url: String,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard let url = URL(string: url),
+              let scheme = url.scheme?.lowercased(),
+              ["http", "https"].contains(scheme) else {
+            reject(ErrorType.Failed, "Invalid web URL", nil)
+            return
+        }
+
+        DispatchQueue.main.async {
+            let safariViewController = SFSafariViewController(url: url)
+            safariViewController.dismissButtonStyle = .done
+            safariViewController.modalPresentationStyle = .pageSheet
+
+            let presenter = findViewControllerPresenter(
+                from: RCTKeyWindow()?.rootViewController ?? UIViewController()
+            )
+            presenter.present(safariViewController, animated: true) {
+                resolve(nil)
             }
         }
     }

@@ -1,5 +1,4 @@
 import Contacts
-import PassKit
 import Stripe
 @_spi(ConfirmationTokensPublicPreview) import StripePayments
 #if canImport(StripeCryptoOnramp)
@@ -307,6 +306,7 @@ class Mappers {
         case STPPaymentMethodType.revolutPay: return "RevolutPay"
         case STPPaymentMethodType.payByBank: return "PayByBank"
         case STPPaymentMethodType.link: return "Link"
+        case STPPaymentMethodType.twint: return "Twint"
         case STPPaymentMethodType.unknown: return "Unknown"
         default: return "Unknown"
         }
@@ -340,6 +340,7 @@ class Mappers {
             case "CashApp": return STPPaymentMethodType.cashApp
             case "RevolutPay": return STPPaymentMethodType.revolutPay
             case "PayByBank": return STPPaymentMethodType.payByBank
+            case "Twint": return STPPaymentMethodType.twint
             case "Link": return STPPaymentMethodType.link
             default: return STPPaymentMethodType.unknown
             }
