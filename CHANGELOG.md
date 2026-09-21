@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-09-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v14.1.0`](#stripe_platform_interface---v1410)
+ - [`stripe_android` - `v14.1.0`](#stripe_android---v1410)
+ - [`stripe_ios` - `v14.1.0`](#stripe_ios---v1410)
+ - [`flutter_stripe` - `v14.1.0`](#flutter_stripe---v1410)
+
+---
+
+#### `stripe_platform_interface` - `v14.1.0`
+
+ - Sync with Stripe React Native [0.76.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.76.0)
+ - Add support for the Twint payment method
+ - Apple Pay: add `supportedNetworks` to `ApplePayParams` to restrict the card networks offered in the Apple Pay sheet
+
+#### `stripe_android` - `v14.1.0`
+
+ - Sync with Stripe React Native [0.76.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.76.0)
+ - Update Stripe Android SDK from 23.12.0 to 23.17.1
+ - Add support for the Twint payment method
+
+#### `stripe_ios` - `v14.1.0`
+
+ - Sync with Stripe React Native [0.76.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.76.0)
+ - Update Stripe iOS SDK from 26.3.0 to 26.9.0
+ - Add support for the Twint payment method
+ - Apple Pay: add `supportedNetworks` to `ApplePayParams` to restrict the card networks offered in the Apple Pay sheet
+
+#### `flutter_stripe` - `v14.1.0`
+
+ - Sync with Stripe React Native [0.76.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.76.0)
+ - Add support for the Twint payment method
+ - Apple Pay: add `supportedNetworks` to `ApplePayParams` to restrict the card networks offered in the Apple Pay sheet
+
+
 ## 2026-09-04
 
 ### Changes
