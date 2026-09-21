@@ -1,3 +1,10 @@
+## 14.1.0
+
+**Features**:
+- Sync with Stripe React Native [0.76.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.76.0)
+- Update Stripe Android SDK from 23.12.0 to 23.17.1
+- Add support for the Twint payment method
+
 ## 14.0.1
 
  - Fix issue with building on agp 9

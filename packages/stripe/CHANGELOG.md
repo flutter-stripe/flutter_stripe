@@ -1,3 +1,10 @@
+## 14.1.0
+
+**Features**:
+- Sync with Stripe React Native [0.76.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.76.0)
+- Add support for the Twint payment method
+- Apple Pay: add `supportedNetworks` to `ApplePayParams` to restrict the card networks offered in the Apple Pay sheet
+
 ## 14.0.0
 
 **Breaking Changes**
