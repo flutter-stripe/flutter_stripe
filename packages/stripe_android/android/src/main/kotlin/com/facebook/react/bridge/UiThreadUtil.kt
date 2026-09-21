@@ -12,6 +12,10 @@ class UiThreadUtil {
                 function()
             }
         }
+
+        fun assertOnUiThread() {
+            check(Looper.myLooper() == Looper.getMainLooper()) { "Expected to be called on the UI thread" }
+        }
     }
 
 }

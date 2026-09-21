@@ -53,6 +53,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.USBankAccount: 'USBankAccount',
   PaymentMethodType.RevolutPay: 'RevolutPay',
   PaymentMethodType.PayByBank: 'PayByBank',
+  PaymentMethodType.Twint: 'Twint',
   PaymentMethodType.Klarna: 'Klarna',
   PaymentMethodType.Link: 'Link',
   PaymentMethodType.Multibanco: 'Multibanco',
