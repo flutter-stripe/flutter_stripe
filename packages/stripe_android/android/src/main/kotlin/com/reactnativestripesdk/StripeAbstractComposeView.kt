@@ -1,19 +1,31 @@
 package com.reactnativestripesdk
 
+import android.app.Application
 import android.content.Context
 import android.widget.FrameLayout
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.AbstractComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.platform.findViewTreeCompositionContext
+import androidx.lifecycle.HasDefaultViewModelProviderFactory
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
+import androidx.lifecycle.SAVED_STATE_REGISTRY_OWNER_KEY
+import androidx.lifecycle.SavedStateViewModelFactory
+import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.enableSavedStateHandles
 import androidx.lifecycle.setViewTreeLifecycleOwner
 import androidx.lifecycle.setViewTreeViewModelStoreOwner
-import androidx.savedstate.findViewTreeSavedStateRegistryOwner
+import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.savedstate.SavedStateRegistry
+import androidx.savedstate.SavedStateRegistryController
+import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import com.facebook.react.bridge.ReactContext
 
@@ -83,6 +95,13 @@ abstract class StripeAbstractComposeView(
     }
   private var lifecycleRegistry = LifecycleRegistry(lifecycleOwner)
 
+  // ViewModels and saved state owned by this view instead of the activity. In single-activity
+  // hosts (Flutter, React Native) the activity's ViewModelStore is never cleared, so scoping to the
+  // activity leaks one EmbeddedPaymentElementViewModel per mounted element, and its
+  // SavedStateHandle keeps growing the activity's saved state until onStop throws
+  // TransactionTooLargeException.
+  private val viewScopedOwner = ViewScopedOwner()
+
   override fun onAttachedToWindow() {
     super.onAttachedToWindow()
     ensureComposeViewCreated()
@@ -103,8 +122,8 @@ abstract class StripeAbstractComposeView(
         // Setup context from dummy compose view (now safe since we're attached to window)
         (context as? ReactContext)?.getNativeModule(StripeSdkModule::class.java)?.composeCompatView?.let {
           cv.setParentCompositionContext(it.findViewTreeCompositionContext())
-          cv.setViewTreeSavedStateRegistryOwner(it.findViewTreeSavedStateRegistryOwner())
-          cv.setViewTreeViewModelStoreOwner(it.findViewTreeViewModelStoreOwner())
+          cv.setViewTreeSavedStateRegistryOwner(viewScopedOwner)
+          cv.setViewTreeViewModelStoreOwner(viewScopedOwner)
         }
 
         addView(cv, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
@@ -147,6 +166,8 @@ abstract class StripeAbstractComposeView(
     if (lifecycleRegistry.currentState.isAtLeast(Lifecycle.State.CREATED)) {
       lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     }
+
+    viewScopedOwner.viewModelStore.clear()
   }
 
   @Composable
@@ -158,6 +179,39 @@ abstract class StripeAbstractComposeView(
     @Composable
     override fun Content() {
       this@StripeAbstractComposeView.Content()
+    }
+  }
+
+  private inner class ViewScopedOwner :
+    ViewModelStoreOwner,
+    SavedStateRegistryOwner,
+    HasDefaultViewModelProviderFactory {
+    private val savedStateRegistryController = SavedStateRegistryController.create(this)
+    private val application = context.applicationContext as? Application
+
+    override val lifecycle: Lifecycle
+      get() = lifecycleRegistry
+
+    override val savedStateRegistry: SavedStateRegistry
+      get() = savedStateRegistryController.savedStateRegistry
+
+    override val viewModelStore = ViewModelStore()
+
+    override val defaultViewModelProviderFactory: ViewModelProvider.Factory =
+      SavedStateViewModelFactory(application, this)
+
+    override val defaultViewModelCreationExtras: CreationExtras
+      get() =
+        MutableCreationExtras().apply {
+          application?.let { set(ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY, it) }
+          set(SAVED_STATE_REGISTRY_OWNER_KEY, this@ViewScopedOwner)
+          set(VIEW_MODEL_STORE_OWNER_KEY, this@ViewScopedOwner)
+        }
+
+    init {
+      savedStateRegistryController.performAttach()
+      savedStateRegistryController.performRestore(null)
+      enableSavedStateHandles()
     }
   }
 }
