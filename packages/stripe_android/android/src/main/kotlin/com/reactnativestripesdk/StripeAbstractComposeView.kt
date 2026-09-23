@@ -118,12 +118,12 @@ abstract class StripeAbstractComposeView(
           ViewCompositionStrategy.DisposeOnLifecycleDestroyed(lifecycleOwner = lifecycleOwner),
         )
         cv.setViewTreeLifecycleOwner(lifecycleOwner = lifecycleOwner)
+        cv.setViewTreeSavedStateRegistryOwner(viewScopedOwner)
+        cv.setViewTreeViewModelStoreOwner(viewScopedOwner)
 
         // Setup context from dummy compose view (now safe since we're attached to window)
         (context as? ReactContext)?.getNativeModule(StripeSdkModule::class.java)?.composeCompatView?.let {
           cv.setParentCompositionContext(it.findViewTreeCompositionContext())
-          cv.setViewTreeSavedStateRegistryOwner(viewScopedOwner)
-          cv.setViewTreeViewModelStoreOwner(viewScopedOwner)
         }
 
         addView(cv, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
@@ -156,6 +156,10 @@ abstract class StripeAbstractComposeView(
     }
   }
 
+  /**
+   * Moves this view's lifecycle to DESTROYED and clears its [ViewModelStore], so the ViewModels
+   * created by the element are cleared together with the view.
+   */
   fun handleOnDropViewInstance() {
     activityLifecycleObserver?.let { observer ->
       activityLifecycleOwner?.lifecycle?.removeObserver(observer)
@@ -182,6 +186,11 @@ abstract class StripeAbstractComposeView(
     }
   }
 
+  /**
+   * [ViewModelStoreOwner] and [SavedStateRegistryOwner] scoped to this view. Its saved state is
+   * never attached to the activity's registry, so nothing the element stores survives the view or
+   * ends up in the activity's saved instance state.
+   */
   private inner class ViewScopedOwner :
     ViewModelStoreOwner,
     SavedStateRegistryOwner,
