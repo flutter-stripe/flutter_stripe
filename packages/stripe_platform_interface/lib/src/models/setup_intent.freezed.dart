@@ -22,7 +22,11 @@ mixin _$SetupIntent {
  String get status;/// Determines whether the intent is in live mode or in test mode.
  bool get livemode;/// The client is secret is used for handling the payment from the Client side.
  String get clientSecret;/// Id of the payment method used in this intent.
- String get paymentMethodId;/// Indicates how the intent is used in the future.
+///
+/// Falls back to the id of the expanded `paymentMethod`, because the
+/// native SDKs can leave `paymentMethodId` null when they return the
+/// payment method expanded.
+@JsonKey(readValue: _readPaymentMethodId) String get paymentMethodId;/// Indicates how the intent is used in the future.
  String get usage;/// List of payment method types associated with this intent.
  List<PaymentMethodType> get paymentMethodTypes;/// Localized description that provides additional context to users.
  String? get description;/// Timestamp since epoch that represents the time the intent is created.
@@ -63,7 +67,7 @@ abstract mixin class $SetupIntentCopyWith<$Res>  {
   factory $SetupIntentCopyWith(SetupIntent value, $Res Function(SetupIntent) _then) = _$SetupIntentCopyWithImpl;
 @useResult
 $Res call({
- String id, String status, bool livemode, String clientSecret, String paymentMethodId, String usage, List<PaymentMethodType> paymentMethodTypes, String? description, String? created, LastSetupError? lastSetupError, NextAction? nextAction, MandateData? mandateData
+ String id, String status, bool livemode, String clientSecret,@JsonKey(readValue: _readPaymentMethodId) String paymentMethodId, String usage, List<PaymentMethodType> paymentMethodTypes, String? description, String? created, LastSetupError? lastSetupError, NextAction? nextAction, MandateData? mandateData
 });
 
 
@@ -215,7 +219,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String status,  bool livemode,  String clientSecret,  String paymentMethodId,  String usage,  List<PaymentMethodType> paymentMethodTypes,  String? description,  String? created,  LastSetupError? lastSetupError,  NextAction? nextAction,  MandateData? mandateData)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String status,  bool livemode,  String clientSecret, @JsonKey(readValue: _readPaymentMethodId)  String paymentMethodId,  String usage,  List<PaymentMethodType> paymentMethodTypes,  String? description,  String? created,  LastSetupError? lastSetupError,  NextAction? nextAction,  MandateData? mandateData)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SetupIntent() when $default != null:
 return $default(_that.id,_that.status,_that.livemode,_that.clientSecret,_that.paymentMethodId,_that.usage,_that.paymentMethodTypes,_that.description,_that.created,_that.lastSetupError,_that.nextAction,_that.mandateData);case _:
@@ -236,7 +240,7 @@ return $default(_that.id,_that.status,_that.livemode,_that.clientSecret,_that.pa
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String status,  bool livemode,  String clientSecret,  String paymentMethodId,  String usage,  List<PaymentMethodType> paymentMethodTypes,  String? description,  String? created,  LastSetupError? lastSetupError,  NextAction? nextAction,  MandateData? mandateData)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String status,  bool livemode,  String clientSecret, @JsonKey(readValue: _readPaymentMethodId)  String paymentMethodId,  String usage,  List<PaymentMethodType> paymentMethodTypes,  String? description,  String? created,  LastSetupError? lastSetupError,  NextAction? nextAction,  MandateData? mandateData)  $default,) {final _that = this;
 switch (_that) {
 case _SetupIntent():
 return $default(_that.id,_that.status,_that.livemode,_that.clientSecret,_that.paymentMethodId,_that.usage,_that.paymentMethodTypes,_that.description,_that.created,_that.lastSetupError,_that.nextAction,_that.mandateData);case _:
@@ -256,7 +260,7 @@ return $default(_that.id,_that.status,_that.livemode,_that.clientSecret,_that.pa
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String status,  bool livemode,  String clientSecret,  String paymentMethodId,  String usage,  List<PaymentMethodType> paymentMethodTypes,  String? description,  String? created,  LastSetupError? lastSetupError,  NextAction? nextAction,  MandateData? mandateData)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String status,  bool livemode,  String clientSecret, @JsonKey(readValue: _readPaymentMethodId)  String paymentMethodId,  String usage,  List<PaymentMethodType> paymentMethodTypes,  String? description,  String? created,  LastSetupError? lastSetupError,  NextAction? nextAction,  MandateData? mandateData)?  $default,) {final _that = this;
 switch (_that) {
 case _SetupIntent() when $default != null:
 return $default(_that.id,_that.status,_that.livemode,_that.clientSecret,_that.paymentMethodId,_that.usage,_that.paymentMethodTypes,_that.description,_that.created,_that.lastSetupError,_that.nextAction,_that.mandateData);case _:
@@ -271,7 +275,7 @@ return $default(_that.id,_that.status,_that.livemode,_that.clientSecret,_that.pa
 
 @JsonSerializable(explicitToJson: true)
 class _SetupIntent implements SetupIntent {
-  const _SetupIntent({required this.id, required this.status, required this.livemode, required this.clientSecret, required this.paymentMethodId, required this.usage, required final  List<PaymentMethodType> paymentMethodTypes, this.description, this.created, this.lastSetupError, this.nextAction, this.mandateData}): _paymentMethodTypes = paymentMethodTypes;
+  const _SetupIntent({required this.id, required this.status, required this.livemode, required this.clientSecret, @JsonKey(readValue: _readPaymentMethodId) required this.paymentMethodId, required this.usage, required final  List<PaymentMethodType> paymentMethodTypes, this.description, this.created, this.lastSetupError, this.nextAction, this.mandateData}): _paymentMethodTypes = paymentMethodTypes;
   factory _SetupIntent.fromJson(Map<String, dynamic> json) => _$SetupIntentFromJson(json);
 
 /// Unique identifier.
@@ -285,7 +289,11 @@ class _SetupIntent implements SetupIntent {
 /// The client is secret is used for handling the payment from the Client side.
 @override final  String clientSecret;
 /// Id of the payment method used in this intent.
-@override final  String paymentMethodId;
+///
+/// Falls back to the id of the expanded `paymentMethod`, because the
+/// native SDKs can leave `paymentMethodId` null when they return the
+/// payment method expanded.
+@override@JsonKey(readValue: _readPaymentMethodId) final  String paymentMethodId;
 /// Indicates how the intent is used in the future.
 @override final  String usage;
 /// List of payment method types associated with this intent.
@@ -342,7 +350,7 @@ abstract mixin class _$SetupIntentCopyWith<$Res> implements $SetupIntentCopyWith
   factory _$SetupIntentCopyWith(_SetupIntent value, $Res Function(_SetupIntent) _then) = __$SetupIntentCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String status, bool livemode, String clientSecret, String paymentMethodId, String usage, List<PaymentMethodType> paymentMethodTypes, String? description, String? created, LastSetupError? lastSetupError, NextAction? nextAction, MandateData? mandateData
+ String id, String status, bool livemode, String clientSecret,@JsonKey(readValue: _readPaymentMethodId) String paymentMethodId, String usage, List<PaymentMethodType> paymentMethodTypes, String? description, String? created, LastSetupError? lastSetupError, NextAction? nextAction, MandateData? mandateData
 });
 
 
