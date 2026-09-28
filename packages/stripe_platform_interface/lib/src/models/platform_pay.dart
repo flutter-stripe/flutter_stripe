@@ -252,6 +252,16 @@ abstract class GooglePayParams with _$GooglePayParams {
 
     /// Describes the configuration for billing address collection in the Google Pay sheet.
     GooglePayBillingAddressConfig? billingAddressConfig,
+
+    /// Amount shown in the Google Pay sheet, in the currency's smallest unit
+    /// (e.g. cents).
+    ///
+    /// Only used when confirming a SetupIntent. A PaymentIntent always shows
+    /// its own amount.
+    int? amount,
+
+    /// Label shown next to the amount in the Google Pay sheet.
+    String? label,
   }) = _GooglePayParams;
 
   factory GooglePayParams.fromJson(Map<String, dynamic> json) =>

@@ -2787,7 +2787,13 @@ mixin _$GooglePayParams {
 ///
 /// Defaults to true.
  bool? get allowCreditCards;/// Describes the configuration for billing address collection in the Google Pay sheet.
- GooglePayBillingAddressConfig? get billingAddressConfig;
+ GooglePayBillingAddressConfig? get billingAddressConfig;/// Amount shown in the Google Pay sheet, in the currency's smallest unit
+/// (e.g. cents).
+///
+/// Only used when confirming a SetupIntent. A PaymentIntent always shows
+/// its own amount.
+ int? get amount;/// Label shown next to the amount in the Google Pay sheet.
+ String? get label;
 /// Create a copy of GooglePayParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2800,16 +2806,16 @@ $GooglePayParamsCopyWith<GooglePayParams> get copyWith => _$GooglePayParamsCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GooglePayParams&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.merchantName, merchantName) || other.merchantName == merchantName)&&(identical(other.isEmailRequired, isEmailRequired) || other.isEmailRequired == isEmailRequired)&&(identical(other.allowCreditCards, allowCreditCards) || other.allowCreditCards == allowCreditCards)&&(identical(other.billingAddressConfig, billingAddressConfig) || other.billingAddressConfig == billingAddressConfig));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GooglePayParams&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.merchantName, merchantName) || other.merchantName == merchantName)&&(identical(other.isEmailRequired, isEmailRequired) || other.isEmailRequired == isEmailRequired)&&(identical(other.allowCreditCards, allowCreditCards) || other.allowCreditCards == allowCreditCards)&&(identical(other.billingAddressConfig, billingAddressConfig) || other.billingAddressConfig == billingAddressConfig)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.label, label) || other.label == label));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,testEnv,merchantCountryCode,currencyCode,merchantName,isEmailRequired,allowCreditCards,billingAddressConfig);
+int get hashCode => Object.hash(runtimeType,testEnv,merchantCountryCode,currencyCode,merchantName,isEmailRequired,allowCreditCards,billingAddressConfig,amount,label);
 
 @override
 String toString() {
-  return 'GooglePayParams(testEnv: $testEnv, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, merchantName: $merchantName, isEmailRequired: $isEmailRequired, allowCreditCards: $allowCreditCards, billingAddressConfig: $billingAddressConfig)';
+  return 'GooglePayParams(testEnv: $testEnv, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, merchantName: $merchantName, isEmailRequired: $isEmailRequired, allowCreditCards: $allowCreditCards, billingAddressConfig: $billingAddressConfig, amount: $amount, label: $label)';
 }
 
 
@@ -2820,7 +2826,7 @@ abstract mixin class $GooglePayParamsCopyWith<$Res>  {
   factory $GooglePayParamsCopyWith(GooglePayParams value, $Res Function(GooglePayParams) _then) = _$GooglePayParamsCopyWithImpl;
 @useResult
 $Res call({
- bool testEnv, String merchantCountryCode, String currencyCode, String? merchantName, bool? isEmailRequired, bool? allowCreditCards, GooglePayBillingAddressConfig? billingAddressConfig
+ bool testEnv, String merchantCountryCode, String currencyCode, String? merchantName, bool? isEmailRequired, bool? allowCreditCards, GooglePayBillingAddressConfig? billingAddressConfig, int? amount, String? label
 });
 
 
@@ -2837,7 +2843,7 @@ class _$GooglePayParamsCopyWithImpl<$Res>
 
 /// Create a copy of GooglePayParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? testEnv = null,Object? merchantCountryCode = null,Object? currencyCode = null,Object? merchantName = freezed,Object? isEmailRequired = freezed,Object? allowCreditCards = freezed,Object? billingAddressConfig = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? testEnv = null,Object? merchantCountryCode = null,Object? currencyCode = null,Object? merchantName = freezed,Object? isEmailRequired = freezed,Object? allowCreditCards = freezed,Object? billingAddressConfig = freezed,Object? amount = freezed,Object? label = freezed,}) {
   return _then(_self.copyWith(
 testEnv: null == testEnv ? _self.testEnv : testEnv // ignore: cast_nullable_to_non_nullable
 as bool,merchantCountryCode: null == merchantCountryCode ? _self.merchantCountryCode : merchantCountryCode // ignore: cast_nullable_to_non_nullable
@@ -2846,7 +2852,9 @@ as String,merchantName: freezed == merchantName ? _self.merchantName : merchantN
 as String?,isEmailRequired: freezed == isEmailRequired ? _self.isEmailRequired : isEmailRequired // ignore: cast_nullable_to_non_nullable
 as bool?,allowCreditCards: freezed == allowCreditCards ? _self.allowCreditCards : allowCreditCards // ignore: cast_nullable_to_non_nullable
 as bool?,billingAddressConfig: freezed == billingAddressConfig ? _self.billingAddressConfig : billingAddressConfig // ignore: cast_nullable_to_non_nullable
-as GooglePayBillingAddressConfig?,
+as GooglePayBillingAddressConfig?,amount: freezed == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as int?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 /// Create a copy of GooglePayParams
@@ -2943,10 +2951,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool testEnv,  String merchantCountryCode,  String currencyCode,  String? merchantName,  bool? isEmailRequired,  bool? allowCreditCards,  GooglePayBillingAddressConfig? billingAddressConfig)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool testEnv,  String merchantCountryCode,  String currencyCode,  String? merchantName,  bool? isEmailRequired,  bool? allowCreditCards,  GooglePayBillingAddressConfig? billingAddressConfig,  int? amount,  String? label)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GooglePayParams() when $default != null:
-return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that.merchantName,_that.isEmailRequired,_that.allowCreditCards,_that.billingAddressConfig);case _:
+return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that.merchantName,_that.isEmailRequired,_that.allowCreditCards,_that.billingAddressConfig,_that.amount,_that.label);case _:
   return orElse();
 
 }
@@ -2964,10 +2972,10 @@ return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool testEnv,  String merchantCountryCode,  String currencyCode,  String? merchantName,  bool? isEmailRequired,  bool? allowCreditCards,  GooglePayBillingAddressConfig? billingAddressConfig)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool testEnv,  String merchantCountryCode,  String currencyCode,  String? merchantName,  bool? isEmailRequired,  bool? allowCreditCards,  GooglePayBillingAddressConfig? billingAddressConfig,  int? amount,  String? label)  $default,) {final _that = this;
 switch (_that) {
 case _GooglePayParams():
-return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that.merchantName,_that.isEmailRequired,_that.allowCreditCards,_that.billingAddressConfig);case _:
+return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that.merchantName,_that.isEmailRequired,_that.allowCreditCards,_that.billingAddressConfig,_that.amount,_that.label);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -2984,10 +2992,10 @@ return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool testEnv,  String merchantCountryCode,  String currencyCode,  String? merchantName,  bool? isEmailRequired,  bool? allowCreditCards,  GooglePayBillingAddressConfig? billingAddressConfig)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool testEnv,  String merchantCountryCode,  String currencyCode,  String? merchantName,  bool? isEmailRequired,  bool? allowCreditCards,  GooglePayBillingAddressConfig? billingAddressConfig,  int? amount,  String? label)?  $default,) {final _that = this;
 switch (_that) {
 case _GooglePayParams() when $default != null:
-return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that.merchantName,_that.isEmailRequired,_that.allowCreditCards,_that.billingAddressConfig);case _:
+return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that.merchantName,_that.isEmailRequired,_that.allowCreditCards,_that.billingAddressConfig,_that.amount,_that.label);case _:
   return null;
 
 }
@@ -2999,7 +3007,7 @@ return $default(_that.testEnv,_that.merchantCountryCode,_that.currencyCode,_that
 
 @JsonSerializable(explicitToJson: true)
 class _GooglePayParams implements GooglePayParams {
-  const _GooglePayParams({this.testEnv = false, required this.merchantCountryCode, required this.currencyCode, this.merchantName, this.isEmailRequired, this.allowCreditCards, this.billingAddressConfig});
+  const _GooglePayParams({this.testEnv = false, required this.merchantCountryCode, required this.currencyCode, this.merchantName, this.isEmailRequired, this.allowCreditCards, this.billingAddressConfig, this.amount, this.label});
   factory _GooglePayParams.fromJson(Map<String, dynamic> json) => _$GooglePayParamsFromJson(json);
 
 /**
@@ -3026,6 +3034,14 @@ class _GooglePayParams implements GooglePayParams {
 @override final  bool? allowCreditCards;
 /// Describes the configuration for billing address collection in the Google Pay sheet.
 @override final  GooglePayBillingAddressConfig? billingAddressConfig;
+/// Amount shown in the Google Pay sheet, in the currency's smallest unit
+/// (e.g. cents).
+///
+/// Only used when confirming a SetupIntent. A PaymentIntent always shows
+/// its own amount.
+@override final  int? amount;
+/// Label shown next to the amount in the Google Pay sheet.
+@override final  String? label;
 
 /// Create a copy of GooglePayParams
 /// with the given fields replaced by the non-null parameter values.
@@ -3040,16 +3056,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GooglePayParams&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.merchantName, merchantName) || other.merchantName == merchantName)&&(identical(other.isEmailRequired, isEmailRequired) || other.isEmailRequired == isEmailRequired)&&(identical(other.allowCreditCards, allowCreditCards) || other.allowCreditCards == allowCreditCards)&&(identical(other.billingAddressConfig, billingAddressConfig) || other.billingAddressConfig == billingAddressConfig));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GooglePayParams&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.merchantName, merchantName) || other.merchantName == merchantName)&&(identical(other.isEmailRequired, isEmailRequired) || other.isEmailRequired == isEmailRequired)&&(identical(other.allowCreditCards, allowCreditCards) || other.allowCreditCards == allowCreditCards)&&(identical(other.billingAddressConfig, billingAddressConfig) || other.billingAddressConfig == billingAddressConfig)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.label, label) || other.label == label));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,testEnv,merchantCountryCode,currencyCode,merchantName,isEmailRequired,allowCreditCards,billingAddressConfig);
+int get hashCode => Object.hash(runtimeType,testEnv,merchantCountryCode,currencyCode,merchantName,isEmailRequired,allowCreditCards,billingAddressConfig,amount,label);
 
 @override
 String toString() {
-  return 'GooglePayParams(testEnv: $testEnv, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, merchantName: $merchantName, isEmailRequired: $isEmailRequired, allowCreditCards: $allowCreditCards, billingAddressConfig: $billingAddressConfig)';
+  return 'GooglePayParams(testEnv: $testEnv, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, merchantName: $merchantName, isEmailRequired: $isEmailRequired, allowCreditCards: $allowCreditCards, billingAddressConfig: $billingAddressConfig, amount: $amount, label: $label)';
 }
 
 
@@ -3060,7 +3076,7 @@ abstract mixin class _$GooglePayParamsCopyWith<$Res> implements $GooglePayParams
   factory _$GooglePayParamsCopyWith(_GooglePayParams value, $Res Function(_GooglePayParams) _then) = __$GooglePayParamsCopyWithImpl;
 @override @useResult
 $Res call({
- bool testEnv, String merchantCountryCode, String currencyCode, String? merchantName, bool? isEmailRequired, bool? allowCreditCards, GooglePayBillingAddressConfig? billingAddressConfig
+ bool testEnv, String merchantCountryCode, String currencyCode, String? merchantName, bool? isEmailRequired, bool? allowCreditCards, GooglePayBillingAddressConfig? billingAddressConfig, int? amount, String? label
 });
 
 
@@ -3077,7 +3093,7 @@ class __$GooglePayParamsCopyWithImpl<$Res>
 
 /// Create a copy of GooglePayParams
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? testEnv = null,Object? merchantCountryCode = null,Object? currencyCode = null,Object? merchantName = freezed,Object? isEmailRequired = freezed,Object? allowCreditCards = freezed,Object? billingAddressConfig = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? testEnv = null,Object? merchantCountryCode = null,Object? currencyCode = null,Object? merchantName = freezed,Object? isEmailRequired = freezed,Object? allowCreditCards = freezed,Object? billingAddressConfig = freezed,Object? amount = freezed,Object? label = freezed,}) {
   return _then(_GooglePayParams(
 testEnv: null == testEnv ? _self.testEnv : testEnv // ignore: cast_nullable_to_non_nullable
 as bool,merchantCountryCode: null == merchantCountryCode ? _self.merchantCountryCode : merchantCountryCode // ignore: cast_nullable_to_non_nullable
@@ -3086,7 +3102,9 @@ as String,merchantName: freezed == merchantName ? _self.merchantName : merchantN
 as String?,isEmailRequired: freezed == isEmailRequired ? _self.isEmailRequired : isEmailRequired // ignore: cast_nullable_to_non_nullable
 as bool?,allowCreditCards: freezed == allowCreditCards ? _self.allowCreditCards : allowCreditCards // ignore: cast_nullable_to_non_nullable
 as bool?,billingAddressConfig: freezed == billingAddressConfig ? _self.billingAddressConfig : billingAddressConfig // ignore: cast_nullable_to_non_nullable
-as GooglePayBillingAddressConfig?,
+as GooglePayBillingAddressConfig?,amount: freezed == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as int?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
