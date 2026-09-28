@@ -892,7 +892,7 @@ internal fun mapFromSetupIntentResult(setupIntent: SetupIntent): WritableMap {
   map.putString("description", setupIntent.description)
   map.putBoolean("livemode", setupIntent.isLiveMode)
   map.putString("clientSecret", setupIntent.clientSecret)
-  map.putString("paymentMethodId", setupIntent.paymentMethodId ?: setupIntent.paymentMethod?.id)
+  map.putString("paymentMethodId", setupIntent.paymentMethodId)
   map.putMap(
     "paymentMethod",
     setupIntent.paymentMethod?.let { mapFromPaymentMethod(it) } ?: run { null },
