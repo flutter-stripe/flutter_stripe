@@ -1142,10 +1142,10 @@ internal fun mapFromConfirmationToken(confirmationToken: ConfirmationToken): Wri
 @SuppressLint("RestrictedApi")
 private fun mapFromSetupFutureUsage(setupFutureUsage: ConfirmPaymentIntentParams.SetupFutureUsage?): String? =
   when (setupFutureUsage) {
-    ConfirmPaymentIntentParams.SetupFutureUsage.OnSession -> "on_session"
-    ConfirmPaymentIntentParams.SetupFutureUsage.OffSession -> "off_session"
-    ConfirmPaymentIntentParams.SetupFutureUsage.Blank -> ""
-    ConfirmPaymentIntentParams.SetupFutureUsage.None -> "none"
+    ConfirmPaymentIntentParams.SetupFutureUsage.OnSession -> "OnSession"
+    ConfirmPaymentIntentParams.SetupFutureUsage.OffSession -> "OffSession"
+    ConfirmPaymentIntentParams.SetupFutureUsage.Blank -> null
+    ConfirmPaymentIntentParams.SetupFutureUsage.None -> null
     null -> null
   }
 
