@@ -11,7 +11,7 @@ _SetupIntent _$SetupIntentFromJson(Map<String, dynamic> json) => _SetupIntent(
   status: json['status'] as String,
   livemode: json['livemode'] as bool,
   clientSecret: json['clientSecret'] as String,
-  paymentMethodId: json['paymentMethodId'] as String,
+  paymentMethodId: _readPaymentMethodId(json, 'paymentMethodId') as String,
   usage: json['usage'] as String,
   paymentMethodTypes: (json['paymentMethodTypes'] as List<dynamic>)
       .map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))

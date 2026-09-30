@@ -30,7 +30,11 @@ abstract class SetupIntent with _$SetupIntent {
     required String clientSecret,
 
     /// Id of the payment method used in this intent.
-    required String paymentMethodId,
+    ///
+    /// Falls back to the id of the expanded `paymentMethod`, because the
+    /// native SDKs can leave `paymentMethodId` null when they return the
+    /// payment method expanded.
+    @JsonKey(readValue: _readPaymentMethodId) required String paymentMethodId,
 
     /// Indicates how the intent is used in the future.
     required String usage,
@@ -74,3 +78,10 @@ abstract class LastSetupError with _$LastSetupError {
   factory LastSetupError.fromJson(Map<String, dynamic> json) =>
       _$LastSetupErrorFromJson(json);
 }
+
+Object? _readPaymentMethodId(Map<dynamic, dynamic> json, String key) =>
+    json[key] ??
+    switch (json['paymentMethod']) {
+      {'id': final Object id} => id,
+      _ => null,
+    };

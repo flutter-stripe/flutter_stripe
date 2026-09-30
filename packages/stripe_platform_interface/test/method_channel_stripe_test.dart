@@ -211,6 +211,38 @@ void main() {
       });
     });
 
+    group('Setup intent with an expanded payment method only', () {
+      late SetupIntent result;
+
+      setUp(() async {
+        sut = MethodChannelStripe(
+          platformIsIos: false,
+          platformIsAndroid: true,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'confirmSetupIntent',
+            result: {
+              "setupIntent": {
+                ...SetupIntentTestInstance.create('id1').toJsonMap('id1'),
+                'paymentMethodId': null,
+                'paymentMethod': {'id': 'pm_expanded'},
+              },
+            },
+          ).methodChannel,
+        );
+        result = await sut.confirmSetupIntent(
+          'setupIntentClientSecret',
+          const PaymentMethodParams.card(
+            paymentMethodData: PaymentMethodData(),
+          ),
+        );
+      });
+
+      test('It reads the id of the expanded payment method', () {
+        expect(result.paymentMethodId, 'pm_expanded');
+      });
+    });
+
     group('createTokenForCVCUpdate', () {
       late String result;
 
