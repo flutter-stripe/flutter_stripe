@@ -57,7 +57,8 @@ void main() {
           'type': 'invalid_request_error',
           'code': 'resource_missing',
           'param': 'intent',
-          'message': 'No such payment_intent: \'pi_3M8VVPLLSCwoVL5p1ZZjwhPT\'',
+          // The message text is owned by Stripe and changes over time.
+          'message': isNotEmpty,
         }),
       );
     });

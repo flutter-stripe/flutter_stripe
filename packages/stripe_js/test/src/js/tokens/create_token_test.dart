@@ -68,7 +68,8 @@ void main() {
           equals({
             'type': 'validation_error',
             'code': 'incomplete_number',
-            'message': 'Your card number is incomplete.',
+            // The message text is owned by Stripe and changes over time.
+            'message': isNotEmpty,
           }),
         );
       });
@@ -102,8 +103,8 @@ void main() {
             'type': 'invalid_request_error',
             'code': 'bank_account_unusable',
             'param': 'bank_account[country]',
-            'message':
-                'Country INVALID not supported (you should use the 2-letter country code, e.g. US).',
+            // The message text is owned by Stripe and changes over time.
+            'message': isNotEmpty,
           }),
         );
       });

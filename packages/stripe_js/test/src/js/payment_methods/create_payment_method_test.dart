@@ -47,7 +47,8 @@ void main() {
         equals({
           'type': 'validation_error',
           'code': 'incomplete_number',
-          'message': 'Your card number is incomplete.',
+          // The message text is owned by Stripe and changes over time.
+          'message': isNotEmpty,
         }),
       );
     });
