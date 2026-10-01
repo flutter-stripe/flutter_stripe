@@ -211,6 +211,42 @@ void main() {
       });
     });
 
+    group('Google Pay setup intent', () {
+      test('It sends amount and label to the native sheet', () async {
+        final methodChannelMock = MethodChannelMock(
+          channelName: methodChannelName,
+          method: 'confirmPlatformPay',
+          result: {
+            "setupIntent": SetupIntentTestInstance.create(
+              'id1',
+            ).toJsonMap('id1'),
+          },
+        );
+        sut = MethodChannelStripe(
+          platformIsIos: false,
+          platformIsAndroid: true,
+          methodChannel: methodChannelMock.methodChannel,
+        );
+
+        await sut.platformPayConfirmSetupIntent(
+          clientSecret: 'setupIntentClientSecret',
+          params: const PlatformPayConfirmParams.googlePay(
+            googlePay: GooglePayParams(
+              merchantCountryCode: 'DE',
+              currencyCode: 'EUR',
+              amount: 499,
+              label: 'Subscription',
+            ),
+          ),
+        );
+
+        final arguments = methodChannelMock.log.single.arguments as Map;
+        final googlePay = (arguments['params'] as Map)['googlePay'] as Map;
+        expect(googlePay['amount'], 499);
+        expect(googlePay['label'], 'Subscription');
+      });
+    });
+
     group('Setup intent with an expanded payment method only', () {
       late SetupIntent result;
 
