@@ -82,9 +82,11 @@ android {
     }
 }
 
-// On AGP < 9, jvmTarget must be set explicitly via the Kotlin extension.
-// On AGP >= 9, built-in Kotlin already derives it from compileOptions.targetCompatibility above.
-if (agpMajor < 9) {
+// Whenever KGP is applied, jvmTarget must be set explicitly to match the Java target.
+// That covers AGP < 9 (applied above) and AGP >= 9 with `android.builtInKotlin=false`,
+// where Flutter applies KGP to this project itself. Built-in Kotlin derives it from
+// compileOptions.targetCompatibility above.
+plugins.withId('org.jetbrains.kotlin.android') {
     kotlin {
         compilerOptions {
             jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
