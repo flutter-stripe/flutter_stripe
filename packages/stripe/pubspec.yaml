@@ -6,7 +6,7 @@ repository: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
   sdk: ">=3.8.1 <4.0.0"
-  flutter: ">=3.41.0"
+  flutter: ">=3.47.0"
 
 flutter:
   plugin:
@@ -21,6 +21,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
+  material_ui: ^1.6.0
   meta: ^1.8.0
   stripe_android: ^14.1.0
   stripe_ios: ^14.1.0
