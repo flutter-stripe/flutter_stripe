@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 
