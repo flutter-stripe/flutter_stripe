@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   material_ui: ^1.6.0
-  flutter_stripe: ^12.0.0
-  flutter_stripe_web: ^7.0.0
+  flutter_stripe: ^15.0.0-dev.1
+  flutter_stripe_web: ^9.0.0-dev.1
   # Temporarily removed: pay_android applies the Kotlin Gradle Plugin, which is
   # incompatible with Flutter's Built-in Kotlin (AGP 9) and breaks the Android build.
   # Re-enable once pay ships a Built-in Kotlin compatible release.
