@@ -1,9 +1,10 @@
-// This is a compat layer for NativeStripeSdkModuleSpecBase which is generated with codegen
-// for the new arch. This implements the same methods, but using old arch apis.
+// This is a compat layer for new architecture event emitters on React Native < 0.80.
+// It avoids crashes when setting the generated event emitter callback by using RCTEventEmitter.
 
-#import <Foundation/Foundation.h>
+#import <React/RCTEventEmitter.h>
 
-@interface StripeSdkEventEmitterCompat : NSObject
+@interface StripeSdkEventEmitterCompat : RCTEventEmitter
+
 - (void)emitOnConfirmHandlerCallback:(NSDictionary *)value;
 - (void)emitOnConfirmationTokenHandlerCallback:(NSDictionary *)value;
 - (void)emitOnFinancialConnectionsEvent:(NSDictionary *)value;
@@ -15,7 +16,7 @@
 - (void)emitOnCustomerAdapterFetchSelectedPaymentOptionCallback;
 - (void)emitOnCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback;
 - (void)emitOnCustomerSessionProviderSetupIntentClientSecret;
-- (void)emitOnCustomerSessionProviderCustomerSessionClientSecret;
+- (void)emitOnCustomerSessionProviderCustomerSessionClientSecret:(NSDictionary *)value;
 - (void)emitEmbeddedPaymentElementDidUpdateHeight:(NSDictionary *)value;
 - (void)emitEmbeddedPaymentElementWillPresent;
 - (void)emitEmbeddedPaymentElementDidUpdatePaymentOption:(NSDictionary *)value;
@@ -27,5 +28,6 @@
 - (void)emitPaymentMethodMessagingElementDidUpdateHeight:(NSDictionary *)value;
 - (void)emitPaymentMethodMessagingElementConfigureResult:(NSDictionary *)value;
 - (void)emitCheckoutControllerDidUpdate:(NSDictionary *)value;
-- (void)sendEventWithName:(NSString *)name body:(NSDictionary<NSString *, id> *)body;
+- (void)emitCheckoutControllerDidSelectPaymentOption:(NSDictionary *)value;
+- (void)emitCheckoutServerUpdateRequested:(NSDictionary *)value;
 @end
