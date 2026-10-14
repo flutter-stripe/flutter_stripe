@@ -1,3 +1,10 @@
+## 8.3.0
+
+ - **FIX**: remove giropay payment method references from codebase (#2309).
+ - **FIX**(android): keyboard not appearing on first tap for CardField (#2291).
+ - **FIX**: Remove empty bank parameter from iDEAL payments to comply with Stripe API changes (#2186).
+ - **FEAT**(web): add web support for collectBankAccount and verifyMicrodeposits (#2396).
+
 ## 8.2.0
 **Features**:
 - Add support for Flutter 3.47.0

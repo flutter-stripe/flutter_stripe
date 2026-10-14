@@ -15,6 +15,37 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_js` - `v8.3.0`](#stripe_js---v830)
+ - [`flutter_stripe_web` - `v8.2.1`](#flutter_stripe_web---v821)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v8.2.1`
+
+---
+
+#### `stripe_js` - `v8.3.0`
+
+ - **FIX**: remove giropay payment method references from codebase (#2309).
+ - **FIX**(android): keyboard not appearing on first tap for CardField (#2291).
+ - **FIX**: Remove empty bank parameter from iDEAL payments to comply with Stripe API changes (#2186).
+ - **FEAT**(web): add web support for collectBankAccount and verifyMicrodeposits (#2396).
+
+
+## 2026-10-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_platform_interface` - `v14.2.0`](#stripe_platform_interface---v1420)
  - [`flutter_stripe` - `v14.1.1`](#flutter_stripe---v1411)
  - [`flutter_stripe_web` - `v8.2.1`](#flutter_stripe_web---v821)
