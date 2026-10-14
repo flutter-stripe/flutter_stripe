@@ -1,3 +1,11 @@
+## 14.2.0
+
+ - **FIX**(ios): stop the unhandled-URL log mis-attributing deep-link breakage + add scene-delegate support (#2422) (#2429).
+ - **FIX**: #2383 confirm token handler on payment sheet (#2400).
+ - **FIX**(ios): improve URL callback handling for Link payment method (#2290).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+
 ## 14.1.0
 
 **Features**:
