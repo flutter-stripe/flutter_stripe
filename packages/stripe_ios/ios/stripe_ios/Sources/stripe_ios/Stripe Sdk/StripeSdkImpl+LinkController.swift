@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import React
+import UIKit
 @_spi(LinkControllerPreview) import StripePaymentSheet
 
 extension StripeSdkImpl {

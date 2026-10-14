@@ -1,5 +1,4 @@
 import Foundation
-import React
 import Stripe
 import UIKit
 

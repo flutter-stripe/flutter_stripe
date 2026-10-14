@@ -1,7 +1,6 @@
 import AuthenticationServices
 import Foundation
 import PassKit
-import React
 import SafariServices
 @_spi(DashboardOnly) @_spi(STP) import Stripe
 @_spi(STP) @_spi(ReactNativeSDK) import StripeCore

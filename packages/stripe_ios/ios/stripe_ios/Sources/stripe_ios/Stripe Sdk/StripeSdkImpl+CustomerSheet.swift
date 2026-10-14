@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import React
+import UIKit
 @_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
 extension StripeSdkImpl {
     @MainActor

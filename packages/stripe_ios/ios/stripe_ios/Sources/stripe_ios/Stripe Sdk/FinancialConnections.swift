@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import React
 import Stripe
 import StripeFinancialConnections
+import UIKit
 
 class FinancialConnections {
 

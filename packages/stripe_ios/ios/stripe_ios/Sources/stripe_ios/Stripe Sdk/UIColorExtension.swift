@@ -5,6 +5,8 @@
 //  Created by Arkadiusz Kubaczkowski on 24/11/2020.
 //
 
+import UIKit
+
 extension UIColor {
     public convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

@@ -1,5 +1,4 @@
 import Foundation
-import React
 @_spi(ReactNativeSDK) @_spi(STP) import StripePaymentSheet
 
 extension StripeSdkImpl {
