@@ -7,7 +7,6 @@ import com.facebook.react.bridge.Dynamic
 import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.bridge.ReadableType
-import com.flutter.stripe.invoke
 
 fun View.showSoftKeyboard() {
   post {
