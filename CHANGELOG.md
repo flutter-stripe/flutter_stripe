@@ -15,6 +15,39 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v14.2.0`](#flutter_stripe---v1420)
+
+---
+
+#### `flutter_stripe` - `v14.2.0`
+
+ - **FIX**(ios): stop the unhandled-URL log mis-attributing deep-link breakage + add scene-delegate support (#2422) (#2429).
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+ - **FIX**: 2306 remove descendantsAreFocusable are focusable as it dismisses the keyboard when we do not want it (#2316).
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FIX**(ios): improve URL callback handling for Link payment method (#2290).
+ - **FIX**(android): keyboard not appearing on first tap for CardField (#2291).
+ - **FIX**: add meta import for @internal annotation (#2269).
+ - **FIX**: add new proguard rules to prevent release build from building (#2213).
+ - **FIX**: add missing param to method channel (#2181).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+ - **FEAT**(android): add hint text parameters to CardFormField (#2296).
+ - **FEAT**: web language (#2267).
+
+
+## 2026-10-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v8.3.0`](#flutter_stripe_web---v830)
 
 ---
