@@ -124,6 +124,13 @@ enum PaymentIntentsFutureUsage {
   /// Reuse the payment method in the checkout flow. Use this when the customer is present
   /// in the checkout flow.
   OnSession,
+
+  /// Do not set the payment method up for future usage.
+  ///
+  /// Only reported back by the native SDKs, for example on
+  /// [ConfirmationToken.setupFutureUsage]. It is not a valid value to send when
+  /// confirming a payment.
+  None,
 }
 
 /// Status of the payment intent.

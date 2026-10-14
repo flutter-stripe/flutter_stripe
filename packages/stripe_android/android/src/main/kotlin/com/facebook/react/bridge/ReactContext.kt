@@ -6,6 +6,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.facebook.react.uimanager.UIManagerModule
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.plugin.common.MethodChannel
+import java.util.concurrent.CopyOnWriteArrayList
 
 open class ReactContext(
     private val currentAct: FragmentActivity,
@@ -31,5 +32,19 @@ open class ReactContext(
 
     fun getJSModule(clazz: Any): DeviceEventManagerModule.RCTDeviceEventEmitter {
         return DeviceEventManagerModule.RCTDeviceEventEmitter(channel)
+    }
+
+    // TODO: there is no React host lifecycle in the Flutter plugin, so registered listeners are
+    //  tracked but never dispatched to. The copied code uses these to recover after the React
+    //  Activity is recreated; callers also re-check the activity right after registering, so they
+    //  still make progress while the activity is available.
+    private val lifecycleEventListeners = CopyOnWriteArrayList<LifecycleEventListener>()
+
+    fun addLifecycleEventListener(listener: LifecycleEventListener) {
+        lifecycleEventListeners.addIfAbsent(listener)
+    }
+
+    fun removeLifecycleEventListener(listener: LifecycleEventListener) {
+        lifecycleEventListeners.remove(listener)
     }
 }

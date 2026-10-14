@@ -52,6 +52,7 @@ Map<String, dynamic> _$ConfirmationTokenResultToJson(
 const _$PaymentIntentsFutureUsageEnumMap = {
   PaymentIntentsFutureUsage.OffSession: 'OffSession',
   PaymentIntentsFutureUsage.OnSession: 'OnSession',
+  PaymentIntentsFutureUsage.None: 'None',
 };
 
 _PaymentMethodPreview _$PaymentMethodPreviewFromJson(

@@ -239,6 +239,8 @@ _FinancialConnectionsEvent _$FinancialConnectionsEventFromJson(
   Map<String, dynamic> json,
 ) => _FinancialConnectionsEvent(
   name: $enumDecode(_$FinancialConnectionsEventNameEnumMap, json['name']),
+  financialConnectionsSessionId:
+      json['financialConnectionsSessionId'] as String?,
   metadata: FinancialConnectionsEventMetadata.fromJson(
     json['metadata'] as Map<String, dynamic>,
   ),
@@ -248,6 +250,7 @@ Map<String, dynamic> _$FinancialConnectionsEventToJson(
   _FinancialConnectionsEvent instance,
 ) => <String, dynamic>{
   'name': _$FinancialConnectionsEventNameEnumMap[instance.name]!,
+  'financialConnectionsSessionId': instance.financialConnectionsSessionId,
   'metadata': instance.metadata.toJson(),
 };
 
