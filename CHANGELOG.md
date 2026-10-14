@@ -15,6 +15,38 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v8.3.0`](#flutter_stripe_web---v830)
+
+---
+
+#### `flutter_stripe_web` - `v8.3.0`
+
+ - **FIX**(web): constrain PaymentElement height in scrollable layouts (#2423).
+ - **FIX**(web): unique view type per ExpressCheckoutElement instance to fix infinite spinner on remount (#2405) (#2439).
+ - **FIX**: return sealed CollectBankAccountResult for bank account collection (#2395).
+ - **FIX**(web): unique view type per PaymentElement instance to fix infinite spinner on remount (#2368) (#2372).
+ - **FIX**: correct CardField web color rendering and apply all style colors (#2365).
+ - **FIX**: remove giropay payment method references from codebase (#2309).
+ - **FIX**: change initCustomerSheet return type to Future<void> (#2292).
+ - **FIX**: Remove empty bank parameter from iDEAL payments to comply with Stripe API changes (#2186).
+ - **FEAT**(web): add web support for collectBankAccount and verifyMicrodeposits (#2396).
+ - **FEAT**: expose Stripe Connect deep link infrastructure to Dart (#2388).
+ - **FEAT**: add createRadarSession to Dart API (#2386).
+ - **FEAT**: web language (#2267).
+
+
+## 2026-10-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_ios` - `v14.2.0`](#stripe_ios---v1420)
  - [`flutter_stripe` - `v14.1.1`](#flutter_stripe---v1411)
 
