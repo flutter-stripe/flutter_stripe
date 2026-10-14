@@ -1,3 +1,12 @@
+## 8.3.0
+**Features**:
+- Expose amount and label on GooglePayParams #2480
+
+**Fixes**
+- Improve focus behavior for Cardfield and Cardformfield #2484
+- Read SetupIntent paymentMethodId from the expanded paymentMethod when it is null #2479
+
+
 ## 8.2.0
 **Features**:
 - Add support for Flutter 3.47.0

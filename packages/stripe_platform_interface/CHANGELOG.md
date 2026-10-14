@@ -1,3 +1,13 @@
+## 14.2.0
+
+**Features**:
+- Sync with Stripe React Native [0.81.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.81.0)
+- Expose amount and label on GooglePayParams #2480
+
+**Fixes**
+- Improve focus behavior for Cardfield and Cardformfield #2484
+- Read SetupIntent paymentMethodId from the expanded paymentMethod when it is null #2479
+
 ## 14.1.0
 
 **Features**:
