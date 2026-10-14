@@ -255,6 +255,9 @@ abstract class FinancialConnectionsEvent with _$FinancialConnectionsEvent {
     /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
     required FinancialConnectionsEventName name,
 
+    /// The id of the Financial Connections Session that produced this event.
+    String? financialConnectionsSessionId,
+
     /// Event-associated metadata. Provides further detail related to the occurred event.
     required FinancialConnectionsEventMetadata metadata,
   }) = _FinancialConnectionsEvent;

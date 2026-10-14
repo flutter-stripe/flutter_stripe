@@ -2471,7 +2471,8 @@ as String?,
 mixin _$FinancialConnectionsEvent {
 
 /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
- FinancialConnectionsEventName get name;/// Event-associated metadata. Provides further detail related to the occurred event.
+ FinancialConnectionsEventName get name;/// The id of the Financial Connections Session that produced this event.
+ String? get financialConnectionsSessionId;/// Event-associated metadata. Provides further detail related to the occurred event.
  FinancialConnectionsEventMetadata get metadata;
 /// Create a copy of FinancialConnectionsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -2485,16 +2486,16 @@ $FinancialConnectionsEventCopyWith<FinancialConnectionsEvent> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionsEvent&&(identical(other.name, name) || other.name == name)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionsEvent&&(identical(other.name, name) || other.name == name)&&(identical(other.financialConnectionsSessionId, financialConnectionsSessionId) || other.financialConnectionsSessionId == financialConnectionsSessionId)&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,metadata);
+int get hashCode => Object.hash(runtimeType,name,financialConnectionsSessionId,metadata);
 
 @override
 String toString() {
-  return 'FinancialConnectionsEvent(name: $name, metadata: $metadata)';
+  return 'FinancialConnectionsEvent(name: $name, financialConnectionsSessionId: $financialConnectionsSessionId, metadata: $metadata)';
 }
 
 
@@ -2505,7 +2506,7 @@ abstract mixin class $FinancialConnectionsEventCopyWith<$Res>  {
   factory $FinancialConnectionsEventCopyWith(FinancialConnectionsEvent value, $Res Function(FinancialConnectionsEvent) _then) = _$FinancialConnectionsEventCopyWithImpl;
 @useResult
 $Res call({
- FinancialConnectionsEventName name, FinancialConnectionsEventMetadata metadata
+ FinancialConnectionsEventName name, String? financialConnectionsSessionId, FinancialConnectionsEventMetadata metadata
 });
 
 
@@ -2522,10 +2523,11 @@ class _$FinancialConnectionsEventCopyWithImpl<$Res>
 
 /// Create a copy of FinancialConnectionsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? metadata = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? financialConnectionsSessionId = freezed,Object? metadata = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as FinancialConnectionsEventName,metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
+as FinancialConnectionsEventName,financialConnectionsSessionId: freezed == financialConnectionsSessionId ? _self.financialConnectionsSessionId : financialConnectionsSessionId // ignore: cast_nullable_to_non_nullable
+as String?,metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
 as FinancialConnectionsEventMetadata,
   ));
 }
@@ -2620,10 +2622,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FinancialConnectionsEventName name,  FinancialConnectionsEventMetadata metadata)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FinancialConnectionsEventName name,  String? financialConnectionsSessionId,  FinancialConnectionsEventMetadata metadata)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FinancialConnectionsEvent() when $default != null:
-return $default(_that.name,_that.metadata);case _:
+return $default(_that.name,_that.financialConnectionsSessionId,_that.metadata);case _:
   return orElse();
 
 }
@@ -2641,10 +2643,10 @@ return $default(_that.name,_that.metadata);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FinancialConnectionsEventName name,  FinancialConnectionsEventMetadata metadata)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FinancialConnectionsEventName name,  String? financialConnectionsSessionId,  FinancialConnectionsEventMetadata metadata)  $default,) {final _that = this;
 switch (_that) {
 case _FinancialConnectionsEvent():
-return $default(_that.name,_that.metadata);case _:
+return $default(_that.name,_that.financialConnectionsSessionId,_that.metadata);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -2661,10 +2663,10 @@ return $default(_that.name,_that.metadata);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FinancialConnectionsEventName name,  FinancialConnectionsEventMetadata metadata)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FinancialConnectionsEventName name,  String? financialConnectionsSessionId,  FinancialConnectionsEventMetadata metadata)?  $default,) {final _that = this;
 switch (_that) {
 case _FinancialConnectionsEvent() when $default != null:
-return $default(_that.name,_that.metadata);case _:
+return $default(_that.name,_that.financialConnectionsSessionId,_that.metadata);case _:
   return null;
 
 }
@@ -2676,11 +2678,13 @@ return $default(_that.name,_that.metadata);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _FinancialConnectionsEvent implements FinancialConnectionsEvent {
-  const _FinancialConnectionsEvent({required this.name, required this.metadata});
+  const _FinancialConnectionsEvent({required this.name, this.financialConnectionsSessionId, required this.metadata});
   factory _FinancialConnectionsEvent.fromJson(Map<String, dynamic> json) => _$FinancialConnectionsEventFromJson(json);
 
 /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
 @override final  FinancialConnectionsEventName name;
+/// The id of the Financial Connections Session that produced this event.
+@override final  String? financialConnectionsSessionId;
 /// Event-associated metadata. Provides further detail related to the occurred event.
 @override final  FinancialConnectionsEventMetadata metadata;
 
@@ -2697,16 +2701,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionsEvent&&(identical(other.name, name) || other.name == name)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionsEvent&&(identical(other.name, name) || other.name == name)&&(identical(other.financialConnectionsSessionId, financialConnectionsSessionId) || other.financialConnectionsSessionId == financialConnectionsSessionId)&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,metadata);
+int get hashCode => Object.hash(runtimeType,name,financialConnectionsSessionId,metadata);
 
 @override
 String toString() {
-  return 'FinancialConnectionsEvent(name: $name, metadata: $metadata)';
+  return 'FinancialConnectionsEvent(name: $name, financialConnectionsSessionId: $financialConnectionsSessionId, metadata: $metadata)';
 }
 
 
@@ -2717,7 +2721,7 @@ abstract mixin class _$FinancialConnectionsEventCopyWith<$Res> implements $Finan
   factory _$FinancialConnectionsEventCopyWith(_FinancialConnectionsEvent value, $Res Function(_FinancialConnectionsEvent) _then) = __$FinancialConnectionsEventCopyWithImpl;
 @override @useResult
 $Res call({
- FinancialConnectionsEventName name, FinancialConnectionsEventMetadata metadata
+ FinancialConnectionsEventName name, String? financialConnectionsSessionId, FinancialConnectionsEventMetadata metadata
 });
 
 
@@ -2734,10 +2738,11 @@ class __$FinancialConnectionsEventCopyWithImpl<$Res>
 
 /// Create a copy of FinancialConnectionsEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? metadata = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? financialConnectionsSessionId = freezed,Object? metadata = null,}) {
   return _then(_FinancialConnectionsEvent(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as FinancialConnectionsEventName,metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
+as FinancialConnectionsEventName,financialConnectionsSessionId: freezed == financialConnectionsSessionId ? _self.financialConnectionsSessionId : financialConnectionsSessionId // ignore: cast_nullable_to_non_nullable
+as String?,metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
 as FinancialConnectionsEventMetadata,
   ));
 }

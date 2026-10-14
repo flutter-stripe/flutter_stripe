@@ -74,6 +74,16 @@ public class WritableMap extends ReadableMap {
         put(key, null);
     }
 
+    /**
+     * WritableMap keeps its data in the inherited HashMap, so a shallow copy of those entries is
+     * enough. The copied Stripe code uses this when nesting a map it also keeps a reference to.
+     */
+    public WritableMap copy() {
+        WritableMap copy = new WritableMap();
+        copy.putAll(this);
+        return copy;
+    }
+
     public void merge(ReadableMap source) {
         for (String key : source.keySet()) {
             this.put(key, source.get(key));

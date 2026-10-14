@@ -174,12 +174,16 @@ extension ShippingAddressFromJs on Address {
 }
 
 extension PaymentIntentsFutureUsageParser on PaymentIntentsFutureUsage {
-  js.PaymentIntentSetupFutureUsage toJs() {
+  /// Returns `null` for [PaymentIntentsFutureUsage.None], since Stripe.js has no
+  /// equivalent value and omitting `setup_future_usage` is what "none" means.
+  js.PaymentIntentSetupFutureUsage? toJs() {
     switch (this) {
       case PaymentIntentsFutureUsage.OffSession:
         return js.PaymentIntentSetupFutureUsage.offSession;
       case PaymentIntentsFutureUsage.OnSession:
         return js.PaymentIntentSetupFutureUsage.onSession;
+      case PaymentIntentsFutureUsage.None:
+        return null;
     }
   }
 }
