@@ -986,6 +986,7 @@ Map<String, dynamic> _$PaymentMethodOptionsToJson(
 const _$PaymentIntentsFutureUsageEnumMap = {
   PaymentIntentsFutureUsage.OffSession: 'OffSession',
   PaymentIntentsFutureUsage.OnSession: 'OnSession',
+  PaymentIntentsFutureUsage.None: 'None',
 };
 
 const _$IntentFutureUsageEnumMap = {

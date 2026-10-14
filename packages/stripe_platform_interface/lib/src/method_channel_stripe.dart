@@ -106,6 +106,8 @@ class MethodChannelStripe extends StripePlatform {
           _financialConnectionsEventHandler != null) {
         final event = FinancialConnectionsEvent(
           name: call.arguments['name'],
+          financialConnectionsSessionId:
+              call.arguments['financialConnectionsSessionId'],
           metadata: FinancialConnectionsEventMetadata.fromJson(
             call.arguments['metadata'],
           ),
