@@ -1,3 +1,11 @@
+## 14.2.0
+
+**Features**:
+- Sync with Stripe React Native [0.81.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.81.0)
+
+**Fixes**
+- Read SetupIntent paymentMethodId from the expanded paymentMethod when it is null #2479
+
 ## 14.1.0
 
 **Features**:
