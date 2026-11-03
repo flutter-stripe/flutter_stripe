@@ -68,13 +68,13 @@ class AddressSheetPlatformView: NSObject, FlutterPlatformView {
     public func onCompleteAction(addressData: Dictionary<AnyHashable, Any>?) {
         channel.invokeMethod("onSubmitAction", arguments: addressData)
         formView.visible=false
-        formView.didSetProps(["visible"])
+        formView.didSetProps()
     }
     
     public func onCancelAction(errorData: Dictionary<AnyHashable, Any>?) {
         channel.invokeMethod("onErrorAction", arguments: errorData)
         formView.visible=false
-        formView.didSetProps(["visible"])
+        formView.didSetProps()
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -129,7 +129,7 @@ class AddressSheetPlatformView: NSObject, FlutterPlatformView {
             formView.sheetTitle = sheetTitle
         }
 
-        formView.didSetProps(nil)
+        formView.didSetProps()
      
 
     }
