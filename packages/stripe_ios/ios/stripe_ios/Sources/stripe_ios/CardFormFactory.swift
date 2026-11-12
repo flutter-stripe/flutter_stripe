@@ -116,7 +116,7 @@ class CardFormPlatformView : NSObject, FlutterPlatformView  {
         if let autofocus = arguments["autofocus"] as? Bool{
             cardForm.autofocus = autofocus
         }
-        cardForm.didSetProps([])
+        cardForm.didSetProps()
     }
     
 }

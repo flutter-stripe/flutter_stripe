@@ -84,7 +84,7 @@ class AddToWalletButtonPlatformView : NSObject, FlutterPlatformView  {
         if  let argument = arguments["cardDetails"] as? NSDictionary{
             addToWalletView.cardDetails = argument
         }
-        addToWalletView.didSetProps(nil)
+        addToWalletView.didSetProps()
     }
     
 }

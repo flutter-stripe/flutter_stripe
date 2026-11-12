@@ -90,7 +90,7 @@ class AuBECSDebitFormPlatformView : NSObject, FlutterPlatformView  {
         if let companyName = arguments["companyName"] as? NSString {
             formView.companyName = companyName
         }
-        formView.didSetProps(nil)
+        formView.didSetProps()
     }
     
 }
