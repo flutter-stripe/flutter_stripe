@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ach_params.dart';
@@ -9,6 +9,7 @@ part of 'ach_params.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -39,16 +40,21 @@ $CollectBankAccountParamsCopyWith<CollectBankAccountParams> get copyWith => _$Co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountParams&&(identical(other.paymentMethodData, paymentMethodData) || other.paymentMethodData == paymentMethodData)&&(identical(other.paymentMethodType, paymentMethodType) || other.paymentMethodType == paymentMethodType)&&(identical(other.userInterfaceStyle, userInterfaceStyle) || other.userInterfaceStyle == userInterfaceStyle)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent));
+  final _this = this as CollectBankAccountParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountParams&&(identical(other.paymentMethodData, _this.paymentMethodData) || other.paymentMethodData == _this.paymentMethodData)&&(identical(other.paymentMethodType, _this.paymentMethodType) || other.paymentMethodType == _this.paymentMethodType)&&(identical(other.userInterfaceStyle, _this.userInterfaceStyle) || other.userInterfaceStyle == _this.userInterfaceStyle)&&(identical(other.onEvent, _this.onEvent) || other.onEvent == _this.onEvent));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethodData,paymentMethodType,userInterfaceStyle,onEvent);
+int get hashCode {
+  final _this = this as CollectBankAccountParams;
+  return Object.hash(runtimeType,_this.paymentMethodData,_this.paymentMethodType,_this.userInterfaceStyle,_this.onEvent);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountParams(paymentMethodData: $paymentMethodData, paymentMethodType: $paymentMethodType, userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent)';
+  final _this = this as CollectBankAccountParams;
+  return 'CollectBankAccountParams(paymentMethodData: ${_this.paymentMethodData}, paymentMethodType: ${_this.paymentMethodType}, userInterfaceStyle: ${_this.userInterfaceStyle}, onEvent: ${_this.onEvent})';
 }
 
 
@@ -77,7 +83,7 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res>
 /// Create a copy of CollectBankAccountParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? paymentMethodData = null,Object? paymentMethodType = null,Object? userInterfaceStyle = freezed,Object? onEvent = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CollectBankAccountParams(
 paymentMethodData: null == paymentMethodData ? _self.paymentMethodData : paymentMethodData // ignore: cast_nullable_to_non_nullable
 as CollectBankAccountPaymentMethodData,paymentMethodType: null == paymentMethodType ? _self.paymentMethodType : paymentMethodType // ignore: cast_nullable_to_non_nullable
 as PaymentMethodType,userInterfaceStyle: freezed == userInterfaceStyle ? _self.userInterfaceStyle : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
@@ -264,16 +270,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountParams&&(identical(other.paymentMethodData, paymentMethodData) || other.paymentMethodData == paymentMethodData)&&(identical(other.paymentMethodType, paymentMethodType) || other.paymentMethodType == paymentMethodType)&&(identical(other.userInterfaceStyle, userInterfaceStyle) || other.userInterfaceStyle == userInterfaceStyle)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountParams&&(identical(other.paymentMethodData, paymentMethodData) || other.paymentMethodData == paymentMethodData)&&(identical(other.paymentMethodType, paymentMethodType) || other.paymentMethodType == paymentMethodType)&&(identical(other.userInterfaceStyle, userInterfaceStyle) || other.userInterfaceStyle == userInterfaceStyle)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethodData,paymentMethodType,userInterfaceStyle,onEvent);
+int get hashCode {
+    return Object.hash(runtimeType,paymentMethodData,paymentMethodType,userInterfaceStyle,onEvent);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountParams(paymentMethodData: $paymentMethodData, paymentMethodType: $paymentMethodType, userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent)';
+    return 'CollectBankAccountParams(paymentMethodData: $paymentMethodData, paymentMethodType: $paymentMethodType, userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent)';
 }
 
 
@@ -347,16 +355,21 @@ $CollectBankAccountTokenParamsCopyWith<CollectBankAccountTokenParams> get copyWi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountTokenParams&&(identical(other.userInterfaceStyle, userInterfaceStyle) || other.userInterfaceStyle == userInterfaceStyle)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent)&&(identical(other.connectedAccountId, connectedAccountId) || other.connectedAccountId == connectedAccountId));
+  final _this = this as CollectBankAccountTokenParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountTokenParams&&(identical(other.userInterfaceStyle, _this.userInterfaceStyle) || other.userInterfaceStyle == _this.userInterfaceStyle)&&(identical(other.onEvent, _this.onEvent) || other.onEvent == _this.onEvent)&&(identical(other.connectedAccountId, _this.connectedAccountId) || other.connectedAccountId == _this.connectedAccountId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,userInterfaceStyle,onEvent,connectedAccountId);
+int get hashCode {
+  final _this = this as CollectBankAccountTokenParams;
+  return Object.hash(runtimeType,_this.userInterfaceStyle,_this.onEvent,_this.connectedAccountId);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountTokenParams(userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent, connectedAccountId: $connectedAccountId)';
+  final _this = this as CollectBankAccountTokenParams;
+  return 'CollectBankAccountTokenParams(userInterfaceStyle: ${_this.userInterfaceStyle}, onEvent: ${_this.onEvent}, connectedAccountId: ${_this.connectedAccountId})';
 }
 
 
@@ -385,7 +398,7 @@ class _$CollectBankAccountTokenParamsCopyWithImpl<$Res>
 /// Create a copy of CollectBankAccountTokenParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? userInterfaceStyle = freezed,Object? onEvent = freezed,Object? connectedAccountId = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CollectBankAccountTokenParams(
 userInterfaceStyle: freezed == userInterfaceStyle ? _self.userInterfaceStyle : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
 as UserInterfaceStyle?,onEvent: freezed == onEvent ? _self.onEvent : onEvent // ignore: cast_nullable_to_non_nullable
 as FinancialConnectionsEventHandler?,connectedAccountId: freezed == connectedAccountId ? _self.connectedAccountId : connectedAccountId // ignore: cast_nullable_to_non_nullable
@@ -557,16 +570,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountTokenParams&&(identical(other.userInterfaceStyle, userInterfaceStyle) || other.userInterfaceStyle == userInterfaceStyle)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent)&&(identical(other.connectedAccountId, connectedAccountId) || other.connectedAccountId == connectedAccountId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountTokenParams&&(identical(other.userInterfaceStyle, userInterfaceStyle) || other.userInterfaceStyle == userInterfaceStyle)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent)&&(identical(other.connectedAccountId, connectedAccountId) || other.connectedAccountId == connectedAccountId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,userInterfaceStyle,onEvent,connectedAccountId);
+int get hashCode {
+    return Object.hash(runtimeType,userInterfaceStyle,onEvent,connectedAccountId);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountTokenParams(userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent, connectedAccountId: $connectedAccountId)';
+    return 'CollectBankAccountTokenParams(userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent, connectedAccountId: $connectedAccountId)';
 }
 
 
@@ -623,16 +638,21 @@ $CollectBankAccountPaymentMethodDataCopyWith<CollectBankAccountPaymentMethodData
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountPaymentMethodData&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+  final _this = this as CollectBankAccountPaymentMethodData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountPaymentMethodData&&(identical(other.billingDetails, _this.billingDetails) || other.billingDetails == _this.billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,billingDetails);
+int get hashCode {
+  final _this = this as CollectBankAccountPaymentMethodData;
+  return Object.hash(runtimeType,_this.billingDetails);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountPaymentMethodData(billingDetails: $billingDetails)';
+  final _this = this as CollectBankAccountPaymentMethodData;
+  return 'CollectBankAccountPaymentMethodData(billingDetails: ${_this.billingDetails})';
 }
 
 
@@ -661,7 +681,7 @@ class _$CollectBankAccountPaymentMethodDataCopyWithImpl<$Res>
 /// Create a copy of CollectBankAccountPaymentMethodData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? billingDetails = null,}) {
-  return _then(_self.copyWith(
+  return _then(CollectBankAccountPaymentMethodData(
 billingDetails: null == billingDetails ? _self.billingDetails : billingDetails // ignore: cast_nullable_to_non_nullable
 as BillingDetails,
   ));
@@ -831,16 +851,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountPaymentMethodData&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountPaymentMethodData&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,billingDetails);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountPaymentMethodData(billingDetails: $billingDetails)';
+    return 'CollectBankAccountPaymentMethodData(billingDetails: $billingDetails)';
 }
 
 
@@ -911,16 +933,21 @@ $VerifyMicroDepositsParamsCopyWith<VerifyMicroDepositsParams> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VerifyMicroDepositsParams&&const DeepCollectionEquality().equals(other.amounts, amounts)&&(identical(other.descriptorCode, descriptorCode) || other.descriptorCode == descriptorCode));
+  final _this = this as VerifyMicroDepositsParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VerifyMicroDepositsParams&&const DeepCollectionEquality().equals(other.amounts, _this.amounts)&&(identical(other.descriptorCode, _this.descriptorCode) || other.descriptorCode == _this.descriptorCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(amounts),descriptorCode);
+int get hashCode {
+  final _this = this as VerifyMicroDepositsParams;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.amounts),_this.descriptorCode);
+}
 
 @override
 String toString() {
-  return 'VerifyMicroDepositsParams(amounts: $amounts, descriptorCode: $descriptorCode)';
+  final _this = this as VerifyMicroDepositsParams;
+  return 'VerifyMicroDepositsParams(amounts: ${_this.amounts}, descriptorCode: ${_this.descriptorCode})';
 }
 
 
@@ -949,7 +976,7 @@ class _$VerifyMicroDepositsParamsCopyWithImpl<$Res>
 /// Create a copy of VerifyMicroDepositsParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? amounts = freezed,Object? descriptorCode = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(VerifyMicroDepositsParams(
 amounts: freezed == amounts ? _self.amounts : amounts // ignore: cast_nullable_to_non_nullable
 as List<int>?,descriptorCode: freezed == descriptorCode ? _self.descriptorCode : descriptorCode // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -1093,7 +1120,7 @@ return $default(_that.amounts,_that.descriptorCode);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _VerifyMicroDepositsParams implements VerifyMicroDepositsParams {
-  const _VerifyMicroDepositsParams({final  List<int>? amounts, this.descriptorCode}): _amounts = amounts;
+  const _VerifyMicroDepositsParams({ List<int>? amounts, this.descriptorCode}): _amounts = amounts;
   factory _VerifyMicroDepositsParams.fromJson(Map<String, dynamic> json) => _$VerifyMicroDepositsParamsFromJson(json);
 
 /// The amounts of the microdeposits that are deposited on the account.
@@ -1131,16 +1158,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VerifyMicroDepositsParams&&const DeepCollectionEquality().equals(other._amounts, _amounts)&&(identical(other.descriptorCode, descriptorCode) || other.descriptorCode == descriptorCode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VerifyMicroDepositsParams&&const DeepCollectionEquality().equals(other.amounts, _amounts)&&(identical(other.descriptorCode, descriptorCode) || other.descriptorCode == descriptorCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_amounts),descriptorCode);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_amounts),descriptorCode);
+}
 
 @override
 String toString() {
-  return 'VerifyMicroDepositsParams(amounts: $amounts, descriptorCode: $descriptorCode)';
+    return 'VerifyMicroDepositsParams(amounts: $amounts, descriptorCode: $descriptorCode)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_sheet.dart';
@@ -9,6 +9,7 @@ part of 'payment_sheet.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 SetupPaymentSheetParameters _$SetupPaymentSheetParametersFromJson(
@@ -108,16 +109,21 @@ $SetupPaymentSheetParametersCopyWith<SetupPaymentSheetParameters> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SetupPaymentSheetParameters&&(identical(other.customFlow, customFlow) || other.customFlow == customFlow)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.primaryButtonLabel, primaryButtonLabel) || other.primaryButtonLabel == primaryButtonLabel)&&(identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) || other.customerEphemeralKeySecret == customerEphemeralKeySecret)&&(identical(other.customerSessionClientSecret, customerSessionClientSecret) || other.customerSessionClientSecret == customerSessionClientSecret)&&(identical(other.paymentIntentClientSecret, paymentIntentClientSecret) || other.paymentIntentClientSecret == paymentIntentClientSecret)&&(identical(other.setupIntentClientSecret, setupIntentClientSecret) || other.setupIntentClientSecret == setupIntentClientSecret)&&(identical(other.intentConfiguration, intentConfiguration) || other.intentConfiguration == intentConfiguration)&&(identical(other.merchantDisplayName, merchantDisplayName) || other.merchantDisplayName == merchantDisplayName)&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.style, style) || other.style == style)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.linkDisplayParams, linkDisplayParams) || other.linkDisplayParams == linkDisplayParams)&&(identical(other.allowsDelayedPaymentMethods, allowsDelayedPaymentMethods) || other.allowsDelayedPaymentMethods == allowsDelayedPaymentMethods)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails)&&(identical(other.allowsRemovalOfLastSavedPaymentMethod, allowsRemovalOfLastSavedPaymentMethod) || other.allowsRemovalOfLastSavedPaymentMethod == allowsRemovalOfLastSavedPaymentMethod)&&const DeepCollectionEquality().equals(other.paymentMethodOrder, paymentMethodOrder)&&(identical(other.returnURL, returnURL) || other.returnURL == returnURL)&&(identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) || other.billingDetailsCollectionConfiguration == billingDetailsCollectionConfiguration)&&(identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage)&&const DeepCollectionEquality().equals(other.preferredNetworks, preferredNetworks)&&(identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance)&&(identical(other.cardFundingFiltering, cardFundingFiltering) || other.cardFundingFiltering == cardFundingFiltering)&&(identical(other.customPaymentMethodConfiguration, customPaymentMethodConfiguration) || other.customPaymentMethodConfiguration == customPaymentMethodConfiguration)&&(identical(other.opensCardScannerAutomatically, opensCardScannerAutomatically) || other.opensCardScannerAutomatically == opensCardScannerAutomatically)&&const DeepCollectionEquality().equals(other.termsDisplay, termsDisplay));
+  final _this = this as SetupPaymentSheetParameters;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SetupPaymentSheetParameters&&(identical(other.customFlow, _this.customFlow) || other.customFlow == _this.customFlow)&&(identical(other.customerId, _this.customerId) || other.customerId == _this.customerId)&&(identical(other.primaryButtonLabel, _this.primaryButtonLabel) || other.primaryButtonLabel == _this.primaryButtonLabel)&&(identical(other.customerEphemeralKeySecret, _this.customerEphemeralKeySecret) || other.customerEphemeralKeySecret == _this.customerEphemeralKeySecret)&&(identical(other.customerSessionClientSecret, _this.customerSessionClientSecret) || other.customerSessionClientSecret == _this.customerSessionClientSecret)&&(identical(other.paymentIntentClientSecret, _this.paymentIntentClientSecret) || other.paymentIntentClientSecret == _this.paymentIntentClientSecret)&&(identical(other.setupIntentClientSecret, _this.setupIntentClientSecret) || other.setupIntentClientSecret == _this.setupIntentClientSecret)&&(identical(other.intentConfiguration, _this.intentConfiguration) || other.intentConfiguration == _this.intentConfiguration)&&(identical(other.merchantDisplayName, _this.merchantDisplayName) || other.merchantDisplayName == _this.merchantDisplayName)&&(identical(other.applePay, _this.applePay) || other.applePay == _this.applePay)&&(identical(other.style, _this.style) || other.style == _this.style)&&(identical(other.googlePay, _this.googlePay) || other.googlePay == _this.googlePay)&&(identical(other.linkDisplayParams, _this.linkDisplayParams) || other.linkDisplayParams == _this.linkDisplayParams)&&(identical(other.allowsDelayedPaymentMethods, _this.allowsDelayedPaymentMethods) || other.allowsDelayedPaymentMethods == _this.allowsDelayedPaymentMethods)&&(identical(other.appearance, _this.appearance) || other.appearance == _this.appearance)&&(identical(other.billingDetails, _this.billingDetails) || other.billingDetails == _this.billingDetails)&&(identical(other.allowsRemovalOfLastSavedPaymentMethod, _this.allowsRemovalOfLastSavedPaymentMethod) || other.allowsRemovalOfLastSavedPaymentMethod == _this.allowsRemovalOfLastSavedPaymentMethod)&&const DeepCollectionEquality().equals(other.paymentMethodOrder, _this.paymentMethodOrder)&&(identical(other.returnURL, _this.returnURL) || other.returnURL == _this.returnURL)&&(identical(other.billingDetailsCollectionConfiguration, _this.billingDetailsCollectionConfiguration) || other.billingDetailsCollectionConfiguration == _this.billingDetailsCollectionConfiguration)&&(identical(other.removeSavedPaymentMethodMessage, _this.removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == _this.removeSavedPaymentMethodMessage)&&const DeepCollectionEquality().equals(other.preferredNetworks, _this.preferredNetworks)&&(identical(other.cardBrandAcceptance, _this.cardBrandAcceptance) || other.cardBrandAcceptance == _this.cardBrandAcceptance)&&(identical(other.cardFundingFiltering, _this.cardFundingFiltering) || other.cardFundingFiltering == _this.cardFundingFiltering)&&(identical(other.customPaymentMethodConfiguration, _this.customPaymentMethodConfiguration) || other.customPaymentMethodConfiguration == _this.customPaymentMethodConfiguration)&&(identical(other.opensCardScannerAutomatically, _this.opensCardScannerAutomatically) || other.opensCardScannerAutomatically == _this.opensCardScannerAutomatically)&&const DeepCollectionEquality().equals(other.termsDisplay, _this.termsDisplay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,customFlow,customerId,primaryButtonLabel,customerEphemeralKeySecret,customerSessionClientSecret,paymentIntentClientSecret,setupIntentClientSecret,intentConfiguration,merchantDisplayName,applePay,style,googlePay,linkDisplayParams,allowsDelayedPaymentMethods,appearance,billingDetails,allowsRemovalOfLastSavedPaymentMethod,const DeepCollectionEquality().hash(paymentMethodOrder),returnURL,billingDetailsCollectionConfiguration,removeSavedPaymentMethodMessage,const DeepCollectionEquality().hash(preferredNetworks),cardBrandAcceptance,cardFundingFiltering,customPaymentMethodConfiguration,opensCardScannerAutomatically,const DeepCollectionEquality().hash(termsDisplay)]);
+int get hashCode {
+  final _this = this as SetupPaymentSheetParameters;
+  return Object.hashAll([runtimeType,_this.customFlow,_this.customerId,_this.primaryButtonLabel,_this.customerEphemeralKeySecret,_this.customerSessionClientSecret,_this.paymentIntentClientSecret,_this.setupIntentClientSecret,_this.intentConfiguration,_this.merchantDisplayName,_this.applePay,_this.style,_this.googlePay,_this.linkDisplayParams,_this.allowsDelayedPaymentMethods,_this.appearance,_this.billingDetails,_this.allowsRemovalOfLastSavedPaymentMethod,const DeepCollectionEquality().hash(_this.paymentMethodOrder),_this.returnURL,_this.billingDetailsCollectionConfiguration,_this.removeSavedPaymentMethodMessage,const DeepCollectionEquality().hash(_this.preferredNetworks),_this.cardBrandAcceptance,_this.cardFundingFiltering,_this.customPaymentMethodConfiguration,_this.opensCardScannerAutomatically,const DeepCollectionEquality().hash(_this.termsDisplay)]);
+}
 
 @override
 String toString() {
-  return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, linkDisplayParams: $linkDisplayParams, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance, cardFundingFiltering: $cardFundingFiltering, customPaymentMethodConfiguration: $customPaymentMethodConfiguration, opensCardScannerAutomatically: $opensCardScannerAutomatically, termsDisplay: $termsDisplay)';
+  final _this = this as SetupPaymentSheetParameters;
+  return 'SetupPaymentSheetParameters(customFlow: ${_this.customFlow}, customerId: ${_this.customerId}, primaryButtonLabel: ${_this.primaryButtonLabel}, customerEphemeralKeySecret: ${_this.customerEphemeralKeySecret}, customerSessionClientSecret: ${_this.customerSessionClientSecret}, paymentIntentClientSecret: ${_this.paymentIntentClientSecret}, setupIntentClientSecret: ${_this.setupIntentClientSecret}, intentConfiguration: ${_this.intentConfiguration}, merchantDisplayName: ${_this.merchantDisplayName}, applePay: ${_this.applePay}, style: ${_this.style}, googlePay: ${_this.googlePay}, linkDisplayParams: ${_this.linkDisplayParams}, allowsDelayedPaymentMethods: ${_this.allowsDelayedPaymentMethods}, appearance: ${_this.appearance}, billingDetails: ${_this.billingDetails}, allowsRemovalOfLastSavedPaymentMethod: ${_this.allowsRemovalOfLastSavedPaymentMethod}, paymentMethodOrder: ${_this.paymentMethodOrder}, returnURL: ${_this.returnURL}, billingDetailsCollectionConfiguration: ${_this.billingDetailsCollectionConfiguration}, removeSavedPaymentMethodMessage: ${_this.removeSavedPaymentMethodMessage}, preferredNetworks: ${_this.preferredNetworks}, cardBrandAcceptance: ${_this.cardBrandAcceptance}, cardFundingFiltering: ${_this.cardFundingFiltering}, customPaymentMethodConfiguration: ${_this.customPaymentMethodConfiguration}, opensCardScannerAutomatically: ${_this.opensCardScannerAutomatically}, termsDisplay: ${_this.termsDisplay})';
 }
 
 
@@ -146,7 +152,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
 /// Create a copy of SetupPaymentSheetParameters
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? customFlow = null,Object? customerId = freezed,Object? primaryButtonLabel = freezed,Object? customerEphemeralKeySecret = freezed,Object? customerSessionClientSecret = freezed,Object? paymentIntentClientSecret = freezed,Object? setupIntentClientSecret = freezed,Object? intentConfiguration = freezed,Object? merchantDisplayName = freezed,Object? applePay = freezed,Object? style = freezed,Object? googlePay = freezed,Object? linkDisplayParams = freezed,Object? allowsDelayedPaymentMethods = null,Object? appearance = freezed,Object? billingDetails = freezed,Object? allowsRemovalOfLastSavedPaymentMethod = freezed,Object? paymentMethodOrder = freezed,Object? returnURL = freezed,Object? billingDetailsCollectionConfiguration = freezed,Object? removeSavedPaymentMethodMessage = freezed,Object? preferredNetworks = freezed,Object? cardBrandAcceptance = freezed,Object? cardFundingFiltering = freezed,Object? customPaymentMethodConfiguration = freezed,Object? opensCardScannerAutomatically = freezed,Object? termsDisplay = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(SetupPaymentSheetParameters(
 customFlow: null == customFlow ? _self.customFlow : customFlow // ignore: cast_nullable_to_non_nullable
 as bool,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
 as String?,primaryButtonLabel: freezed == primaryButtonLabel ? _self.primaryButtonLabel : primaryButtonLabel // ignore: cast_nullable_to_non_nullable
@@ -435,7 +441,7 @@ return $default(_that.customFlow,_that.customerId,_that.primaryButtonLabel,_that
 
 @JsonSerializable(explicitToJson: true)
 class _SetupParameters implements SetupPaymentSheetParameters {
-  const _SetupParameters({this.customFlow = false, this.customerId, this.primaryButtonLabel, this.customerEphemeralKeySecret, this.customerSessionClientSecret, this.paymentIntentClientSecret, this.setupIntentClientSecret, this.intentConfiguration, this.merchantDisplayName, this.applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style, this.googlePay, @JsonKey(name: 'link') this.linkDisplayParams, this.allowsDelayedPaymentMethods = false, this.appearance, @JsonKey(name: 'defaultBillingDetails') this.billingDetails, this.allowsRemovalOfLastSavedPaymentMethod, final  List<String>? paymentMethodOrder, this.returnURL, this.billingDetailsCollectionConfiguration, this.removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson) final  List<CardBrand>? preferredNetworks, this.cardBrandAcceptance, this.cardFundingFiltering, this.customPaymentMethodConfiguration, this.opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson) final  Map<String, TermsDisplay>? termsDisplay}): _paymentMethodOrder = paymentMethodOrder,_preferredNetworks = preferredNetworks,_termsDisplay = termsDisplay;
+  const _SetupParameters({this.customFlow = false, this.customerId, this.primaryButtonLabel, this.customerEphemeralKeySecret, this.customerSessionClientSecret, this.paymentIntentClientSecret, this.setupIntentClientSecret, this.intentConfiguration, this.merchantDisplayName, this.applePay, @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style, this.googlePay, @JsonKey(name: 'link') this.linkDisplayParams, this.allowsDelayedPaymentMethods = false, this.appearance, @JsonKey(name: 'defaultBillingDetails') this.billingDetails, this.allowsRemovalOfLastSavedPaymentMethod,  List<String>? paymentMethodOrder, this.returnURL, this.billingDetailsCollectionConfiguration, this.removeSavedPaymentMethodMessage, @JsonKey(toJson: _cardBrandListToJson)  List<CardBrand>? preferredNetworks, this.cardBrandAcceptance, this.cardFundingFiltering, this.customPaymentMethodConfiguration, this.opensCardScannerAutomatically, @JsonKey(toJson: _termsDisplayToJson, fromJson: _termsDisplayFromJson)  Map<String, TermsDisplay>? termsDisplay}): _paymentMethodOrder = paymentMethodOrder,_preferredNetworks = preferredNetworks,_termsDisplay = termsDisplay;
   factory _SetupParameters.fromJson(Map<String, dynamic> json) => _$SetupParametersFromJson(json);
 
 /// Whether or not to use a custom flow.
@@ -589,16 +595,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SetupParameters&&(identical(other.customFlow, customFlow) || other.customFlow == customFlow)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.primaryButtonLabel, primaryButtonLabel) || other.primaryButtonLabel == primaryButtonLabel)&&(identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) || other.customerEphemeralKeySecret == customerEphemeralKeySecret)&&(identical(other.customerSessionClientSecret, customerSessionClientSecret) || other.customerSessionClientSecret == customerSessionClientSecret)&&(identical(other.paymentIntentClientSecret, paymentIntentClientSecret) || other.paymentIntentClientSecret == paymentIntentClientSecret)&&(identical(other.setupIntentClientSecret, setupIntentClientSecret) || other.setupIntentClientSecret == setupIntentClientSecret)&&(identical(other.intentConfiguration, intentConfiguration) || other.intentConfiguration == intentConfiguration)&&(identical(other.merchantDisplayName, merchantDisplayName) || other.merchantDisplayName == merchantDisplayName)&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.style, style) || other.style == style)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.linkDisplayParams, linkDisplayParams) || other.linkDisplayParams == linkDisplayParams)&&(identical(other.allowsDelayedPaymentMethods, allowsDelayedPaymentMethods) || other.allowsDelayedPaymentMethods == allowsDelayedPaymentMethods)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails)&&(identical(other.allowsRemovalOfLastSavedPaymentMethod, allowsRemovalOfLastSavedPaymentMethod) || other.allowsRemovalOfLastSavedPaymentMethod == allowsRemovalOfLastSavedPaymentMethod)&&const DeepCollectionEquality().equals(other._paymentMethodOrder, _paymentMethodOrder)&&(identical(other.returnURL, returnURL) || other.returnURL == returnURL)&&(identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) || other.billingDetailsCollectionConfiguration == billingDetailsCollectionConfiguration)&&(identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage)&&const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks)&&(identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance)&&(identical(other.cardFundingFiltering, cardFundingFiltering) || other.cardFundingFiltering == cardFundingFiltering)&&(identical(other.customPaymentMethodConfiguration, customPaymentMethodConfiguration) || other.customPaymentMethodConfiguration == customPaymentMethodConfiguration)&&(identical(other.opensCardScannerAutomatically, opensCardScannerAutomatically) || other.opensCardScannerAutomatically == opensCardScannerAutomatically)&&const DeepCollectionEquality().equals(other._termsDisplay, _termsDisplay));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SetupParameters&&(identical(other.customFlow, customFlow) || other.customFlow == customFlow)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.primaryButtonLabel, primaryButtonLabel) || other.primaryButtonLabel == primaryButtonLabel)&&(identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) || other.customerEphemeralKeySecret == customerEphemeralKeySecret)&&(identical(other.customerSessionClientSecret, customerSessionClientSecret) || other.customerSessionClientSecret == customerSessionClientSecret)&&(identical(other.paymentIntentClientSecret, paymentIntentClientSecret) || other.paymentIntentClientSecret == paymentIntentClientSecret)&&(identical(other.setupIntentClientSecret, setupIntentClientSecret) || other.setupIntentClientSecret == setupIntentClientSecret)&&(identical(other.intentConfiguration, intentConfiguration) || other.intentConfiguration == intentConfiguration)&&(identical(other.merchantDisplayName, merchantDisplayName) || other.merchantDisplayName == merchantDisplayName)&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.style, style) || other.style == style)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.linkDisplayParams, linkDisplayParams) || other.linkDisplayParams == linkDisplayParams)&&(identical(other.allowsDelayedPaymentMethods, allowsDelayedPaymentMethods) || other.allowsDelayedPaymentMethods == allowsDelayedPaymentMethods)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails)&&(identical(other.allowsRemovalOfLastSavedPaymentMethod, allowsRemovalOfLastSavedPaymentMethod) || other.allowsRemovalOfLastSavedPaymentMethod == allowsRemovalOfLastSavedPaymentMethod)&&const DeepCollectionEquality().equals(other.paymentMethodOrder, _paymentMethodOrder)&&(identical(other.returnURL, returnURL) || other.returnURL == returnURL)&&(identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) || other.billingDetailsCollectionConfiguration == billingDetailsCollectionConfiguration)&&(identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage)&&const DeepCollectionEquality().equals(other.preferredNetworks, _preferredNetworks)&&(identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance)&&(identical(other.cardFundingFiltering, cardFundingFiltering) || other.cardFundingFiltering == cardFundingFiltering)&&(identical(other.customPaymentMethodConfiguration, customPaymentMethodConfiguration) || other.customPaymentMethodConfiguration == customPaymentMethodConfiguration)&&(identical(other.opensCardScannerAutomatically, opensCardScannerAutomatically) || other.opensCardScannerAutomatically == opensCardScannerAutomatically)&&const DeepCollectionEquality().equals(other.termsDisplay, _termsDisplay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,customFlow,customerId,primaryButtonLabel,customerEphemeralKeySecret,customerSessionClientSecret,paymentIntentClientSecret,setupIntentClientSecret,intentConfiguration,merchantDisplayName,applePay,style,googlePay,linkDisplayParams,allowsDelayedPaymentMethods,appearance,billingDetails,allowsRemovalOfLastSavedPaymentMethod,const DeepCollectionEquality().hash(_paymentMethodOrder),returnURL,billingDetailsCollectionConfiguration,removeSavedPaymentMethodMessage,const DeepCollectionEquality().hash(_preferredNetworks),cardBrandAcceptance,cardFundingFiltering,customPaymentMethodConfiguration,opensCardScannerAutomatically,const DeepCollectionEquality().hash(_termsDisplay)]);
+int get hashCode {
+    return Object.hashAll([runtimeType,customFlow,customerId,primaryButtonLabel,customerEphemeralKeySecret,customerSessionClientSecret,paymentIntentClientSecret,setupIntentClientSecret,intentConfiguration,merchantDisplayName,applePay,style,googlePay,linkDisplayParams,allowsDelayedPaymentMethods,appearance,billingDetails,allowsRemovalOfLastSavedPaymentMethod,const DeepCollectionEquality().hash(_paymentMethodOrder),returnURL,billingDetailsCollectionConfiguration,removeSavedPaymentMethodMessage,const DeepCollectionEquality().hash(_preferredNetworks),cardBrandAcceptance,cardFundingFiltering,customPaymentMethodConfiguration,opensCardScannerAutomatically,const DeepCollectionEquality().hash(_termsDisplay)]);
+}
 
 @override
 String toString() {
-  return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, linkDisplayParams: $linkDisplayParams, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance, cardFundingFiltering: $cardFundingFiltering, customPaymentMethodConfiguration: $customPaymentMethodConfiguration, opensCardScannerAutomatically: $opensCardScannerAutomatically, termsDisplay: $termsDisplay)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, linkDisplayParams: $linkDisplayParams, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance, cardFundingFiltering: $cardFundingFiltering, customPaymentMethodConfiguration: $customPaymentMethodConfiguration, opensCardScannerAutomatically: $opensCardScannerAutomatically, termsDisplay: $termsDisplay)';
 }
 
 
@@ -808,16 +816,21 @@ $IntentConfigurationCopyWith<IntentConfiguration> get copyWith => _$IntentConfig
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, paymentMethodTypes)&&(identical(other.paymentMethodConfigurationId, paymentMethodConfigurationId) || other.paymentMethodConfigurationId == paymentMethodConfigurationId)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
+  final _this = this as IntentConfiguration;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentConfiguration&&(identical(other.mode, _this.mode) || other.mode == _this.mode)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, _this.paymentMethodTypes)&&(identical(other.paymentMethodConfigurationId, _this.paymentMethodConfigurationId) || other.paymentMethodConfigurationId == _this.paymentMethodConfigurationId)&&(identical(other.confirmHandler, _this.confirmHandler) || other.confirmHandler == _this.confirmHandler)&&(identical(other.confirmTokenHandler, _this.confirmTokenHandler) || other.confirmTokenHandler == _this.confirmTokenHandler));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(paymentMethodTypes),paymentMethodConfigurationId,confirmHandler,confirmTokenHandler);
+int get hashCode {
+  final _this = this as IntentConfiguration;
+  return Object.hash(runtimeType,_this.mode,const DeepCollectionEquality().hash(_this.paymentMethodTypes),_this.paymentMethodConfigurationId,_this.confirmHandler,_this.confirmTokenHandler);
+}
 
 @override
 String toString() {
-  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, paymentMethodConfigurationId: $paymentMethodConfigurationId, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
+  final _this = this as IntentConfiguration;
+  return 'IntentConfiguration(mode: ${_this.mode}, paymentMethodTypes: ${_this.paymentMethodTypes}, paymentMethodConfigurationId: ${_this.paymentMethodConfigurationId}, confirmHandler: ${_this.confirmHandler}, confirmTokenHandler: ${_this.confirmTokenHandler})';
 }
 
 
@@ -846,7 +859,7 @@ class _$IntentConfigurationCopyWithImpl<$Res>
 /// Create a copy of IntentConfiguration
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? mode = null,Object? paymentMethodTypes = freezed,Object? paymentMethodConfigurationId = freezed,Object? confirmHandler = freezed,Object? confirmTokenHandler = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(IntentConfiguration(
 mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
 as IntentMode,paymentMethodTypes: freezed == paymentMethodTypes ? _self.paymentMethodTypes : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
 as List<String>?,paymentMethodConfigurationId: freezed == paymentMethodConfigurationId ? _self.paymentMethodConfigurationId : paymentMethodConfigurationId // ignore: cast_nullable_to_non_nullable
@@ -1002,7 +1015,7 @@ return $default(_that.mode,_that.paymentMethodTypes,_that.paymentMethodConfigura
 
 @JsonSerializable(explicitToJson: true)
 class _IntentConfiguration implements IntentConfiguration {
-  const _IntentConfiguration({required this.mode, final  List<String>? paymentMethodTypes, this.paymentMethodConfigurationId, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmTokenHandler}): _paymentMethodTypes = paymentMethodTypes;
+  const _IntentConfiguration({required this.mode,  List<String>? paymentMethodTypes, this.paymentMethodConfigurationId, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmHandler, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmTokenHandler}): _paymentMethodTypes = paymentMethodTypes;
   factory _IntentConfiguration.fromJson(Map<String, dynamic> json) => _$IntentConfigurationFromJson(json);
 
 /// Data related to the future payment intent
@@ -1044,16 +1057,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other._paymentMethodTypes, _paymentMethodTypes)&&(identical(other.paymentMethodConfigurationId, paymentMethodConfigurationId) || other.paymentMethodConfigurationId == paymentMethodConfigurationId)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntentConfiguration&&(identical(other.mode, mode) || other.mode == mode)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, _paymentMethodTypes)&&(identical(other.paymentMethodConfigurationId, paymentMethodConfigurationId) || other.paymentMethodConfigurationId == paymentMethodConfigurationId)&&(identical(other.confirmHandler, confirmHandler) || other.confirmHandler == confirmHandler)&&(identical(other.confirmTokenHandler, confirmTokenHandler) || other.confirmTokenHandler == confirmTokenHandler));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(_paymentMethodTypes),paymentMethodConfigurationId,confirmHandler,confirmTokenHandler);
+int get hashCode {
+    return Object.hash(runtimeType,mode,const DeepCollectionEquality().hash(_paymentMethodTypes),paymentMethodConfigurationId,confirmHandler,confirmTokenHandler);
+}
 
 @override
 String toString() {
-  return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, paymentMethodConfigurationId: $paymentMethodConfigurationId, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
+    return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, paymentMethodConfigurationId: $paymentMethodConfigurationId, confirmHandler: $confirmHandler, confirmTokenHandler: $confirmTokenHandler)';
 }
 
 
@@ -1145,16 +1160,21 @@ $IntentModeCopyWith<IntentMode> get copyWith => _$IntentModeCopyWithImpl<IntentM
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentMode&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
+  final _this = this as IntentMode;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentMode&&(identical(other.currencyCode, _this.currencyCode) || other.currencyCode == _this.currencyCode)&&(identical(other.setupFutureUsage, _this.setupFutureUsage) || other.setupFutureUsage == _this.setupFutureUsage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,currencyCode,setupFutureUsage);
+int get hashCode {
+  final _this = this as IntentMode;
+  return Object.hash(runtimeType,_this.currencyCode,_this.setupFutureUsage);
+}
 
 @override
 String toString() {
-  return 'IntentMode(currencyCode: $currencyCode, setupFutureUsage: $setupFutureUsage)';
+  final _this = this as IntentMode;
+  return 'IntentMode(currencyCode: ${_this.currencyCode}, setupFutureUsage: ${_this.setupFutureUsage})';
 }
 
 
@@ -1327,7 +1347,7 @@ return setupMode(_that.currencyCode,_that.setupFutureUsage);case _:
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _PaymentMode implements IntentMode {
-  const _PaymentMode({required this.currencyCode, required this.amount, this.setupFutureUsage, this.captureMethod, this.paymentMethodOptions, final  String? $type}): $type = $type ?? 'paymentMode';
+  const _PaymentMode({required this.currencyCode, required this.amount, this.setupFutureUsage, this.captureMethod, this.paymentMethodOptions,  String? $type}): $type = $type ?? 'paymentMode';
   factory _PaymentMode.fromJson(Map<String, dynamic> json) => _$PaymentModeFromJson(json);
 
 @override final  String currencyCode;
@@ -1356,16 +1376,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMode&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&(identical(other.captureMethod, captureMethod) || other.captureMethod == captureMethod)&&(identical(other.paymentMethodOptions, paymentMethodOptions) || other.paymentMethodOptions == paymentMethodOptions));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMode&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&(identical(other.captureMethod, captureMethod) || other.captureMethod == captureMethod)&&(identical(other.paymentMethodOptions, paymentMethodOptions) || other.paymentMethodOptions == paymentMethodOptions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,currencyCode,amount,setupFutureUsage,captureMethod,paymentMethodOptions);
+int get hashCode {
+    return Object.hash(runtimeType,currencyCode,amount,setupFutureUsage,captureMethod,paymentMethodOptions);
+}
 
 @override
 String toString() {
-  return 'IntentMode.paymentMode(currencyCode: $currencyCode, amount: $amount, setupFutureUsage: $setupFutureUsage, captureMethod: $captureMethod, paymentMethodOptions: $paymentMethodOptions)';
+    return 'IntentMode.paymentMode(currencyCode: $currencyCode, amount: $amount, setupFutureUsage: $setupFutureUsage, captureMethod: $captureMethod, paymentMethodOptions: $paymentMethodOptions)';
 }
 
 
@@ -1423,7 +1445,7 @@ $PaymentMethodOptionsCopyWith<$Res>? get paymentMethodOptions {
 
 @JsonSerializable(explicitToJson: true)
 class _SetupMode implements IntentMode {
-  const _SetupMode({this.currencyCode, required this.setupFutureUsage, final  String? $type}): $type = $type ?? 'setupMode';
+  const _SetupMode({this.currencyCode, required this.setupFutureUsage,  String? $type}): $type = $type ?? 'setupMode';
   factory _SetupMode.fromJson(Map<String, dynamic> json) => _$SetupModeFromJson(json);
 
 @override final  String? currencyCode;
@@ -1447,16 +1469,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SetupMode&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SetupMode&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,currencyCode,setupFutureUsage);
+int get hashCode {
+    return Object.hash(runtimeType,currencyCode,setupFutureUsage);
+}
 
 @override
 String toString() {
-  return 'IntentMode.setupMode(currencyCode: $currencyCode, setupFutureUsage: $setupFutureUsage)';
+    return 'IntentMode.setupMode(currencyCode: $currencyCode, setupFutureUsage: $setupFutureUsage)';
 }
 
 
@@ -1521,16 +1545,21 @@ $PaymentSheetApplePayCopyWith<PaymentSheetApplePay> get copyWith => _$PaymentShe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetApplePay&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&const DeepCollectionEquality().equals(other.cartItems, cartItems)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType)&&(identical(other.request, request) || other.request == request)&&(identical(other.setOrderTracking, setOrderTracking) || other.setOrderTracking == setOrderTracking));
+  final _this = this as PaymentSheetApplePay;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetApplePay&&(identical(other.merchantCountryCode, _this.merchantCountryCode) || other.merchantCountryCode == _this.merchantCountryCode)&&const DeepCollectionEquality().equals(other.cartItems, _this.cartItems)&&(identical(other.buttonType, _this.buttonType) || other.buttonType == _this.buttonType)&&(identical(other.request, _this.request) || other.request == _this.request)&&(identical(other.setOrderTracking, _this.setOrderTracking) || other.setOrderTracking == _this.setOrderTracking));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,merchantCountryCode,const DeepCollectionEquality().hash(cartItems),buttonType,request,setOrderTracking);
+int get hashCode {
+  final _this = this as PaymentSheetApplePay;
+  return Object.hash(runtimeType,_this.merchantCountryCode,const DeepCollectionEquality().hash(_this.cartItems),_this.buttonType,_this.request,_this.setOrderTracking);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetApplePay(merchantCountryCode: $merchantCountryCode, cartItems: $cartItems, buttonType: $buttonType, request: $request, setOrderTracking: $setOrderTracking)';
+  final _this = this as PaymentSheetApplePay;
+  return 'PaymentSheetApplePay(merchantCountryCode: ${_this.merchantCountryCode}, cartItems: ${_this.cartItems}, buttonType: ${_this.buttonType}, request: ${_this.request}, setOrderTracking: ${_this.setOrderTracking})';
 }
 
 
@@ -1559,7 +1588,7 @@ class _$PaymentSheetApplePayCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetApplePay
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? merchantCountryCode = null,Object? cartItems = freezed,Object? buttonType = freezed,Object? request = freezed,Object? setOrderTracking = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetApplePay(
 merchantCountryCode: null == merchantCountryCode ? _self.merchantCountryCode : merchantCountryCode // ignore: cast_nullable_to_non_nullable
 as String,cartItems: freezed == cartItems ? _self.cartItems : cartItems // ignore: cast_nullable_to_non_nullable
 as List<ApplePayCartSummaryItem>?,buttonType: freezed == buttonType ? _self.buttonType : buttonType // ignore: cast_nullable_to_non_nullable
@@ -1718,7 +1747,7 @@ return $default(_that.merchantCountryCode,_that.cartItems,_that.buttonType,_that
 
 @JsonSerializable(explicitToJson: true)
 class _PaymentSheetApplePay implements PaymentSheetApplePay {
-  const _PaymentSheetApplePay({required this.merchantCountryCode, final  List<ApplePayCartSummaryItem>? cartItems, this.buttonType, this.request, @JsonKey(includeFromJson: false, includeToJson: false) this.setOrderTracking}): _cartItems = cartItems;
+  const _PaymentSheetApplePay({required this.merchantCountryCode,  List<ApplePayCartSummaryItem>? cartItems, this.buttonType, this.request, @JsonKey(includeFromJson: false, includeToJson: false) this.setOrderTracking}): _cartItems = cartItems;
   factory _PaymentSheetApplePay.fromJson(Map<String, dynamic> json) => _$PaymentSheetApplePayFromJson(json);
 
 ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
@@ -1759,16 +1788,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetApplePay&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&const DeepCollectionEquality().equals(other._cartItems, _cartItems)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType)&&(identical(other.request, request) || other.request == request)&&(identical(other.setOrderTracking, setOrderTracking) || other.setOrderTracking == setOrderTracking));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetApplePay&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&const DeepCollectionEquality().equals(other.cartItems, _cartItems)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType)&&(identical(other.request, request) || other.request == request)&&(identical(other.setOrderTracking, setOrderTracking) || other.setOrderTracking == setOrderTracking));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,merchantCountryCode,const DeepCollectionEquality().hash(_cartItems),buttonType,request,setOrderTracking);
+int get hashCode {
+    return Object.hash(runtimeType,merchantCountryCode,const DeepCollectionEquality().hash(_cartItems),buttonType,request,setOrderTracking);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetApplePay(merchantCountryCode: $merchantCountryCode, cartItems: $cartItems, buttonType: $buttonType, request: $request, setOrderTracking: $setOrderTracking)';
+    return 'PaymentSheetApplePay(merchantCountryCode: $merchantCountryCode, cartItems: $cartItems, buttonType: $buttonType, request: $request, setOrderTracking: $setOrderTracking)';
 }
 
 
@@ -1845,16 +1876,21 @@ $PaymentSheetGooglePayCopyWith<PaymentSheetGooglePay> get copyWith => _$PaymentS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetGooglePay&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType));
+  final _this = this as PaymentSheetGooglePay;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetGooglePay&&(identical(other.merchantCountryCode, _this.merchantCountryCode) || other.merchantCountryCode == _this.merchantCountryCode)&&(identical(other.currencyCode, _this.currencyCode) || other.currencyCode == _this.currencyCode)&&(identical(other.testEnv, _this.testEnv) || other.testEnv == _this.testEnv)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.buttonType, _this.buttonType) || other.buttonType == _this.buttonType));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,merchantCountryCode,currencyCode,testEnv,label,amount,buttonType);
+int get hashCode {
+  final _this = this as PaymentSheetGooglePay;
+  return Object.hash(runtimeType,_this.merchantCountryCode,_this.currencyCode,_this.testEnv,_this.label,_this.amount,_this.buttonType);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetGooglePay(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, testEnv: $testEnv, label: $label, amount: $amount, buttonType: $buttonType)';
+  final _this = this as PaymentSheetGooglePay;
+  return 'PaymentSheetGooglePay(merchantCountryCode: ${_this.merchantCountryCode}, currencyCode: ${_this.currencyCode}, testEnv: ${_this.testEnv}, label: ${_this.label}, amount: ${_this.amount}, buttonType: ${_this.buttonType})';
 }
 
 
@@ -1883,7 +1919,7 @@ class _$PaymentSheetGooglePayCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetGooglePay
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? merchantCountryCode = null,Object? currencyCode = freezed,Object? testEnv = null,Object? label = freezed,Object? amount = freezed,Object? buttonType = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetGooglePay(
 merchantCountryCode: null == merchantCountryCode ? _self.merchantCountryCode : merchantCountryCode // ignore: cast_nullable_to_non_nullable
 as String,currencyCode: freezed == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
 as String?,testEnv: null == testEnv ? _self.testEnv : testEnv // ignore: cast_nullable_to_non_nullable
@@ -2060,16 +2096,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetGooglePay&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetGooglePay&&(identical(other.merchantCountryCode, merchantCountryCode) || other.merchantCountryCode == merchantCountryCode)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,merchantCountryCode,currencyCode,testEnv,label,amount,buttonType);
+int get hashCode {
+    return Object.hash(runtimeType,merchantCountryCode,currencyCode,testEnv,label,amount,buttonType);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetGooglePay(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, testEnv: $testEnv, label: $label, amount: $amount, buttonType: $buttonType)';
+    return 'PaymentSheetGooglePay(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, testEnv: $testEnv, label: $label, amount: $amount, buttonType: $buttonType)';
 }
 
 
@@ -2140,16 +2178,21 @@ $PaymentSheetAppearanceCopyWith<PaymentSheetAppearance> get copyWith => _$Paymen
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues)&&(identical(other.applyLiquidGlass, applyLiquidGlass) || other.applyLiquidGlass == applyLiquidGlass)&&(identical(other.navigationBarStyle, navigationBarStyle) || other.navigationBarStyle == navigationBarStyle));
+  final _this = this as PaymentSheetAppearance;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetAppearance&&(identical(other.colors, _this.colors) || other.colors == _this.colors)&&(identical(other.shapes, _this.shapes) || other.shapes == _this.shapes)&&(identical(other.primaryButton, _this.primaryButton) || other.primaryButton == _this.primaryButton)&&(identical(other.embeddedPaymentElement, _this.embeddedPaymentElement) || other.embeddedPaymentElement == _this.embeddedPaymentElement)&&(identical(other.formInsetValues, _this.formInsetValues) || other.formInsetValues == _this.formInsetValues)&&(identical(other.applyLiquidGlass, _this.applyLiquidGlass) || other.applyLiquidGlass == _this.applyLiquidGlass)&&(identical(other.navigationBarStyle, _this.navigationBarStyle) || other.navigationBarStyle == _this.navigationBarStyle));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues,applyLiquidGlass,navigationBarStyle);
+int get hashCode {
+  final _this = this as PaymentSheetAppearance;
+  return Object.hash(runtimeType,_this.colors,_this.shapes,_this.primaryButton,_this.embeddedPaymentElement,_this.formInsetValues,_this.applyLiquidGlass,_this.navigationBarStyle);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues, applyLiquidGlass: $applyLiquidGlass, navigationBarStyle: $navigationBarStyle)';
+  final _this = this as PaymentSheetAppearance;
+  return 'PaymentSheetAppearance(colors: ${_this.colors}, shapes: ${_this.shapes}, primaryButton: ${_this.primaryButton}, embeddedPaymentElement: ${_this.embeddedPaymentElement}, formInsetValues: ${_this.formInsetValues}, applyLiquidGlass: ${_this.applyLiquidGlass}, navigationBarStyle: ${_this.navigationBarStyle})';
 }
 
 
@@ -2178,7 +2221,7 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetAppearance
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? colors = freezed,Object? shapes = freezed,Object? primaryButton = freezed,Object? embeddedPaymentElement = freezed,Object? formInsetValues = freezed,Object? applyLiquidGlass = freezed,Object? navigationBarStyle = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetAppearance(
 colors: freezed == colors ? _self.colors : colors // ignore: cast_nullable_to_non_nullable
 as PaymentSheetAppearanceColors?,shapes: freezed == shapes ? _self.shapes : shapes // ignore: cast_nullable_to_non_nullable
 as PaymentSheetShape?,primaryButton: freezed == primaryButton ? _self.primaryButton : primaryButton // ignore: cast_nullable_to_non_nullable
@@ -2422,16 +2465,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues)&&(identical(other.applyLiquidGlass, applyLiquidGlass) || other.applyLiquidGlass == applyLiquidGlass)&&(identical(other.navigationBarStyle, navigationBarStyle) || other.navigationBarStyle == navigationBarStyle));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes)&&(identical(other.primaryButton, primaryButton) || other.primaryButton == primaryButton)&&(identical(other.embeddedPaymentElement, embeddedPaymentElement) || other.embeddedPaymentElement == embeddedPaymentElement)&&(identical(other.formInsetValues, formInsetValues) || other.formInsetValues == formInsetValues)&&(identical(other.applyLiquidGlass, applyLiquidGlass) || other.applyLiquidGlass == applyLiquidGlass)&&(identical(other.navigationBarStyle, navigationBarStyle) || other.navigationBarStyle == navigationBarStyle));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues,applyLiquidGlass,navigationBarStyle);
+int get hashCode {
+    return Object.hash(runtimeType,colors,shapes,primaryButton,embeddedPaymentElement,formInsetValues,applyLiquidGlass,navigationBarStyle);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues, applyLiquidGlass: $applyLiquidGlass, navigationBarStyle: $navigationBarStyle)';
+    return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues, applyLiquidGlass: $applyLiquidGlass, navigationBarStyle: $navigationBarStyle)';
 }
 
 
@@ -2567,16 +2612,21 @@ $PaymentSheetAppearanceColorsCopyWith<PaymentSheetAppearanceColors> get copyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetAppearanceColors&&(identical(other.primary, primary) || other.primary == primary)&&(identical(other.background, background) || other.background == background)&&(identical(other.componentBackground, componentBackground) || other.componentBackground == componentBackground)&&(identical(other.componentBorder, componentBorder) || other.componentBorder == componentBorder)&&(identical(other.componentDivider, componentDivider) || other.componentDivider == componentDivider)&&(identical(other.componentText, componentText) || other.componentText == componentText)&&(identical(other.primaryText, primaryText) || other.primaryText == primaryText)&&(identical(other.secondaryText, secondaryText) || other.secondaryText == secondaryText)&&(identical(other.placeholderText, placeholderText) || other.placeholderText == placeholderText)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.error, error) || other.error == error));
+  final _this = this as PaymentSheetAppearanceColors;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetAppearanceColors&&(identical(other.primary, _this.primary) || other.primary == _this.primary)&&(identical(other.background, _this.background) || other.background == _this.background)&&(identical(other.componentBackground, _this.componentBackground) || other.componentBackground == _this.componentBackground)&&(identical(other.componentBorder, _this.componentBorder) || other.componentBorder == _this.componentBorder)&&(identical(other.componentDivider, _this.componentDivider) || other.componentDivider == _this.componentDivider)&&(identical(other.componentText, _this.componentText) || other.componentText == _this.componentText)&&(identical(other.primaryText, _this.primaryText) || other.primaryText == _this.primaryText)&&(identical(other.secondaryText, _this.secondaryText) || other.secondaryText == _this.secondaryText)&&(identical(other.placeholderText, _this.placeholderText) || other.placeholderText == _this.placeholderText)&&(identical(other.icon, _this.icon) || other.icon == _this.icon)&&(identical(other.error, _this.error) || other.error == _this.error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,primary,background,componentBackground,componentBorder,componentDivider,componentText,primaryText,secondaryText,placeholderText,icon,error);
+int get hashCode {
+  final _this = this as PaymentSheetAppearanceColors;
+  return Object.hash(runtimeType,_this.primary,_this.background,_this.componentBackground,_this.componentBorder,_this.componentDivider,_this.componentText,_this.primaryText,_this.secondaryText,_this.placeholderText,_this.icon,_this.error);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetAppearanceColors(primary: $primary, background: $background, componentBackground: $componentBackground, componentBorder: $componentBorder, componentDivider: $componentDivider, componentText: $componentText, primaryText: $primaryText, secondaryText: $secondaryText, placeholderText: $placeholderText, icon: $icon, error: $error)';
+  final _this = this as PaymentSheetAppearanceColors;
+  return 'PaymentSheetAppearanceColors(primary: ${_this.primary}, background: ${_this.background}, componentBackground: ${_this.componentBackground}, componentBorder: ${_this.componentBorder}, componentDivider: ${_this.componentDivider}, componentText: ${_this.componentText}, primaryText: ${_this.primaryText}, secondaryText: ${_this.secondaryText}, placeholderText: ${_this.placeholderText}, icon: ${_this.icon}, error: ${_this.error})';
 }
 
 
@@ -2605,7 +2655,7 @@ class _$PaymentSheetAppearanceColorsCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetAppearanceColors
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? primary = freezed,Object? background = freezed,Object? componentBackground = freezed,Object? componentBorder = freezed,Object? componentDivider = freezed,Object? componentText = freezed,Object? primaryText = freezed,Object? secondaryText = freezed,Object? placeholderText = freezed,Object? icon = freezed,Object? error = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetAppearanceColors(
 primary: freezed == primary ? _self.primary : primary // ignore: cast_nullable_to_non_nullable
 as Color?,background: freezed == background ? _self.background : background // ignore: cast_nullable_to_non_nullable
 as Color?,componentBackground: freezed == componentBackground ? _self.componentBackground : componentBackground // ignore: cast_nullable_to_non_nullable
@@ -2801,16 +2851,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetAppearanceColors&&(identical(other.primary, primary) || other.primary == primary)&&(identical(other.background, background) || other.background == background)&&(identical(other.componentBackground, componentBackground) || other.componentBackground == componentBackground)&&(identical(other.componentBorder, componentBorder) || other.componentBorder == componentBorder)&&(identical(other.componentDivider, componentDivider) || other.componentDivider == componentDivider)&&(identical(other.componentText, componentText) || other.componentText == componentText)&&(identical(other.primaryText, primaryText) || other.primaryText == primaryText)&&(identical(other.secondaryText, secondaryText) || other.secondaryText == secondaryText)&&(identical(other.placeholderText, placeholderText) || other.placeholderText == placeholderText)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetAppearanceColors&&(identical(other.primary, primary) || other.primary == primary)&&(identical(other.background, background) || other.background == background)&&(identical(other.componentBackground, componentBackground) || other.componentBackground == componentBackground)&&(identical(other.componentBorder, componentBorder) || other.componentBorder == componentBorder)&&(identical(other.componentDivider, componentDivider) || other.componentDivider == componentDivider)&&(identical(other.componentText, componentText) || other.componentText == componentText)&&(identical(other.primaryText, primaryText) || other.primaryText == primaryText)&&(identical(other.secondaryText, secondaryText) || other.secondaryText == secondaryText)&&(identical(other.placeholderText, placeholderText) || other.placeholderText == placeholderText)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.error, error) || other.error == error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,primary,background,componentBackground,componentBorder,componentDivider,componentText,primaryText,secondaryText,placeholderText,icon,error);
+int get hashCode {
+    return Object.hash(runtimeType,primary,background,componentBackground,componentBorder,componentDivider,componentText,primaryText,secondaryText,placeholderText,icon,error);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetAppearanceColors(primary: $primary, background: $background, componentBackground: $componentBackground, componentBorder: $componentBorder, componentDivider: $componentDivider, componentText: $componentText, primaryText: $primaryText, secondaryText: $secondaryText, placeholderText: $placeholderText, icon: $icon, error: $error)';
+    return 'PaymentSheetAppearanceColors(primary: $primary, background: $background, componentBackground: $componentBackground, componentBorder: $componentBorder, componentDivider: $componentDivider, componentText: $componentText, primaryText: $primaryText, secondaryText: $secondaryText, placeholderText: $placeholderText, icon: $icon, error: $error)';
 }
 
 
@@ -2878,16 +2930,21 @@ $PaymentSheetShapeCopyWith<PaymentSheetShape> get copyWith => _$PaymentSheetShap
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetShape&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.shadow, shadow) || other.shadow == shadow));
+  final _this = this as PaymentSheetShape;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetShape&&(identical(other.borderRadius, _this.borderRadius) || other.borderRadius == _this.borderRadius)&&(identical(other.borderWidth, _this.borderWidth) || other.borderWidth == _this.borderWidth)&&(identical(other.shadow, _this.shadow) || other.shadow == _this.shadow));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,borderRadius,borderWidth,shadow);
+int get hashCode {
+  final _this = this as PaymentSheetShape;
+  return Object.hash(runtimeType,_this.borderRadius,_this.borderWidth,_this.shadow);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetShape(borderRadius: $borderRadius, borderWidth: $borderWidth, shadow: $shadow)';
+  final _this = this as PaymentSheetShape;
+  return 'PaymentSheetShape(borderRadius: ${_this.borderRadius}, borderWidth: ${_this.borderWidth}, shadow: ${_this.shadow})';
 }
 
 
@@ -2916,7 +2973,7 @@ class _$PaymentSheetShapeCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetShape
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? borderRadius = freezed,Object? borderWidth = freezed,Object? shadow = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetShape(
 borderRadius: freezed == borderRadius ? _self.borderRadius : borderRadius // ignore: cast_nullable_to_non_nullable
 as double?,borderWidth: freezed == borderWidth ? _self.borderWidth : borderWidth // ignore: cast_nullable_to_non_nullable
 as double?,shadow: freezed == shadow ? _self.shadow : shadow // ignore: cast_nullable_to_non_nullable
@@ -3096,16 +3153,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetShape&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.shadow, shadow) || other.shadow == shadow));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetShape&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.shadow, shadow) || other.shadow == shadow));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,borderRadius,borderWidth,shadow);
+int get hashCode {
+    return Object.hash(runtimeType,borderRadius,borderWidth,shadow);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetShape(borderRadius: $borderRadius, borderWidth: $borderWidth, shadow: $shadow)';
+    return 'PaymentSheetShape(borderRadius: $borderRadius, borderWidth: $borderWidth, shadow: $shadow)';
 }
 
 
@@ -3177,16 +3236,21 @@ $PaymentSheetShadowParamsCopyWith<PaymentSheetShadowParams> get copyWith => _$Pa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetShadowParams&&(identical(other.color, color) || other.color == color)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.offset, offset) || other.offset == offset));
+  final _this = this as PaymentSheetShadowParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetShadowParams&&(identical(other.color, _this.color) || other.color == _this.color)&&(identical(other.opacity, _this.opacity) || other.opacity == _this.opacity)&&(identical(other.offset, _this.offset) || other.offset == _this.offset));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,color,opacity,offset);
+int get hashCode {
+  final _this = this as PaymentSheetShadowParams;
+  return Object.hash(runtimeType,_this.color,_this.opacity,_this.offset);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetShadowParams(color: $color, opacity: $opacity, offset: $offset)';
+  final _this = this as PaymentSheetShadowParams;
+  return 'PaymentSheetShadowParams(color: ${_this.color}, opacity: ${_this.opacity}, offset: ${_this.offset})';
 }
 
 
@@ -3215,7 +3279,7 @@ class _$PaymentSheetShadowParamsCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetShadowParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? color = freezed,Object? opacity = freezed,Object? offset = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetShadowParams(
 color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as Color?,opacity: freezed == opacity ? _self.opacity : opacity // ignore: cast_nullable_to_non_nullable
 as double?,offset: freezed == offset ? _self.offset : offset // ignore: cast_nullable_to_non_nullable
@@ -3395,16 +3459,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetShadowParams&&(identical(other.color, color) || other.color == color)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.offset, offset) || other.offset == offset));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetShadowParams&&(identical(other.color, color) || other.color == color)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.offset, offset) || other.offset == offset));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,color,opacity,offset);
+int get hashCode {
+    return Object.hash(runtimeType,color,opacity,offset);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetShadowParams(color: $color, opacity: $opacity, offset: $offset)';
+    return 'PaymentSheetShadowParams(color: $color, opacity: $opacity, offset: $offset)';
 }
 
 
@@ -3475,16 +3541,21 @@ $PaymentSheetShadowOffsetCopyWith<PaymentSheetShadowOffset> get copyWith => _$Pa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetShadowOffset&&(identical(other.x, x) || other.x == x)&&(identical(other.y, y) || other.y == y));
+  final _this = this as PaymentSheetShadowOffset;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetShadowOffset&&(identical(other.x, _this.x) || other.x == _this.x)&&(identical(other.y, _this.y) || other.y == _this.y));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,x,y);
+int get hashCode {
+  final _this = this as PaymentSheetShadowOffset;
+  return Object.hash(runtimeType,_this.x,_this.y);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetShadowOffset(x: $x, y: $y)';
+  final _this = this as PaymentSheetShadowOffset;
+  return 'PaymentSheetShadowOffset(x: ${_this.x}, y: ${_this.y})';
 }
 
 
@@ -3513,7 +3584,7 @@ class _$PaymentSheetShadowOffsetCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetShadowOffset
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? x = freezed,Object? y = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetShadowOffset(
 x: freezed == x ? _self.x : x // ignore: cast_nullable_to_non_nullable
 as double?,y: freezed == y ? _self.y : y // ignore: cast_nullable_to_non_nullable
 as double?,
@@ -3678,16 +3749,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetShadowOffset&&(identical(other.x, x) || other.x == x)&&(identical(other.y, y) || other.y == y));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetShadowOffset&&(identical(other.x, x) || other.x == x)&&(identical(other.y, y) || other.y == y));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,x,y);
+int get hashCode {
+    return Object.hash(runtimeType,x,y);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetShadowOffset(x: $x, y: $y)';
+    return 'PaymentSheetShadowOffset(x: $x, y: $y)';
 }
 
 
@@ -3745,16 +3818,21 @@ $PaymentSheetPrimaryButtonAppearanceCopyWith<PaymentSheetPrimaryButtonAppearance
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes));
+  final _this = this as PaymentSheetPrimaryButtonAppearance;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonAppearance&&(identical(other.colors, _this.colors) || other.colors == _this.colors)&&(identical(other.shapes, _this.shapes) || other.shapes == _this.shapes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,colors,shapes);
+int get hashCode {
+  final _this = this as PaymentSheetPrimaryButtonAppearance;
+  return Object.hash(runtimeType,_this.colors,_this.shapes);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonAppearance(colors: $colors, shapes: $shapes)';
+  final _this = this as PaymentSheetPrimaryButtonAppearance;
+  return 'PaymentSheetPrimaryButtonAppearance(colors: ${_this.colors}, shapes: ${_this.shapes})';
 }
 
 
@@ -3783,7 +3861,7 @@ class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetPrimaryButtonAppearance
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? colors = freezed,Object? shapes = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetPrimaryButtonAppearance(
 colors: freezed == colors ? _self.colors : colors // ignore: cast_nullable_to_non_nullable
 as PaymentSheetPrimaryButtonTheme?,shapes: freezed == shapes ? _self.shapes : shapes // ignore: cast_nullable_to_non_nullable
 as PaymentSheetPrimaryButtonShape?,
@@ -3972,16 +4050,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonAppearance&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.shapes, shapes) || other.shapes == shapes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,colors,shapes);
+int get hashCode {
+    return Object.hash(runtimeType,colors,shapes);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonAppearance(colors: $colors, shapes: $shapes)';
+    return 'PaymentSheetPrimaryButtonAppearance(colors: $colors, shapes: $shapes)';
 }
 
 
@@ -4064,16 +4144,21 @@ $PaymentSheetPrimaryButtonShapeCopyWith<PaymentSheetPrimaryButtonShape> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonShape&&(identical(other.shadow, shadow) || other.shadow == shadow)&&(identical(other.blurRadius, blurRadius) || other.blurRadius == blurRadius)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth));
+  final _this = this as PaymentSheetPrimaryButtonShape;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonShape&&(identical(other.shadow, _this.shadow) || other.shadow == _this.shadow)&&(identical(other.blurRadius, _this.blurRadius) || other.blurRadius == _this.blurRadius)&&(identical(other.borderWidth, _this.borderWidth) || other.borderWidth == _this.borderWidth));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,shadow,blurRadius,borderWidth);
+int get hashCode {
+  final _this = this as PaymentSheetPrimaryButtonShape;
+  return Object.hash(runtimeType,_this.shadow,_this.blurRadius,_this.borderWidth);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonShape(shadow: $shadow, blurRadius: $blurRadius, borderWidth: $borderWidth)';
+  final _this = this as PaymentSheetPrimaryButtonShape;
+  return 'PaymentSheetPrimaryButtonShape(shadow: ${_this.shadow}, blurRadius: ${_this.blurRadius}, borderWidth: ${_this.borderWidth})';
 }
 
 
@@ -4102,7 +4187,7 @@ class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetPrimaryButtonShape
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? shadow = freezed,Object? blurRadius = freezed,Object? borderWidth = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetPrimaryButtonShape(
 shadow: freezed == shadow ? _self.shadow : shadow // ignore: cast_nullable_to_non_nullable
 as PaymentSheetShadowParams?,blurRadius: freezed == blurRadius ? _self.blurRadius : blurRadius // ignore: cast_nullable_to_non_nullable
 as double?,borderWidth: freezed == borderWidth ? _self.borderWidth : borderWidth // ignore: cast_nullable_to_non_nullable
@@ -4282,16 +4367,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonShape&&(identical(other.shadow, shadow) || other.shadow == shadow)&&(identical(other.blurRadius, blurRadius) || other.blurRadius == blurRadius)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonShape&&(identical(other.shadow, shadow) || other.shadow == shadow)&&(identical(other.blurRadius, blurRadius) || other.blurRadius == blurRadius)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,shadow,blurRadius,borderWidth);
+int get hashCode {
+    return Object.hash(runtimeType,shadow,blurRadius,borderWidth);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonShape(shadow: $shadow, blurRadius: $blurRadius, borderWidth: $borderWidth)';
+    return 'PaymentSheetPrimaryButtonShape(shadow: $shadow, blurRadius: $blurRadius, borderWidth: $borderWidth)';
 }
 
 
@@ -4362,16 +4449,21 @@ $PaymentSheetPrimaryButtonThemeCopyWith<PaymentSheetPrimaryButtonTheme> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonTheme&&(identical(other.dark, dark) || other.dark == dark)&&(identical(other.light, light) || other.light == light));
+  final _this = this as PaymentSheetPrimaryButtonTheme;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonTheme&&(identical(other.dark, _this.dark) || other.dark == _this.dark)&&(identical(other.light, _this.light) || other.light == _this.light));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,dark,light);
+int get hashCode {
+  final _this = this as PaymentSheetPrimaryButtonTheme;
+  return Object.hash(runtimeType,_this.dark,_this.light);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonTheme(dark: $dark, light: $light)';
+  final _this = this as PaymentSheetPrimaryButtonTheme;
+  return 'PaymentSheetPrimaryButtonTheme(dark: ${_this.dark}, light: ${_this.light})';
 }
 
 
@@ -4400,7 +4492,7 @@ class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetPrimaryButtonTheme
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? dark = freezed,Object? light = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetPrimaryButtonTheme(
 dark: freezed == dark ? _self.dark : dark // ignore: cast_nullable_to_non_nullable
 as PaymentSheetPrimaryButtonThemeColors?,light: freezed == light ? _self.light : light // ignore: cast_nullable_to_non_nullable
 as PaymentSheetPrimaryButtonThemeColors?,
@@ -4589,16 +4681,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonTheme&&(identical(other.dark, dark) || other.dark == dark)&&(identical(other.light, light) || other.light == light));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonTheme&&(identical(other.dark, dark) || other.dark == dark)&&(identical(other.light, light) || other.light == light));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,dark,light);
+int get hashCode {
+    return Object.hash(runtimeType,dark,light);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonTheme(dark: $dark, light: $light)';
+    return 'PaymentSheetPrimaryButtonTheme(dark: $dark, light: $light)';
 }
 
 
@@ -4683,16 +4777,21 @@ $PaymentSheetPrimaryButtonThemeColorsCopyWith<PaymentSheetPrimaryButtonThemeColo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonThemeColors&&(identical(other.background, background) || other.background == background)&&(identical(other.text, text) || other.text == text)&&(identical(other.border, border) || other.border == border)&&(identical(other.successBackgroundColor, successBackgroundColor) || other.successBackgroundColor == successBackgroundColor)&&(identical(other.successTextColor, successTextColor) || other.successTextColor == successTextColor));
+  final _this = this as PaymentSheetPrimaryButtonThemeColors;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPrimaryButtonThemeColors&&(identical(other.background, _this.background) || other.background == _this.background)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.border, _this.border) || other.border == _this.border)&&(identical(other.successBackgroundColor, _this.successBackgroundColor) || other.successBackgroundColor == _this.successBackgroundColor)&&(identical(other.successTextColor, _this.successTextColor) || other.successTextColor == _this.successTextColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,background,text,border,successBackgroundColor,successTextColor);
+int get hashCode {
+  final _this = this as PaymentSheetPrimaryButtonThemeColors;
+  return Object.hash(runtimeType,_this.background,_this.text,_this.border,_this.successBackgroundColor,_this.successTextColor);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonThemeColors(background: $background, text: $text, border: $border, successBackgroundColor: $successBackgroundColor, successTextColor: $successTextColor)';
+  final _this = this as PaymentSheetPrimaryButtonThemeColors;
+  return 'PaymentSheetPrimaryButtonThemeColors(background: ${_this.background}, text: ${_this.text}, border: ${_this.border}, successBackgroundColor: ${_this.successBackgroundColor}, successTextColor: ${_this.successTextColor})';
 }
 
 
@@ -4721,7 +4820,7 @@ class _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetPrimaryButtonThemeColors
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? background = freezed,Object? text = freezed,Object? border = freezed,Object? successBackgroundColor = freezed,Object? successTextColor = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetPrimaryButtonThemeColors(
 background: freezed == background ? _self.background : background // ignore: cast_nullable_to_non_nullable
 as Color?,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as Color?,border: freezed == border ? _self.border : border // ignore: cast_nullable_to_non_nullable
@@ -4895,16 +4994,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonThemeColors&&(identical(other.background, background) || other.background == background)&&(identical(other.text, text) || other.text == text)&&(identical(other.border, border) || other.border == border)&&(identical(other.successBackgroundColor, successBackgroundColor) || other.successBackgroundColor == successBackgroundColor)&&(identical(other.successTextColor, successTextColor) || other.successTextColor == successTextColor));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPrimaryButtonThemeColors&&(identical(other.background, background) || other.background == background)&&(identical(other.text, text) || other.text == text)&&(identical(other.border, border) || other.border == border)&&(identical(other.successBackgroundColor, successBackgroundColor) || other.successBackgroundColor == successBackgroundColor)&&(identical(other.successTextColor, successTextColor) || other.successTextColor == successTextColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,background,text,border,successBackgroundColor,successTextColor);
+int get hashCode {
+    return Object.hash(runtimeType,background,text,border,successBackgroundColor,successTextColor);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPrimaryButtonThemeColors(background: $background, text: $text, border: $border, successBackgroundColor: $successBackgroundColor, successTextColor: $successTextColor)';
+    return 'PaymentSheetPrimaryButtonThemeColors(background: $background, text: $text, border: $border, successBackgroundColor: $successBackgroundColor, successTextColor: $successTextColor)';
 }
 
 
@@ -4978,16 +5079,21 @@ $PresentPaymentSheetParametersCopyWith<PresentPaymentSheetParameters> get copyWi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PresentPaymentSheetParameters&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.confirmPayment, confirmPayment) || other.confirmPayment == confirmPayment));
+  final _this = this as PresentPaymentSheetParameters;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PresentPaymentSheetParameters&&(identical(other.clientSecret, _this.clientSecret) || other.clientSecret == _this.clientSecret)&&(identical(other.confirmPayment, _this.confirmPayment) || other.confirmPayment == _this.confirmPayment));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clientSecret,confirmPayment);
+int get hashCode {
+  final _this = this as PresentPaymentSheetParameters;
+  return Object.hash(runtimeType,_this.clientSecret,_this.confirmPayment);
+}
 
 @override
 String toString() {
-  return 'PresentPaymentSheetParameters(clientSecret: $clientSecret, confirmPayment: $confirmPayment)';
+  final _this = this as PresentPaymentSheetParameters;
+  return 'PresentPaymentSheetParameters(clientSecret: ${_this.clientSecret}, confirmPayment: ${_this.confirmPayment})';
 }
 
 
@@ -5016,7 +5122,7 @@ class _$PresentPaymentSheetParametersCopyWithImpl<$Res>
 /// Create a copy of PresentPaymentSheetParameters
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? clientSecret = null,Object? confirmPayment = null,}) {
-  return _then(_self.copyWith(
+  return _then(PresentPaymentSheetParameters(
 clientSecret: null == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
 as String,confirmPayment: null == confirmPayment ? _self.confirmPayment : confirmPayment // ignore: cast_nullable_to_non_nullable
 as bool,
@@ -5187,16 +5293,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PresentParameters&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.confirmPayment, confirmPayment) || other.confirmPayment == confirmPayment));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PresentParameters&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.confirmPayment, confirmPayment) || other.confirmPayment == confirmPayment));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clientSecret,confirmPayment);
+int get hashCode {
+    return Object.hash(runtimeType,clientSecret,confirmPayment);
+}
 
 @override
 String toString() {
-  return 'PresentPaymentSheetParameters(clientSecret: $clientSecret, confirmPayment: $confirmPayment)';
+    return 'PresentPaymentSheetParameters(clientSecret: $clientSecret, confirmPayment: $confirmPayment)';
 }
 
 
@@ -5256,16 +5364,21 @@ $PaymentSheetPresentOptionsCopyWith<PaymentSheetPresentOptions> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPresentOptions&&(identical(other.timeout, timeout) || other.timeout == timeout));
+  final _this = this as PaymentSheetPresentOptions;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPresentOptions&&(identical(other.timeout, _this.timeout) || other.timeout == _this.timeout));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,timeout);
+int get hashCode {
+  final _this = this as PaymentSheetPresentOptions;
+  return Object.hash(runtimeType,_this.timeout);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPresentOptions(timeout: $timeout)';
+  final _this = this as PaymentSheetPresentOptions;
+  return 'PaymentSheetPresentOptions(timeout: ${_this.timeout})';
 }
 
 
@@ -5294,7 +5407,7 @@ class _$PaymentSheetPresentOptionsCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetPresentOptions
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? timeout = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetPresentOptions(
 timeout: freezed == timeout ? _self.timeout : timeout // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
@@ -5459,16 +5572,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPresentOptions&&(identical(other.timeout, timeout) || other.timeout == timeout));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPresentOptions&&(identical(other.timeout, timeout) || other.timeout == timeout));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,timeout);
+int get hashCode {
+    return Object.hash(runtimeType,timeout);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPresentOptions(timeout: $timeout)';
+    return 'PaymentSheetPresentOptions(timeout: $timeout)';
 }
 
 
@@ -5525,16 +5640,21 @@ $PaymentSheetPaymentOptionCopyWith<PaymentSheetPaymentOption> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPaymentOption&&(identical(other.label, label) || other.label == label)&&(identical(other.image, image) || other.image == image));
+  final _this = this as PaymentSheetPaymentOption;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentSheetPaymentOption&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.image, _this.image) || other.image == _this.image));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,label,image);
+int get hashCode {
+  final _this = this as PaymentSheetPaymentOption;
+  return Object.hash(runtimeType,_this.label,_this.image);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPaymentOption(label: $label, image: $image)';
+  final _this = this as PaymentSheetPaymentOption;
+  return 'PaymentSheetPaymentOption(label: ${_this.label}, image: ${_this.image})';
 }
 
 
@@ -5563,7 +5683,7 @@ class _$PaymentSheetPaymentOptionCopyWithImpl<$Res>
 /// Create a copy of PaymentSheetPaymentOption
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? label = null,Object? image = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentSheetPaymentOption(
 label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -5728,16 +5848,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPaymentOption&&(identical(other.label, label) || other.label == label)&&(identical(other.image, image) || other.image == image));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentSheetPaymentOption&&(identical(other.label, label) || other.label == label)&&(identical(other.image, image) || other.image == image));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,label,image);
+int get hashCode {
+    return Object.hash(runtimeType,label,image);
+}
 
 @override
 String toString() {
-  return 'PaymentSheetPaymentOption(label: $label, image: $image)';
+    return 'PaymentSheetPaymentOption(label: $label, image: $image)';
 }
 
 
@@ -5808,16 +5930,21 @@ $BillingDetailsCollectionConfigurationCopyWith<BillingDetailsCollectionConfigura
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BillingDetailsCollectionConfiguration&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.attachDefaultsToPaymentMethod, attachDefaultsToPaymentMethod) || other.attachDefaultsToPaymentMethod == attachDefaultsToPaymentMethod));
+  final _this = this as BillingDetailsCollectionConfiguration;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BillingDetailsCollectionConfiguration&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.phone, _this.phone) || other.phone == _this.phone)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.address, _this.address) || other.address == _this.address)&&(identical(other.attachDefaultsToPaymentMethod, _this.attachDefaultsToPaymentMethod) || other.attachDefaultsToPaymentMethod == _this.attachDefaultsToPaymentMethod));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,phone,email,address,attachDefaultsToPaymentMethod);
+int get hashCode {
+  final _this = this as BillingDetailsCollectionConfiguration;
+  return Object.hash(runtimeType,_this.name,_this.phone,_this.email,_this.address,_this.attachDefaultsToPaymentMethod);
+}
 
 @override
 String toString() {
-  return 'BillingDetailsCollectionConfiguration(name: $name, phone: $phone, email: $email, address: $address, attachDefaultsToPaymentMethod: $attachDefaultsToPaymentMethod)';
+  final _this = this as BillingDetailsCollectionConfiguration;
+  return 'BillingDetailsCollectionConfiguration(name: ${_this.name}, phone: ${_this.phone}, email: ${_this.email}, address: ${_this.address}, attachDefaultsToPaymentMethod: ${_this.attachDefaultsToPaymentMethod})';
 }
 
 
@@ -5846,7 +5973,7 @@ class _$BillingDetailsCollectionConfigurationCopyWithImpl<$Res>
 /// Create a copy of BillingDetailsCollectionConfiguration
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? phone = freezed,Object? email = freezed,Object? address = freezed,Object? attachDefaultsToPaymentMethod = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(BillingDetailsCollectionConfiguration(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as CollectionMode?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as CollectionMode?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
@@ -6030,16 +6157,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillingDetailsCollectionConfiguration&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.attachDefaultsToPaymentMethod, attachDefaultsToPaymentMethod) || other.attachDefaultsToPaymentMethod == attachDefaultsToPaymentMethod));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillingDetailsCollectionConfiguration&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.attachDefaultsToPaymentMethod, attachDefaultsToPaymentMethod) || other.attachDefaultsToPaymentMethod == attachDefaultsToPaymentMethod));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,phone,email,address,attachDefaultsToPaymentMethod);
+int get hashCode {
+    return Object.hash(runtimeType,name,phone,email,address,attachDefaultsToPaymentMethod);
+}
 
 @override
 String toString() {
-  return 'BillingDetailsCollectionConfiguration(name: $name, phone: $phone, email: $email, address: $address, attachDefaultsToPaymentMethod: $attachDefaultsToPaymentMethod)';
+    return 'BillingDetailsCollectionConfiguration(name: $name, phone: $phone, email: $email, address: $address, attachDefaultsToPaymentMethod: $attachDefaultsToPaymentMethod)';
 }
 
 
@@ -6125,16 +6254,21 @@ $CardBrandAcceptanceCopyWith<CardBrandAcceptance> get copyWith => _$CardBrandAcc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardBrandAcceptance&&(identical(other.filter, filter) || other.filter == filter));
+  final _this = this as CardBrandAcceptance;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardBrandAcceptance&&(identical(other.filter, _this.filter) || other.filter == _this.filter));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,filter);
+int get hashCode {
+  final _this = this as CardBrandAcceptance;
+  return Object.hash(runtimeType,_this.filter);
+}
 
 @override
 String toString() {
-  return 'CardBrandAcceptance(filter: $filter)';
+  final _this = this as CardBrandAcceptance;
+  return 'CardBrandAcceptance(filter: ${_this.filter})';
 }
 
 
@@ -6318,7 +6452,7 @@ return disallowed(_that.filter,_that.brands);case _:
 @JsonSerializable()
 
 class _CardBrandAcceptanceAll implements CardBrandAcceptance {
-  const _CardBrandAcceptanceAll({this.filter = CardBrandAcceptanceFilter.all, final  String? $type}): $type = $type ?? 'all';
+  const _CardBrandAcceptanceAll({this.filter = CardBrandAcceptanceFilter.all,  String? $type}): $type = $type ?? 'all';
   factory _CardBrandAcceptanceAll.fromJson(Map<String, dynamic> json) => _$CardBrandAcceptanceAllFromJson(json);
 
 @override@JsonKey() final  CardBrandAcceptanceFilter filter;
@@ -6340,16 +6474,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardBrandAcceptanceAll&&(identical(other.filter, filter) || other.filter == filter));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardBrandAcceptanceAll&&(identical(other.filter, filter) || other.filter == filter));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,filter);
+int get hashCode {
+    return Object.hash(runtimeType,filter);
+}
 
 @override
 String toString() {
-  return 'CardBrandAcceptance.all(filter: $filter)';
+    return 'CardBrandAcceptance.all(filter: $filter)';
 }
 
 
@@ -6391,7 +6527,7 @@ as CardBrandAcceptanceFilter,
 @JsonSerializable()
 
 class _CardBrandAcceptanceAllowed implements CardBrandAcceptance {
-  const _CardBrandAcceptanceAllowed({this.filter = CardBrandAcceptanceFilter.allowed, required final  List<CardBrandCategory> brands, final  String? $type}): _brands = brands,$type = $type ?? 'allowed';
+  const _CardBrandAcceptanceAllowed({this.filter = CardBrandAcceptanceFilter.allowed, required  List<CardBrandCategory> brands,  String? $type}): _brands = brands,$type = $type ?? 'allowed';
   factory _CardBrandAcceptanceAllowed.fromJson(Map<String, dynamic> json) => _$CardBrandAcceptanceAllowedFromJson(json);
 
 @override@JsonKey() final  CardBrandAcceptanceFilter filter;
@@ -6420,16 +6556,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardBrandAcceptanceAllowed&&(identical(other.filter, filter) || other.filter == filter)&&const DeepCollectionEquality().equals(other._brands, _brands));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardBrandAcceptanceAllowed&&(identical(other.filter, filter) || other.filter == filter)&&const DeepCollectionEquality().equals(other.brands, _brands));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,filter,const DeepCollectionEquality().hash(_brands));
+int get hashCode {
+    return Object.hash(runtimeType,filter,const DeepCollectionEquality().hash(_brands));
+}
 
 @override
 String toString() {
-  return 'CardBrandAcceptance.allowed(filter: $filter, brands: $brands)';
+    return 'CardBrandAcceptance.allowed(filter: $filter, brands: $brands)';
 }
 
 
@@ -6472,7 +6610,7 @@ as List<CardBrandCategory>,
 @JsonSerializable()
 
 class _CardBrandAcceptanceDisallowed implements CardBrandAcceptance {
-  const _CardBrandAcceptanceDisallowed({this.filter = CardBrandAcceptanceFilter.disallowed, required final  List<CardBrandCategory> brands, final  String? $type}): _brands = brands,$type = $type ?? 'disallowed';
+  const _CardBrandAcceptanceDisallowed({this.filter = CardBrandAcceptanceFilter.disallowed, required  List<CardBrandCategory> brands,  String? $type}): _brands = brands,$type = $type ?? 'disallowed';
   factory _CardBrandAcceptanceDisallowed.fromJson(Map<String, dynamic> json) => _$CardBrandAcceptanceDisallowedFromJson(json);
 
 @override@JsonKey() final  CardBrandAcceptanceFilter filter;
@@ -6501,16 +6639,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardBrandAcceptanceDisallowed&&(identical(other.filter, filter) || other.filter == filter)&&const DeepCollectionEquality().equals(other._brands, _brands));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardBrandAcceptanceDisallowed&&(identical(other.filter, filter) || other.filter == filter)&&const DeepCollectionEquality().equals(other.brands, _brands));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,filter,const DeepCollectionEquality().hash(_brands));
+int get hashCode {
+    return Object.hash(runtimeType,filter,const DeepCollectionEquality().hash(_brands));
+}
 
 @override
 String toString() {
-  return 'CardBrandAcceptance.disallowed(filter: $filter, brands: $brands)';
+    return 'CardBrandAcceptance.disallowed(filter: $filter, brands: $brands)';
 }
 
 
@@ -6567,16 +6707,21 @@ $LinkDisplayParamsCopyWith<LinkDisplayParams> get copyWith => _$LinkDisplayParam
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LinkDisplayParams&&(identical(other.linkDisplay, linkDisplay) || other.linkDisplay == linkDisplay));
+  final _this = this as LinkDisplayParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LinkDisplayParams&&(identical(other.linkDisplay, _this.linkDisplay) || other.linkDisplay == _this.linkDisplay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,linkDisplay);
+int get hashCode {
+  final _this = this as LinkDisplayParams;
+  return Object.hash(runtimeType,_this.linkDisplay);
+}
 
 @override
 String toString() {
-  return 'LinkDisplayParams(linkDisplay: $linkDisplay)';
+  final _this = this as LinkDisplayParams;
+  return 'LinkDisplayParams(linkDisplay: ${_this.linkDisplay})';
 }
 
 
@@ -6605,7 +6750,7 @@ class _$LinkDisplayParamsCopyWithImpl<$Res>
 /// Create a copy of LinkDisplayParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? linkDisplay = null,}) {
-  return _then(_self.copyWith(
+  return _then(LinkDisplayParams(
 linkDisplay: null == linkDisplay ? _self.linkDisplay : linkDisplay // ignore: cast_nullable_to_non_nullable
 as LinkDisplay,
   ));
@@ -6767,16 +6912,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LinkDisplayParams&&(identical(other.linkDisplay, linkDisplay) || other.linkDisplay == linkDisplay));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LinkDisplayParams&&(identical(other.linkDisplay, linkDisplay) || other.linkDisplay == linkDisplay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,linkDisplay);
+int get hashCode {
+    return Object.hash(runtimeType,linkDisplay);
+}
 
 @override
 String toString() {
-  return 'LinkDisplayParams(linkDisplay: $linkDisplay)';
+    return 'LinkDisplayParams(linkDisplay: $linkDisplay)';
 }
 
 
@@ -6831,16 +6978,21 @@ $EdgeInsetsConfigCopyWith<EdgeInsetsConfig> get copyWith => _$EdgeInsetsConfigCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EdgeInsetsConfig&&(identical(other.top, top) || other.top == top)&&(identical(other.bottom, bottom) || other.bottom == bottom)&&(identical(other.left, left) || other.left == left)&&(identical(other.right, right) || other.right == right));
+  final _this = this as EdgeInsetsConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EdgeInsetsConfig&&(identical(other.top, _this.top) || other.top == _this.top)&&(identical(other.bottom, _this.bottom) || other.bottom == _this.bottom)&&(identical(other.left, _this.left) || other.left == _this.left)&&(identical(other.right, _this.right) || other.right == _this.right));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,top,bottom,left,right);
+int get hashCode {
+  final _this = this as EdgeInsetsConfig;
+  return Object.hash(runtimeType,_this.top,_this.bottom,_this.left,_this.right);
+}
 
 @override
 String toString() {
-  return 'EdgeInsetsConfig(top: $top, bottom: $bottom, left: $left, right: $right)';
+  final _this = this as EdgeInsetsConfig;
+  return 'EdgeInsetsConfig(top: ${_this.top}, bottom: ${_this.bottom}, left: ${_this.left}, right: ${_this.right})';
 }
 
 
@@ -6869,7 +7021,7 @@ class _$EdgeInsetsConfigCopyWithImpl<$Res>
 /// Create a copy of EdgeInsetsConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? top = freezed,Object? bottom = freezed,Object? left = freezed,Object? right = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(EdgeInsetsConfig(
 top: freezed == top ? _self.top : top // ignore: cast_nullable_to_non_nullable
 as double?,bottom: freezed == bottom ? _self.bottom : bottom // ignore: cast_nullable_to_non_nullable
 as double?,left: freezed == left ? _self.left : left // ignore: cast_nullable_to_non_nullable
@@ -7036,16 +7188,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EdgeInsetsConfig&&(identical(other.top, top) || other.top == top)&&(identical(other.bottom, bottom) || other.bottom == bottom)&&(identical(other.left, left) || other.left == left)&&(identical(other.right, right) || other.right == right));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EdgeInsetsConfig&&(identical(other.top, top) || other.top == top)&&(identical(other.bottom, bottom) || other.bottom == bottom)&&(identical(other.left, left) || other.left == left)&&(identical(other.right, right) || other.right == right));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,top,bottom,left,right);
+int get hashCode {
+    return Object.hash(runtimeType,top,bottom,left,right);
+}
 
 @override
 String toString() {
-  return 'EdgeInsetsConfig(top: $top, bottom: $bottom, left: $left, right: $right)';
+    return 'EdgeInsetsConfig(top: $top, bottom: $bottom, left: $left, right: $right)';
 }
 
 
@@ -7107,16 +7261,21 @@ $RadioConfigCopyWith<RadioConfig> get copyWith => _$RadioConfigCopyWithImpl<Radi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RadioConfig&&(identical(other.selectedColor, selectedColor) || other.selectedColor == selectedColor)&&(identical(other.unselectedColor, unselectedColor) || other.unselectedColor == unselectedColor));
+  final _this = this as RadioConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RadioConfig&&(identical(other.selectedColor, _this.selectedColor) || other.selectedColor == _this.selectedColor)&&(identical(other.unselectedColor, _this.unselectedColor) || other.unselectedColor == _this.unselectedColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,selectedColor,unselectedColor);
+int get hashCode {
+  final _this = this as RadioConfig;
+  return Object.hash(runtimeType,_this.selectedColor,_this.unselectedColor);
+}
 
 @override
 String toString() {
-  return 'RadioConfig(selectedColor: $selectedColor, unselectedColor: $unselectedColor)';
+  final _this = this as RadioConfig;
+  return 'RadioConfig(selectedColor: ${_this.selectedColor}, unselectedColor: ${_this.unselectedColor})';
 }
 
 
@@ -7145,7 +7304,7 @@ class _$RadioConfigCopyWithImpl<$Res>
 /// Create a copy of RadioConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? selectedColor = freezed,Object? unselectedColor = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(RadioConfig(
 selectedColor: freezed == selectedColor ? _self.selectedColor : selectedColor // ignore: cast_nullable_to_non_nullable
 as Color?,unselectedColor: freezed == unselectedColor ? _self.unselectedColor : unselectedColor // ignore: cast_nullable_to_non_nullable
 as Color?,
@@ -7312,16 +7471,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RadioConfig&&(identical(other.selectedColor, selectedColor) || other.selectedColor == selectedColor)&&(identical(other.unselectedColor, unselectedColor) || other.unselectedColor == unselectedColor));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _RadioConfig&&(identical(other.selectedColor, selectedColor) || other.selectedColor == selectedColor)&&(identical(other.unselectedColor, unselectedColor) || other.unselectedColor == unselectedColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,selectedColor,unselectedColor);
+int get hashCode {
+    return Object.hash(runtimeType,selectedColor,unselectedColor);
+}
 
 @override
 String toString() {
-  return 'RadioConfig(selectedColor: $selectedColor, unselectedColor: $unselectedColor)';
+    return 'RadioConfig(selectedColor: $selectedColor, unselectedColor: $unselectedColor)';
 }
 
 
@@ -7379,16 +7540,21 @@ $CheckmarkConfigCopyWith<CheckmarkConfig> get copyWith => _$CheckmarkConfigCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CheckmarkConfig&&(identical(other.color, color) || other.color == color));
+  final _this = this as CheckmarkConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CheckmarkConfig&&(identical(other.color, _this.color) || other.color == _this.color));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,color);
+int get hashCode {
+  final _this = this as CheckmarkConfig;
+  return Object.hash(runtimeType,_this.color);
+}
 
 @override
 String toString() {
-  return 'CheckmarkConfig(color: $color)';
+  final _this = this as CheckmarkConfig;
+  return 'CheckmarkConfig(color: ${_this.color})';
 }
 
 
@@ -7417,7 +7583,7 @@ class _$CheckmarkConfigCopyWithImpl<$Res>
 /// Create a copy of CheckmarkConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? color = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CheckmarkConfig(
 color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as Color?,
   ));
@@ -7580,16 +7746,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CheckmarkConfig&&(identical(other.color, color) || other.color == color));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CheckmarkConfig&&(identical(other.color, color) || other.color == color));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,color);
+int get hashCode {
+    return Object.hash(runtimeType,color);
+}
 
 @override
 String toString() {
-  return 'CheckmarkConfig(color: $color)';
+    return 'CheckmarkConfig(color: $color)';
 }
 
 
@@ -7646,16 +7814,21 @@ $DisclosureConfigCopyWith<DisclosureConfig> get copyWith => _$DisclosureConfigCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DisclosureConfig&&(identical(other.color, color) || other.color == color));
+  final _this = this as DisclosureConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DisclosureConfig&&(identical(other.color, _this.color) || other.color == _this.color));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,color);
+int get hashCode {
+  final _this = this as DisclosureConfig;
+  return Object.hash(runtimeType,_this.color);
+}
 
 @override
 String toString() {
-  return 'DisclosureConfig(color: $color)';
+  final _this = this as DisclosureConfig;
+  return 'DisclosureConfig(color: ${_this.color})';
 }
 
 
@@ -7684,7 +7857,7 @@ class _$DisclosureConfigCopyWithImpl<$Res>
 /// Create a copy of DisclosureConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? color = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(DisclosureConfig(
 color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as Color?,
   ));
@@ -7847,16 +8020,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DisclosureConfig&&(identical(other.color, color) || other.color == color));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DisclosureConfig&&(identical(other.color, color) || other.color == color));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,color);
+int get hashCode {
+    return Object.hash(runtimeType,color);
+}
 
 @override
 String toString() {
-  return 'DisclosureConfig(color: $color)';
+    return 'DisclosureConfig(color: $color)';
 }
 
 
@@ -7925,16 +8100,21 @@ $FlatConfigCopyWith<FlatConfig> get copyWith => _$FlatConfigCopyWithImpl<FlatCon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FlatConfig&&(identical(other.separatorThickness, separatorThickness) || other.separatorThickness == separatorThickness)&&(identical(other.separatorColor, separatorColor) || other.separatorColor == separatorColor)&&(identical(other.separatorInsets, separatorInsets) || other.separatorInsets == separatorInsets)&&(identical(other.topSeparatorEnabled, topSeparatorEnabled) || other.topSeparatorEnabled == topSeparatorEnabled)&&(identical(other.bottomSeparatorEnabled, bottomSeparatorEnabled) || other.bottomSeparatorEnabled == bottomSeparatorEnabled)&&(identical(other.radio, radio) || other.radio == radio)&&(identical(other.checkmark, checkmark) || other.checkmark == checkmark)&&(identical(other.disclosure, disclosure) || other.disclosure == disclosure));
+  final _this = this as FlatConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FlatConfig&&(identical(other.separatorThickness, _this.separatorThickness) || other.separatorThickness == _this.separatorThickness)&&(identical(other.separatorColor, _this.separatorColor) || other.separatorColor == _this.separatorColor)&&(identical(other.separatorInsets, _this.separatorInsets) || other.separatorInsets == _this.separatorInsets)&&(identical(other.topSeparatorEnabled, _this.topSeparatorEnabled) || other.topSeparatorEnabled == _this.topSeparatorEnabled)&&(identical(other.bottomSeparatorEnabled, _this.bottomSeparatorEnabled) || other.bottomSeparatorEnabled == _this.bottomSeparatorEnabled)&&(identical(other.radio, _this.radio) || other.radio == _this.radio)&&(identical(other.checkmark, _this.checkmark) || other.checkmark == _this.checkmark)&&(identical(other.disclosure, _this.disclosure) || other.disclosure == _this.disclosure));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,separatorThickness,separatorColor,separatorInsets,topSeparatorEnabled,bottomSeparatorEnabled,radio,checkmark,disclosure);
+int get hashCode {
+  final _this = this as FlatConfig;
+  return Object.hash(runtimeType,_this.separatorThickness,_this.separatorColor,_this.separatorInsets,_this.topSeparatorEnabled,_this.bottomSeparatorEnabled,_this.radio,_this.checkmark,_this.disclosure);
+}
 
 @override
 String toString() {
-  return 'FlatConfig(separatorThickness: $separatorThickness, separatorColor: $separatorColor, separatorInsets: $separatorInsets, topSeparatorEnabled: $topSeparatorEnabled, bottomSeparatorEnabled: $bottomSeparatorEnabled, radio: $radio, checkmark: $checkmark, disclosure: $disclosure)';
+  final _this = this as FlatConfig;
+  return 'FlatConfig(separatorThickness: ${_this.separatorThickness}, separatorColor: ${_this.separatorColor}, separatorInsets: ${_this.separatorInsets}, topSeparatorEnabled: ${_this.topSeparatorEnabled}, bottomSeparatorEnabled: ${_this.bottomSeparatorEnabled}, radio: ${_this.radio}, checkmark: ${_this.checkmark}, disclosure: ${_this.disclosure})';
 }
 
 
@@ -7963,7 +8143,7 @@ class _$FlatConfigCopyWithImpl<$Res>
 /// Create a copy of FlatConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? separatorThickness = freezed,Object? separatorColor = freezed,Object? separatorInsets = freezed,Object? topSeparatorEnabled = freezed,Object? bottomSeparatorEnabled = freezed,Object? radio = freezed,Object? checkmark = freezed,Object? disclosure = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(FlatConfig(
 separatorThickness: freezed == separatorThickness ? _self.separatorThickness : separatorThickness // ignore: cast_nullable_to_non_nullable
 as double?,separatorColor: freezed == separatorColor ? _self.separatorColor : separatorColor // ignore: cast_nullable_to_non_nullable
 as Color?,separatorInsets: freezed == separatorInsets ? _self.separatorInsets : separatorInsets // ignore: cast_nullable_to_non_nullable
@@ -8200,16 +8380,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FlatConfig&&(identical(other.separatorThickness, separatorThickness) || other.separatorThickness == separatorThickness)&&(identical(other.separatorColor, separatorColor) || other.separatorColor == separatorColor)&&(identical(other.separatorInsets, separatorInsets) || other.separatorInsets == separatorInsets)&&(identical(other.topSeparatorEnabled, topSeparatorEnabled) || other.topSeparatorEnabled == topSeparatorEnabled)&&(identical(other.bottomSeparatorEnabled, bottomSeparatorEnabled) || other.bottomSeparatorEnabled == bottomSeparatorEnabled)&&(identical(other.radio, radio) || other.radio == radio)&&(identical(other.checkmark, checkmark) || other.checkmark == checkmark)&&(identical(other.disclosure, disclosure) || other.disclosure == disclosure));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FlatConfig&&(identical(other.separatorThickness, separatorThickness) || other.separatorThickness == separatorThickness)&&(identical(other.separatorColor, separatorColor) || other.separatorColor == separatorColor)&&(identical(other.separatorInsets, separatorInsets) || other.separatorInsets == separatorInsets)&&(identical(other.topSeparatorEnabled, topSeparatorEnabled) || other.topSeparatorEnabled == topSeparatorEnabled)&&(identical(other.bottomSeparatorEnabled, bottomSeparatorEnabled) || other.bottomSeparatorEnabled == bottomSeparatorEnabled)&&(identical(other.radio, radio) || other.radio == radio)&&(identical(other.checkmark, checkmark) || other.checkmark == checkmark)&&(identical(other.disclosure, disclosure) || other.disclosure == disclosure));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,separatorThickness,separatorColor,separatorInsets,topSeparatorEnabled,bottomSeparatorEnabled,radio,checkmark,disclosure);
+int get hashCode {
+    return Object.hash(runtimeType,separatorThickness,separatorColor,separatorInsets,topSeparatorEnabled,bottomSeparatorEnabled,radio,checkmark,disclosure);
+}
 
 @override
 String toString() {
-  return 'FlatConfig(separatorThickness: $separatorThickness, separatorColor: $separatorColor, separatorInsets: $separatorInsets, topSeparatorEnabled: $topSeparatorEnabled, bottomSeparatorEnabled: $bottomSeparatorEnabled, radio: $radio, checkmark: $checkmark, disclosure: $disclosure)';
+    return 'FlatConfig(separatorThickness: $separatorThickness, separatorColor: $separatorColor, separatorInsets: $separatorInsets, topSeparatorEnabled: $topSeparatorEnabled, bottomSeparatorEnabled: $bottomSeparatorEnabled, radio: $radio, checkmark: $checkmark, disclosure: $disclosure)';
 }
 
 
@@ -8320,16 +8502,21 @@ $FloatingConfigCopyWith<FloatingConfig> get copyWith => _$FloatingConfigCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FloatingConfig&&(identical(other.spacing, spacing) || other.spacing == spacing));
+  final _this = this as FloatingConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FloatingConfig&&(identical(other.spacing, _this.spacing) || other.spacing == _this.spacing));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,spacing);
+int get hashCode {
+  final _this = this as FloatingConfig;
+  return Object.hash(runtimeType,_this.spacing);
+}
 
 @override
 String toString() {
-  return 'FloatingConfig(spacing: $spacing)';
+  final _this = this as FloatingConfig;
+  return 'FloatingConfig(spacing: ${_this.spacing})';
 }
 
 
@@ -8358,7 +8545,7 @@ class _$FloatingConfigCopyWithImpl<$Res>
 /// Create a copy of FloatingConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? spacing = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(FloatingConfig(
 spacing: freezed == spacing ? _self.spacing : spacing // ignore: cast_nullable_to_non_nullable
 as double?,
   ));
@@ -8520,16 +8707,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FloatingConfig&&(identical(other.spacing, spacing) || other.spacing == spacing));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FloatingConfig&&(identical(other.spacing, spacing) || other.spacing == spacing));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,spacing);
+int get hashCode {
+    return Object.hash(runtimeType,spacing);
+}
 
 @override
 String toString() {
-  return 'FloatingConfig(spacing: $spacing)';
+    return 'FloatingConfig(spacing: $spacing)';
 }
 
 
@@ -8590,16 +8779,21 @@ $RowConfigCopyWith<RowConfig> get copyWith => _$RowConfigCopyWithImpl<RowConfig>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RowConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.additionalInsets, additionalInsets) || other.additionalInsets == additionalInsets)&&(identical(other.flat, flat) || other.flat == flat)&&(identical(other.floating, floating) || other.floating == floating));
+  final _this = this as RowConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RowConfig&&(identical(other.style, _this.style) || other.style == _this.style)&&(identical(other.additionalInsets, _this.additionalInsets) || other.additionalInsets == _this.additionalInsets)&&(identical(other.flat, _this.flat) || other.flat == _this.flat)&&(identical(other.floating, _this.floating) || other.floating == _this.floating));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,style,additionalInsets,flat,floating);
+int get hashCode {
+  final _this = this as RowConfig;
+  return Object.hash(runtimeType,_this.style,_this.additionalInsets,_this.flat,_this.floating);
+}
 
 @override
 String toString() {
-  return 'RowConfig(style: $style, additionalInsets: $additionalInsets, flat: $flat, floating: $floating)';
+  final _this = this as RowConfig;
+  return 'RowConfig(style: ${_this.style}, additionalInsets: ${_this.additionalInsets}, flat: ${_this.flat}, floating: ${_this.floating})';
 }
 
 
@@ -8628,7 +8822,7 @@ class _$RowConfigCopyWithImpl<$Res>
 /// Create a copy of RowConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? style = freezed,Object? additionalInsets = freezed,Object? flat = freezed,Object? floating = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(RowConfig(
 style: freezed == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
 as RowStyle?,additionalInsets: freezed == additionalInsets ? _self.additionalInsets : additionalInsets // ignore: cast_nullable_to_non_nullable
 as double?,flat: freezed == flat ? _self.flat : flat // ignore: cast_nullable_to_non_nullable
@@ -8825,16 +9019,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RowConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.additionalInsets, additionalInsets) || other.additionalInsets == additionalInsets)&&(identical(other.flat, flat) || other.flat == flat)&&(identical(other.floating, floating) || other.floating == floating));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _RowConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.additionalInsets, additionalInsets) || other.additionalInsets == additionalInsets)&&(identical(other.flat, flat) || other.flat == flat)&&(identical(other.floating, floating) || other.floating == floating));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,style,additionalInsets,flat,floating);
+int get hashCode {
+    return Object.hash(runtimeType,style,additionalInsets,flat,floating);
+}
 
 @override
 String toString() {
-  return 'RowConfig(style: $style, additionalInsets: $additionalInsets, flat: $flat, floating: $floating)';
+    return 'RowConfig(style: $style, additionalInsets: $additionalInsets, flat: $flat, floating: $floating)';
 }
 
 
@@ -8916,16 +9112,21 @@ $EmbeddedPaymentElementAppearanceCopyWith<EmbeddedPaymentElementAppearance> get 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmbeddedPaymentElementAppearance&&(identical(other.row, row) || other.row == row));
+  final _this = this as EmbeddedPaymentElementAppearance;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmbeddedPaymentElementAppearance&&(identical(other.row, _this.row) || other.row == _this.row));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,row);
+int get hashCode {
+  final _this = this as EmbeddedPaymentElementAppearance;
+  return Object.hash(runtimeType,_this.row);
+}
 
 @override
 String toString() {
-  return 'EmbeddedPaymentElementAppearance(row: $row)';
+  final _this = this as EmbeddedPaymentElementAppearance;
+  return 'EmbeddedPaymentElementAppearance(row: ${_this.row})';
 }
 
 
@@ -8954,7 +9155,7 @@ class _$EmbeddedPaymentElementAppearanceCopyWithImpl<$Res>
 /// Create a copy of EmbeddedPaymentElementAppearance
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? row = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(EmbeddedPaymentElementAppearance(
 row: freezed == row ? _self.row : row // ignore: cast_nullable_to_non_nullable
 as RowConfig?,
   ));
@@ -9127,16 +9328,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmbeddedPaymentElementAppearance&&(identical(other.row, row) || other.row == row));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmbeddedPaymentElementAppearance&&(identical(other.row, row) || other.row == row));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,row);
+int get hashCode {
+    return Object.hash(runtimeType,row);
+}
 
 @override
 String toString() {
-  return 'EmbeddedPaymentElementAppearance(row: $row)';
+    return 'EmbeddedPaymentElementAppearance(row: $row)';
 }
 
 
@@ -9206,16 +9409,21 @@ $CustomPaymentMethodCopyWith<CustomPaymentMethod> get copyWith => _$CustomPaymen
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomPaymentMethod&&(identical(other.id, id) || other.id == id)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.disableBillingDetailCollection, disableBillingDetailCollection) || other.disableBillingDetailCollection == disableBillingDetailCollection));
+  final _this = this as CustomPaymentMethod;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomPaymentMethod&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.subtitle, _this.subtitle) || other.subtitle == _this.subtitle)&&(identical(other.disableBillingDetailCollection, _this.disableBillingDetailCollection) || other.disableBillingDetailCollection == _this.disableBillingDetailCollection));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,subtitle,disableBillingDetailCollection);
+int get hashCode {
+  final _this = this as CustomPaymentMethod;
+  return Object.hash(runtimeType,_this.id,_this.subtitle,_this.disableBillingDetailCollection);
+}
 
 @override
 String toString() {
-  return 'CustomPaymentMethod(id: $id, subtitle: $subtitle, disableBillingDetailCollection: $disableBillingDetailCollection)';
+  final _this = this as CustomPaymentMethod;
+  return 'CustomPaymentMethod(id: ${_this.id}, subtitle: ${_this.subtitle}, disableBillingDetailCollection: ${_this.disableBillingDetailCollection})';
 }
 
 
@@ -9244,7 +9452,7 @@ class _$CustomPaymentMethodCopyWithImpl<$Res>
 /// Create a copy of CustomPaymentMethod
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? subtitle = freezed,Object? disableBillingDetailCollection = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CustomPaymentMethod(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,subtitle: freezed == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
 as String?,disableBillingDetailCollection: freezed == disableBillingDetailCollection ? _self.disableBillingDetailCollection : disableBillingDetailCollection // ignore: cast_nullable_to_non_nullable
@@ -9412,16 +9620,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomPaymentMethod&&(identical(other.id, id) || other.id == id)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.disableBillingDetailCollection, disableBillingDetailCollection) || other.disableBillingDetailCollection == disableBillingDetailCollection));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomPaymentMethod&&(identical(other.id, id) || other.id == id)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.disableBillingDetailCollection, disableBillingDetailCollection) || other.disableBillingDetailCollection == disableBillingDetailCollection));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,subtitle,disableBillingDetailCollection);
+int get hashCode {
+    return Object.hash(runtimeType,id,subtitle,disableBillingDetailCollection);
+}
 
 @override
 String toString() {
-  return 'CustomPaymentMethod(id: $id, subtitle: $subtitle, disableBillingDetailCollection: $disableBillingDetailCollection)';
+    return 'CustomPaymentMethod(id: $id, subtitle: $subtitle, disableBillingDetailCollection: $disableBillingDetailCollection)';
 }
 
 
@@ -9480,16 +9690,21 @@ $CustomPaymentMethodConfigurationCopyWith<CustomPaymentMethodConfiguration> get 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomPaymentMethodConfiguration&&const DeepCollectionEquality().equals(other.customPaymentMethods, customPaymentMethods)&&(identical(other.confirmCustomPaymentMethodCallback, confirmCustomPaymentMethodCallback) || other.confirmCustomPaymentMethodCallback == confirmCustomPaymentMethodCallback));
+  final _this = this as CustomPaymentMethodConfiguration;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomPaymentMethodConfiguration&&const DeepCollectionEquality().equals(other.customPaymentMethods, _this.customPaymentMethods)&&(identical(other.confirmCustomPaymentMethodCallback, _this.confirmCustomPaymentMethodCallback) || other.confirmCustomPaymentMethodCallback == _this.confirmCustomPaymentMethodCallback));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(customPaymentMethods),confirmCustomPaymentMethodCallback);
+int get hashCode {
+  final _this = this as CustomPaymentMethodConfiguration;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.customPaymentMethods),_this.confirmCustomPaymentMethodCallback);
+}
 
 @override
 String toString() {
-  return 'CustomPaymentMethodConfiguration(customPaymentMethods: $customPaymentMethods, confirmCustomPaymentMethodCallback: $confirmCustomPaymentMethodCallback)';
+  final _this = this as CustomPaymentMethodConfiguration;
+  return 'CustomPaymentMethodConfiguration(customPaymentMethods: ${_this.customPaymentMethods}, confirmCustomPaymentMethodCallback: ${_this.confirmCustomPaymentMethodCallback})';
 }
 
 
@@ -9518,7 +9733,7 @@ class _$CustomPaymentMethodConfigurationCopyWithImpl<$Res>
 /// Create a copy of CustomPaymentMethodConfiguration
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? customPaymentMethods = null,Object? confirmCustomPaymentMethodCallback = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CustomPaymentMethodConfiguration(
 customPaymentMethods: null == customPaymentMethods ? _self.customPaymentMethods : customPaymentMethods // ignore: cast_nullable_to_non_nullable
 as List<CustomPaymentMethod>,confirmCustomPaymentMethodCallback: freezed == confirmCustomPaymentMethodCallback ? _self.confirmCustomPaymentMethodCallback : confirmCustomPaymentMethodCallback // ignore: cast_nullable_to_non_nullable
 as ConfirmCustomPaymentMethodCallback?,
@@ -9662,7 +9877,7 @@ return $default(_that.customPaymentMethods,_that.confirmCustomPaymentMethodCallb
 
 @JsonSerializable(explicitToJson: true)
 class _CustomPaymentMethodConfiguration implements CustomPaymentMethodConfiguration {
-  const _CustomPaymentMethodConfiguration({@JsonKey(name: 'customPaymentMethods') required final  List<CustomPaymentMethod> customPaymentMethods, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmCustomPaymentMethodCallback}): _customPaymentMethods = customPaymentMethods;
+  const _CustomPaymentMethodConfiguration({@JsonKey(name: 'customPaymentMethods') required  List<CustomPaymentMethod> customPaymentMethods, @JsonKey(includeFromJson: false, includeToJson: false) this.confirmCustomPaymentMethodCallback}): _customPaymentMethods = customPaymentMethods;
   factory _CustomPaymentMethodConfiguration.fromJson(Map<String, dynamic> json) => _$CustomPaymentMethodConfigurationFromJson(json);
 
 /// Array of custom payment methods to display in the Payment Sheet
@@ -9690,16 +9905,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomPaymentMethodConfiguration&&const DeepCollectionEquality().equals(other._customPaymentMethods, _customPaymentMethods)&&(identical(other.confirmCustomPaymentMethodCallback, confirmCustomPaymentMethodCallback) || other.confirmCustomPaymentMethodCallback == confirmCustomPaymentMethodCallback));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomPaymentMethodConfiguration&&const DeepCollectionEquality().equals(other.customPaymentMethods, _customPaymentMethods)&&(identical(other.confirmCustomPaymentMethodCallback, confirmCustomPaymentMethodCallback) || other.confirmCustomPaymentMethodCallback == confirmCustomPaymentMethodCallback));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_customPaymentMethods),confirmCustomPaymentMethodCallback);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_customPaymentMethods),confirmCustomPaymentMethodCallback);
+}
 
 @override
 String toString() {
-  return 'CustomPaymentMethodConfiguration(customPaymentMethods: $customPaymentMethods, confirmCustomPaymentMethodCallback: $confirmCustomPaymentMethodCallback)';
+    return 'CustomPaymentMethodConfiguration(customPaymentMethods: $customPaymentMethods, confirmCustomPaymentMethodCallback: $confirmCustomPaymentMethodCallback)';
 }
 
 
@@ -9756,16 +9973,21 @@ $CardFundingFilteringCopyWith<CardFundingFiltering> get copyWith => _$CardFundin
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardFundingFiltering&&const DeepCollectionEquality().equals(other.allowedCardFundingTypes, allowedCardFundingTypes));
+  final _this = this as CardFundingFiltering;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardFundingFiltering&&const DeepCollectionEquality().equals(other.allowedCardFundingTypes, _this.allowedCardFundingTypes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(allowedCardFundingTypes));
+int get hashCode {
+  final _this = this as CardFundingFiltering;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.allowedCardFundingTypes));
+}
 
 @override
 String toString() {
-  return 'CardFundingFiltering(allowedCardFundingTypes: $allowedCardFundingTypes)';
+  final _this = this as CardFundingFiltering;
+  return 'CardFundingFiltering(allowedCardFundingTypes: ${_this.allowedCardFundingTypes})';
 }
 
 
@@ -9794,7 +10016,7 @@ class _$CardFundingFilteringCopyWithImpl<$Res>
 /// Create a copy of CardFundingFiltering
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? allowedCardFundingTypes = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardFundingFiltering(
 allowedCardFundingTypes: freezed == allowedCardFundingTypes ? _self.allowedCardFundingTypes : allowedCardFundingTypes // ignore: cast_nullable_to_non_nullable
 as List<CardFundingType>?,
   ));
@@ -9937,7 +10159,7 @@ return $default(_that.allowedCardFundingTypes);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _CardFundingFiltering implements CardFundingFiltering {
-  const _CardFundingFiltering({final  List<CardFundingType>? allowedCardFundingTypes}): _allowedCardFundingTypes = allowedCardFundingTypes;
+  const _CardFundingFiltering({ List<CardFundingType>? allowedCardFundingTypes}): _allowedCardFundingTypes = allowedCardFundingTypes;
   factory _CardFundingFiltering.fromJson(Map<String, dynamic> json) => _$CardFundingFilteringFromJson(json);
 
 /// List of allowed card funding types. If not set, all types are accepted.
@@ -9965,16 +10187,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardFundingFiltering&&const DeepCollectionEquality().equals(other._allowedCardFundingTypes, _allowedCardFundingTypes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardFundingFiltering&&const DeepCollectionEquality().equals(other.allowedCardFundingTypes, _allowedCardFundingTypes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_allowedCardFundingTypes));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_allowedCardFundingTypes));
+}
 
 @override
 String toString() {
-  return 'CardFundingFiltering(allowedCardFundingTypes: $allowedCardFundingTypes)';
+    return 'CardFundingFiltering(allowedCardFundingTypes: $allowedCardFundingTypes)';
 }
 
 

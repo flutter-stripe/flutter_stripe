@@ -5,6 +5,7 @@ import 'payment_methods.dart';
 
 part 'setup_intent.freezed.dart';
 part 'setup_intent.g.dart';
+
 // ignore_for_file: constant_identifier_names
 
 @freezed

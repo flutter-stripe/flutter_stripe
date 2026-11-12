@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'push_provisioning.dart';
@@ -9,6 +9,7 @@ part of 'push_provisioning.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -36,16 +37,21 @@ $GooglePayCardTokenCopyWith<GooglePayCardToken> get copyWith => _$GooglePayCardT
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GooglePayCardToken&&(identical(other.id, id) || other.id == id)&&(identical(other.fpanLastFour, fpanLastFour) || other.fpanLastFour == fpanLastFour)&&(identical(other.dpanLastFour, dpanLastFour) || other.dpanLastFour == dpanLastFour)&&(identical(other.network, network) || other.network == network)&&(identical(other.serviceProvider, serviceProvider) || other.serviceProvider == serviceProvider)&&(identical(other.issuer, issuer) || other.issuer == issuer)&&(identical(other.status, status) || other.status == status)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour));
+  final _this = this as GooglePayCardToken;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GooglePayCardToken&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.fpanLastFour, _this.fpanLastFour) || other.fpanLastFour == _this.fpanLastFour)&&(identical(other.dpanLastFour, _this.dpanLastFour) || other.dpanLastFour == _this.dpanLastFour)&&(identical(other.network, _this.network) || other.network == _this.network)&&(identical(other.serviceProvider, _this.serviceProvider) || other.serviceProvider == _this.serviceProvider)&&(identical(other.issuer, _this.issuer) || other.issuer == _this.issuer)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.cardLastFour, _this.cardLastFour) || other.cardLastFour == _this.cardLastFour));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,fpanLastFour,dpanLastFour,network,serviceProvider,issuer,status,cardLastFour);
+int get hashCode {
+  final _this = this as GooglePayCardToken;
+  return Object.hash(runtimeType,_this.id,_this.fpanLastFour,_this.dpanLastFour,_this.network,_this.serviceProvider,_this.issuer,_this.status,_this.cardLastFour);
+}
 
 @override
 String toString() {
-  return 'GooglePayCardToken(id: $id, fpanLastFour: $fpanLastFour, dpanLastFour: $dpanLastFour, network: $network, serviceProvider: $serviceProvider, issuer: $issuer, status: $status, cardLastFour: $cardLastFour)';
+  final _this = this as GooglePayCardToken;
+  return 'GooglePayCardToken(id: ${_this.id}, fpanLastFour: ${_this.fpanLastFour}, dpanLastFour: ${_this.dpanLastFour}, network: ${_this.network}, serviceProvider: ${_this.serviceProvider}, issuer: ${_this.issuer}, status: ${_this.status}, cardLastFour: ${_this.cardLastFour})';
 }
 
 
@@ -74,7 +80,7 @@ class _$GooglePayCardTokenCopyWithImpl<$Res>
 /// Create a copy of GooglePayCardToken
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? fpanLastFour = null,Object? dpanLastFour = null,Object? network = null,Object? serviceProvider = null,Object? issuer = null,Object? status = null,Object? cardLastFour = null,}) {
-  return _then(_self.copyWith(
+  return _then(GooglePayCardToken(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,fpanLastFour: null == fpanLastFour ? _self.fpanLastFour : fpanLastFour // ignore: cast_nullable_to_non_nullable
 as String,dpanLastFour: null == dpanLastFour ? _self.dpanLastFour : dpanLastFour // ignore: cast_nullable_to_non_nullable
@@ -257,16 +263,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GooglePayCardToken&&(identical(other.id, id) || other.id == id)&&(identical(other.fpanLastFour, fpanLastFour) || other.fpanLastFour == fpanLastFour)&&(identical(other.dpanLastFour, dpanLastFour) || other.dpanLastFour == dpanLastFour)&&(identical(other.network, network) || other.network == network)&&(identical(other.serviceProvider, serviceProvider) || other.serviceProvider == serviceProvider)&&(identical(other.issuer, issuer) || other.issuer == issuer)&&(identical(other.status, status) || other.status == status)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GooglePayCardToken&&(identical(other.id, id) || other.id == id)&&(identical(other.fpanLastFour, fpanLastFour) || other.fpanLastFour == fpanLastFour)&&(identical(other.dpanLastFour, dpanLastFour) || other.dpanLastFour == dpanLastFour)&&(identical(other.network, network) || other.network == network)&&(identical(other.serviceProvider, serviceProvider) || other.serviceProvider == serviceProvider)&&(identical(other.issuer, issuer) || other.issuer == issuer)&&(identical(other.status, status) || other.status == status)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,fpanLastFour,dpanLastFour,network,serviceProvider,issuer,status,cardLastFour);
+int get hashCode {
+    return Object.hash(runtimeType,id,fpanLastFour,dpanLastFour,network,serviceProvider,issuer,status,cardLastFour);
+}
 
 @override
 String toString() {
-  return 'GooglePayCardToken(id: $id, fpanLastFour: $fpanLastFour, dpanLastFour: $dpanLastFour, network: $network, serviceProvider: $serviceProvider, issuer: $issuer, status: $status, cardLastFour: $cardLastFour)';
+    return 'GooglePayCardToken(id: $id, fpanLastFour: $fpanLastFour, dpanLastFour: $dpanLastFour, network: $network, serviceProvider: $serviceProvider, issuer: $issuer, status: $status, cardLastFour: $cardLastFour)';
 }
 
 
@@ -328,16 +336,21 @@ $IsCardInWalletResultCopyWith<IsCardInWalletResult> get copyWith => _$IsCardInWa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IsCardInWalletResult&&(identical(other.isInWallet, isInWallet) || other.isInWallet == isInWallet)&&(identical(other.token, token) || other.token == token));
+  final _this = this as IsCardInWalletResult;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IsCardInWalletResult&&(identical(other.isInWallet, _this.isInWallet) || other.isInWallet == _this.isInWallet)&&(identical(other.token, _this.token) || other.token == _this.token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isInWallet,token);
+int get hashCode {
+  final _this = this as IsCardInWalletResult;
+  return Object.hash(runtimeType,_this.isInWallet,_this.token);
+}
 
 @override
 String toString() {
-  return 'IsCardInWalletResult(isInWallet: $isInWallet, token: $token)';
+  final _this = this as IsCardInWalletResult;
+  return 'IsCardInWalletResult(isInWallet: ${_this.isInWallet}, token: ${_this.token})';
 }
 
 
@@ -366,7 +379,7 @@ class _$IsCardInWalletResultCopyWithImpl<$Res>
 /// Create a copy of IsCardInWalletResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? isInWallet = null,Object? token = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(IsCardInWalletResult(
 isInWallet: null == isInWallet ? _self.isInWallet : isInWallet // ignore: cast_nullable_to_non_nullable
 as bool,token: freezed == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
 as GooglePayCardToken?,
@@ -541,16 +554,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IsCardInWalletResult&&(identical(other.isInWallet, isInWallet) || other.isInWallet == isInWallet)&&(identical(other.token, token) || other.token == token));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IsCardInWalletResult&&(identical(other.isInWallet, isInWallet) || other.isInWallet == isInWallet)&&(identical(other.token, token) || other.token == token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isInWallet,token);
+int get hashCode {
+    return Object.hash(runtimeType,isInWallet,token);
+}
 
 @override
 String toString() {
-  return 'IsCardInWalletResult(isInWallet: $isInWallet, token: $token)';
+    return 'IsCardInWalletResult(isInWallet: $isInWallet, token: $token)';
 }
 
 
@@ -618,16 +633,21 @@ $CanAddCardToWalletResultCopyWith<CanAddCardToWalletResult> get copyWith => _$Ca
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CanAddCardToWalletResult&&(identical(other.canAddCard, canAddCard) || other.canAddCard == canAddCard)&&(identical(other.details, details) || other.details == details));
+  final _this = this as CanAddCardToWalletResult;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CanAddCardToWalletResult&&(identical(other.canAddCard, _this.canAddCard) || other.canAddCard == _this.canAddCard)&&(identical(other.details, _this.details) || other.details == _this.details));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,canAddCard,details);
+int get hashCode {
+  final _this = this as CanAddCardToWalletResult;
+  return Object.hash(runtimeType,_this.canAddCard,_this.details);
+}
 
 @override
 String toString() {
-  return 'CanAddCardToWalletResult(canAddCard: $canAddCard, details: $details)';
+  final _this = this as CanAddCardToWalletResult;
+  return 'CanAddCardToWalletResult(canAddCard: ${_this.canAddCard}, details: ${_this.details})';
 }
 
 
@@ -656,7 +676,7 @@ class _$CanAddCardToWalletResultCopyWithImpl<$Res>
 /// Create a copy of CanAddCardToWalletResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? canAddCard = null,Object? details = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CanAddCardToWalletResult(
 canAddCard: null == canAddCard ? _self.canAddCard : canAddCard // ignore: cast_nullable_to_non_nullable
 as bool,details: freezed == details ? _self.details : details // ignore: cast_nullable_to_non_nullable
 as CanAddCardToDetails?,
@@ -831,16 +851,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CanAddCardToWalletResult&&(identical(other.canAddCard, canAddCard) || other.canAddCard == canAddCard)&&(identical(other.details, details) || other.details == details));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CanAddCardToWalletResult&&(identical(other.canAddCard, canAddCard) || other.canAddCard == canAddCard)&&(identical(other.details, details) || other.details == details));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,canAddCard,details);
+int get hashCode {
+    return Object.hash(runtimeType,canAddCard,details);
+}
 
 @override
 String toString() {
-  return 'CanAddCardToWalletResult(canAddCard: $canAddCard, details: $details)';
+    return 'CanAddCardToWalletResult(canAddCard: $canAddCard, details: $details)';
 }
 
 
@@ -908,16 +930,21 @@ $CanAddCardToDetailsCopyWith<CanAddCardToDetails> get copyWith => _$CanAddCardTo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CanAddCardToDetails&&(identical(other.token, token) || other.token == token)&&(identical(other.status, status) || other.status == status));
+  final _this = this as CanAddCardToDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CanAddCardToDetails&&(identical(other.token, _this.token) || other.token == _this.token)&&(identical(other.status, _this.status) || other.status == _this.status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,token,status);
+int get hashCode {
+  final _this = this as CanAddCardToDetails;
+  return Object.hash(runtimeType,_this.token,_this.status);
+}
 
 @override
 String toString() {
-  return 'CanAddCardToDetails(token: $token, status: $status)';
+  final _this = this as CanAddCardToDetails;
+  return 'CanAddCardToDetails(token: ${_this.token}, status: ${_this.status})';
 }
 
 
@@ -946,7 +973,7 @@ class _$CanAddCardToDetailsCopyWithImpl<$Res>
 /// Create a copy of CanAddCardToDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? token = freezed,Object? status = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CanAddCardToDetails(
 token: freezed == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
 as GooglePayCardToken?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as CanAddCardToWalletStatus?,
@@ -1121,16 +1148,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CanAddCardToDetails&&(identical(other.token, token) || other.token == token)&&(identical(other.status, status) || other.status == status));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CanAddCardToDetails&&(identical(other.token, token) || other.token == token)&&(identical(other.status, status) || other.status == status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,token,status);
+int get hashCode {
+    return Object.hash(runtimeType,token,status);
+}
 
 @override
 String toString() {
-  return 'CanAddCardToDetails(token: $token, status: $status)';
+    return 'CanAddCardToDetails(token: $token, status: $status)';
 }
 
 
@@ -1204,16 +1233,21 @@ $CanAddCardToWalletParamsCopyWith<CanAddCardToWalletParams> get copyWith => _$Ca
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CanAddCardToWalletParams&&(identical(other.primaryAccountIdentifier, primaryAccountIdentifier) || other.primaryAccountIdentifier == primaryAccountIdentifier)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour)&&(identical(other.cardBrand, cardBrand) || other.cardBrand == cardBrand)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.hasPairedAppleWatch, hasPairedAppleWatch) || other.hasPairedAppleWatch == hasPairedAppleWatch)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
+  final _this = this as CanAddCardToWalletParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CanAddCardToWalletParams&&(identical(other.primaryAccountIdentifier, _this.primaryAccountIdentifier) || other.primaryAccountIdentifier == _this.primaryAccountIdentifier)&&(identical(other.cardLastFour, _this.cardLastFour) || other.cardLastFour == _this.cardLastFour)&&(identical(other.cardBrand, _this.cardBrand) || other.cardBrand == _this.cardBrand)&&(identical(other.testEnv, _this.testEnv) || other.testEnv == _this.testEnv)&&(identical(other.hasPairedAppleWatch, _this.hasPairedAppleWatch) || other.hasPairedAppleWatch == _this.hasPairedAppleWatch)&&(identical(other.supportsTapToPay, _this.supportsTapToPay) || other.supportsTapToPay == _this.supportsTapToPay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,primaryAccountIdentifier,cardLastFour,cardBrand,testEnv,hasPairedAppleWatch,supportsTapToPay);
+int get hashCode {
+  final _this = this as CanAddCardToWalletParams;
+  return Object.hash(runtimeType,_this.primaryAccountIdentifier,_this.cardLastFour,_this.cardBrand,_this.testEnv,_this.hasPairedAppleWatch,_this.supportsTapToPay);
+}
 
 @override
 String toString() {
-  return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, cardBrand: $cardBrand, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
+  final _this = this as CanAddCardToWalletParams;
+  return 'CanAddCardToWalletParams(primaryAccountIdentifier: ${_this.primaryAccountIdentifier}, cardLastFour: ${_this.cardLastFour}, cardBrand: ${_this.cardBrand}, testEnv: ${_this.testEnv}, hasPairedAppleWatch: ${_this.hasPairedAppleWatch}, supportsTapToPay: ${_this.supportsTapToPay})';
 }
 
 
@@ -1242,7 +1276,7 @@ class _$CanAddCardToWalletParamsCopyWithImpl<$Res>
 /// Create a copy of CanAddCardToWalletParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? primaryAccountIdentifier = freezed,Object? cardLastFour = null,Object? cardBrand = null,Object? testEnv = freezed,Object? hasPairedAppleWatch = freezed,Object? supportsTapToPay = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CanAddCardToWalletParams(
 primaryAccountIdentifier: freezed == primaryAccountIdentifier ? _self.primaryAccountIdentifier : primaryAccountIdentifier // ignore: cast_nullable_to_non_nullable
 as String?,cardLastFour: null == cardLastFour ? _self.cardLastFour : cardLastFour // ignore: cast_nullable_to_non_nullable
 as String,cardBrand: null == cardBrand ? _self.cardBrand : cardBrand // ignore: cast_nullable_to_non_nullable
@@ -1419,16 +1453,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CanAddCardToWalletParams&&(identical(other.primaryAccountIdentifier, primaryAccountIdentifier) || other.primaryAccountIdentifier == primaryAccountIdentifier)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour)&&(identical(other.cardBrand, cardBrand) || other.cardBrand == cardBrand)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.hasPairedAppleWatch, hasPairedAppleWatch) || other.hasPairedAppleWatch == hasPairedAppleWatch)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CanAddCardToWalletParams&&(identical(other.primaryAccountIdentifier, primaryAccountIdentifier) || other.primaryAccountIdentifier == primaryAccountIdentifier)&&(identical(other.cardLastFour, cardLastFour) || other.cardLastFour == cardLastFour)&&(identical(other.cardBrand, cardBrand) || other.cardBrand == cardBrand)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.hasPairedAppleWatch, hasPairedAppleWatch) || other.hasPairedAppleWatch == hasPairedAppleWatch)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,primaryAccountIdentifier,cardLastFour,cardBrand,testEnv,hasPairedAppleWatch,supportsTapToPay);
+int get hashCode {
+    return Object.hash(runtimeType,primaryAccountIdentifier,cardLastFour,cardBrand,testEnv,hasPairedAppleWatch,supportsTapToPay);
+}
 
 @override
 String toString() {
-  return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, cardBrand: $cardBrand, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
+    return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, cardBrand: $cardBrand, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
 }
 
 

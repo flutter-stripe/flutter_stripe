@@ -4,6 +4,7 @@ import 'address.dart';
 
 part 'create_token_data.freezed.dart';
 part 'create_token_data.g.dart';
+
 //ignore_for_file: constant_identifier_names
 
 @freezed

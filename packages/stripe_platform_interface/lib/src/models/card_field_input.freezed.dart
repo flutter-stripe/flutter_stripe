@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'card_field_input.dart';
@@ -9,6 +9,7 @@ part of 'card_field_input.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 CardStyle _$CardStyleFromJson(
@@ -23,11 +24,18 @@ CardStyle _$CardStyleFromJson(
 mixin _$CardStyle {
 
 /// Width for the border.
- int? get borderWidth;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get backgroundColor;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get borderColor;/// Borderradius that can give the Cardfield rounded corners.
- int? get borderRadius;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get cursorColor;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textColor;/// Font size.
+ int? get borderWidth;/// Background color of the cardfield
+///
+/// Make sure that there is enough contrast with the text color.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get backgroundColor;/// Border color of the cardfield.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get borderColor;/// Borderradius that can give the Cardfield rounded corners.
+ int? get borderRadius;/// Cursor color when the card has focus.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get cursorColor;/// Color of the typed text on the Card fuekd.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textColor;/// Font size.
  int? get fontSize;/// Font family
  String? get fontFamily;/// Color of the input in case incorrect data is entered.
-@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textErrorColor;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get placeholderColor;
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textErrorColor;/// Color of the placeholder text.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get placeholderColor;
 /// Create a copy of CardStyle
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -40,16 +48,21 @@ $CardStyleCopyWith<CardStyle> get copyWith => _$CardStyleCopyWithImpl<CardStyle>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardStyle&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.cursorColor, cursorColor) || other.cursorColor == cursorColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.fontFamily, fontFamily) || other.fontFamily == fontFamily)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor));
+  final _this = this as CardStyle;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardStyle&&(identical(other.borderWidth, _this.borderWidth) || other.borderWidth == _this.borderWidth)&&(identical(other.backgroundColor, _this.backgroundColor) || other.backgroundColor == _this.backgroundColor)&&(identical(other.borderColor, _this.borderColor) || other.borderColor == _this.borderColor)&&(identical(other.borderRadius, _this.borderRadius) || other.borderRadius == _this.borderRadius)&&(identical(other.cursorColor, _this.cursorColor) || other.cursorColor == _this.cursorColor)&&(identical(other.textColor, _this.textColor) || other.textColor == _this.textColor)&&(identical(other.fontSize, _this.fontSize) || other.fontSize == _this.fontSize)&&(identical(other.fontFamily, _this.fontFamily) || other.fontFamily == _this.fontFamily)&&(identical(other.textErrorColor, _this.textErrorColor) || other.textErrorColor == _this.textErrorColor)&&(identical(other.placeholderColor, _this.placeholderColor) || other.placeholderColor == _this.placeholderColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,borderWidth,backgroundColor,borderColor,borderRadius,cursorColor,textColor,fontSize,fontFamily,textErrorColor,placeholderColor);
+int get hashCode {
+  final _this = this as CardStyle;
+  return Object.hash(runtimeType,_this.borderWidth,_this.backgroundColor,_this.borderColor,_this.borderRadius,_this.cursorColor,_this.textColor,_this.fontSize,_this.fontFamily,_this.textErrorColor,_this.placeholderColor);
+}
 
 @override
 String toString() {
-  return 'CardStyle(borderWidth: $borderWidth, backgroundColor: $backgroundColor, borderColor: $borderColor, borderRadius: $borderRadius, cursorColor: $cursorColor, textColor: $textColor, fontSize: $fontSize, fontFamily: $fontFamily, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor)';
+  final _this = this as CardStyle;
+  return 'CardStyle(borderWidth: ${_this.borderWidth}, backgroundColor: ${_this.backgroundColor}, borderColor: ${_this.borderColor}, borderRadius: ${_this.borderRadius}, cursorColor: ${_this.cursorColor}, textColor: ${_this.textColor}, fontSize: ${_this.fontSize}, fontFamily: ${_this.fontFamily}, textErrorColor: ${_this.textErrorColor}, placeholderColor: ${_this.placeholderColor})';
 }
 
 
@@ -78,7 +91,7 @@ class _$CardStyleCopyWithImpl<$Res>
 /// Create a copy of CardStyle
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? borderWidth = freezed,Object? backgroundColor = freezed,Object? borderColor = freezed,Object? borderRadius = freezed,Object? cursorColor = freezed,Object? textColor = freezed,Object? fontSize = freezed,Object? fontFamily = freezed,Object? textErrorColor = freezed,Object? placeholderColor = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardStyle(
 borderWidth: freezed == borderWidth ? _self.borderWidth : borderWidth // ignore: cast_nullable_to_non_nullable
 as int?,backgroundColor: freezed == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
 as Color?,borderColor: freezed == borderColor ? _self.borderColor : borderColor // ignore: cast_nullable_to_non_nullable
@@ -235,11 +248,17 @@ class _CardStyleConstructor extends CardStyle {
 
 /// Width for the border.
 @override final  int? borderWidth;
+/// Background color of the cardfield
+///
+/// Make sure that there is enough contrast with the text color.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? backgroundColor;
+/// Border color of the cardfield.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? borderColor;
 /// Borderradius that can give the Cardfield rounded corners.
 @override final  int? borderRadius;
+/// Cursor color when the card has focus.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? cursorColor;
+/// Color of the typed text on the Card fuekd.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? textColor;
 /// Font size.
 @override final  int? fontSize;
@@ -247,6 +266,7 @@ class _CardStyleConstructor extends CardStyle {
 @override final  String? fontFamily;
 /// Color of the input in case incorrect data is entered.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? textErrorColor;
+/// Color of the placeholder text.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? placeholderColor;
 
 /// Create a copy of CardStyle
@@ -262,16 +282,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardStyleConstructor&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.cursorColor, cursorColor) || other.cursorColor == cursorColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.fontFamily, fontFamily) || other.fontFamily == fontFamily)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardStyleConstructor&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.cursorColor, cursorColor) || other.cursorColor == cursorColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.fontFamily, fontFamily) || other.fontFamily == fontFamily)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,borderWidth,backgroundColor,borderColor,borderRadius,cursorColor,textColor,fontSize,fontFamily,textErrorColor,placeholderColor);
+int get hashCode {
+    return Object.hash(runtimeType,borderWidth,backgroundColor,borderColor,borderRadius,cursorColor,textColor,fontSize,fontFamily,textErrorColor,placeholderColor);
+}
 
 @override
 String toString() {
-  return 'CardStyle(borderWidth: $borderWidth, backgroundColor: $backgroundColor, borderColor: $borderColor, borderRadius: $borderRadius, cursorColor: $cursorColor, textColor: $textColor, fontSize: $fontSize, fontFamily: $fontFamily, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor)';
+    return 'CardStyle(borderWidth: $borderWidth, backgroundColor: $backgroundColor, borderColor: $borderColor, borderRadius: $borderRadius, cursorColor: $cursorColor, textColor: $textColor, fontSize: $fontSize, fontFamily: $fontFamily, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor)';
 }
 
 
@@ -329,11 +351,18 @@ CardFormStyle _$CardFormStyleFromJson(
 /// @nodoc
 mixin _$CardFormStyle {
 
+/// Background color of the cardformfield
+///
+/// Make sure that there is enough contrast with the text color.
 @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get backgroundColor;/// Width for the border.
- int? get borderWidth;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get borderColor;/// Borderradius that can give the Cardfield rounded corners.
- int? get borderRadius;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get cursorColor;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textColor;/// Font size.
+ int? get borderWidth;/// Border color of the cardfield.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get borderColor;/// Borderradius that can give the Cardfield rounded corners.
+ int? get borderRadius;/// Cursor color when the card has focus.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get cursorColor;/// Color of the typed text on the Card fuekd.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textColor;/// Font size.
  int? get fontSize;/// Color of the input in case incorrect data is entered.
-@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textErrorColor;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get placeholderColor;
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textErrorColor;/// Color of the placeholder text.
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get placeholderColor;
 /// Create a copy of CardFormStyle
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -346,16 +375,21 @@ $CardFormStyleCopyWith<CardFormStyle> get copyWith => _$CardFormStyleCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardFormStyle&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.cursorColor, cursorColor) || other.cursorColor == cursorColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor));
+  final _this = this as CardFormStyle;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardFormStyle&&(identical(other.backgroundColor, _this.backgroundColor) || other.backgroundColor == _this.backgroundColor)&&(identical(other.borderWidth, _this.borderWidth) || other.borderWidth == _this.borderWidth)&&(identical(other.borderColor, _this.borderColor) || other.borderColor == _this.borderColor)&&(identical(other.borderRadius, _this.borderRadius) || other.borderRadius == _this.borderRadius)&&(identical(other.cursorColor, _this.cursorColor) || other.cursorColor == _this.cursorColor)&&(identical(other.textColor, _this.textColor) || other.textColor == _this.textColor)&&(identical(other.fontSize, _this.fontSize) || other.fontSize == _this.fontSize)&&(identical(other.textErrorColor, _this.textErrorColor) || other.textErrorColor == _this.textErrorColor)&&(identical(other.placeholderColor, _this.placeholderColor) || other.placeholderColor == _this.placeholderColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,backgroundColor,borderWidth,borderColor,borderRadius,cursorColor,textColor,fontSize,textErrorColor,placeholderColor);
+int get hashCode {
+  final _this = this as CardFormStyle;
+  return Object.hash(runtimeType,_this.backgroundColor,_this.borderWidth,_this.borderColor,_this.borderRadius,_this.cursorColor,_this.textColor,_this.fontSize,_this.textErrorColor,_this.placeholderColor);
+}
 
 @override
 String toString() {
-  return 'CardFormStyle(backgroundColor: $backgroundColor, borderWidth: $borderWidth, borderColor: $borderColor, borderRadius: $borderRadius, cursorColor: $cursorColor, textColor: $textColor, fontSize: $fontSize, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor)';
+  final _this = this as CardFormStyle;
+  return 'CardFormStyle(backgroundColor: ${_this.backgroundColor}, borderWidth: ${_this.borderWidth}, borderColor: ${_this.borderColor}, borderRadius: ${_this.borderRadius}, cursorColor: ${_this.cursorColor}, textColor: ${_this.textColor}, fontSize: ${_this.fontSize}, textErrorColor: ${_this.textErrorColor}, placeholderColor: ${_this.placeholderColor})';
 }
 
 
@@ -384,7 +418,7 @@ class _$CardFormStyleCopyWithImpl<$Res>
 /// Create a copy of CardFormStyle
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? backgroundColor = freezed,Object? borderWidth = freezed,Object? borderColor = freezed,Object? borderRadius = freezed,Object? cursorColor = freezed,Object? textColor = freezed,Object? fontSize = freezed,Object? textErrorColor = freezed,Object? placeholderColor = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardFormStyle(
 backgroundColor: freezed == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
 as Color?,borderWidth: freezed == borderWidth ? _self.borderWidth : borderWidth // ignore: cast_nullable_to_non_nullable
 as int?,borderColor: freezed == borderColor ? _self.borderColor : borderColor // ignore: cast_nullable_to_non_nullable
@@ -538,18 +572,25 @@ class _CardFormStyleConstructor extends CardFormStyle {
    _CardFormStyleConstructor({@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.backgroundColor, this.borderWidth, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.borderColor, this.borderRadius, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.cursorColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.textColor, this.fontSize, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.textErrorColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.placeholderColor}): super._();
   factory _CardFormStyleConstructor.fromJson(Map<String, dynamic> json) => _$CardFormStyleConstructorFromJson(json);
 
+/// Background color of the cardformfield
+///
+/// Make sure that there is enough contrast with the text color.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? backgroundColor;
 /// Width for the border.
 @override final  int? borderWidth;
+/// Border color of the cardfield.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? borderColor;
 /// Borderradius that can give the Cardfield rounded corners.
 @override final  int? borderRadius;
+/// Cursor color when the card has focus.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? cursorColor;
+/// Color of the typed text on the Card fuekd.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? textColor;
 /// Font size.
 @override final  int? fontSize;
 /// Color of the input in case incorrect data is entered.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? textErrorColor;
+/// Color of the placeholder text.
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? placeholderColor;
 
 /// Create a copy of CardFormStyle
@@ -565,16 +606,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardFormStyleConstructor&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.cursorColor, cursorColor) || other.cursorColor == cursorColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardFormStyleConstructor&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.cursorColor, cursorColor) || other.cursorColor == cursorColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,backgroundColor,borderWidth,borderColor,borderRadius,cursorColor,textColor,fontSize,textErrorColor,placeholderColor);
+int get hashCode {
+    return Object.hash(runtimeType,backgroundColor,borderWidth,borderColor,borderRadius,cursorColor,textColor,fontSize,textErrorColor,placeholderColor);
+}
 
 @override
 String toString() {
-  return 'CardFormStyle(backgroundColor: $backgroundColor, borderWidth: $borderWidth, borderColor: $borderColor, borderRadius: $borderRadius, cursorColor: $cursorColor, textColor: $textColor, fontSize: $fontSize, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor)';
+    return 'CardFormStyle(backgroundColor: $backgroundColor, borderWidth: $borderWidth, borderColor: $borderColor, borderRadius: $borderRadius, cursorColor: $cursorColor, textColor: $textColor, fontSize: $fontSize, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor)';
 }
 
 
@@ -648,16 +691,21 @@ $CardPlaceholderCopyWith<CardPlaceholder> get copyWith => _$CardPlaceholderCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardPlaceholder&&(identical(other.number, number) || other.number == number)&&(identical(other.expiration, expiration) || other.expiration == expiration)&&(identical(other.cvc, cvc) || other.cvc == cvc)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode));
+  final _this = this as CardPlaceholder;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardPlaceholder&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.expiration, _this.expiration) || other.expiration == _this.expiration)&&(identical(other.cvc, _this.cvc) || other.cvc == _this.cvc)&&(identical(other.postalCode, _this.postalCode) || other.postalCode == _this.postalCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,number,expiration,cvc,postalCode);
+int get hashCode {
+  final _this = this as CardPlaceholder;
+  return Object.hash(runtimeType,_this.number,_this.expiration,_this.cvc,_this.postalCode);
+}
 
 @override
 String toString() {
-  return 'CardPlaceholder(number: $number, expiration: $expiration, cvc: $cvc, postalCode: $postalCode)';
+  final _this = this as CardPlaceholder;
+  return 'CardPlaceholder(number: ${_this.number}, expiration: ${_this.expiration}, cvc: ${_this.cvc}, postalCode: ${_this.postalCode})';
 }
 
 
@@ -686,7 +734,7 @@ class _$CardPlaceholderCopyWithImpl<$Res>
 /// Create a copy of CardPlaceholder
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? number = freezed,Object? expiration = freezed,Object? cvc = freezed,Object? postalCode = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardPlaceholder(
 number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
 as String?,expiration: freezed == expiration ? _self.expiration : expiration // ignore: cast_nullable_to_non_nullable
 as String?,cvc: freezed == cvc ? _self.cvc : cvc // ignore: cast_nullable_to_non_nullable
@@ -857,16 +905,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPlaceholderConstructor&&(identical(other.number, number) || other.number == number)&&(identical(other.expiration, expiration) || other.expiration == expiration)&&(identical(other.cvc, cvc) || other.cvc == cvc)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPlaceholderConstructor&&(identical(other.number, number) || other.number == number)&&(identical(other.expiration, expiration) || other.expiration == expiration)&&(identical(other.cvc, cvc) || other.cvc == cvc)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,number,expiration,cvc,postalCode);
+int get hashCode {
+    return Object.hash(runtimeType,number,expiration,cvc,postalCode);
+}
 
 @override
 String toString() {
-  return 'CardPlaceholder(number: $number, expiration: $expiration, cvc: $cvc, postalCode: $postalCode)';
+    return 'CardPlaceholder(number: $number, expiration: $expiration, cvc: $cvc, postalCode: $postalCode)';
 }
 
 
@@ -937,16 +987,21 @@ $CardFieldInputDetailsCopyWith<CardFieldInputDetails> get copyWith => _$CardFiel
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardFieldInputDetails&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.expiryMonth, expiryMonth) || other.expiryMonth == expiryMonth)&&(identical(other.expiryYear, expiryYear) || other.expiryYear == expiryYear)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.number, number) || other.number == number)&&(identical(other.cvc, cvc) || other.cvc == cvc)&&(identical(other.validExpiryDate, validExpiryDate) || other.validExpiryDate == validExpiryDate)&&(identical(other.validCVC, validCVC) || other.validCVC == validCVC)&&(identical(other.validNumber, validNumber) || other.validNumber == validNumber));
+  final _this = this as CardFieldInputDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardFieldInputDetails&&(identical(other.complete, _this.complete) || other.complete == _this.complete)&&(identical(other.last4, _this.last4) || other.last4 == _this.last4)&&(identical(other.expiryMonth, _this.expiryMonth) || other.expiryMonth == _this.expiryMonth)&&(identical(other.expiryYear, _this.expiryYear) || other.expiryYear == _this.expiryYear)&&(identical(other.postalCode, _this.postalCode) || other.postalCode == _this.postalCode)&&(identical(other.brand, _this.brand) || other.brand == _this.brand)&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.cvc, _this.cvc) || other.cvc == _this.cvc)&&(identical(other.validExpiryDate, _this.validExpiryDate) || other.validExpiryDate == _this.validExpiryDate)&&(identical(other.validCVC, _this.validCVC) || other.validCVC == _this.validCVC)&&(identical(other.validNumber, _this.validNumber) || other.validNumber == _this.validNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,complete,last4,expiryMonth,expiryYear,postalCode,brand,number,cvc,validExpiryDate,validCVC,validNumber);
+int get hashCode {
+  final _this = this as CardFieldInputDetails;
+  return Object.hash(runtimeType,_this.complete,_this.last4,_this.expiryMonth,_this.expiryYear,_this.postalCode,_this.brand,_this.number,_this.cvc,_this.validExpiryDate,_this.validCVC,_this.validNumber);
+}
 
 @override
 String toString() {
-  return 'CardFieldInputDetails(complete: $complete, last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, postalCode: $postalCode, brand: $brand, number: $number, cvc: $cvc, validExpiryDate: $validExpiryDate, validCVC: $validCVC, validNumber: $validNumber)';
+  final _this = this as CardFieldInputDetails;
+  return 'CardFieldInputDetails(complete: ${_this.complete}, last4: ${_this.last4}, expiryMonth: ${_this.expiryMonth}, expiryYear: ${_this.expiryYear}, postalCode: ${_this.postalCode}, brand: ${_this.brand}, number: ${_this.number}, cvc: ${_this.cvc}, validExpiryDate: ${_this.validExpiryDate}, validCVC: ${_this.validCVC}, validNumber: ${_this.validNumber})';
 }
 
 
@@ -975,7 +1030,7 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
 /// Create a copy of CardFieldInputDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? complete = null,Object? last4 = freezed,Object? expiryMonth = freezed,Object? expiryYear = freezed,Object? postalCode = freezed,Object? brand = freezed,Object? number = freezed,Object? cvc = freezed,Object? validExpiryDate = null,Object? validCVC = null,Object? validNumber = null,}) {
-  return _then(_self.copyWith(
+  return _then(CardFieldInputDetails(
 complete: null == complete ? _self.complete : complete // ignore: cast_nullable_to_non_nullable
 as bool,last4: freezed == last4 ? _self.last4 : last4 // ignore: cast_nullable_to_non_nullable
 as String?,expiryMonth: freezed == expiryMonth ? _self.expiryMonth : expiryMonth // ignore: cast_nullable_to_non_nullable
@@ -1169,16 +1224,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardFieldInputDetails&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.expiryMonth, expiryMonth) || other.expiryMonth == expiryMonth)&&(identical(other.expiryYear, expiryYear) || other.expiryYear == expiryYear)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.number, number) || other.number == number)&&(identical(other.cvc, cvc) || other.cvc == cvc)&&(identical(other.validExpiryDate, validExpiryDate) || other.validExpiryDate == validExpiryDate)&&(identical(other.validCVC, validCVC) || other.validCVC == validCVC)&&(identical(other.validNumber, validNumber) || other.validNumber == validNumber));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardFieldInputDetails&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.expiryMonth, expiryMonth) || other.expiryMonth == expiryMonth)&&(identical(other.expiryYear, expiryYear) || other.expiryYear == expiryYear)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.number, number) || other.number == number)&&(identical(other.cvc, cvc) || other.cvc == cvc)&&(identical(other.validExpiryDate, validExpiryDate) || other.validExpiryDate == validExpiryDate)&&(identical(other.validCVC, validCVC) || other.validCVC == validCVC)&&(identical(other.validNumber, validNumber) || other.validNumber == validNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,complete,last4,expiryMonth,expiryYear,postalCode,brand,number,cvc,validExpiryDate,validCVC,validNumber);
+int get hashCode {
+    return Object.hash(runtimeType,complete,last4,expiryMonth,expiryYear,postalCode,brand,number,cvc,validExpiryDate,validCVC,validNumber);
+}
 
 @override
 String toString() {
-  return 'CardFieldInputDetails(complete: $complete, last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, postalCode: $postalCode, brand: $brand, number: $number, cvc: $cvc, validExpiryDate: $validExpiryDate, validCVC: $validCVC, validNumber: $validNumber)';
+    return 'CardFieldInputDetails(complete: $complete, last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, postalCode: $postalCode, brand: $brand, number: $number, cvc: $cvc, validExpiryDate: $validExpiryDate, validCVC: $validCVC, validNumber: $validNumber)';
 }
 
 
@@ -1243,16 +1300,21 @@ $CardFieldFocusNameCopyWith<CardFieldFocusName> get copyWith => _$CardFieldFocus
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardFieldFocusName&&(identical(other.focusedField, focusedField) || other.focusedField == focusedField));
+  final _this = this as CardFieldFocusName;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardFieldFocusName&&(identical(other.focusedField, _this.focusedField) || other.focusedField == _this.focusedField));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,focusedField);
+int get hashCode {
+  final _this = this as CardFieldFocusName;
+  return Object.hash(runtimeType,_this.focusedField);
+}
 
 @override
 String toString() {
-  return 'CardFieldFocusName(focusedField: $focusedField)';
+  final _this = this as CardFieldFocusName;
+  return 'CardFieldFocusName(focusedField: ${_this.focusedField})';
 }
 
 
@@ -1281,7 +1343,7 @@ class _$CardFieldFocusNameCopyWithImpl<$Res>
 /// Create a copy of CardFieldFocusName
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? focusedField = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardFieldFocusName(
 focusedField: freezed == focusedField ? _self.focusedField : focusedField // ignore: cast_nullable_to_non_nullable
 as CardFieldName?,
   ));
@@ -1442,16 +1504,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardFieldFocusName&&(identical(other.focusedField, focusedField) || other.focusedField == focusedField));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardFieldFocusName&&(identical(other.focusedField, focusedField) || other.focusedField == focusedField));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,focusedField);
+int get hashCode {
+    return Object.hash(runtimeType,focusedField);
+}
 
 @override
 String toString() {
-  return 'CardFieldFocusName(focusedField: $focusedField)';
+    return 'CardFieldFocusName(focusedField: $focusedField)';
 }
 
 

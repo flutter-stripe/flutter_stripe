@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'aubecs_form.dart';
@@ -9,16 +9,29 @@ part of 'aubecs_form.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AubecsFormStyle {
 
-@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textColor;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textErrorColor;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get placeholderColor;/// Size of the font in the input form.
+/// Color of the textinput
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textColor;/// Color of the errormessage
+/// Only available for Android
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get textErrorColor;/// Color of the place holder text
+/// Only available for Android
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get placeholderColor;/// Size of the font in the input form.
  int? get fontSize;/// Borderwith of the form
 /// Only available for Android
- int? get borderWidth;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get backgroundColor;@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get borderColor;/// Borderadius of the form
+ int? get borderWidth;/// Background color of the form.
+///
+/// Make sure there is enough contrast with the text color
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get backgroundColor;///  Color of the border of the formfields.
+///
+/// Make sure there is enough contrast with the text color
+/// Only available for Android
+@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? get borderColor;/// Borderadius of the form
 /// Only available for Android
  int? get borderRadius;
 /// Create a copy of AubecsFormStyle
@@ -33,16 +46,21 @@ $AubecsFormStyleCopyWith<AubecsFormStyle> get copyWith => _$AubecsFormStyleCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AubecsFormStyle&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius));
+  final _this = this as AubecsFormStyle;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AubecsFormStyle&&(identical(other.textColor, _this.textColor) || other.textColor == _this.textColor)&&(identical(other.textErrorColor, _this.textErrorColor) || other.textErrorColor == _this.textErrorColor)&&(identical(other.placeholderColor, _this.placeholderColor) || other.placeholderColor == _this.placeholderColor)&&(identical(other.fontSize, _this.fontSize) || other.fontSize == _this.fontSize)&&(identical(other.borderWidth, _this.borderWidth) || other.borderWidth == _this.borderWidth)&&(identical(other.backgroundColor, _this.backgroundColor) || other.backgroundColor == _this.backgroundColor)&&(identical(other.borderColor, _this.borderColor) || other.borderColor == _this.borderColor)&&(identical(other.borderRadius, _this.borderRadius) || other.borderRadius == _this.borderRadius));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,textColor,textErrorColor,placeholderColor,fontSize,borderWidth,backgroundColor,borderColor,borderRadius);
+int get hashCode {
+  final _this = this as AubecsFormStyle;
+  return Object.hash(runtimeType,_this.textColor,_this.textErrorColor,_this.placeholderColor,_this.fontSize,_this.borderWidth,_this.backgroundColor,_this.borderColor,_this.borderRadius);
+}
 
 @override
 String toString() {
-  return 'AubecsFormStyle(textColor: $textColor, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor, fontSize: $fontSize, borderWidth: $borderWidth, backgroundColor: $backgroundColor, borderColor: $borderColor, borderRadius: $borderRadius)';
+  final _this = this as AubecsFormStyle;
+  return 'AubecsFormStyle(textColor: ${_this.textColor}, textErrorColor: ${_this.textErrorColor}, placeholderColor: ${_this.placeholderColor}, fontSize: ${_this.fontSize}, borderWidth: ${_this.borderWidth}, backgroundColor: ${_this.backgroundColor}, borderColor: ${_this.borderColor}, borderRadius: ${_this.borderRadius})';
 }
 
 
@@ -71,7 +89,7 @@ class _$AubecsFormStyleCopyWithImpl<$Res>
 /// Create a copy of AubecsFormStyle
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? textColor = freezed,Object? textErrorColor = freezed,Object? placeholderColor = freezed,Object? fontSize = freezed,Object? borderWidth = freezed,Object? backgroundColor = freezed,Object? borderColor = freezed,Object? borderRadius = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AubecsFormStyle(
 textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
 as Color?,textErrorColor: freezed == textErrorColor ? _self.textErrorColor : textErrorColor // ignore: cast_nullable_to_non_nullable
 as Color?,placeholderColor: freezed == placeholderColor ? _self.placeholderColor : placeholderColor // ignore: cast_nullable_to_non_nullable
@@ -224,15 +242,27 @@ class _AubecsFormStyle implements AubecsFormStyle {
   const _AubecsFormStyle({@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.textColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.textErrorColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.placeholderColor, this.fontSize, this.borderWidth, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.backgroundColor, @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.borderColor, this.borderRadius});
   factory _AubecsFormStyle.fromJson(Map<String, dynamic> json) => _$AubecsFormStyleFromJson(json);
 
+/// Color of the textinput
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? textColor;
+/// Color of the errormessage
+/// Only available for Android
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? textErrorColor;
+/// Color of the place holder text
+/// Only available for Android
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? placeholderColor;
 /// Size of the font in the input form.
 @override final  int? fontSize;
 /// Borderwith of the form
 /// Only available for Android
 @override final  int? borderWidth;
+/// Background color of the form.
+///
+/// Make sure there is enough contrast with the text color
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? backgroundColor;
+///  Color of the border of the formfields.
+///
+/// Make sure there is enough contrast with the text color
+/// Only available for Android
 @override@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) final  Color? borderColor;
 /// Borderadius of the form
 /// Only available for Android
@@ -251,16 +281,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AubecsFormStyle&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AubecsFormStyle&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textErrorColor, textErrorColor) || other.textErrorColor == textErrorColor)&&(identical(other.placeholderColor, placeholderColor) || other.placeholderColor == placeholderColor)&&(identical(other.fontSize, fontSize) || other.fontSize == fontSize)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,textColor,textErrorColor,placeholderColor,fontSize,borderWidth,backgroundColor,borderColor,borderRadius);
+int get hashCode {
+    return Object.hash(runtimeType,textColor,textErrorColor,placeholderColor,fontSize,borderWidth,backgroundColor,borderColor,borderRadius);
+}
 
 @override
 String toString() {
-  return 'AubecsFormStyle(textColor: $textColor, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor, fontSize: $fontSize, borderWidth: $borderWidth, backgroundColor: $backgroundColor, borderColor: $borderColor, borderRadius: $borderRadius)';
+    return 'AubecsFormStyle(textColor: $textColor, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor, fontSize: $fontSize, borderWidth: $borderWidth, backgroundColor: $backgroundColor, borderColor: $borderColor, borderRadius: $borderRadius)';
 }
 
 
@@ -326,16 +358,21 @@ $AubecsFormInputDetailsCopyWith<AubecsFormInputDetails> get copyWith => _$Aubecs
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AubecsFormInputDetails&&(identical(other.bsbNumber, bsbNumber) || other.bsbNumber == bsbNumber)&&(identical(other.name, name) || other.name == name)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.email, email) || other.email == email));
+  final _this = this as AubecsFormInputDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AubecsFormInputDetails&&(identical(other.bsbNumber, _this.bsbNumber) || other.bsbNumber == _this.bsbNumber)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.accountNumber, _this.accountNumber) || other.accountNumber == _this.accountNumber)&&(identical(other.email, _this.email) || other.email == _this.email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,bsbNumber,name,accountNumber,email);
+int get hashCode {
+  final _this = this as AubecsFormInputDetails;
+  return Object.hash(runtimeType,_this.bsbNumber,_this.name,_this.accountNumber,_this.email);
+}
 
 @override
 String toString() {
-  return 'AubecsFormInputDetails(bsbNumber: $bsbNumber, name: $name, accountNumber: $accountNumber, email: $email)';
+  final _this = this as AubecsFormInputDetails;
+  return 'AubecsFormInputDetails(bsbNumber: ${_this.bsbNumber}, name: ${_this.name}, accountNumber: ${_this.accountNumber}, email: ${_this.email})';
 }
 
 
@@ -364,7 +401,7 @@ class _$AubecsFormInputDetailsCopyWithImpl<$Res>
 /// Create a copy of AubecsFormInputDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? bsbNumber = freezed,Object? name = freezed,Object? accountNumber = freezed,Object? email = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AubecsFormInputDetails(
 bsbNumber: freezed == bsbNumber ? _self.bsbNumber : bsbNumber // ignore: cast_nullable_to_non_nullable
 as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,accountNumber: freezed == accountNumber ? _self.accountNumber : accountNumber // ignore: cast_nullable_to_non_nullable
@@ -535,16 +572,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AubecsFormInputDetails&&(identical(other.bsbNumber, bsbNumber) || other.bsbNumber == bsbNumber)&&(identical(other.name, name) || other.name == name)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.email, email) || other.email == email));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AubecsFormInputDetails&&(identical(other.bsbNumber, bsbNumber) || other.bsbNumber == bsbNumber)&&(identical(other.name, name) || other.name == name)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.email, email) || other.email == email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,bsbNumber,name,accountNumber,email);
+int get hashCode {
+    return Object.hash(runtimeType,bsbNumber,name,accountNumber,email);
+}
 
 @override
 String toString() {
-  return 'AubecsFormInputDetails(bsbNumber: $bsbNumber, name: $name, accountNumber: $accountNumber, email: $email)';
+    return 'AubecsFormInputDetails(bsbNumber: $bsbNumber, name: $name, accountNumber: $accountNumber, email: $email)';
 }
 
 

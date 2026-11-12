@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirmation_token.dart';
@@ -9,6 +9,7 @@ part of 'confirmation_token.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -42,16 +43,21 @@ $ConfirmationTokenResultCopyWith<ConfirmationTokenResult> get copyWith => _$Conf
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmationTokenResult&&(identical(other.id, id) || other.id == id)&&(identical(other.created, created) || other.created == created)&&(identical(other.liveMode, liveMode) || other.liveMode == liveMode)&&const DeepCollectionEquality().equals(other.allResponseFields, allResponseFields)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.paymentIntentId, paymentIntentId) || other.paymentIntentId == paymentIntentId)&&(identical(other.setupIntentId, setupIntentId) || other.setupIntentId == setupIntentId)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&(identical(other.paymentMethodPreview, paymentMethodPreview) || other.paymentMethodPreview == paymentMethodPreview)&&(identical(other.shipping, shipping) || other.shipping == shipping));
+  final _this = this as ConfirmationTokenResult;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmationTokenResult&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.created, _this.created) || other.created == _this.created)&&(identical(other.liveMode, _this.liveMode) || other.liveMode == _this.liveMode)&&const DeepCollectionEquality().equals(other.allResponseFields, _this.allResponseFields)&&(identical(other.expiresAt, _this.expiresAt) || other.expiresAt == _this.expiresAt)&&(identical(other.paymentIntentId, _this.paymentIntentId) || other.paymentIntentId == _this.paymentIntentId)&&(identical(other.setupIntentId, _this.setupIntentId) || other.setupIntentId == _this.setupIntentId)&&(identical(other.returnUrl, _this.returnUrl) || other.returnUrl == _this.returnUrl)&&(identical(other.setupFutureUsage, _this.setupFutureUsage) || other.setupFutureUsage == _this.setupFutureUsage)&&(identical(other.paymentMethodPreview, _this.paymentMethodPreview) || other.paymentMethodPreview == _this.paymentMethodPreview)&&(identical(other.shipping, _this.shipping) || other.shipping == _this.shipping));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,created,liveMode,const DeepCollectionEquality().hash(allResponseFields),expiresAt,paymentIntentId,setupIntentId,returnUrl,setupFutureUsage,paymentMethodPreview,shipping);
+int get hashCode {
+  final _this = this as ConfirmationTokenResult;
+  return Object.hash(runtimeType,_this.id,_this.created,_this.liveMode,const DeepCollectionEquality().hash(_this.allResponseFields),_this.expiresAt,_this.paymentIntentId,_this.setupIntentId,_this.returnUrl,_this.setupFutureUsage,_this.paymentMethodPreview,_this.shipping);
+}
 
 @override
 String toString() {
-  return 'ConfirmationTokenResult(id: $id, created: $created, liveMode: $liveMode, allResponseFields: $allResponseFields, expiresAt: $expiresAt, paymentIntentId: $paymentIntentId, setupIntentId: $setupIntentId, returnUrl: $returnUrl, setupFutureUsage: $setupFutureUsage, paymentMethodPreview: $paymentMethodPreview, shipping: $shipping)';
+  final _this = this as ConfirmationTokenResult;
+  return 'ConfirmationTokenResult(id: ${_this.id}, created: ${_this.created}, liveMode: ${_this.liveMode}, allResponseFields: ${_this.allResponseFields}, expiresAt: ${_this.expiresAt}, paymentIntentId: ${_this.paymentIntentId}, setupIntentId: ${_this.setupIntentId}, returnUrl: ${_this.returnUrl}, setupFutureUsage: ${_this.setupFutureUsage}, paymentMethodPreview: ${_this.paymentMethodPreview}, shipping: ${_this.shipping})';
 }
 
 
@@ -80,7 +86,7 @@ class _$ConfirmationTokenResultCopyWithImpl<$Res>
 /// Create a copy of ConfirmationTokenResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? created = null,Object? liveMode = null,Object? allResponseFields = null,Object? expiresAt = freezed,Object? paymentIntentId = freezed,Object? setupIntentId = freezed,Object? returnUrl = freezed,Object? setupFutureUsage = freezed,Object? paymentMethodPreview = freezed,Object? shipping = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmationTokenResult(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,created: null == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
 as int,liveMode: null == liveMode ? _self.liveMode : liveMode // ignore: cast_nullable_to_non_nullable
@@ -257,7 +263,7 @@ return $default(_that.id,_that.created,_that.liveMode,_that.allResponseFields,_t
 
 @JsonSerializable(explicitToJson: true)
 class _ConfirmationTokenResult implements ConfirmationTokenResult {
-  const _ConfirmationTokenResult({required this.id, required this.created, required this.liveMode, final  Map<String, dynamic> allResponseFields = const {}, this.expiresAt, this.paymentIntentId, this.setupIntentId, @JsonKey(name: 'returnURL') this.returnUrl, this.setupFutureUsage, this.paymentMethodPreview, this.shipping}): _allResponseFields = allResponseFields;
+  const _ConfirmationTokenResult({required this.id, required this.created, required this.liveMode,  Map<String, dynamic> allResponseFields = const {}, this.expiresAt, this.paymentIntentId, this.setupIntentId, @JsonKey(name: 'returnURL') this.returnUrl, this.setupFutureUsage, this.paymentMethodPreview, this.shipping}): _allResponseFields = allResponseFields;
   factory _ConfirmationTokenResult.fromJson(Map<String, dynamic> json) => _$ConfirmationTokenResultFromJson(json);
 
 /// Unique identifier for the object (e.g. `ctoken_...`).
@@ -308,16 +314,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmationTokenResult&&(identical(other.id, id) || other.id == id)&&(identical(other.created, created) || other.created == created)&&(identical(other.liveMode, liveMode) || other.liveMode == liveMode)&&const DeepCollectionEquality().equals(other._allResponseFields, _allResponseFields)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.paymentIntentId, paymentIntentId) || other.paymentIntentId == paymentIntentId)&&(identical(other.setupIntentId, setupIntentId) || other.setupIntentId == setupIntentId)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&(identical(other.paymentMethodPreview, paymentMethodPreview) || other.paymentMethodPreview == paymentMethodPreview)&&(identical(other.shipping, shipping) || other.shipping == shipping));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmationTokenResult&&(identical(other.id, id) || other.id == id)&&(identical(other.created, created) || other.created == created)&&(identical(other.liveMode, liveMode) || other.liveMode == liveMode)&&const DeepCollectionEquality().equals(other.allResponseFields, _allResponseFields)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.paymentIntentId, paymentIntentId) || other.paymentIntentId == paymentIntentId)&&(identical(other.setupIntentId, setupIntentId) || other.setupIntentId == setupIntentId)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&(identical(other.paymentMethodPreview, paymentMethodPreview) || other.paymentMethodPreview == paymentMethodPreview)&&(identical(other.shipping, shipping) || other.shipping == shipping));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,created,liveMode,const DeepCollectionEquality().hash(_allResponseFields),expiresAt,paymentIntentId,setupIntentId,returnUrl,setupFutureUsage,paymentMethodPreview,shipping);
+int get hashCode {
+    return Object.hash(runtimeType,id,created,liveMode,const DeepCollectionEquality().hash(_allResponseFields),expiresAt,paymentIntentId,setupIntentId,returnUrl,setupFutureUsage,paymentMethodPreview,shipping);
+}
 
 @override
 String toString() {
-  return 'ConfirmationTokenResult(id: $id, created: $created, liveMode: $liveMode, allResponseFields: $allResponseFields, expiresAt: $expiresAt, paymentIntentId: $paymentIntentId, setupIntentId: $setupIntentId, returnUrl: $returnUrl, setupFutureUsage: $setupFutureUsage, paymentMethodPreview: $paymentMethodPreview, shipping: $shipping)';
+    return 'ConfirmationTokenResult(id: $id, created: $created, liveMode: $liveMode, allResponseFields: $allResponseFields, expiresAt: $expiresAt, paymentIntentId: $paymentIntentId, setupIntentId: $setupIntentId, returnUrl: $returnUrl, setupFutureUsage: $setupFutureUsage, paymentMethodPreview: $paymentMethodPreview, shipping: $shipping)';
 }
 
 
@@ -412,16 +420,21 @@ $PaymentMethodPreviewCopyWith<PaymentMethodPreview> get copyWith => _$PaymentMet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentMethodPreview&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.allResponseFields, allResponseFields)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails)&&(identical(other.allowRedisplay, allowRedisplay) || other.allowRedisplay == allowRedisplay)&&(identical(other.customerId, customerId) || other.customerId == customerId));
+  final _this = this as PaymentMethodPreview;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentMethodPreview&&(identical(other.type, _this.type) || other.type == _this.type)&&const DeepCollectionEquality().equals(other.allResponseFields, _this.allResponseFields)&&(identical(other.billingDetails, _this.billingDetails) || other.billingDetails == _this.billingDetails)&&(identical(other.allowRedisplay, _this.allowRedisplay) || other.allowRedisplay == _this.allowRedisplay)&&(identical(other.customerId, _this.customerId) || other.customerId == _this.customerId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(allResponseFields),billingDetails,allowRedisplay,customerId);
+int get hashCode {
+  final _this = this as PaymentMethodPreview;
+  return Object.hash(runtimeType,_this.type,const DeepCollectionEquality().hash(_this.allResponseFields),_this.billingDetails,_this.allowRedisplay,_this.customerId);
+}
 
 @override
 String toString() {
-  return 'PaymentMethodPreview(type: $type, allResponseFields: $allResponseFields, billingDetails: $billingDetails, allowRedisplay: $allowRedisplay, customerId: $customerId)';
+  final _this = this as PaymentMethodPreview;
+  return 'PaymentMethodPreview(type: ${_this.type}, allResponseFields: ${_this.allResponseFields}, billingDetails: ${_this.billingDetails}, allowRedisplay: ${_this.allowRedisplay}, customerId: ${_this.customerId})';
 }
 
 
@@ -450,7 +463,7 @@ class _$PaymentMethodPreviewCopyWithImpl<$Res>
 /// Create a copy of PaymentMethodPreview
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? allResponseFields = null,Object? billingDetails = freezed,Object? allowRedisplay = freezed,Object? customerId = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentMethodPreview(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,allResponseFields: null == allResponseFields ? _self.allResponseFields : allResponseFields // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>,billingDetails: freezed == billingDetails ? _self.billingDetails : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -609,7 +622,7 @@ return $default(_that.type,_that.allResponseFields,_that.billingDetails,_that.al
 @JsonSerializable()
 
 class _PaymentMethodPreview implements PaymentMethodPreview {
-  const _PaymentMethodPreview({required this.type, final  Map<String, dynamic> allResponseFields = const {}, this.billingDetails, this.allowRedisplay, this.customerId}): _allResponseFields = allResponseFields;
+  const _PaymentMethodPreview({required this.type,  Map<String, dynamic> allResponseFields = const {}, this.billingDetails, this.allowRedisplay, this.customerId}): _allResponseFields = allResponseFields;
   factory _PaymentMethodPreview.fromJson(Map<String, dynamic> json) => _$PaymentMethodPreviewFromJson(json);
 
 /// Type of the payment method.
@@ -644,16 +657,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMethodPreview&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._allResponseFields, _allResponseFields)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails)&&(identical(other.allowRedisplay, allowRedisplay) || other.allowRedisplay == allowRedisplay)&&(identical(other.customerId, customerId) || other.customerId == customerId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMethodPreview&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.allResponseFields, _allResponseFields)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails)&&(identical(other.allowRedisplay, allowRedisplay) || other.allowRedisplay == allowRedisplay)&&(identical(other.customerId, customerId) || other.customerId == customerId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(_allResponseFields),billingDetails,allowRedisplay,customerId);
+int get hashCode {
+    return Object.hash(runtimeType,type,const DeepCollectionEquality().hash(_allResponseFields),billingDetails,allowRedisplay,customerId);
+}
 
 @override
 String toString() {
-  return 'PaymentMethodPreview(type: $type, allResponseFields: $allResponseFields, billingDetails: $billingDetails, allowRedisplay: $allowRedisplay, customerId: $customerId)';
+    return 'PaymentMethodPreview(type: $type, allResponseFields: $allResponseFields, billingDetails: $billingDetails, allowRedisplay: $allowRedisplay, customerId: $customerId)';
 }
 
 

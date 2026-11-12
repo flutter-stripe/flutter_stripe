@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'collect_bank_account_result.dart';
@@ -9,6 +9,7 @@ part of 'collect_bank_account_result.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$CollectBankAccountResult {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountResult);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountResult);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'CollectBankAccountResult()';
+    return 'CollectBankAccountResult()';
 }
 
 
@@ -190,16 +191,18 @@ $CollectBankAccountPaymentIntentResultCopyWith<CollectBankAccountPaymentIntentRe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountPaymentIntentResult&&(identical(other.paymentIntent, paymentIntent) || other.paymentIntent == paymentIntent));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountPaymentIntentResult&&(identical(other.paymentIntent, paymentIntent) || other.paymentIntent == paymentIntent));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,paymentIntent);
+int get hashCode {
+    return Object.hash(runtimeType,paymentIntent);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountResult.paymentIntent(paymentIntent: $paymentIntent)';
+    return 'CollectBankAccountResult.paymentIntent(paymentIntent: $paymentIntent)';
 }
 
 
@@ -265,16 +268,18 @@ $CollectBankAccountSetupIntentResultCopyWith<CollectBankAccountSetupIntentResult
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountSetupIntentResult&&(identical(other.setupIntent, setupIntent) || other.setupIntent == setupIntent));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountSetupIntentResult&&(identical(other.setupIntent, setupIntent) || other.setupIntent == setupIntent));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,setupIntent);
+int get hashCode {
+    return Object.hash(runtimeType,setupIntent);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountResult.setupIntent(setupIntent: $setupIntent)';
+    return 'CollectBankAccountResult.setupIntent(setupIntent: $setupIntent)';
 }
 
 

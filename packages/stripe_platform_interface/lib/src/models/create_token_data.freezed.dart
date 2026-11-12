@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'create_token_data.dart';
@@ -9,6 +9,7 @@ part of 'create_token_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 CreateTokenParams _$CreateTokenParamsFromJson(
@@ -54,7 +55,7 @@ mixin _$CreateTokenParams {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTokenParams);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTokenParams);
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -63,7 +64,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'CreateTokenParams()';
+    return 'CreateTokenParams()';
 }
 
 
@@ -228,7 +229,7 @@ return pii(_that.params);case _:
 @JsonSerializable(explicitToJson: true)
 @Deprecated('Use [CreateTokenParams.card] instead')
 class _CreateTokenParamsLegacy implements CreateTokenParams {
-  const _CreateTokenParamsLegacy({this.type = TokenType.Card, this.name, this.address, final  String? $type}): $type = $type ?? 'default';
+  const _CreateTokenParamsLegacy({this.type = TokenType.Card, this.name, this.address,  String? $type}): $type = $type ?? 'default';
   factory _CreateTokenParamsLegacy.fromJson(Map<String, dynamic> json) => _$CreateTokenParamsLegacyFromJson(json);
 
 /// Type of token.
@@ -255,16 +256,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenParamsLegacy&&(identical(other.type, type) || other.type == type)&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenParamsLegacy&&(identical(other.type, type) || other.type == type)&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,name,address);
+int get hashCode {
+    return Object.hash(runtimeType,type,name,address);
+}
 
 @override
 String toString() {
-  return 'CreateTokenParams(type: $type, name: $name, address: $address)';
+    return 'CreateTokenParams(type: $type, name: $name, address: $address)';
 }
 
 
@@ -320,7 +323,7 @@ $AddressCopyWith<$Res>? get address {
 
 @JsonSerializable(explicitToJson: true)
 class _CreateTokenParamsCard implements CreateTokenParams {
-  const _CreateTokenParamsCard({required this.params, final  String? $type}): $type = $type ?? 'card';
+  const _CreateTokenParamsCard({required this.params,  String? $type}): $type = $type ?? 'card';
   factory _CreateTokenParamsCard.fromJson(Map<String, dynamic> json) => _$CreateTokenParamsCardFromJson(json);
 
  final  CardTokenParams params;
@@ -342,16 +345,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenParamsCard&&(identical(other.params, params) || other.params == params));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenParamsCard&&(identical(other.params, params) || other.params == params));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,params);
+int get hashCode {
+    return Object.hash(runtimeType,params);
+}
 
 @override
 String toString() {
-  return 'CreateTokenParams.card(params: $params)';
+    return 'CreateTokenParams.card(params: $params)';
 }
 
 
@@ -402,7 +407,7 @@ $CardTokenParamsCopyWith<$Res> get params {
 
 @JsonSerializable(explicitToJson: true)
 class _CreateTokenParamsBankAccount implements CreateTokenParams {
-  const _CreateTokenParamsBankAccount({required this.params, final  String? $type}): $type = $type ?? 'bankAccount';
+  const _CreateTokenParamsBankAccount({required this.params,  String? $type}): $type = $type ?? 'bankAccount';
   factory _CreateTokenParamsBankAccount.fromJson(Map<String, dynamic> json) => _$CreateTokenParamsBankAccountFromJson(json);
 
  final  BankAccountTokenParams params;
@@ -424,16 +429,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenParamsBankAccount&&(identical(other.params, params) || other.params == params));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenParamsBankAccount&&(identical(other.params, params) || other.params == params));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,params);
+int get hashCode {
+    return Object.hash(runtimeType,params);
+}
 
 @override
 String toString() {
-  return 'CreateTokenParams.bankAccount(params: $params)';
+    return 'CreateTokenParams.bankAccount(params: $params)';
 }
 
 
@@ -484,7 +491,7 @@ $BankAccountTokenParamsCopyWith<$Res> get params {
 
 @JsonSerializable(explicitToJson: true)
 class _CreateTokenParamsPII implements CreateTokenParams {
-  const _CreateTokenParamsPII({required this.params, final  String? $type}): $type = $type ?? 'pii';
+  const _CreateTokenParamsPII({required this.params,  String? $type}): $type = $type ?? 'pii';
   factory _CreateTokenParamsPII.fromJson(Map<String, dynamic> json) => _$CreateTokenParamsPIIFromJson(json);
 
  final  PIITokenParams params;
@@ -506,16 +513,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenParamsPII&&(identical(other.params, params) || other.params == params));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenParamsPII&&(identical(other.params, params) || other.params == params));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,params);
+int get hashCode {
+    return Object.hash(runtimeType,params);
+}
 
 @override
 String toString() {
-  return 'CreateTokenParams.pii(params: $params)';
+    return 'CreateTokenParams.pii(params: $params)';
 }
 
 
@@ -583,16 +592,21 @@ $CardTokenParamsCopyWith<CardTokenParams> get copyWith => _$CardTokenParamsCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardTokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.currency, currency) || other.currency == currency));
+  final _this = this as CardTokenParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardTokenParams&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.address, _this.address) || other.address == _this.address)&&(identical(other.currency, _this.currency) || other.currency == _this.currency));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,name,address,currency);
+int get hashCode {
+  final _this = this as CardTokenParams;
+  return Object.hash(runtimeType,_this.type,_this.name,_this.address,_this.currency);
+}
 
 @override
 String toString() {
-  return 'CardTokenParams(type: $type, name: $name, address: $address, currency: $currency)';
+  final _this = this as CardTokenParams;
+  return 'CardTokenParams(type: ${_this.type}, name: ${_this.name}, address: ${_this.address}, currency: ${_this.currency})';
 }
 
 
@@ -621,7 +635,7 @@ class _$CardTokenParamsCopyWithImpl<$Res>
 /// Create a copy of CardTokenParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? name = freezed,Object? address = freezed,Object? currency = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardTokenParams(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as TokenType,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
@@ -804,16 +818,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardTokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.currency, currency) || other.currency == currency));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardTokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.currency, currency) || other.currency == currency));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,name,address,currency);
+int get hashCode {
+    return Object.hash(runtimeType,type,name,address,currency);
+}
 
 @override
 String toString() {
-  return 'CardTokenParams(type: $type, name: $name, address: $address, currency: $currency)';
+    return 'CardTokenParams(type: $type, name: $name, address: $address, currency: $currency)';
 }
 
 
@@ -885,16 +901,21 @@ $PIITokenParamsCopyWith<PIITokenParams> get copyWith => _$PIITokenParamsCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PIITokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.personalId, personalId) || other.personalId == personalId));
+  final _this = this as PIITokenParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PIITokenParams&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.personalId, _this.personalId) || other.personalId == _this.personalId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,personalId);
+int get hashCode {
+  final _this = this as PIITokenParams;
+  return Object.hash(runtimeType,_this.type,_this.personalId);
+}
 
 @override
 String toString() {
-  return 'PIITokenParams(type: $type, personalId: $personalId)';
+  final _this = this as PIITokenParams;
+  return 'PIITokenParams(type: ${_this.type}, personalId: ${_this.personalId})';
 }
 
 
@@ -923,7 +944,7 @@ class _$PIITokenParamsCopyWithImpl<$Res>
 /// Create a copy of PIITokenParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? personalId = null,}) {
-  return _then(_self.copyWith(
+  return _then(PIITokenParams(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as TokenType,personalId: null == personalId ? _self.personalId : personalId // ignore: cast_nullable_to_non_nullable
 as String,
@@ -1088,16 +1109,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PIITokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.personalId, personalId) || other.personalId == personalId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PIITokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.personalId, personalId) || other.personalId == personalId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,personalId);
+int get hashCode {
+    return Object.hash(runtimeType,type,personalId);
+}
 
 @override
 String toString() {
-  return 'PIITokenParams(type: $type, personalId: $personalId)';
+    return 'PIITokenParams(type: $type, personalId: $personalId)';
 }
 
 
@@ -1160,16 +1183,21 @@ $BankAccountTokenParamsCopyWith<BankAccountTokenParams> get copyWith => _$BankAc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BankAccountTokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber));
+  final _this = this as BankAccountTokenParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BankAccountTokenParams&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.accountNumber, _this.accountNumber) || other.accountNumber == _this.accountNumber)&&(identical(other.country, _this.country) || other.country == _this.country)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.accountHolderName, _this.accountHolderName) || other.accountHolderName == _this.accountHolderName)&&(identical(other.accountHolderType, _this.accountHolderType) || other.accountHolderType == _this.accountHolderType)&&(identical(other.routingNumber, _this.routingNumber) || other.routingNumber == _this.routingNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,accountNumber,country,currency,accountHolderName,accountHolderType,routingNumber);
+int get hashCode {
+  final _this = this as BankAccountTokenParams;
+  return Object.hash(runtimeType,_this.type,_this.accountNumber,_this.country,_this.currency,_this.accountHolderName,_this.accountHolderType,_this.routingNumber);
+}
 
 @override
 String toString() {
-  return 'BankAccountTokenParams(type: $type, accountNumber: $accountNumber, country: $country, currency: $currency, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, routingNumber: $routingNumber)';
+  final _this = this as BankAccountTokenParams;
+  return 'BankAccountTokenParams(type: ${_this.type}, accountNumber: ${_this.accountNumber}, country: ${_this.country}, currency: ${_this.currency}, accountHolderName: ${_this.accountHolderName}, accountHolderType: ${_this.accountHolderType}, routingNumber: ${_this.routingNumber})';
 }
 
 
@@ -1198,7 +1226,7 @@ class _$BankAccountTokenParamsCopyWithImpl<$Res>
 /// Create a copy of BankAccountTokenParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? accountNumber = null,Object? country = null,Object? currency = null,Object? accountHolderName = freezed,Object? accountHolderType = freezed,Object? routingNumber = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(BankAccountTokenParams(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as TokenType,accountNumber: null == accountNumber ? _self.accountNumber : accountNumber // ignore: cast_nullable_to_non_nullable
 as String,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
@@ -1378,16 +1406,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BankAccountTokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BankAccountTokenParams&&(identical(other.type, type) || other.type == type)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,accountNumber,country,currency,accountHolderName,accountHolderType,routingNumber);
+int get hashCode {
+    return Object.hash(runtimeType,type,accountNumber,country,currency,accountHolderName,accountHolderType,routingNumber);
+}
 
 @override
 String toString() {
-  return 'BankAccountTokenParams(type: $type, accountNumber: $accountNumber, country: $country, currency: $currency, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, routingNumber: $routingNumber)';
+    return 'BankAccountTokenParams(type: $type, accountNumber: $accountNumber, country: $country, currency: $currency, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, routingNumber: $routingNumber)';
 }
 
 
@@ -1454,16 +1484,21 @@ $TokenDataCopyWith<TokenData> get copyWith => _$TokenDataCopyWithImpl<TokenData>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TokenData&&(identical(other.id, id) || other.id == id)&&(identical(other.created, created) || other.created == created)&&(identical(other.type, type) || other.type == type)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.card, card) || other.card == card));
+  final _this = this as TokenData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TokenData&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.created, _this.created) || other.created == _this.created)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.livemode, _this.livemode) || other.livemode == _this.livemode)&&(identical(other.bankAccount, _this.bankAccount) || other.bankAccount == _this.bankAccount)&&(identical(other.card, _this.card) || other.card == _this.card));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,created,type,livemode,bankAccount,card);
+int get hashCode {
+  final _this = this as TokenData;
+  return Object.hash(runtimeType,_this.id,_this.created,_this.type,_this.livemode,_this.bankAccount,_this.card);
+}
 
 @override
 String toString() {
-  return 'TokenData(id: $id, created: $created, type: $type, livemode: $livemode, bankAccount: $bankAccount, card: $card)';
+  final _this = this as TokenData;
+  return 'TokenData(id: ${_this.id}, created: ${_this.created}, type: ${_this.type}, livemode: ${_this.livemode}, bankAccount: ${_this.bankAccount}, card: ${_this.card})';
 }
 
 
@@ -1492,7 +1527,7 @@ class _$TokenDataCopyWithImpl<$Res>
 /// Create a copy of TokenData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? created = null,Object? type = null,Object? livemode = null,Object? bankAccount = freezed,Object? card = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(TokenData(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,created: null == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
@@ -1693,16 +1728,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TokenData&&(identical(other.id, id) || other.id == id)&&(identical(other.created, created) || other.created == created)&&(identical(other.type, type) || other.type == type)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.card, card) || other.card == card));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TokenData&&(identical(other.id, id) || other.id == id)&&(identical(other.created, created) || other.created == created)&&(identical(other.type, type) || other.type == type)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.card, card) || other.card == card));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,created,type,livemode,bankAccount,card);
+int get hashCode {
+    return Object.hash(runtimeType,id,created,type,livemode,bankAccount,card);
+}
 
 @override
 String toString() {
-  return 'TokenData(id: $id, created: $created, type: $type, livemode: $livemode, bankAccount: $bankAccount, card: $card)';
+    return 'TokenData(id: $id, created: $created, type: $type, livemode: $livemode, bankAccount: $bankAccount, card: $card)';
 }
 
 
@@ -1796,16 +1833,21 @@ $CardDataCopyWith<CardData> get copyWith => _$CardDataCopyWithImpl<CardData>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardData&&(identical(other.id, id) || other.id == id)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.expYear, expYear) || other.expYear == expYear)&&(identical(other.expMonth, expMonth) || other.expMonth == expMonth)&&(identical(other.name, name) || other.name == name)&&(identical(other.funding, funding) || other.funding == funding)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.address, address) || other.address == address));
+  final _this = this as CardData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardData&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.brand, _this.brand) || other.brand == _this.brand)&&(identical(other.country, _this.country) || other.country == _this.country)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.expYear, _this.expYear) || other.expYear == _this.expYear)&&(identical(other.expMonth, _this.expMonth) || other.expMonth == _this.expMonth)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.funding, _this.funding) || other.funding == _this.funding)&&(identical(other.last4, _this.last4) || other.last4 == _this.last4)&&(identical(other.address, _this.address) || other.address == _this.address));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,brand,country,currency,expYear,expMonth,name,funding,last4,address);
+int get hashCode {
+  final _this = this as CardData;
+  return Object.hash(runtimeType,_this.id,_this.brand,_this.country,_this.currency,_this.expYear,_this.expMonth,_this.name,_this.funding,_this.last4,_this.address);
+}
 
 @override
 String toString() {
-  return 'CardData(id: $id, brand: $brand, country: $country, currency: $currency, expYear: $expYear, expMonth: $expMonth, name: $name, funding: $funding, last4: $last4, address: $address)';
+  final _this = this as CardData;
+  return 'CardData(id: ${_this.id}, brand: ${_this.brand}, country: ${_this.country}, currency: ${_this.currency}, expYear: ${_this.expYear}, expMonth: ${_this.expMonth}, name: ${_this.name}, funding: ${_this.funding}, last4: ${_this.last4}, address: ${_this.address})';
 }
 
 
@@ -1834,7 +1876,7 @@ class _$CardDataCopyWithImpl<$Res>
 /// Create a copy of CardData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? brand = null,Object? country = freezed,Object? currency = freezed,Object? expYear = freezed,Object? expMonth = freezed,Object? name = freezed,Object? funding = freezed,Object? last4 = freezed,Object? address = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardData(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,brand: null == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
 as String,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
@@ -2035,16 +2077,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardData&&(identical(other.id, id) || other.id == id)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.expYear, expYear) || other.expYear == expYear)&&(identical(other.expMonth, expMonth) || other.expMonth == expMonth)&&(identical(other.name, name) || other.name == name)&&(identical(other.funding, funding) || other.funding == funding)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.address, address) || other.address == address));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardData&&(identical(other.id, id) || other.id == id)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.expYear, expYear) || other.expYear == expYear)&&(identical(other.expMonth, expMonth) || other.expMonth == expMonth)&&(identical(other.name, name) || other.name == name)&&(identical(other.funding, funding) || other.funding == funding)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.address, address) || other.address == address));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,brand,country,currency,expYear,expMonth,name,funding,last4,address);
+int get hashCode {
+    return Object.hash(runtimeType,id,brand,country,currency,expYear,expMonth,name,funding,last4,address);
+}
 
 @override
 String toString() {
-  return 'CardData(id: $id, brand: $brand, country: $country, currency: $currency, expYear: $expYear, expMonth: $expMonth, name: $name, funding: $funding, last4: $last4, address: $address)';
+    return 'CardData(id: $id, brand: $brand, country: $country, currency: $currency, expYear: $expYear, expMonth: $expMonth, name: $name, funding: $funding, last4: $last4, address: $address)';
 }
 
 
@@ -2132,16 +2176,21 @@ $BankAccountCopyWith<BankAccount> get copyWith => _$BankAccountCopyWithImpl<Bank
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BankAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.status, status) || other.status == status)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4));
+  final _this = this as BankAccount;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BankAccount&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.accountHolderType, _this.accountHolderType) || other.accountHolderType == _this.accountHolderType)&&(identical(other.bankName, _this.bankName) || other.bankName == _this.bankName)&&(identical(other.accountHolderName, _this.accountHolderName) || other.accountHolderName == _this.accountHolderName)&&(identical(other.country, _this.country) || other.country == _this.country)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.routingNumber, _this.routingNumber) || other.routingNumber == _this.routingNumber)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.fingerprint, _this.fingerprint) || other.fingerprint == _this.fingerprint)&&(identical(other.last4, _this.last4) || other.last4 == _this.last4));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,accountHolderType,bankName,accountHolderName,country,currency,routingNumber,status,fingerprint,last4);
+int get hashCode {
+  final _this = this as BankAccount;
+  return Object.hash(runtimeType,_this.id,_this.accountHolderType,_this.bankName,_this.accountHolderName,_this.country,_this.currency,_this.routingNumber,_this.status,_this.fingerprint,_this.last4);
+}
 
 @override
 String toString() {
-  return 'BankAccount(id: $id, accountHolderType: $accountHolderType, bankName: $bankName, accountHolderName: $accountHolderName, country: $country, currency: $currency, routingNumber: $routingNumber, status: $status, fingerprint: $fingerprint, last4: $last4)';
+  final _this = this as BankAccount;
+  return 'BankAccount(id: ${_this.id}, accountHolderType: ${_this.accountHolderType}, bankName: ${_this.bankName}, accountHolderName: ${_this.accountHolderName}, country: ${_this.country}, currency: ${_this.currency}, routingNumber: ${_this.routingNumber}, status: ${_this.status}, fingerprint: ${_this.fingerprint}, last4: ${_this.last4})';
 }
 
 
@@ -2170,7 +2219,7 @@ class _$BankAccountCopyWithImpl<$Res>
 /// Create a copy of BankAccount
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? accountHolderType = freezed,Object? bankName = freezed,Object? accountHolderName = freezed,Object? country = freezed,Object? currency = freezed,Object? routingNumber = freezed,Object? status = freezed,Object? fingerprint = freezed,Object? last4 = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(BankAccount(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,accountHolderType: freezed == accountHolderType ? _self.accountHolderType : accountHolderType // ignore: cast_nullable_to_non_nullable
 as BankAccountHolderType?,bankName: freezed == bankName ? _self.bankName : bankName // ignore: cast_nullable_to_non_nullable
@@ -2361,16 +2410,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BankAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.status, status) || other.status == status)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BankAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.status, status) || other.status == status)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,accountHolderType,bankName,accountHolderName,country,currency,routingNumber,status,fingerprint,last4);
+int get hashCode {
+    return Object.hash(runtimeType,id,accountHolderType,bankName,accountHolderName,country,currency,routingNumber,status,fingerprint,last4);
+}
 
 @override
 String toString() {
-  return 'BankAccount(id: $id, accountHolderType: $accountHolderType, bankName: $bankName, accountHolderName: $accountHolderName, country: $country, currency: $currency, routingNumber: $routingNumber, status: $status, fingerprint: $fingerprint, last4: $last4)';
+    return 'BankAccount(id: $id, accountHolderType: $accountHolderType, bankName: $bankName, accountHolderName: $accountHolderName, country: $country, currency: $currency, routingNumber: $routingNumber, status: $status, fingerprint: $fingerprint, last4: $last4)';
 }
 
 
