@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'create_payment_method_data.dart';
@@ -9,6 +9,7 @@ part of 'create_payment_method_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -40,16 +41,21 @@ $CreatePaymentMethodDataCopyWith<CreatePaymentMethodData> get copyWith => _$Crea
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreatePaymentMethodData&&(identical(other.type, type) || other.type == type)&&(identical(other.card, card) || other.card == card)&&(identical(other.auBecsDebit, auBecsDebit) || other.auBecsDebit == auBecsDebit)&&(identical(other.fpx, fpx) || other.fpx == fpx)&&(identical(other.fpxBank, fpxBank) || other.fpxBank == fpxBank)&&(identical(other.netbankingBank, netbankingBank) || other.netbankingBank == netbankingBank)&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.idealBank, idealBank) || other.idealBank == idealBank)&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.sepaDebitIban, sepaDebitIban) || other.sepaDebitIban == sepaDebitIban)&&(identical(other.upiVpa, upiVpa) || other.upiVpa == upiVpa)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+  final _this = this as CreatePaymentMethodData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreatePaymentMethodData&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.card, _this.card) || other.card == _this.card)&&(identical(other.auBecsDebit, _this.auBecsDebit) || other.auBecsDebit == _this.auBecsDebit)&&(identical(other.fpx, _this.fpx) || other.fpx == _this.fpx)&&(identical(other.fpxBank, _this.fpxBank) || other.fpxBank == _this.fpxBank)&&(identical(other.netbankingBank, _this.netbankingBank) || other.netbankingBank == _this.netbankingBank)&&(identical(other.ideal, _this.ideal) || other.ideal == _this.ideal)&&(identical(other.idealBank, _this.idealBank) || other.idealBank == _this.idealBank)&&(identical(other.sepaDebit, _this.sepaDebit) || other.sepaDebit == _this.sepaDebit)&&(identical(other.sepaDebitIban, _this.sepaDebitIban) || other.sepaDebitIban == _this.sepaDebitIban)&&(identical(other.upiVpa, _this.upiVpa) || other.upiVpa == _this.upiVpa)&&(identical(other.billingDetails, _this.billingDetails) || other.billingDetails == _this.billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,card,auBecsDebit,fpx,fpxBank,netbankingBank,ideal,idealBank,sepaDebit,sepaDebitIban,upiVpa,billingDetails);
+int get hashCode {
+  final _this = this as CreatePaymentMethodData;
+  return Object.hash(runtimeType,_this.type,_this.card,_this.auBecsDebit,_this.fpx,_this.fpxBank,_this.netbankingBank,_this.ideal,_this.idealBank,_this.sepaDebit,_this.sepaDebitIban,_this.upiVpa,_this.billingDetails);
+}
 
 @override
 String toString() {
-  return 'CreatePaymentMethodData(type: $type, card: $card, auBecsDebit: $auBecsDebit, fpx: $fpx, fpxBank: $fpxBank, netbankingBank: $netbankingBank, ideal: $ideal, idealBank: $idealBank, sepaDebit: $sepaDebit, sepaDebitIban: $sepaDebitIban, upiVpa: $upiVpa, billingDetails: $billingDetails)';
+  final _this = this as CreatePaymentMethodData;
+  return 'CreatePaymentMethodData(type: ${_this.type}, card: ${_this.card}, auBecsDebit: ${_this.auBecsDebit}, fpx: ${_this.fpx}, fpxBank: ${_this.fpxBank}, netbankingBank: ${_this.netbankingBank}, ideal: ${_this.ideal}, idealBank: ${_this.idealBank}, sepaDebit: ${_this.sepaDebit}, sepaDebitIban: ${_this.sepaDebitIban}, upiVpa: ${_this.upiVpa}, billingDetails: ${_this.billingDetails})';
 }
 
 
@@ -78,7 +84,7 @@ class _$CreatePaymentMethodDataCopyWithImpl<$Res>
 /// Create a copy of CreatePaymentMethodData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? card = freezed,Object? auBecsDebit = freezed,Object? fpx = freezed,Object? fpxBank = freezed,Object? netbankingBank = freezed,Object? ideal = freezed,Object? idealBank = freezed,Object? sepaDebit = freezed,Object? sepaDebitIban = freezed,Object? upiVpa = freezed,Object? billingDetails = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CreatePaymentMethodData(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,card: freezed == card ? _self.card : card // ignore: cast_nullable_to_non_nullable
 as Element?,auBecsDebit: freezed == auBecsDebit ? _self.auBecsDebit : auBecsDebit // ignore: cast_nullable_to_non_nullable
@@ -285,16 +291,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreatePaymentMethodData&&(identical(other.type, type) || other.type == type)&&(identical(other.card, card) || other.card == card)&&(identical(other.auBecsDebit, auBecsDebit) || other.auBecsDebit == auBecsDebit)&&(identical(other.fpx, fpx) || other.fpx == fpx)&&(identical(other.fpxBank, fpxBank) || other.fpxBank == fpxBank)&&(identical(other.netbankingBank, netbankingBank) || other.netbankingBank == netbankingBank)&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.idealBank, idealBank) || other.idealBank == idealBank)&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.sepaDebitIban, sepaDebitIban) || other.sepaDebitIban == sepaDebitIban)&&(identical(other.upiVpa, upiVpa) || other.upiVpa == upiVpa)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreatePaymentMethodData&&(identical(other.type, type) || other.type == type)&&(identical(other.card, card) || other.card == card)&&(identical(other.auBecsDebit, auBecsDebit) || other.auBecsDebit == auBecsDebit)&&(identical(other.fpx, fpx) || other.fpx == fpx)&&(identical(other.fpxBank, fpxBank) || other.fpxBank == fpxBank)&&(identical(other.netbankingBank, netbankingBank) || other.netbankingBank == netbankingBank)&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.idealBank, idealBank) || other.idealBank == idealBank)&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.sepaDebitIban, sepaDebitIban) || other.sepaDebitIban == sepaDebitIban)&&(identical(other.upiVpa, upiVpa) || other.upiVpa == upiVpa)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,card,auBecsDebit,fpx,fpxBank,netbankingBank,ideal,idealBank,sepaDebit,sepaDebitIban,upiVpa,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,type,card,auBecsDebit,fpx,fpxBank,netbankingBank,ideal,idealBank,sepaDebit,sepaDebitIban,upiVpa,billingDetails);
+}
 
 @override
 String toString() {
-  return 'CreatePaymentMethodData(type: $type, card: $card, auBecsDebit: $auBecsDebit, fpx: $fpx, fpxBank: $fpxBank, netbankingBank: $netbankingBank, ideal: $ideal, idealBank: $idealBank, sepaDebit: $sepaDebit, sepaDebitIban: $sepaDebitIban, upiVpa: $upiVpa, billingDetails: $billingDetails)';
+    return 'CreatePaymentMethodData(type: $type, card: $card, auBecsDebit: $auBecsDebit, fpx: $fpx, fpxBank: $fpxBank, netbankingBank: $netbankingBank, ideal: $ideal, idealBank: $idealBank, sepaDebit: $sepaDebit, sepaDebitIban: $sepaDebitIban, upiVpa: $upiVpa, billingDetails: $billingDetails)';
 }
 
 

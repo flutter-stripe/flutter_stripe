@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_method_details.dart';
@@ -9,6 +9,7 @@ part of 'payment_method_details.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 CardPaymentMethodDetails _$CardPaymentMethodDetailsFromJson(
@@ -50,7 +51,7 @@ mixin _$CardPaymentMethodDetails {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardPaymentMethodDetails);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CardPaymentMethodDetails);
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -59,7 +60,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'CardPaymentMethodDetails()';
+    return 'CardPaymentMethodDetails()';
 }
 
 
@@ -211,7 +212,7 @@ return token(_that.card,_that.billingDetails);case _:
 @JsonSerializable()
 
 class _CardPaymentMethodRef implements CardPaymentMethodDetails, IdPaymentMethodDetails {
-  const _CardPaymentMethodRef(this.id, {final  String? $type}): $type = $type ?? 'card';
+  const _CardPaymentMethodRef(this.id, { String? $type}): $type = $type ?? 'card';
   factory _CardPaymentMethodRef.fromJson(Map<String, dynamic> json) => _$CardPaymentMethodRefFromJson(json);
 
  final  String id;
@@ -233,16 +234,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentMethodRef&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentMethodRef&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'CardPaymentMethodDetails.id(id: $id)';
+    return 'CardPaymentMethodDetails.id(id: $id)';
 }
 
 
@@ -284,7 +287,7 @@ as String,
 @JsonSerializable()
 
 class _CardPaymentMethodDefault implements CardPaymentMethodDetails {
-  const _CardPaymentMethodDefault({@ElementConverter() required this.card, @JsonKey(name: "billing_details") this.billingDetails, final  String? $type}): $type = $type ?? 'card';
+  const _CardPaymentMethodDefault({@ElementConverter() required this.card, @JsonKey(name: "billing_details") this.billingDetails,  String? $type}): $type = $type ?? 'card';
   factory _CardPaymentMethodDefault.fromJson(Map<String, dynamic> json) => _$CardPaymentMethodDefaultFromJson(json);
 
 /// Uses the provided card or cardNumber Element for confirmation.
@@ -309,16 +312,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentMethodDefault&&(identical(other.card, card) || other.card == card)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentMethodDefault&&(identical(other.card, card) || other.card == card)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,card,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,card,billingDetails);
+}
 
 @override
 String toString() {
-  return 'CardPaymentMethodDetails(card: $card, billingDetails: $billingDetails)';
+    return 'CardPaymentMethodDetails(card: $card, billingDetails: $billingDetails)';
 }
 
 
@@ -373,7 +378,7 @@ $BillingDetailsCopyWith<$Res>? get billingDetails {
 @JsonSerializable()
 
 class _CardPaymentMethodDetailsToken implements CardPaymentMethodDetails {
-  const _CardPaymentMethodDetailsToken({required this.card, @JsonKey(name: "billing_details") this.billingDetails, final  String? $type}): $type = $type ?? 'card';
+  const _CardPaymentMethodDetailsToken({required this.card, @JsonKey(name: "billing_details") this.billingDetails,  String? $type}): $type = $type ?? 'card';
   factory _CardPaymentMethodDetailsToken.fromJson(Map<String, dynamic> json) => _$CardPaymentMethodDetailsTokenFromJson(json);
 
 /// Uses the provided card or cardNumber Element for confirmation.
@@ -398,16 +403,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentMethodDetailsToken&&(identical(other.card, card) || other.card == card)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentMethodDetailsToken&&(identical(other.card, card) || other.card == card)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,card,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,card,billingDetails);
+}
 
 @override
 String toString() {
-  return 'CardPaymentMethodDetails.token(card: $card, billingDetails: $billingDetails)';
+    return 'CardPaymentMethodDetails.token(card: $card, billingDetails: $billingDetails)';
 }
 
 
@@ -506,7 +513,7 @@ mixin _$IdealPaymentMethodDetails {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdealPaymentMethodDetails);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is IdealPaymentMethodDetails);
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -515,7 +522,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'IdealPaymentMethodDetails()';
+    return 'IdealPaymentMethodDetails()';
 }
 
 
@@ -673,7 +680,7 @@ return withBank(_that.ideal,_that.billingDetails);case _:
 @JsonSerializable()
 
 class _IdIdealPaymentMethodDetailsIdOnly implements IdealPaymentMethodDetails, IdPaymentMethodDetails {
-  const _IdIdealPaymentMethodDetailsIdOnly(this.id, {final  String? $type}): $type = $type ?? 'ideal';
+  const _IdIdealPaymentMethodDetailsIdOnly(this.id, { String? $type}): $type = $type ?? 'ideal';
   factory _IdIdealPaymentMethodDetailsIdOnly.fromJson(Map<String, dynamic> json) => _$IdIdealPaymentMethodDetailsIdOnlyFromJson(json);
 
  final  String id;
@@ -695,16 +702,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdIdealPaymentMethodDetailsIdOnly&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdIdealPaymentMethodDetailsIdOnly&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'IdealPaymentMethodDetails.id(id: $id)';
+    return 'IdealPaymentMethodDetails.id(id: $id)';
 }
 
 
@@ -746,7 +755,7 @@ as String,
 @JsonSerializable()
 
 class _IdealPaymentMethodDetailsWithBilling implements IdealPaymentMethodDetails {
-  const _IdealPaymentMethodDetailsWithBilling({@ElementConverter() required this.ideal, @JsonKey(name: "billing_details") this.billingDetails, final  String? $type}): $type = $type ?? 'ideal';
+  const _IdealPaymentMethodDetailsWithBilling({@ElementConverter() required this.ideal, @JsonKey(name: "billing_details") this.billingDetails,  String? $type}): $type = $type ?? 'ideal';
   factory _IdealPaymentMethodDetailsWithBilling.fromJson(Map<String, dynamic> json) => _$IdealPaymentMethodDetailsWithBillingFromJson(json);
 
 /// Uses the provided card or cardNumber Element for confirmation.
@@ -771,16 +780,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdealPaymentMethodDetailsWithBilling&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdealPaymentMethodDetailsWithBilling&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,ideal,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,ideal,billingDetails);
+}
 
 @override
 String toString() {
-  return 'IdealPaymentMethodDetails(ideal: $ideal, billingDetails: $billingDetails)';
+    return 'IdealPaymentMethodDetails(ideal: $ideal, billingDetails: $billingDetails)';
 }
 
 
@@ -835,7 +846,7 @@ $BillingDetailsCopyWith<$Res>? get billingDetails {
 @JsonSerializable()
 
 class _IdealPaymentMethodDetailsSelfCollect implements IdealPaymentMethodDetails {
-  const _IdealPaymentMethodDetailsSelfCollect({required this.ideal, @JsonKey(name: "billing_details") this.billingDetails, final  String? $type}): $type = $type ?? 'ideal';
+  const _IdealPaymentMethodDetailsSelfCollect({required this.ideal, @JsonKey(name: "billing_details") this.billingDetails,  String? $type}): $type = $type ?? 'ideal';
   factory _IdealPaymentMethodDetailsSelfCollect.fromJson(Map<String, dynamic> json) => _$IdealPaymentMethodDetailsSelfCollectFromJson(json);
 
 /// Uses the provided card or cardNumber Element for confirmation.
@@ -860,16 +871,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdealPaymentMethodDetailsSelfCollect&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdealPaymentMethodDetailsSelfCollect&&(identical(other.ideal, ideal) || other.ideal == ideal)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,ideal,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,ideal,billingDetails);
+}
 
 @override
 String toString() {
-  return 'IdealPaymentMethodDetails.withBank(ideal: $ideal, billingDetails: $billingDetails)';
+    return 'IdealPaymentMethodDetails.withBank(ideal: $ideal, billingDetails: $billingDetails)';
 }
 
 
@@ -964,7 +977,7 @@ mixin _$P24PaymentMethodDetails {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is P24PaymentMethodDetails);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is P24PaymentMethodDetails);
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -973,7 +986,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'P24PaymentMethodDetails()';
+    return 'P24PaymentMethodDetails()';
 }
 
 
@@ -1125,7 +1138,7 @@ return $default(_that.billingDetails);case _:
 @JsonSerializable()
 
 class _IdP24PaymentMethodDetailsIdOnly implements P24PaymentMethodDetails, IdPaymentMethodDetails {
-  const _IdP24PaymentMethodDetailsIdOnly(this.id, {final  String? $type}): $type = $type ?? 'p24';
+  const _IdP24PaymentMethodDetailsIdOnly(this.id, { String? $type}): $type = $type ?? 'p24';
   factory _IdP24PaymentMethodDetailsIdOnly.fromJson(Map<String, dynamic> json) => _$IdP24PaymentMethodDetailsIdOnlyFromJson(json);
 
  final  String id;
@@ -1147,16 +1160,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdP24PaymentMethodDetailsIdOnly&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdP24PaymentMethodDetailsIdOnly&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'P24PaymentMethodDetails.id(id: $id)';
+    return 'P24PaymentMethodDetails.id(id: $id)';
 }
 
 
@@ -1198,7 +1213,7 @@ as String,
 @JsonSerializable()
 
 class _P24PaymentMethodDetailsWithBilling implements P24PaymentMethodDetails {
-  const _P24PaymentMethodDetailsWithBilling({@JsonKey(name: "billing_details") required this.billingDetails, final  String? $type}): $type = $type ?? 'p24';
+  const _P24PaymentMethodDetailsWithBilling({@JsonKey(name: "billing_details") required this.billingDetails,  String? $type}): $type = $type ?? 'p24';
   factory _P24PaymentMethodDetailsWithBilling.fromJson(Map<String, dynamic> json) => _$P24PaymentMethodDetailsWithBillingFromJson(json);
 
 /// The billing_details associated with the card.
@@ -1221,16 +1236,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _P24PaymentMethodDetailsWithBilling&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _P24PaymentMethodDetailsWithBilling&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,billingDetails);
+}
 
 @override
 String toString() {
-  return 'P24PaymentMethodDetails(billingDetails: $billingDetails)';
+    return 'P24PaymentMethodDetails(billingDetails: $billingDetails)';
 }
 
 
@@ -1298,16 +1315,21 @@ $IdealBankDataCopyWith<IdealBankData> get copyWith => _$IdealBankDataCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdealBankData&&(identical(other.bank, bank) || other.bank == bank));
+  final _this = this as IdealBankData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdealBankData&&(identical(other.bank, _this.bank) || other.bank == _this.bank));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,bank);
+int get hashCode {
+  final _this = this as IdealBankData;
+  return Object.hash(runtimeType,_this.bank);
+}
 
 @override
 String toString() {
-  return 'IdealBankData(bank: $bank)';
+  final _this = this as IdealBankData;
+  return 'IdealBankData(bank: ${_this.bank})';
 }
 
 
@@ -1336,7 +1358,7 @@ class _$IdealBankDataCopyWithImpl<$Res>
 /// Create a copy of IdealBankData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? bank = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(IdealBankData(
 bank: freezed == bank ? _self.bank : bank // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -1498,16 +1520,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdealBankData&&(identical(other.bank, bank) || other.bank == bank));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdealBankData&&(identical(other.bank, bank) || other.bank == bank));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,bank);
+int get hashCode {
+    return Object.hash(runtimeType,bank);
+}
 
 @override
 String toString() {
-  return 'IdealBankData(bank: $bank)';
+    return 'IdealBankData(bank: $bank)';
 }
 
 
@@ -1562,16 +1586,21 @@ $CardTokenPaymentMethodCopyWith<CardTokenPaymentMethod> get copyWith => _$CardTo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardTokenPaymentMethod&&(identical(other.token, token) || other.token == token));
+  final _this = this as CardTokenPaymentMethod;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardTokenPaymentMethod&&(identical(other.token, _this.token) || other.token == _this.token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,token);
+int get hashCode {
+  final _this = this as CardTokenPaymentMethod;
+  return Object.hash(runtimeType,_this.token);
+}
 
 @override
 String toString() {
-  return 'CardTokenPaymentMethod(token: $token)';
+  final _this = this as CardTokenPaymentMethod;
+  return 'CardTokenPaymentMethod(token: ${_this.token})';
 }
 
 
@@ -1600,7 +1629,7 @@ class _$CardTokenPaymentMethodCopyWithImpl<$Res>
 /// Create a copy of CardTokenPaymentMethod
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? token = null,}) {
-  return _then(_self.copyWith(
+  return _then(CardTokenPaymentMethod(
 token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -1761,16 +1790,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardTokenPaymentMethod&&(identical(other.token, token) || other.token == token));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardTokenPaymentMethod&&(identical(other.token, token) || other.token == token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,token);
+int get hashCode {
+    return Object.hash(runtimeType,token);
+}
 
 @override
 String toString() {
-  return 'CardTokenPaymentMethod(token: $token)';
+    return 'CardTokenPaymentMethod(token: $token)';
 }
 
 

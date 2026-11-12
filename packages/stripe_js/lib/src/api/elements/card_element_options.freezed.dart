@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'card_element_options.dart';
@@ -9,6 +9,7 @@ part of 'card_element_options.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -30,16 +31,21 @@ $CardElementOptionsCopyWith<CardElementOptions> get copyWith => _$CardElementOpt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardElementOptions&&(identical(other.classes, classes) || other.classes == classes)&&const DeepCollectionEquality().equals(other.style, style)&&(identical(other.value, value) || other.value == value)&&(identical(other.hidePostalCode, hidePostalCode) || other.hidePostalCode == hidePostalCode)&&(identical(other.iconStyle, iconStyle) || other.iconStyle == iconStyle)&&(identical(other.hideIcon, hideIcon) || other.hideIcon == hideIcon)&&(identical(other.disabled, disabled) || other.disabled == disabled));
+  final _this = this as CardElementOptions;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardElementOptions&&(identical(other.classes, _this.classes) || other.classes == _this.classes)&&const DeepCollectionEquality().equals(other.style, _this.style)&&(identical(other.value, _this.value) || other.value == _this.value)&&(identical(other.hidePostalCode, _this.hidePostalCode) || other.hidePostalCode == _this.hidePostalCode)&&(identical(other.iconStyle, _this.iconStyle) || other.iconStyle == _this.iconStyle)&&(identical(other.hideIcon, _this.hideIcon) || other.hideIcon == _this.hideIcon)&&(identical(other.disabled, _this.disabled) || other.disabled == _this.disabled));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,classes,const DeepCollectionEquality().hash(style),value,hidePostalCode,iconStyle,hideIcon,disabled);
+int get hashCode {
+  final _this = this as CardElementOptions;
+  return Object.hash(runtimeType,_this.classes,const DeepCollectionEquality().hash(_this.style),_this.value,_this.hidePostalCode,_this.iconStyle,_this.hideIcon,_this.disabled);
+}
 
 @override
 String toString() {
-  return 'CardElementOptions(classes: $classes, style: $style, value: $value, hidePostalCode: $hidePostalCode, iconStyle: $iconStyle, hideIcon: $hideIcon, disabled: $disabled)';
+  final _this = this as CardElementOptions;
+  return 'CardElementOptions(classes: ${_this.classes}, style: ${_this.style}, value: ${_this.value}, hidePostalCode: ${_this.hidePostalCode}, iconStyle: ${_this.iconStyle}, hideIcon: ${_this.hideIcon}, disabled: ${_this.disabled})';
 }
 
 
@@ -68,7 +74,7 @@ class _$CardElementOptionsCopyWithImpl<$Res>
 /// Create a copy of CardElementOptions
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? classes = freezed,Object? style = freezed,Object? value = freezed,Object? hidePostalCode = freezed,Object? iconStyle = freezed,Object? hideIcon = freezed,Object? disabled = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardElementOptions(
 classes: freezed == classes ? _self.classes : classes // ignore: cast_nullable_to_non_nullable
 as CardElementClasses?,style: freezed == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
 as dynamic,value: freezed == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
@@ -255,16 +261,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardElementOptions&&(identical(other.classes, classes) || other.classes == classes)&&const DeepCollectionEquality().equals(other.style, style)&&(identical(other.value, value) || other.value == value)&&(identical(other.hidePostalCode, hidePostalCode) || other.hidePostalCode == hidePostalCode)&&(identical(other.iconStyle, iconStyle) || other.iconStyle == iconStyle)&&(identical(other.hideIcon, hideIcon) || other.hideIcon == hideIcon)&&(identical(other.disabled, disabled) || other.disabled == disabled));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardElementOptions&&(identical(other.classes, classes) || other.classes == classes)&&const DeepCollectionEquality().equals(other.style, style)&&(identical(other.value, value) || other.value == value)&&(identical(other.hidePostalCode, hidePostalCode) || other.hidePostalCode == hidePostalCode)&&(identical(other.iconStyle, iconStyle) || other.iconStyle == iconStyle)&&(identical(other.hideIcon, hideIcon) || other.hideIcon == hideIcon)&&(identical(other.disabled, disabled) || other.disabled == disabled));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,classes,const DeepCollectionEquality().hash(style),value,hidePostalCode,iconStyle,hideIcon,disabled);
+int get hashCode {
+    return Object.hash(runtimeType,classes,const DeepCollectionEquality().hash(style),value,hidePostalCode,iconStyle,hideIcon,disabled);
+}
 
 @override
 String toString() {
-  return 'CardElementOptions(classes: $classes, style: $style, value: $value, hidePostalCode: $hidePostalCode, iconStyle: $iconStyle, hideIcon: $hideIcon, disabled: $disabled)';
+    return 'CardElementOptions(classes: $classes, style: $style, value: $value, hidePostalCode: $hidePostalCode, iconStyle: $iconStyle, hideIcon: $hideIcon, disabled: $disabled)';
 }
 
 
@@ -349,16 +357,21 @@ $CardElementClassesCopyWith<CardElementClasses> get copyWith => _$CardElementCla
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardElementClasses&&(identical(other.base, base) || other.base == base)&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.empty, empty) || other.empty == empty)&&(identical(other.focus, focus) || other.focus == focus)&&(identical(other.invalid, invalid) || other.invalid == invalid)&&(identical(other.webkitAutofill, webkitAutofill) || other.webkitAutofill == webkitAutofill));
+  final _this = this as CardElementClasses;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardElementClasses&&(identical(other.base, _this.base) || other.base == _this.base)&&(identical(other.complete, _this.complete) || other.complete == _this.complete)&&(identical(other.empty, _this.empty) || other.empty == _this.empty)&&(identical(other.focus, _this.focus) || other.focus == _this.focus)&&(identical(other.invalid, _this.invalid) || other.invalid == _this.invalid)&&(identical(other.webkitAutofill, _this.webkitAutofill) || other.webkitAutofill == _this.webkitAutofill));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,base,complete,empty,focus,invalid,webkitAutofill);
+int get hashCode {
+  final _this = this as CardElementClasses;
+  return Object.hash(runtimeType,_this.base,_this.complete,_this.empty,_this.focus,_this.invalid,_this.webkitAutofill);
+}
 
 @override
 String toString() {
-  return 'CardElementClasses(base: $base, complete: $complete, empty: $empty, focus: $focus, invalid: $invalid, webkitAutofill: $webkitAutofill)';
+  final _this = this as CardElementClasses;
+  return 'CardElementClasses(base: ${_this.base}, complete: ${_this.complete}, empty: ${_this.empty}, focus: ${_this.focus}, invalid: ${_this.invalid}, webkitAutofill: ${_this.webkitAutofill})';
 }
 
 
@@ -387,7 +400,7 @@ class _$CardElementClassesCopyWithImpl<$Res>
 /// Create a copy of CardElementClasses
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? base = freezed,Object? complete = freezed,Object? empty = freezed,Object? focus = freezed,Object? invalid = freezed,Object? webkitAutofill = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardElementClasses(
 base: freezed == base ? _self.base : base // ignore: cast_nullable_to_non_nullable
 as String?,complete: freezed == complete ? _self.complete : complete // ignore: cast_nullable_to_non_nullable
 as String?,empty: freezed == empty ? _self.empty : empty // ignore: cast_nullable_to_non_nullable
@@ -570,16 +583,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardElementClasses&&(identical(other.base, base) || other.base == base)&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.empty, empty) || other.empty == empty)&&(identical(other.focus, focus) || other.focus == focus)&&(identical(other.invalid, invalid) || other.invalid == invalid)&&(identical(other.webkitAutofill, webkitAutofill) || other.webkitAutofill == webkitAutofill));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardElementClasses&&(identical(other.base, base) || other.base == base)&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.empty, empty) || other.empty == empty)&&(identical(other.focus, focus) || other.focus == focus)&&(identical(other.invalid, invalid) || other.invalid == invalid)&&(identical(other.webkitAutofill, webkitAutofill) || other.webkitAutofill == webkitAutofill));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,base,complete,empty,focus,invalid,webkitAutofill);
+int get hashCode {
+    return Object.hash(runtimeType,base,complete,empty,focus,invalid,webkitAutofill);
+}
 
 @override
 String toString() {
-  return 'CardElementClasses(base: $base, complete: $complete, empty: $empty, focus: $focus, invalid: $invalid, webkitAutofill: $webkitAutofill)';
+    return 'CardElementClasses(base: $base, complete: $complete, empty: $empty, focus: $focus, invalid: $invalid, webkitAutofill: $webkitAutofill)';
 }
 
 

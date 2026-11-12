@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirm_sepa_debit_payment_data.dart';
@@ -9,6 +9,7 @@ part of 'confirm_sepa_debit_payment_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -36,16 +37,21 @@ $ConfirmSepaDebitPaymentDataCopyWith<ConfirmSepaDebitPaymentData> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmSepaDebitPaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
+  final _this = this as ConfirmSepaDebitPaymentData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmSepaDebitPaymentData&&(identical(other.paymentMethod, _this.paymentMethod) || other.paymentMethod == _this.paymentMethod)&&(identical(other.setupFutureUsage, _this.setupFutureUsage) || other.setupFutureUsage == _this.setupFutureUsage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethod,setupFutureUsage);
+int get hashCode {
+  final _this = this as ConfirmSepaDebitPaymentData;
+  return Object.hash(runtimeType,_this.paymentMethod,_this.setupFutureUsage);
+}
 
 @override
 String toString() {
-  return 'ConfirmSepaDebitPaymentData(paymentMethod: $paymentMethod, setupFutureUsage: $setupFutureUsage)';
+  final _this = this as ConfirmSepaDebitPaymentData;
+  return 'ConfirmSepaDebitPaymentData(paymentMethod: ${_this.paymentMethod}, setupFutureUsage: ${_this.setupFutureUsage})';
 }
 
 
@@ -74,7 +80,7 @@ class _$ConfirmSepaDebitPaymentDataCopyWithImpl<$Res>
 /// Create a copy of ConfirmSepaDebitPaymentData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? paymentMethod = freezed,Object? setupFutureUsage = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmSepaDebitPaymentData(
 paymentMethod: freezed == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
 as SepaDebitPaymentMethodDetails?,setupFutureUsage: freezed == setupFutureUsage ? _self.setupFutureUsage : setupFutureUsage // ignore: cast_nullable_to_non_nullable
 as PaymentIntentSetupFutureUsage?,
@@ -257,16 +263,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmSepaDebitPaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmSepaDebitPaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethod,setupFutureUsage);
+int get hashCode {
+    return Object.hash(runtimeType,paymentMethod,setupFutureUsage);
+}
 
 @override
 String toString() {
-  return 'ConfirmSepaDebitPaymentData(paymentMethod: $paymentMethod, setupFutureUsage: $setupFutureUsage)';
+    return 'ConfirmSepaDebitPaymentData(paymentMethod: $paymentMethod, setupFutureUsage: $setupFutureUsage)';
 }
 
 
@@ -356,7 +364,7 @@ mixin _$SepaDebitPaymentMethodDetails {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SepaDebitPaymentMethodDetails);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SepaDebitPaymentMethodDetails);
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -365,7 +373,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SepaDebitPaymentMethodDetails()';
+    return 'SepaDebitPaymentMethodDetails()';
 }
 
 
@@ -517,7 +525,7 @@ return withIban(_that.sepaDebit,_that.billingDetails);case _:
 @JsonSerializable()
 
 class _IdSepaDebitPaymentMethodDetails implements SepaDebitPaymentMethodDetails, IdPaymentMethodDetails {
-  const _IdSepaDebitPaymentMethodDetails(this.id, {final  String? $type}): $type = $type ?? 'sepa_debit';
+  const _IdSepaDebitPaymentMethodDetails(this.id, { String? $type}): $type = $type ?? 'sepa_debit';
   factory _IdSepaDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) => _$IdSepaDebitPaymentMethodDetailsFromJson(json);
 
  final  String id;
@@ -539,16 +547,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdSepaDebitPaymentMethodDetails&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdSepaDebitPaymentMethodDetails&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'SepaDebitPaymentMethodDetails.id(id: $id)';
+    return 'SepaDebitPaymentMethodDetails.id(id: $id)';
 }
 
 
@@ -590,7 +600,7 @@ as String,
 @JsonSerializable()
 
 class _SepaDebitPaymentMethodDetailsElement implements SepaDebitPaymentMethodDetails {
-  const _SepaDebitPaymentMethodDetailsElement({@JsonKey(name: "sepa_debit")@ElementConverter() required this.sepaDebit, @JsonKey(name: "billing_details") this.billingDetails, final  String? $type}): $type = $type ?? 'sepa_debit';
+  const _SepaDebitPaymentMethodDetailsElement({@JsonKey(name: "sepa_debit")@ElementConverter() required this.sepaDebit, @JsonKey(name: "billing_details") this.billingDetails,  String? $type}): $type = $type ?? 'sepa_debit';
   factory _SepaDebitPaymentMethodDetailsElement.fromJson(Map<String, dynamic> json) => _$SepaDebitPaymentMethodDetailsElementFromJson(json);
 
 /// Uses the provided card or cardNumber Element for confirmation.
@@ -615,16 +625,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaDebitPaymentMethodDetailsElement&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaDebitPaymentMethodDetailsElement&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,sepaDebit,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,sepaDebit,billingDetails);
+}
 
 @override
 String toString() {
-  return 'SepaDebitPaymentMethodDetails(sepaDebit: $sepaDebit, billingDetails: $billingDetails)';
+    return 'SepaDebitPaymentMethodDetails(sepaDebit: $sepaDebit, billingDetails: $billingDetails)';
 }
 
 
@@ -679,7 +691,7 @@ $SepaBillingDetailsCopyWith<$Res>? get billingDetails {
 @JsonSerializable()
 
 class _SepaDebitPaymentMethodDetailsWithIban implements SepaDebitPaymentMethodDetails {
-  const _SepaDebitPaymentMethodDetailsWithIban({@JsonKey(name: "sepa_debit") required this.sepaDebit, @JsonKey(name: "billing_details") this.billingDetails, final  String? $type}): $type = $type ?? 'sepa_debit';
+  const _SepaDebitPaymentMethodDetailsWithIban({@JsonKey(name: "sepa_debit") required this.sepaDebit, @JsonKey(name: "billing_details") this.billingDetails,  String? $type}): $type = $type ?? 'sepa_debit';
   factory _SepaDebitPaymentMethodDetailsWithIban.fromJson(Map<String, dynamic> json) => _$SepaDebitPaymentMethodDetailsWithIbanFromJson(json);
 
 /// Uses the provided card or cardNumber Element for confirmation.
@@ -704,16 +716,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaDebitPaymentMethodDetailsWithIban&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaDebitPaymentMethodDetailsWithIban&&(identical(other.sepaDebit, sepaDebit) || other.sepaDebit == sepaDebit)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,sepaDebit,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,sepaDebit,billingDetails);
+}
 
 @override
 String toString() {
-  return 'SepaDebitPaymentMethodDetails.withIban(sepaDebit: $sepaDebit, billingDetails: $billingDetails)';
+    return 'SepaDebitPaymentMethodDetails.withIban(sepaDebit: $sepaDebit, billingDetails: $billingDetails)';
 }
 
 
@@ -791,16 +805,21 @@ $SepaDebitIbanDataCopyWith<SepaDebitIbanData> get copyWith => _$SepaDebitIbanDat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SepaDebitIbanData&&(identical(other.iban, iban) || other.iban == iban));
+  final _this = this as SepaDebitIbanData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SepaDebitIbanData&&(identical(other.iban, _this.iban) || other.iban == _this.iban));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,iban);
+int get hashCode {
+  final _this = this as SepaDebitIbanData;
+  return Object.hash(runtimeType,_this.iban);
+}
 
 @override
 String toString() {
-  return 'SepaDebitIbanData(iban: $iban)';
+  final _this = this as SepaDebitIbanData;
+  return 'SepaDebitIbanData(iban: ${_this.iban})';
 }
 
 
@@ -829,7 +848,7 @@ class _$SepaDebitIbanDataCopyWithImpl<$Res>
 /// Create a copy of SepaDebitIbanData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? iban = null,}) {
-  return _then(_self.copyWith(
+  return _then(SepaDebitIbanData(
 iban: null == iban ? _self.iban : iban // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -991,16 +1010,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaDebitIbanData&&(identical(other.iban, iban) || other.iban == iban));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaDebitIbanData&&(identical(other.iban, iban) || other.iban == iban));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,iban);
+int get hashCode {
+    return Object.hash(runtimeType,iban);
+}
 
 @override
 String toString() {
-  return 'SepaDebitIbanData(iban: $iban)';
+    return 'SepaDebitIbanData(iban: $iban)';
 }
 
 
@@ -1059,16 +1080,21 @@ $SepaBillingDetailsCopyWith<SepaBillingDetails> get copyWith => _$SepaBillingDet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SepaBillingDetails&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.name, name) || other.name == name));
+  final _this = this as SepaBillingDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SepaBillingDetails&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.address, _this.address) || other.address == _this.address)&&(identical(other.phone, _this.phone) || other.phone == _this.phone)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,address,phone,name);
+int get hashCode {
+  final _this = this as SepaBillingDetails;
+  return Object.hash(runtimeType,_this.email,_this.address,_this.phone,_this.name);
+}
 
 @override
 String toString() {
-  return 'SepaBillingDetails(email: $email, address: $address, phone: $phone, name: $name)';
+  final _this = this as SepaBillingDetails;
+  return 'SepaBillingDetails(email: ${_this.email}, address: ${_this.address}, phone: ${_this.phone}, name: ${_this.name})';
 }
 
 
@@ -1097,7 +1123,7 @@ class _$SepaBillingDetailsCopyWithImpl<$Res>
 /// Create a copy of SepaBillingDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? address = freezed,Object? phone = freezed,Object? name = null,}) {
-  return _then(_self.copyWith(
+  return _then(SepaBillingDetails(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
 as BillingAddress?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
@@ -1280,16 +1306,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaBillingDetails&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SepaBillingDetails&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,address,phone,name);
+int get hashCode {
+    return Object.hash(runtimeType,email,address,phone,name);
+}
 
 @override
 String toString() {
-  return 'SepaBillingDetails(email: $email, address: $address, phone: $phone, name: $name)';
+    return 'SepaBillingDetails(email: $email, address: $address, phone: $phone, name: $name)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'express_checkout_element_options.dart';
@@ -9,6 +9,7 @@ part of 'express_checkout_element_options.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -33,16 +34,21 @@ $ExpressCheckoutOptionsCopyWith<ExpressCheckoutOptions> get copyWith => _$Expres
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutOptions&&(identical(other.height, height) || other.height == height)&&(identical(other.buttonTheme, buttonTheme) || other.buttonTheme == buttonTheme)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType)&&(identical(other.layout, layout) || other.layout == layout)&&(identical(other.paymentMethods, paymentMethods) || other.paymentMethods == paymentMethods));
+  final _this = this as ExpressCheckoutOptions;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutOptions&&(identical(other.height, _this.height) || other.height == _this.height)&&(identical(other.buttonTheme, _this.buttonTheme) || other.buttonTheme == _this.buttonTheme)&&(identical(other.buttonType, _this.buttonType) || other.buttonType == _this.buttonType)&&(identical(other.layout, _this.layout) || other.layout == _this.layout)&&(identical(other.paymentMethods, _this.paymentMethods) || other.paymentMethods == _this.paymentMethods));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,height,buttonTheme,buttonType,layout,paymentMethods);
+int get hashCode {
+  final _this = this as ExpressCheckoutOptions;
+  return Object.hash(runtimeType,_this.height,_this.buttonTheme,_this.buttonType,_this.layout,_this.paymentMethods);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutOptions(height: $height, buttonTheme: $buttonTheme, buttonType: $buttonType, layout: $layout, paymentMethods: $paymentMethods)';
+  final _this = this as ExpressCheckoutOptions;
+  return 'ExpressCheckoutOptions(height: ${_this.height}, buttonTheme: ${_this.buttonTheme}, buttonType: ${_this.buttonType}, layout: ${_this.layout}, paymentMethods: ${_this.paymentMethods})';
 }
 
 
@@ -71,7 +77,7 @@ class _$ExpressCheckoutOptionsCopyWithImpl<$Res>
 /// Create a copy of ExpressCheckoutOptions
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? height = freezed,Object? buttonTheme = freezed,Object? buttonType = freezed,Object? layout = freezed,Object? paymentMethods = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ExpressCheckoutOptions(
 height: freezed == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
 as double?,buttonTheme: freezed == buttonTheme ? _self.buttonTheme : buttonTheme // ignore: cast_nullable_to_non_nullable
 as ExpressCheckoutButtonTheme?,buttonType: freezed == buttonType ? _self.buttonType : buttonType // ignore: cast_nullable_to_non_nullable
@@ -293,16 +299,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutOptions&&(identical(other.height, height) || other.height == height)&&(identical(other.buttonTheme, buttonTheme) || other.buttonTheme == buttonTheme)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType)&&(identical(other.layout, layout) || other.layout == layout)&&(identical(other.paymentMethods, paymentMethods) || other.paymentMethods == paymentMethods));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutOptions&&(identical(other.height, height) || other.height == height)&&(identical(other.buttonTheme, buttonTheme) || other.buttonTheme == buttonTheme)&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType)&&(identical(other.layout, layout) || other.layout == layout)&&(identical(other.paymentMethods, paymentMethods) || other.paymentMethods == paymentMethods));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,height,buttonTheme,buttonType,layout,paymentMethods);
+int get hashCode {
+    return Object.hash(runtimeType,height,buttonTheme,buttonType,layout,paymentMethods);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutOptions(height: $height, buttonTheme: $buttonTheme, buttonType: $buttonType, layout: $layout, paymentMethods: $paymentMethods)';
+    return 'ExpressCheckoutOptions(height: $height, buttonTheme: $buttonTheme, buttonType: $buttonType, layout: $layout, paymentMethods: $paymentMethods)';
 }
 
 
@@ -410,16 +418,21 @@ $ExpressCheckoutConfirmEventCopyWith<ExpressCheckoutConfirmEvent> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutConfirmEvent&&(identical(other.expressPaymentType, expressPaymentType) || other.expressPaymentType == expressPaymentType)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+  final _this = this as ExpressCheckoutConfirmEvent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutConfirmEvent&&(identical(other.expressPaymentType, _this.expressPaymentType) || other.expressPaymentType == _this.expressPaymentType)&&(identical(other.billingDetails, _this.billingDetails) || other.billingDetails == _this.billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,expressPaymentType,billingDetails);
+int get hashCode {
+  final _this = this as ExpressCheckoutConfirmEvent;
+  return Object.hash(runtimeType,_this.expressPaymentType,_this.billingDetails);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutConfirmEvent(expressPaymentType: $expressPaymentType, billingDetails: $billingDetails)';
+  final _this = this as ExpressCheckoutConfirmEvent;
+  return 'ExpressCheckoutConfirmEvent(expressPaymentType: ${_this.expressPaymentType}, billingDetails: ${_this.billingDetails})';
 }
 
 
@@ -448,7 +461,7 @@ class _$ExpressCheckoutConfirmEventCopyWithImpl<$Res>
 /// Create a copy of ExpressCheckoutConfirmEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? expressPaymentType = null,Object? billingDetails = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ExpressCheckoutConfirmEvent(
 expressPaymentType: null == expressPaymentType ? _self.expressPaymentType : expressPaymentType // ignore: cast_nullable_to_non_nullable
 as String,billingDetails: freezed == billingDetails ? _self.billingDetails : billingDetails // ignore: cast_nullable_to_non_nullable
 as BillingDetails?,
@@ -624,16 +637,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutConfirmEvent&&(identical(other.expressPaymentType, expressPaymentType) || other.expressPaymentType == expressPaymentType)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutConfirmEvent&&(identical(other.expressPaymentType, expressPaymentType) || other.expressPaymentType == expressPaymentType)&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,expressPaymentType,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,expressPaymentType,billingDetails);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutConfirmEvent(expressPaymentType: $expressPaymentType, billingDetails: $billingDetails)';
+    return 'ExpressCheckoutConfirmEvent(expressPaymentType: $expressPaymentType, billingDetails: $billingDetails)';
 }
 
 
@@ -701,16 +716,21 @@ $ExpressCheckoutLayoutCopyWith<ExpressCheckoutLayout> get copyWith => _$ExpressC
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutLayout&&(identical(other.maxColumns, maxColumns) || other.maxColumns == maxColumns)&&(identical(other.maxRows, maxRows) || other.maxRows == maxRows)&&(identical(other.overflow, overflow) || other.overflow == overflow));
+  final _this = this as ExpressCheckoutLayout;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutLayout&&(identical(other.maxColumns, _this.maxColumns) || other.maxColumns == _this.maxColumns)&&(identical(other.maxRows, _this.maxRows) || other.maxRows == _this.maxRows)&&(identical(other.overflow, _this.overflow) || other.overflow == _this.overflow));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,maxColumns,maxRows,overflow);
+int get hashCode {
+  final _this = this as ExpressCheckoutLayout;
+  return Object.hash(runtimeType,_this.maxColumns,_this.maxRows,_this.overflow);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutLayout(maxColumns: $maxColumns, maxRows: $maxRows, overflow: $overflow)';
+  final _this = this as ExpressCheckoutLayout;
+  return 'ExpressCheckoutLayout(maxColumns: ${_this.maxColumns}, maxRows: ${_this.maxRows}, overflow: ${_this.overflow})';
 }
 
 
@@ -739,7 +759,7 @@ class _$ExpressCheckoutLayoutCopyWithImpl<$Res>
 /// Create a copy of ExpressCheckoutLayout
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? maxColumns = freezed,Object? maxRows = freezed,Object? overflow = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ExpressCheckoutLayout(
 maxColumns: freezed == maxColumns ? _self.maxColumns : maxColumns // ignore: cast_nullable_to_non_nullable
 as int?,maxRows: freezed == maxRows ? _self.maxRows : maxRows // ignore: cast_nullable_to_non_nullable
 as int?,overflow: freezed == overflow ? _self.overflow : overflow // ignore: cast_nullable_to_non_nullable
@@ -904,16 +924,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutLayout&&(identical(other.maxColumns, maxColumns) || other.maxColumns == maxColumns)&&(identical(other.maxRows, maxRows) || other.maxRows == maxRows)&&(identical(other.overflow, overflow) || other.overflow == overflow));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutLayout&&(identical(other.maxColumns, maxColumns) || other.maxColumns == maxColumns)&&(identical(other.maxRows, maxRows) || other.maxRows == maxRows)&&(identical(other.overflow, overflow) || other.overflow == overflow));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,maxColumns,maxRows,overflow);
+int get hashCode {
+    return Object.hash(runtimeType,maxColumns,maxRows,overflow);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutLayout(maxColumns: $maxColumns, maxRows: $maxRows, overflow: $overflow)';
+    return 'ExpressCheckoutLayout(maxColumns: $maxColumns, maxRows: $maxRows, overflow: $overflow)';
 }
 
 
@@ -970,16 +992,21 @@ $ExpressCheckoutButtonThemeCopyWith<ExpressCheckoutButtonTheme> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutButtonTheme&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal));
+  final _this = this as ExpressCheckoutButtonTheme;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutButtonTheme&&(identical(other.applePay, _this.applePay) || other.applePay == _this.applePay)&&(identical(other.googlePay, _this.googlePay) || other.googlePay == _this.googlePay)&&(identical(other.paypal, _this.paypal) || other.paypal == _this.paypal));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applePay,googlePay,paypal);
+int get hashCode {
+  final _this = this as ExpressCheckoutButtonTheme;
+  return Object.hash(runtimeType,_this.applePay,_this.googlePay,_this.paypal);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutButtonTheme(applePay: $applePay, googlePay: $googlePay, paypal: $paypal)';
+  final _this = this as ExpressCheckoutButtonTheme;
+  return 'ExpressCheckoutButtonTheme(applePay: ${_this.applePay}, googlePay: ${_this.googlePay}, paypal: ${_this.paypal})';
 }
 
 
@@ -1008,7 +1035,7 @@ class _$ExpressCheckoutButtonThemeCopyWithImpl<$Res>
 /// Create a copy of ExpressCheckoutButtonTheme
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? applePay = freezed,Object? googlePay = freezed,Object? paypal = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ExpressCheckoutButtonTheme(
 applePay: freezed == applePay ? _self.applePay : applePay // ignore: cast_nullable_to_non_nullable
 as ExpressApplePayButtonTheme?,googlePay: freezed == googlePay ? _self.googlePay : googlePay // ignore: cast_nullable_to_non_nullable
 as ExpressGooglePayButtonTheme?,paypal: freezed == paypal ? _self.paypal : paypal // ignore: cast_nullable_to_non_nullable
@@ -1173,16 +1200,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutButtonTheme&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutButtonTheme&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applePay,googlePay,paypal);
+int get hashCode {
+    return Object.hash(runtimeType,applePay,googlePay,paypal);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutButtonTheme(applePay: $applePay, googlePay: $googlePay, paypal: $paypal)';
+    return 'ExpressCheckoutButtonTheme(applePay: $applePay, googlePay: $googlePay, paypal: $paypal)';
 }
 
 
@@ -1239,16 +1268,21 @@ $ExpressCheckoutButtonTypeCopyWith<ExpressCheckoutButtonType> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutButtonType&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal));
+  final _this = this as ExpressCheckoutButtonType;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutButtonType&&(identical(other.applePay, _this.applePay) || other.applePay == _this.applePay)&&(identical(other.googlePay, _this.googlePay) || other.googlePay == _this.googlePay)&&(identical(other.paypal, _this.paypal) || other.paypal == _this.paypal));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applePay,googlePay,paypal);
+int get hashCode {
+  final _this = this as ExpressCheckoutButtonType;
+  return Object.hash(runtimeType,_this.applePay,_this.googlePay,_this.paypal);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutButtonType(applePay: $applePay, googlePay: $googlePay, paypal: $paypal)';
+  final _this = this as ExpressCheckoutButtonType;
+  return 'ExpressCheckoutButtonType(applePay: ${_this.applePay}, googlePay: ${_this.googlePay}, paypal: ${_this.paypal})';
 }
 
 
@@ -1277,7 +1311,7 @@ class _$ExpressCheckoutButtonTypeCopyWithImpl<$Res>
 /// Create a copy of ExpressCheckoutButtonType
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? applePay = freezed,Object? googlePay = freezed,Object? paypal = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ExpressCheckoutButtonType(
 applePay: freezed == applePay ? _self.applePay : applePay // ignore: cast_nullable_to_non_nullable
 as ExpressApplePayButtonType?,googlePay: freezed == googlePay ? _self.googlePay : googlePay // ignore: cast_nullable_to_non_nullable
 as ExpressGooglePayButtonType?,paypal: freezed == paypal ? _self.paypal : paypal // ignore: cast_nullable_to_non_nullable
@@ -1442,16 +1476,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutButtonType&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutButtonType&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applePay,googlePay,paypal);
+int get hashCode {
+    return Object.hash(runtimeType,applePay,googlePay,paypal);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutButtonType(applePay: $applePay, googlePay: $googlePay, paypal: $paypal)';
+    return 'ExpressCheckoutButtonType(applePay: $applePay, googlePay: $googlePay, paypal: $paypal)';
 }
 
 
@@ -1508,16 +1544,21 @@ $ExpressCheckoutPaymentMethodsCopyWith<ExpressCheckoutPaymentMethods> get copyWi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutPaymentMethods&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal)&&(identical(other.link, link) || other.link == link)&&(identical(other.amazonPay, amazonPay) || other.amazonPay == amazonPay));
+  final _this = this as ExpressCheckoutPaymentMethods;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpressCheckoutPaymentMethods&&(identical(other.applePay, _this.applePay) || other.applePay == _this.applePay)&&(identical(other.googlePay, _this.googlePay) || other.googlePay == _this.googlePay)&&(identical(other.paypal, _this.paypal) || other.paypal == _this.paypal)&&(identical(other.link, _this.link) || other.link == _this.link)&&(identical(other.amazonPay, _this.amazonPay) || other.amazonPay == _this.amazonPay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applePay,googlePay,paypal,link,amazonPay);
+int get hashCode {
+  final _this = this as ExpressCheckoutPaymentMethods;
+  return Object.hash(runtimeType,_this.applePay,_this.googlePay,_this.paypal,_this.link,_this.amazonPay);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutPaymentMethods(applePay: $applePay, googlePay: $googlePay, paypal: $paypal, link: $link, amazonPay: $amazonPay)';
+  final _this = this as ExpressCheckoutPaymentMethods;
+  return 'ExpressCheckoutPaymentMethods(applePay: ${_this.applePay}, googlePay: ${_this.googlePay}, paypal: ${_this.paypal}, link: ${_this.link}, amazonPay: ${_this.amazonPay})';
 }
 
 
@@ -1546,7 +1587,7 @@ class _$ExpressCheckoutPaymentMethodsCopyWithImpl<$Res>
 /// Create a copy of ExpressCheckoutPaymentMethods
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? applePay = freezed,Object? googlePay = freezed,Object? paypal = freezed,Object? link = freezed,Object? amazonPay = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ExpressCheckoutPaymentMethods(
 applePay: freezed == applePay ? _self.applePay : applePay // ignore: cast_nullable_to_non_nullable
 as ExpressPaymentNethodEnabled?,googlePay: freezed == googlePay ? _self.googlePay : googlePay // ignore: cast_nullable_to_non_nullable
 as ExpressPaymentNethodEnabled?,paypal: freezed == paypal ? _self.paypal : paypal // ignore: cast_nullable_to_non_nullable
@@ -1715,16 +1756,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutPaymentMethods&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal)&&(identical(other.link, link) || other.link == link)&&(identical(other.amazonPay, amazonPay) || other.amazonPay == amazonPay));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpressCheckoutPaymentMethods&&(identical(other.applePay, applePay) || other.applePay == applePay)&&(identical(other.googlePay, googlePay) || other.googlePay == googlePay)&&(identical(other.paypal, paypal) || other.paypal == paypal)&&(identical(other.link, link) || other.link == link)&&(identical(other.amazonPay, amazonPay) || other.amazonPay == amazonPay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applePay,googlePay,paypal,link,amazonPay);
+int get hashCode {
+    return Object.hash(runtimeType,applePay,googlePay,paypal,link,amazonPay);
+}
 
 @override
 String toString() {
-  return 'ExpressCheckoutPaymentMethods(applePay: $applePay, googlePay: $googlePay, paypal: $paypal, link: $link, amazonPay: $amazonPay)';
+    return 'ExpressCheckoutPaymentMethods(applePay: $applePay, googlePay: $googlePay, paypal: $paypal, link: $link, amazonPay: $amazonPay)';
 }
 
 

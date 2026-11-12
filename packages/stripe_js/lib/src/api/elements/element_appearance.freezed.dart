@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'element_appearance.dart';
@@ -9,6 +9,7 @@ part of 'element_appearance.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $ElementAppearanceCopyWith<ElementAppearance> get copyWith => _$ElementAppearanc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ElementAppearance&&(identical(other.theme, theme) || other.theme == theme)&&const DeepCollectionEquality().equals(other.variables, variables)&&const DeepCollectionEquality().equals(other.rules, rules)&&(identical(other.labels, labels) || other.labels == labels));
+  final _this = this as ElementAppearance;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ElementAppearance&&(identical(other.theme, _this.theme) || other.theme == _this.theme)&&const DeepCollectionEquality().equals(other.variables, _this.variables)&&const DeepCollectionEquality().equals(other.rules, _this.rules)&&(identical(other.labels, _this.labels) || other.labels == _this.labels));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,theme,const DeepCollectionEquality().hash(variables),const DeepCollectionEquality().hash(rules),labels);
+int get hashCode {
+  final _this = this as ElementAppearance;
+  return Object.hash(runtimeType,_this.theme,const DeepCollectionEquality().hash(_this.variables),const DeepCollectionEquality().hash(_this.rules),_this.labels);
+}
 
 @override
 String toString() {
-  return 'ElementAppearance(theme: $theme, variables: $variables, rules: $rules, labels: $labels)';
+  final _this = this as ElementAppearance;
+  return 'ElementAppearance(theme: ${_this.theme}, variables: ${_this.variables}, rules: ${_this.rules}, labels: ${_this.labels})';
 }
 
 
@@ -66,7 +72,7 @@ class _$ElementAppearanceCopyWithImpl<$Res>
 /// Create a copy of ElementAppearance
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? theme = null,Object? variables = freezed,Object? rules = freezed,Object? labels = null,}) {
-  return _then(_self.copyWith(
+  return _then(ElementAppearance(
 theme: null == theme ? _self.theme : theme // ignore: cast_nullable_to_non_nullable
 as ElementTheme,variables: freezed == variables ? _self.variables : variables // ignore: cast_nullable_to_non_nullable
 as Map<String, String>?,rules: freezed == rules ? _self.rules : rules // ignore: cast_nullable_to_non_nullable
@@ -212,7 +218,7 @@ return $default(_that.theme,_that.variables,_that.rules,_that.labels);case _:
 @JsonSerializable()
 
 class _ElementAppearance implements ElementAppearance {
-  const _ElementAppearance({this.theme = ElementTheme.stripe, final  Map<String, String>? variables, final  Map<String, Map<String, String>>? rules, this.labels = ElementAppearanceLabels.above}): _variables = variables,_rules = rules;
+  const _ElementAppearance({this.theme = ElementTheme.stripe,  Map<String, String>? variables,  Map<String, Map<String, String>>? rules, this.labels = ElementAppearanceLabels.above}): _variables = variables,_rules = rules;
   factory _ElementAppearance.fromJson(Map<String, dynamic> json) => _$ElementAppearanceFromJson(json);
 
 @override@JsonKey() final  ElementTheme theme;
@@ -249,16 +255,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ElementAppearance&&(identical(other.theme, theme) || other.theme == theme)&&const DeepCollectionEquality().equals(other._variables, _variables)&&const DeepCollectionEquality().equals(other._rules, _rules)&&(identical(other.labels, labels) || other.labels == labels));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ElementAppearance&&(identical(other.theme, theme) || other.theme == theme)&&const DeepCollectionEquality().equals(other.variables, _variables)&&const DeepCollectionEquality().equals(other.rules, _rules)&&(identical(other.labels, labels) || other.labels == labels));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,theme,const DeepCollectionEquality().hash(_variables),const DeepCollectionEquality().hash(_rules),labels);
+int get hashCode {
+    return Object.hash(runtimeType,theme,const DeepCollectionEquality().hash(_variables),const DeepCollectionEquality().hash(_rules),labels);
+}
 
 @override
 String toString() {
-  return 'ElementAppearance(theme: $theme, variables: $variables, rules: $rules, labels: $labels)';
+    return 'ElementAppearance(theme: $theme, variables: $variables, rules: $rules, labels: $labels)';
 }
 
 

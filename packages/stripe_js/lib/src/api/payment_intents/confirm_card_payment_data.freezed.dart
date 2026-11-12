@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirm_card_payment_data.dart';
@@ -9,6 +9,7 @@ part of 'confirm_card_payment_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -52,16 +53,21 @@ $ConfirmCardPaymentDataCopyWith<ConfirmCardPaymentData> get copyWith => _$Confir
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmCardPaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&const DeepCollectionEquality().equals(other.paymentMethodOptions, paymentMethodOptions));
+  final _this = this as ConfirmCardPaymentData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmCardPaymentData&&(identical(other.paymentMethod, _this.paymentMethod) || other.paymentMethod == _this.paymentMethod)&&(identical(other.shipping, _this.shipping) || other.shipping == _this.shipping)&&(identical(other.returnUrl, _this.returnUrl) || other.returnUrl == _this.returnUrl)&&(identical(other.receiptEmail, _this.receiptEmail) || other.receiptEmail == _this.receiptEmail)&&(identical(other.setupFutureUsage, _this.setupFutureUsage) || other.setupFutureUsage == _this.setupFutureUsage)&&const DeepCollectionEquality().equals(other.paymentMethodOptions, _this.paymentMethodOptions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethod,shipping,returnUrl,receiptEmail,setupFutureUsage,const DeepCollectionEquality().hash(paymentMethodOptions));
+int get hashCode {
+  final _this = this as ConfirmCardPaymentData;
+  return Object.hash(runtimeType,_this.paymentMethod,_this.shipping,_this.returnUrl,_this.receiptEmail,_this.setupFutureUsage,const DeepCollectionEquality().hash(_this.paymentMethodOptions));
+}
 
 @override
 String toString() {
-  return 'ConfirmCardPaymentData(paymentMethod: $paymentMethod, shipping: $shipping, returnUrl: $returnUrl, receiptEmail: $receiptEmail, setupFutureUsage: $setupFutureUsage, paymentMethodOptions: $paymentMethodOptions)';
+  final _this = this as ConfirmCardPaymentData;
+  return 'ConfirmCardPaymentData(paymentMethod: ${_this.paymentMethod}, shipping: ${_this.shipping}, returnUrl: ${_this.returnUrl}, receiptEmail: ${_this.receiptEmail}, setupFutureUsage: ${_this.setupFutureUsage}, paymentMethodOptions: ${_this.paymentMethodOptions})';
 }
 
 
@@ -90,7 +96,7 @@ class _$ConfirmCardPaymentDataCopyWithImpl<$Res>
 /// Create a copy of ConfirmCardPaymentData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? paymentMethod = freezed,Object? shipping = freezed,Object? returnUrl = freezed,Object? receiptEmail = freezed,Object? setupFutureUsage = freezed,Object? paymentMethodOptions = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmCardPaymentData(
 paymentMethod: freezed == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
 as CardPaymentMethodDetails?,shipping: freezed == shipping ? _self.shipping : shipping // ignore: cast_nullable_to_non_nullable
 as ShippingDetails?,returnUrl: freezed == returnUrl ? _self.returnUrl : returnUrl // ignore: cast_nullable_to_non_nullable
@@ -309,16 +315,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmCardPaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&const DeepCollectionEquality().equals(other.paymentMethodOptions, paymentMethodOptions));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmCardPaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&const DeepCollectionEquality().equals(other.paymentMethodOptions, paymentMethodOptions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethod,shipping,returnUrl,receiptEmail,setupFutureUsage,const DeepCollectionEquality().hash(paymentMethodOptions));
+int get hashCode {
+    return Object.hash(runtimeType,paymentMethod,shipping,returnUrl,receiptEmail,setupFutureUsage,const DeepCollectionEquality().hash(paymentMethodOptions));
+}
 
 @override
 String toString() {
-  return 'ConfirmCardPaymentData(paymentMethod: $paymentMethod, shipping: $shipping, returnUrl: $returnUrl, receiptEmail: $receiptEmail, setupFutureUsage: $setupFutureUsage, paymentMethodOptions: $paymentMethodOptions)';
+    return 'ConfirmCardPaymentData(paymentMethod: $paymentMethod, shipping: $shipping, returnUrl: $returnUrl, receiptEmail: $receiptEmail, setupFutureUsage: $setupFutureUsage, paymentMethodOptions: $paymentMethodOptions)';
 }
 
 

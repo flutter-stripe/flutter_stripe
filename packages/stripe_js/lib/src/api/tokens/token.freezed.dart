@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'token.dart';
@@ -9,6 +9,7 @@ part of 'token.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -41,16 +42,21 @@ $TokenCopyWith<Token> get copyWith => _$TokenCopyWithImpl<Token>(this as Token, 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Token&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.card, card) || other.card == card)&&(identical(other.clientIP, clientIP) || other.clientIP == clientIP)&&(identical(other.created, created) || other.created == created)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.type, type) || other.type == type)&&(identical(other.used, used) || other.used == used));
+  final _this = this as Token;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Token&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.object, _this.object) || other.object == _this.object)&&(identical(other.bankAccount, _this.bankAccount) || other.bankAccount == _this.bankAccount)&&(identical(other.card, _this.card) || other.card == _this.card)&&(identical(other.clientIP, _this.clientIP) || other.clientIP == _this.clientIP)&&(identical(other.created, _this.created) || other.created == _this.created)&&(identical(other.livemode, _this.livemode) || other.livemode == _this.livemode)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.used, _this.used) || other.used == _this.used));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,object,bankAccount,card,clientIP,created,livemode,type,used);
+int get hashCode {
+  final _this = this as Token;
+  return Object.hash(runtimeType,_this.id,_this.object,_this.bankAccount,_this.card,_this.clientIP,_this.created,_this.livemode,_this.type,_this.used);
+}
 
 @override
 String toString() {
-  return 'Token(id: $id, object: $object, bankAccount: $bankAccount, card: $card, clientIP: $clientIP, created: $created, livemode: $livemode, type: $type, used: $used)';
+  final _this = this as Token;
+  return 'Token(id: ${_this.id}, object: ${_this.object}, bankAccount: ${_this.bankAccount}, card: ${_this.card}, clientIP: ${_this.clientIP}, created: ${_this.created}, livemode: ${_this.livemode}, type: ${_this.type}, used: ${_this.used})';
 }
 
 
@@ -79,7 +85,7 @@ class _$TokenCopyWithImpl<$Res>
 /// Create a copy of Token
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? object = null,Object? bankAccount = freezed,Object? card = freezed,Object? clientIP = freezed,Object? created = freezed,Object? livemode = null,Object? type = null,Object? used = null,}) {
-  return _then(_self.copyWith(
+  return _then(Token(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,object: null == object ? _self.object : object // ignore: cast_nullable_to_non_nullable
 as String,bankAccount: freezed == bankAccount ? _self.bankAccount : bankAccount // ignore: cast_nullable_to_non_nullable
@@ -293,16 +299,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Token&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.card, card) || other.card == card)&&(identical(other.clientIP, clientIP) || other.clientIP == clientIP)&&(identical(other.created, created) || other.created == created)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.type, type) || other.type == type)&&(identical(other.used, used) || other.used == used));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Token&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.card, card) || other.card == card)&&(identical(other.clientIP, clientIP) || other.clientIP == clientIP)&&(identical(other.created, created) || other.created == created)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.type, type) || other.type == type)&&(identical(other.used, used) || other.used == used));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,object,bankAccount,card,clientIP,created,livemode,type,used);
+int get hashCode {
+    return Object.hash(runtimeType,id,object,bankAccount,card,clientIP,created,livemode,type,used);
+}
 
 @override
 String toString() {
-  return 'Token(id: $id, object: $object, bankAccount: $bankAccount, card: $card, clientIP: $clientIP, created: $created, livemode: $livemode, type: $type, used: $used)';
+    return 'Token(id: $id, object: $object, bankAccount: $bankAccount, card: $card, clientIP: $clientIP, created: $created, livemode: $livemode, type: $type, used: $used)';
 }
 
 
@@ -428,16 +436,21 @@ $BankAccountTokenCopyWith<BankAccountToken> get copyWith => _$BankAccountTokenCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BankAccountToken&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.status, status) || other.status == status));
+  final _this = this as BankAccountToken;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BankAccountToken&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.object, _this.object) || other.object == _this.object)&&(identical(other.accountHolderName, _this.accountHolderName) || other.accountHolderName == _this.accountHolderName)&&(identical(other.accountHolderType, _this.accountHolderType) || other.accountHolderType == _this.accountHolderType)&&(identical(other.accountType, _this.accountType) || other.accountType == _this.accountType)&&(identical(other.bankName, _this.bankName) || other.bankName == _this.bankName)&&(identical(other.country, _this.country) || other.country == _this.country)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.fingerprint, _this.fingerprint) || other.fingerprint == _this.fingerprint)&&(identical(other.last4, _this.last4) || other.last4 == _this.last4)&&(identical(other.routingNumber, _this.routingNumber) || other.routingNumber == _this.routingNumber)&&(identical(other.status, _this.status) || other.status == _this.status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,object,accountHolderName,accountHolderType,accountType,bankName,country,currency,fingerprint,last4,routingNumber,status);
+int get hashCode {
+  final _this = this as BankAccountToken;
+  return Object.hash(runtimeType,_this.id,_this.object,_this.accountHolderName,_this.accountHolderType,_this.accountType,_this.bankName,_this.country,_this.currency,_this.fingerprint,_this.last4,_this.routingNumber,_this.status);
+}
 
 @override
 String toString() {
-  return 'BankAccountToken(id: $id, object: $object, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, country: $country, currency: $currency, fingerprint: $fingerprint, last4: $last4, routingNumber: $routingNumber, status: $status)';
+  final _this = this as BankAccountToken;
+  return 'BankAccountToken(id: ${_this.id}, object: ${_this.object}, accountHolderName: ${_this.accountHolderName}, accountHolderType: ${_this.accountHolderType}, accountType: ${_this.accountType}, bankName: ${_this.bankName}, country: ${_this.country}, currency: ${_this.currency}, fingerprint: ${_this.fingerprint}, last4: ${_this.last4}, routingNumber: ${_this.routingNumber}, status: ${_this.status})';
 }
 
 
@@ -466,7 +479,7 @@ class _$BankAccountTokenCopyWithImpl<$Res>
 /// Create a copy of BankAccountToken
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? object = null,Object? accountHolderName = freezed,Object? accountHolderType = freezed,Object? accountType = freezed,Object? bankName = freezed,Object? country = freezed,Object? currency = freezed,Object? fingerprint = freezed,Object? last4 = freezed,Object? routingNumber = freezed,Object? status = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(BankAccountToken(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,object: null == object ? _self.object : object // ignore: cast_nullable_to_non_nullable
 as String,accountHolderName: freezed == accountHolderName ? _self.accountHolderName : accountHolderName // ignore: cast_nullable_to_non_nullable
@@ -688,16 +701,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BankAccountToken&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.status, status) || other.status == status));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BankAccountToken&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.status, status) || other.status == status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,object,accountHolderName,accountHolderType,accountType,bankName,country,currency,fingerprint,last4,routingNumber,status);
+int get hashCode {
+    return Object.hash(runtimeType,id,object,accountHolderName,accountHolderType,accountType,bankName,country,currency,fingerprint,last4,routingNumber,status);
+}
 
 @override
 String toString() {
-  return 'BankAccountToken(id: $id, object: $object, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, country: $country, currency: $currency, fingerprint: $fingerprint, last4: $last4, routingNumber: $routingNumber, status: $status)';
+    return 'BankAccountToken(id: $id, object: $object, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, country: $country, currency: $currency, fingerprint: $fingerprint, last4: $last4, routingNumber: $routingNumber, status: $status)';
 }
 
 
@@ -814,16 +829,21 @@ $CardTokenCopyWith<CardToken> get copyWith => _$CardTokenCopyWithImpl<CardToken>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardToken&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.addressCity, addressCity) || other.addressCity == addressCity)&&(identical(other.addressCountry, addressCountry) || other.addressCountry == addressCountry)&&(identical(other.addressLine1, addressLine1) || other.addressLine1 == addressLine1)&&(identical(other.addressLine1Check, addressLine1Check) || other.addressLine1Check == addressLine1Check)&&(identical(other.addressLine2, addressLine2) || other.addressLine2 == addressLine2)&&(identical(other.addressState, addressState) || other.addressState == addressState)&&(identical(other.addressZip, addressZip) || other.addressZip == addressZip)&&(identical(other.addressZipCheck, addressZipCheck) || other.addressZipCheck == addressZipCheck)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.cvcCheck, cvcCheck) || other.cvcCheck == cvcCheck)&&(identical(other.dynamicLast4, dynamicLast4) || other.dynamicLast4 == dynamicLast4)&&(identical(other.expMonth, expMonth) || other.expMonth == expMonth)&&(identical(other.expYear, expYear) || other.expYear == expYear)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.funding, funding) || other.funding == funding)&&(identical(other.last4, last4) || other.last4 == last4)&&const DeepCollectionEquality().equals(other.metadata, metadata)&&(identical(other.name, name) || other.name == name)&&(identical(other.tokenizationMethod, tokenizationMethod) || other.tokenizationMethod == tokenizationMethod));
+  final _this = this as CardToken;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardToken&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.object, _this.object) || other.object == _this.object)&&(identical(other.addressCity, _this.addressCity) || other.addressCity == _this.addressCity)&&(identical(other.addressCountry, _this.addressCountry) || other.addressCountry == _this.addressCountry)&&(identical(other.addressLine1, _this.addressLine1) || other.addressLine1 == _this.addressLine1)&&(identical(other.addressLine1Check, _this.addressLine1Check) || other.addressLine1Check == _this.addressLine1Check)&&(identical(other.addressLine2, _this.addressLine2) || other.addressLine2 == _this.addressLine2)&&(identical(other.addressState, _this.addressState) || other.addressState == _this.addressState)&&(identical(other.addressZip, _this.addressZip) || other.addressZip == _this.addressZip)&&(identical(other.addressZipCheck, _this.addressZipCheck) || other.addressZipCheck == _this.addressZipCheck)&&(identical(other.brand, _this.brand) || other.brand == _this.brand)&&(identical(other.country, _this.country) || other.country == _this.country)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.cvcCheck, _this.cvcCheck) || other.cvcCheck == _this.cvcCheck)&&(identical(other.dynamicLast4, _this.dynamicLast4) || other.dynamicLast4 == _this.dynamicLast4)&&(identical(other.expMonth, _this.expMonth) || other.expMonth == _this.expMonth)&&(identical(other.expYear, _this.expYear) || other.expYear == _this.expYear)&&(identical(other.fingerprint, _this.fingerprint) || other.fingerprint == _this.fingerprint)&&(identical(other.funding, _this.funding) || other.funding == _this.funding)&&(identical(other.last4, _this.last4) || other.last4 == _this.last4)&&const DeepCollectionEquality().equals(other.metadata, _this.metadata)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.tokenizationMethod, _this.tokenizationMethod) || other.tokenizationMethod == _this.tokenizationMethod));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,object,addressCity,addressCountry,addressLine1,addressLine1Check,addressLine2,addressState,addressZip,addressZipCheck,brand,country,currency,cvcCheck,dynamicLast4,expMonth,expYear,fingerprint,funding,last4,const DeepCollectionEquality().hash(metadata),name,tokenizationMethod]);
+int get hashCode {
+  final _this = this as CardToken;
+  return Object.hashAll([runtimeType,_this.id,_this.object,_this.addressCity,_this.addressCountry,_this.addressLine1,_this.addressLine1Check,_this.addressLine2,_this.addressState,_this.addressZip,_this.addressZipCheck,_this.brand,_this.country,_this.currency,_this.cvcCheck,_this.dynamicLast4,_this.expMonth,_this.expYear,_this.fingerprint,_this.funding,_this.last4,const DeepCollectionEquality().hash(_this.metadata),_this.name,_this.tokenizationMethod]);
+}
 
 @override
 String toString() {
-  return 'CardToken(id: $id, object: $object, addressCity: $addressCity, addressCountry: $addressCountry, addressLine1: $addressLine1, addressLine1Check: $addressLine1Check, addressLine2: $addressLine2, addressState: $addressState, addressZip: $addressZip, addressZipCheck: $addressZipCheck, brand: $brand, country: $country, currency: $currency, cvcCheck: $cvcCheck, dynamicLast4: $dynamicLast4, expMonth: $expMonth, expYear: $expYear, fingerprint: $fingerprint, funding: $funding, last4: $last4, metadata: $metadata, name: $name, tokenizationMethod: $tokenizationMethod)';
+  final _this = this as CardToken;
+  return 'CardToken(id: ${_this.id}, object: ${_this.object}, addressCity: ${_this.addressCity}, addressCountry: ${_this.addressCountry}, addressLine1: ${_this.addressLine1}, addressLine1Check: ${_this.addressLine1Check}, addressLine2: ${_this.addressLine2}, addressState: ${_this.addressState}, addressZip: ${_this.addressZip}, addressZipCheck: ${_this.addressZipCheck}, brand: ${_this.brand}, country: ${_this.country}, currency: ${_this.currency}, cvcCheck: ${_this.cvcCheck}, dynamicLast4: ${_this.dynamicLast4}, expMonth: ${_this.expMonth}, expYear: ${_this.expYear}, fingerprint: ${_this.fingerprint}, funding: ${_this.funding}, last4: ${_this.last4}, metadata: ${_this.metadata}, name: ${_this.name}, tokenizationMethod: ${_this.tokenizationMethod})';
 }
 
 
@@ -852,7 +872,7 @@ class _$CardTokenCopyWithImpl<$Res>
 /// Create a copy of CardToken
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? object = null,Object? addressCity = freezed,Object? addressCountry = freezed,Object? addressLine1 = freezed,Object? addressLine1Check = freezed,Object? addressLine2 = freezed,Object? addressState = freezed,Object? addressZip = freezed,Object? addressZipCheck = freezed,Object? brand = freezed,Object? country = freezed,Object? currency = freezed,Object? cvcCheck = freezed,Object? dynamicLast4 = freezed,Object? expMonth = freezed,Object? expYear = freezed,Object? fingerprint = freezed,Object? funding = freezed,Object? last4 = freezed,Object? metadata = null,Object? name = freezed,Object? tokenizationMethod = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardToken(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,object: null == object ? _self.object : object // ignore: cast_nullable_to_non_nullable
 as String,addressCity: freezed == addressCity ? _self.addressCity : addressCity // ignore: cast_nullable_to_non_nullable
@@ -1017,7 +1037,7 @@ return $default(_that.id,_that.object,_that.addressCity,_that.addressCountry,_th
 @JsonSerializable()
 
 class _CardToken implements CardToken {
-  const _CardToken({required this.id, this.object = "card", @JsonKey(name: "address_city") this.addressCity, @JsonKey(name: "address_country") this.addressCountry, @JsonKey(name: "address_line1") this.addressLine1, @JsonKey(name: "address_line1_check") this.addressLine1Check, @JsonKey(name: "address_line2") this.addressLine2, @JsonKey(name: "address_state") this.addressState, @JsonKey(name: "address_zip") this.addressZip, @JsonKey(name: "address_zip_check") this.addressZipCheck, this.brand = CardTokenBrand.unknown, this.country, this.currency, @JsonKey(name: "cvc_check") this.cvcCheck, @JsonKey(name: "dynamic_last4") this.dynamicLast4, @JsonKey(name: "exp_month") this.expMonth, @JsonKey(name: "exp_year") this.expYear, this.fingerprint, this.funding, this.last4, final  Map<String, dynamic> metadata = const {}, this.name, @JsonKey(name: "tokenization_method") this.tokenizationMethod}): _metadata = metadata;
+  const _CardToken({required this.id, this.object = "card", @JsonKey(name: "address_city") this.addressCity, @JsonKey(name: "address_country") this.addressCountry, @JsonKey(name: "address_line1") this.addressLine1, @JsonKey(name: "address_line1_check") this.addressLine1Check, @JsonKey(name: "address_line2") this.addressLine2, @JsonKey(name: "address_state") this.addressState, @JsonKey(name: "address_zip") this.addressZip, @JsonKey(name: "address_zip_check") this.addressZipCheck, this.brand = CardTokenBrand.unknown, this.country, this.currency, @JsonKey(name: "cvc_check") this.cvcCheck, @JsonKey(name: "dynamic_last4") this.dynamicLast4, @JsonKey(name: "exp_month") this.expMonth, @JsonKey(name: "exp_year") this.expYear, this.fingerprint, this.funding, this.last4,  Map<String, dynamic> metadata = const {}, this.name, @JsonKey(name: "tokenization_method") this.tokenizationMethod}): _metadata = metadata;
   factory _CardToken.fromJson(Map<String, dynamic> json) => _$CardTokenFromJson(json);
 
 /// Unique identifier for the object.
@@ -1117,16 +1137,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardToken&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.addressCity, addressCity) || other.addressCity == addressCity)&&(identical(other.addressCountry, addressCountry) || other.addressCountry == addressCountry)&&(identical(other.addressLine1, addressLine1) || other.addressLine1 == addressLine1)&&(identical(other.addressLine1Check, addressLine1Check) || other.addressLine1Check == addressLine1Check)&&(identical(other.addressLine2, addressLine2) || other.addressLine2 == addressLine2)&&(identical(other.addressState, addressState) || other.addressState == addressState)&&(identical(other.addressZip, addressZip) || other.addressZip == addressZip)&&(identical(other.addressZipCheck, addressZipCheck) || other.addressZipCheck == addressZipCheck)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.cvcCheck, cvcCheck) || other.cvcCheck == cvcCheck)&&(identical(other.dynamicLast4, dynamicLast4) || other.dynamicLast4 == dynamicLast4)&&(identical(other.expMonth, expMonth) || other.expMonth == expMonth)&&(identical(other.expYear, expYear) || other.expYear == expYear)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.funding, funding) || other.funding == funding)&&(identical(other.last4, last4) || other.last4 == last4)&&const DeepCollectionEquality().equals(other._metadata, _metadata)&&(identical(other.name, name) || other.name == name)&&(identical(other.tokenizationMethod, tokenizationMethod) || other.tokenizationMethod == tokenizationMethod));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardToken&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.addressCity, addressCity) || other.addressCity == addressCity)&&(identical(other.addressCountry, addressCountry) || other.addressCountry == addressCountry)&&(identical(other.addressLine1, addressLine1) || other.addressLine1 == addressLine1)&&(identical(other.addressLine1Check, addressLine1Check) || other.addressLine1Check == addressLine1Check)&&(identical(other.addressLine2, addressLine2) || other.addressLine2 == addressLine2)&&(identical(other.addressState, addressState) || other.addressState == addressState)&&(identical(other.addressZip, addressZip) || other.addressZip == addressZip)&&(identical(other.addressZipCheck, addressZipCheck) || other.addressZipCheck == addressZipCheck)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.cvcCheck, cvcCheck) || other.cvcCheck == cvcCheck)&&(identical(other.dynamicLast4, dynamicLast4) || other.dynamicLast4 == dynamicLast4)&&(identical(other.expMonth, expMonth) || other.expMonth == expMonth)&&(identical(other.expYear, expYear) || other.expYear == expYear)&&(identical(other.fingerprint, fingerprint) || other.fingerprint == fingerprint)&&(identical(other.funding, funding) || other.funding == funding)&&(identical(other.last4, last4) || other.last4 == last4)&&const DeepCollectionEquality().equals(other.metadata, _metadata)&&(identical(other.name, name) || other.name == name)&&(identical(other.tokenizationMethod, tokenizationMethod) || other.tokenizationMethod == tokenizationMethod));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,object,addressCity,addressCountry,addressLine1,addressLine1Check,addressLine2,addressState,addressZip,addressZipCheck,brand,country,currency,cvcCheck,dynamicLast4,expMonth,expYear,fingerprint,funding,last4,const DeepCollectionEquality().hash(_metadata),name,tokenizationMethod]);
+int get hashCode {
+    return Object.hashAll([runtimeType,id,object,addressCity,addressCountry,addressLine1,addressLine1Check,addressLine2,addressState,addressZip,addressZipCheck,brand,country,currency,cvcCheck,dynamicLast4,expMonth,expYear,fingerprint,funding,last4,const DeepCollectionEquality().hash(_metadata),name,tokenizationMethod]);
+}
 
 @override
 String toString() {
-  return 'CardToken(id: $id, object: $object, addressCity: $addressCity, addressCountry: $addressCountry, addressLine1: $addressLine1, addressLine1Check: $addressLine1Check, addressLine2: $addressLine2, addressState: $addressState, addressZip: $addressZip, addressZipCheck: $addressZipCheck, brand: $brand, country: $country, currency: $currency, cvcCheck: $cvcCheck, dynamicLast4: $dynamicLast4, expMonth: $expMonth, expYear: $expYear, fingerprint: $fingerprint, funding: $funding, last4: $last4, metadata: $metadata, name: $name, tokenizationMethod: $tokenizationMethod)';
+    return 'CardToken(id: $id, object: $object, addressCity: $addressCity, addressCountry: $addressCountry, addressLine1: $addressLine1, addressLine1Check: $addressLine1Check, addressLine2: $addressLine2, addressState: $addressState, addressZip: $addressZip, addressZipCheck: $addressZipCheck, brand: $brand, country: $country, currency: $currency, cvcCheck: $cvcCheck, dynamicLast4: $dynamicLast4, expMonth: $expMonth, expYear: $expYear, fingerprint: $fingerprint, funding: $funding, last4: $last4, metadata: $metadata, name: $name, tokenizationMethod: $tokenizationMethod)';
 }
 
 

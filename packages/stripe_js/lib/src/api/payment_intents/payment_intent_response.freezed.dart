@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_intent_response.dart';
@@ -9,6 +9,7 @@ part of 'payment_intent_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -30,16 +31,21 @@ $PaymentIntentResponseCopyWith<PaymentIntentResponse> get copyWith => _$PaymentI
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntentResponse&&(identical(other.paymentIntent, paymentIntent) || other.paymentIntent == paymentIntent)&&(identical(other.error, error) || other.error == error));
+  final _this = this as PaymentIntentResponse;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntentResponse&&(identical(other.paymentIntent, _this.paymentIntent) || other.paymentIntent == _this.paymentIntent)&&(identical(other.error, _this.error) || other.error == _this.error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentIntent,error);
+int get hashCode {
+  final _this = this as PaymentIntentResponse;
+  return Object.hash(runtimeType,_this.paymentIntent,_this.error);
+}
 
 @override
 String toString() {
-  return 'PaymentIntentResponse(paymentIntent: $paymentIntent, error: $error)';
+  final _this = this as PaymentIntentResponse;
+  return 'PaymentIntentResponse(paymentIntent: ${_this.paymentIntent}, error: ${_this.error})';
 }
 
 
@@ -68,7 +74,7 @@ class _$PaymentIntentResponseCopyWithImpl<$Res>
 /// Create a copy of PaymentIntentResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? paymentIntent = freezed,Object? error = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentIntentResponse(
 paymentIntent: freezed == paymentIntent ? _self.paymentIntent : paymentIntent // ignore: cast_nullable_to_non_nullable
 as PaymentIntent?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as StripeError?,
@@ -257,16 +263,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntentResponse&&(identical(other.paymentIntent, paymentIntent) || other.paymentIntent == paymentIntent)&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntentResponse&&(identical(other.paymentIntent, paymentIntent) || other.paymentIntent == paymentIntent)&&(identical(other.error, error) || other.error == error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentIntent,error);
+int get hashCode {
+    return Object.hash(runtimeType,paymentIntent,error);
+}
 
 @override
 String toString() {
-  return 'PaymentIntentResponse(paymentIntent: $paymentIntent, error: $error)';
+    return 'PaymentIntentResponse(paymentIntent: $paymentIntent, error: $error)';
 }
 
 

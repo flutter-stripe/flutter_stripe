@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirm_payment_options.dart';
@@ -9,6 +9,7 @@ part of 'confirm_payment_options.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -41,16 +42,21 @@ $ConfirmPaymentOptionsCopyWith<ConfirmPaymentOptions> get copyWith => _$ConfirmP
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmPaymentOptions&&(identical(other.elements, elements) || other.elements == elements)&&(identical(other.confirmParams, confirmParams) || other.confirmParams == confirmParams)&&(identical(other.redirect, redirect) || other.redirect == redirect));
+  final _this = this as ConfirmPaymentOptions;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmPaymentOptions&&(identical(other.elements, _this.elements) || other.elements == _this.elements)&&(identical(other.confirmParams, _this.confirmParams) || other.confirmParams == _this.confirmParams)&&(identical(other.redirect, _this.redirect) || other.redirect == _this.redirect));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,elements,confirmParams,redirect);
+int get hashCode {
+  final _this = this as ConfirmPaymentOptions;
+  return Object.hash(runtimeType,_this.elements,_this.confirmParams,_this.redirect);
+}
 
 @override
 String toString() {
-  return 'ConfirmPaymentOptions(elements: $elements, confirmParams: $confirmParams, redirect: $redirect)';
+  final _this = this as ConfirmPaymentOptions;
+  return 'ConfirmPaymentOptions(elements: ${_this.elements}, confirmParams: ${_this.confirmParams}, redirect: ${_this.redirect})';
 }
 
 
@@ -79,7 +85,7 @@ class _$ConfirmPaymentOptionsCopyWithImpl<$Res>
 /// Create a copy of ConfirmPaymentOptions
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? elements = null,Object? confirmParams = null,Object? redirect = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmPaymentOptions(
 elements: null == elements ? _self.elements : elements // ignore: cast_nullable_to_non_nullable
 as Elements,confirmParams: null == confirmParams ? _self.confirmParams : confirmParams // ignore: cast_nullable_to_non_nullable
 as ConfirmPaymentParams,redirect: freezed == redirect ? _self.redirect : redirect // ignore: cast_nullable_to_non_nullable
@@ -266,16 +272,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmPaymentOptions&&(identical(other.elements, elements) || other.elements == elements)&&(identical(other.confirmParams, confirmParams) || other.confirmParams == confirmParams)&&(identical(other.redirect, redirect) || other.redirect == redirect));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmPaymentOptions&&(identical(other.elements, elements) || other.elements == elements)&&(identical(other.confirmParams, confirmParams) || other.confirmParams == confirmParams)&&(identical(other.redirect, redirect) || other.redirect == redirect));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,elements,confirmParams,redirect);
+int get hashCode {
+    return Object.hash(runtimeType,elements,confirmParams,redirect);
+}
 
 @override
 String toString() {
-  return 'ConfirmPaymentOptions(elements: $elements, confirmParams: $confirmParams, redirect: $redirect)';
+    return 'ConfirmPaymentOptions(elements: $elements, confirmParams: $confirmParams, redirect: $redirect)';
 }
 
 
@@ -329,7 +337,6 @@ $ConfirmPaymentParamsCopyWith<$Res> get confirmParams {
 mixin _$ConfirmPaymentParams {
 
 /// The url your customer will be directed to after they complete payment.
-// ignore: non_constant_identifier_names
  String get return_url;
 /// Create a copy of ConfirmPaymentParams
 /// with the given fields replaced by the non-null parameter values.
@@ -343,16 +350,21 @@ $ConfirmPaymentParamsCopyWith<ConfirmPaymentParams> get copyWith => _$ConfirmPay
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmPaymentParams&&(identical(other.return_url, return_url) || other.return_url == return_url));
+  final _this = this as ConfirmPaymentParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmPaymentParams&&(identical(other.return_url, _this.return_url) || other.return_url == _this.return_url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,return_url);
+int get hashCode {
+  final _this = this as ConfirmPaymentParams;
+  return Object.hash(runtimeType,_this.return_url);
+}
 
 @override
 String toString() {
-  return 'ConfirmPaymentParams(return_url: $return_url)';
+  final _this = this as ConfirmPaymentParams;
+  return 'ConfirmPaymentParams(return_url: ${_this.return_url})';
 }
 
 
@@ -381,7 +393,7 @@ class _$ConfirmPaymentParamsCopyWithImpl<$Res>
 /// Create a copy of ConfirmPaymentParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? return_url = null,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmPaymentParams(
 return_url: null == return_url ? _self.return_url : return_url // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -528,7 +540,6 @@ class _ConfirmPaymentParams implements ConfirmPaymentParams {
   factory _ConfirmPaymentParams.fromJson(Map<String, dynamic> json) => _$ConfirmPaymentParamsFromJson(json);
 
 /// The url your customer will be directed to after they complete payment.
-// ignore: non_constant_identifier_names
 @override final  String return_url;
 
 /// Create a copy of ConfirmPaymentParams
@@ -544,16 +555,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmPaymentParams&&(identical(other.return_url, return_url) || other.return_url == return_url));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmPaymentParams&&(identical(other.return_url, return_url) || other.return_url == return_url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,return_url);
+int get hashCode {
+    return Object.hash(runtimeType,return_url);
+}
 
 @override
 String toString() {
-  return 'ConfirmPaymentParams(return_url: $return_url)';
+    return 'ConfirmPaymentParams(return_url: $return_url)';
 }
 
 

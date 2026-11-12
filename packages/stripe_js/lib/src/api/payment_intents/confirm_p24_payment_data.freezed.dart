@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirm_p24_payment_data.dart';
@@ -9,6 +9,7 @@ part of 'confirm_p24_payment_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -42,16 +43,21 @@ $ConfirmP24PaymentDataCopyWith<ConfirmP24PaymentData> get copyWith => _$ConfirmP
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmP24PaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
+  final _this = this as ConfirmP24PaymentData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmP24PaymentData&&(identical(other.paymentMethod, _this.paymentMethod) || other.paymentMethod == _this.paymentMethod)&&(identical(other.returnUrl, _this.returnUrl) || other.returnUrl == _this.returnUrl)&&(identical(other.setupFutureUsage, _this.setupFutureUsage) || other.setupFutureUsage == _this.setupFutureUsage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethod,returnUrl,setupFutureUsage);
+int get hashCode {
+  final _this = this as ConfirmP24PaymentData;
+  return Object.hash(runtimeType,_this.paymentMethod,_this.returnUrl,_this.setupFutureUsage);
+}
 
 @override
 String toString() {
-  return 'ConfirmP24PaymentData(paymentMethod: $paymentMethod, returnUrl: $returnUrl, setupFutureUsage: $setupFutureUsage)';
+  final _this = this as ConfirmP24PaymentData;
+  return 'ConfirmP24PaymentData(paymentMethod: ${_this.paymentMethod}, returnUrl: ${_this.returnUrl}, setupFutureUsage: ${_this.setupFutureUsage})';
 }
 
 
@@ -80,7 +86,7 @@ class _$ConfirmP24PaymentDataCopyWithImpl<$Res>
 /// Create a copy of ConfirmP24PaymentData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? paymentMethod = freezed,Object? returnUrl = freezed,Object? setupFutureUsage = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmP24PaymentData(
 paymentMethod: freezed == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
 as P24PaymentMethodDetails?,returnUrl: freezed == returnUrl ? _self.returnUrl : returnUrl // ignore: cast_nullable_to_non_nullable
 as String?,setupFutureUsage: freezed == setupFutureUsage ? _self.setupFutureUsage : setupFutureUsage // ignore: cast_nullable_to_non_nullable
@@ -271,16 +277,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmP24PaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmP24PaymentData&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.returnUrl, returnUrl) || other.returnUrl == returnUrl)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethod,returnUrl,setupFutureUsage);
+int get hashCode {
+    return Object.hash(runtimeType,paymentMethod,returnUrl,setupFutureUsage);
+}
 
 @override
 String toString() {
-  return 'ConfirmP24PaymentData(paymentMethod: $paymentMethod, returnUrl: $returnUrl, setupFutureUsage: $setupFutureUsage)';
+    return 'ConfirmP24PaymentData(paymentMethod: $paymentMethod, returnUrl: $returnUrl, setupFutureUsage: $setupFutureUsage)';
 }
 
 

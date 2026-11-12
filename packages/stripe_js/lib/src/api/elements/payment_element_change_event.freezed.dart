@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_element_change_event.dart';
@@ -9,6 +9,7 @@ part of 'payment_element_change_event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $PaymentElementChangeEventCopyWith<PaymentElementChangeEvent> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentElementChangeEvent&&(identical(other.elementType, elementType) || other.elementType == elementType)&&(identical(other.empty, empty) || other.empty == empty)&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.collapsed, collapsed) || other.collapsed == collapsed)&&(identical(other.value, value) || other.value == value));
+  final _this = this as PaymentElementChangeEvent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentElementChangeEvent&&(identical(other.elementType, _this.elementType) || other.elementType == _this.elementType)&&(identical(other.empty, _this.empty) || other.empty == _this.empty)&&(identical(other.complete, _this.complete) || other.complete == _this.complete)&&(identical(other.collapsed, _this.collapsed) || other.collapsed == _this.collapsed)&&(identical(other.value, _this.value) || other.value == _this.value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,elementType,empty,complete,collapsed,value);
+int get hashCode {
+  final _this = this as PaymentElementChangeEvent;
+  return Object.hash(runtimeType,_this.elementType,_this.empty,_this.complete,_this.collapsed,_this.value);
+}
 
 @override
 String toString() {
-  return 'PaymentElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, collapsed: $collapsed, value: $value)';
+  final _this = this as PaymentElementChangeEvent;
+  return 'PaymentElementChangeEvent(elementType: ${_this.elementType}, empty: ${_this.empty}, complete: ${_this.complete}, collapsed: ${_this.collapsed}, value: ${_this.value})';
 }
 
 
@@ -66,7 +72,7 @@ class _$PaymentElementChangeEventCopyWithImpl<$Res>
 /// Create a copy of PaymentElementChangeEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? elementType = null,Object? empty = null,Object? complete = null,Object? collapsed = null,Object? value = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentElementChangeEvent(
 elementType: null == elementType ? _self.elementType : elementType // ignore: cast_nullable_to_non_nullable
 as String,empty: null == empty ? _self.empty : empty // ignore: cast_nullable_to_non_nullable
 as bool,complete: null == complete ? _self.complete : complete // ignore: cast_nullable_to_non_nullable
@@ -247,16 +253,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementChangeEvent&&(identical(other.elementType, elementType) || other.elementType == elementType)&&(identical(other.empty, empty) || other.empty == empty)&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.collapsed, collapsed) || other.collapsed == collapsed)&&(identical(other.value, value) || other.value == value));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementChangeEvent&&(identical(other.elementType, elementType) || other.elementType == elementType)&&(identical(other.empty, empty) || other.empty == empty)&&(identical(other.complete, complete) || other.complete == complete)&&(identical(other.collapsed, collapsed) || other.collapsed == collapsed)&&(identical(other.value, value) || other.value == value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,elementType,empty,complete,collapsed,value);
+int get hashCode {
+    return Object.hash(runtimeType,elementType,empty,complete,collapsed,value);
+}
 
 @override
 String toString() {
-  return 'PaymentElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, collapsed: $collapsed, value: $value)';
+    return 'PaymentElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, collapsed: $collapsed, value: $value)';
 }
 
 
@@ -327,16 +335,21 @@ $PaymentElementChangeEventValueCopyWith<PaymentElementChangeEventValue> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentElementChangeEventValue&&(identical(other.type, type) || other.type == type));
+  final _this = this as PaymentElementChangeEventValue;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentElementChangeEventValue&&(identical(other.type, _this.type) || other.type == _this.type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type);
+int get hashCode {
+  final _this = this as PaymentElementChangeEventValue;
+  return Object.hash(runtimeType,_this.type);
+}
 
 @override
 String toString() {
-  return 'PaymentElementChangeEventValue(type: $type)';
+  final _this = this as PaymentElementChangeEventValue;
+  return 'PaymentElementChangeEventValue(type: ${_this.type})';
 }
 
 
@@ -365,7 +378,7 @@ class _$PaymentElementChangeEventValueCopyWithImpl<$Res>
 /// Create a copy of PaymentElementChangeEventValue
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentElementChangeEventValue(
 type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -526,16 +539,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementChangeEventValue&&(identical(other.type, type) || other.type == type));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementChangeEventValue&&(identical(other.type, type) || other.type == type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type);
+int get hashCode {
+    return Object.hash(runtimeType,type);
+}
 
 @override
 String toString() {
-  return 'PaymentElementChangeEventValue(type: $type)';
+    return 'PaymentElementChangeEventValue(type: $type)';
 }
 
 
