@@ -1,7 +1,7 @@
 import 'dart:js_interop';
 import 'dart:ui_web' as ui;
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:flutter_stripe_web/src/parser/payment_request.dart';
 import 'package:stripe_js/stripe_js.dart';
