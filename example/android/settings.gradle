@@ -17,8 +17,8 @@ pluginManagement {
 }
 
 // Built-in Kotlin drives the Kotlin compiler through whatever KGP version AGP
-// itself depends on — 2.2.10 for AGP 9.1.1, which is below the 2.2.20 minimum the
-// Flutter Gradle plugin enforces (and below the 2.3.20 it warns about). There is no
+// itself depends on, which can lag behind the minimum the Flutter Gradle plugin
+// enforces (AGP 9.1.1 shipped 2.2.10, below Flutter's 2.2.20). There is no
 // AGP DSL for this, so pin it on the settings classpath that Built-in Kotlin
 // resolves from. Keep in step with stripe_android's ext.kotlin_version, which the
 // Compose compiler plugin is resolved against.
@@ -34,7 +34,7 @@ buildscript {
 
 plugins {
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
-    id "com.android.application" version "9.1.1" apply false
+    id "com.android.application" version "9.3.1" apply false
     // The Kotlin Gradle Plugin is intentionally not declared: this build uses
     // AGP's Built-in Kotlin (android.builtInKotlin=true in gradle.properties).
 }
