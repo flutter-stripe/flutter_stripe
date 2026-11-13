@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-11-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v15.0.0`](#stripe_platform_interface---v1500)
+ - [`flutter_stripe_web` - `v9.0.1`](#flutter_stripe_web---v901)
+ - [`flutter_stripe` - `v15.0.1`](#flutter_stripe---v1501)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v9.0.1`
+ - `flutter_stripe` - `v15.0.1`
+
+---
+
+#### `stripe_platform_interface` - `v15.0.0`
+
+
 ## 2026-10-14
 
 ### Changes
