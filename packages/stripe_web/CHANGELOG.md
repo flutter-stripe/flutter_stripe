@@ -1,3 +1,17 @@
+## 9.0.0
+
+**Breaking changes**
+- This package now requires Flutter 3.47.0 or higher.
+- Upgrade to Freezed 4
+
+**Features**
+- #2478 Migrate to the new Material UI package to accommodate its split from the Flutter SDK.
+- Support for Flutter 3.50.
+
+**Fixes**
+- #2500 Fix issues with native platform views.
+
+
 ## 8.3.0
 **Features**:
 - Expose amount and label on GooglePayParams #2480
