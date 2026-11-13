@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_intent.dart';
@@ -9,6 +9,7 @@ part of 'payment_intent.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -95,8 +96,7 @@ mixin _$PaymentIntent {
  dynamic get processing;/// Email address that the receipt for the resulting payment will be sent to.
 /// If receipt_email is specified for a payment in live mode, a receipt
 /// will be sent regardless of your email settings.
-@JsonKey(name: "receipt_email") String? get receiptEmail;// ID of the review associated with this PaymentIntent, if any.
- String? get review;/// Indicates that you intend to make future payments with this
+@JsonKey(name: "receipt_email") String? get receiptEmail; String? get review;/// Indicates that you intend to make future payments with this
 /// PaymentIntent’s payment method.
 /// Providing this parameter will attach the payment method to the
 /// PaymentIntent’s Customer, if present, after the PaymentIntent is
@@ -138,16 +138,21 @@ $PaymentIntentCopyWith<PaymentIntent> get copyWith => _$PaymentIntentCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.amountCapturable, amountCapturable) || other.amountCapturable == amountCapturable)&&(identical(other.amountDetails, amountDetails) || other.amountDetails == amountDetails)&&(identical(other.amountReceived, amountReceived) || other.amountReceived == amountReceived)&&(identical(other.application, application) || other.application == application)&&(identical(other.applicationFeeAmount, applicationFeeAmount) || other.applicationFeeAmount == applicationFeeAmount)&&(identical(other.automaticPaymentMethods, automaticPaymentMethods) || other.automaticPaymentMethods == automaticPaymentMethods)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.cancellationReason, cancellationReason) || other.cancellationReason == cancellationReason)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.captureMethod, captureMethod) || other.captureMethod == captureMethod)&&(identical(other.confirmationMethod, confirmationMethod) || other.confirmationMethod == confirmationMethod)&&(identical(other.created, created) || other.created == created)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.customer, customer) || other.customer == customer)&&(identical(other.description, description) || other.description == description)&&(identical(other.invoice, invoice) || other.invoice == invoice)&&(identical(other.lastPaymentError, lastPaymentError) || other.lastPaymentError == lastPaymentError)&&(identical(other.latestCharge, latestCharge) || other.latestCharge == latestCharge)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&const DeepCollectionEquality().equals(other.metadata, metadata)&&const DeepCollectionEquality().equals(other.nextAction, nextAction)&&(identical(other.onBehalfOf, onBehalfOf) || other.onBehalfOf == onBehalfOf)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&const DeepCollectionEquality().equals(other.paymentMethodOptions, paymentMethodOptions)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, paymentMethodTypes)&&const DeepCollectionEquality().equals(other.processing, processing)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.review, review) || other.review == review)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.statementDescriptor, statementDescriptor) || other.statementDescriptor == statementDescriptor)&&(identical(other.statementDescriptorSuffix, statementDescriptorSuffix) || other.statementDescriptorSuffix == statementDescriptorSuffix)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.transferData, transferData)&&const DeepCollectionEquality().equals(other.transferGroup, transferGroup));
+  final _this = this as PaymentIntent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntent&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.object, _this.object) || other.object == _this.object)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.amountCapturable, _this.amountCapturable) || other.amountCapturable == _this.amountCapturable)&&(identical(other.amountDetails, _this.amountDetails) || other.amountDetails == _this.amountDetails)&&(identical(other.amountReceived, _this.amountReceived) || other.amountReceived == _this.amountReceived)&&(identical(other.application, _this.application) || other.application == _this.application)&&(identical(other.applicationFeeAmount, _this.applicationFeeAmount) || other.applicationFeeAmount == _this.applicationFeeAmount)&&(identical(other.automaticPaymentMethods, _this.automaticPaymentMethods) || other.automaticPaymentMethods == _this.automaticPaymentMethods)&&(identical(other.canceledAt, _this.canceledAt) || other.canceledAt == _this.canceledAt)&&(identical(other.cancellationReason, _this.cancellationReason) || other.cancellationReason == _this.cancellationReason)&&(identical(other.clientSecret, _this.clientSecret) || other.clientSecret == _this.clientSecret)&&(identical(other.captureMethod, _this.captureMethod) || other.captureMethod == _this.captureMethod)&&(identical(other.confirmationMethod, _this.confirmationMethod) || other.confirmationMethod == _this.confirmationMethod)&&(identical(other.created, _this.created) || other.created == _this.created)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.customer, _this.customer) || other.customer == _this.customer)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.invoice, _this.invoice) || other.invoice == _this.invoice)&&(identical(other.lastPaymentError, _this.lastPaymentError) || other.lastPaymentError == _this.lastPaymentError)&&(identical(other.latestCharge, _this.latestCharge) || other.latestCharge == _this.latestCharge)&&(identical(other.livemode, _this.livemode) || other.livemode == _this.livemode)&&const DeepCollectionEquality().equals(other.metadata, _this.metadata)&&const DeepCollectionEquality().equals(other.nextAction, _this.nextAction)&&(identical(other.onBehalfOf, _this.onBehalfOf) || other.onBehalfOf == _this.onBehalfOf)&&(identical(other.paymentMethod, _this.paymentMethod) || other.paymentMethod == _this.paymentMethod)&&const DeepCollectionEquality().equals(other.paymentMethodOptions, _this.paymentMethodOptions)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, _this.paymentMethodTypes)&&const DeepCollectionEquality().equals(other.processing, _this.processing)&&(identical(other.receiptEmail, _this.receiptEmail) || other.receiptEmail == _this.receiptEmail)&&(identical(other.review, _this.review) || other.review == _this.review)&&(identical(other.setupFutureUsage, _this.setupFutureUsage) || other.setupFutureUsage == _this.setupFutureUsage)&&(identical(other.shipping, _this.shipping) || other.shipping == _this.shipping)&&(identical(other.statementDescriptor, _this.statementDescriptor) || other.statementDescriptor == _this.statementDescriptor)&&(identical(other.statementDescriptorSuffix, _this.statementDescriptorSuffix) || other.statementDescriptorSuffix == _this.statementDescriptorSuffix)&&(identical(other.status, _this.status) || other.status == _this.status)&&const DeepCollectionEquality().equals(other.transferData, _this.transferData)&&const DeepCollectionEquality().equals(other.transferGroup, _this.transferGroup));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,object,amount,amountCapturable,amountDetails,amountReceived,application,applicationFeeAmount,automaticPaymentMethods,canceledAt,cancellationReason,clientSecret,captureMethod,confirmationMethod,created,currency,customer,description,invoice,lastPaymentError,latestCharge,livemode,const DeepCollectionEquality().hash(metadata),const DeepCollectionEquality().hash(nextAction),onBehalfOf,paymentMethod,const DeepCollectionEquality().hash(paymentMethodOptions),const DeepCollectionEquality().hash(paymentMethodTypes),const DeepCollectionEquality().hash(processing),receiptEmail,review,setupFutureUsage,shipping,statementDescriptor,statementDescriptorSuffix,status,const DeepCollectionEquality().hash(transferData),const DeepCollectionEquality().hash(transferGroup)]);
+int get hashCode {
+  final _this = this as PaymentIntent;
+  return Object.hashAll([runtimeType,_this.id,_this.object,_this.amount,_this.amountCapturable,_this.amountDetails,_this.amountReceived,_this.application,_this.applicationFeeAmount,_this.automaticPaymentMethods,_this.canceledAt,_this.cancellationReason,_this.clientSecret,_this.captureMethod,_this.confirmationMethod,_this.created,_this.currency,_this.customer,_this.description,_this.invoice,_this.lastPaymentError,_this.latestCharge,_this.livemode,const DeepCollectionEquality().hash(_this.metadata),const DeepCollectionEquality().hash(_this.nextAction),_this.onBehalfOf,_this.paymentMethod,const DeepCollectionEquality().hash(_this.paymentMethodOptions),const DeepCollectionEquality().hash(_this.paymentMethodTypes),const DeepCollectionEquality().hash(_this.processing),_this.receiptEmail,_this.review,_this.setupFutureUsage,_this.shipping,_this.statementDescriptor,_this.statementDescriptorSuffix,_this.status,const DeepCollectionEquality().hash(_this.transferData),const DeepCollectionEquality().hash(_this.transferGroup)]);
+}
 
 @override
 String toString() {
-  return 'PaymentIntent(id: $id, object: $object, amount: $amount, amountCapturable: $amountCapturable, amountDetails: $amountDetails, amountReceived: $amountReceived, application: $application, applicationFeeAmount: $applicationFeeAmount, automaticPaymentMethods: $automaticPaymentMethods, canceledAt: $canceledAt, cancellationReason: $cancellationReason, clientSecret: $clientSecret, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, created: $created, currency: $currency, customer: $customer, description: $description, invoice: $invoice, lastPaymentError: $lastPaymentError, latestCharge: $latestCharge, livemode: $livemode, metadata: $metadata, nextAction: $nextAction, onBehalfOf: $onBehalfOf, paymentMethod: $paymentMethod, paymentMethodOptions: $paymentMethodOptions, paymentMethodTypes: $paymentMethodTypes, processing: $processing, receiptEmail: $receiptEmail, review: $review, setupFutureUsage: $setupFutureUsage, shipping: $shipping, statementDescriptor: $statementDescriptor, statementDescriptorSuffix: $statementDescriptorSuffix, status: $status, transferData: $transferData, transferGroup: $transferGroup)';
+  final _this = this as PaymentIntent;
+  return 'PaymentIntent(id: ${_this.id}, object: ${_this.object}, amount: ${_this.amount}, amountCapturable: ${_this.amountCapturable}, amountDetails: ${_this.amountDetails}, amountReceived: ${_this.amountReceived}, application: ${_this.application}, applicationFeeAmount: ${_this.applicationFeeAmount}, automaticPaymentMethods: ${_this.automaticPaymentMethods}, canceledAt: ${_this.canceledAt}, cancellationReason: ${_this.cancellationReason}, clientSecret: ${_this.clientSecret}, captureMethod: ${_this.captureMethod}, confirmationMethod: ${_this.confirmationMethod}, created: ${_this.created}, currency: ${_this.currency}, customer: ${_this.customer}, description: ${_this.description}, invoice: ${_this.invoice}, lastPaymentError: ${_this.lastPaymentError}, latestCharge: ${_this.latestCharge}, livemode: ${_this.livemode}, metadata: ${_this.metadata}, nextAction: ${_this.nextAction}, onBehalfOf: ${_this.onBehalfOf}, paymentMethod: ${_this.paymentMethod}, paymentMethodOptions: ${_this.paymentMethodOptions}, paymentMethodTypes: ${_this.paymentMethodTypes}, processing: ${_this.processing}, receiptEmail: ${_this.receiptEmail}, review: ${_this.review}, setupFutureUsage: ${_this.setupFutureUsage}, shipping: ${_this.shipping}, statementDescriptor: ${_this.statementDescriptor}, statementDescriptorSuffix: ${_this.statementDescriptorSuffix}, status: ${_this.status}, transferData: ${_this.transferData}, transferGroup: ${_this.transferGroup})';
 }
 
 
@@ -176,7 +181,7 @@ class _$PaymentIntentCopyWithImpl<$Res>
 /// Create a copy of PaymentIntent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? object = null,Object? amount = null,Object? amountCapturable = freezed,Object? amountDetails = freezed,Object? amountReceived = freezed,Object? application = freezed,Object? applicationFeeAmount = freezed,Object? automaticPaymentMethods = freezed,Object? canceledAt = freezed,Object? cancellationReason = freezed,Object? clientSecret = null,Object? captureMethod = null,Object? confirmationMethod = null,Object? created = freezed,Object? currency = null,Object? customer = freezed,Object? description = freezed,Object? invoice = freezed,Object? lastPaymentError = freezed,Object? latestCharge = freezed,Object? livemode = null,Object? metadata = null,Object? nextAction = freezed,Object? onBehalfOf = freezed,Object? paymentMethod = freezed,Object? paymentMethodOptions = null,Object? paymentMethodTypes = null,Object? processing = freezed,Object? receiptEmail = freezed,Object? review = freezed,Object? setupFutureUsage = freezed,Object? shipping = freezed,Object? statementDescriptor = freezed,Object? statementDescriptorSuffix = freezed,Object? status = null,Object? transferData = freezed,Object? transferGroup = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentIntent(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,object: null == object ? _self.object : object // ignore: cast_nullable_to_non_nullable
 as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
@@ -404,7 +409,7 @@ return $default(_that.id,_that.object,_that.amount,_that.amountCapturable,_that.
 @JsonSerializable()
 
 class _PaymentIntent implements PaymentIntent {
-  const _PaymentIntent({required this.id, this.object = "payment_intent", required this.amount, @JsonKey(name: "amount_capturable") this.amountCapturable, @JsonKey(name: "amount_details") this.amountDetails = const PaymentIntentAmountDetails(), @JsonKey(name: "amount_received") this.amountReceived, this.application, @JsonKey(name: "application_fee_amount") this.applicationFeeAmount, @JsonKey(name: "automatic_payment_methods") this.automaticPaymentMethods, @JsonKey(name: "canceled_at") this.canceledAt, @JsonKey(name: "cancellation_reason") this.cancellationReason, @JsonKey(name: "client_secret") required this.clientSecret, @JsonKey(name: "capture_method") this.captureMethod = PaymentIntentCaptureMethod.automatic, @JsonKey(name: "confirmation_method") this.confirmationMethod = PaymentIntentConfirmationMethod.automatic, this.created, required this.currency, this.customer, this.description, this.invoice, @JsonKey(name: "last_payment_error") this.lastPaymentError, @JsonKey(name: "latest_charge") this.latestCharge, required this.livemode, final  Map<String, dynamic> metadata = const {}, @JsonKey(name: "next_action") this.nextAction, @JsonKey(name: "on_behalf_of") this.onBehalfOf, @JsonKey(name: "payment_method") this.paymentMethod, @JsonKey(name: "payment_method_options") final  Map<dynamic, dynamic> paymentMethodOptions = const {}, @JsonKey(name: "payment_method_types", unknownEnumValue: PaymentMethodType.unknown) final  List<PaymentMethodType> paymentMethodTypes = const [], this.processing, @JsonKey(name: "receipt_email") this.receiptEmail, this.review, @JsonKey(name: "setup_future_usage") this.setupFutureUsage, this.shipping, @JsonKey(name: "statement_descriptor") this.statementDescriptor, @JsonKey(name: "statement_descriptor_suffix") this.statementDescriptorSuffix, required this.status, @JsonKey(name: "transfer_data") this.transferData, @JsonKey(name: "transfer_group") this.transferGroup}): _metadata = metadata,_paymentMethodOptions = paymentMethodOptions,_paymentMethodTypes = paymentMethodTypes;
+  const _PaymentIntent({required this.id, this.object = "payment_intent", required this.amount, @JsonKey(name: "amount_capturable") this.amountCapturable, @JsonKey(name: "amount_details") this.amountDetails = const PaymentIntentAmountDetails(), @JsonKey(name: "amount_received") this.amountReceived, this.application, @JsonKey(name: "application_fee_amount") this.applicationFeeAmount, @JsonKey(name: "automatic_payment_methods") this.automaticPaymentMethods, @JsonKey(name: "canceled_at") this.canceledAt, @JsonKey(name: "cancellation_reason") this.cancellationReason, @JsonKey(name: "client_secret") required this.clientSecret, @JsonKey(name: "capture_method") this.captureMethod = PaymentIntentCaptureMethod.automatic, @JsonKey(name: "confirmation_method") this.confirmationMethod = PaymentIntentConfirmationMethod.automatic, this.created, required this.currency, this.customer, this.description, this.invoice, @JsonKey(name: "last_payment_error") this.lastPaymentError, @JsonKey(name: "latest_charge") this.latestCharge, required this.livemode,  Map<String, dynamic> metadata = const {}, @JsonKey(name: "next_action") this.nextAction, @JsonKey(name: "on_behalf_of") this.onBehalfOf, @JsonKey(name: "payment_method") this.paymentMethod, @JsonKey(name: "payment_method_options")  Map<dynamic, dynamic> paymentMethodOptions = const {}, @JsonKey(name: "payment_method_types", unknownEnumValue: PaymentMethodType.unknown)  List<PaymentMethodType> paymentMethodTypes = const [], this.processing, @JsonKey(name: "receipt_email") this.receiptEmail, this.review, @JsonKey(name: "setup_future_usage") this.setupFutureUsage, this.shipping, @JsonKey(name: "statement_descriptor") this.statementDescriptor, @JsonKey(name: "statement_descriptor_suffix") this.statementDescriptorSuffix, required this.status, @JsonKey(name: "transfer_data") this.transferData, @JsonKey(name: "transfer_group") this.transferGroup}): _metadata = metadata,_paymentMethodOptions = paymentMethodOptions,_paymentMethodTypes = paymentMethodTypes;
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) => _$PaymentIntentFromJson(json);
 
 /// Unique identifier for the object.
@@ -541,7 +546,6 @@ class _PaymentIntent implements PaymentIntent {
 /// If receipt_email is specified for a payment in live mode, a receipt
 /// will be sent regardless of your email settings.
 @override@JsonKey(name: "receipt_email") final  String? receiptEmail;
-// ID of the review associated with this PaymentIntent, if any.
 @override final  String? review;
 /// Indicates that you intend to make future payments with this
 /// PaymentIntent’s payment method.
@@ -593,16 +597,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.amountCapturable, amountCapturable) || other.amountCapturable == amountCapturable)&&(identical(other.amountDetails, amountDetails) || other.amountDetails == amountDetails)&&(identical(other.amountReceived, amountReceived) || other.amountReceived == amountReceived)&&(identical(other.application, application) || other.application == application)&&(identical(other.applicationFeeAmount, applicationFeeAmount) || other.applicationFeeAmount == applicationFeeAmount)&&(identical(other.automaticPaymentMethods, automaticPaymentMethods) || other.automaticPaymentMethods == automaticPaymentMethods)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.cancellationReason, cancellationReason) || other.cancellationReason == cancellationReason)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.captureMethod, captureMethod) || other.captureMethod == captureMethod)&&(identical(other.confirmationMethod, confirmationMethod) || other.confirmationMethod == confirmationMethod)&&(identical(other.created, created) || other.created == created)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.customer, customer) || other.customer == customer)&&(identical(other.description, description) || other.description == description)&&(identical(other.invoice, invoice) || other.invoice == invoice)&&(identical(other.lastPaymentError, lastPaymentError) || other.lastPaymentError == lastPaymentError)&&(identical(other.latestCharge, latestCharge) || other.latestCharge == latestCharge)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&const DeepCollectionEquality().equals(other._metadata, _metadata)&&const DeepCollectionEquality().equals(other.nextAction, nextAction)&&(identical(other.onBehalfOf, onBehalfOf) || other.onBehalfOf == onBehalfOf)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&const DeepCollectionEquality().equals(other._paymentMethodOptions, _paymentMethodOptions)&&const DeepCollectionEquality().equals(other._paymentMethodTypes, _paymentMethodTypes)&&const DeepCollectionEquality().equals(other.processing, processing)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.review, review) || other.review == review)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.statementDescriptor, statementDescriptor) || other.statementDescriptor == statementDescriptor)&&(identical(other.statementDescriptorSuffix, statementDescriptorSuffix) || other.statementDescriptorSuffix == statementDescriptorSuffix)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.transferData, transferData)&&const DeepCollectionEquality().equals(other.transferGroup, transferGroup));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.object, object) || other.object == object)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.amountCapturable, amountCapturable) || other.amountCapturable == amountCapturable)&&(identical(other.amountDetails, amountDetails) || other.amountDetails == amountDetails)&&(identical(other.amountReceived, amountReceived) || other.amountReceived == amountReceived)&&(identical(other.application, application) || other.application == application)&&(identical(other.applicationFeeAmount, applicationFeeAmount) || other.applicationFeeAmount == applicationFeeAmount)&&(identical(other.automaticPaymentMethods, automaticPaymentMethods) || other.automaticPaymentMethods == automaticPaymentMethods)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.cancellationReason, cancellationReason) || other.cancellationReason == cancellationReason)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.captureMethod, captureMethod) || other.captureMethod == captureMethod)&&(identical(other.confirmationMethod, confirmationMethod) || other.confirmationMethod == confirmationMethod)&&(identical(other.created, created) || other.created == created)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.customer, customer) || other.customer == customer)&&(identical(other.description, description) || other.description == description)&&(identical(other.invoice, invoice) || other.invoice == invoice)&&(identical(other.lastPaymentError, lastPaymentError) || other.lastPaymentError == lastPaymentError)&&(identical(other.latestCharge, latestCharge) || other.latestCharge == latestCharge)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&const DeepCollectionEquality().equals(other.metadata, _metadata)&&const DeepCollectionEquality().equals(other.nextAction, nextAction)&&(identical(other.onBehalfOf, onBehalfOf) || other.onBehalfOf == onBehalfOf)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&const DeepCollectionEquality().equals(other.paymentMethodOptions, _paymentMethodOptions)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, _paymentMethodTypes)&&const DeepCollectionEquality().equals(other.processing, processing)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.review, review) || other.review == review)&&(identical(other.setupFutureUsage, setupFutureUsage) || other.setupFutureUsage == setupFutureUsage)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.statementDescriptor, statementDescriptor) || other.statementDescriptor == statementDescriptor)&&(identical(other.statementDescriptorSuffix, statementDescriptorSuffix) || other.statementDescriptorSuffix == statementDescriptorSuffix)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.transferData, transferData)&&const DeepCollectionEquality().equals(other.transferGroup, transferGroup));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,object,amount,amountCapturable,amountDetails,amountReceived,application,applicationFeeAmount,automaticPaymentMethods,canceledAt,cancellationReason,clientSecret,captureMethod,confirmationMethod,created,currency,customer,description,invoice,lastPaymentError,latestCharge,livemode,const DeepCollectionEquality().hash(_metadata),const DeepCollectionEquality().hash(nextAction),onBehalfOf,paymentMethod,const DeepCollectionEquality().hash(_paymentMethodOptions),const DeepCollectionEquality().hash(_paymentMethodTypes),const DeepCollectionEquality().hash(processing),receiptEmail,review,setupFutureUsage,shipping,statementDescriptor,statementDescriptorSuffix,status,const DeepCollectionEquality().hash(transferData),const DeepCollectionEquality().hash(transferGroup)]);
+int get hashCode {
+    return Object.hashAll([runtimeType,id,object,amount,amountCapturable,amountDetails,amountReceived,application,applicationFeeAmount,automaticPaymentMethods,canceledAt,cancellationReason,clientSecret,captureMethod,confirmationMethod,created,currency,customer,description,invoice,lastPaymentError,latestCharge,livemode,const DeepCollectionEquality().hash(_metadata),const DeepCollectionEquality().hash(nextAction),onBehalfOf,paymentMethod,const DeepCollectionEquality().hash(_paymentMethodOptions),const DeepCollectionEquality().hash(_paymentMethodTypes),const DeepCollectionEquality().hash(processing),receiptEmail,review,setupFutureUsage,shipping,statementDescriptor,statementDescriptorSuffix,status,const DeepCollectionEquality().hash(transferData),const DeepCollectionEquality().hash(transferGroup)]);
+}
 
 @override
 String toString() {
-  return 'PaymentIntent(id: $id, object: $object, amount: $amount, amountCapturable: $amountCapturable, amountDetails: $amountDetails, amountReceived: $amountReceived, application: $application, applicationFeeAmount: $applicationFeeAmount, automaticPaymentMethods: $automaticPaymentMethods, canceledAt: $canceledAt, cancellationReason: $cancellationReason, clientSecret: $clientSecret, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, created: $created, currency: $currency, customer: $customer, description: $description, invoice: $invoice, lastPaymentError: $lastPaymentError, latestCharge: $latestCharge, livemode: $livemode, metadata: $metadata, nextAction: $nextAction, onBehalfOf: $onBehalfOf, paymentMethod: $paymentMethod, paymentMethodOptions: $paymentMethodOptions, paymentMethodTypes: $paymentMethodTypes, processing: $processing, receiptEmail: $receiptEmail, review: $review, setupFutureUsage: $setupFutureUsage, shipping: $shipping, statementDescriptor: $statementDescriptor, statementDescriptorSuffix: $statementDescriptorSuffix, status: $status, transferData: $transferData, transferGroup: $transferGroup)';
+    return 'PaymentIntent(id: $id, object: $object, amount: $amount, amountCapturable: $amountCapturable, amountDetails: $amountDetails, amountReceived: $amountReceived, application: $application, applicationFeeAmount: $applicationFeeAmount, automaticPaymentMethods: $automaticPaymentMethods, canceledAt: $canceledAt, cancellationReason: $cancellationReason, clientSecret: $clientSecret, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, created: $created, currency: $currency, customer: $customer, description: $description, invoice: $invoice, lastPaymentError: $lastPaymentError, latestCharge: $latestCharge, livemode: $livemode, metadata: $metadata, nextAction: $nextAction, onBehalfOf: $onBehalfOf, paymentMethod: $paymentMethod, paymentMethodOptions: $paymentMethodOptions, paymentMethodTypes: $paymentMethodTypes, processing: $processing, receiptEmail: $receiptEmail, review: $review, setupFutureUsage: $setupFutureUsage, shipping: $shipping, statementDescriptor: $statementDescriptor, statementDescriptorSuffix: $statementDescriptorSuffix, status: $status, transferData: $transferData, transferGroup: $transferGroup)';
 }
 
 
@@ -743,16 +749,21 @@ $PaymentIntentAmountDetailsCopyWith<PaymentIntentAmountDetails> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntentAmountDetails&&(identical(other.tip, tip) || other.tip == tip));
+  final _this = this as PaymentIntentAmountDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntentAmountDetails&&(identical(other.tip, _this.tip) || other.tip == _this.tip));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,tip);
+int get hashCode {
+  final _this = this as PaymentIntentAmountDetails;
+  return Object.hash(runtimeType,_this.tip);
+}
 
 @override
 String toString() {
-  return 'PaymentIntentAmountDetails(tip: $tip)';
+  final _this = this as PaymentIntentAmountDetails;
+  return 'PaymentIntentAmountDetails(tip: ${_this.tip})';
 }
 
 
@@ -781,7 +792,7 @@ class _$PaymentIntentAmountDetailsCopyWithImpl<$Res>
 /// Create a copy of PaymentIntentAmountDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? tip = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentIntentAmountDetails(
 tip: freezed == tip ? _self.tip : tip // ignore: cast_nullable_to_non_nullable
 as PaymentIntentTip?,
   ));
@@ -955,16 +966,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntentAmountDetails&&(identical(other.tip, tip) || other.tip == tip));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntentAmountDetails&&(identical(other.tip, tip) || other.tip == tip));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,tip);
+int get hashCode {
+    return Object.hash(runtimeType,tip);
+}
 
 @override
 String toString() {
-  return 'PaymentIntentAmountDetails(tip: $tip)';
+    return 'PaymentIntentAmountDetails(tip: $tip)';
 }
 
 
@@ -1032,16 +1045,21 @@ $PaymentIntentTipCopyWith<PaymentIntentTip> get copyWith => _$PaymentIntentTipCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntentTip&&(identical(other.amount, amount) || other.amount == amount));
+  final _this = this as PaymentIntentTip;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntentTip&&(identical(other.amount, _this.amount) || other.amount == _this.amount));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,amount);
+int get hashCode {
+  final _this = this as PaymentIntentTip;
+  return Object.hash(runtimeType,_this.amount);
+}
 
 @override
 String toString() {
-  return 'PaymentIntentTip(amount: $amount)';
+  final _this = this as PaymentIntentTip;
+  return 'PaymentIntentTip(amount: ${_this.amount})';
 }
 
 
@@ -1070,7 +1088,7 @@ class _$PaymentIntentTipCopyWithImpl<$Res>
 /// Create a copy of PaymentIntentTip
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? amount = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentIntentTip(
 amount: freezed == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
@@ -1232,16 +1250,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntentTip&&(identical(other.amount, amount) || other.amount == amount));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntentTip&&(identical(other.amount, amount) || other.amount == amount));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,amount);
+int get hashCode {
+    return Object.hash(runtimeType,amount);
+}
 
 @override
 String toString() {
-  return 'PaymentIntentTip(amount: $amount)';
+    return 'PaymentIntentTip(amount: $amount)';
 }
 
 
@@ -1297,16 +1317,21 @@ $PaymentIntentAutomaticPaymentMethodsCopyWith<PaymentIntentAutomaticPaymentMetho
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntentAutomaticPaymentMethods&&(identical(other.enabled, enabled) || other.enabled == enabled));
+  final _this = this as PaymentIntentAutomaticPaymentMethods;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntentAutomaticPaymentMethods&&(identical(other.enabled, _this.enabled) || other.enabled == _this.enabled));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,enabled);
+int get hashCode {
+  final _this = this as PaymentIntentAutomaticPaymentMethods;
+  return Object.hash(runtimeType,_this.enabled);
+}
 
 @override
 String toString() {
-  return 'PaymentIntentAutomaticPaymentMethods(enabled: $enabled)';
+  final _this = this as PaymentIntentAutomaticPaymentMethods;
+  return 'PaymentIntentAutomaticPaymentMethods(enabled: ${_this.enabled})';
 }
 
 
@@ -1335,7 +1360,7 @@ class _$PaymentIntentAutomaticPaymentMethodsCopyWithImpl<$Res>
 /// Create a copy of PaymentIntentAutomaticPaymentMethods
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? enabled = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentIntentAutomaticPaymentMethods(
 enabled: freezed == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
 as bool?,
   ));
@@ -1497,16 +1522,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntentAutomaticPaymentMethods&&(identical(other.enabled, enabled) || other.enabled == enabled));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntentAutomaticPaymentMethods&&(identical(other.enabled, enabled) || other.enabled == enabled));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,enabled);
+int get hashCode {
+    return Object.hash(runtimeType,enabled);
+}
 
 @override
 String toString() {
-  return 'PaymentIntentAutomaticPaymentMethods(enabled: $enabled)';
+    return 'PaymentIntentAutomaticPaymentMethods(enabled: $enabled)';
 }
 
 

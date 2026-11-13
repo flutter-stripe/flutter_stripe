@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'card_details.dart';
@@ -9,6 +9,7 @@ part of 'card_details.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 CardDetails _$CardDetailsFromJson(
@@ -35,16 +36,21 @@ $CardDetailsCopyWith<CardDetails> get copyWith => _$CardDetailsCopyWithImpl<Card
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardDetails&&(identical(other.number, number) || other.number == number)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.cvc, cvc) || other.cvc == cvc));
+  final _this = this as CardDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardDetails&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.expirationYear, _this.expirationYear) || other.expirationYear == _this.expirationYear)&&(identical(other.expirationMonth, _this.expirationMonth) || other.expirationMonth == _this.expirationMonth)&&(identical(other.cvc, _this.cvc) || other.cvc == _this.cvc));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,number,expirationYear,expirationMonth,cvc);
+int get hashCode {
+  final _this = this as CardDetails;
+  return Object.hash(runtimeType,_this.number,_this.expirationYear,_this.expirationMonth,_this.cvc);
+}
 
 @override
 String toString() {
-  return 'CardDetails(number: $number, expirationYear: $expirationYear, expirationMonth: $expirationMonth, cvc: $cvc)';
+  final _this = this as CardDetails;
+  return 'CardDetails(number: ${_this.number}, expirationYear: ${_this.expirationYear}, expirationMonth: ${_this.expirationMonth}, cvc: ${_this.cvc})';
 }
 
 
@@ -73,7 +79,7 @@ class _$CardDetailsCopyWithImpl<$Res>
 /// Create a copy of CardDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? number = freezed,Object? expirationYear = freezed,Object? expirationMonth = freezed,Object? cvc = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardDetails(
 number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
 as String?,expirationYear: freezed == expirationYear ? _self.expirationYear : expirationYear // ignore: cast_nullable_to_non_nullable
 as int?,expirationMonth: freezed == expirationMonth ? _self.expirationMonth : expirationMonth // ignore: cast_nullable_to_non_nullable
@@ -240,16 +246,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardDetailsConstructor&&(identical(other.number, number) || other.number == number)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.cvc, cvc) || other.cvc == cvc));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardDetailsConstructor&&(identical(other.number, number) || other.number == number)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.cvc, cvc) || other.cvc == cvc));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,number,expirationYear,expirationMonth,cvc);
+int get hashCode {
+    return Object.hash(runtimeType,number,expirationYear,expirationMonth,cvc);
+}
 
 @override
 String toString() {
-  return 'CardDetails(number: $number, expirationYear: $expirationYear, expirationMonth: $expirationMonth, cvc: $cvc)';
+    return 'CardDetails(number: $number, expirationYear: $expirationYear, expirationMonth: $expirationMonth, cvc: $cvc)';
 }
 
 

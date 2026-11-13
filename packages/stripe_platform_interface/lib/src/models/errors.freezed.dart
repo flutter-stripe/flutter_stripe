@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'errors.dart';
@@ -9,6 +9,7 @@ part of 'errors.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 StripeError<T> _$StripeErrorFromJson<T>(
@@ -35,16 +36,21 @@ $StripeErrorCopyWith<T, StripeError<T>> get copyWith => _$StripeErrorCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is StripeError<T>&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.code, code));
+  final _this = this as StripeError<T>;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StripeError<T>&&(identical(other.message, _this.message) || other.message == _this.message)&&const DeepCollectionEquality().equals(other.code, _this.code));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(code));
+int get hashCode {
+  final _this = this as StripeError<T>;
+  return Object.hash(runtimeType,_this.message,const DeepCollectionEquality().hash(_this.code));
+}
 
 @override
 String toString() {
-  return 'StripeError<$T>(message: $message, code: $code)';
+  final _this = this as StripeError<T>;
+  return 'StripeError<$T>(message: ${_this.message}, code: ${_this.code})';
 }
 
 
@@ -73,7 +79,7 @@ class _$StripeErrorCopyWithImpl<T,$Res>
 /// Create a copy of StripeError
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? message = null,Object? code = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(StripeError(
 message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as T,
@@ -236,16 +242,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StripeErrorGeneric<T>&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.code, code));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _StripeErrorGeneric<T>&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.code, code));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(code));
+int get hashCode {
+    return Object.hash(runtimeType,message,const DeepCollectionEquality().hash(code));
+}
 
 @override
 String toString() {
-  return 'StripeError<$T>(message: $message, code: $code)';
+    return 'StripeError<$T>(message: $message, code: $code)';
 }
 
 
@@ -302,16 +310,21 @@ $StripeExceptionCopyWith<StripeException> get copyWith => _$StripeExceptionCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is StripeException&&(identical(other.error, error) || other.error == error));
+  final _this = this as StripeException;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StripeException&&(identical(other.error, _this.error) || other.error == _this.error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode {
+  final _this = this as StripeException;
+  return Object.hash(runtimeType,_this.error);
+}
 
 @override
 String toString() {
-  return 'StripeException(error: $error)';
+  final _this = this as StripeException;
+  return 'StripeException(error: ${_this.error})';
 }
 
 
@@ -340,7 +353,7 @@ class _$StripeExceptionCopyWithImpl<$Res>
 /// Create a copy of StripeException
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? error = null,}) {
-  return _then(_self.copyWith(
+  return _then(StripeException(
 error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as LocalizedErrorMessage,
   ));
@@ -511,16 +524,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StripeException&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _StripeException&&(identical(other.error, error) || other.error == error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode {
+    return Object.hash(runtimeType,error);
+}
 
 @override
 String toString() {
-  return 'StripeException(error: $error)';
+    return 'StripeException(error: $error)';
 }
 
 
@@ -590,16 +605,21 @@ $LocalizedErrorMessageCopyWith<LocalizedErrorMessage> get copyWith => _$Localize
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalizedErrorMessage&&(identical(other.code, code) || other.code == code)&&(identical(other.localizedMessage, localizedMessage) || other.localizedMessage == localizedMessage)&&(identical(other.message, message) || other.message == message)&&(identical(other.stripeErrorCode, stripeErrorCode) || other.stripeErrorCode == stripeErrorCode)&&(identical(other.declineCode, declineCode) || other.declineCode == declineCode)&&(identical(other.type, type) || other.type == type));
+  final _this = this as LocalizedErrorMessage;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalizedErrorMessage&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.localizedMessage, _this.localizedMessage) || other.localizedMessage == _this.localizedMessage)&&(identical(other.message, _this.message) || other.message == _this.message)&&(identical(other.stripeErrorCode, _this.stripeErrorCode) || other.stripeErrorCode == _this.stripeErrorCode)&&(identical(other.declineCode, _this.declineCode) || other.declineCode == _this.declineCode)&&(identical(other.type, _this.type) || other.type == _this.type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,localizedMessage,message,stripeErrorCode,declineCode,type);
+int get hashCode {
+  final _this = this as LocalizedErrorMessage;
+  return Object.hash(runtimeType,_this.code,_this.localizedMessage,_this.message,_this.stripeErrorCode,_this.declineCode,_this.type);
+}
 
 @override
 String toString() {
-  return 'LocalizedErrorMessage(code: $code, localizedMessage: $localizedMessage, message: $message, stripeErrorCode: $stripeErrorCode, declineCode: $declineCode, type: $type)';
+  final _this = this as LocalizedErrorMessage;
+  return 'LocalizedErrorMessage(code: ${_this.code}, localizedMessage: ${_this.localizedMessage}, message: ${_this.message}, stripeErrorCode: ${_this.stripeErrorCode}, declineCode: ${_this.declineCode}, type: ${_this.type})';
 }
 
 
@@ -628,7 +648,7 @@ class _$LocalizedErrorMessageCopyWithImpl<$Res>
 /// Create a copy of LocalizedErrorMessage
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? code = null,Object? localizedMessage = freezed,Object? message = freezed,Object? stripeErrorCode = freezed,Object? declineCode = freezed,Object? type = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(LocalizedErrorMessage(
 code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as FailureCode,localizedMessage: freezed == localizedMessage ? _self.localizedMessage : localizedMessage // ignore: cast_nullable_to_non_nullable
 as String?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
@@ -805,16 +825,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocalizedErrorMessage&&(identical(other.code, code) || other.code == code)&&(identical(other.localizedMessage, localizedMessage) || other.localizedMessage == localizedMessage)&&(identical(other.message, message) || other.message == message)&&(identical(other.stripeErrorCode, stripeErrorCode) || other.stripeErrorCode == stripeErrorCode)&&(identical(other.declineCode, declineCode) || other.declineCode == declineCode)&&(identical(other.type, type) || other.type == type));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocalizedErrorMessage&&(identical(other.code, code) || other.code == code)&&(identical(other.localizedMessage, localizedMessage) || other.localizedMessage == localizedMessage)&&(identical(other.message, message) || other.message == message)&&(identical(other.stripeErrorCode, stripeErrorCode) || other.stripeErrorCode == stripeErrorCode)&&(identical(other.declineCode, declineCode) || other.declineCode == declineCode)&&(identical(other.type, type) || other.type == type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,localizedMessage,message,stripeErrorCode,declineCode,type);
+int get hashCode {
+    return Object.hash(runtimeType,code,localizedMessage,message,stripeErrorCode,declineCode,type);
+}
 
 @override
 String toString() {
-  return 'LocalizedErrorMessage(code: $code, localizedMessage: $localizedMessage, message: $message, stripeErrorCode: $stripeErrorCode, declineCode: $declineCode, type: $type)';
+    return 'LocalizedErrorMessage(code: $code, localizedMessage: $localizedMessage, message: $message, stripeErrorCode: $stripeErrorCode, declineCode: $declineCode, type: $type)';
 }
 
 

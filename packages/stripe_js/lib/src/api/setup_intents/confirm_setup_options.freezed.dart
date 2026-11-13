@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirm_setup_options.dart';
@@ -9,6 +9,7 @@ part of 'confirm_setup_options.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -41,16 +42,21 @@ $ConfirmSetupOptionsCopyWith<ConfirmSetupOptions> get copyWith => _$ConfirmSetup
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmSetupOptions&&(identical(other.elements, elements) || other.elements == elements)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.confirmParams, confirmParams) || other.confirmParams == confirmParams)&&(identical(other.redirect, redirect) || other.redirect == redirect));
+  final _this = this as ConfirmSetupOptions;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmSetupOptions&&(identical(other.elements, _this.elements) || other.elements == _this.elements)&&(identical(other.clientSecret, _this.clientSecret) || other.clientSecret == _this.clientSecret)&&(identical(other.confirmParams, _this.confirmParams) || other.confirmParams == _this.confirmParams)&&(identical(other.redirect, _this.redirect) || other.redirect == _this.redirect));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,elements,clientSecret,confirmParams,redirect);
+int get hashCode {
+  final _this = this as ConfirmSetupOptions;
+  return Object.hash(runtimeType,_this.elements,_this.clientSecret,_this.confirmParams,_this.redirect);
+}
 
 @override
 String toString() {
-  return 'ConfirmSetupOptions(elements: $elements, clientSecret: $clientSecret, confirmParams: $confirmParams, redirect: $redirect)';
+  final _this = this as ConfirmSetupOptions;
+  return 'ConfirmSetupOptions(elements: ${_this.elements}, clientSecret: ${_this.clientSecret}, confirmParams: ${_this.confirmParams}, redirect: ${_this.redirect})';
 }
 
 
@@ -79,7 +85,7 @@ class _$ConfirmSetupOptionsCopyWithImpl<$Res>
 /// Create a copy of ConfirmSetupOptions
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? elements = null,Object? clientSecret = freezed,Object? confirmParams = null,Object? redirect = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmSetupOptions(
 elements: null == elements ? _self.elements : elements // ignore: cast_nullable_to_non_nullable
 as Elements,clientSecret: freezed == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
 as String?,confirmParams: null == confirmParams ? _self.confirmParams : confirmParams // ignore: cast_nullable_to_non_nullable
@@ -268,16 +274,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmSetupOptions&&(identical(other.elements, elements) || other.elements == elements)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.confirmParams, confirmParams) || other.confirmParams == confirmParams)&&(identical(other.redirect, redirect) || other.redirect == redirect));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmSetupOptions&&(identical(other.elements, elements) || other.elements == elements)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.confirmParams, confirmParams) || other.confirmParams == confirmParams)&&(identical(other.redirect, redirect) || other.redirect == redirect));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,elements,clientSecret,confirmParams,redirect);
+int get hashCode {
+    return Object.hash(runtimeType,elements,clientSecret,confirmParams,redirect);
+}
 
 @override
 String toString() {
-  return 'ConfirmSetupOptions(elements: $elements, clientSecret: $clientSecret, confirmParams: $confirmParams, redirect: $redirect)';
+    return 'ConfirmSetupOptions(elements: $elements, clientSecret: $clientSecret, confirmParams: $confirmParams, redirect: $redirect)';
 }
 
 
@@ -347,16 +355,21 @@ $ConfirmSetupParamsCopyWith<ConfirmSetupParams> get copyWith => _$ConfirmSetupPa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmSetupParams&&(identical(other.return_url, return_url) || other.return_url == return_url)&&(identical(other.confirmation_token, confirmation_token) || other.confirmation_token == confirmation_token));
+  final _this = this as ConfirmSetupParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmSetupParams&&(identical(other.return_url, _this.return_url) || other.return_url == _this.return_url)&&(identical(other.confirmation_token, _this.confirmation_token) || other.confirmation_token == _this.confirmation_token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,return_url,confirmation_token);
+int get hashCode {
+  final _this = this as ConfirmSetupParams;
+  return Object.hash(runtimeType,_this.return_url,_this.confirmation_token);
+}
 
 @override
 String toString() {
-  return 'ConfirmSetupParams(return_url: $return_url, confirmation_token: $confirmation_token)';
+  final _this = this as ConfirmSetupParams;
+  return 'ConfirmSetupParams(return_url: ${_this.return_url}, confirmation_token: ${_this.confirmation_token})';
 }
 
 
@@ -385,7 +398,7 @@ class _$ConfirmSetupParamsCopyWithImpl<$Res>
 /// Create a copy of ConfirmSetupParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? return_url = null,Object? confirmation_token = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmSetupParams(
 return_url: null == return_url ? _self.return_url : return_url // ignore: cast_nullable_to_non_nullable
 as String,confirmation_token: freezed == confirmation_token ? _self.confirmation_token : confirmation_token // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -551,16 +564,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmSetupParams&&(identical(other.return_url, return_url) || other.return_url == return_url)&&(identical(other.confirmation_token, confirmation_token) || other.confirmation_token == confirmation_token));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmSetupParams&&(identical(other.return_url, return_url) || other.return_url == return_url)&&(identical(other.confirmation_token, confirmation_token) || other.confirmation_token == confirmation_token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,return_url,confirmation_token);
+int get hashCode {
+    return Object.hash(runtimeType,return_url,confirmation_token);
+}
 
 @override
 String toString() {
-  return 'ConfirmSetupParams(return_url: $return_url, confirmation_token: $confirmation_token)';
+    return 'ConfirmSetupParams(return_url: $return_url, confirmation_token: $confirmation_token)';
 }
 
 

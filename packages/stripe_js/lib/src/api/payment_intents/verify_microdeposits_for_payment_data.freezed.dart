@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'verify_microdeposits_for_payment_data.dart';
@@ -9,6 +9,7 @@ part of 'verify_microdeposits_for_payment_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -33,16 +34,21 @@ $VerifyMicrodepositsForPaymentDataCopyWith<VerifyMicrodepositsForPaymentData> ge
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VerifyMicrodepositsForPaymentData&&const DeepCollectionEquality().equals(other.amounts, amounts)&&(identical(other.descriptorCode, descriptorCode) || other.descriptorCode == descriptorCode));
+  final _this = this as VerifyMicrodepositsForPaymentData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VerifyMicrodepositsForPaymentData&&const DeepCollectionEquality().equals(other.amounts, _this.amounts)&&(identical(other.descriptorCode, _this.descriptorCode) || other.descriptorCode == _this.descriptorCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(amounts),descriptorCode);
+int get hashCode {
+  final _this = this as VerifyMicrodepositsForPaymentData;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.amounts),_this.descriptorCode);
+}
 
 @override
 String toString() {
-  return 'VerifyMicrodepositsForPaymentData(amounts: $amounts, descriptorCode: $descriptorCode)';
+  final _this = this as VerifyMicrodepositsForPaymentData;
+  return 'VerifyMicrodepositsForPaymentData(amounts: ${_this.amounts}, descriptorCode: ${_this.descriptorCode})';
 }
 
 
@@ -71,7 +77,7 @@ class _$VerifyMicrodepositsForPaymentDataCopyWithImpl<$Res>
 /// Create a copy of VerifyMicrodepositsForPaymentData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? amounts = freezed,Object? descriptorCode = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(VerifyMicrodepositsForPaymentData(
 amounts: freezed == amounts ? _self.amounts : amounts // ignore: cast_nullable_to_non_nullable
 as List<int>?,descriptorCode: freezed == descriptorCode ? _self.descriptorCode : descriptorCode // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -215,7 +221,7 @@ return $default(_that.amounts,_that.descriptorCode);case _:
 @JsonSerializable()
 
 class _VerifyMicrodepositsForPaymentData implements VerifyMicrodepositsForPaymentData {
-  const _VerifyMicrodepositsForPaymentData({final  List<int>? amounts, @JsonKey(name: 'descriptor_code') this.descriptorCode}): _amounts = amounts;
+  const _VerifyMicrodepositsForPaymentData({ List<int>? amounts, @JsonKey(name: 'descriptor_code') this.descriptorCode}): _amounts = amounts;
   factory _VerifyMicrodepositsForPaymentData.fromJson(Map<String, dynamic> json) => _$VerifyMicrodepositsForPaymentDataFromJson(json);
 
 /// The amounts of the microdeposits that were deposited on the
@@ -250,16 +256,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VerifyMicrodepositsForPaymentData&&const DeepCollectionEquality().equals(other._amounts, _amounts)&&(identical(other.descriptorCode, descriptorCode) || other.descriptorCode == descriptorCode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VerifyMicrodepositsForPaymentData&&const DeepCollectionEquality().equals(other.amounts, _amounts)&&(identical(other.descriptorCode, descriptorCode) || other.descriptorCode == descriptorCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_amounts),descriptorCode);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_amounts),descriptorCode);
+}
 
 @override
 String toString() {
-  return 'VerifyMicrodepositsForPaymentData(amounts: $amounts, descriptorCode: $descriptorCode)';
+    return 'VerifyMicrodepositsForPaymentData(amounts: $amounts, descriptorCode: $descriptorCode)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'intent_creation_callback_params.dart';
@@ -9,6 +9,7 @@ part of 'intent_creation_callback_params.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -30,16 +31,21 @@ $IntentCreationCallbackParamsCopyWith<IntentCreationCallbackParams> get copyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentCreationCallbackParams&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.error, error) || other.error == error));
+  final _this = this as IntentCreationCallbackParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntentCreationCallbackParams&&(identical(other.clientSecret, _this.clientSecret) || other.clientSecret == _this.clientSecret)&&(identical(other.error, _this.error) || other.error == _this.error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clientSecret,error);
+int get hashCode {
+  final _this = this as IntentCreationCallbackParams;
+  return Object.hash(runtimeType,_this.clientSecret,_this.error);
+}
 
 @override
 String toString() {
-  return 'IntentCreationCallbackParams(clientSecret: $clientSecret, error: $error)';
+  final _this = this as IntentCreationCallbackParams;
+  return 'IntentCreationCallbackParams(clientSecret: ${_this.clientSecret}, error: ${_this.error})';
 }
 
 
@@ -68,7 +74,7 @@ class _$IntentCreationCallbackParamsCopyWithImpl<$Res>
 /// Create a copy of IntentCreationCallbackParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? clientSecret = freezed,Object? error = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(IntentCreationCallbackParams(
 clientSecret: freezed == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
 as String?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as StripeException?,
@@ -245,16 +251,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntentCreationCallbackParams&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntentCreationCallbackParams&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.error, error) || other.error == error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clientSecret,error);
+int get hashCode {
+    return Object.hash(runtimeType,clientSecret,error);
+}
 
 @override
 String toString() {
-  return 'IntentCreationCallbackParams(clientSecret: $clientSecret, error: $error)';
+    return 'IntentCreationCallbackParams(clientSecret: $clientSecret, error: $error)';
 }
 
 

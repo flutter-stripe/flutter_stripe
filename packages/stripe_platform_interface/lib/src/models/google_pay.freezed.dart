@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'google_pay.dart';
@@ -9,6 +9,7 @@ part of 'google_pay.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -34,16 +35,21 @@ $PresentGooglePayParamsCopyWith<PresentGooglePayParams> get copyWith => _$Presen
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PresentGooglePayParams&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.forSetupIntent, forSetupIntent) || other.forSetupIntent == forSetupIntent)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode));
+  final _this = this as PresentGooglePayParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PresentGooglePayParams&&(identical(other.clientSecret, _this.clientSecret) || other.clientSecret == _this.clientSecret)&&(identical(other.forSetupIntent, _this.forSetupIntent) || other.forSetupIntent == _this.forSetupIntent)&&(identical(other.currencyCode, _this.currencyCode) || other.currencyCode == _this.currencyCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clientSecret,forSetupIntent,currencyCode);
+int get hashCode {
+  final _this = this as PresentGooglePayParams;
+  return Object.hash(runtimeType,_this.clientSecret,_this.forSetupIntent,_this.currencyCode);
+}
 
 @override
 String toString() {
-  return 'PresentGooglePayParams(clientSecret: $clientSecret, forSetupIntent: $forSetupIntent, currencyCode: $currencyCode)';
+  final _this = this as PresentGooglePayParams;
+  return 'PresentGooglePayParams(clientSecret: ${_this.clientSecret}, forSetupIntent: ${_this.forSetupIntent}, currencyCode: ${_this.currencyCode})';
 }
 
 
@@ -72,7 +78,7 @@ class _$PresentGooglePayParamsCopyWithImpl<$Res>
 /// Create a copy of PresentGooglePayParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? clientSecret = null,Object? forSetupIntent = null,Object? currencyCode = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PresentGooglePayParams(
 clientSecret: null == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
 as String,forSetupIntent: null == forSetupIntent ? _self.forSetupIntent : forSetupIntent // ignore: cast_nullable_to_non_nullable
 as bool,currencyCode: freezed == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
@@ -243,16 +249,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PresentGooglePayParams&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.forSetupIntent, forSetupIntent) || other.forSetupIntent == forSetupIntent)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PresentGooglePayParams&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.forSetupIntent, forSetupIntent) || other.forSetupIntent == forSetupIntent)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clientSecret,forSetupIntent,currencyCode);
+int get hashCode {
+    return Object.hash(runtimeType,clientSecret,forSetupIntent,currencyCode);
+}
 
 @override
 String toString() {
-  return 'PresentGooglePayParams(clientSecret: $clientSecret, forSetupIntent: $forSetupIntent, currencyCode: $currencyCode)';
+    return 'PresentGooglePayParams(clientSecret: $clientSecret, forSetupIntent: $forSetupIntent, currencyCode: $currencyCode)';
 }
 
 
@@ -318,16 +326,21 @@ $GooglePayInitParamsCopyWith<GooglePayInitParams> get copyWith => _$GooglePayIni
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GooglePayInitParams&&(identical(other.merchantName, merchantName) || other.merchantName == merchantName)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.billingAddressConfig, billingAddressConfig) || other.billingAddressConfig == billingAddressConfig)&&(identical(other.isEmailRequired, isEmailRequired) || other.isEmailRequired == isEmailRequired)&&(identical(other.existingPaymentMethodRequired, existingPaymentMethodRequired) || other.existingPaymentMethodRequired == existingPaymentMethodRequired)&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount));
+  final _this = this as GooglePayInitParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GooglePayInitParams&&(identical(other.merchantName, _this.merchantName) || other.merchantName == _this.merchantName)&&(identical(other.countryCode, _this.countryCode) || other.countryCode == _this.countryCode)&&(identical(other.testEnv, _this.testEnv) || other.testEnv == _this.testEnv)&&(identical(other.billingAddressConfig, _this.billingAddressConfig) || other.billingAddressConfig == _this.billingAddressConfig)&&(identical(other.isEmailRequired, _this.isEmailRequired) || other.isEmailRequired == _this.isEmailRequired)&&(identical(other.existingPaymentMethodRequired, _this.existingPaymentMethodRequired) || other.existingPaymentMethodRequired == _this.existingPaymentMethodRequired)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.amount, _this.amount) || other.amount == _this.amount));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,merchantName,countryCode,testEnv,billingAddressConfig,isEmailRequired,existingPaymentMethodRequired,label,amount);
+int get hashCode {
+  final _this = this as GooglePayInitParams;
+  return Object.hash(runtimeType,_this.merchantName,_this.countryCode,_this.testEnv,_this.billingAddressConfig,_this.isEmailRequired,_this.existingPaymentMethodRequired,_this.label,_this.amount);
+}
 
 @override
 String toString() {
-  return 'GooglePayInitParams(merchantName: $merchantName, countryCode: $countryCode, testEnv: $testEnv, billingAddressConfig: $billingAddressConfig, isEmailRequired: $isEmailRequired, existingPaymentMethodRequired: $existingPaymentMethodRequired, label: $label, amount: $amount)';
+  final _this = this as GooglePayInitParams;
+  return 'GooglePayInitParams(merchantName: ${_this.merchantName}, countryCode: ${_this.countryCode}, testEnv: ${_this.testEnv}, billingAddressConfig: ${_this.billingAddressConfig}, isEmailRequired: ${_this.isEmailRequired}, existingPaymentMethodRequired: ${_this.existingPaymentMethodRequired}, label: ${_this.label}, amount: ${_this.amount})';
 }
 
 
@@ -356,7 +369,7 @@ class _$GooglePayInitParamsCopyWithImpl<$Res>
 /// Create a copy of GooglePayInitParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? merchantName = null,Object? countryCode = null,Object? testEnv = null,Object? billingAddressConfig = freezed,Object? isEmailRequired = null,Object? existingPaymentMethodRequired = null,Object? label = freezed,Object? amount = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(GooglePayInitParams(
 merchantName: null == merchantName ? _self.merchantName : merchantName // ignore: cast_nullable_to_non_nullable
 as String,countryCode: null == countryCode ? _self.countryCode : countryCode // ignore: cast_nullable_to_non_nullable
 as String,testEnv: null == testEnv ? _self.testEnv : testEnv // ignore: cast_nullable_to_non_nullable
@@ -552,16 +565,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GooglePayInitParams&&(identical(other.merchantName, merchantName) || other.merchantName == merchantName)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.billingAddressConfig, billingAddressConfig) || other.billingAddressConfig == billingAddressConfig)&&(identical(other.isEmailRequired, isEmailRequired) || other.isEmailRequired == isEmailRequired)&&(identical(other.existingPaymentMethodRequired, existingPaymentMethodRequired) || other.existingPaymentMethodRequired == existingPaymentMethodRequired)&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GooglePayInitParams&&(identical(other.merchantName, merchantName) || other.merchantName == merchantName)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.billingAddressConfig, billingAddressConfig) || other.billingAddressConfig == billingAddressConfig)&&(identical(other.isEmailRequired, isEmailRequired) || other.isEmailRequired == isEmailRequired)&&(identical(other.existingPaymentMethodRequired, existingPaymentMethodRequired) || other.existingPaymentMethodRequired == existingPaymentMethodRequired)&&(identical(other.label, label) || other.label == label)&&(identical(other.amount, amount) || other.amount == amount));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,merchantName,countryCode,testEnv,billingAddressConfig,isEmailRequired,existingPaymentMethodRequired,label,amount);
+int get hashCode {
+    return Object.hash(runtimeType,merchantName,countryCode,testEnv,billingAddressConfig,isEmailRequired,existingPaymentMethodRequired,label,amount);
+}
 
 @override
 String toString() {
-  return 'GooglePayInitParams(merchantName: $merchantName, countryCode: $countryCode, testEnv: $testEnv, billingAddressConfig: $billingAddressConfig, isEmailRequired: $isEmailRequired, existingPaymentMethodRequired: $existingPaymentMethodRequired, label: $label, amount: $amount)';
+    return 'GooglePayInitParams(merchantName: $merchantName, countryCode: $countryCode, testEnv: $testEnv, billingAddressConfig: $billingAddressConfig, isEmailRequired: $isEmailRequired, existingPaymentMethodRequired: $existingPaymentMethodRequired, label: $label, amount: $amount)';
 }
 
 
@@ -640,16 +655,21 @@ $BillingAddressConfigCopyWith<BillingAddressConfig> get copyWith => _$BillingAdd
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BillingAddressConfig&&(identical(other.isRequired, isRequired) || other.isRequired == isRequired)&&(identical(other.format, format) || other.format == format)&&(identical(other.isPhoneNumberRequired, isPhoneNumberRequired) || other.isPhoneNumberRequired == isPhoneNumberRequired));
+  final _this = this as BillingAddressConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BillingAddressConfig&&(identical(other.isRequired, _this.isRequired) || other.isRequired == _this.isRequired)&&(identical(other.format, _this.format) || other.format == _this.format)&&(identical(other.isPhoneNumberRequired, _this.isPhoneNumberRequired) || other.isPhoneNumberRequired == _this.isPhoneNumberRequired));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isRequired,format,isPhoneNumberRequired);
+int get hashCode {
+  final _this = this as BillingAddressConfig;
+  return Object.hash(runtimeType,_this.isRequired,_this.format,_this.isPhoneNumberRequired);
+}
 
 @override
 String toString() {
-  return 'BillingAddressConfig(isRequired: $isRequired, format: $format, isPhoneNumberRequired: $isPhoneNumberRequired)';
+  final _this = this as BillingAddressConfig;
+  return 'BillingAddressConfig(isRequired: ${_this.isRequired}, format: ${_this.format}, isPhoneNumberRequired: ${_this.isPhoneNumberRequired})';
 }
 
 
@@ -678,7 +698,7 @@ class _$BillingAddressConfigCopyWithImpl<$Res>
 /// Create a copy of BillingAddressConfig
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? isRequired = freezed,Object? format = freezed,Object? isPhoneNumberRequired = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(BillingAddressConfig(
 isRequired: freezed == isRequired ? _self.isRequired : isRequired // ignore: cast_nullable_to_non_nullable
 as bool?,format: freezed == format ? _self.format : format // ignore: cast_nullable_to_non_nullable
 as BillingAddressFormat?,isPhoneNumberRequired: freezed == isPhoneNumberRequired ? _self.isPhoneNumberRequired : isPhoneNumberRequired // ignore: cast_nullable_to_non_nullable
@@ -848,16 +868,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillingAddressConfig&&(identical(other.isRequired, isRequired) || other.isRequired == isRequired)&&(identical(other.format, format) || other.format == format)&&(identical(other.isPhoneNumberRequired, isPhoneNumberRequired) || other.isPhoneNumberRequired == isPhoneNumberRequired));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillingAddressConfig&&(identical(other.isRequired, isRequired) || other.isRequired == isRequired)&&(identical(other.format, format) || other.format == format)&&(identical(other.isPhoneNumberRequired, isPhoneNumberRequired) || other.isPhoneNumberRequired == isPhoneNumberRequired));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isRequired,format,isPhoneNumberRequired);
+int get hashCode {
+    return Object.hash(runtimeType,isRequired,format,isPhoneNumberRequired);
+}
 
 @override
 String toString() {
-  return 'BillingAddressConfig(isRequired: $isRequired, format: $format, isPhoneNumberRequired: $isPhoneNumberRequired)';
+    return 'BillingAddressConfig(isRequired: $isRequired, format: $format, isPhoneNumberRequired: $isPhoneNumberRequired)';
 }
 
 
@@ -921,16 +943,21 @@ $CreateGooglePayPaymentParamsCopyWith<CreateGooglePayPaymentParams> get copyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateGooglePayPaymentParams&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.amount, amount) || other.amount == amount));
+  final _this = this as CreateGooglePayPaymentParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateGooglePayPaymentParams&&(identical(other.currencyCode, _this.currencyCode) || other.currencyCode == _this.currencyCode)&&(identical(other.amount, _this.amount) || other.amount == _this.amount));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,currencyCode,amount);
+int get hashCode {
+  final _this = this as CreateGooglePayPaymentParams;
+  return Object.hash(runtimeType,_this.currencyCode,_this.amount);
+}
 
 @override
 String toString() {
-  return 'CreateGooglePayPaymentParams(currencyCode: $currencyCode, amount: $amount)';
+  final _this = this as CreateGooglePayPaymentParams;
+  return 'CreateGooglePayPaymentParams(currencyCode: ${_this.currencyCode}, amount: ${_this.amount})';
 }
 
 
@@ -959,7 +986,7 @@ class _$CreateGooglePayPaymentParamsCopyWithImpl<$Res>
 /// Create a copy of CreateGooglePayPaymentParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? currencyCode = null,Object? amount = null,}) {
-  return _then(_self.copyWith(
+  return _then(CreateGooglePayPaymentParams(
 currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
 as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as int,
@@ -1129,16 +1156,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateGooglePayPaymentParams&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.amount, amount) || other.amount == amount));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateGooglePayPaymentParams&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.amount, amount) || other.amount == amount));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,currencyCode,amount);
+int get hashCode {
+    return Object.hash(runtimeType,currencyCode,amount);
+}
 
 @override
 String toString() {
-  return 'CreateGooglePayPaymentParams(currencyCode: $currencyCode, amount: $amount)';
+    return 'CreateGooglePayPaymentParams(currencyCode: $currencyCode, amount: $amount)';
 }
 
 
@@ -1188,10 +1217,7 @@ mixin _$IsGooglePaySupportedParams {
 /// customers google Pay wallet has an existing payment method configured.
 ///
 /// Defaults to `false`.
- bool get existingPaymentMethodRequired;// When set to true it allow users without NFC-enabled devices to add cards to the wallet.
-//
-//NFC is required for paying in stores. Defaults to `true`. Set this to `false`
- bool get supportsTapToPay;
+ bool get existingPaymentMethodRequired; bool get supportsTapToPay;
 /// Create a copy of IsGooglePaySupportedParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1204,16 +1230,21 @@ $IsGooglePaySupportedParamsCopyWith<IsGooglePaySupportedParams> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IsGooglePaySupportedParams&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.existingPaymentMethodRequired, existingPaymentMethodRequired) || other.existingPaymentMethodRequired == existingPaymentMethodRequired)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
+  final _this = this as IsGooglePaySupportedParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IsGooglePaySupportedParams&&(identical(other.testEnv, _this.testEnv) || other.testEnv == _this.testEnv)&&(identical(other.existingPaymentMethodRequired, _this.existingPaymentMethodRequired) || other.existingPaymentMethodRequired == _this.existingPaymentMethodRequired)&&(identical(other.supportsTapToPay, _this.supportsTapToPay) || other.supportsTapToPay == _this.supportsTapToPay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,testEnv,existingPaymentMethodRequired,supportsTapToPay);
+int get hashCode {
+  final _this = this as IsGooglePaySupportedParams;
+  return Object.hash(runtimeType,_this.testEnv,_this.existingPaymentMethodRequired,_this.supportsTapToPay);
+}
 
 @override
 String toString() {
-  return 'IsGooglePaySupportedParams(testEnv: $testEnv, existingPaymentMethodRequired: $existingPaymentMethodRequired, supportsTapToPay: $supportsTapToPay)';
+  final _this = this as IsGooglePaySupportedParams;
+  return 'IsGooglePaySupportedParams(testEnv: ${_this.testEnv}, existingPaymentMethodRequired: ${_this.existingPaymentMethodRequired}, supportsTapToPay: ${_this.supportsTapToPay})';
 }
 
 
@@ -1242,7 +1273,7 @@ class _$IsGooglePaySupportedParamsCopyWithImpl<$Res>
 /// Create a copy of IsGooglePaySupportedParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? testEnv = null,Object? existingPaymentMethodRequired = null,Object? supportsTapToPay = null,}) {
-  return _then(_self.copyWith(
+  return _then(IsGooglePaySupportedParams(
 testEnv: null == testEnv ? _self.testEnv : testEnv // ignore: cast_nullable_to_non_nullable
 as bool,existingPaymentMethodRequired: null == existingPaymentMethodRequired ? _self.existingPaymentMethodRequired : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
 as bool,supportsTapToPay: null == supportsTapToPay ? _self.supportsTapToPay : supportsTapToPay // ignore: cast_nullable_to_non_nullable
@@ -1399,9 +1430,6 @@ class _IsGooglePaySupportedParams implements IsGooglePaySupportedParams {
 ///
 /// Defaults to `false`.
 @override@JsonKey() final  bool existingPaymentMethodRequired;
-// When set to true it allow users without NFC-enabled devices to add cards to the wallet.
-//
-//NFC is required for paying in stores. Defaults to `true`. Set this to `false`
 @override@JsonKey() final  bool supportsTapToPay;
 
 /// Create a copy of IsGooglePaySupportedParams
@@ -1417,16 +1445,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IsGooglePaySupportedParams&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.existingPaymentMethodRequired, existingPaymentMethodRequired) || other.existingPaymentMethodRequired == existingPaymentMethodRequired)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IsGooglePaySupportedParams&&(identical(other.testEnv, testEnv) || other.testEnv == testEnv)&&(identical(other.existingPaymentMethodRequired, existingPaymentMethodRequired) || other.existingPaymentMethodRequired == existingPaymentMethodRequired)&&(identical(other.supportsTapToPay, supportsTapToPay) || other.supportsTapToPay == supportsTapToPay));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,testEnv,existingPaymentMethodRequired,supportsTapToPay);
+int get hashCode {
+    return Object.hash(runtimeType,testEnv,existingPaymentMethodRequired,supportsTapToPay);
+}
 
 @override
 String toString() {
-  return 'IsGooglePaySupportedParams(testEnv: $testEnv, existingPaymentMethodRequired: $existingPaymentMethodRequired, supportsTapToPay: $supportsTapToPay)';
+    return 'IsGooglePaySupportedParams(testEnv: $testEnv, existingPaymentMethodRequired: $existingPaymentMethodRequired, supportsTapToPay: $supportsTapToPay)';
 }
 
 

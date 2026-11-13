@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'collect_bank_account_for_payment_params.dart';
@@ -9,6 +9,7 @@ part of 'collect_bank_account_for_payment_params.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -31,16 +32,21 @@ $CollectBankAccountForPaymentParamsCopyWith<CollectBankAccountForPaymentParams> 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountForPaymentParams&&(identical(other.paymentMethodType, paymentMethodType) || other.paymentMethodType == paymentMethodType)&&(identical(other.paymentMethodData, paymentMethodData) || other.paymentMethodData == paymentMethodData));
+  final _this = this as CollectBankAccountForPaymentParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountForPaymentParams&&(identical(other.paymentMethodType, _this.paymentMethodType) || other.paymentMethodType == _this.paymentMethodType)&&(identical(other.paymentMethodData, _this.paymentMethodData) || other.paymentMethodData == _this.paymentMethodData));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethodType,paymentMethodData);
+int get hashCode {
+  final _this = this as CollectBankAccountForPaymentParams;
+  return Object.hash(runtimeType,_this.paymentMethodType,_this.paymentMethodData);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountForPaymentParams(paymentMethodType: $paymentMethodType, paymentMethodData: $paymentMethodData)';
+  final _this = this as CollectBankAccountForPaymentParams;
+  return 'CollectBankAccountForPaymentParams(paymentMethodType: ${_this.paymentMethodType}, paymentMethodData: ${_this.paymentMethodData})';
 }
 
 
@@ -69,7 +75,7 @@ class _$CollectBankAccountForPaymentParamsCopyWithImpl<$Res>
 /// Create a copy of CollectBankAccountForPaymentParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? paymentMethodType = null,Object? paymentMethodData = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CollectBankAccountForPaymentParams(
 paymentMethodType: null == paymentMethodType ? _self.paymentMethodType : paymentMethodType // ignore: cast_nullable_to_non_nullable
 as String,paymentMethodData: freezed == paymentMethodData ? _self.paymentMethodData : paymentMethodData // ignore: cast_nullable_to_non_nullable
 as CollectBankAccountForPaymentMethodData?,
@@ -247,16 +253,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountForPaymentParams&&(identical(other.paymentMethodType, paymentMethodType) || other.paymentMethodType == paymentMethodType)&&(identical(other.paymentMethodData, paymentMethodData) || other.paymentMethodData == paymentMethodData));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountForPaymentParams&&(identical(other.paymentMethodType, paymentMethodType) || other.paymentMethodType == paymentMethodType)&&(identical(other.paymentMethodData, paymentMethodData) || other.paymentMethodData == paymentMethodData));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethodType,paymentMethodData);
+int get hashCode {
+    return Object.hash(runtimeType,paymentMethodType,paymentMethodData);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountForPaymentParams(paymentMethodType: $paymentMethodType, paymentMethodData: $paymentMethodData)';
+    return 'CollectBankAccountForPaymentParams(paymentMethodType: $paymentMethodType, paymentMethodData: $paymentMethodData)';
 }
 
 
@@ -325,16 +333,21 @@ $CollectBankAccountForPaymentMethodDataCopyWith<CollectBankAccountForPaymentMeth
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountForPaymentMethodData&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+  final _this = this as CollectBankAccountForPaymentMethodData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectBankAccountForPaymentMethodData&&(identical(other.billingDetails, _this.billingDetails) || other.billingDetails == _this.billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,billingDetails);
+int get hashCode {
+  final _this = this as CollectBankAccountForPaymentMethodData;
+  return Object.hash(runtimeType,_this.billingDetails);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountForPaymentMethodData(billingDetails: $billingDetails)';
+  final _this = this as CollectBankAccountForPaymentMethodData;
+  return 'CollectBankAccountForPaymentMethodData(billingDetails: ${_this.billingDetails})';
 }
 
 
@@ -363,7 +376,7 @@ class _$CollectBankAccountForPaymentMethodDataCopyWithImpl<$Res>
 /// Create a copy of CollectBankAccountForPaymentMethodData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? billingDetails = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CollectBankAccountForPaymentMethodData(
 billingDetails: freezed == billingDetails ? _self.billingDetails : billingDetails // ignore: cast_nullable_to_non_nullable
 as BillingDetails?,
   ));
@@ -537,16 +550,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountForPaymentMethodData&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectBankAccountForPaymentMethodData&&(identical(other.billingDetails, billingDetails) || other.billingDetails == billingDetails));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,billingDetails);
+int get hashCode {
+    return Object.hash(runtimeType,billingDetails);
+}
 
 @override
 String toString() {
-  return 'CollectBankAccountForPaymentMethodData(billingDetails: $billingDetails)';
+    return 'CollectBankAccountForPaymentMethodData(billingDetails: $billingDetails)';
 }
 
 

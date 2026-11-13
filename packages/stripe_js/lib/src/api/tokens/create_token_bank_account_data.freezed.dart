@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'create_token_bank_account_data.dart';
@@ -9,6 +9,7 @@ part of 'create_token_bank_account_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -29,16 +30,21 @@ $CreateTokenBankAccountDataCopyWith<CreateTokenBankAccountData> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTokenBankAccountData&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.accountType, accountType) || other.accountType == accountType));
+  final _this = this as CreateTokenBankAccountData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTokenBankAccountData&&(identical(other.country, _this.country) || other.country == _this.country)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.routingNumber, _this.routingNumber) || other.routingNumber == _this.routingNumber)&&(identical(other.accountNumber, _this.accountNumber) || other.accountNumber == _this.accountNumber)&&(identical(other.accountHolderName, _this.accountHolderName) || other.accountHolderName == _this.accountHolderName)&&(identical(other.accountHolderType, _this.accountHolderType) || other.accountHolderType == _this.accountHolderType)&&(identical(other.accountType, _this.accountType) || other.accountType == _this.accountType));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,country,currency,routingNumber,accountNumber,accountHolderName,accountHolderType,accountType);
+int get hashCode {
+  final _this = this as CreateTokenBankAccountData;
+  return Object.hash(runtimeType,_this.country,_this.currency,_this.routingNumber,_this.accountNumber,_this.accountHolderName,_this.accountHolderType,_this.accountType);
+}
 
 @override
 String toString() {
-  return 'CreateTokenBankAccountData(country: $country, currency: $currency, routingNumber: $routingNumber, accountNumber: $accountNumber, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, accountType: $accountType)';
+  final _this = this as CreateTokenBankAccountData;
+  return 'CreateTokenBankAccountData(country: ${_this.country}, currency: ${_this.currency}, routingNumber: ${_this.routingNumber}, accountNumber: ${_this.accountNumber}, accountHolderName: ${_this.accountHolderName}, accountHolderType: ${_this.accountHolderType}, accountType: ${_this.accountType})';
 }
 
 
@@ -67,7 +73,7 @@ class _$CreateTokenBankAccountDataCopyWithImpl<$Res>
 /// Create a copy of CreateTokenBankAccountData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? country = null,Object? currency = null,Object? routingNumber = freezed,Object? accountNumber = null,Object? accountHolderName = freezed,Object? accountHolderType = freezed,Object? accountType = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CreateTokenBankAccountData(
 country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
 as String,currency: null == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
 as String,routingNumber: freezed == routingNumber ? _self.routingNumber : routingNumber // ignore: cast_nullable_to_non_nullable
@@ -241,16 +247,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenBankAccountData&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.accountType, accountType) || other.accountType == accountType));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenBankAccountData&&(identical(other.country, country) || other.country == country)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.routingNumber, routingNumber) || other.routingNumber == routingNumber)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.accountHolderName, accountHolderName) || other.accountHolderName == accountHolderName)&&(identical(other.accountHolderType, accountHolderType) || other.accountHolderType == accountHolderType)&&(identical(other.accountType, accountType) || other.accountType == accountType));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,country,currency,routingNumber,accountNumber,accountHolderName,accountHolderType,accountType);
+int get hashCode {
+    return Object.hash(runtimeType,country,currency,routingNumber,accountNumber,accountHolderName,accountHolderType,accountType);
+}
 
 @override
 String toString() {
-  return 'CreateTokenBankAccountData(country: $country, currency: $currency, routingNumber: $routingNumber, accountNumber: $accountNumber, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, accountType: $accountType)';
+    return 'CreateTokenBankAccountData(country: $country, currency: $currency, routingNumber: $routingNumber, accountNumber: $accountNumber, accountHolderName: $accountHolderName, accountHolderType: $accountHolderType, accountType: $accountType)';
 }
 
 

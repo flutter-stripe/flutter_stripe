@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_intent_shipping_information.dart';
@@ -9,6 +9,7 @@ part of 'payment_intent_shipping_information.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -16,7 +17,6 @@ T _$identity<T>(T value) => value;
 mixin _$PaymentElementShippingDetails {
 
 /// The Elements instance that was used to create the Payment Element.
-//  @ElementsConverter() required Elements elements,
 /// Parameters that will be passed on to the Stripe API.
 /// Refer to the Payment Intents API for a full list of parameters.
  String? get trackingNumber;
@@ -32,16 +32,21 @@ $PaymentElementShippingDetailsCopyWith<PaymentElementShippingDetails> get copyWi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentElementShippingDetails&&(identical(other.trackingNumber, trackingNumber) || other.trackingNumber == trackingNumber));
+  final _this = this as PaymentElementShippingDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentElementShippingDetails&&(identical(other.trackingNumber, _this.trackingNumber) || other.trackingNumber == _this.trackingNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,trackingNumber);
+int get hashCode {
+  final _this = this as PaymentElementShippingDetails;
+  return Object.hash(runtimeType,_this.trackingNumber);
+}
 
 @override
 String toString() {
-  return 'PaymentElementShippingDetails(trackingNumber: $trackingNumber)';
+  final _this = this as PaymentElementShippingDetails;
+  return 'PaymentElementShippingDetails(trackingNumber: ${_this.trackingNumber})';
 }
 
 
@@ -70,7 +75,7 @@ class _$PaymentElementShippingDetailsCopyWithImpl<$Res>
 /// Create a copy of PaymentElementShippingDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? trackingNumber = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentElementShippingDetails(
 trackingNumber: freezed == trackingNumber ? _self.trackingNumber : trackingNumber // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -217,7 +222,6 @@ class _PaymentElementShippingDetails implements PaymentElementShippingDetails {
   factory _PaymentElementShippingDetails.fromJson(Map<String, dynamic> json) => _$PaymentElementShippingDetailsFromJson(json);
 
 /// The Elements instance that was used to create the Payment Element.
-//  @ElementsConverter() required Elements elements,
 /// Parameters that will be passed on to the Stripe API.
 /// Refer to the Payment Intents API for a full list of parameters.
 @override final  String? trackingNumber;
@@ -235,16 +239,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementShippingDetails&&(identical(other.trackingNumber, trackingNumber) || other.trackingNumber == trackingNumber));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentElementShippingDetails&&(identical(other.trackingNumber, trackingNumber) || other.trackingNumber == trackingNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,trackingNumber);
+int get hashCode {
+    return Object.hash(runtimeType,trackingNumber);
+}
 
 @override
 String toString() {
-  return 'PaymentElementShippingDetails(trackingNumber: $trackingNumber)';
+    return 'PaymentElementShippingDetails(trackingNumber: $trackingNumber)';
 }
 
 

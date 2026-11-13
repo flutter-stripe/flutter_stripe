@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'setup_intent.dart';
@@ -9,6 +9,7 @@ part of 'setup_intent.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -47,16 +48,21 @@ $SetupIntentCopyWith<SetupIntent> get copyWith => _$SetupIntentCopyWithImpl<Setu
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SetupIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.paymentMethodId, paymentMethodId) || other.paymentMethodId == paymentMethodId)&&(identical(other.usage, usage) || other.usage == usage)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, paymentMethodTypes)&&(identical(other.description, description) || other.description == description)&&(identical(other.created, created) || other.created == created)&&(identical(other.lastSetupError, lastSetupError) || other.lastSetupError == lastSetupError)&&(identical(other.nextAction, nextAction) || other.nextAction == nextAction)&&(identical(other.mandateData, mandateData) || other.mandateData == mandateData));
+  final _this = this as SetupIntent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SetupIntent&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.livemode, _this.livemode) || other.livemode == _this.livemode)&&(identical(other.clientSecret, _this.clientSecret) || other.clientSecret == _this.clientSecret)&&(identical(other.paymentMethodId, _this.paymentMethodId) || other.paymentMethodId == _this.paymentMethodId)&&(identical(other.usage, _this.usage) || other.usage == _this.usage)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, _this.paymentMethodTypes)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.created, _this.created) || other.created == _this.created)&&(identical(other.lastSetupError, _this.lastSetupError) || other.lastSetupError == _this.lastSetupError)&&(identical(other.nextAction, _this.nextAction) || other.nextAction == _this.nextAction)&&(identical(other.mandateData, _this.mandateData) || other.mandateData == _this.mandateData));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,status,livemode,clientSecret,paymentMethodId,usage,const DeepCollectionEquality().hash(paymentMethodTypes),description,created,lastSetupError,nextAction,mandateData);
+int get hashCode {
+  final _this = this as SetupIntent;
+  return Object.hash(runtimeType,_this.id,_this.status,_this.livemode,_this.clientSecret,_this.paymentMethodId,_this.usage,const DeepCollectionEquality().hash(_this.paymentMethodTypes),_this.description,_this.created,_this.lastSetupError,_this.nextAction,_this.mandateData);
+}
 
 @override
 String toString() {
-  return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction, mandateData: $mandateData)';
+  final _this = this as SetupIntent;
+  return 'SetupIntent(id: ${_this.id}, status: ${_this.status}, livemode: ${_this.livemode}, clientSecret: ${_this.clientSecret}, paymentMethodId: ${_this.paymentMethodId}, usage: ${_this.usage}, paymentMethodTypes: ${_this.paymentMethodTypes}, description: ${_this.description}, created: ${_this.created}, lastSetupError: ${_this.lastSetupError}, nextAction: ${_this.nextAction}, mandateData: ${_this.mandateData})';
 }
 
 
@@ -85,7 +91,7 @@ class _$SetupIntentCopyWithImpl<$Res>
 /// Create a copy of SetupIntent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = null,Object? livemode = null,Object? clientSecret = null,Object? paymentMethodId = null,Object? usage = null,Object? paymentMethodTypes = null,Object? description = freezed,Object? created = freezed,Object? lastSetupError = freezed,Object? nextAction = freezed,Object? mandateData = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(SetupIntent(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as String,livemode: null == livemode ? _self.livemode : livemode // ignore: cast_nullable_to_non_nullable
@@ -275,7 +281,7 @@ return $default(_that.id,_that.status,_that.livemode,_that.clientSecret,_that.pa
 
 @JsonSerializable(explicitToJson: true)
 class _SetupIntent implements SetupIntent {
-  const _SetupIntent({required this.id, required this.status, required this.livemode, required this.clientSecret, @JsonKey(readValue: _readPaymentMethodId) required this.paymentMethodId, required this.usage, required final  List<PaymentMethodType> paymentMethodTypes, this.description, this.created, this.lastSetupError, this.nextAction, this.mandateData}): _paymentMethodTypes = paymentMethodTypes;
+  const _SetupIntent({required this.id, required this.status, required this.livemode, required this.clientSecret, @JsonKey(readValue: _readPaymentMethodId) required this.paymentMethodId, required this.usage, required  List<PaymentMethodType> paymentMethodTypes, this.description, this.created, this.lastSetupError, this.nextAction, this.mandateData}): _paymentMethodTypes = paymentMethodTypes;
   factory _SetupIntent.fromJson(Map<String, dynamic> json) => _$SetupIntentFromJson(json);
 
 /// Unique identifier.
@@ -330,16 +336,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SetupIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.paymentMethodId, paymentMethodId) || other.paymentMethodId == paymentMethodId)&&(identical(other.usage, usage) || other.usage == usage)&&const DeepCollectionEquality().equals(other._paymentMethodTypes, _paymentMethodTypes)&&(identical(other.description, description) || other.description == description)&&(identical(other.created, created) || other.created == created)&&(identical(other.lastSetupError, lastSetupError) || other.lastSetupError == lastSetupError)&&(identical(other.nextAction, nextAction) || other.nextAction == nextAction)&&(identical(other.mandateData, mandateData) || other.mandateData == mandateData));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SetupIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.paymentMethodId, paymentMethodId) || other.paymentMethodId == paymentMethodId)&&(identical(other.usage, usage) || other.usage == usage)&&const DeepCollectionEquality().equals(other.paymentMethodTypes, _paymentMethodTypes)&&(identical(other.description, description) || other.description == description)&&(identical(other.created, created) || other.created == created)&&(identical(other.lastSetupError, lastSetupError) || other.lastSetupError == lastSetupError)&&(identical(other.nextAction, nextAction) || other.nextAction == nextAction)&&(identical(other.mandateData, mandateData) || other.mandateData == mandateData));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,status,livemode,clientSecret,paymentMethodId,usage,const DeepCollectionEquality().hash(_paymentMethodTypes),description,created,lastSetupError,nextAction,mandateData);
+int get hashCode {
+    return Object.hash(runtimeType,id,status,livemode,clientSecret,paymentMethodId,usage,const DeepCollectionEquality().hash(_paymentMethodTypes),description,created,lastSetupError,nextAction,mandateData);
+}
 
 @override
 String toString() {
-  return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction, mandateData: $mandateData)';
+    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction, mandateData: $mandateData)';
 }
 
 
@@ -443,16 +451,21 @@ $LastSetupErrorCopyWith<LastSetupError> get copyWith => _$LastSetupErrorCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LastSetupError&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message));
+  final _this = this as LastSetupError;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LastSetupError&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.message, _this.message) || other.message == _this.message));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,message);
+int get hashCode {
+  final _this = this as LastSetupError;
+  return Object.hash(runtimeType,_this.code,_this.message);
+}
 
 @override
 String toString() {
-  return 'LastSetupError(code: $code, message: $message)';
+  final _this = this as LastSetupError;
+  return 'LastSetupError(code: ${_this.code}, message: ${_this.message})';
 }
 
 
@@ -481,7 +494,7 @@ class _$LastSetupErrorCopyWithImpl<$Res>
 /// Create a copy of LastSetupError
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? code = null,Object? message = null,}) {
-  return _then(_self.copyWith(
+  return _then(LastSetupError(
 code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
@@ -646,16 +659,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LastSetupError&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LastSetupError&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,message);
+int get hashCode {
+    return Object.hash(runtimeType,code,message);
+}
 
 @override
 String toString() {
-  return 'LastSetupError(code: $code, message: $message)';
+    return 'LastSetupError(code: $code, message: $message)';
 }
 
 

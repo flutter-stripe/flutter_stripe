@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'financial_connections.dart';
@@ -9,6 +9,7 @@ part of 'financial_connections.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $FinancialConnectionSessionResultCopyWith<FinancialConnectionSessionResult> get 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionSessionResult&&(identical(other.session, session) || other.session == session));
+  final _this = this as FinancialConnectionSessionResult;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionSessionResult&&(identical(other.session, _this.session) || other.session == _this.session));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,session);
+int get hashCode {
+  final _this = this as FinancialConnectionSessionResult;
+  return Object.hash(runtimeType,_this.session);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionSessionResult(session: $session)';
+  final _this = this as FinancialConnectionSessionResult;
+  return 'FinancialConnectionSessionResult(session: ${_this.session})';
 }
 
 
@@ -66,7 +72,7 @@ class _$FinancialConnectionSessionResultCopyWithImpl<$Res>
 /// Create a copy of FinancialConnectionSessionResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? session = null,}) {
-  return _then(_self.copyWith(
+  return _then(FinancialConnectionSessionResult(
 session: null == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
 as FinancialConnectionSession,
   ));
@@ -236,16 +242,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionSessionResult&&(identical(other.session, session) || other.session == session));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionSessionResult&&(identical(other.session, session) || other.session == session));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,session);
+int get hashCode {
+    return Object.hash(runtimeType,session);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionSessionResult(session: $session)';
+    return 'FinancialConnectionSessionResult(session: $session)';
 }
 
 
@@ -309,16 +317,21 @@ $FinancialConnectionTokenResultCopyWith<FinancialConnectionTokenResult> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionTokenResult&&(identical(other.session, session) || other.session == session)&&(identical(other.token, token) || other.token == token));
+  final _this = this as FinancialConnectionTokenResult;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionTokenResult&&(identical(other.session, _this.session) || other.session == _this.session)&&(identical(other.token, _this.token) || other.token == _this.token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,session,token);
+int get hashCode {
+  final _this = this as FinancialConnectionTokenResult;
+  return Object.hash(runtimeType,_this.session,_this.token);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionTokenResult(session: $session, token: $token)';
+  final _this = this as FinancialConnectionTokenResult;
+  return 'FinancialConnectionTokenResult(session: ${_this.session}, token: ${_this.token})';
 }
 
 
@@ -347,7 +360,7 @@ class _$FinancialConnectionTokenResultCopyWithImpl<$Res>
 /// Create a copy of FinancialConnectionTokenResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? session = null,Object? token = null,}) {
-  return _then(_self.copyWith(
+  return _then(FinancialConnectionTokenResult(
 session: null == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
 as FinancialConnectionSession,token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
 as FinancialConnectionBankAccountToken,
@@ -528,16 +541,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionTokenResult&&(identical(other.session, session) || other.session == session)&&(identical(other.token, token) || other.token == token));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionTokenResult&&(identical(other.session, session) || other.session == session)&&(identical(other.token, token) || other.token == token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,session,token);
+int get hashCode {
+    return Object.hash(runtimeType,session,token);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionTokenResult(session: $session, token: $token)';
+    return 'FinancialConnectionTokenResult(session: $session, token: $token)';
 }
 
 
@@ -615,16 +630,21 @@ $FinancialConnectionSessionCopyWith<FinancialConnectionSession> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionSession&&(identical(other.id, id) || other.id == id)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&const DeepCollectionEquality().equals(other.accounts, accounts));
+  final _this = this as FinancialConnectionSession;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionSession&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.clientSecret, _this.clientSecret) || other.clientSecret == _this.clientSecret)&&(identical(other.livemode, _this.livemode) || other.livemode == _this.livemode)&&const DeepCollectionEquality().equals(other.accounts, _this.accounts));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,clientSecret,livemode,const DeepCollectionEquality().hash(accounts));
+int get hashCode {
+  final _this = this as FinancialConnectionSession;
+  return Object.hash(runtimeType,_this.id,_this.clientSecret,_this.livemode,const DeepCollectionEquality().hash(_this.accounts));
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionSession(id: $id, clientSecret: $clientSecret, livemode: $livemode, accounts: $accounts)';
+  final _this = this as FinancialConnectionSession;
+  return 'FinancialConnectionSession(id: ${_this.id}, clientSecret: ${_this.clientSecret}, livemode: ${_this.livemode}, accounts: ${_this.accounts})';
 }
 
 
@@ -653,7 +673,7 @@ class _$FinancialConnectionSessionCopyWithImpl<$Res>
 /// Create a copy of FinancialConnectionSession
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? clientSecret = null,Object? livemode = null,Object? accounts = null,}) {
-  return _then(_self.copyWith(
+  return _then(FinancialConnectionSession(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,clientSecret: null == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
 as String,livemode: null == livemode ? _self.livemode : livemode // ignore: cast_nullable_to_non_nullable
@@ -799,7 +819,7 @@ return $default(_that.id,_that.clientSecret,_that.livemode,_that.accounts);case 
 
 @JsonSerializable(explicitToJson: true)
 class _FinancialConnectionSession implements FinancialConnectionSession {
-  const _FinancialConnectionSession({required this.id, required this.clientSecret, required this.livemode, required final  List<FinancialConnectionAccount> accounts}): _accounts = accounts;
+  const _FinancialConnectionSession({required this.id, required this.clientSecret, required this.livemode, required  List<FinancialConnectionAccount> accounts}): _accounts = accounts;
   factory _FinancialConnectionSession.fromJson(Map<String, dynamic> json) => _$FinancialConnectionSessionFromJson(json);
 
 /// Unique id for this session
@@ -831,16 +851,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionSession&&(identical(other.id, id) || other.id == id)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&const DeepCollectionEquality().equals(other._accounts, _accounts));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionSession&&(identical(other.id, id) || other.id == id)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&const DeepCollectionEquality().equals(other.accounts, _accounts));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,clientSecret,livemode,const DeepCollectionEquality().hash(_accounts));
+int get hashCode {
+    return Object.hash(runtimeType,id,clientSecret,livemode,const DeepCollectionEquality().hash(_accounts));
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionSession(id: $id, clientSecret: $clientSecret, livemode: $livemode, accounts: $accounts)';
+    return 'FinancialConnectionSession(id: $id, clientSecret: $clientSecret, livemode: $livemode, accounts: $accounts)';
 }
 
 
@@ -903,16 +925,21 @@ $FinancialConnectionBankAccountTokenCopyWith<FinancialConnectionBankAccountToken
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionBankAccountToken&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.id, id) || other.id == id)&&(identical(other.used, used) || other.used == used)&&(identical(other.created, created) || other.created == created));
+  final _this = this as FinancialConnectionBankAccountToken;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionBankAccountToken&&(identical(other.bankAccount, _this.bankAccount) || other.bankAccount == _this.bankAccount)&&(identical(other.livemode, _this.livemode) || other.livemode == _this.livemode)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.used, _this.used) || other.used == _this.used)&&(identical(other.created, _this.created) || other.created == _this.created));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,bankAccount,livemode,id,used,created);
+int get hashCode {
+  final _this = this as FinancialConnectionBankAccountToken;
+  return Object.hash(runtimeType,_this.bankAccount,_this.livemode,_this.id,_this.used,_this.created);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionBankAccountToken(bankAccount: $bankAccount, livemode: $livemode, id: $id, used: $used, created: $created)';
+  final _this = this as FinancialConnectionBankAccountToken;
+  return 'FinancialConnectionBankAccountToken(bankAccount: ${_this.bankAccount}, livemode: ${_this.livemode}, id: ${_this.id}, used: ${_this.used}, created: ${_this.created})';
 }
 
 
@@ -941,7 +968,7 @@ class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res>
 /// Create a copy of FinancialConnectionBankAccountToken
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? bankAccount = freezed,Object? livemode = null,Object? id = freezed,Object? used = null,Object? created = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(FinancialConnectionBankAccountToken(
 bankAccount: freezed == bankAccount ? _self.bankAccount : bankAccount // ignore: cast_nullable_to_non_nullable
 as BankAccount?,livemode: null == livemode ? _self.livemode : livemode // ignore: cast_nullable_to_non_nullable
 as bool,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
@@ -1127,16 +1154,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionBankAccountToken&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.id, id) || other.id == id)&&(identical(other.used, used) || other.used == used)&&(identical(other.created, created) || other.created == created));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionBankAccountToken&&(identical(other.bankAccount, bankAccount) || other.bankAccount == bankAccount)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.id, id) || other.id == id)&&(identical(other.used, used) || other.used == used)&&(identical(other.created, created) || other.created == created));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,bankAccount,livemode,id,used,created);
+int get hashCode {
+    return Object.hash(runtimeType,bankAccount,livemode,id,used,created);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionBankAccountToken(bankAccount: $bankAccount, livemode: $livemode, id: $id, used: $used, created: $created)';
+    return 'FinancialConnectionBankAccountToken(bankAccount: $bankAccount, livemode: $livemode, id: $id, used: $used, created: $created)';
 }
 
 
@@ -1220,16 +1249,21 @@ $FinancialConnectionAccountCopyWith<FinancialConnectionAccount> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.status, status) || other.status == status)&&(identical(other.institutionName, institutionName) || other.institutionName == institutionName)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.created, created) || other.created == created)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.balanceRefresh, balanceRefresh) || other.balanceRefresh == balanceRefresh)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&const DeepCollectionEquality().equals(other.permissions, permissions)&&const DeepCollectionEquality().equals(other.supportedPaymentMethodTypes, supportedPaymentMethodTypes));
+  final _this = this as FinancialConnectionAccount;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionAccount&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.livemode, _this.livemode) || other.livemode == _this.livemode)&&(identical(other.displayName, _this.displayName) || other.displayName == _this.displayName)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.institutionName, _this.institutionName) || other.institutionName == _this.institutionName)&&(identical(other.last4, _this.last4) || other.last4 == _this.last4)&&(identical(other.created, _this.created) || other.created == _this.created)&&(identical(other.balance, _this.balance) || other.balance == _this.balance)&&(identical(other.balanceRefresh, _this.balanceRefresh) || other.balanceRefresh == _this.balanceRefresh)&&(identical(other.category, _this.category) || other.category == _this.category)&&(identical(other.subcategory, _this.subcategory) || other.subcategory == _this.subcategory)&&const DeepCollectionEquality().equals(other.permissions, _this.permissions)&&const DeepCollectionEquality().equals(other.supportedPaymentMethodTypes, _this.supportedPaymentMethodTypes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,livemode,displayName,status,institutionName,last4,created,balance,balanceRefresh,category,subcategory,const DeepCollectionEquality().hash(permissions),const DeepCollectionEquality().hash(supportedPaymentMethodTypes));
+int get hashCode {
+  final _this = this as FinancialConnectionAccount;
+  return Object.hash(runtimeType,_this.id,_this.livemode,_this.displayName,_this.status,_this.institutionName,_this.last4,_this.created,_this.balance,_this.balanceRefresh,_this.category,_this.subcategory,const DeepCollectionEquality().hash(_this.permissions),const DeepCollectionEquality().hash(_this.supportedPaymentMethodTypes));
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionAccount(id: $id, livemode: $livemode, displayName: $displayName, status: $status, institutionName: $institutionName, last4: $last4, created: $created, balance: $balance, balanceRefresh: $balanceRefresh, category: $category, subcategory: $subcategory, permissions: $permissions, supportedPaymentMethodTypes: $supportedPaymentMethodTypes)';
+  final _this = this as FinancialConnectionAccount;
+  return 'FinancialConnectionAccount(id: ${_this.id}, livemode: ${_this.livemode}, displayName: ${_this.displayName}, status: ${_this.status}, institutionName: ${_this.institutionName}, last4: ${_this.last4}, created: ${_this.created}, balance: ${_this.balance}, balanceRefresh: ${_this.balanceRefresh}, category: ${_this.category}, subcategory: ${_this.subcategory}, permissions: ${_this.permissions}, supportedPaymentMethodTypes: ${_this.supportedPaymentMethodTypes})';
 }
 
 
@@ -1258,7 +1292,7 @@ class _$FinancialConnectionAccountCopyWithImpl<$Res>
 /// Create a copy of FinancialConnectionAccount
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? livemode = null,Object? displayName = freezed,Object? status = null,Object? institutionName = null,Object? last4 = freezed,Object? created = null,Object? balance = freezed,Object? balanceRefresh = freezed,Object? category = null,Object? subcategory = null,Object? permissions = freezed,Object? supportedPaymentMethodTypes = null,}) {
-  return _then(_self.copyWith(
+  return _then(FinancialConnectionAccount(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,livemode: null == livemode ? _self.livemode : livemode // ignore: cast_nullable_to_non_nullable
 as bool,displayName: freezed == displayName ? _self.displayName : displayName // ignore: cast_nullable_to_non_nullable
@@ -1437,7 +1471,7 @@ return $default(_that.id,_that.livemode,_that.displayName,_that.status,_that.ins
 
 @JsonSerializable(explicitToJson: true)
 class _FinancialConnectionAccount implements FinancialConnectionAccount {
-  const _FinancialConnectionAccount({required this.id, required this.livemode, this.displayName, required this.status, required this.institutionName, this.last4, required this.created, this.balance, this.balanceRefresh, required this.category, required this.subcategory, final  List<AccountPermission>? permissions, required final  List<FinancialConnectionsPaymentMethodType> supportedPaymentMethodTypes}): _permissions = permissions,_supportedPaymentMethodTypes = supportedPaymentMethodTypes;
+  const _FinancialConnectionAccount({required this.id, required this.livemode, this.displayName, required this.status, required this.institutionName, this.last4, required this.created, this.balance, this.balanceRefresh, required this.category, required this.subcategory,  List<AccountPermission>? permissions, required  List<FinancialConnectionsPaymentMethodType> supportedPaymentMethodTypes}): _permissions = permissions,_supportedPaymentMethodTypes = supportedPaymentMethodTypes;
   factory _FinancialConnectionAccount.fromJson(Map<String, dynamic> json) => _$FinancialConnectionAccountFromJson(json);
 
 /// Unique id for this Financial connection account.
@@ -1496,16 +1530,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.status, status) || other.status == status)&&(identical(other.institutionName, institutionName) || other.institutionName == institutionName)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.created, created) || other.created == created)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.balanceRefresh, balanceRefresh) || other.balanceRefresh == balanceRefresh)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&const DeepCollectionEquality().equals(other._permissions, _permissions)&&const DeepCollectionEquality().equals(other._supportedPaymentMethodTypes, _supportedPaymentMethodTypes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.status, status) || other.status == status)&&(identical(other.institutionName, institutionName) || other.institutionName == institutionName)&&(identical(other.last4, last4) || other.last4 == last4)&&(identical(other.created, created) || other.created == created)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.balanceRefresh, balanceRefresh) || other.balanceRefresh == balanceRefresh)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&const DeepCollectionEquality().equals(other.permissions, _permissions)&&const DeepCollectionEquality().equals(other.supportedPaymentMethodTypes, _supportedPaymentMethodTypes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,livemode,displayName,status,institutionName,last4,created,balance,balanceRefresh,category,subcategory,const DeepCollectionEquality().hash(_permissions),const DeepCollectionEquality().hash(_supportedPaymentMethodTypes));
+int get hashCode {
+    return Object.hash(runtimeType,id,livemode,displayName,status,institutionName,last4,created,balance,balanceRefresh,category,subcategory,const DeepCollectionEquality().hash(_permissions),const DeepCollectionEquality().hash(_supportedPaymentMethodTypes));
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionAccount(id: $id, livemode: $livemode, displayName: $displayName, status: $status, institutionName: $institutionName, last4: $last4, created: $created, balance: $balance, balanceRefresh: $balanceRefresh, category: $category, subcategory: $subcategory, permissions: $permissions, supportedPaymentMethodTypes: $supportedPaymentMethodTypes)';
+    return 'FinancialConnectionAccount(id: $id, livemode: $livemode, displayName: $displayName, status: $status, institutionName: $institutionName, last4: $last4, created: $created, balance: $balance, balanceRefresh: $balanceRefresh, category: $category, subcategory: $subcategory, permissions: $permissions, supportedPaymentMethodTypes: $supportedPaymentMethodTypes)';
 }
 
 
@@ -1598,16 +1634,21 @@ $BalanceRefreshCopyWith<BalanceRefresh> get copyWith => _$BalanceRefreshCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BalanceRefresh&&(identical(other.status, status) || other.status == status)&&(identical(other.lastAttemptedAt, lastAttemptedAt) || other.lastAttemptedAt == lastAttemptedAt));
+  final _this = this as BalanceRefresh;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BalanceRefresh&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.lastAttemptedAt, _this.lastAttemptedAt) || other.lastAttemptedAt == _this.lastAttemptedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,lastAttemptedAt);
+int get hashCode {
+  final _this = this as BalanceRefresh;
+  return Object.hash(runtimeType,_this.status,_this.lastAttemptedAt);
+}
 
 @override
 String toString() {
-  return 'BalanceRefresh(status: $status, lastAttemptedAt: $lastAttemptedAt)';
+  final _this = this as BalanceRefresh;
+  return 'BalanceRefresh(status: ${_this.status}, lastAttemptedAt: ${_this.lastAttemptedAt})';
 }
 
 
@@ -1636,7 +1677,7 @@ class _$BalanceRefreshCopyWithImpl<$Res>
 /// Create a copy of BalanceRefresh
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? lastAttemptedAt = null,}) {
-  return _then(_self.copyWith(
+  return _then(BalanceRefresh(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as BalanceRefreshStatus,lastAttemptedAt: null == lastAttemptedAt ? _self.lastAttemptedAt : lastAttemptedAt // ignore: cast_nullable_to_non_nullable
 as int,
@@ -1801,16 +1842,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BalanceRefresh&&(identical(other.status, status) || other.status == status)&&(identical(other.lastAttemptedAt, lastAttemptedAt) || other.lastAttemptedAt == lastAttemptedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BalanceRefresh&&(identical(other.status, status) || other.status == status)&&(identical(other.lastAttemptedAt, lastAttemptedAt) || other.lastAttemptedAt == lastAttemptedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,lastAttemptedAt);
+int get hashCode {
+    return Object.hash(runtimeType,status,lastAttemptedAt);
+}
 
 @override
 String toString() {
-  return 'BalanceRefresh(status: $status, lastAttemptedAt: $lastAttemptedAt)';
+    return 'BalanceRefresh(status: $status, lastAttemptedAt: $lastAttemptedAt)';
 }
 
 
@@ -1881,16 +1924,21 @@ $AccountBalanceCopyWith<AccountBalance> get copyWith => _$AccountBalanceCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AccountBalance&&(identical(other.asOf, asOf) || other.asOf == asOf)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.cash, cash)&&const DeepCollectionEquality().equals(other.credit, credit)&&const DeepCollectionEquality().equals(other.current, current));
+  final _this = this as AccountBalance;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AccountBalance&&(identical(other.asOf, _this.asOf) || other.asOf == _this.asOf)&&(identical(other.type, _this.type) || other.type == _this.type)&&const DeepCollectionEquality().equals(other.cash, _this.cash)&&const DeepCollectionEquality().equals(other.credit, _this.credit)&&const DeepCollectionEquality().equals(other.current, _this.current));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,asOf,type,const DeepCollectionEquality().hash(cash),const DeepCollectionEquality().hash(credit),const DeepCollectionEquality().hash(current));
+int get hashCode {
+  final _this = this as AccountBalance;
+  return Object.hash(runtimeType,_this.asOf,_this.type,const DeepCollectionEquality().hash(_this.cash),const DeepCollectionEquality().hash(_this.credit),const DeepCollectionEquality().hash(_this.current));
+}
 
 @override
 String toString() {
-  return 'AccountBalance(asOf: $asOf, type: $type, cash: $cash, credit: $credit, current: $current)';
+  final _this = this as AccountBalance;
+  return 'AccountBalance(asOf: ${_this.asOf}, type: ${_this.type}, cash: ${_this.cash}, credit: ${_this.credit}, current: ${_this.current})';
 }
 
 
@@ -1919,7 +1967,7 @@ class _$AccountBalanceCopyWithImpl<$Res>
 /// Create a copy of AccountBalance
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? asOf = null,Object? type = null,Object? cash = freezed,Object? credit = freezed,Object? current = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AccountBalance(
 asOf: null == asOf ? _self.asOf : asOf // ignore: cast_nullable_to_non_nullable
 as int,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as BalanceType,cash: freezed == cash ? _self.cash : cash // ignore: cast_nullable_to_non_nullable
@@ -2066,7 +2114,7 @@ return $default(_that.asOf,_that.type,_that.cash,_that.credit,_that.current);cas
 
 @JsonSerializable(explicitToJson: true)
 class _AccountBalance implements AccountBalance {
-  const _AccountBalance({required this.asOf, required this.type, final  Map<String, int>? cash, final  Map<String, int>? credit, final  Map<String, int>? current}): _cash = cash,_credit = credit,_current = current;
+  const _AccountBalance({required this.asOf, required this.type,  Map<String, int>? cash,  Map<String, int>? credit,  Map<String, int>? current}): _cash = cash,_credit = credit,_current = current;
   factory _AccountBalance.fromJson(Map<String, dynamic> json) => _$AccountBalanceFromJson(json);
 
 /// Unix timestamp in milliseconds of time the external instition calculated this balance.
@@ -2140,16 +2188,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AccountBalance&&(identical(other.asOf, asOf) || other.asOf == asOf)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._cash, _cash)&&const DeepCollectionEquality().equals(other._credit, _credit)&&const DeepCollectionEquality().equals(other._current, _current));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AccountBalance&&(identical(other.asOf, asOf) || other.asOf == asOf)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.cash, _cash)&&const DeepCollectionEquality().equals(other.credit, _credit)&&const DeepCollectionEquality().equals(other.current, _current));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,asOf,type,const DeepCollectionEquality().hash(_cash),const DeepCollectionEquality().hash(_credit),const DeepCollectionEquality().hash(_current));
+int get hashCode {
+    return Object.hash(runtimeType,asOf,type,const DeepCollectionEquality().hash(_cash),const DeepCollectionEquality().hash(_credit),const DeepCollectionEquality().hash(_current));
+}
 
 @override
 String toString() {
-  return 'AccountBalance(asOf: $asOf, type: $type, cash: $cash, credit: $credit, current: $current)';
+    return 'AccountBalance(asOf: $asOf, type: $type, cash: $cash, credit: $credit, current: $current)';
 }
 
 
@@ -2211,16 +2261,21 @@ $CollectFinancialConnectionsAccountsParamsCopyWith<CollectFinancialConnectionsAc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectFinancialConnectionsAccountsParams&&(identical(other.style, style) || other.style == style)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent)&&(identical(other.connectedAccountId, connectedAccountId) || other.connectedAccountId == connectedAccountId));
+  final _this = this as CollectFinancialConnectionsAccountsParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectFinancialConnectionsAccountsParams&&(identical(other.style, _this.style) || other.style == _this.style)&&(identical(other.onEvent, _this.onEvent) || other.onEvent == _this.onEvent)&&(identical(other.connectedAccountId, _this.connectedAccountId) || other.connectedAccountId == _this.connectedAccountId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,style,onEvent,connectedAccountId);
+int get hashCode {
+  final _this = this as CollectFinancialConnectionsAccountsParams;
+  return Object.hash(runtimeType,_this.style,_this.onEvent,_this.connectedAccountId);
+}
 
 @override
 String toString() {
-  return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent, connectedAccountId: $connectedAccountId)';
+  final _this = this as CollectFinancialConnectionsAccountsParams;
+  return 'CollectFinancialConnectionsAccountsParams(style: ${_this.style}, onEvent: ${_this.onEvent}, connectedAccountId: ${_this.connectedAccountId})';
 }
 
 
@@ -2249,7 +2304,7 @@ class _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res>
 /// Create a copy of CollectFinancialConnectionsAccountsParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? style = freezed,Object? onEvent = freezed,Object? connectedAccountId = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CollectFinancialConnectionsAccountsParams(
 style: freezed == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
 as UserInterfaceStyle?,onEvent: freezed == onEvent ? _self.onEvent : onEvent // ignore: cast_nullable_to_non_nullable
 as FinancialConnectionsEventHandler?,connectedAccountId: freezed == connectedAccountId ? _self.connectedAccountId : connectedAccountId // ignore: cast_nullable_to_non_nullable
@@ -2417,16 +2472,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectFinancialConnectionsAccountsParams&&(identical(other.style, style) || other.style == style)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent)&&(identical(other.connectedAccountId, connectedAccountId) || other.connectedAccountId == connectedAccountId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectFinancialConnectionsAccountsParams&&(identical(other.style, style) || other.style == style)&&(identical(other.onEvent, onEvent) || other.onEvent == onEvent)&&(identical(other.connectedAccountId, connectedAccountId) || other.connectedAccountId == connectedAccountId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,style,onEvent,connectedAccountId);
+int get hashCode {
+    return Object.hash(runtimeType,style,onEvent,connectedAccountId);
+}
 
 @override
 String toString() {
-  return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent, connectedAccountId: $connectedAccountId)';
+    return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent, connectedAccountId: $connectedAccountId)';
 }
 
 
@@ -2486,16 +2543,21 @@ $FinancialConnectionsEventCopyWith<FinancialConnectionsEvent> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionsEvent&&(identical(other.name, name) || other.name == name)&&(identical(other.financialConnectionsSessionId, financialConnectionsSessionId) || other.financialConnectionsSessionId == financialConnectionsSessionId)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+  final _this = this as FinancialConnectionsEvent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionsEvent&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.financialConnectionsSessionId, _this.financialConnectionsSessionId) || other.financialConnectionsSessionId == _this.financialConnectionsSessionId)&&(identical(other.metadata, _this.metadata) || other.metadata == _this.metadata));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,financialConnectionsSessionId,metadata);
+int get hashCode {
+  final _this = this as FinancialConnectionsEvent;
+  return Object.hash(runtimeType,_this.name,_this.financialConnectionsSessionId,_this.metadata);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionsEvent(name: $name, financialConnectionsSessionId: $financialConnectionsSessionId, metadata: $metadata)';
+  final _this = this as FinancialConnectionsEvent;
+  return 'FinancialConnectionsEvent(name: ${_this.name}, financialConnectionsSessionId: ${_this.financialConnectionsSessionId}, metadata: ${_this.metadata})';
 }
 
 
@@ -2524,7 +2586,7 @@ class _$FinancialConnectionsEventCopyWithImpl<$Res>
 /// Create a copy of FinancialConnectionsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? financialConnectionsSessionId = freezed,Object? metadata = null,}) {
-  return _then(_self.copyWith(
+  return _then(FinancialConnectionsEvent(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as FinancialConnectionsEventName,financialConnectionsSessionId: freezed == financialConnectionsSessionId ? _self.financialConnectionsSessionId : financialConnectionsSessionId // ignore: cast_nullable_to_non_nullable
 as String?,metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
@@ -2701,16 +2763,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionsEvent&&(identical(other.name, name) || other.name == name)&&(identical(other.financialConnectionsSessionId, financialConnectionsSessionId) || other.financialConnectionsSessionId == financialConnectionsSessionId)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionsEvent&&(identical(other.name, name) || other.name == name)&&(identical(other.financialConnectionsSessionId, financialConnectionsSessionId) || other.financialConnectionsSessionId == financialConnectionsSessionId)&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,financialConnectionsSessionId,metadata);
+int get hashCode {
+    return Object.hash(runtimeType,name,financialConnectionsSessionId,metadata);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionsEvent(name: $name, financialConnectionsSessionId: $financialConnectionsSessionId, metadata: $metadata)';
+    return 'FinancialConnectionsEvent(name: $name, financialConnectionsSessionId: $financialConnectionsSessionId, metadata: $metadata)';
 }
 
 
@@ -2779,16 +2843,21 @@ $FinancialConnectionsEventMetadataCopyWith<FinancialConnectionsEventMetadata> ge
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionsEventMetadata&&(identical(other.manualEntry, manualEntry) || other.manualEntry == manualEntry)&&(identical(other.institutionName, institutionName) || other.institutionName == institutionName)&&(identical(other.errorCode, errorCode) || other.errorCode == errorCode));
+  final _this = this as FinancialConnectionsEventMetadata;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FinancialConnectionsEventMetadata&&(identical(other.manualEntry, _this.manualEntry) || other.manualEntry == _this.manualEntry)&&(identical(other.institutionName, _this.institutionName) || other.institutionName == _this.institutionName)&&(identical(other.errorCode, _this.errorCode) || other.errorCode == _this.errorCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,manualEntry,institutionName,errorCode);
+int get hashCode {
+  final _this = this as FinancialConnectionsEventMetadata;
+  return Object.hash(runtimeType,_this.manualEntry,_this.institutionName,_this.errorCode);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionsEventMetadata(manualEntry: $manualEntry, institutionName: $institutionName, errorCode: $errorCode)';
+  final _this = this as FinancialConnectionsEventMetadata;
+  return 'FinancialConnectionsEventMetadata(manualEntry: ${_this.manualEntry}, institutionName: ${_this.institutionName}, errorCode: ${_this.errorCode})';
 }
 
 
@@ -2817,7 +2886,7 @@ class _$FinancialConnectionsEventMetadataCopyWithImpl<$Res>
 /// Create a copy of FinancialConnectionsEventMetadata
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? manualEntry = freezed,Object? institutionName = freezed,Object? errorCode = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(FinancialConnectionsEventMetadata(
 manualEntry: freezed == manualEntry ? _self.manualEntry : manualEntry // ignore: cast_nullable_to_non_nullable
 as bool?,institutionName: freezed == institutionName ? _self.institutionName : institutionName // ignore: cast_nullable_to_non_nullable
 as String?,errorCode: freezed == errorCode ? _self.errorCode : errorCode // ignore: cast_nullable_to_non_nullable
@@ -2985,16 +3054,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionsEventMetadata&&(identical(other.manualEntry, manualEntry) || other.manualEntry == manualEntry)&&(identical(other.institutionName, institutionName) || other.institutionName == institutionName)&&(identical(other.errorCode, errorCode) || other.errorCode == errorCode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FinancialConnectionsEventMetadata&&(identical(other.manualEntry, manualEntry) || other.manualEntry == manualEntry)&&(identical(other.institutionName, institutionName) || other.institutionName == institutionName)&&(identical(other.errorCode, errorCode) || other.errorCode == errorCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,manualEntry,institutionName,errorCode);
+int get hashCode {
+    return Object.hash(runtimeType,manualEntry,institutionName,errorCode);
+}
 
 @override
 String toString() {
-  return 'FinancialConnectionsEventMetadata(manualEntry: $manualEntry, institutionName: $institutionName, errorCode: $errorCode)';
+    return 'FinancialConnectionsEventMetadata(manualEntry: $manualEntry, institutionName: $institutionName, errorCode: $errorCode)';
 }
 
 

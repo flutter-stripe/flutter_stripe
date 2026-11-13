@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'address.dart';
@@ -9,6 +9,7 @@ part of 'address.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -31,16 +32,21 @@ $AddressDetailsCopyWith<AddressDetails> get copyWith => _$AddressDetailsCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddressDetails&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
+  final _this = this as AddressDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddressDetails&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.address, _this.address) || other.address == _this.address)&&(identical(other.phoneNumber, _this.phoneNumber) || other.phoneNumber == _this.phoneNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,address,phoneNumber);
+int get hashCode {
+  final _this = this as AddressDetails;
+  return Object.hash(runtimeType,_this.name,_this.address,_this.phoneNumber);
+}
 
 @override
 String toString() {
-  return 'AddressDetails(name: $name, address: $address, phoneNumber: $phoneNumber)';
+  final _this = this as AddressDetails;
+  return 'AddressDetails(name: ${_this.name}, address: ${_this.address}, phoneNumber: ${_this.phoneNumber})';
 }
 
 
@@ -69,7 +75,7 @@ class _$AddressDetailsCopyWithImpl<$Res>
 /// Create a copy of AddressDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? address = freezed,Object? phoneNumber = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AddressDetails(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
 as Address?,phoneNumber: freezed == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -249,16 +255,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddressDetails&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddressDetails&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,address,phoneNumber);
+int get hashCode {
+    return Object.hash(runtimeType,name,address,phoneNumber);
+}
 
 @override
 String toString() {
-  return 'AddressDetails(name: $name, address: $address, phoneNumber: $phoneNumber)';
+    return 'AddressDetails(name: $name, address: $address, phoneNumber: $phoneNumber)';
 }
 
 
@@ -333,16 +341,21 @@ $AddressCopyWith<Address> get copyWith => _$AddressCopyWithImpl<Address>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Address&&(identical(other.city, city) || other.city == city)&&(identical(other.country, country) || other.country == country)&&(identical(other.line1, line1) || other.line1 == line1)&&(identical(other.line2, line2) || other.line2 == line2)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.state, state) || other.state == state));
+  final _this = this as Address;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Address&&(identical(other.city, _this.city) || other.city == _this.city)&&(identical(other.country, _this.country) || other.country == _this.country)&&(identical(other.line1, _this.line1) || other.line1 == _this.line1)&&(identical(other.line2, _this.line2) || other.line2 == _this.line2)&&(identical(other.postalCode, _this.postalCode) || other.postalCode == _this.postalCode)&&(identical(other.state, _this.state) || other.state == _this.state));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,city,country,line1,line2,postalCode,state);
+int get hashCode {
+  final _this = this as Address;
+  return Object.hash(runtimeType,_this.city,_this.country,_this.line1,_this.line2,_this.postalCode,_this.state);
+}
 
 @override
 String toString() {
-  return 'Address(city: $city, country: $country, line1: $line1, line2: $line2, postalCode: $postalCode, state: $state)';
+  final _this = this as Address;
+  return 'Address(city: ${_this.city}, country: ${_this.country}, line1: ${_this.line1}, line2: ${_this.line2}, postalCode: ${_this.postalCode}, state: ${_this.state})';
 }
 
 
@@ -371,7 +384,7 @@ class _$AddressCopyWithImpl<$Res>
 /// Create a copy of Address
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? city = freezed,Object? country = freezed,Object? line1 = freezed,Object? line2 = freezed,Object? postalCode = freezed,Object? state = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Address(
 city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
 as String?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
 as String?,line1: freezed == line1 ? _self.line1 : line1 // ignore: cast_nullable_to_non_nullable
@@ -548,16 +561,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Address&&(identical(other.city, city) || other.city == city)&&(identical(other.country, country) || other.country == country)&&(identical(other.line1, line1) || other.line1 == line1)&&(identical(other.line2, line2) || other.line2 == line2)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.state, state) || other.state == state));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Address&&(identical(other.city, city) || other.city == city)&&(identical(other.country, country) || other.country == country)&&(identical(other.line1, line1) || other.line1 == line1)&&(identical(other.line2, line2) || other.line2 == line2)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.state, state) || other.state == state));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,city,country,line1,line2,postalCode,state);
+int get hashCode {
+    return Object.hash(runtimeType,city,country,line1,line2,postalCode,state);
+}
 
 @override
 String toString() {
-  return 'Address(city: $city, country: $country, line1: $line1, line2: $line2, postalCode: $postalCode, state: $state)';
+    return 'Address(city: $city, country: $country, line1: $line1, line2: $line2, postalCode: $postalCode, state: $state)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_intents.dart';
@@ -9,6 +9,7 @@ part of 'payment_intents.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -48,16 +49,21 @@ $PaymentIntentCopyWith<PaymentIntent> get copyWith => _$PaymentIntentCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.created, created) || other.created == created)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.status, status) || other.status == status)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.captureMethod, captureMethod) || other.captureMethod == captureMethod)&&(identical(other.confirmationMethod, confirmationMethod) || other.confirmationMethod == confirmationMethod)&&(identical(other.paymentMethodId, paymentMethodId) || other.paymentMethodId == paymentMethodId)&&(identical(other.description, description) || other.description == description)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.nextAction, nextAction) || other.nextAction == nextAction)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.mandateData, mandateData) || other.mandateData == mandateData)&&(identical(other.latestCharge, latestCharge) || other.latestCharge == latestCharge));
+  final _this = this as PaymentIntent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentIntent&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.created, _this.created) || other.created == _this.created)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.clientSecret, _this.clientSecret) || other.clientSecret == _this.clientSecret)&&(identical(other.livemode, _this.livemode) || other.livemode == _this.livemode)&&(identical(other.captureMethod, _this.captureMethod) || other.captureMethod == _this.captureMethod)&&(identical(other.confirmationMethod, _this.confirmationMethod) || other.confirmationMethod == _this.confirmationMethod)&&(identical(other.paymentMethodId, _this.paymentMethodId) || other.paymentMethodId == _this.paymentMethodId)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.receiptEmail, _this.receiptEmail) || other.receiptEmail == _this.receiptEmail)&&(identical(other.canceledAt, _this.canceledAt) || other.canceledAt == _this.canceledAt)&&(identical(other.nextAction, _this.nextAction) || other.nextAction == _this.nextAction)&&(identical(other.shipping, _this.shipping) || other.shipping == _this.shipping)&&(identical(other.mandateData, _this.mandateData) || other.mandateData == _this.mandateData)&&(identical(other.latestCharge, _this.latestCharge) || other.latestCharge == _this.latestCharge));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,amount,created,currency,status,clientSecret,livemode,captureMethod,confirmationMethod,paymentMethodId,description,receiptEmail,canceledAt,nextAction,shipping,mandateData,latestCharge);
+int get hashCode {
+  final _this = this as PaymentIntent;
+  return Object.hash(runtimeType,_this.id,_this.amount,_this.created,_this.currency,_this.status,_this.clientSecret,_this.livemode,_this.captureMethod,_this.confirmationMethod,_this.paymentMethodId,_this.description,_this.receiptEmail,_this.canceledAt,_this.nextAction,_this.shipping,_this.mandateData,_this.latestCharge);
+}
 
 @override
 String toString() {
-  return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData, latestCharge: $latestCharge)';
+  final _this = this as PaymentIntent;
+  return 'PaymentIntent(id: ${_this.id}, amount: ${_this.amount}, created: ${_this.created}, currency: ${_this.currency}, status: ${_this.status}, clientSecret: ${_this.clientSecret}, livemode: ${_this.livemode}, captureMethod: ${_this.captureMethod}, confirmationMethod: ${_this.confirmationMethod}, paymentMethodId: ${_this.paymentMethodId}, description: ${_this.description}, receiptEmail: ${_this.receiptEmail}, canceledAt: ${_this.canceledAt}, nextAction: ${_this.nextAction}, shipping: ${_this.shipping}, mandateData: ${_this.mandateData}, latestCharge: ${_this.latestCharge})';
 }
 
 
@@ -86,7 +92,7 @@ class _$PaymentIntentCopyWithImpl<$Res>
 /// Create a copy of PaymentIntent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? amount = null,Object? created = null,Object? currency = null,Object? status = null,Object? clientSecret = null,Object? livemode = null,Object? captureMethod = null,Object? confirmationMethod = null,Object? paymentMethodId = freezed,Object? description = freezed,Object? receiptEmail = freezed,Object? canceledAt = freezed,Object? nextAction = freezed,Object? shipping = freezed,Object? mandateData = freezed,Object? latestCharge = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentIntent(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as num,created: null == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
@@ -335,16 +341,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.created, created) || other.created == created)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.status, status) || other.status == status)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.captureMethod, captureMethod) || other.captureMethod == captureMethod)&&(identical(other.confirmationMethod, confirmationMethod) || other.confirmationMethod == confirmationMethod)&&(identical(other.paymentMethodId, paymentMethodId) || other.paymentMethodId == paymentMethodId)&&(identical(other.description, description) || other.description == description)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.nextAction, nextAction) || other.nextAction == nextAction)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.mandateData, mandateData) || other.mandateData == mandateData)&&(identical(other.latestCharge, latestCharge) || other.latestCharge == latestCharge));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentIntent&&(identical(other.id, id) || other.id == id)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.created, created) || other.created == created)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.status, status) || other.status == status)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret)&&(identical(other.livemode, livemode) || other.livemode == livemode)&&(identical(other.captureMethod, captureMethod) || other.captureMethod == captureMethod)&&(identical(other.confirmationMethod, confirmationMethod) || other.confirmationMethod == confirmationMethod)&&(identical(other.paymentMethodId, paymentMethodId) || other.paymentMethodId == paymentMethodId)&&(identical(other.description, description) || other.description == description)&&(identical(other.receiptEmail, receiptEmail) || other.receiptEmail == receiptEmail)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.nextAction, nextAction) || other.nextAction == nextAction)&&(identical(other.shipping, shipping) || other.shipping == shipping)&&(identical(other.mandateData, mandateData) || other.mandateData == mandateData)&&(identical(other.latestCharge, latestCharge) || other.latestCharge == latestCharge));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,amount,created,currency,status,clientSecret,livemode,captureMethod,confirmationMethod,paymentMethodId,description,receiptEmail,canceledAt,nextAction,shipping,mandateData,latestCharge);
+int get hashCode {
+    return Object.hash(runtimeType,id,amount,created,currency,status,clientSecret,livemode,captureMethod,confirmationMethod,paymentMethodId,description,receiptEmail,canceledAt,nextAction,shipping,mandateData,latestCharge);
+}
 
 @override
 String toString() {
-  return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData, latestCharge: $latestCharge)';
+    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData, latestCharge: $latestCharge)';
 }
 
 
@@ -457,16 +465,21 @@ $ShippingDetailsCopyWith<ShippingDetails> get copyWith => _$ShippingDetailsCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShippingDetails&&(identical(other.address, address) || other.address == address)&&(identical(other.name, name) || other.name == name)&&(identical(other.carrier, carrier) || other.carrier == carrier)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.trackingNumber, trackingNumber) || other.trackingNumber == trackingNumber));
+  final _this = this as ShippingDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShippingDetails&&(identical(other.address, _this.address) || other.address == _this.address)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.carrier, _this.carrier) || other.carrier == _this.carrier)&&(identical(other.phone, _this.phone) || other.phone == _this.phone)&&(identical(other.trackingNumber, _this.trackingNumber) || other.trackingNumber == _this.trackingNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,address,name,carrier,phone,trackingNumber);
+int get hashCode {
+  final _this = this as ShippingDetails;
+  return Object.hash(runtimeType,_this.address,_this.name,_this.carrier,_this.phone,_this.trackingNumber);
+}
 
 @override
 String toString() {
-  return 'ShippingDetails(address: $address, name: $name, carrier: $carrier, phone: $phone, trackingNumber: $trackingNumber)';
+  final _this = this as ShippingDetails;
+  return 'ShippingDetails(address: ${_this.address}, name: ${_this.name}, carrier: ${_this.carrier}, phone: ${_this.phone}, trackingNumber: ${_this.trackingNumber})';
 }
 
 
@@ -495,7 +508,7 @@ class _$ShippingDetailsCopyWithImpl<$Res>
 /// Create a copy of ShippingDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? address = null,Object? name = freezed,Object? carrier = freezed,Object? phone = freezed,Object? trackingNumber = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ShippingDetails(
 address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
 as Address,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,carrier: freezed == carrier ? _self.carrier : carrier // ignore: cast_nullable_to_non_nullable
@@ -679,16 +692,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShippingDetails&&(identical(other.address, address) || other.address == address)&&(identical(other.name, name) || other.name == name)&&(identical(other.carrier, carrier) || other.carrier == carrier)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.trackingNumber, trackingNumber) || other.trackingNumber == trackingNumber));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShippingDetails&&(identical(other.address, address) || other.address == address)&&(identical(other.name, name) || other.name == name)&&(identical(other.carrier, carrier) || other.carrier == carrier)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.trackingNumber, trackingNumber) || other.trackingNumber == trackingNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,address,name,carrier,phone,trackingNumber);
+int get hashCode {
+    return Object.hash(runtimeType,address,name,carrier,phone,trackingNumber);
+}
 
 @override
 String toString() {
-  return 'ShippingDetails(address: $address, name: $name, carrier: $carrier, phone: $phone, trackingNumber: $trackingNumber)';
+    return 'ShippingDetails(address: $address, name: $name, carrier: $carrier, phone: $phone, trackingNumber: $trackingNumber)';
 }
 
 

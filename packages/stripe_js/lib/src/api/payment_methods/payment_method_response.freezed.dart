@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_method_response.dart';
@@ -9,6 +9,7 @@ part of 'payment_method_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -30,16 +31,21 @@ $PaymentMethodResponseCopyWith<PaymentMethodResponse> get copyWith => _$PaymentM
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentMethodResponse&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.error, error) || other.error == error));
+  final _this = this as PaymentMethodResponse;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentMethodResponse&&(identical(other.paymentMethod, _this.paymentMethod) || other.paymentMethod == _this.paymentMethod)&&(identical(other.error, _this.error) || other.error == _this.error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethod,error);
+int get hashCode {
+  final _this = this as PaymentMethodResponse;
+  return Object.hash(runtimeType,_this.paymentMethod,_this.error);
+}
 
 @override
 String toString() {
-  return 'PaymentMethodResponse(paymentMethod: $paymentMethod, error: $error)';
+  final _this = this as PaymentMethodResponse;
+  return 'PaymentMethodResponse(paymentMethod: ${_this.paymentMethod}, error: ${_this.error})';
 }
 
 
@@ -68,7 +74,7 @@ class _$PaymentMethodResponseCopyWithImpl<$Res>
 /// Create a copy of PaymentMethodResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? paymentMethod = freezed,Object? error = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentMethodResponse(
 paymentMethod: freezed == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
 as PaymentMethod?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as StripeError?,
@@ -257,16 +263,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMethodResponse&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMethodResponse&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.error, error) || other.error == error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentMethod,error);
+int get hashCode {
+    return Object.hash(runtimeType,paymentMethod,error);
+}
 
 @override
 String toString() {
-  return 'PaymentMethodResponse(paymentMethod: $paymentMethod, error: $error)';
+    return 'PaymentMethodResponse(paymentMethod: $paymentMethod, error: $error)';
 }
 
 

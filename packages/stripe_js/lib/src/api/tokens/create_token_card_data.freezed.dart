@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'create_token_card_data.dart';
@@ -9,6 +9,7 @@ part of 'create_token_card_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -40,16 +41,21 @@ $CreateTokenCardDataCopyWith<CreateTokenCardData> get copyWith => _$CreateTokenC
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTokenCardData&&(identical(other.name, name) || other.name == name)&&(identical(other.addressLine1, addressLine1) || other.addressLine1 == addressLine1)&&(identical(other.addressLine2, addressLine2) || other.addressLine2 == addressLine2)&&(identical(other.addressCity, addressCity) || other.addressCity == addressCity)&&(identical(other.addressState, addressState) || other.addressState == addressState)&&(identical(other.addressZip, addressZip) || other.addressZip == addressZip)&&(identical(other.addressCountry, addressCountry) || other.addressCountry == addressCountry)&&(identical(other.currency, currency) || other.currency == currency));
+  final _this = this as CreateTokenCardData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTokenCardData&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.addressLine1, _this.addressLine1) || other.addressLine1 == _this.addressLine1)&&(identical(other.addressLine2, _this.addressLine2) || other.addressLine2 == _this.addressLine2)&&(identical(other.addressCity, _this.addressCity) || other.addressCity == _this.addressCity)&&(identical(other.addressState, _this.addressState) || other.addressState == _this.addressState)&&(identical(other.addressZip, _this.addressZip) || other.addressZip == _this.addressZip)&&(identical(other.addressCountry, _this.addressCountry) || other.addressCountry == _this.addressCountry)&&(identical(other.currency, _this.currency) || other.currency == _this.currency));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,addressLine1,addressLine2,addressCity,addressState,addressZip,addressCountry,currency);
+int get hashCode {
+  final _this = this as CreateTokenCardData;
+  return Object.hash(runtimeType,_this.name,_this.addressLine1,_this.addressLine2,_this.addressCity,_this.addressState,_this.addressZip,_this.addressCountry,_this.currency);
+}
 
 @override
 String toString() {
-  return 'CreateTokenCardData(name: $name, addressLine1: $addressLine1, addressLine2: $addressLine2, addressCity: $addressCity, addressState: $addressState, addressZip: $addressZip, addressCountry: $addressCountry, currency: $currency)';
+  final _this = this as CreateTokenCardData;
+  return 'CreateTokenCardData(name: ${_this.name}, addressLine1: ${_this.addressLine1}, addressLine2: ${_this.addressLine2}, addressCity: ${_this.addressCity}, addressState: ${_this.addressState}, addressZip: ${_this.addressZip}, addressCountry: ${_this.addressCountry}, currency: ${_this.currency})';
 }
 
 
@@ -78,7 +84,7 @@ class _$CreateTokenCardDataCopyWithImpl<$Res>
 /// Create a copy of CreateTokenCardData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? addressLine1 = freezed,Object? addressLine2 = freezed,Object? addressCity = freezed,Object? addressState = freezed,Object? addressZip = freezed,Object? addressCountry = freezed,Object? currency = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CreateTokenCardData(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,addressLine1: freezed == addressLine1 ? _self.addressLine1 : addressLine1 // ignore: cast_nullable_to_non_nullable
 as String?,addressLine2: freezed == addressLine2 ? _self.addressLine2 : addressLine2 // ignore: cast_nullable_to_non_nullable
@@ -265,16 +271,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenCardData&&(identical(other.name, name) || other.name == name)&&(identical(other.addressLine1, addressLine1) || other.addressLine1 == addressLine1)&&(identical(other.addressLine2, addressLine2) || other.addressLine2 == addressLine2)&&(identical(other.addressCity, addressCity) || other.addressCity == addressCity)&&(identical(other.addressState, addressState) || other.addressState == addressState)&&(identical(other.addressZip, addressZip) || other.addressZip == addressZip)&&(identical(other.addressCountry, addressCountry) || other.addressCountry == addressCountry)&&(identical(other.currency, currency) || other.currency == currency));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTokenCardData&&(identical(other.name, name) || other.name == name)&&(identical(other.addressLine1, addressLine1) || other.addressLine1 == addressLine1)&&(identical(other.addressLine2, addressLine2) || other.addressLine2 == addressLine2)&&(identical(other.addressCity, addressCity) || other.addressCity == addressCity)&&(identical(other.addressState, addressState) || other.addressState == addressState)&&(identical(other.addressZip, addressZip) || other.addressZip == addressZip)&&(identical(other.addressCountry, addressCountry) || other.addressCountry == addressCountry)&&(identical(other.currency, currency) || other.currency == currency));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,addressLine1,addressLine2,addressCity,addressState,addressZip,addressCountry,currency);
+int get hashCode {
+    return Object.hash(runtimeType,name,addressLine1,addressLine2,addressCity,addressState,addressZip,addressCountry,currency);
+}
 
 @override
 String toString() {
-  return 'CreateTokenCardData(name: $name, addressLine1: $addressLine1, addressLine2: $addressLine2, addressCity: $addressCity, addressState: $addressState, addressZip: $addressZip, addressCountry: $addressCountry, currency: $currency)';
+    return 'CreateTokenCardData(name: $name, addressLine1: $addressLine1, addressLine2: $addressLine2, addressCity: $addressCity, addressState: $addressState, addressZip: $addressZip, addressCountry: $addressCountry, currency: $currency)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirm_p24_payment_options.dart';
@@ -9,6 +9,7 @@ part of 'confirm_p24_payment_options.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -30,16 +31,21 @@ $ConfirmP24PaymentOptionsCopyWith<ConfirmP24PaymentOptions> get copyWith => _$Co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmP24PaymentOptions&&(identical(other.handleActions, handleActions) || other.handleActions == handleActions));
+  final _this = this as ConfirmP24PaymentOptions;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmP24PaymentOptions&&(identical(other.handleActions, _this.handleActions) || other.handleActions == _this.handleActions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,handleActions);
+int get hashCode {
+  final _this = this as ConfirmP24PaymentOptions;
+  return Object.hash(runtimeType,_this.handleActions);
+}
 
 @override
 String toString() {
-  return 'ConfirmP24PaymentOptions(handleActions: $handleActions)';
+  final _this = this as ConfirmP24PaymentOptions;
+  return 'ConfirmP24PaymentOptions(handleActions: ${_this.handleActions})';
 }
 
 
@@ -68,7 +74,7 @@ class _$ConfirmP24PaymentOptionsCopyWithImpl<$Res>
 /// Create a copy of ConfirmP24PaymentOptions
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? handleActions = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ConfirmP24PaymentOptions(
 handleActions: freezed == handleActions ? _self.handleActions : handleActions // ignore: cast_nullable_to_non_nullable
 as bool?,
   ));
@@ -231,16 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmP24PaymentOptions&&(identical(other.handleActions, handleActions) || other.handleActions == handleActions));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmP24PaymentOptions&&(identical(other.handleActions, handleActions) || other.handleActions == handleActions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,handleActions);
+int get hashCode {
+    return Object.hash(runtimeType,handleActions);
+}
 
 @override
 String toString() {
-  return 'ConfirmP24PaymentOptions(handleActions: $handleActions)';
+    return 'ConfirmP24PaymentOptions(handleActions: $handleActions)';
 }
 
 

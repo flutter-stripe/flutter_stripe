@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'address_sheet.dart';
@@ -9,6 +9,7 @@ part of 'address_sheet.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -30,16 +31,21 @@ $AddressSheetAdditionalFieldsCopyWith<AddressSheetAdditionalFields> get copyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddressSheetAdditionalFields&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.checkboxLabel, checkboxLabel) || other.checkboxLabel == checkboxLabel));
+  final _this = this as AddressSheetAdditionalFields;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddressSheetAdditionalFields&&(identical(other.phoneNumber, _this.phoneNumber) || other.phoneNumber == _this.phoneNumber)&&(identical(other.checkboxLabel, _this.checkboxLabel) || other.checkboxLabel == _this.checkboxLabel));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,phoneNumber,checkboxLabel);
+int get hashCode {
+  final _this = this as AddressSheetAdditionalFields;
+  return Object.hash(runtimeType,_this.phoneNumber,_this.checkboxLabel);
+}
 
 @override
 String toString() {
-  return 'AddressSheetAdditionalFields(phoneNumber: $phoneNumber, checkboxLabel: $checkboxLabel)';
+  final _this = this as AddressSheetAdditionalFields;
+  return 'AddressSheetAdditionalFields(phoneNumber: ${_this.phoneNumber}, checkboxLabel: ${_this.checkboxLabel})';
 }
 
 
@@ -68,7 +74,7 @@ class _$AddressSheetAdditionalFieldsCopyWithImpl<$Res>
 /// Create a copy of AddressSheetAdditionalFields
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? phoneNumber = null,Object? checkboxLabel = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AddressSheetAdditionalFields(
 phoneNumber: null == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
 as AddressSheetPhoneNumberField,checkboxLabel: freezed == checkboxLabel ? _self.checkboxLabel : checkboxLabel // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -233,16 +239,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddressSheetAdditionalFields&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.checkboxLabel, checkboxLabel) || other.checkboxLabel == checkboxLabel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddressSheetAdditionalFields&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.checkboxLabel, checkboxLabel) || other.checkboxLabel == checkboxLabel));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,phoneNumber,checkboxLabel);
+int get hashCode {
+    return Object.hash(runtimeType,phoneNumber,checkboxLabel);
+}
 
 @override
 String toString() {
-  return 'AddressSheetAdditionalFields(phoneNumber: $phoneNumber, checkboxLabel: $checkboxLabel)';
+    return 'AddressSheetAdditionalFields(phoneNumber: $phoneNumber, checkboxLabel: $checkboxLabel)';
 }
 
 
@@ -301,16 +309,21 @@ $CollectAddressResultCopyWith<CollectAddressResult> get copyWith => _$CollectAdd
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectAddressResult&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
+  final _this = this as CollectAddressResult;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectAddressResult&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.address, _this.address) || other.address == _this.address)&&(identical(other.phoneNumber, _this.phoneNumber) || other.phoneNumber == _this.phoneNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,address,phoneNumber);
+int get hashCode {
+  final _this = this as CollectAddressResult;
+  return Object.hash(runtimeType,_this.name,_this.address,_this.phoneNumber);
+}
 
 @override
 String toString() {
-  return 'CollectAddressResult(name: $name, address: $address, phoneNumber: $phoneNumber)';
+  final _this = this as CollectAddressResult;
+  return 'CollectAddressResult(name: ${_this.name}, address: ${_this.address}, phoneNumber: ${_this.phoneNumber})';
 }
 
 
@@ -339,7 +352,7 @@ class _$CollectAddressResultCopyWithImpl<$Res>
 /// Create a copy of CollectAddressResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? address = null,Object? phoneNumber = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CollectAddressResult(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
 as Address,phoneNumber: freezed == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -516,16 +529,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectAddressResult&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectAddressResult&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,address,phoneNumber);
+int get hashCode {
+    return Object.hash(runtimeType,name,address,phoneNumber);
+}
 
 @override
 String toString() {
-  return 'CollectAddressResult(name: $name, address: $address, phoneNumber: $phoneNumber)';
+    return 'CollectAddressResult(name: $name, address: $address, phoneNumber: $phoneNumber)';
 }
 
 
@@ -602,16 +617,21 @@ $AddressSheetParamsCopyWith<AddressSheetParams> get copyWith => _$AddressSheetPa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddressSheetParams&&(identical(other.visible, visible) || other.visible == visible)&&(identical(other.presentationStyle, presentationStyle) || other.presentationStyle == presentationStyle)&&(identical(other.animationStyle, animationStyle) || other.animationStyle == animationStyle)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.defaultValues, defaultValues) || other.defaultValues == defaultValues)&&(identical(other.additionalFields, additionalFields) || other.additionalFields == additionalFields)&&const DeepCollectionEquality().equals(other.allowedCountries, allowedCountries)&&const DeepCollectionEquality().equals(other.autocompleteCountries, autocompleteCountries)&&(identical(other.primaryButtonTitle, primaryButtonTitle) || other.primaryButtonTitle == primaryButtonTitle)&&(identical(other.sheetTitle, sheetTitle) || other.sheetTitle == sheetTitle)&&(identical(other.googlePlacesApiKey, googlePlacesApiKey) || other.googlePlacesApiKey == googlePlacesApiKey));
+  final _this = this as AddressSheetParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddressSheetParams&&(identical(other.visible, _this.visible) || other.visible == _this.visible)&&(identical(other.presentationStyle, _this.presentationStyle) || other.presentationStyle == _this.presentationStyle)&&(identical(other.animationStyle, _this.animationStyle) || other.animationStyle == _this.animationStyle)&&(identical(other.appearance, _this.appearance) || other.appearance == _this.appearance)&&(identical(other.defaultValues, _this.defaultValues) || other.defaultValues == _this.defaultValues)&&(identical(other.additionalFields, _this.additionalFields) || other.additionalFields == _this.additionalFields)&&const DeepCollectionEquality().equals(other.allowedCountries, _this.allowedCountries)&&const DeepCollectionEquality().equals(other.autocompleteCountries, _this.autocompleteCountries)&&(identical(other.primaryButtonTitle, _this.primaryButtonTitle) || other.primaryButtonTitle == _this.primaryButtonTitle)&&(identical(other.sheetTitle, _this.sheetTitle) || other.sheetTitle == _this.sheetTitle)&&(identical(other.googlePlacesApiKey, _this.googlePlacesApiKey) || other.googlePlacesApiKey == _this.googlePlacesApiKey));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,visible,presentationStyle,animationStyle,appearance,defaultValues,additionalFields,const DeepCollectionEquality().hash(allowedCountries),const DeepCollectionEquality().hash(autocompleteCountries),primaryButtonTitle,sheetTitle,googlePlacesApiKey);
+int get hashCode {
+  final _this = this as AddressSheetParams;
+  return Object.hash(runtimeType,_this.visible,_this.presentationStyle,_this.animationStyle,_this.appearance,_this.defaultValues,_this.additionalFields,const DeepCollectionEquality().hash(_this.allowedCountries),const DeepCollectionEquality().hash(_this.autocompleteCountries),_this.primaryButtonTitle,_this.sheetTitle,_this.googlePlacesApiKey);
+}
 
 @override
 String toString() {
-  return 'AddressSheetParams(visible: $visible, presentationStyle: $presentationStyle, animationStyle: $animationStyle, appearance: $appearance, defaultValues: $defaultValues, additionalFields: $additionalFields, allowedCountries: $allowedCountries, autocompleteCountries: $autocompleteCountries, primaryButtonTitle: $primaryButtonTitle, sheetTitle: $sheetTitle, googlePlacesApiKey: $googlePlacesApiKey)';
+  final _this = this as AddressSheetParams;
+  return 'AddressSheetParams(visible: ${_this.visible}, presentationStyle: ${_this.presentationStyle}, animationStyle: ${_this.animationStyle}, appearance: ${_this.appearance}, defaultValues: ${_this.defaultValues}, additionalFields: ${_this.additionalFields}, allowedCountries: ${_this.allowedCountries}, autocompleteCountries: ${_this.autocompleteCountries}, primaryButtonTitle: ${_this.primaryButtonTitle}, sheetTitle: ${_this.sheetTitle}, googlePlacesApiKey: ${_this.googlePlacesApiKey})';
 }
 
 
@@ -640,7 +660,7 @@ class _$AddressSheetParamsCopyWithImpl<$Res>
 /// Create a copy of AddressSheetParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? visible = null,Object? presentationStyle = freezed,Object? animationStyle = freezed,Object? appearance = freezed,Object? defaultValues = freezed,Object? additionalFields = freezed,Object? allowedCountries = freezed,Object? autocompleteCountries = freezed,Object? primaryButtonTitle = freezed,Object? sheetTitle = freezed,Object? googlePlacesApiKey = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AddressSheetParams(
 visible: null == visible ? _self.visible : visible // ignore: cast_nullable_to_non_nullable
 as bool,presentationStyle: freezed == presentationStyle ? _self.presentationStyle : presentationStyle // ignore: cast_nullable_to_non_nullable
 as AddressSheetPresentationStyle?,animationStyle: freezed == animationStyle ? _self.animationStyle : animationStyle // ignore: cast_nullable_to_non_nullable
@@ -829,7 +849,7 @@ return $default(_that.visible,_that.presentationStyle,_that.animationStyle,_that
 
 @JsonSerializable(explicitToJson: true)
 class _AddressSheetParams implements AddressSheetParams {
-  const _AddressSheetParams({this.visible = true, this.presentationStyle, this.animationStyle, this.appearance, this.defaultValues, this.additionalFields, final  List<String>? allowedCountries, final  List<String>? autocompleteCountries, this.primaryButtonTitle, this.sheetTitle, this.googlePlacesApiKey}): _allowedCountries = allowedCountries,_autocompleteCountries = autocompleteCountries;
+  const _AddressSheetParams({this.visible = true, this.presentationStyle, this.animationStyle, this.appearance, this.defaultValues, this.additionalFields,  List<String>? allowedCountries,  List<String>? autocompleteCountries, this.primaryButtonTitle, this.sheetTitle, this.googlePlacesApiKey}): _allowedCountries = allowedCountries,_autocompleteCountries = autocompleteCountries;
   factory _AddressSheetParams.fromJson(Map<String, dynamic> json) => _$AddressSheetParamsFromJson(json);
 
 /// Whether the address sheet is visible
@@ -886,16 +906,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddressSheetParams&&(identical(other.visible, visible) || other.visible == visible)&&(identical(other.presentationStyle, presentationStyle) || other.presentationStyle == presentationStyle)&&(identical(other.animationStyle, animationStyle) || other.animationStyle == animationStyle)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.defaultValues, defaultValues) || other.defaultValues == defaultValues)&&(identical(other.additionalFields, additionalFields) || other.additionalFields == additionalFields)&&const DeepCollectionEquality().equals(other._allowedCountries, _allowedCountries)&&const DeepCollectionEquality().equals(other._autocompleteCountries, _autocompleteCountries)&&(identical(other.primaryButtonTitle, primaryButtonTitle) || other.primaryButtonTitle == primaryButtonTitle)&&(identical(other.sheetTitle, sheetTitle) || other.sheetTitle == sheetTitle)&&(identical(other.googlePlacesApiKey, googlePlacesApiKey) || other.googlePlacesApiKey == googlePlacesApiKey));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddressSheetParams&&(identical(other.visible, visible) || other.visible == visible)&&(identical(other.presentationStyle, presentationStyle) || other.presentationStyle == presentationStyle)&&(identical(other.animationStyle, animationStyle) || other.animationStyle == animationStyle)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.defaultValues, defaultValues) || other.defaultValues == defaultValues)&&(identical(other.additionalFields, additionalFields) || other.additionalFields == additionalFields)&&const DeepCollectionEquality().equals(other.allowedCountries, _allowedCountries)&&const DeepCollectionEquality().equals(other.autocompleteCountries, _autocompleteCountries)&&(identical(other.primaryButtonTitle, primaryButtonTitle) || other.primaryButtonTitle == primaryButtonTitle)&&(identical(other.sheetTitle, sheetTitle) || other.sheetTitle == sheetTitle)&&(identical(other.googlePlacesApiKey, googlePlacesApiKey) || other.googlePlacesApiKey == googlePlacesApiKey));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,visible,presentationStyle,animationStyle,appearance,defaultValues,additionalFields,const DeepCollectionEquality().hash(_allowedCountries),const DeepCollectionEquality().hash(_autocompleteCountries),primaryButtonTitle,sheetTitle,googlePlacesApiKey);
+int get hashCode {
+    return Object.hash(runtimeType,visible,presentationStyle,animationStyle,appearance,defaultValues,additionalFields,const DeepCollectionEquality().hash(_allowedCountries),const DeepCollectionEquality().hash(_autocompleteCountries),primaryButtonTitle,sheetTitle,googlePlacesApiKey);
+}
 
 @override
 String toString() {
-  return 'AddressSheetParams(visible: $visible, presentationStyle: $presentationStyle, animationStyle: $animationStyle, appearance: $appearance, defaultValues: $defaultValues, additionalFields: $additionalFields, allowedCountries: $allowedCountries, autocompleteCountries: $autocompleteCountries, primaryButtonTitle: $primaryButtonTitle, sheetTitle: $sheetTitle, googlePlacesApiKey: $googlePlacesApiKey)';
+    return 'AddressSheetParams(visible: $visible, presentationStyle: $presentationStyle, animationStyle: $animationStyle, appearance: $appearance, defaultValues: $defaultValues, additionalFields: $additionalFields, allowedCountries: $allowedCountries, autocompleteCountries: $autocompleteCountries, primaryButtonTitle: $primaryButtonTitle, sheetTitle: $sheetTitle, googlePlacesApiKey: $googlePlacesApiKey)';
 }
 
 

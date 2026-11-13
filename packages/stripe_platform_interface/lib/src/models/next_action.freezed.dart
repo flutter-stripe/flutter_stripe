@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'next_action.dart';
@@ -9,6 +9,7 @@ part of 'next_action.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 NextAction _$NextActionFromJson(
@@ -58,7 +59,7 @@ mixin _$NextAction {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NextAction);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is NextAction);
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -67,7 +68,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'NextAction()';
+    return 'NextAction()';
 }
 
 
@@ -237,7 +238,7 @@ return multibanco(_that.voucherURL);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _NextActionRedirect implements NextAction {
-  const _NextActionRedirect({this.redirectUrl, final  String? $type}): $type = $type ?? 'urlRedirect';
+  const _NextActionRedirect({this.redirectUrl,  String? $type}): $type = $type ?? 'urlRedirect';
   factory _NextActionRedirect.fromJson(Map<String, dynamic> json) => _$NextActionRedirectFromJson(json);
 
 /// Url to redirect to
@@ -260,16 +261,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionRedirect&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionRedirect&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,redirectUrl);
+int get hashCode {
+    return Object.hash(runtimeType,redirectUrl);
+}
 
 @override
 String toString() {
-  return 'NextAction.redirectToUrl(redirectUrl: $redirectUrl)';
+    return 'NextAction.redirectToUrl(redirectUrl: $redirectUrl)';
 }
 
 
@@ -311,7 +314,7 @@ as String?,
 
 @JsonSerializable(explicitToJson: true)
 class _NextActionOxxo implements NextAction {
-  const _NextActionOxxo({this.expiration, this.voucherURL, this.voucherNumber, final  String? $type}): $type = $type ?? 'oxxoVoucher';
+  const _NextActionOxxo({this.expiration, this.voucherURL, this.voucherNumber,  String? $type}): $type = $type ?? 'oxxoVoucher';
   factory _NextActionOxxo.fromJson(Map<String, dynamic> json) => _$NextActionOxxoFromJson(json);
 
 /// expiration date of the voucher in UTC
@@ -338,16 +341,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionOxxo&&(identical(other.expiration, expiration) || other.expiration == expiration)&&(identical(other.voucherURL, voucherURL) || other.voucherURL == voucherURL)&&(identical(other.voucherNumber, voucherNumber) || other.voucherNumber == voucherNumber));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionOxxo&&(identical(other.expiration, expiration) || other.expiration == expiration)&&(identical(other.voucherURL, voucherURL) || other.voucherURL == voucherURL)&&(identical(other.voucherNumber, voucherNumber) || other.voucherNumber == voucherNumber));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,expiration,voucherURL,voucherNumber);
+int get hashCode {
+    return Object.hash(runtimeType,expiration,voucherURL,voucherNumber);
+}
 
 @override
 String toString() {
-  return 'NextAction.displayOxxoDetails(expiration: $expiration, voucherURL: $voucherURL, voucherNumber: $voucherNumber)';
+    return 'NextAction.displayOxxoDetails(expiration: $expiration, voucherURL: $voucherURL, voucherNumber: $voucherNumber)';
 }
 
 
@@ -391,7 +396,7 @@ as String?,
 
 @JsonSerializable(explicitToJson: true)
 class _NextActionWeChatRedirect implements NextAction {
-  const _NextActionWeChatRedirect({this.redirectUrl, final  String? $type}): $type = $type ?? 'weChatRedirect';
+  const _NextActionWeChatRedirect({this.redirectUrl,  String? $type}): $type = $type ?? 'weChatRedirect';
   factory _NextActionWeChatRedirect.fromJson(Map<String, dynamic> json) => _$NextActionWeChatRedirectFromJson(json);
 
 /// Url to the Qr code.
@@ -414,16 +419,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionWeChatRedirect&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionWeChatRedirect&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,redirectUrl);
+int get hashCode {
+    return Object.hash(runtimeType,redirectUrl);
+}
 
 @override
 String toString() {
-  return 'NextAction.wechatPayRedirect(redirectUrl: $redirectUrl)';
+    return 'NextAction.wechatPayRedirect(redirectUrl: $redirectUrl)';
 }
 
 
@@ -465,7 +472,7 @@ as String?,
 
 @JsonSerializable(explicitToJson: true)
 class _NextActionMicroDeposits implements NextAction {
-  const _NextActionMicroDeposits({this.arrivalDate, this.redirectUrl, this.microdepositType, final  String? $type}): $type = $type ?? 'verifyWithMicrodeposits';
+  const _NextActionMicroDeposits({this.arrivalDate, this.redirectUrl, this.microdepositType,  String? $type}): $type = $type ?? 'verifyWithMicrodeposits';
   factory _NextActionMicroDeposits.fromJson(Map<String, dynamic> json) => _$NextActionMicroDepositsFromJson(json);
 
 /// The timestamp of when the microdeposits are expended to land
@@ -492,16 +499,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionMicroDeposits&&(identical(other.arrivalDate, arrivalDate) || other.arrivalDate == arrivalDate)&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl)&&(identical(other.microdepositType, microdepositType) || other.microdepositType == microdepositType));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionMicroDeposits&&(identical(other.arrivalDate, arrivalDate) || other.arrivalDate == arrivalDate)&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl)&&(identical(other.microdepositType, microdepositType) || other.microdepositType == microdepositType));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,arrivalDate,redirectUrl,microdepositType);
+int get hashCode {
+    return Object.hash(runtimeType,arrivalDate,redirectUrl,microdepositType);
+}
 
 @override
 String toString() {
-  return 'NextAction.verifyWithMicroDeposits(arrivalDate: $arrivalDate, redirectUrl: $redirectUrl, microdepositType: $microdepositType)';
+    return 'NextAction.verifyWithMicroDeposits(arrivalDate: $arrivalDate, redirectUrl: $redirectUrl, microdepositType: $microdepositType)';
 }
 
 
@@ -545,7 +554,7 @@ as String?,
 
 @JsonSerializable(explicitToJson: true)
 class _NextActionMultiBanco implements NextAction {
-  const _NextActionMultiBanco({this.voucherURL, final  String? $type}): $type = $type ?? 'multibanco';
+  const _NextActionMultiBanco({this.voucherURL,  String? $type}): $type = $type ?? 'multibanco';
   factory _NextActionMultiBanco.fromJson(Map<String, dynamic> json) => _$NextActionMultiBancoFromJson(json);
 
 /// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.
@@ -568,16 +577,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionMultiBanco&&(identical(other.voucherURL, voucherURL) || other.voucherURL == voucherURL));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NextActionMultiBanco&&(identical(other.voucherURL, voucherURL) || other.voucherURL == voucherURL));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,voucherURL);
+int get hashCode {
+    return Object.hash(runtimeType,voucherURL);
+}
 
 @override
 String toString() {
-  return 'NextAction.multibanco(voucherURL: $voucherURL)';
+    return 'NextAction.multibanco(voucherURL: $voucherURL)';
 }
 
 

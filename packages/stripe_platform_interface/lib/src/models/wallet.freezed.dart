@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'wallet.dart';
@@ -9,6 +9,7 @@ part of 'wallet.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -27,16 +28,21 @@ $AddToWalletResultCopyWith<AddToWalletResult> get copyWith => _$AddToWalletResul
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddToWalletResult&&(identical(other.canAddToWallet, canAddToWallet) || other.canAddToWallet == canAddToWallet)&&(identical(other.details, details) || other.details == details));
+  final _this = this as AddToWalletResult;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddToWalletResult&&(identical(other.canAddToWallet, _this.canAddToWallet) || other.canAddToWallet == _this.canAddToWallet)&&(identical(other.details, _this.details) || other.details == _this.details));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,canAddToWallet,details);
+int get hashCode {
+  final _this = this as AddToWalletResult;
+  return Object.hash(runtimeType,_this.canAddToWallet,_this.details);
+}
 
 @override
 String toString() {
-  return 'AddToWalletResult(canAddToWallet: $canAddToWallet, details: $details)';
+  final _this = this as AddToWalletResult;
+  return 'AddToWalletResult(canAddToWallet: ${_this.canAddToWallet}, details: ${_this.details})';
 }
 
 
@@ -65,7 +71,7 @@ class _$AddToWalletResultCopyWithImpl<$Res>
 /// Create a copy of AddToWalletResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? canAddToWallet = null,Object? details = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AddToWalletResult(
 canAddToWallet: null == canAddToWallet ? _self.canAddToWallet : canAddToWallet // ignore: cast_nullable_to_non_nullable
 as bool,details: freezed == details ? _self.details : details // ignore: cast_nullable_to_non_nullable
 as AddToWalletDetails?,
@@ -239,16 +245,18 @@ _$AddToWalletResultCopyWith<_AddToWalletResult> get copyWith => __$AddToWalletRe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddToWalletResult&&(identical(other.canAddToWallet, canAddToWallet) || other.canAddToWallet == canAddToWallet)&&(identical(other.details, details) || other.details == details));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddToWalletResult&&(identical(other.canAddToWallet, canAddToWallet) || other.canAddToWallet == canAddToWallet)&&(identical(other.details, details) || other.details == details));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,canAddToWallet,details);
+int get hashCode {
+    return Object.hash(runtimeType,canAddToWallet,details);
+}
 
 @override
 String toString() {
-  return 'AddToWalletResult(canAddToWallet: $canAddToWallet, details: $details)';
+    return 'AddToWalletResult(canAddToWallet: $canAddToWallet, details: $details)';
 }
 
 
@@ -318,16 +326,21 @@ $AddToWalletDetailsCopyWith<AddToWalletDetails> get copyWith => _$AddToWalletDet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddToWalletDetails&&(identical(other.status, status) || other.status == status)&&(identical(other.token, token) || other.token == token));
+  final _this = this as AddToWalletDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddToWalletDetails&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.token, _this.token) || other.token == _this.token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,token);
+int get hashCode {
+  final _this = this as AddToWalletDetails;
+  return Object.hash(runtimeType,_this.status,_this.token);
+}
 
 @override
 String toString() {
-  return 'AddToWalletDetails(status: $status, token: $token)';
+  final _this = this as AddToWalletDetails;
+  return 'AddToWalletDetails(status: ${_this.status}, token: ${_this.token})';
 }
 
 
@@ -356,7 +369,7 @@ class _$AddToWalletDetailsCopyWithImpl<$Res>
 /// Create a copy of AddToWalletDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? status = freezed,Object? token = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AddToWalletDetails(
 status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as CanAddToWalletErrorStatus?,token: freezed == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -521,16 +534,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddToWalletDetails&&(identical(other.status, status) || other.status == status)&&(identical(other.token, token) || other.token == token));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddToWalletDetails&&(identical(other.status, status) || other.status == status)&&(identical(other.token, token) || other.token == token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,token);
+int get hashCode {
+    return Object.hash(runtimeType,status,token);
+}
 
 @override
 String toString() {
-  return 'AddToWalletDetails(status: $status, token: $token)';
+    return 'AddToWalletDetails(status: $status, token: $token)';
 }
 
 

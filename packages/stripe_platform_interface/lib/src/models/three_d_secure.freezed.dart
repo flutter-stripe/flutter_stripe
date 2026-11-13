@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'three_d_secure.dart';
@@ -9,6 +9,7 @@ part of 'three_d_secure.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -37,16 +38,21 @@ $ThreeDSecureConfigurationParamsCopyWith<ThreeDSecureConfigurationParams> get co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureConfigurationParams&&(identical(other.navigationBar, navigationBar) || other.navigationBar == navigationBar)&&(identical(other.timeout, timeout) || other.timeout == timeout)&&(identical(other.label, label) || other.label == label)&&(identical(other.textField, textField) || other.textField == textField)&&(identical(other.submitButton, submitButton) || other.submitButton == submitButton)&&(identical(other.cancelButton, cancelButton) || other.cancelButton == cancelButton)&&(identical(other.nextButton, nextButton) || other.nextButton == nextButton)&&(identical(other.continueButton, continueButton) || other.continueButton == continueButton)&&(identical(other.resendButton, resendButton) || other.resendButton == resendButton));
+  final _this = this as ThreeDSecureConfigurationParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureConfigurationParams&&(identical(other.navigationBar, _this.navigationBar) || other.navigationBar == _this.navigationBar)&&(identical(other.timeout, _this.timeout) || other.timeout == _this.timeout)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.textField, _this.textField) || other.textField == _this.textField)&&(identical(other.submitButton, _this.submitButton) || other.submitButton == _this.submitButton)&&(identical(other.cancelButton, _this.cancelButton) || other.cancelButton == _this.cancelButton)&&(identical(other.nextButton, _this.nextButton) || other.nextButton == _this.nextButton)&&(identical(other.continueButton, _this.continueButton) || other.continueButton == _this.continueButton)&&(identical(other.resendButton, _this.resendButton) || other.resendButton == _this.resendButton));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,navigationBar,timeout,label,textField,submitButton,cancelButton,nextButton,continueButton,resendButton);
+int get hashCode {
+  final _this = this as ThreeDSecureConfigurationParams;
+  return Object.hash(runtimeType,_this.navigationBar,_this.timeout,_this.label,_this.textField,_this.submitButton,_this.cancelButton,_this.nextButton,_this.continueButton,_this.resendButton);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureConfigurationParams(navigationBar: $navigationBar, timeout: $timeout, label: $label, textField: $textField, submitButton: $submitButton, cancelButton: $cancelButton, nextButton: $nextButton, continueButton: $continueButton, resendButton: $resendButton)';
+  final _this = this as ThreeDSecureConfigurationParams;
+  return 'ThreeDSecureConfigurationParams(navigationBar: ${_this.navigationBar}, timeout: ${_this.timeout}, label: ${_this.label}, textField: ${_this.textField}, submitButton: ${_this.submitButton}, cancelButton: ${_this.cancelButton}, nextButton: ${_this.nextButton}, continueButton: ${_this.continueButton}, resendButton: ${_this.resendButton})';
 }
 
 
@@ -75,7 +81,7 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
 /// Create a copy of ThreeDSecureConfigurationParams
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? navigationBar = null,Object? timeout = freezed,Object? label = freezed,Object? textField = freezed,Object? submitButton = freezed,Object? cancelButton = freezed,Object? nextButton = freezed,Object? continueButton = freezed,Object? resendButton = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ThreeDSecureConfigurationParams(
 navigationBar: null == navigationBar ? _self.navigationBar : navigationBar // ignore: cast_nullable_to_non_nullable
 as ThreeDSecureNavigationBarThemeData,timeout: freezed == timeout ? _self.timeout : timeout // ignore: cast_nullable_to_non_nullable
 as int?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
@@ -354,16 +360,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureConfigurationParams&&(identical(other.navigationBar, navigationBar) || other.navigationBar == navigationBar)&&(identical(other.timeout, timeout) || other.timeout == timeout)&&(identical(other.label, label) || other.label == label)&&(identical(other.textField, textField) || other.textField == textField)&&(identical(other.submitButton, submitButton) || other.submitButton == submitButton)&&(identical(other.cancelButton, cancelButton) || other.cancelButton == cancelButton)&&(identical(other.nextButton, nextButton) || other.nextButton == nextButton)&&(identical(other.continueButton, continueButton) || other.continueButton == continueButton)&&(identical(other.resendButton, resendButton) || other.resendButton == resendButton));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureConfigurationParams&&(identical(other.navigationBar, navigationBar) || other.navigationBar == navigationBar)&&(identical(other.timeout, timeout) || other.timeout == timeout)&&(identical(other.label, label) || other.label == label)&&(identical(other.textField, textField) || other.textField == textField)&&(identical(other.submitButton, submitButton) || other.submitButton == submitButton)&&(identical(other.cancelButton, cancelButton) || other.cancelButton == cancelButton)&&(identical(other.nextButton, nextButton) || other.nextButton == nextButton)&&(identical(other.continueButton, continueButton) || other.continueButton == continueButton)&&(identical(other.resendButton, resendButton) || other.resendButton == resendButton));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,navigationBar,timeout,label,textField,submitButton,cancelButton,nextButton,continueButton,resendButton);
+int get hashCode {
+    return Object.hash(runtimeType,navigationBar,timeout,label,textField,submitButton,cancelButton,nextButton,continueButton,resendButton);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureConfigurationParams(navigationBar: $navigationBar, timeout: $timeout, label: $label, textField: $textField, submitButton: $submitButton, cancelButton: $cancelButton, nextButton: $nextButton, continueButton: $continueButton, resendButton: $resendButton)';
+    return 'ThreeDSecureConfigurationParams(navigationBar: $navigationBar, timeout: $timeout, label: $label, textField: $textField, submitButton: $submitButton, cancelButton: $cancelButton, nextButton: $nextButton, continueButton: $continueButton, resendButton: $resendButton)';
 }
 
 
@@ -525,16 +533,21 @@ $ThreeDSecureNavigationBarThemeDataCopyWith<ThreeDSecureNavigationBarThemeData> 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureNavigationBarThemeData&&(identical(other.headerText, headerText) || other.headerText == headerText)&&(identical(other.buttonText, buttonText) || other.buttonText == buttonText)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.statusBarColor, statusBarColor) || other.statusBarColor == statusBarColor)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+  final _this = this as ThreeDSecureNavigationBarThemeData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureNavigationBarThemeData&&(identical(other.headerText, _this.headerText) || other.headerText == _this.headerText)&&(identical(other.buttonText, _this.buttonText) || other.buttonText == _this.buttonText)&&(identical(other.textColor, _this.textColor) || other.textColor == _this.textColor)&&(identical(other.statusBarColor, _this.statusBarColor) || other.statusBarColor == _this.statusBarColor)&&(identical(other.backgroundColor, _this.backgroundColor) || other.backgroundColor == _this.backgroundColor)&&(identical(other.textFontSize, _this.textFontSize) || other.textFontSize == _this.textFontSize));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,headerText,buttonText,textColor,statusBarColor,backgroundColor,textFontSize);
+int get hashCode {
+  final _this = this as ThreeDSecureNavigationBarThemeData;
+  return Object.hash(runtimeType,_this.headerText,_this.buttonText,_this.textColor,_this.statusBarColor,_this.backgroundColor,_this.textFontSize);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureNavigationBarThemeData(headerText: $headerText, buttonText: $buttonText, textColor: $textColor, statusBarColor: $statusBarColor, backgroundColor: $backgroundColor, textFontSize: $textFontSize)';
+  final _this = this as ThreeDSecureNavigationBarThemeData;
+  return 'ThreeDSecureNavigationBarThemeData(headerText: ${_this.headerText}, buttonText: ${_this.buttonText}, textColor: ${_this.textColor}, statusBarColor: ${_this.statusBarColor}, backgroundColor: ${_this.backgroundColor}, textFontSize: ${_this.textFontSize})';
 }
 
 
@@ -563,7 +576,7 @@ class _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
 /// Create a copy of ThreeDSecureNavigationBarThemeData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? headerText = freezed,Object? buttonText = freezed,Object? textColor = freezed,Object? statusBarColor = freezed,Object? backgroundColor = freezed,Object? textFontSize = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ThreeDSecureNavigationBarThemeData(
 headerText: freezed == headerText ? _self.headerText : headerText // ignore: cast_nullable_to_non_nullable
 as String?,buttonText: freezed == buttonText ? _self.buttonText : buttonText // ignore: cast_nullable_to_non_nullable
 as String?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
@@ -740,16 +753,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureNavigationBarThemeData&&(identical(other.headerText, headerText) || other.headerText == headerText)&&(identical(other.buttonText, buttonText) || other.buttonText == buttonText)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.statusBarColor, statusBarColor) || other.statusBarColor == statusBarColor)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureNavigationBarThemeData&&(identical(other.headerText, headerText) || other.headerText == headerText)&&(identical(other.buttonText, buttonText) || other.buttonText == buttonText)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.statusBarColor, statusBarColor) || other.statusBarColor == statusBarColor)&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,headerText,buttonText,textColor,statusBarColor,backgroundColor,textFontSize);
+int get hashCode {
+    return Object.hash(runtimeType,headerText,buttonText,textColor,statusBarColor,backgroundColor,textFontSize);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureNavigationBarThemeData(headerText: $headerText, buttonText: $buttonText, textColor: $textColor, statusBarColor: $statusBarColor, backgroundColor: $backgroundColor, textFontSize: $textFontSize)';
+    return 'ThreeDSecureNavigationBarThemeData(headerText: $headerText, buttonText: $buttonText, textColor: $textColor, statusBarColor: $statusBarColor, backgroundColor: $backgroundColor, textFontSize: $textFontSize)';
 }
 
 
@@ -799,8 +814,7 @@ mixin _$ThreeDSecureLabelThemeData {
 /// Color in hex for header text.
  String? get headingTextColor;/// Color in hex for label text.
  String? get textColor;/// Font size for label text.
- double? get textFontSize;// Font size for header.
- double? get headingFontSize;
+ double? get textFontSize; double? get headingFontSize;
 /// Create a copy of ThreeDSecureLabelThemeData
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -813,16 +827,21 @@ $ThreeDSecureLabelThemeDataCopyWith<ThreeDSecureLabelThemeData> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureLabelThemeData&&(identical(other.headingTextColor, headingTextColor) || other.headingTextColor == headingTextColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize)&&(identical(other.headingFontSize, headingFontSize) || other.headingFontSize == headingFontSize));
+  final _this = this as ThreeDSecureLabelThemeData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureLabelThemeData&&(identical(other.headingTextColor, _this.headingTextColor) || other.headingTextColor == _this.headingTextColor)&&(identical(other.textColor, _this.textColor) || other.textColor == _this.textColor)&&(identical(other.textFontSize, _this.textFontSize) || other.textFontSize == _this.textFontSize)&&(identical(other.headingFontSize, _this.headingFontSize) || other.headingFontSize == _this.headingFontSize));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,headingTextColor,textColor,textFontSize,headingFontSize);
+int get hashCode {
+  final _this = this as ThreeDSecureLabelThemeData;
+  return Object.hash(runtimeType,_this.headingTextColor,_this.textColor,_this.textFontSize,_this.headingFontSize);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureLabelThemeData(headingTextColor: $headingTextColor, textColor: $textColor, textFontSize: $textFontSize, headingFontSize: $headingFontSize)';
+  final _this = this as ThreeDSecureLabelThemeData;
+  return 'ThreeDSecureLabelThemeData(headingTextColor: ${_this.headingTextColor}, textColor: ${_this.textColor}, textFontSize: ${_this.textFontSize}, headingFontSize: ${_this.headingFontSize})';
 }
 
 
@@ -851,7 +870,7 @@ class _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
 /// Create a copy of ThreeDSecureLabelThemeData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? headingTextColor = freezed,Object? textColor = freezed,Object? textFontSize = freezed,Object? headingFontSize = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ThreeDSecureLabelThemeData(
 headingTextColor: freezed == headingTextColor ? _self.headingTextColor : headingTextColor // ignore: cast_nullable_to_non_nullable
 as String?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
 as String?,textFontSize: freezed == textFontSize ? _self.textFontSize : textFontSize // ignore: cast_nullable_to_non_nullable
@@ -1006,7 +1025,6 @@ class _ThreeDSecureLabelThemeData implements ThreeDSecureLabelThemeData {
 @override final  String? textColor;
 /// Font size for label text.
 @override final  double? textFontSize;
-// Font size for header.
 @override final  double? headingFontSize;
 
 /// Create a copy of ThreeDSecureLabelThemeData
@@ -1022,16 +1040,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureLabelThemeData&&(identical(other.headingTextColor, headingTextColor) || other.headingTextColor == headingTextColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize)&&(identical(other.headingFontSize, headingFontSize) || other.headingFontSize == headingFontSize));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureLabelThemeData&&(identical(other.headingTextColor, headingTextColor) || other.headingTextColor == headingTextColor)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize)&&(identical(other.headingFontSize, headingFontSize) || other.headingFontSize == headingFontSize));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,headingTextColor,textColor,textFontSize,headingFontSize);
+int get hashCode {
+    return Object.hash(runtimeType,headingTextColor,textColor,textFontSize,headingFontSize);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureLabelThemeData(headingTextColor: $headingTextColor, textColor: $textColor, textFontSize: $textFontSize, headingFontSize: $headingFontSize)';
+    return 'ThreeDSecureLabelThemeData(headingTextColor: $headingTextColor, textColor: $textColor, textFontSize: $textFontSize, headingFontSize: $headingFontSize)';
 }
 
 
@@ -1094,16 +1114,21 @@ $ThreeDSecureTextFieldThemeDataCopyWith<ThreeDSecureTextFieldThemeData> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureTextFieldThemeData&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+  final _this = this as ThreeDSecureTextFieldThemeData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureTextFieldThemeData&&(identical(other.borderColor, _this.borderColor) || other.borderColor == _this.borderColor)&&(identical(other.borderWidth, _this.borderWidth) || other.borderWidth == _this.borderWidth)&&(identical(other.cornerRadius, _this.cornerRadius) || other.cornerRadius == _this.cornerRadius)&&(identical(other.textColor, _this.textColor) || other.textColor == _this.textColor)&&(identical(other.textFontSize, _this.textFontSize) || other.textFontSize == _this.textFontSize));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,borderColor,borderWidth,cornerRadius,textColor,textFontSize);
+int get hashCode {
+  final _this = this as ThreeDSecureTextFieldThemeData;
+  return Object.hash(runtimeType,_this.borderColor,_this.borderWidth,_this.cornerRadius,_this.textColor,_this.textFontSize);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureTextFieldThemeData(borderColor: $borderColor, borderWidth: $borderWidth, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
+  final _this = this as ThreeDSecureTextFieldThemeData;
+  return 'ThreeDSecureTextFieldThemeData(borderColor: ${_this.borderColor}, borderWidth: ${_this.borderWidth}, cornerRadius: ${_this.cornerRadius}, textColor: ${_this.textColor}, textFontSize: ${_this.textFontSize})';
 }
 
 
@@ -1132,7 +1157,7 @@ class _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
 /// Create a copy of ThreeDSecureTextFieldThemeData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? borderColor = freezed,Object? borderWidth = freezed,Object? cornerRadius = freezed,Object? textColor = freezed,Object? textFontSize = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ThreeDSecureTextFieldThemeData(
 borderColor: freezed == borderColor ? _self.borderColor : borderColor // ignore: cast_nullable_to_non_nullable
 as String?,borderWidth: freezed == borderWidth ? _self.borderWidth : borderWidth // ignore: cast_nullable_to_non_nullable
 as double?,cornerRadius: freezed == cornerRadius ? _self.cornerRadius : cornerRadius // ignore: cast_nullable_to_non_nullable
@@ -1306,16 +1331,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureTextFieldThemeData&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureTextFieldThemeData&&(identical(other.borderColor, borderColor) || other.borderColor == borderColor)&&(identical(other.borderWidth, borderWidth) || other.borderWidth == borderWidth)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,borderColor,borderWidth,cornerRadius,textColor,textFontSize);
+int get hashCode {
+    return Object.hash(runtimeType,borderColor,borderWidth,cornerRadius,textColor,textFontSize);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureTextFieldThemeData(borderColor: $borderColor, borderWidth: $borderWidth, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
+    return 'ThreeDSecureTextFieldThemeData(borderColor: $borderColor, borderWidth: $borderWidth, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
 }
 
 
@@ -1378,16 +1405,21 @@ $ThreeDSecureButtonThemeDataCopyWith<ThreeDSecureButtonThemeData> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureButtonThemeData&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+  final _this = this as ThreeDSecureButtonThemeData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ThreeDSecureButtonThemeData&&(identical(other.backgroundColor, _this.backgroundColor) || other.backgroundColor == _this.backgroundColor)&&(identical(other.cornerRadius, _this.cornerRadius) || other.cornerRadius == _this.cornerRadius)&&(identical(other.textColor, _this.textColor) || other.textColor == _this.textColor)&&(identical(other.textFontSize, _this.textFontSize) || other.textFontSize == _this.textFontSize));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,backgroundColor,cornerRadius,textColor,textFontSize);
+int get hashCode {
+  final _this = this as ThreeDSecureButtonThemeData;
+  return Object.hash(runtimeType,_this.backgroundColor,_this.cornerRadius,_this.textColor,_this.textFontSize);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureButtonThemeData(backgroundColor: $backgroundColor, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
+  final _this = this as ThreeDSecureButtonThemeData;
+  return 'ThreeDSecureButtonThemeData(backgroundColor: ${_this.backgroundColor}, cornerRadius: ${_this.cornerRadius}, textColor: ${_this.textColor}, textFontSize: ${_this.textFontSize})';
 }
 
 
@@ -1416,7 +1448,7 @@ class _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
 /// Create a copy of ThreeDSecureButtonThemeData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? backgroundColor = freezed,Object? cornerRadius = freezed,Object? textColor = freezed,Object? textFontSize = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ThreeDSecureButtonThemeData(
 backgroundColor: freezed == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
 as String?,cornerRadius: freezed == cornerRadius ? _self.cornerRadius : cornerRadius // ignore: cast_nullable_to_non_nullable
 as double?,textColor: freezed == textColor ? _self.textColor : textColor // ignore: cast_nullable_to_non_nullable
@@ -1587,16 +1619,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureButtonThemeData&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ThreeDSecureButtonThemeData&&(identical(other.backgroundColor, backgroundColor) || other.backgroundColor == backgroundColor)&&(identical(other.cornerRadius, cornerRadius) || other.cornerRadius == cornerRadius)&&(identical(other.textColor, textColor) || other.textColor == textColor)&&(identical(other.textFontSize, textFontSize) || other.textFontSize == textFontSize));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,backgroundColor,cornerRadius,textColor,textFontSize);
+int get hashCode {
+    return Object.hash(runtimeType,backgroundColor,cornerRadius,textColor,textFontSize);
+}
 
 @override
 String toString() {
-  return 'ThreeDSecureButtonThemeData(backgroundColor: $backgroundColor, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
+    return 'ThreeDSecureButtonThemeData(backgroundColor: $backgroundColor, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
 }
 
 
