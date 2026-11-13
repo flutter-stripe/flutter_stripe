@@ -1,3 +1,5 @@
+## 9.0.0
+
 ## 8.3.0
 **Features**:
 - Expose amount and label on GooglePayParams #2480
