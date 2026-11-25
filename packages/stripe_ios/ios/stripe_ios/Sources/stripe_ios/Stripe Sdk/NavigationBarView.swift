@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import React
 import UIKit
 
 @objc(NavigationBarView)

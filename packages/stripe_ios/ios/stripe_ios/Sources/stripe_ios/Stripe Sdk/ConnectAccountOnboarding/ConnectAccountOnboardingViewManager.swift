@@ -3,8 +3,8 @@
 //  stripe-react-native
 //
 
+import UIKit
 import Foundation
-import React
 
 @objc(ConnectAccountOnboardingViewManager)
 class ConnectAccountOnboardingViewManager: RCTViewManager {

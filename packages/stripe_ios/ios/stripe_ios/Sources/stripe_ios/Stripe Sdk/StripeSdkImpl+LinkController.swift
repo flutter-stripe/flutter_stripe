@@ -5,8 +5,8 @@
 //  @PrivatePreview This implementation is in private preview and may change without notice.
 //
 
+import UIKit
 import Foundation
-import React
 @_spi(LinkControllerPreview) import StripePaymentSheet
 
 extension StripeSdkImpl {

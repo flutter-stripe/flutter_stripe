@@ -5,8 +5,8 @@
 //  Created by Charles Cruzan on 7/12/22.
 //
 
+import UIKit
 import Foundation
-import React
 import Stripe
 import StripeFinancialConnections
 

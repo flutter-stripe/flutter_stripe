@@ -5,8 +5,8 @@
 //  Created by Charles Cruzan on 08/28/23.
 //
 
+import UIKit
 import Foundation
-import React
 @_spi(PrivateBetaCustomerSheet) @_spi(InternalOnlyAPI) @_spi(ReactNativeSDK) import StripePaymentSheet
 extension StripeSdkImpl {
     @MainActor

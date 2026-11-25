@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import React
 @_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(InternalOnlyAPI) @_spi(PaymentMethodOptionsSetupFutureUsagePreview) @_spi(CustomPaymentMethodsBeta) @_spi(ConfirmationTokensPublicPreview) @_spi(CardFundingFilteringPrivatePreview) import StripePaymentSheet
 
 extension StripeSdkImpl {

@@ -5,8 +5,8 @@
 //  Created by Nick Porter on 4/15/25.
 //
 
+import UIKit
 import Foundation
-import React
 @_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(InternalOnlyAPI) @_spi(CustomPaymentMethodsBeta) @_spi(CardFundingFilteringPrivatePreview) import StripePaymentSheet
 
 @objc(StripeSdkImpl)

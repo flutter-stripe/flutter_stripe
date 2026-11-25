@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import React
 import StripePaymentSheet
 import UIKit
 
