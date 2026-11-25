@@ -12,7 +12,7 @@ abstract class ThreeDSecureConfigurationParams
     /// Styling for the 3d secure navigation bar.
     required ThreeDSecureNavigationBarThemeData navigationBar,
 
-    /// Desired timeout in milliseconds.
+    /// Timeout for 3DS2 authentication, in minutes.
     int? timeout,
 
     /// Styling for the 3d secure label.

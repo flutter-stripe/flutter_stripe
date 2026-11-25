@@ -17,7 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$ThreeDSecureConfigurationParams {
 
 /// Styling for the 3d secure navigation bar.
- ThreeDSecureNavigationBarThemeData get navigationBar;/// Desired timeout in milliseconds.
+ ThreeDSecureNavigationBarThemeData get navigationBar;/// Timeout for 3DS2 authentication, in minutes.
  int? get timeout;/// Styling for the 3d secure label.
  ThreeDSecureLabelThemeData? get label;/// Styling for the 3d secure textfield.
  ThreeDSecureTextFieldThemeData? get textField;/// Styling for the 3d secure confirmation button.
@@ -330,7 +330,7 @@ class _ThreeDSecureConfigurationParams implements ThreeDSecureConfigurationParam
 
 /// Styling for the 3d secure navigation bar.
 @override final  ThreeDSecureNavigationBarThemeData navigationBar;
-/// Desired timeout in milliseconds.
+/// Timeout for 3DS2 authentication, in minutes.
 @override final  int? timeout;
 /// Styling for the 3d secure label.
 @override final  ThreeDSecureLabelThemeData? label;

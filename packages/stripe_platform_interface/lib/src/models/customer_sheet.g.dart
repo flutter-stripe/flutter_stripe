@@ -21,6 +21,9 @@ _CustomerSheetInitParamsDeprecated _$CustomerSheetInitParamsDeprecatedFromJson(
   merchantDisplayName: json['merchantDisplayName'] as String?,
   allowsRemovalOfLastSavedPaymentMethod:
       json['allowsRemovalOfLastSavedPaymentMethod'] as bool?,
+  paymentMethodOrder: (json['paymentMethodOrder'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   headerTextForSelectionScreen: json['headerTextForSelectionScreen'] as String?,
   defaultBillingDetails: json['defaultBillingDetails'] == null
       ? null
@@ -61,6 +64,7 @@ Map<String, dynamic> _$CustomerSheetInitParamsDeprecatedToJson(
   'merchantDisplayName': instance.merchantDisplayName,
   'allowsRemovalOfLastSavedPaymentMethod':
       instance.allowsRemovalOfLastSavedPaymentMethod,
+  'paymentMethodOrder': instance.paymentMethodOrder,
   'headerTextForSelectionScreen': instance.headerTextForSelectionScreen,
   'defaultBillingDetails': instance.defaultBillingDetails,
   'billingDetailsCollectionConfiguration':
@@ -113,6 +117,9 @@ _CustomerSheetInitParamsAdapter _$CustomerSheetInitParamsAdapterFromJson(
   merchantDisplayName: json['merchantDisplayName'] as String?,
   allowsRemovalOfLastSavedPaymentMethod:
       json['allowsRemovalOfLastSavedPaymentMethod'] as bool?,
+  paymentMethodOrder: (json['paymentMethodOrder'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   headerTextForSelectionScreen: json['headerTextForSelectionScreen'] as String?,
   defaultBillingDetails: json['defaultBillingDetails'] == null
       ? null
@@ -153,6 +160,7 @@ Map<String, dynamic> _$CustomerSheetInitParamsAdapterToJson(
   'merchantDisplayName': instance.merchantDisplayName,
   'allowsRemovalOfLastSavedPaymentMethod':
       instance.allowsRemovalOfLastSavedPaymentMethod,
+  'paymentMethodOrder': instance.paymentMethodOrder,
   'headerTextForSelectionScreen': instance.headerTextForSelectionScreen,
   'defaultBillingDetails': instance.defaultBillingDetails?.toJson(),
   'billingDetailsCollectionConfiguration': instance
@@ -185,6 +193,9 @@ _CustomerSheetInitParamsSession _$CustomerSheetInitParamsSessionFromJson(
   merchantDisplayName: json['merchantDisplayName'] as String?,
   allowsRemovalOfLastSavedPaymentMethod:
       json['allowsRemovalOfLastSavedPaymentMethod'] as bool?,
+  paymentMethodOrder: (json['paymentMethodOrder'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   headerTextForSelectionScreen: json['headerTextForSelectionScreen'] as String?,
   defaultBillingDetails: json['defaultBillingDetails'] == null
       ? null
@@ -225,6 +236,7 @@ Map<String, dynamic> _$CustomerSheetInitParamsSessionToJson(
   'merchantDisplayName': instance.merchantDisplayName,
   'allowsRemovalOfLastSavedPaymentMethod':
       instance.allowsRemovalOfLastSavedPaymentMethod,
+  'paymentMethodOrder': instance.paymentMethodOrder,
   'headerTextForSelectionScreen': instance.headerTextForSelectionScreen,
   'defaultBillingDetails': instance.defaultBillingDetails?.toJson(),
   'billingDetailsCollectionConfiguration': instance
