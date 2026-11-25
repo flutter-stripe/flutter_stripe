@@ -1,5 +1,8 @@
 package com.reactnativestripesdk
 
+import com.flutter.stripe.BuildConfig
+import com.flutter.stripe.getCurrentActivity
+import com.flutter.stripe.invoke
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
@@ -101,7 +104,7 @@ import org.json.JSONObject
 @ReactModule(name = StripeSdkModule.NAME)
 @OptIn(ReactNativeSdkInternal::class, CheckoutSessionPreview::class)
 class StripeSdkModule(
-  reactContext: ReactApplicationContext,
+  val reactContext: ReactApplicationContext,
 ) : NativeStripeSdkModuleSpec(reactContext) {
 
   private val application = reactContext.applicationContext as Application
