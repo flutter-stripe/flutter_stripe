@@ -71,13 +71,11 @@ If you are having troubles to make this package to work on Android, join [this d
 
 #### iOS
 
-Compatible with apps targeting iOS 13 or above.
+Compatible with apps targeting iOS 15 or above.
 
-To upgrade your iOS deployment target to 13.0, you can either do so in Xcode under your Build Settings, or by modifying IPHONEOS_DEPLOYMENT_TARGET in your project.pbxproj directly.
+To upgrade your iOS deployment target to 15.0, you can either do so in Xcode under your Build Settings, or by modifying IPHONEOS_DEPLOYMENT_TARGET in your project.pbxproj directly.
 
-You will also need to update in your Podfile:
-
-`platform :ios, '13.0'`
+This package requires [Swift Package Manager](https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers). CocoaPods is no longer supported, because the Stripe iOS SDK is no longer published to CocoaPods. Swift Package Manager is enabled by default on the supported Flutter versions; if you disabled it, re-enable it with `flutter config --enable-swift-package-manager` or remove `enable-swift-package-manager: false` from your app's `pubspec.yaml`.
 
 For card scanning add the following to your Info.plist:
 
