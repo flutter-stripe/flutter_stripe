@@ -40,7 +40,7 @@ import com.stripe.android.view.StripeEditText
 class CardFieldView(
   private val context: ThemedReactContext,
 ) : FrameLayout(context) {
-  var mCardWidget: CardInputWidget = CardInputWidget(context)
+  private var mCardWidget: CardInputWidget = CardInputWidget(context)
   private val cardInputWidgetBinding = StripeCardInputWidgetBinding.bind(mCardWidget)
   val cardDetails: MutableMap<String, Any?> =
     mutableMapOf(
@@ -89,9 +89,7 @@ class CardFieldView(
   }
 
   fun requestClearFromJS() {
-    cardInputWidgetBinding.cardNumberEditText.setText("")
-    cardInputWidgetBinding.cvcEditText.setText("")
-    cardInputWidgetBinding.expiryDateEditText.setText("")
+    mCardWidget.clear()
     if (mCardWidget.postalCodeEnabled) {
       cardInputWidgetBinding.postalCodeEditText.setText("")
     }

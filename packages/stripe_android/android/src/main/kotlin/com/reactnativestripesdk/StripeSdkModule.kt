@@ -27,14 +27,12 @@ import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.modules.systeminfo.ReactNativeVersion
-import com.flutter.stripe.BuildConfig
-import com.flutter.stripe.getCurrentActivity
-import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherManager
 import com.reactnativestripesdk.checkout.CheckoutConfigurationMapper
 import com.reactnativestripesdk.checkout.CheckoutSessionSerializer
 import com.reactnativestripesdk.checkout.NativeCheckoutControllerInstance
 import com.reactnativestripesdk.checkout.checkoutErrorCode
+import com.reactnativestripesdk.checkout.checkoutIconContext
 import com.reactnativestripesdk.customersheet.CustomerSheetManager
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.pushprovisioning.TapAndPayProxy
@@ -71,7 +69,7 @@ import com.stripe.android.GooglePayJsonFactory
 import com.stripe.android.PaymentAuthConfig
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.Stripe
-import com.stripe.android.checkout.CheckoutController
+import com.stripe.android.checkout.CheckoutElementsController
 import com.stripe.android.core.ApiVersion
 import com.stripe.android.core.AppInfo
 import com.stripe.android.core.reactnative.ReactNativeAnalytics
@@ -103,8 +101,10 @@ import org.json.JSONObject
 @ReactModule(name = StripeSdkModule.NAME)
 @OptIn(ReactNativeSdkInternal::class, CheckoutSessionPreview::class)
 class StripeSdkModule(
-  val reactContext: ReactApplicationContext,
+  reactContext: ReactApplicationContext,
 ) : NativeStripeSdkModuleSpec(reactContext) {
+
+  private val application = reactContext.applicationContext as Application
 
   var cardFieldView: CardFieldView? = null
   var cardFormView: CardFormView? = null
@@ -145,6 +145,7 @@ class StripeSdkModule(
   val eventEmitter: EventEmitterCompat by lazy { EventEmitterCompat(reactApplicationContext) }
 
   override fun invalidate() {
+    application.unregisterActivityLifecycleCallbacks(activityLifecycleCallbacks)
     checkoutControllersInvalidated = true
     super.invalidate()
 
@@ -332,13 +333,8 @@ class StripeSdkModule(
     promise: Promise,
   ) {
     embeddedIntentCreationCallback.complete(params)
-
-    if (paymentSheetManager == null) {
-      promise.resolve(PaymentSheetManager.createMissingInitError())
-      return
-    }
-
     paymentSheetManager?.paymentSheetIntentCreationCallback?.complete(params)
+    promise.resolve(null)
   }
 
   @ReactMethod
@@ -360,13 +356,8 @@ class StripeSdkModule(
   ) {
     embeddedConfirmationTokenCreationCallback.complete(params)
     paymentSheetConfirmationTokenCreationCallback.complete(params)
-
-    if (paymentSheetManager == null) {
-      promise.resolve(PaymentSheetManager.createMissingInitError())
-      return
-    }
-
     paymentSheetManager?.paymentSheetConfirmationTokenCreationCallback?.complete(params)
+    promise.resolve(null)
   }
 
   @ReactMethod
@@ -1280,9 +1271,9 @@ class StripeSdkModule(
         }
       }
       fragment.customerAdapter?.fetchPaymentMethodsCallback?.complete(paymentMethods)
+      promise.resolve(Arguments.createMap())
     } ?: run {
       promise.resolve(CustomerSheetManager.createMissingInitError())
-      return
     }
   }
 
@@ -1293,18 +1284,35 @@ class StripeSdkModule(
   ) {
     customerSheetManager?.let {
       val paymentMethod =
-        PaymentMethod.fromJson(JSONObject(paymentMethodJson.toHashMap() as HashMap<*, *>))
+        try {
+          PaymentMethod.fromJson(JSONObject(paymentMethodJson.toHashMap() as HashMap<*, *>))
+        } catch (error: IllegalArgumentException) {
+          Log.e(
+            "StripeReactNative",
+            "There was an error converting Payment Method JSON to a Stripe Payment Method",
+            error,
+          )
+          null
+        } catch (error: org.json.JSONException) {
+          Log.e(
+            "StripeReactNative",
+            "There was an error converting Payment Method JSON to a Stripe Payment Method",
+            error,
+          )
+          null
+        }
       if (paymentMethod == null) {
-        Log.e(
-          "StripeReactNative",
-          "There was an error converting Payment Method JSON to a Stripe Payment Method",
-        )
+        val message =
+          "There was an error converting Payment Method JSON to a Stripe Payment Method"
+        Log.e("StripeReactNative", message)
+        it.customerAdapter?.attachPaymentMethodCallback?.completeExceptionally(Exception(message))
+        promise.resolve(createError(ErrorType.Failed.toString(), message))
         return
       }
       it.customerAdapter?.attachPaymentMethodCallback?.complete(paymentMethod)
+      promise.resolve(Arguments.createMap())
     } ?: run {
       promise.resolve(CustomerSheetManager.createMissingInitError())
-      return
     }
   }
 
@@ -1315,18 +1323,35 @@ class StripeSdkModule(
   ) {
     customerSheetManager?.let {
       val paymentMethod =
-        PaymentMethod.fromJson(JSONObject(paymentMethodJson.toHashMap() as HashMap<*, *>))
+        try {
+          PaymentMethod.fromJson(JSONObject(paymentMethodJson.toHashMap() as HashMap<*, *>))
+        } catch (error: IllegalArgumentException) {
+          Log.e(
+            "StripeReactNative",
+            "There was an error converting Payment Method JSON to a Stripe Payment Method",
+            error,
+          )
+          null
+        } catch (error: org.json.JSONException) {
+          Log.e(
+            "StripeReactNative",
+            "There was an error converting Payment Method JSON to a Stripe Payment Method",
+            error,
+          )
+          null
+        }
       if (paymentMethod == null) {
-        Log.e(
-          "StripeReactNative",
-          "There was an error converting Payment Method JSON to a Stripe Payment Method",
-        )
+        val message =
+          "There was an error converting Payment Method JSON to a Stripe Payment Method"
+        Log.e("StripeReactNative", message)
+        it.customerAdapter?.detachPaymentMethodCallback?.completeExceptionally(Exception(message))
+        promise.resolve(createError(ErrorType.Failed.toString(), message))
         return
       }
       it.customerAdapter?.detachPaymentMethodCallback?.complete(paymentMethod)
+      promise.resolve(Arguments.createMap())
     } ?: run {
       promise.resolve(CustomerSheetManager.createMissingInitError())
-      return
     }
   }
 
@@ -1334,9 +1359,9 @@ class StripeSdkModule(
   override fun customerAdapterSetSelectedPaymentOptionCallback(promise: Promise) {
     customerSheetManager?.let {
       it.customerAdapter?.setSelectedPaymentOptionCallback?.complete(Unit)
+      promise.resolve(Arguments.createMap())
     } ?: run {
       promise.resolve(CustomerSheetManager.createMissingInitError())
-      return
     }
   }
 
@@ -1347,9 +1372,9 @@ class StripeSdkModule(
   ) {
     customerSheetManager?.let {
       it.customerAdapter?.fetchSelectedPaymentOptionCallback?.complete(paymentOption)
+      promise.resolve(Arguments.createMap())
     } ?: run {
       promise.resolve(CustomerSheetManager.createMissingInitError())
-      return
     }
   }
 
@@ -1360,9 +1385,9 @@ class StripeSdkModule(
   ) {
     customerSheetManager?.let {
       it.customerAdapter?.setupIntentClientSecretForCustomerAttachCallback?.complete(clientSecret)
+      promise.resolve(Arguments.createMap())
     } ?: run {
       promise.resolve(CustomerSheetManager.createMissingInitError())
-      return
     }
   }
 
@@ -1429,7 +1454,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  @Suppress("TooGenericExceptionCaught")
+  @Suppress("TooGenericExceptionCaught", "LongMethod")
   override fun createCheckout(
     params: ReadableMap,
     controllerId: String,
@@ -1442,18 +1467,19 @@ class StripeSdkModule(
       val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
       pendingCheckoutCreationScopes.add(scope)
       scope.launch {
-        var controller: CheckoutController? = null
+        var controller: CheckoutElementsController? = null
+        var instance: NativeCheckoutControllerInstance? = null
         try {
           val mapped = CheckoutConfigurationMapper.map(
             params = params,
             context = reactApplicationContext,
             didSelectPaymentOption = { emitCheckoutPaymentOptionSelection(controllerId) },
           )
-          controller = CheckoutController.Builder(
+          controller = CheckoutElementsController.Builder(
             reactApplicationContext.applicationContext as Application,
             SavedStateHandle(),
           ).resultCallback { result ->
-            UiThreadUtil.runOnUiThread { checkoutControllers[controllerId]?.onConfirmationResult(result) }
+            UiThreadUtil.runOnUiThread { instance?.onConfirmationResult(result) }
           }.rowSelectionBehavior(mapped.rowSelectionBehavior)
             // Native uses this name as its Payment Element callback identifier.
             .integrationName("stripe-react-native-$controllerId")
@@ -1463,20 +1489,34 @@ class StripeSdkModule(
           val nativeSession = requireNotNull(controller.session.value) {
             "Checkout did not return a session after configuration."
           }
-          val serializedSession = CheckoutSessionSerializer.serialize(nativeSession)
-          val instance = NativeCheckoutControllerInstance(
+          val serializedSession =
+            CheckoutSessionSerializer.serialize(nativeSession, reactApplicationContext.checkoutIconContext())
+          val newInstance = NativeCheckoutControllerInstance(
             controller = controller,
             eventEmitter = eventEmitter,
             scope = scope,
             initialSession = serializedSession,
+            context = reactApplicationContext,
+            isShippingAddressElementConfigured = params.getMap("shippingAddressElement") != null,
+            isExpressCheckoutElementConfigured = params.getMap("expressCheckoutElement") != null,
           )
           check(!checkoutControllersInvalidated) { "Stripe SDK was invalidated." }
           scope.coroutineContext.ensureActive()
-          checkoutControllers[controllerId] = instance
-          instance.start(controllerId)
+          instance = newInstance
+          checkoutControllers[controllerId] = newInstance
+          newInstance.start(controllerId)
           promise.resolve(
             Arguments.createMap().apply {
               putMap("session", serializedSession.copy())
+              putBoolean(
+                "isExpressCheckoutAvailable",
+                params.getMap("expressCheckoutElement") != null &&
+                  nativeSession.availableExpressCheckoutPaymentMethods.isNotEmpty(),
+              )
+              putBoolean(
+                "isCurrencySelectorAvailable",
+                params.hasKey("currencySelectorElement") && nativeSession.isCurrencySelectorAvailable,
+              )
             },
           )
         } catch (error: Exception) {
@@ -1544,18 +1584,7 @@ class StripeSdkModule(
       val address = params.getMap("address")?.let {
         CheckoutConfigurationMapper.mapAddress(it)
       }
-      // Native Checkout currently requires an address and has no clearing API.
-      // TODO(porter): Forward null addresses once the Android SDK supports clearing shipping details.
-      if (address == null) {
-        Result.failure(
-          IllegalStateException(
-            "The installed Stripe Android SDK does not support " +
-              "CheckoutController.updateShippingAddress(name, address) yet.",
-          ),
-        )
-      } else {
-        controller.updateShippingAddress(name, address)
-      }
+      controller.updateShippingAddress(name, address)
     }
   }
 
@@ -1608,8 +1637,7 @@ class StripeSdkModule(
       }
       instance.launchMutation {
         try {
-          val result = instance.confirm(activity)
-          promise.resolve(CheckoutSessionSerializer.serialize(result, instance.controller.session.value?.status))
+          promise.resolve(instance.confirm(activity))
         } catch (error: Exception) {
           promise.reject(checkoutErrorCode(error), error.message, error)
         }
@@ -1635,6 +1663,32 @@ class StripeSdkModule(
       }
       try {
         instance.paymentElement(activity).present()
+        promise.resolve(null)
+      } catch (error: Exception) {
+        promise.reject("Failed", error.message, error)
+      }
+    }
+  }
+
+  @ReactMethod
+  @Suppress("TooGenericExceptionCaught")
+  override fun presentCheckoutShippingAddressElement(controllerId: String, promise: Promise) {
+    UiThreadUtil.runOnUiThread {
+      val instance = checkoutControllers[controllerId]
+      if (instance == null) {
+        promise.reject("Failed", "Checkout controller `$controllerId` does not exist.")
+        return@runOnUiThread
+      }
+      val activity = reactApplicationContext.currentActivity as? ComponentActivity
+      if (activity == null || activity.isFinishing ||
+        !activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)
+      ) {
+        promise.reject("Failed", "Checkout requires a resumed activity to present Shipping Address Element.")
+        return@runOnUiThread
+      }
+      try {
+        // Native Checkout saves the address and publishes the updated session.
+        instance.shippingAddressElement(activity).present()
         promise.resolve(null)
       } catch (error: Exception) {
         promise.reject("Failed", error.message, error)
@@ -1673,11 +1727,18 @@ class StripeSdkModule(
     }
   }
 
+  private fun CheckoutElementsController.OperationResult.getOrThrow() {
+    when (this) {
+      is CheckoutElementsController.OperationResult.Succeeded -> Unit
+      is CheckoutElementsController.OperationResult.Failed -> throw error
+    }
+  }
+
   @Suppress("TooGenericExceptionCaught")
   private fun performCheckoutMutation(
     controllerId: String,
     promise: Promise,
-    operation: suspend (CheckoutController) -> Result<Unit>,
+    operation: suspend (CheckoutElementsController) -> CheckoutElementsController.OperationResult,
   ) {
     UiThreadUtil.runOnUiThread {
       val instance = checkoutControllers[controllerId]
@@ -1744,7 +1805,12 @@ class StripeSdkModule(
     intentConfig: ReadableMap,
     promise: Promise,
   ) {
-    // TODO:
+    promise.resolve(
+      createError(
+        ErrorType.Failed.toString(),
+        "not supported on Android; use the hook's update",
+      ),
+    )
   }
 
   @ReactMethod
@@ -1806,33 +1872,6 @@ class StripeSdkModule(
       } catch (e: Exception) {
         isAuthWebViewActive = false
         promise.resolve(createError("Failed", e))
-      }
-    }
-  }
-
-  @ReactMethod
-  override fun presentExternalWebPage(
-    url: String,
-    promise: Promise,
-  ) {
-    val activity = getCurrentActivityOrResolveWithError(promise) ?: return
-    val uri = url.toUri()
-    if (uri.scheme?.lowercase() !in setOf("http", "https")) {
-      promise.reject(ErrorType.Failed.toString(), "Invalid web URL")
-      return
-    }
-
-    UiThreadUtil.runOnUiThread {
-      try {
-        androidx.browser.customtabs.CustomTabsIntent
-          .Builder()
-          .setShowTitle(true)
-          .setUrlBarHidingEnabled(true)
-          .build()
-          .launchUrl(activity, uri)
-        promise.resolve(null)
-      } catch (e: Exception) {
-        promise.reject(ErrorType.Failed.toString(), "Failed to open web URL", e)
       }
     }
   }
@@ -2051,6 +2090,7 @@ class StripeSdkModule(
 
   override fun dismissPlatformPay(promise: Promise?) {
     // noop, iOS only.
+    promise?.resolve(false)
   }
 
   override fun updatePlatformPaySheet(
@@ -2060,6 +2100,7 @@ class StripeSdkModule(
     promise: Promise?,
   ) {
     // noop, iOS only.
+    promise?.resolve(Arguments.createMap())
   }
 
   /**
@@ -2161,10 +2202,8 @@ class StripeSdkModule(
    */
   private fun preventActivityRecreation() {
     isRecreatingReactActivity = false
-    reactApplicationContext.currentActivity?.application?.unregisterActivityLifecycleCallbacks(
-      activityLifecycleCallbacks
-    )
-    reactApplicationContext.currentActivity?.application?.registerActivityLifecycleCallbacks(activityLifecycleCallbacks)
+    application.unregisterActivityLifecycleCallbacks(activityLifecycleCallbacks)
+    application.registerActivityLifecycleCallbacks(activityLifecycleCallbacks)
   }
 
   private fun setupComposeCompatView() {

@@ -15,7 +15,7 @@ class CardFormViewManager :
   SimpleViewManager<CardFormView>(),
   CardFormManagerInterface<CardFormView> {
   private val delegate = CardFormManagerDelegate(this)
-  var reactContextRef: ThemedReactContext? = null
+  private var reactContextRef: ThemedReactContext? = null
 
   override fun getName() = REACT_CLASS
 

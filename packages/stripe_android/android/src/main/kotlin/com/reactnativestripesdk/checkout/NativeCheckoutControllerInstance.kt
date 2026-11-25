@@ -1,17 +1,24 @@
 package com.reactnativestripesdk.checkout
 
+import android.app.Activity
 import androidx.activity.ComponentActivity
 import androidx.annotation.MainThread
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.facebook.react.bridge.Arguments
+import com.facebook.react.bridge.LifecycleEventListener
+import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.UiThreadUtil
 import com.facebook.react.bridge.WritableMap
 import com.reactnativestripesdk.EventEmitterCompat
-import com.stripe.android.checkout.CheckoutController
-import com.stripe.android.checkout.CheckoutPresenter
+import com.stripe.android.checkout.CheckoutElementsController
+import com.stripe.android.checkout.CheckoutElementsPresenter
+import com.stripe.android.elements.CurrencySelectorElement
+import com.stripe.android.elements.ExpressCheckoutElement
 import com.stripe.android.elements.PaymentElement
+import com.stripe.android.elements.ShippingAddressElement
 import com.stripe.android.paymentelement.CheckoutSessionPreview
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
@@ -25,62 +32,129 @@ import kotlinx.coroutines.launch
 
 /** Owns a native Checkout controller and its session observation for the bridge. */
 @OptIn(CheckoutSessionPreview::class, ExperimentalCoroutinesApi::class)
+@Suppress("TooManyFunctions")
 internal class NativeCheckoutControllerInstance(
-  val controller: CheckoutController,
+  val controller: CheckoutElementsController,
   private val eventEmitter: EventEmitterCompat,
   private val scope: CoroutineScope,
   initialSession: WritableMap,
+  private val context: ReactApplicationContext,
+  private val isShippingAddressElementConfigured: Boolean = false,
+  private val isExpressCheckoutElementConfigured: Boolean = false,
 ) {
+
   private val serverUpdateCompletions = mutableMapOf<String, CompletableDeferred<Result<Unit>>>()
   private var controllerId: String? = null
   private var latestSession = initialSession
   private var destroyed = false
-  private var confirmation: CompletableDeferred<CheckoutController.Result>? = null
+  private var confirmation: CompletableDeferred<CheckoutElementsController.Result>? = null
   private val destructionObservers = mutableSetOf<() -> Unit>()
-  private var presenter: CheckoutPresenter? = null
+  private var presenter: CheckoutElementsPresenter? = null
   private var activity: ComponentActivity? = null
-  private val activityObserver = LifecycleEventObserver { _, event ->
+  private val activityObserver = LifecycleEventObserver { source, event ->
     if (event == Lifecycle.Event.ON_DESTROY) {
       releasePresenter()
+      // Android delivers a pending confirmation result to the activity that replaces this one, and
+      // [confirmationHostListener] rebinds to it. A finishing activity has no replacement.
+      if ((source as? Activity)?.isFinishing == true) {
+        confirmation?.completeExceptionally(
+          IllegalStateException(
+            "The activity was destroyed before Checkout confirmation finished. " +
+              "Check the Checkout Session status before retrying.",
+          ),
+        )
+      }
     }
+  }
+
+  /** Rebinds a pending confirmation to a recreated activity, even after this controller is destroyed. */
+  private val confirmationHostListener = object : LifecycleEventListener {
+    override fun onHostResume() {
+      val activity = context.currentActivity as? ComponentActivity ?: return
+      if (confirmation != null && presenter == null) bindPresenter(activity)
+    }
+
+    override fun onHostPause() = Unit
+
+    override fun onHostDestroy() = Unit
   }
 
   /** Reuses the native Payment Element for the lifetime of its activity. */
   fun paymentElement(activity: ComponentActivity): PaymentElement = getPresenter(activity).paymentElement()
 
-  private fun getPresenter(activity: ComponentActivity): CheckoutPresenter {
+  /** Reuses the native Currency Selector Element for the lifetime of its activity. */
+  fun currencySelectorElement(activity: ComponentActivity): CurrencySelectorElement =
+    getPresenter(activity).currencySelectorElement()
+
+  /** Uses the same activity-bound presenter as Payment Element. */
+  fun shippingAddressElement(activity: ComponentActivity): ShippingAddressElement {
+    check(isShippingAddressElementConfigured) {
+      "Shipping Address Element was not configured for this Checkout controller."
+    }
+    return getPresenter(activity).shippingAddressElement()
+  }
+
+  /** Uses the same activity-bound presenter as the other Checkout elements. */
+  fun expressCheckoutElement(activity: ComponentActivity): ExpressCheckoutElement {
+    check(isExpressCheckoutElementConfigured) {
+      "Express Checkout Element was not configured for this Checkout controller."
+    }
+    return getPresenter(activity).expressCheckoutElement()
+  }
+
+  private fun getPresenter(activity: ComponentActivity): CheckoutElementsPresenter {
     check(!destroyed) { "Checkout controller was destroyed." }
+    return bindPresenter(activity)
+  }
+
+  /** Registers the native result handlers on [activity], which receives confirmation results. */
+  private fun bindPresenter(activity: ComponentActivity): CheckoutElementsPresenter {
     if (this.activity !== activity) {
       releasePresenter()
-      presenter = controller.createPresenter(activity)
+      presenter = controller.createPresenter(activity).also { newPresenter ->
+        if (isShippingAddressElementConfigured) {
+          // Register shipping results even when another element recreates the presenter.
+          newPresenter.shippingAddressElement()
+        }
+        if (isExpressCheckoutElementConfigured) {
+          // Register wallet results even when another element recreates the presenter.
+          newPresenter.expressCheckoutElement()
+        }
+      }
       this.activity = activity
       activity.lifecycle.addObserver(activityObserver)
     }
     return checkNotNull(presenter)
   }
 
-  /** Waits for the controller's result callback within the bridge controller's lifetime. */
+  /** Waits for the controller's result callback, including after bridge disposal. */
   @MainThread
-  suspend fun confirm(activity: ComponentActivity): CheckoutController.Result {
+  suspend fun confirm(activity: ComponentActivity): WritableMap {
     UiThreadUtil.assertOnUiThread()
     check(!destroyed) { "Checkout controller was destroyed." }
     check(confirmation == null) { "Checkout confirmation is already in progress." }
-    val result = CompletableDeferred<CheckoutController.Result>()
+    val result = CompletableDeferred<CheckoutElementsController.Result>()
     confirmation = result
+    context.addLifecycleEventListener(confirmationHostListener)
     try {
       emit("confirming")
       getPresenter(activity).confirm()
       val confirmationResult = result.await()
-      publishCurrentState()
-      return confirmationResult
+      if (!destroyed) publishCurrentState()
+      return CheckoutSessionSerializer.serialize(confirmationResult, controller.session.value?.status)
     } finally {
       confirmation = null
-      if (!destroyed) emit(if (controller.isUpdating.value) "updating" else "ready")
+      context.removeLifecycleEventListener(confirmationHostListener)
+      if (destroyed) {
+        releaseNativeResources()
+      } else {
+        emit(if (controller.isUpdating.value) "updating" else "ready")
+      }
     }
   }
 
   @MainThread
-  fun onConfirmationResult(result: CheckoutController.Result) {
+  fun onConfirmationResult(result: CheckoutElementsController.Result) {
     UiThreadUtil.assertOnUiThread()
     confirmation?.complete(result)
   }
@@ -108,6 +182,13 @@ internal class NativeCheckoutControllerInstance(
     this.controllerId = controllerId
 
     scope.launch {
+      controller.isUpdating.collect { isUpdating ->
+        // Session serialization can suspend while loading a payment icon. Report busy transitions
+        // immediately, even if a later state cancels the serialized snapshot.
+        if (isUpdating && confirmation == null && !destroyed) emit("updating")
+      }
+    }
+    scope.launch {
       sessionStates().collect { session -> publish(session) }
     }
   }
@@ -115,7 +196,7 @@ internal class NativeCheckoutControllerInstance(
   private fun sessionStates() =
     controller.session.combine(controller.isUpdating) { session, _ -> session }
       .mapLatest { session ->
-        session?.let { CheckoutSessionSerializer.serialize(it) }
+        session?.let { CheckoutSessionSerializer.serialize(it, context.checkoutIconContext()) }
       }.filterNotNull()
 
   /** Publishes the current native snapshot before its status or operation result reaches JS. */
@@ -176,6 +257,13 @@ internal class NativeCheckoutControllerInstance(
     val observers = destructionObservers.toList()
     destructionObservers.clear()
     observers.forEach { it() }
+    serverUpdateCompletions.values.forEach {
+      it.complete(Result.failure(CancellationException("Checkout controller was destroyed.")))
+    }
+    if (confirmation == null) releaseNativeResources()
+  }
+
+  private fun releaseNativeResources() {
     releasePresenter()
     scope.cancel()
     controller.destroy()
