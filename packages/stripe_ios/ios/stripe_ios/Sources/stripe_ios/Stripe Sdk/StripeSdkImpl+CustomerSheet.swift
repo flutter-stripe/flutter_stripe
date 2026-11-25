@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
-@_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
+import React
+@_spi(PrivateBetaCustomerSheet) @_spi(InternalOnlyAPI) @_spi(ReactNativeSDK) import StripePaymentSheet
 extension StripeSdkImpl {
     @MainActor
     @objc(initCustomerSheet:customerAdapterOverrides:resolver:rejecter:)

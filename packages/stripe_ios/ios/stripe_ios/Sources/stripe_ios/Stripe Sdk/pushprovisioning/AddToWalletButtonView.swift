@@ -7,6 +7,7 @@
 
 import Foundation
 import PassKit
+import React
 import Stripe
 
 @objc(AddToWalletButtonView)

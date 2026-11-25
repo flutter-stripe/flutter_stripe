@@ -1,7 +1,9 @@
 import Foundation
-@_spi(ReactNativeSDK) @_spi(STP) import StripePaymentSheet
+import React
+@_spi(ReactNativeSDK) @_spi(InternalOnlyAPI) import StripePaymentSheet
 
 extension StripeSdkImpl {
+
     @objc(createCheckout:controllerId:resolver:rejecter:)
     public func createCheckout(
         params: NSDictionary,
@@ -36,10 +38,17 @@ extension StripeSdkImpl {
                             ])
                         }
                     )
-                    let checkout = try await CheckoutController(configuration: configuration)
+                    let checkout = try await CheckoutElementsController(configuration: configuration)
                     try Task.checkCancellation()
+                    let currencySelectorElement = configuration.currencySelectorElement == nil
+                        ? nil
+                        : checkout.getCurrencySelectorElement()
                     let instance = NativeCheckoutControllerInstance(
                         checkout: checkout,
+                        currencySelectorElement: currencySelectorElement,
+                        shippingAddressElement: configuration.shippingAddressElement == nil
+                            ? nil
+                            : checkout.getShippingAddressElement(),
                         emitEvent: { [weak self] update in
                             self?.emitter?.emitCheckoutControllerDidUpdate(update)
                         }
@@ -48,6 +57,7 @@ extension StripeSdkImpl {
                     instance.start(controllerId: controllerId)
                     resolve([
                         "session": instance.session,
+                        "isCurrencySelectorAvailable": currencySelectorElement != nil,
                     ])
                 } catch {
                     reject("Failed", error.localizedDescription, error)
@@ -81,15 +91,8 @@ extension StripeSdkImpl {
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
     ) {
-        performCheckoutMutation(controllerId: controllerId, resolver: resolve, rejecter: reject) { _ in
-            // TODO(porter): Forward email updates once the iOS SDK exposes CheckoutController.updateEmail.
-            throw NSError(
-                domain: "StripeReactNativeCheckout",
-                code: 0,
-                userInfo: [
-                    NSLocalizedDescriptionKey: "The installed Stripe iOS SDK does not support CheckoutController.updateEmail yet.",
-                ]
-            )
+        performCheckoutMutation(controllerId: controllerId, resolver: resolve, rejecter: reject) { instance in
+            try await instance.checkout.updateEmail(email)
         }
     }
 
@@ -159,12 +162,7 @@ extension StripeSdkImpl {
             }
             do {
                 try instance.confirm(from: presenter) { result in
-                    switch result {
-                    case .success(let result):
-                        resolve(CheckoutSessionSerializer.serialize(result))
-                    case .failure(let error):
-                        reject(checkoutErrorCode(for: error), error.localizedDescription, error)
-                    }
+                    resolve(CheckoutSessionSerializer.serialize(result))
                 }
             } catch {
                 reject(checkoutErrorCode(for: error), error.localizedDescription, error)
@@ -193,6 +191,32 @@ extension StripeSdkImpl {
                 return
             }
             instance.checkout.getPaymentElement().present(from: presenter, completion: nil)
+            resolve(nil)
+        }
+    }
+
+    @objc(presentCheckoutShippingAddressElement:resolver:rejecter:)
+    public func presentCheckoutShippingAddressElement(
+        controllerId: String,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        Task { @MainActor [weak self] in
+            guard let self, let instance = checkoutControllers[controllerId] else {
+                reject("Failed", "Checkout controller `\(controllerId)` does not exist.", nil)
+                return
+            }
+            guard let element = instance.shippingAddressElement else {
+                reject("Failed", "Shipping Address Element was not configured for this Checkout controller.", nil)
+                return
+            }
+            guard let presenter = checkoutPresentingViewControllerProvider(),
+                  presenter.viewIfLoaded?.window != nil, !presenter.isBeingDismissed else {
+                reject("Failed", "Checkout requires a visible presenting view controller.", nil)
+                return
+            }
+            // Resolve on presentation, matching Payment Element's sheet API.
+            element.present(from: presenter, completion: nil)
             resolve(nil)
         }
     }

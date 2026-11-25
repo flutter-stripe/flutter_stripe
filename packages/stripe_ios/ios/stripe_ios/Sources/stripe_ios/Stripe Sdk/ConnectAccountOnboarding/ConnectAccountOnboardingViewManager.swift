@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import UIKit
+import React
 
 @objc(ConnectAccountOnboardingViewManager)
 class ConnectAccountOnboardingViewManager: RCTViewManager {

@@ -1,9 +1,9 @@
 // This is a compat layer for new architecture event emitters on React Native < 0.80.
 // It avoids crashes when setting the generated event emitter callback by using RCTEventEmitter.
 
-#import <Foundation/Foundation.h>
+#import <React/RCTEventEmitter.h>
 
-@interface StripeSdkEventEmitterCompat : NSObject
+@interface StripeSdkEventEmitterCompat : RCTEventEmitter
 
 - (void)emitOnConfirmHandlerCallback:(NSDictionary *)value;
 - (void)emitOnConfirmationTokenHandlerCallback:(NSDictionary *)value;
@@ -30,5 +30,4 @@
 - (void)emitCheckoutControllerDidUpdate:(NSDictionary *)value;
 - (void)emitCheckoutControllerDidSelectPaymentOption:(NSDictionary *)value;
 - (void)emitCheckoutServerUpdateRequested:(NSDictionary *)value;
-- (void)sendEventWithName:(NSString *)name body:(NSDictionary<NSString *, id> *)body;
 @end

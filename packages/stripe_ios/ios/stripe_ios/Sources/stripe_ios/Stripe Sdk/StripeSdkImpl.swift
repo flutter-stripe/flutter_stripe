@@ -1,11 +1,11 @@
 import AuthenticationServices
 import Foundation
 import PassKit
-import SafariServices
-@_spi(DashboardOnly) @_spi(STP) import Stripe
-@_spi(STP) @_spi(ReactNativeSDK) import StripeCore
+import React
+@_spi(DashboardOnly) @_spi(InternalOnlyAPI) import Stripe
+@_spi(InternalOnlyAPI) @_spi(ReactNativeSDK) import StripeCore
 import StripeFinancialConnections
-@_spi(STP) @_spi(ConfirmationTokensPublicPreview) import StripePayments
+@_spi(InternalOnlyAPI) @_spi(ConfirmationTokensPublicPreview) import StripePayments
 import StripePaymentsUI
 import UIKit
 #if canImport(StripeCryptoOnramp)
@@ -234,6 +234,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             let error = ConfirmationError.init(errorMessage: errorParams?["localizedMessage"] as? String ?? "An unknown error occurred.")
             paymentSheetIntentCreationCallback(.failure(error))
         }
+        resolve(nil)
     }
 
     @objc(confirmationTokenCreationCallback:resolver:rejecter:)
@@ -251,6 +252,7 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             let error = ConfirmationError.init(errorMessage: errorParams?["localizedMessage"] as? String ?? "An unknown error occurred.")
             paymentSheetConfirmationTokenIntentCreationCallback(.failure(error))
         }
+        resolve(nil)
     }
 
     @objc(customPaymentMethodResultCallback:resolver:rejecter:)
@@ -613,6 +615,9 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
         let uiCustomization = Mappers.mapUICustomization(params)
 
         threeDSCustomizationSettings.uiCustomization = uiCustomization
+        if let timeout = params["timeout"] as? NSNumber {
+            threeDSCustomizationSettings.authenticationTimeout = timeout.intValue
+        }
     }
 
     @objc(createPaymentMethod:options:resolver:rejecter:)
@@ -1335,20 +1340,15 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             return
         }
 
-        let appearance: LinkAppearance = if let appearanceParams = config["appearance"] as? [String: Any?] {
-            Mappers.mapToLinkAppearance(appearanceParams)
-        } else {
-            LinkAppearance()
-        }
-
-        let cryptoCustomerId = config["cryptoCustomerId"] as? String
+        let configuration = Mappers.mapToOnrampConfiguration(config)
 
         Task {
             do {
                 cryptoOnrampCoordinator = try await CryptoOnrampCoordinator.create(
-                    appearance: appearance,
-                    cryptoCustomerID: cryptoCustomerId,
-                    additionalSDKVersions: onrampAdditionalSDKVersions
+                    appearance: configuration.appearance,
+                    cryptoCustomerID: configuration.cryptoCustomerId,
+                    additionalSDKVersions: onrampAdditionalSDKVersions,
+                    countryHint: configuration.countryHint
                 )
                 resolve([:])  // Return empty object on success
             } catch {
@@ -1650,6 +1650,66 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
             } catch {
                 let errorResult = OnrampErrors.createFailedError(error)
                 resolve(["error": errorResult["error"]!])
+            }
+        }
+    }
+
+    @objc(fulfillKycRequirements:rejecter:)
+    public func fulfillKycRequirements(
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard isPublishableKeyAvailable(resolve), let coordinator = requireOnrampCoordinator(resolve) else {
+            return
+        }
+
+        Task { @MainActor in
+            do {
+                let presenter = findViewControllerPresenter(from: RCTKeyWindow()?.rootViewController ?? UIViewController())
+                let result = try await coordinator.fulfillKYCRequirements(from: presenter)
+                resolve(Mappers.mapFromFulfillKYCRequirementsResult(result))
+            } catch {
+                resolve(OnrampErrors.createFailedError(error))
+            }
+        }
+    }
+
+    @objc(presentTermsAndConditionsIfNeeded:rejecter:)
+    public func presentTermsAndConditionsIfNeeded(
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard isPublishableKeyAvailable(resolve), let coordinator = requireOnrampCoordinator(resolve) else {
+            return
+        }
+
+        Task { @MainActor in
+            do {
+                let presenter = findViewControllerPresenter(from: RCTKeyWindow()?.rootViewController ?? UIViewController())
+                let result = try await coordinator.presentTermsAndConditionsIfNeeded(from: presenter)
+                resolve(Mappers.mapFromPartnerTermsResult(result))
+            } catch {
+                resolve(OnrampErrors.createFailedError(error))
+            }
+        }
+    }
+
+    @objc(presentTermsOfServiceIfNeeded:rejecter:)
+    public func presentTermsOfServiceIfNeeded(
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard isPublishableKeyAvailable(resolve), let coordinator = requireOnrampCoordinator(resolve) else {
+            return
+        }
+
+        Task { @MainActor in
+            do {
+                let presenter = findViewControllerPresenter(from: RCTKeyWindow()?.rootViewController ?? UIViewController())
+                let result = try await coordinator.presentTermsOfServiceIfNeeded(from: presenter)
+                resolve(Mappers.mapFromPartnerTermsResult(result))
+            } catch {
+                resolve(OnrampErrors.createFailedError(error))
             }
         }
     }
@@ -2079,33 +2139,6 @@ public class StripeSdkImpl: NSObject, UIAdaptivePresentationControllerDelegate {
                 self.authenticationSession = nil
                 self.authenticationContextProvider = nil
                 return
-            }
-        }
-    }
-
-    @objc(presentExternalWebPage:resolver:rejecter:)
-    public func presentExternalWebPage(
-        url: String,
-        resolver resolve: @escaping RCTPromiseResolveBlock,
-        rejecter reject: @escaping RCTPromiseRejectBlock
-    ) {
-        guard let url = URL(string: url),
-              let scheme = url.scheme?.lowercased(),
-              ["http", "https"].contains(scheme) else {
-            reject(ErrorType.Failed, "Invalid web URL", nil)
-            return
-        }
-
-        DispatchQueue.main.async {
-            let safariViewController = SFSafariViewController(url: url)
-            safariViewController.dismissButtonStyle = .done
-            safariViewController.modalPresentationStyle = .pageSheet
-
-            let presenter = findViewControllerPresenter(
-                from: RCTKeyWindow()?.rootViewController ?? UIViewController()
-            )
-            presenter.present(safariViewController, animated: true) {
-                resolve(nil)
             }
         }
     }
