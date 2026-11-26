@@ -1,6 +1,6 @@
-import Stripe
 import UIKit
-@_spi(STP) import StripeCore
+import Stripe
+@_spi(InternalOnlyAPI) import StripeCore
 
 enum ErrorType {
     static let Failed = "Failed"

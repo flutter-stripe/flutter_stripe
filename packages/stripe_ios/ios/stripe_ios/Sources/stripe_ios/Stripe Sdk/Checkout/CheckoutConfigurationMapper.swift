@@ -1,6 +1,6 @@
 import Foundation
 import PassKit
-@_spi(ReactNativeSDK) @_spi(STP) import StripePaymentSheet
+@_spi(ReactNativeSDK) @_spi(InternalOnlyAPI) import StripePaymentSheet
 
 enum CheckoutConfigurationMapperError: LocalizedError, Equatable {
     case unsupportedValue(path: String, value: String)
@@ -22,11 +22,11 @@ enum CheckoutConfigurationMapper {
         params: NSDictionary,
         merchantIdentifier: String?,
         didSelectPaymentOption: @escaping () -> Void
-    ) throws -> CheckoutController.Configuration {
+    ) throws -> CheckoutElementsController.Configuration {
         let clientSecret = params["clientSecret"] as? String ?? ""
         let returnURL = params["returnURL"] as? String ?? ""
 
-        var configuration = CheckoutController.Configuration(
+        var configuration = CheckoutElementsController.Configuration(
             clientSecret: clientSecret,
             returnURL: returnURL
         )
@@ -38,28 +38,175 @@ enum CheckoutConfigurationMapper {
         let defaultsParams = params["defaults"] as? NSDictionary
         configuration.defaults = mapDefaults(defaultsParams)
 
+        let paymentElementParams = params["paymentElement"] as? NSDictionary
         configuration.paymentElement = try mapPaymentElement(
-            params["paymentElement"] as? NSDictionary,
-            merchantIdentifier: merchantIdentifier,
+            paymentElementParams,
             didSelectPaymentOption: didSelectPaymentOption
         )
+        configuration.applePayMerchantId = try mapApplePayMerchantId(
+            paymentElementParams?["applePay"] as? NSDictionary,
+            merchantIdentifier: merchantIdentifier
+        )
+        if let shippingParams = params["shippingAddressElement"] as? NSDictionary {
+            var shippingConfiguration = ShippingAddressElement.Configuration()
+            if let title = shippingParams["title"] as? String {
+                shippingConfiguration.title = title
+            }
+            if let buttonTitle = shippingParams["buttonTitle"] as? String {
+                shippingConfiguration.buttonTitle = buttonTitle
+            }
+            if let appearance = shippingParams["appearance"] as? NSDictionary {
+                shippingConfiguration.appearance = try mapShippingAddressAppearance(appearance)
+            }
+            configuration.shippingAddressElement = shippingConfiguration
+        }
+        if let currencySelectorParams = params["currencySelectorElement"] as? NSDictionary {
+            var currencySelectorConfiguration = CurrencySelectorElement.Configuration()
+            currencySelectorConfiguration.appearance = try mapCurrencySelectorAppearance(
+                currencySelectorParams["appearance"] as? NSDictionary
+            )
+            configuration.currencySelectorElement = currencySelectorConfiguration
+        }
         return configuration
+    }
+
+    private static func mapShippingAddressAppearance(
+        _ params: NSDictionary
+    ) throws -> ShippingAddressElement.Appearance {
+        // Share parsing and validation with Payment Element's appearance options.
+        let mapped = try PaymentSheetAppearance.buildAppearanceFromParams(userParams: params)
+        var appearance = ShippingAddressElement.Appearance()
+        appearance.font.base = mapped.font.base
+        appearance.font.sizeScaleFactor = mapped.font.sizeScaleFactor
+        appearance.colors.primary = mapped.colors.primary
+        appearance.colors.background = mapped.colors.background
+        appearance.colors.componentBackground = mapped.colors.componentBackground
+        appearance.colors.componentBorder = mapped.colors.componentBorder
+        appearance.colors.componentDivider = mapped.colors.componentDivider
+        appearance.colors.text = mapped.colors.text
+        appearance.colors.textSecondary = mapped.colors.textSecondary
+        appearance.colors.componentText = mapped.colors.componentText
+        appearance.colors.componentPlaceholderText = mapped.colors.componentPlaceholderText
+        appearance.colors.icon = mapped.colors.icon
+        appearance.colors.danger = mapped.colors.danger
+        appearance.cornerRadius = mapped.cornerRadius
+        appearance.borderWidth = mapped.borderWidth
+        appearance.shadow = mapShippingAddressShadow(mapped.shadow)
+        appearance.formInsets = mapped.formInsets
+        appearance.primaryButton.backgroundColor = mapped.primaryButton.backgroundColor
+        appearance.primaryButton.textColor = mapped.primaryButton.textColor
+        appearance.primaryButton.borderColor = mapped.primaryButton.borderColor
+        appearance.primaryButton.cornerRadius = mapped.primaryButton.cornerRadius
+        appearance.primaryButton.borderWidth = mapped.primaryButton.borderWidth
+        appearance.primaryButton.font = mapped.primaryButton.font
+        appearance.primaryButton.height = mapped.primaryButton.height
+        return appearance
+    }
+
+    private static func mapShippingAddressShadow(
+        _ shadow: PaymentSheet.Appearance.Shadow
+    ) -> ShippingAddressElement.Appearance.Shadow {
+        var mapped = ShippingAddressElement.Appearance.Shadow()
+        mapped.color = shadow.color
+        mapped.opacity = shadow.opacity
+        mapped.offset = shadow.offset
+        mapped.radius = shadow.radius
+        return mapped
+    }
+
+    private static func mapCurrencySelectorAppearance(
+        _ params: NSDictionary?
+    ) throws -> CurrencySelectorElement.Appearance {
+        var appearance = CurrencySelectorElement.Appearance()
+        guard let params else { return appearance }
+
+        if let padding = params["contentVerticalPadding"] as? NSNumber {
+            appearance.contentVerticalPadding = CGFloat(truncating: padding)
+        }
+        if let shapes = params["shapes"] as? NSDictionary {
+            if let radius = shapes["cornerRadius"] as? NSNumber {
+                appearance.cornerRadius = CGFloat(truncating: radius)
+            }
+            if let width = shapes["borderWidth"] as? NSNumber {
+                appearance.borderWidth = CGFloat(truncating: width)
+            }
+        }
+        if let font = params["font"] as? NSDictionary {
+            if let family = font["family"] as? String,
+               let customFont = UIFont(name: family, size: appearance.font.pointSize) {
+                appearance.font = customFont
+            }
+            if let scale = font["scale"] as? NSNumber {
+                appearance.sizeScaleFactor = CGFloat(truncating: scale)
+            }
+        }
+        if let value = params["labelContent"] as? String {
+            appearance.labelContent = switch value {
+            case "automatic": .automatic
+            case "currencyCode": .currencyCode
+            case "amount": .amount
+            default: throw unsupported(value, at: "currencySelectorElement.appearance.labelContent")
+            }
+        }
+        if let colors = params["colors"] as? NSDictionary {
+            mapCurrencySelectorColor(colors, key: "border").map { appearance.border = $0 }
+            mapCurrencySelectorColor(colors, key: "background").map { appearance.background = $0 }
+            mapCurrencySelectorColor(colors, key: "selectedBackground").map { appearance.selectedBackground = $0 }
+            mapCurrencySelectorColor(colors, key: "text").map { appearance.text = $0 }
+            mapCurrencySelectorColor(colors, key: "selectedText").map { appearance.selectedText = $0 }
+            mapCurrencySelectorColor(colors, key: "textSecondary").map { appearance.textSecondary = $0 }
+            mapCurrencySelectorColor(colors, key: "danger").map { appearance.danger = $0 }
+        }
+        return appearance
+    }
+
+    private static func mapCurrencySelectorColor(
+        _ colors: NSDictionary,
+        key: String
+    ) -> UIColor? {
+        let lightPalette = colors["light"] as? NSDictionary
+        let darkPalette = colors["dark"] as? NSDictionary
+        if lightPalette != nil || darkPalette != nil {
+            let light = colorHex(lightPalette?[key], style: "light")
+                ?? colorHex(darkPalette?[key], style: "light")
+            let dark = colorHex(darkPalette?[key], style: "dark")
+                ?? colorHex(lightPalette?[key], style: "dark")
+            guard light != nil || dark != nil else { return nil }
+            return UIColor { traits in
+                UIColor(hexString: traits.userInterfaceStyle == .dark
+                    ? (dark ?? light!)
+                    : (light ?? dark!))
+            }
+        }
+        guard let light = colorHex(colors[key], style: "light"),
+              let dark = colorHex(colors[key], style: "dark") else {
+            return nil
+        }
+        if light == dark { return UIColor(hexString: light) }
+        return UIColor { traits in
+            UIColor(hexString: traits.userInterfaceStyle == .dark ? dark : light)
+        }
+    }
+
+    private static func colorHex(_ value: Any?, style: String) -> String? {
+        if let value = value as? String { return value }
+        return (value as? NSDictionary)?[style] as? String
     }
 
     private static func mapDefaults(
         _ params: NSDictionary?
-    ) -> CheckoutController.Configuration.Defaults {
-        var defaults = CheckoutController.Configuration.Defaults()
+    ) -> CheckoutElementsController.Configuration.Defaults {
+        var defaults = CheckoutElementsController.Configuration.Defaults()
 
         if let billingParams = params?["billingDetails"] as? NSDictionary {
-            var billingDetails = CheckoutController.Configuration.Defaults.BillingDetails()
+            var billingDetails = CheckoutElementsController.Configuration.Defaults.BillingDetails()
             billingDetails.name = billingParams["name"] as? String
             billingDetails.address = mapAddress(billingParams["address"] as? NSDictionary)
             defaults.billingDetails = billingDetails
         }
 
         if let shippingParams = params?["shippingDetails"] as? NSDictionary {
-            var shippingDetails = CheckoutController.Configuration.Defaults.ShippingDetails()
+            var shippingDetails = CheckoutElementsController.Configuration.Defaults.ShippingDetails()
             shippingDetails.name = shippingParams["name"] as? String
             shippingDetails.address = mapAddress(shippingParams["address"] as? NSDictionary)
             defaults.shippingDetails = shippingDetails
@@ -73,11 +220,11 @@ enum CheckoutConfigurationMapper {
 
     static func mapAddress(
         _ params: NSDictionary?
-    ) -> CheckoutController.Address? {
+    ) -> CheckoutElementsController.Address? {
         guard let params else {
             return nil
         }
-        return CheckoutController.Address(
+        return CheckoutElementsController.Address(
             country: params["country"] as? String ?? "",
             line1: params["line1"] as? String,
             line2: params["line2"] as? String,
@@ -89,7 +236,6 @@ enum CheckoutConfigurationMapper {
 
     private static func mapPaymentElement(
         _ params: NSDictionary?,
-        merchantIdentifier: String?,
         didSelectPaymentOption: @escaping () -> Void
     ) throws -> PaymentElement.Configuration {
         var configuration = PaymentElement.Configuration()
@@ -98,25 +244,15 @@ enum CheckoutConfigurationMapper {
         }
 
         if let applePayParams = params["applePay"] as? NSDictionary {
-            guard let merchantIdentifier, !merchantIdentifier.isEmpty else {
-                throw CheckoutConfigurationMapperError.missingMerchantIdentifier
-            }
-            configuration.applePayConfiguration = PaymentElement.ApplePayConfiguration(
-                merchantId: merchantIdentifier,
-                buttonType: try mapApplePayButtonType(applePayParams["buttonType"] as? String)
-            )
+            configuration.applePayConfiguration = try mapApplePayConfiguration(applePayParams)
         }
 
         if let linkParams = params["link"] as? NSDictionary {
-            var linkConfiguration = PaymentElement.LinkConfiguration()
+            var linkConfiguration = PaymentElement.Configuration.LinkConfiguration()
             if let display = linkParams["display"] as? String {
                 linkConfiguration.display = try mapLinkDisplay(display)
             }
             configuration.linkConfiguration = linkConfiguration
-        }
-
-        if let behavior = params["savePaymentMethodOptInBehavior"] as? String {
-            configuration.savePaymentMethodOptInBehavior = try mapSavePaymentMethodOptInBehavior(behavior)
         }
 
         if let appearance = params["appearance"] as? NSDictionary {
@@ -129,12 +265,6 @@ enum CheckoutConfigurationMapper {
             configuration.preferredNetworks = try mapPreferredNetworks(preferredNetworks)
         }
 
-        if let billingDetails = params["billingDetailsCollectionConfiguration"] as? NSDictionary {
-            configuration.billingDetailsCollectionConfiguration = try mapBillingDetailsCollection(
-                billingDetails,
-                default: configuration.billingDetailsCollectionConfiguration
-            )
-        }
         configuration.removeSavedPaymentMethodMessage = params["removeSavedPaymentMethodMessage"] as? String
         configuration.paymentMethodOrder = params["paymentMethodOrder"] as? [String]
         if let opensCardScannerAutomatically = params["opensCardScannerAutomatically"] as? Bool {
@@ -161,38 +291,6 @@ enum CheckoutConfigurationMapper {
         return configuration
     }
 
-    private static func mapBillingDetailsCollection(
-        _ params: NSDictionary,
-        default defaultConfiguration: PaymentElement.BillingDetailsCollectionConfiguration
-    ) throws -> PaymentElement.BillingDetailsCollectionConfiguration {
-        var configuration = defaultConfiguration
-        if let address = params["address"] as? String {
-            configuration.address = try mapAddressCollectionMode(address)
-        }
-        return configuration
-    }
-
-    private static func mapAddressCollectionMode(
-        _ value: String
-    ) throws -> PaymentElement.BillingDetailsCollectionConfiguration.AddressCollectionMode {
-        switch value {
-        case "automatic": return .automatic
-        case "full": return .full
-        default: throw unsupported(value, at: "paymentElement.billingDetailsCollectionConfiguration.address")
-        }
-    }
-
-    private static func mapSavePaymentMethodOptInBehavior(
-        _ value: String
-    ) throws -> PaymentElement.SavePaymentMethodOptInBehavior {
-        switch value {
-        case "automatic": return .automatic
-        case "requiresOptIn": return .requiresOptIn
-        case "requiresOptOut": return .requiresOptOut
-        default: throw unsupported(value, at: "paymentElement.savePaymentMethodOptInBehavior")
-        }
-    }
-
     private static func mapPaymentMethodLayout(
         _ value: String
     ) throws -> PaymentElement.PaymentMethodLayout {
@@ -217,12 +315,41 @@ enum CheckoutConfigurationMapper {
 
     private static func mapLinkDisplay(
         _ value: String
-    ) throws -> PaymentElement.LinkConfiguration.Display {
+    ) throws -> PaymentElement.Configuration.LinkConfiguration.Display {
         switch value {
         case "automatic": return .automatic
         case "never": return .never
         default: throw unsupported(value, at: "paymentElement.link.display")
         }
+    }
+
+    private static func mapApplePayConfiguration(
+        _ params: NSDictionary
+    ) throws -> PaymentElement.Configuration.ApplePayConfiguration {
+        let display: PaymentElement.Configuration.ApplePayConfiguration.Display = switch params["display"] as? String {
+        case nil, "automatic": .automatic
+        case "never": .never
+        case .some(let value): throw unsupported(value, at: "paymentElement.applePay.display")
+        }
+        return .init(
+            display: display,
+            buttonType: try mapApplePayButtonType(params["buttonType"] as? String)
+        )
+    }
+
+    /// Checkout shares one Apple Pay merchant ID across its elements, and leaving it `nil` disables
+    /// Apple Pay. Only set it when Payment Element opts in to Apple Pay.
+    private static func mapApplePayMerchantId(
+        _ applePayParams: NSDictionary?,
+        merchantIdentifier: String?
+    ) throws -> String? {
+        guard let applePayParams, applePayParams["display"] as? String != "never" else {
+            return nil
+        }
+        guard let merchantIdentifier, !merchantIdentifier.isEmpty else {
+            throw CheckoutConfigurationMapperError.missingMerchantIdentifier
+        }
+        return merchantIdentifier
     }
 
     private static func mapApplePayButtonType(_ value: String?) throws -> PKPaymentButtonType? {

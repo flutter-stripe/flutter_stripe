@@ -1,33 +1,53 @@
 package com.reactnativestripesdk.checkout
 
+import android.content.Context
 import com.facebook.react.bridge.Arguments
+import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.WritableArray
 import com.facebook.react.bridge.WritableMap
 import com.reactnativestripesdk.convertDrawableToBase64
 import com.reactnativestripesdk.toHtmlString
 import com.reactnativestripesdk.utils.createError
-import com.stripe.android.checkout.CheckoutController
-import com.stripe.android.checkout.CheckoutController.Session
+import com.reactnativestripesdk.utils.isDarkTheme
+import com.stripe.android.checkout.CheckoutElementsController
+import com.stripe.android.checkout.CheckoutElementsController.Session
+import com.stripe.android.core.reactnative.ReactNativeSdkInternal
 import com.stripe.android.paymentelement.CheckoutSessionPreview
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 
-@OptIn(CheckoutSessionPreview::class)
+@OptIn(CheckoutSessionPreview::class, ReactNativeSdkInternal::class)
 internal object CheckoutSessionSerializer {
-  suspend fun serialize(session: Session): WritableMap =
+  suspend fun serialize(session: Session, context: Context): WritableMap =
     Arguments.createMap().apply {
       putString("id", session.id)
+      // Default availability for the Express Checkout API stub.
+      putMap(
+        "availableExpressCheckoutPaymentMethods",
+        Arguments.createMap().apply {
+          for ((key, type) in mapOf("applePay" to "apple_pay", "googlePay" to "google_pay", "link" to "link")) {
+            putMap(
+              key,
+              Arguments.createMap().apply {
+                putBoolean("available", false)
+                putString("type", type)
+              },
+            )
+          }
+        },
+      )
       putBoolean("livemode", session.livemode)
-      putString("currency", session.currency)
+      // Like iOS, omit the currency when the session has none.
+      session.currency?.let { putString("currency", it) }
       session.email?.let { putString("email", it) }
       session.tax?.let { putMap("tax", serializeTax(it)) }
       putMap("status", serializeStatus(session.status))
       session.paymentOption?.let {
-        putMap("paymentOption", serializePaymentOption(it))
+        putMap("paymentOption", serializePaymentOption(it, context))
       }
-      putInt("minorUnitsAmountDivisor", session.minorUnitsAmountDivisor)
+      session.minorUnitsAmountDivisor?.let { putInt("minorUnitsAmountDivisor", it) }
       session.businessName?.let { putString("businessName", it) }
       session.presentmentDetails?.let {
         putMap(
@@ -44,16 +64,19 @@ internal object CheckoutSessionSerializer {
       putMap("totals", serialize(session.totals))
     }
 
-  fun serialize(result: CheckoutController.Result, sessionStatus: Session.Status?): WritableMap = when (result) {
-    is CheckoutController.Result.Completed -> Arguments.createMap().apply {
+  fun serialize(
+    result: CheckoutElementsController.Result,
+    sessionStatus: Session.Status?,
+  ): WritableMap = when (result) {
+    is CheckoutElementsController.Result.Completed -> Arguments.createMap().apply {
       val completeStatus = checkNotNull(sessionStatus as? Session.Status.Complete) {
         "Checkout completed without a complete session."
       }
       putString("status", "completed")
       putString("paymentStatus", serializePaymentStatus(completeStatus.paymentStatus))
     }
-    is CheckoutController.Result.Canceled -> Arguments.createMap().apply { putString("status", "canceled") }
-    is CheckoutController.Result.Failed ->
+    is CheckoutElementsController.Result.Canceled -> Arguments.createMap().apply { putString("status", "canceled") }
+    is CheckoutElementsController.Result.Failed ->
       createError(checkoutErrorCode(result.error), result.error).apply {
         putString("status", "failed")
       }
@@ -88,12 +111,17 @@ internal object CheckoutSessionSerializer {
 
   private fun serialize(amount: Session.Amount): WritableMap = Arguments.createMap().apply {
     putString("amount", amount.amount)
-    putDouble("minorUnitsAmount", amount.minorUnitsAmount)
+    putLong("minorUnitsAmount", amount.minorUnitsAmount)
+  }
+
+  private fun serialize(amount: Session.DecimalAmount): WritableMap = Arguments.createMap().apply {
+    putString("amount", amount.amount)
+    putDouble("minorUnitsAmount", amount.minorUnitsAmount.toDouble())
   }
 
   private fun serialize(amount: Session.DiscountAmount): WritableMap = Arguments.createMap().apply {
     putString("amount", amount.amount)
-    putDouble("minorUnitsAmount", amount.minorUnitsAmount)
+    putLong("minorUnitsAmount", amount.minorUnitsAmount)
     putString("displayName", amount.displayName)
     amount.promotionCode?.let { putString("promotionCode", it) }
     amount.percentOff?.let { putDouble("percentOff", it) }
@@ -101,7 +129,7 @@ internal object CheckoutSessionSerializer {
 
   private fun serialize(amount: Session.TaxAmount): WritableMap = Arguments.createMap().apply {
     putString("amount", amount.amount)
-    putDouble("minorUnitsAmount", amount.minorUnitsAmount)
+    putLong("minorUnitsAmount", amount.minorUnitsAmount)
     putBoolean("inclusive", amount.inclusive)
     putString("displayName", amount.displayName)
     amount.percentage?.let { putDouble("percentage", it) }
@@ -137,6 +165,7 @@ internal object CheckoutSessionSerializer {
       item.description?.let { putString("description", it) }
       putArray("items", serializeList(item.items, ::serialize))
     }
+    else -> error("Unsupported Checkout order summary item: ${item.javaClass.simpleName}")
   }
 
   private fun serialize(item: Session.OrderSummaryItem.OneTimePrice.Item): WritableMap = Arguments.createMap().apply {
@@ -147,11 +176,11 @@ internal object CheckoutSessionSerializer {
     item.unitAmountDecimal?.let { putMap("unitAmountDecimal", serialize(it)) }
     item.unitLabel?.let { putString("unitLabel", it) }
     putInt("quantity", item.quantity)
+    // Native Checkout only provides `adjustableQuantity` when adjustment is enabled.
     item.adjustableQuantity?.let {
       putMap(
           "adjustableQuantity",
           Arguments.createMap().apply {
-        putBoolean("enabled", it.enabled)
         putInt("minimum", it.minimum)
         putInt("maximum", it.maximum)
       }
@@ -174,15 +203,18 @@ internal object CheckoutSessionSerializer {
 
   private suspend fun serializePaymentOption(
     paymentOption: Session.PaymentOptionDisplayData,
+    context: Context,
   ): WritableMap = Arguments.createMap().apply {
     putString("label", paymentOption.label)
+    paymentOption.sublabel?.let { putString("sublabel", it) }
     putString("paymentMethodType", paymentOption.paymentMethodType)
     paymentOption.mandateText?.let { putString("mandateHTML", it.toHtmlString()) }
     paymentOption.billingDetails?.let { putMap("billingDetails", serializeBillingDetails(it)) }
+    val isSystemDarkTheme = context.resources.configuration.isDarkTheme()
     val imageBase64 = try {
       withContext(Dispatchers.Default) {
         withTimeoutOrNull(IMAGE_TIMEOUT_MILLIS) {
-          val image = withContext(Dispatchers.IO) { paymentOption.imageLoader() }
+          val image = withContext(Dispatchers.IO) { paymentOption.loadIcon(isSystemDarkTheme) }
           convertDrawableToBase64(image)
         }
       }
@@ -217,3 +249,7 @@ internal object CheckoutSessionSerializer {
 }
 
 private const val IMAGE_TIMEOUT_MILLIS = 5_000L
+
+/** Use the current host's configuration, or the application's while no activity is available. */
+internal fun ReactApplicationContext.checkoutIconContext(): Context =
+  currentActivity?.takeUnless { it.isDestroyed } ?: this

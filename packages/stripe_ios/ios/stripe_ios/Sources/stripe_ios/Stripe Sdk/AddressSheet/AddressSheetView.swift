@@ -5,9 +5,9 @@
 //  Created by Charles Cruzan on 10/11/22.
 //
 
+import UIKit
 import Foundation
 import StripePaymentSheet
-import UIKit
 
 @objc(AddressSheetView)
 public class AddressSheetView: UIView {

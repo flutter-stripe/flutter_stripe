@@ -2,27 +2,34 @@ package com.reactnativestripesdk.checkout
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.compose.ui.graphics.Color
 import androidx.core.graphics.toColorInt
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.bridge.ReadableType
 import com.reactnativestripesdk.getFontResId
 import com.reactnativestripesdk.utils.PaymentSheetAppearanceException
 import com.reactnativestripesdk.utils.forEachKey
+import com.reactnativestripesdk.utils.getBooleanOrNull
 import com.reactnativestripesdk.utils.getFloatOr
 import com.reactnativestripesdk.utils.getFloatOrNull
 import com.reactnativestripesdk.utils.getIntegerList
 import com.reactnativestripesdk.utils.getStringList
+import com.reactnativestripesdk.utils.isDarkTheme
 import com.reactnativestripesdk.utils.mapToPreferredNetworks
-import com.stripe.android.checkout.CheckoutController
+import com.stripe.android.checkout.CheckoutElementsController
+import com.stripe.android.elements.CurrencySelectorElement
 import com.stripe.android.elements.PaymentElement
+import com.stripe.android.elements.PaymentElement.Configuration.Appearance.Embedded.RowStyle
+import com.stripe.android.elements.ShippingAddressElement
 import com.stripe.android.model.PaymentMethod
 import com.stripe.android.paymentelement.CheckoutSessionPreview
 import com.stripe.android.uicore.StripeThemeDefaults
+import com.stripe.android.elements.ShippingAddressElement.Configuration.Appearance as ShippingAddressAppearance
 
 @OptIn(CheckoutSessionPreview::class)
 internal data class MappedCheckoutConfiguration(
   val clientSecret: String,
-  val configuration: CheckoutController.Configuration,
+  val configuration: CheckoutElementsController.Configuration,
   val rowSelectionBehavior: PaymentElement.RowSelectionBehavior,
 )
 
@@ -37,7 +44,7 @@ internal object CheckoutConfigurationMapper {
     val clientSecret = params.getString("clientSecret").orEmpty()
     val paymentElementParams = params.getMap("paymentElement")
 
-    val configuration = CheckoutController.Configuration()
+    val configuration = CheckoutElementsController.Configuration()
     params.getString("merchantDisplayName")?.let(configuration::merchantDisplayName)
     params.getMap("defaults")?.let { configuration.defaults(mapDefaults(it)) }
     configuration.paymentElement(
@@ -47,6 +54,16 @@ internal object CheckoutConfigurationMapper {
         context = context,
       ),
     )
+    params.getMap("currencySelectorElement")?.let {
+      configuration.currencySelectorElement(mapCurrencySelectorElement(it, context, params.getString("style")))
+    }
+    params.getMap("shippingAddressElement")?.let {
+      configuration.shippingAddressElement(mapShippingAddressElement(it, params.getString("style"), context))
+    }
+
+    params.getMap("expressCheckoutElement")?.let {
+      configuration.expressCheckoutElement(ExpressCheckoutConfigurationMapper.map(it))
+    }
 
     return MappedCheckoutConfiguration(
       clientSecret = clientSecret,
@@ -55,8 +72,187 @@ internal object CheckoutConfigurationMapper {
     )
   }
 
-  private fun mapDefaults(params: ReadableMap): CheckoutController.Configuration.Defaults {
-    val defaults = CheckoutController.Configuration.Defaults()
+  private fun mapShippingAddressElement(
+    params: ReadableMap,
+    style: String?,
+    context: Context,
+  ): ShippingAddressElement.Configuration {
+    val configuration = ShippingAddressElement.Configuration()
+    params.getString("title")?.let(configuration::title)
+    params.getString("buttonTitle")?.let(configuration::buttonTitle)
+    val appearanceParams = params.getMap("appearance")
+    if (appearanceParams == null && style == null) return configuration
+
+    val appearance = ShippingAddressAppearance()
+    style?.let {
+      appearance.themeMode(
+        when (it) {
+          "alwaysLight" -> ShippingAddressAppearance.ThemeMode.AlwaysLight
+          "alwaysDark" -> ShippingAddressAppearance.ThemeMode.AlwaysDark
+          "automatic" -> ShippingAddressAppearance.ThemeMode.Automatic
+          else -> unsupportedValue("style", it)
+        },
+      )
+    }
+    appearanceParams?.getMap("colors")?.let { colors ->
+      appearance.colorsLight(mapShippingAddressColors(colors.getMap("light") ?: colors, true))
+      appearance.colorsDark(mapShippingAddressColors(colors.getMap("dark") ?: colors, false))
+    }
+    appearanceParams?.getMap("primaryButton")?.let { buttonParams ->
+      appearance.primaryButton(mapShippingAddressPrimaryButton(buttonParams, context))
+    }
+    appearanceParams?.getMap("formInsetValues")?.let { insets ->
+      // Preserve the shipping sheet's native defaults for omitted edges.
+      appearance.formInsetValues(
+        ShippingAddressAppearance.Insets(
+          startDp = insets.getFloatOr("left", SHIPPING_FORM_HORIZONTAL_INSET),
+          topDp = insets.getFloatOr("top", 0f),
+          endDp = insets.getFloatOr("right", SHIPPING_FORM_HORIZONTAL_INSET),
+          bottomDp = insets.getFloatOr("bottom", SHIPPING_FORM_BOTTOM_INSET),
+        ),
+      )
+    }
+    return configuration.appearance(appearance)
+  }
+
+  private fun mapShippingAddressPrimaryButton(
+    params: ReadableMap,
+    context: Context,
+  ): ShippingAddressAppearance.PrimaryButton {
+    val button = ShippingAddressAppearance.PrimaryButton()
+    params.getMap("colors")?.let { colors ->
+      button.colorsLight(mapShippingAddressButtonColors(colors.getMap("light") ?: colors, true))
+      button.colorsDark(mapShippingAddressButtonColors(colors.getMap("dark") ?: colors, false))
+    }
+    params.getMap("shapes")?.let { shapes ->
+      button.shape(
+        ShippingAddressAppearance.PrimaryButton.Shape()
+          .cornerRadiusDp(shapes.getFloatOrNull("borderRadius"))
+          .borderStrokeWidthDp(shapes.getFloatOrNull("borderWidth"))
+          .heightDp(shapes.getFloatOrNull("height")),
+      )
+    }
+    params.getMap("font")?.let { font ->
+      button.typography(
+        ShippingAddressAppearance.PrimaryButton.Typography()
+          .fontResId(getFontResId(font, "family", context)),
+      )
+    }
+    return button
+  }
+
+  private fun mapShippingAddressColors(
+    params: ReadableMap,
+    isLight: Boolean,
+  ): ShippingAddressAppearance.Colors {
+    val colors = if (isLight) ShippingAddressAppearance.Colors.light() else ShippingAddressAppearance.Colors.dark()
+    params.color("primary", isLight)?.let(colors::primary)
+    params.color("background", isLight)?.let(colors::surface)
+    params.color("componentBackground", isLight)?.let(colors::component)
+    params.color("componentBorder", isLight)?.let(colors::componentBorder)
+    params.color("componentDivider", isLight)?.let(colors::componentDivider)
+    params.color("componentText", isLight)?.let(colors::onComponent)
+    params.color("secondaryText", isLight)?.let(colors::subtitle)
+    params.color("placeholderText", isLight)?.let(colors::placeholderText)
+    params.color("primaryText", isLight)?.let(colors::onSurface)
+    params.color("icon", isLight)?.let(colors::appBarIcon)
+    params.color("error", isLight)?.let(colors::error)
+    return colors
+  }
+
+  private fun mapShippingAddressButtonColors(
+    params: ReadableMap,
+    isLight: Boolean,
+  ): ShippingAddressAppearance.PrimaryButton.Colors {
+    val colors = if (isLight) {
+      ShippingAddressAppearance.PrimaryButton.Colors.light()
+    } else {
+      ShippingAddressAppearance.PrimaryButton.Colors.dark()
+    }
+    params.color("background", isLight)?.let(colors::background)
+    params.color("text", isLight)?.let(colors::onBackground)
+    params.color("border", isLight)?.let(colors::border)
+    return colors
+  }
+
+  private fun mapCurrencySelectorElement(
+    params: ReadableMap,
+    context: Context,
+    style: String?,
+  ): CurrencySelectorElement.Configuration {
+    val configuration = CurrencySelectorElement.Configuration()
+    val appearanceParams = params.getMap("appearance") ?: return configuration
+    val appearance = CurrencySelectorElement.Configuration.Appearance()
+    appearanceParams.getFloatOrNull("contentVerticalPadding")?.let(appearance::contentVerticalPaddingDp)
+    mapCurrencySelectorShapes(appearanceParams, appearance)
+    mapCurrencySelectorFont(appearanceParams, appearance, context)
+    mapCurrencySelectorLabel(appearanceParams, appearance)
+    mapCurrencySelectorColors(appearanceParams, appearance, context, style)
+    return configuration.appearance(appearance)
+  }
+
+  private fun mapCurrencySelectorShapes(
+    params: ReadableMap,
+    appearance: CurrencySelectorElement.Configuration.Appearance,
+  ) {
+    params.getMap("shapes")?.let { shapes ->
+      shapes.getFloatOrNull("cornerRadius")?.let(appearance::cornerRadiusDp)
+      shapes.getFloatOrNull("borderWidth")?.let(appearance::borderWidthDp)
+    }
+  }
+
+  private fun mapCurrencySelectorFont(
+    params: ReadableMap,
+    appearance: CurrencySelectorElement.Configuration.Appearance,
+    context: Context,
+  ) {
+    params.getMap("font")?.let { font ->
+      appearance.fontResId(getFontResId(font, "family", context))
+      font.getFloatOrNull("scale")?.let(appearance::sizeScaleFactor)
+    }
+  }
+
+  private fun mapCurrencySelectorLabel(
+    params: ReadableMap,
+    appearance: CurrencySelectorElement.Configuration.Appearance,
+  ) {
+    params.getString("labelContent")?.let { value ->
+      appearance.labelContent(
+        when (value) {
+          "automatic" -> CurrencySelectorElement.Configuration.Appearance.LabelContent.AUTOMATIC
+          "currencyCode" -> CurrencySelectorElement.Configuration.Appearance.LabelContent.CURRENCY_CODE
+          "amount" -> CurrencySelectorElement.Configuration.Appearance.LabelContent.AMOUNT
+          else -> unsupportedValue("currencySelectorElement.appearance.labelContent", value)
+        },
+      )
+    }
+  }
+
+  private fun mapCurrencySelectorColors(
+    params: ReadableMap,
+    appearance: CurrencySelectorElement.Configuration.Appearance,
+    context: Context,
+    style: String?,
+  ) {
+    params.getMap("colors")?.let { colors ->
+      val isLight = when (style) {
+        "alwaysLight" -> true
+        "alwaysDark" -> false
+        else -> !context.resources.configuration.isDarkTheme()
+      }
+      val palette = colors.getMap(if (isLight) "light" else "dark") ?: colors
+      palette.color("border", isLight)?.let { appearance.borderColor(Color(it)) }
+      palette.color("background", isLight)?.let { appearance.background(Color(it)) }
+      palette.color("selectedBackground", isLight)?.let { appearance.selectedBackground(Color(it)) }
+      palette.color("text", isLight)?.let { appearance.textColor(Color(it)) }
+      palette.color("selectedText", isLight)?.let { appearance.selectedTextColor(Color(it)) }
+      palette.color("textSecondary", isLight)?.let { appearance.textSecondaryColor(Color(it)) }
+      palette.color("danger", isLight)?.let { appearance.dangerColor(Color(it)) }
+    }
+  }
+
+  private fun mapDefaults(params: ReadableMap): CheckoutElementsController.Configuration.Defaults {
+    val defaults = CheckoutElementsController.Configuration.Defaults()
     params.getMap("billingDetails")?.let {
       defaults.billingDetails(mapContactDetails(it))
     }
@@ -66,24 +262,24 @@ internal object CheckoutConfigurationMapper {
     if (params.hasKey("email")) {
       defaults.email(params.getString("email"))
     }
-    // TODO(porter): Uncomment when the reviewed native setter ships.
-    // defaults.phone(params.getString("phone"))
+    if (params.hasKey("phone")) {
+      defaults.phone(params.getString("phone"))
+    }
     return defaults
   }
 
   private fun mapContactDetails(
     params: ReadableMap,
-  ): CheckoutController.Configuration.Defaults.ContactDetails =
-    CheckoutController.Configuration.Defaults.ContactDetails().apply {
+  ): CheckoutElementsController.Configuration.Defaults.ContactDetails =
+    CheckoutElementsController.Configuration.Defaults.ContactDetails().apply {
       name(params.getString("name"))
       params.getMap("address")?.let { address(mapAddress(it)) }
     }
 
   fun mapAddress(
     params: ReadableMap,
-  ): CheckoutController.Address {
-    return CheckoutController.Address()
-      .country(params.getString("country").orEmpty())
+  ): CheckoutElementsController.Address {
+    return CheckoutElementsController.Address(params.getString("country").orEmpty())
       .line1(params.getString("line1"))
       .line2(params.getString("line2"))
       .city(params.getString("city"))
@@ -109,10 +305,6 @@ internal object CheckoutConfigurationMapper {
       configuration.embeddedViewDisplaysMandateText(params.getBoolean("displaysMandateText"))
     }
 
-    // TODO(porter): Uncomment when the reviewed native setter ships.
-    // configuration.savePaymentMethodOptInBehavior(
-    //   mapSavePaymentMethodOptInBehavior(params.getString("savePaymentMethodOptInBehavior")),
-    // )
     params.getIntegerList("preferredNetworks")?.let {
       configuration.preferredNetworks(mapPreferredNetworks(it))
     }
@@ -176,10 +368,6 @@ internal object CheckoutConfigurationMapper {
       params.getString("label")?.let(::label)
       params.getString("buttonType")?.let { buttonType(mapGooglePayButtonType(it)) }
       params.getStringList("additionalEnabledNetworks")?.let(::additionalEnabledNetworks)
-      // TODO(porter): Uncomment when the reviewed native environment initializer ships.
-      // environment(
-      //   if (params.getBooleanOr("testEnv", false)) Environment.Test else Environment.Production,
-      // )
     }
 
   internal fun mapGooglePayButtonType(
@@ -236,6 +424,21 @@ internal object CheckoutConfigurationMapper {
       appearance.colorsDark(mapColors(colors.getMap("dark") ?: colors, isLight = false))
     }
     params?.getMap("primaryButton")?.let { appearance.primaryButton(mapPrimaryButton(it, context)) }
+    params?.getMap("font")?.let { font ->
+      val typography = PaymentElement.Configuration.Appearance.Typography()
+      getFontResId(font, "family", context)?.let(typography::fontResId)
+      font.getFloatOrNull("scale")?.let(typography::sizeScaleFactor)
+      appearance.typography(typography)
+    }
+    params?.getMap("shapes")?.let { shapes ->
+      val mapped = PaymentElement.Configuration.Appearance.Shapes()
+      shapes.getFloatOrNull("borderRadius")?.let(mapped::cornerRadiusDp)
+      shapes.getFloatOrNull("borderWidth")?.let(mapped::borderStrokeWidthDp)
+      appearance.shapes(mapped)
+    }
+    params?.getMap("embeddedPaymentElement")?.let {
+      appearance.embeddedAppearance(mapEmbeddedAppearance(it))
+    }
 
     params?.getMap("formInsetValues")?.let { insets ->
       val defaults = StripeThemeDefaults.formInsets
@@ -248,8 +451,108 @@ internal object CheckoutConfigurationMapper {
         ),
       )
     }
-    // TODO(porter): Map root font, shapes, and embedded appearance when their reviewed setters ship.
     return appearance
+  }
+
+  private fun mapEmbeddedAppearance(
+    params: ReadableMap,
+  ): PaymentElement.Configuration.Appearance.Embedded {
+    val embedded = PaymentElement.Configuration.Appearance.Embedded()
+    params.getMap("row")?.let { row ->
+      embedded.rowStyle(mapEmbeddedRowStyle(row))
+    }
+    return embedded
+  }
+
+  private fun mapEmbeddedRowStyle(params: ReadableMap): RowStyle =
+    when (val style = params.getString("style") ?: "flatWithRadio") {
+      "flatWithRadio" -> mapFlatWithRadio(params)
+      "flatWithCheckmark" -> mapFlatWithCheckmark(params)
+      "flatWithDisclosure" -> mapFlatWithDisclosure(params)
+      "floatingButton" -> RowStyle.FloatingButton().apply {
+        params.getFloatOrNull("additionalInsets")?.let(::additionalInsetsDp)
+        params.getMap("floating")?.getFloatOrNull("spacing")?.let(::spacingDp)
+      }
+      else -> unsupportedValue("paymentElement.appearance.embeddedPaymentElement.row.style", style)
+    }
+
+  private fun mapFlatWithRadio(params: ReadableMap): RowStyle.FlatWithRadio {
+    val flat = params.getMap("flat")
+    val radio = flat?.getMap("radio")
+    return RowStyle.FlatWithRadio().apply {
+      flat.getFloatOrNull("separatorThickness")?.let(::separatorThicknessDp)
+      flat?.getMap("separatorInsets")?.getFloatOrNull("left")?.let(::startSeparatorInsetDp)
+      flat?.getMap("separatorInsets")?.getFloatOrNull("right")?.let(::endSeparatorInsetDp)
+      flat.getBooleanOrNull("topSeparatorEnabled")?.let(::topSeparatorEnabled)
+      flat.getBooleanOrNull("bottomSeparatorEnabled")?.let(::bottomSeparatorEnabled)
+      params.getFloatOrNull("additionalInsets")?.let(::additionalVerticalInsetsDp)
+      colorsLight(mapRadioColors(flat, radio, true))
+      colorsDark(mapRadioColors(flat, radio, false))
+    }
+  }
+
+  private fun mapRadioColors(
+    flat: ReadableMap?,
+    radio: ReadableMap?,
+    isLight: Boolean,
+  ): RowStyle.FlatWithRadio.Colors {
+    val colors = if (isLight) RowStyle.FlatWithRadio.Colors.light() else RowStyle.FlatWithRadio.Colors.dark()
+    flat.color("separatorColor", isLight)?.let(colors::separatorColor)
+    radio.color("selectedColor", isLight)?.let(colors::selectedColor)
+    radio.color("unselectedColor", isLight)?.let(colors::unselectedColor)
+    return colors
+  }
+
+  private fun mapFlatWithCheckmark(params: ReadableMap): RowStyle.FlatWithCheckmark {
+    val flat = params.getMap("flat")
+    val checkmark = flat?.getMap("checkmark")
+    return RowStyle.FlatWithCheckmark().apply {
+      flat.getFloatOrNull("separatorThickness")?.let(::separatorThicknessDp)
+      flat?.getMap("separatorInsets")?.getFloatOrNull("left")?.let(::startSeparatorInsetDp)
+      flat?.getMap("separatorInsets")?.getFloatOrNull("right")?.let(::endSeparatorInsetDp)
+      flat.getBooleanOrNull("topSeparatorEnabled")?.let(::topSeparatorEnabled)
+      flat.getBooleanOrNull("bottomSeparatorEnabled")?.let(::bottomSeparatorEnabled)
+      params.getFloatOrNull("additionalInsets")?.let(::additionalVerticalInsetsDp)
+      colorsLight(mapCheckmarkColors(flat, checkmark, true))
+      colorsDark(mapCheckmarkColors(flat, checkmark, false))
+    }
+  }
+
+  private fun mapCheckmarkColors(
+    flat: ReadableMap?,
+    checkmark: ReadableMap?,
+    isLight: Boolean,
+  ): RowStyle.FlatWithCheckmark.Colors {
+    val colors = if (isLight) RowStyle.FlatWithCheckmark.Colors.light() else RowStyle.FlatWithCheckmark.Colors.dark()
+    flat.color("separatorColor", isLight)?.let(colors::separatorColor)
+    checkmark.color("color", isLight)?.let(colors::checkmarkColor)
+    return colors
+  }
+
+  private fun mapFlatWithDisclosure(params: ReadableMap): RowStyle.FlatWithDisclosure {
+    val flat = params.getMap("flat")
+    val disclosure = flat?.getMap("disclosure")
+    return RowStyle.FlatWithDisclosure().apply {
+      flat.getFloatOrNull("separatorThickness")?.let(::separatorThicknessDp)
+      flat?.getMap("separatorInsets")?.getFloatOrNull("left")?.let(::startSeparatorInsetDp)
+      flat?.getMap("separatorInsets")?.getFloatOrNull("right")?.let(::endSeparatorInsetDp)
+      flat.getBooleanOrNull("topSeparatorEnabled")?.let(::topSeparatorEnabled)
+      flat.getBooleanOrNull("bottomSeparatorEnabled")?.let(::bottomSeparatorEnabled)
+      params.getFloatOrNull("additionalInsets")?.let(::additionalVerticalInsetsDp)
+      colorsLight(mapDisclosureColors(flat, disclosure, true))
+      colorsDark(mapDisclosureColors(flat, disclosure, false))
+    }
+  }
+
+  private fun mapDisclosureColors(
+    flat: ReadableMap?,
+    disclosure: ReadableMap?,
+    isLight: Boolean,
+  ): RowStyle.FlatWithDisclosure.Colors {
+    val colors = if (isLight) RowStyle.FlatWithDisclosure.Colors.light() else RowStyle.FlatWithDisclosure.Colors.dark()
+    flat.color("separatorColor", isLight)?.let(colors::separatorColor)
+    disclosure.color("color", isLight)?.let(colors::disclosureColor)
+    return colors
   }
 
   internal fun mapThemeMode(style: String): PaymentElement.Configuration.Appearance.ThemeMode =
@@ -353,3 +656,5 @@ private fun unsupportedValue(path: String, value: Any?): Nothing =
 
 private const val HEX_COLOR_LENGTH_RGB = 6
 private const val HEX_COLOR_LENGTH_ARGB = 8
+private const val SHIPPING_FORM_HORIZONTAL_INSET = 20f
+private const val SHIPPING_FORM_BOTTOM_INSET = 40f

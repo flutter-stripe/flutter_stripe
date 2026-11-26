@@ -39,6 +39,13 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
     /// If false, the customer can't delete if they only have one saved payment method remaining.
     bool? allowsRemovalOfLastSavedPaymentMethod,
 
+    /// By default, CustomerSheet will use a dynamic ordering that optimizes payment method display for the customer.
+    /// You can override the default order in which payment methods are displayed with a list of payment method types.
+    /// Example: ["card", "klarna"]
+    ///
+    /// Android only.
+    List<String>? paymentMethodOrder,
+
     /// Optional configuration for setting the header text of the Payment Method selection screen
     String? headerTextForSelectionScreen,
 
@@ -109,6 +116,13 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
     /// If false, the customer can't delete if they only have one saved payment method remaining.
     bool? allowsRemovalOfLastSavedPaymentMethod,
 
+    /// By default, CustomerSheet will use a dynamic ordering that optimizes payment method display for the customer.
+    /// You can override the default order in which payment methods are displayed with a list of payment method types.
+    /// Example: ["card", "klarna"]
+    ///
+    /// Android only.
+    List<String>? paymentMethodOrder,
+
     /// Optional configuration for setting the header text of the Payment Method selection screen
     String? headerTextForSelectionScreen,
 
@@ -173,6 +187,13 @@ abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
     /// Defaults to true. If true, the customer can delete all saved payment methods.
     /// If false, the customer can't delete if they only have one saved payment method remaining.
     bool? allowsRemovalOfLastSavedPaymentMethod,
+
+    /// By default, CustomerSheet will use a dynamic ordering that optimizes payment method display for the customer.
+    /// You can override the default order in which payment methods are displayed with a list of payment method types.
+    /// Example: ["card", "klarna"]
+    ///
+    /// Android only.
+    List<String>? paymentMethodOrder,
 
     /// Optional configuration for setting the header text of the Payment Method selection screen
     String? headerTextForSelectionScreen,

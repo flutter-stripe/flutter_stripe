@@ -5,9 +5,9 @@
 //  Created by Charles Cruzan on 08/28/23.
 //
 
-import Foundation
 import UIKit
-@_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
+import Foundation
+@_spi(PrivateBetaCustomerSheet) @_spi(InternalOnlyAPI) @_spi(ReactNativeSDK) import StripePaymentSheet
 extension StripeSdkImpl {
     @MainActor
     @objc(initCustomerSheet:customerAdapterOverrides:resolver:rejecter:)

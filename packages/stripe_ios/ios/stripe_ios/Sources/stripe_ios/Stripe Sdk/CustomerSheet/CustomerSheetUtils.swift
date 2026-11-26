@@ -5,9 +5,9 @@
 //  Created by Charles Cruzan on 08/28/23.
 //
 
-import Foundation
 import UIKit
-@_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
+import Foundation
+@_spi(PrivateBetaCustomerSheet) @_spi(InternalOnlyAPI) import StripePaymentSheet
 
 class CustomerSheetUtils {
     internal class func buildCustomerSheetConfiguration(

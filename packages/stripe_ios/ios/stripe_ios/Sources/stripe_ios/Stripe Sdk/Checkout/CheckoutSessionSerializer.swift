@@ -1,11 +1,17 @@
 import Foundation
-@_spi(ReactNativeSDK) @_spi(STP) import StripePaymentSheet
+@_spi(ReactNativeSDK) @_spi(InternalOnlyAPI) import StripePaymentSheet
 
 @MainActor
 enum CheckoutSessionSerializer {
-    static func serialize(_ session: CheckoutController.Session) -> [String: Any] {
+    static func serialize(_ session: CheckoutElementsController.Session) -> [String: Any] {
         var result: [String: Any] = [
             "id": session.id,
+            // Default availability for the Express Checkout API stub.
+            "availableExpressCheckoutPaymentMethods": [
+                "applePay": ["available": false, "type": "apple_pay"],
+                "googlePay": ["available": false, "type": "google_pay"],
+                "link": ["available": false, "type": "link"],
+            ],
             "livemode": session.livemode,
             "orderSummaryItems": session.orderSummaryItems.map(serialize),
             "discountAmounts": session.discountAmounts.map(serialize),
@@ -27,7 +33,7 @@ enum CheckoutSessionSerializer {
         return result
     }
 
-    static func serialize(_ result: CheckoutController.ConfirmResult) -> [String: Any] {
+    static func serialize(_ result: CheckoutElementsController.ConfirmResult) -> [String: Any] {
         switch result {
         case .completed(let paymentStatus):
             return ["status": "completed", "paymentStatus": serialize(paymentStatus)]
@@ -41,7 +47,7 @@ enum CheckoutSessionSerializer {
     }
 
     private static func serialize(
-        _ item: CheckoutController.Session.OrderSummaryItem
+        _ item: CheckoutElementsController.Session.OrderSummaryItem
     ) -> [String: Any] {
         switch item {
         case .oneTimePrice(let oneTimePrice):
@@ -56,7 +62,7 @@ enum CheckoutSessionSerializer {
     }
 
     private static func serialize(
-        _ item: CheckoutController.Session.OrderSummaryItem.OneTimePrice.Item
+        _ item: CheckoutElementsController.Session.OrderSummaryItem.OneTimePrice.Item
     ) -> [String: Any] {
         var result: [String: Any] = [
             "key": item.key,
@@ -69,13 +75,13 @@ enum CheckoutSessionSerializer {
         result.setIfPresent("unitAmountDecimal", item.unitAmountDecimal.map(serialize))
         result.setIfPresent("unitLabel", item.unitLabel)
         result.setIfPresent("adjustableQuantity", item.adjustableQuantity.map {
-            ["enabled": $0.enabled, "minimum": $0.minimum, "maximum": $0.maximum]
+            ["minimum": $0.minimum, "maximum": $0.maximum]
         })
         return result
     }
 
     private static func serialize(
-        _ details: CheckoutController.Session.OrderSummaryItem.OneTimePrice.Item.AmountDetails
+        _ details: CheckoutElementsController.Session.OrderSummaryItem.OneTimePrice.Item.AmountDetails
     ) -> [String: Any] {
         var result: [String: Any] = [
             "total": serialize(details.total),
@@ -87,14 +93,22 @@ enum CheckoutSessionSerializer {
         return result
     }
 
-    private static func serialize(_ amount: CheckoutController.Session.Amount) -> [String: Any] {
+    private static func serialize(_ amount: CheckoutElementsController.Session.Amount) -> [String: Any] {
         [
             "amount": amount.amount,
             "minorUnitsAmount": amount.minorUnitsAmount,
         ]
     }
 
-    private static func serialize(_ amount: CheckoutController.Session.TaxAmount) -> [String: Any] {
+    private static func serialize(_ amount: CheckoutElementsController.Session.DecimalAmount) -> [String: Any] {
+        [
+            "amount": amount.amount,
+            // JS numbers are doubles, so convert the fractional minor units the same way Android does.
+            "minorUnitsAmount": NSDecimalNumber(decimal: amount.minorUnitsAmount).doubleValue,
+        ]
+    }
+
+    private static func serialize(_ amount: CheckoutElementsController.Session.TaxAmount) -> [String: Any] {
         var result: [String: Any] = [
             "amount": amount.amount,
             "minorUnitsAmount": amount.minorUnitsAmount,
@@ -105,7 +119,7 @@ enum CheckoutSessionSerializer {
         return result
     }
 
-    private static func serialize(_ amount: CheckoutController.Session.DiscountAmount) -> [String: Any] {
+    private static func serialize(_ amount: CheckoutElementsController.Session.DiscountAmount) -> [String: Any] {
         var result: [String: Any] = [
             "amount": amount.amount,
             "minorUnitsAmount": amount.minorUnitsAmount,
@@ -116,7 +130,7 @@ enum CheckoutSessionSerializer {
         return result
     }
 
-    private static func serialize(_ totals: CheckoutController.Session.Totals) -> [String: Any] {
+    private static func serialize(_ totals: CheckoutElementsController.Session.Totals) -> [String: Any] {
         [
             "subtotal": serialize(totals.subtotal),
             "taxExclusive": serialize(totals.taxExclusive),
@@ -126,7 +140,7 @@ enum CheckoutSessionSerializer {
         ]
     }
 
-    private static func serialize(_ status: CheckoutController.Session.Status) -> [String: Any] {
+    private static func serialize(_ status: CheckoutElementsController.Session.Status) -> [String: Any] {
         switch status {
         case .open:
             return ["type": "open"]
@@ -141,7 +155,7 @@ enum CheckoutSessionSerializer {
     }
 
     private static func serialize(
-        _ paymentStatus: CheckoutController.Session.Status.PaymentStatus
+        _ paymentStatus: CheckoutElementsController.Session.Status.PaymentStatus
     ) -> String {
         switch paymentStatus {
         case .paid: return "paid"
@@ -150,7 +164,7 @@ enum CheckoutSessionSerializer {
         }
     }
 
-    private static func serialize(_ taxStatus: CheckoutController.Session.Tax.Status) -> [String: Any] {
+    private static func serialize(_ taxStatus: CheckoutElementsController.Session.Tax.Status) -> [String: Any] {
         switch taxStatus {
         case .ready:
             return ["status": "ready"]
@@ -162,20 +176,21 @@ enum CheckoutSessionSerializer {
     }
 
     private static func serialize(
-        _ paymentOption: CheckoutController.Session.PaymentOptionDisplayData
+        _ paymentOption: CheckoutElementsController.Session.PaymentOptionDisplayData
     ) -> [String: Any] {
         var result: [String: Any] = [
             "image": paymentOption.image.pngData()?.base64EncodedString() ?? "",
             "label": paymentOption.label,
             "paymentMethodType": paymentOption.paymentMethodType,
         ]
+        result.setIfPresent("sublabel", paymentOption.sublabel)
         result.setIfPresent("billingDetails", paymentOption.billingDetails.map(serialize))
         result.setIfPresent("mandateHTML", paymentOption.mandateText.map(html))
         return result
     }
 
     private static func serialize(
-        _ billingDetails: CheckoutController.Session.PaymentOptionDisplayData.BillingDetails
+        _ billingDetails: CheckoutElementsController.Session.PaymentOptionDisplayData.BillingDetails
     ) -> [String: Any] {
         var result: [String: Any] = [:]
         result.setIfPresent("name", billingDetails.name)
@@ -186,7 +201,7 @@ enum CheckoutSessionSerializer {
     }
 
     private static func serialize(
-        _ address: CheckoutController.Session.PaymentOptionDisplayData.BillingDetails.Address
+        _ address: CheckoutElementsController.Session.PaymentOptionDisplayData.BillingDetails.Address
     ) -> [String: Any] {
         var result: [String: Any] = [:]
         result.setIfPresent("country", address.country)
@@ -198,13 +213,13 @@ enum CheckoutSessionSerializer {
         return result
     }
 
-    private static func serialize(_ shippingAddress: CheckoutController.Session.ShippingAddress) -> [String: Any] {
+    private static func serialize(_ shippingAddress: CheckoutElementsController.Session.ShippingAddress) -> [String: Any] {
         var result: [String: Any] = ["address": serialize(shippingAddress.address)]
         result.setIfPresent("name", shippingAddress.name)
         return result
     }
 
-    private static func serialize(_ address: CheckoutController.Address) -> [String: Any] {
+    private static func serialize(_ address: CheckoutElementsController.Address) -> [String: Any] {
         var result: [String: Any] = ["country": address.country]
         result.setIfPresent("line1", address.line1)
         result.setIfPresent("line2", address.line2)
